@@ -16,7 +16,7 @@ CSV.foreach(MEDIA_FILE, :headers => true) do |row|
   work = Work.new
   work.title = row["title"]
   work.creator = row["creator"]
-  work.pub_year = row["pub_year"]
+  work.pub_yr = row["pub_yr"]
   work.description = row["description"]
   successful = work.save
   if !successful
