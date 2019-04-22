@@ -1,26 +1,41 @@
+<h1>List of Works<h1>
+
+
+<section>
 <h2> Books </h2>
 <ul>
 <% @works.where( category: "book").each do |book|%>
     <li>
-    <%= link_to book.title, work_path(book.id)%> by <%= book.creator %> 
+    <%= link_to book.title, work_path(book.id)%> <%= book.creator %> 
+    <%= book.publication_year %> 
     </li>
 <%end%>
 </ul>
+</section>
 
+<section>
 <h2> Albums </h2>
 <ul>
 <% @works.where(category: "album").each do |album|%>
     <li>
-    <%= link_to album.title, work_path(album.id)%> by <%= album.creator %> 
+    <p><%= link_to album.title, work_path(album.id)%></p>
+    <p><%= album.creator %></p>
+    <p><%= album.publication_year %></p>
     </li>
 <%end%>
 </ul>
+</section>
 
+
+<section>
 <h2> Movies </h2>
 <ul>
 <% @works.where( category: "movie").each do |movie|%>
     <li>
-    <%= link_to movie.title, work_path(movie.id)%> by <%= movie.creator %> 
+    <p><%= link_to movie.title, work_path(movie.id)%></p> 
+    <p><%= movie.creator %></p>
+    <p><%= movie.publication_year %></p>
     </li>
 <%end%>
 </ul>
+</section>
