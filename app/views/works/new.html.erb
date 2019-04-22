@@ -1,0 +1,38 @@
+  <h2>Enter a new piece of work below: </h2>
+
+<% if @work.errors.any? %>
+  <ul class="errors">
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @work, class: "new-work" do |f| %>
+
+  <%= f.label :category %>
+  <%= f.select :category 
+  
+  <option value="album">album</option>
+  <option value="book">book</option>
+  <option value="movie">movie</option>
+
+  %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %><br>
+
+  <%= f.label :creator %>
+  <%= f.text_field :creator%><br>
+
+  <%= f.label :publication_year%>
+  <%= f.text_field :creator%><br>
+
+  <%= f.label :description %>
+  <%= f.text_area :description%><br>
+
+
+  <%= f.submit "SUBMIT", class: "submit-btn" %>
+<% end %>
