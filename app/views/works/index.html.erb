@@ -1,0 +1,22 @@
+<h1>List of Works</h1>
+
+<h3>Albums</h3>
+<% @works.each do |work|%>
+    <% if work.category == "album"%>
+        <%= work.title %><br>
+    <% end %>
+<% end %>
+
+<h3>Books</h3>
+<% @works.each do |work|%>
+    <% if work.category == "book"%>
+        <%= work.title %><br>
+    <% end %>
+<% end %>
+
+<h3>Movies</h3>
+<% @works.each do |work|%>
+    <% if work.category == "movie"%>
+        <%= work.title %><br>
+    <% end %>
+<% end %>
