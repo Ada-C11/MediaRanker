@@ -1,4 +1,4 @@
-<h1>List of Works<h1>
+<h1>List of Works</h1>
 
 
 <section>
@@ -6,8 +6,9 @@
 <ul>
 <% @works.where( category: "book").each do |book|%>
     <li>
-    <%= link_to book.title, work_path(book.id)%> <%= book.creator %> 
-    <%= book.publication_year %> 
+    <p><%= link_to book.title, work_path(book.id)%></p> 
+    <p><%= book.creator %></p> 
+    <p><%= book.publication_year %></p>
     </li>
 <%end%>
 </ul>
@@ -39,3 +40,6 @@
 <%end%>
 </ul>
 </section>
+
+<%=link_to "View top media", root_path%>
+<%=link_to "Add a new work", new_work_path%>
