@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
-root 'index#homepage'
+  root "homepages#index"
+
+  resources :works
 
 end
