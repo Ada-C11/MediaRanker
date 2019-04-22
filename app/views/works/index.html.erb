@@ -1,50 +1,66 @@
-<table>
-  <thead>
-    <th> Movies </th>
-  </thead>
-  <% Work.movies.each do |movie|%>
-    <tr>
-      <td> 
-        <%= movie.title %>
-      </td>
-       <td> 
-        <%= movie.creator %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<h2> List of Works </h2>
 
+<h4> Movies </h4>
+<% if !Work.movies.empty? %>
+  <table class="media-table">
+    <thead>
+      <th> Title </th>
+      <th> Created By </th>
+    </thead>
+    <% Work.movies.each do |movie|%>
+      <tr>
+        <td> 
+          <%= movie.title %>
+        </td>
+        <td> 
+          <%= movie.creator %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  No media available
+<% end %>
 
-<table>
-  <thead>
-    <th> Albums </th>
-  </thead>
-  <% Work.albums.each do |album|%>
-    <tr>
-      <td> 
-        <%= album.title %>
-      </td>
-      <td> 
-        <%= album.creator %>
-      </td>
-    </tr>
-  <% end %>
-</table>
-
-
-<table>
-  <thead>
-    <th> Books </th>
-  </thead>
-  <% Work.books.each do |book|%>
-    <tr>
-      <td> 
-        <%= book.title %>
-      </td>
-      <td> 
-        <%= book.creator %>
-      </td>
-    </tr>
-  <% end %>
-</table>
-
+<h4> Albums </h4>
+<% if !Work.albums.empty? %>
+  <table class="media-table">
+    <thead>
+      <th> Title </th>
+      <th> Created By </th>
+    </thead>
+    <% Work.albums.each do |album|%>
+      <tr>
+        <td> 
+          <%= album.title %>
+        </td>
+        <td> 
+          <%= album.creator %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  No media available
+<% end %>
+<h4> Books </h4>
+<% if !Work.books.empty? %>
+  <table class="media-table">
+    <thead>
+      <th> Title </th>
+      <th> Created By </th>
+    </thead>
+    <% Work.books.each do |book|%>
+      <tr>
+        <td> 
+          <%= book.title %>
+        </td>
+        <td> 
+          <%= book.creator %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  No media available
+<% end %>
