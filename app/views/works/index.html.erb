@@ -1,0 +1,45 @@
+<h1>List of Works</h1>
+<section>
+  <h3> Books </h3>
+  <% @works.each do |work| %>
+    <% if work.category == "book" %>  
+    <ul class="works-list">
+      <li>
+        <strong>Title:</strong> <%= work.title %>
+        <strong>Creator:</strong> <li><%= work.creator %></li>
+        <strong>Description:</strong> <li><%= work.description %></li>
+      </li>
+    </ul>
+    <% end %>
+  <% end %>
+</section>
+
+<section>
+  <h3> Albums </h3>
+  <% @works.each do |work| %>
+    <% if work.category == "album" %>  
+    <ul class="works-list">
+      <li>
+        <strong>Title:</strong> <%= work.title %>
+        <strong>Creator:</strong> <li><%= work.creator %></li>
+        <strong>Description:</strong> <li><%= work.description %></li>
+      </li>
+    </ul>
+    <% end %>
+  <% end %>
+</section>
+
+<section>
+  <h3> Movies </h3>
+  <% @works.each do |work| %>
+    <% if work.category == "movie" %>  
+    <ul class="works-list">
+      <li>
+        <strong>Title:</strong> <%= work.title %>
+        <strong>Creator:</strong> <li><%= work.creator %></li>
+        <strong>Description:</strong> <li><%= work.description %></li>
+      </li>
+    </ul>
+    <% end %>
+  <% end %>
+</section>
