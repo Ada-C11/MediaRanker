@@ -1,4 +1,15 @@
 class Work < ApplicationRecord
+  validates :category, presence: true
+  validates :title, presence: true
+ 
+
+
+
+
+
+
+
+
   def self.movies
    return self.where(category: "movie")
   end
