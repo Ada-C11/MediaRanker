@@ -1,0 +1,12 @@
+one:
+  category: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+
+ two:
+  category: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+  
