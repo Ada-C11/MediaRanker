@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  catagory: MyString
+  title: MyString
+  creator: MyString
+  publication_year: 2019-04-22 15:54:20
+  description: MyString
+
+two:
+  catagory: MyString
+  title: MyString
+  creator: MyString
+  publication_year: 2019-04-22 15:54:20
+  description: MyString
