@@ -1,0 +1,50 @@
+<table>
+  <thead>
+    <th> Movies </th>
+  </thead>
+  <% Work.movies.each do |movie|%>
+    <tr>
+      <td> 
+        <%= movie.title %>
+      </td>
+       <td> 
+        <%= movie.creator %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+<table>
+  <thead>
+    <th> Albums </th>
+  </thead>
+  <% Work.albums.each do |album|%>
+    <tr>
+      <td> 
+        <%= album.title %>
+      </td>
+      <td> 
+        <%= album.creator %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+
+<table>
+  <thead>
+    <th> Books </th>
+  </thead>
+  <% Work.books.each do |book|%>
+    <tr>
+      <td> 
+        <%= book.title %>
+      </td>
+      <td> 
+        <%= book.creator %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
