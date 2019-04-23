@@ -22,6 +22,7 @@
   </ul>
   <ul class="button">
   <% if !session[:user_id]%>
+
   <li><%=link_to "Log In", login_path, class: "btn btn-primary"%></a></li>
   <% else %>
   <li><%=link_to "Log Out", logout_path, method: :post, class: "btn btn-primary"%></a></li>
@@ -31,9 +32,9 @@
   <main>
   <body>
   <!-- check this-->
-  <%# <% alert_type = flash[:status] == :error ? :danger, flash[:status]%> 
-  <section class="flash<%=flash[:status]%>">
-    <%=flash[:message]%>
+  <% alert_type = flash[:status] == :error ? :danger : flash[:status] %>
+  <section class="flash alert alert-<%= alert_type %>">
+  <%= flash[:message] %>
   </section>
     <%= yield %>
   </body>
