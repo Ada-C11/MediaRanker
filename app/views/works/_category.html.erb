@@ -1,4 +1,4 @@
-<h4><%= category_name %></h4>
+<h4>Albums</h4>
 <table class="table">
   <thead>
     <tr>
@@ -11,11 +11,11 @@
   </thead>
   <tbody>
     <tr>
-    <% category.each do |work| %>
-      <td><%=work.vote_count%></td>
-      <td><%=work.title%></td>
-      <td><%=work.creator%></td>
-      <td><%=work.publication_year%></td>
+    <% @works.albums_list.each do |album| %>
+      <td><%=album.votes.length%></td>
+      <td><%=album.title%></td>
+      <td><%=album.creator%></td>
+      <td><%=album.publication_year%></td>
       <td>Upvote</td>
     </tr>
     <% end %>
