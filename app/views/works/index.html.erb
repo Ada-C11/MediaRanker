@@ -1,0 +1,26 @@
+<h1>Works#index</h1>
+<p>Find me in app/views/works/index.html.erb</p>
+
+<h2>Albums:</h2>
+<% @works.each do |work| %>
+    <% if work.category == "album" %>
+        <%= work.title %>
+    <% end %>
+<% end %>
+
+<h2>Books:</h2>
+<% @works.each do |work| %>
+    <% if work.category == "book" %>
+        <%= work.title %>
+    <% end %>
+<% end %>
+
+
+<% if @works.where(category: "movie") != nil %>
+    <h2>Movies:</h2>
+    <% @works.each do |work| %>
+        <% if work.category == "movie" %>
+            <%= work.title %>
+        <% end %>
+    <% end %>
+<% end %>

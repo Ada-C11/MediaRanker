@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+album:
+  category: album
+  title: Test Album
+  creator: Artist1
+  publication_year: 2019
+  description: interesting new album
+
+book:
+  category: book
+  title: Book Test
+  creator: Author1
+  publication_year: 2018
+  description: best book of the year

@@ -1,0 +1,19 @@
+<h1><%= @work.title %></h1>
+
+<ul>
+    <li>
+    Created by: <%= @work.creator%>
+    </li>
+    <li>
+    Published: <%= @work.publication_year%>
+    </li>
+    <li>
+    <%= @work.description %>
+    </li>
+</ul>
+
+<%= link_to "Edit", edit_work_path(@work.id) %>
+
+<%= link_to "Delete", work_path(@work.id), method: :delete %>
+
+<h2> [add # here] Votes for this <%= @work.category.capitalize %> </h2>
