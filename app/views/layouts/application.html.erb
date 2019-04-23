@@ -7,24 +7,23 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
   </head>
 
   <body>
-  <div class="container">
     <header>
-      <h1><a href="/">Media Ranker</a> Ranking the Best of Everything</h1>
+      <h1><a href="/"><span class="title">Media Ranker</span></a> Ranking the Best of Everything</h1>
       <nav>
         <ul>
-          <li><%= link_to "View top media", root_path %></li>
-          <li><%= link_to "View all media", works_path %></li>
-          <li><%= link_to "Add a new work", new_work_path %></li>
-          <li> View all users </li>
+          <li class="nav-links"><%= link_to "View top media", root_path %></li>
+          <li class="nav-links"><%= link_to "View all media", works_path %></li>
+          <li class="nav-links"><%= link_to "Add a new work", new_work_path %></li>
+          <li class="nav-links"> View all users </li>
         </ul>
       </nav>
     </header>
     <main>
     <%= yield %>
     </main>
-    </div>
   </body>
 </html>
