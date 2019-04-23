@@ -24,6 +24,7 @@ describe WorksController do
       invalid_id = -1
       get work_path(invalid_id)
 
+      expect(flash[:error]).must_equal "That work does not exist"
       must_respond_with :redirect
     end
   end
@@ -57,8 +58,36 @@ describe WorksController do
       expect(new_work.publication_year).must_equal work_hash[:work][:publication_year]
       expect(new_work.description).must_equal work_hash[:work][:description]
 
+      expect(flash[:success]).must_equal "Successfully created #{new_work.category} #{new_work.id}"
       must_respond_with :redirect
       must_redirect_to work_path(new_work.id)
+    end
+
+    it "can give an error message when no title is given" do
+      work_hash = {
+        work: {
+          category: "book",
+          title: "",
+          creator: "George R. R. Martin",
+          publication_year: 1996,
+          description: "epic fantasy novel",
+        },
+      }
+      post works_path, params: work_hash
+
+      expect(flash.now[:title]).must_equal ["can't be blank"]
+    end
+
+    it "can give an error message when a repeat title is given" do
+      work_hash = {
+        work: {
+          category: "movie",
+          title: "The Thing",
+        },
+      }
+      post works_path, params: work_hash
+
+      expect(flash.now[:title]).must_equal ["has already been taken"]
     end
   end
 
@@ -74,6 +103,7 @@ describe WorksController do
 
       get edit_work_path(invalid_id)
 
+      expect(flash[:error]).must_equal "That work does not exist"
       must_respond_with :redirect
     end
   end
@@ -93,27 +123,32 @@ describe WorksController do
       expect(edited_work.publication_year).must_equal work_change[:work][:publication_year]
       expect(edited_work.description).must_equal work_change[:work][:description]
 
+      expect(flash[:success]).must_equal "Successfully updated #{edited_work.category} #{edited_work.id}"
       must_respond_with :redirect
       must_redirect_to work_path(work.id)
     end
 
-    it "will redirect to the works index page if given an invalid id" do
-      invalid_work_id = -1
-      patch work_path(invalid_work_id)
-      must_respond_with :redirect
-      must_redirect_to works_path
+    it "can give an error message when no title is given" do
+      work_change = {
+        work: {
+          title: "",
+        },
+      }
+      patch work_path(work.id), params: work_change
+
+      expect(flash.now[:title]).must_equal ["can't be blank"]
     end
   end
 
   describe "destroy" do
-    it "returns a 404 error if a work is not found" do
+    it "returns a flash error if a work is not found" do
       invalid_work_id = -1
 
       expect {
         delete work_path(invalid_work_id)
       }.wont_change "Work.count"
 
-      must_respond_with :not_found
+      expect(flash[:error]).must_equal "That work does not exist"
     end
 
     it "can delete a work" do
@@ -123,6 +158,7 @@ describe WorksController do
         delete work_path(new_work.id)
       }.must_change "Work.count", -1
 
+      expect(flash[:success]).must_equal "Successfully destroyed #{new_work.category} #{new_work.id}"
       must_respond_with :redirect
       must_redirect_to works_path
       #must_redirect_to root

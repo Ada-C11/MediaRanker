@@ -8,7 +8,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: work_id)
 
     if @work.nil?
-      # flash[:error] = ""
+      flash[:error] = "That work does not exist"
       redirect_to works_path
     end
   end
@@ -36,20 +36,22 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: work_id)
 
     if @work.nil?
-      # flash[:error] = ""
+      flash[:error] = "That work does not exist"
       redirect_to works_path
     end
   end
 
   def update
-    work_to_update = Work.find_by(id: params[:id])
+    @work = Work.find_by(id: params[:id])
 
-    if work_to_update.nil?
-      redirect_to works_path
+    if @work.update(work_params)
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
+      redirect_to work_path(@work.id)
     else
-      work_to_update.update(work_params)
-      flash[:success] = "Successfully updated #{work_to_update.category} #{work_to_update.id}"
-      redirect_to work_path(work_to_update.id)
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
+      render :edit, status: :bad_request
     end
   end
 
@@ -57,9 +59,8 @@ class WorksController < ApplicationController
     work_to_destroy = Work.find_by(id: params[:id])
 
     if work_to_destroy.nil?
-      head :not_found
-      # flash[:error] = "This work does not exist"
-      # redirect_to works_path
+      flash[:error] = "That work does not exist"
+      redirect_to works_path
     else
       work_to_destroy.destroy
       flash[:success] = "Successfully destroyed #{work_to_destroy.category} #{work_to_destroy.id}"
