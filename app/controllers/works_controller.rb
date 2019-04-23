@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
   def index
+    # update to be ordered by number of votes...when those are linked.
     @books = Work.where(category: "book")
     @albums = Work.where(category: "album")
     @movies = Work.where(category: "movie")
