@@ -18,7 +18,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find(params[:id])
+    @work = Work.find_by(id: params[:id])
 
     unless @work
       redirect_to root_path, :flash => { :error => "Could not find work with id: #{params[:id]}" }
@@ -26,7 +26,7 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find(params[:id])
+    @work = Work.find_by(id: params[:id])
 
     unless @work
       redirect_to root_path, :flash => { :error => "Could not find work with id: #{params[:id]}" }
@@ -34,6 +34,7 @@ class WorksController < ApplicationController
   end
 
   def update
+    @work = Work.find_by(id: params[:id])
     if @work
       if @work.update work_params
         redirect_to work_path(@work.id), { :flash => { :success => "Successfully updated work!" } }
@@ -45,8 +46,8 @@ class WorksController < ApplicationController
     end
   end
 
-  def delete
-    @work = work.find_by(id: params[:id])
+  def destroy
+    @work = Work.find_by(id: params[:id])
     if @work
       if @work.destroy
         redirect_to root_path, { :flash => { :success => "Successfully deleted work!" } }
