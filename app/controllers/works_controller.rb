@@ -7,6 +7,9 @@ class WorksController < ApplicationController
   end
 
   def show
+    @work = Work.find_by(id: params[:id])
+
+    redirect_to root_path if @work.nil?
   end
 
   def new
