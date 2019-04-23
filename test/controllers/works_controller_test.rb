@@ -89,6 +89,7 @@ describe WorksController do
           title: "new work",
           creator: "me again",
           description: "new work description",
+          category: "album",
         },
       }
 

@@ -1,13 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+rumors:
+  category: Album
+  creator: Fleetwood Mac
+  publication_year: 1977
+  description: the quintessential breakup album
+  title: Rumors
 
-two:
-  category: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+hitchhikers:
+  category: book
+  creator: Douglas Adams
+  publication_year: 1979
+  description: Don't panic.
+  title: The Hitchhiker's Guide to the Galaxy
+
+return:
+  category: movie
+  creator: George Lucas
+  publication_year: 1983
+  description: Go see a star war
+  title: Return of the Jedi
