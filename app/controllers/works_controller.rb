@@ -4,7 +4,6 @@ class WorksController < ApplicationController
     @works = Work.all.sort_by(&:id)
   end
 
-
   def new
     @work = Work.new
   end

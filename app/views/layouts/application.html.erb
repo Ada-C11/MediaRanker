@@ -14,14 +14,16 @@
   <body>
      <header>
         <h1 class='main_title'>
-          <%= link_to 'Media Ranker | Ranking the Best of Everything'%>
+          <%= link_to 'Media Ranker | Ranking the Best of Everything', home_path%>
         </h1>
         <div class="nav_list">
           <a><%=link_to 'View Top Media'%></a>
-          <a><%= link_to 'View All Media'%></a>
+          <a><%= link_to 'View All Media', works_path%></a>
           <a><%= link_to 'Add New Work'%></a>
           <a><%= link_to 'View all users'%></a>
-          <a><%=link_to 'Log In'%></a>
+          <section class="card-body">
+          <a href="#" role="button" class="btn btn-primary">Login</a>
+          </section>
         </div>
     </header>
     <main>

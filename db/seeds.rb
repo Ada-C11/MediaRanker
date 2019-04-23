@@ -10,7 +10,7 @@ CSV.foreach(WORK_FILE, :headers => true) do |row|
   work.category = row['category']
   work.title = row['title']
   work.creator = row['creator']
-  work.publication_year = row['publication year']
+  work.publication_year = row['publication_year'].to_i
   work.description = row['description']
   work.votes = row['votes']
 

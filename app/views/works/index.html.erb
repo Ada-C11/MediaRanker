@@ -1,0 +1,67 @@
+<div  class='main_options' >
+  <table class='main_options'>
+    <tr>
+      <th>Books</th>
+    </tr>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Publication</th>
+      <th>UpVote</th>
+    </tr>
+    <tr>
+      <% @books = Work.where(category: "book") %>
+      <% @books.each do |book| %>
+      <td><%= link_to 'Votes' %></td>
+      <td><%= book.title %></td>
+      <td><%= book.creator %></td>
+      <td><%= book.publication_year %></td>
+      <td><%= link_to 'Up Vote' %></td>
+    </tr>
+    <% end %>
+
+    <tr>
+      <th>Albums</th>
+    </tr>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Publication Year</th>
+      <th>UpVote</th>
+    </tr>
+    <tr>
+      <% @albums = Work.where(category: "album") %>
+      <% @albums.each do |album| %>
+      <td><%= link_to 'Votes' %></td>
+      <td><%= album.title %></td>
+      <td><%= album.creator %></td>
+      <td><%= album.publication_year%></td>
+      <td><%= link_to 'Up Vote' %></td>
+    </tr>
+    <% end %>
+
+    <tr>
+      <th>Movies</th>
+    </tr>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Publication Year</th>
+      <th>UpVote</th>
+    </tr>
+    <tr>
+      <% @movies = Work.where(category: "movie") %>
+      <% @movies.each do |movie| %>
+      <td><%= link_to 'Votes' %></td>
+      <td><%= movie.title %></td>
+      <td><%= movie.creator %></td>
+      <td><%= movie.publication_year %></td>
+      <td><%= link_to 'Up Vote' %></td>
+    </tr>
+    <% end %>
+    
+  </table>
+</div>
