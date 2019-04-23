@@ -31,7 +31,6 @@ class WorksController < ApplicationController
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
-
       render :new, status: :bad_request
     end
   end
@@ -59,7 +58,6 @@ class WorksController < ApplicationController
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
-
       render :edit, status: :bad_request
     end
   end
