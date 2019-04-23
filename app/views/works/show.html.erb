@@ -1,8 +1,8 @@
-<h2>Work details page</h2>
 
-<strong>
+
+<h2>
  <%= @work.title %>
-</strong>
+</h2>
 </p>
 <p>
   Created By: <%= @work.creator %> 
@@ -20,9 +20,9 @@ Published: <%= @work.publication_date %>
   Votes for this <% @work.category %>
   </p>
 <p>
-<%= link_to "Back to media ranker", root_path %>
+<%= link_to "Back to media ranker", root_path, class: "btn btn-success" %>
 <%= link_to "Edit" %>
-<%= link_to "Upvote" %>
-<%= link_to "Delete" %>
+<%= link_to "Upvote", class: "btn btn-success" %>
+<%= link_to "Delete", class: "btn btn-success" %>
 </p>
 </section>

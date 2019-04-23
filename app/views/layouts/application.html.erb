@@ -10,6 +10,36 @@
   </head>
 
   <body>
+      <header>
+      
+      <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+        <%= link_to "Media Ranker", root_path, class: "navbar-brand" %>
+          <div class="collapse navbar-collapse" id="navbarText">
+           <ul class="navbar-nav mr-auto">
+            <li class="nav-icon">
+            <%= link_to "View top media", root_path %>
+            </li>
+            <li>
+            <%= link_to "View all media", works_path %>
+            </li>
+            <li>
+            <%= link_to "Add a new work", new_work_path %>
+            </li>
+            <li>
+            <%= link_to "View all users" %>
+            </li>
+            <li>
+            <%= link_to "log in" %>
+            </li>
+           </ul>
+               <span class="navbar-text">
+                 Ranking the Best of Everything
+               </span>
+               </div>
+      </nav>
+    </header>
+  <main>
     <%= yield %>
+    </main>
   </body>
 </html>
