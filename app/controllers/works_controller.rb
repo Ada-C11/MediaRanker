@@ -50,10 +50,12 @@ class WorksController < ApplicationController
     work_id = params[:id]
     @work = Work.find_by(id: work_id)
 
-    head :not_found unless @work
-
-    work.destroy
-    redirect_to work_path
+    if @work
+      @work.destroy
+      redirect_to works_path
+    else
+      head :not_found
+    end
   end
 
   private
