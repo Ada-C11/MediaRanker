@@ -4,10 +4,12 @@ class SessionsController < ApplicationController
 
     if user.nil?
       user= User.create(username: params[:user][:username], date_joined: DateTime.now)
+      flash[:success] = "Successfully created new user #{user.username} with ID #{user.id}"
+    else
+      flash[:success] = "Successfully logged in as existing user #{user.username}"
     end
 
     session[:user_id] = user.id
-    flash[:success] = "Successfully logged in as #{user.username}"
     redirect_to root_path
   end
 
