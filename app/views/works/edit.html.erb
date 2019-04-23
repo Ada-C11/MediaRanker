@@ -1,2 +1,3 @@
-<h1>Works#edit</h1>
-<p>Find me in app/views/works/edit.html.erb</p>
+<%= render partial: "form", locals: { title_name: "Edit This #{@work.category.capitalize}", 
+                                      action_name: "Update Work" 
+                                      } %>
