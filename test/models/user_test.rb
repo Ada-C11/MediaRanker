@@ -33,6 +33,6 @@ describe User do
     end
   end
 
-  describe "custom exceptions" do
+  describe "custom methods" do
   end
 end
