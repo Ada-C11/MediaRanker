@@ -1,15 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+spaghetti:
+  category: Album
+  title: Spaghetti and Chill
+  creator: Super Fly
+  publication_year: 1995
+  description: Perfect jam for eating some spaghetti, alone, in a plushy bath robe.
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+war_and_peace:
+  category: Book
+  title: War and Peace
+  creator: Leo Tolstoy
+  publication_year: 1869
+  description: There is some war. There is some peace. 
+
+
