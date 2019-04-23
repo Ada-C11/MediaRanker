@@ -14,11 +14,11 @@
     <tbody>
       <tr>
       <% @works.albums_list.each do |album| %>
-        <td>Votes</td>
+        <td><%=album.votes.length%></td>
         <td><%=album.title%></td>
         <td><%=album.creator%></td>
         <td><%=album.publication_year%></td>
-        <td>Upvote</td>
+        <td><a class="btn btn-primary">Upvote</a></td>
       </tr>
       <% end %>
     </tbody>
@@ -37,11 +37,11 @@
     <tbody>
       <tr>
       <% @works.books_list.each do |book| %>
-        <td>Votes</td>
+        <td><%=book.votes.length%></td>
         <td><%=book.title%></td>
         <td><%=book.creator%></td>
         <td><%=book.publication_year%></td>
-        <td>Upvote</td>
+        <td><a class="btn btn-primary">Upvote</a></td>
       </tr>
       <% end %>
     </tbody>
@@ -60,11 +60,11 @@
     <tbody>
       <tr>
       <% @works.movies_list.each do |movie| %>
-        <td>Votes</td>
+        <td><%=movie.votes.length%></td>
         <td><%=movie.title%></td>
         <td><%=movie.creator%></td>
         <td><%=movie.publication_year%></td>
-        <td>Upvote</td>
+        <td><a class="btn btn-primary">Upvote</a></td>
       </tr>
       <% end %>
     </tbody>

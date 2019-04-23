@@ -33,7 +33,7 @@ class Work < ApplicationRecord
     movies.reverse!
 
     10.times do |i|
-      top_to << movies[i]
+      top_10 << movies[i]
     end
     return top_10
   end
