@@ -8,7 +8,22 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <header class="overall-header">
+  <h1>
+  <a href="/">Media Ranker</a>
+  <a class="small">Ranking the Best of Everything</a>
+  </h1>
+  <nav class="header-nav">
+  <ul class="links_pages">
+  <li><a class="nav-link" href="/">View top media</a></li>
+  <li><a class="nav-link" href="/works">View all media</a></li>
+  <li><a class="nav-link" href="/works">Add a new work</a></li>
+  <li><a class="nav-link" href="/works">View all users</a></li>
+  </ul>
+  <ul class="button">
+  <li><a class="btn" href = "/login">Log In</a></li>
+  </nav>
+  </header>
   <body>
     <%= yield %>
   </body>
