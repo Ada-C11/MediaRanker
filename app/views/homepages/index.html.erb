@@ -1,0 +1,16 @@
+<div>
+  <h2 class='media_spotlight'>
+    <% if @spotlight %>
+      <strong>Media Spotlight: <%= @spotlight %></strong>
+    <% else %>
+      <p>No spotlight today</p>
+    <% end %>
+  </h2>
+</div>
+<div>
+  <ul class='main_options'>
+    <li><%= link_to 'Top Movies'%></li> 
+    <li><%= link_to 'Top Books'%></li>
+    <li><%= link_to 'Top Albums'%></li>
+  </ul>
+</div>

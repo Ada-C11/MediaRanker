@@ -28,8 +28,9 @@ header {
   padding: 0;
   font-size: 25px; 
   flex-direction: row; 
-  margin-left: 50px;
+  margin: 50px 0 0 100px;
 }
+
 .main_options {
   display: flex;
   padding: 0;

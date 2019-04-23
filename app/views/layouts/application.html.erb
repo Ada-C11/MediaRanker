@@ -2,18 +2,19 @@
 <html>
   <head>
     <title>MediaRanker</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/> 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('owl.jpg')%>
+
   </head>
 
   <body>
      <header>
         <h1 class='main_title'>
-          <%= link_to 'Media Ranker | Ranking the Best of Everything', home_path %>
+          <%= link_to 'Media Ranker | Ranking the Best of Everything'%>
         </h1>
         <div class="nav_list">
           <a><%=link_to 'View Top Media'%></a>
