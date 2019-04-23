@@ -2,14 +2,14 @@
 
 one:
   category: MyString
-  title: MyString
+  title: titleone
   creator: MyString
   publication_year: 1
   description: MyString
 
 two:
   category: MyString
-  title: MyString
+  title: titletwo
   creator: MyString
   publication_year: 1
   description: MyString
