@@ -1,1 +1,49 @@
 <h1> ONLY HOMEPAGE MEDIA RANKER</h1>
+
+<h2> Top Movies </h2>
+<% top_movies = Work.movies.sample(10) %>
+
+<section class="top-ten-container">
+<ul>
+  <% top_movies.each do |movie|%>
+    <li>
+      <h4>
+        <%= link_to movie.title, works_path(movie) %>, 
+        <small> created by <%= movie.creator%></small>
+      </h4>
+      <p> Votes </p>
+    </li>
+  <% end %>
+</ul>
+
+<h2 Top Albums>
+<% top_albums = Work.albums.sample(10)%>
+<section class="top-ten-container">
+<ul>
+  <% top_albums.each do |media|%>
+    <li>
+      <h4>
+        <%= link_to media.title, works_path(media) %>, 
+       <small> created by  <%= media.creator%></small>
+      </h4>
+      <p> Votes </p>
+    </li>
+  <% end %>
+</ul>
+
+<h2 Top Books>
+<% top_books = Work.books.sample(10)%>
+<section class="top-ten-container">
+<ul>
+  <% top_books.each do |media|%>
+    <li>
+      <h4>
+        <%= link_to media.title, works_path(media) %>, 
+        <small> created by <%= media.creator%></small>
+      </h4>
+      <p> Votes </p>
+    </li>
+  <% end %>
+</ul>
+
+
