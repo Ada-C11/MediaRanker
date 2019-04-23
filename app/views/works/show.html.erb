@@ -4,7 +4,7 @@
 <p>Published: <%= @work.publication_year %></p>
 <p><%= @work.description %></p>
 
-<button><%= link_to "Back to media ranks" %></button>
+<button><%= link_to "Back to media ranks", root_path %></button>
 <button><%= link_to "Edit", edit_work_path(@work) %></button>
 <button><%= link_to "Upvote" %></button>
 <button><%= link_to "Delete" %></button>
