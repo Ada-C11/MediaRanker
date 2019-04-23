@@ -156,6 +156,23 @@ describe WorksController do
 
   describe "delete" do
     it "can delete an exisiting valid work" do
+      expect {
+        delete work_path(work.id)
+      }.must_change "Work.count", -1
+
+      must_respond_with :redirect
+      must_redirect_to works_path
+    end
+
+    it "redirects to the root path for a non-existant work" do
+      invalid_id = -1
+
+      expect {
+        delete work_path(invalid_id)
+      }.wont_change "Work.count"
+
+      must_respond_with :redirect
+      must_redirect_to root_path
     end
   end
 end
