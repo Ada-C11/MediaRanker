@@ -3,7 +3,7 @@
 <h3>Albums</h3>
 <% @works.each do |work|%>
     <% if work.category == "album"%>
-        <%= work.title %><br>
+        <%= link_to work.title, work_path(work.id) %><br>
     <% end %>
 <% end %>
 

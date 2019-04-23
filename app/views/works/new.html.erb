@@ -13,7 +13,7 @@
 <%= form_with model: @work, class: "new-work" do |f| %>
 
   <%= f.label :category %>
-  <%= f.select :category 
+  <%= f.select :category, ["album", "book", "movie"]
   
   <option value="album">album</option>
   <option value="book">book</option>
