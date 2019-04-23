@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  username: MyString
+kim:
+  username: Kim!!!!
   join_date: 2019-04-23
 
-two:
-  username: MyString
+aj:
+  username: AJ!!!!
   join_date: 2019-04-23
