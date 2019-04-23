@@ -1,7 +1,12 @@
 <%= form_with model: @work, class: form_class do |f| %>
 
   <%= f.label :category %>
-  <%= f.select :category, Work.all.map {|work| [work.category] } %>
+  <%# f.select :category, Work.all.map {|work| [work.category] } %>
+  <%= f.select :category, [
+      ["movie", "movie"],
+      ["book", "book"], 
+      ["album", "album"]
+  ] %>
 
   <%= f.label :title %>
   <%= f.text_field :title %>
