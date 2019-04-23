@@ -1,0 +1,37 @@
+<main class="homepage">
+    <section class="spotlight">
+    <% spotlight_work = @works.sample%>
+    <h2>Media spotlight: <%= link_to spotlight_work.title, work_path(spotlight_work.id) %> by <%= spotlight_work.creator %></h2>
+    <p><%= spotlight_work.description %></p>
+    </section>
+
+    <section class="top-books">
+    <h3>Top Books</h3>
+    <% @works.each do |work| %>
+        <% if work.title[0] == "B" && work.category == "book"%>
+          <%= link_to work.title, work_path(work.id) %> by <%= work.creator %>
+          <p><%= rand(1..5)%> votes</p>
+        <% end %>
+    <% end %>
+    </section>
+
+    <section class="top-movies">
+    <h3>Top Movies</h3>
+    <% @works.each do |work| %>
+        <% if work.title[0] == "G" && work.category == "movie"%>
+          <%= link_to work.title, work_path(work.id) %> by <%= work.creator %>
+          <p><%= rand(1..5)%> votes</p>
+        <% end %>
+    <% end %>
+    </section>
+
+    <section class="top-albums">
+    <h3>Top Albums</h3>
+    <% @works.each do |work| %>
+        <% if work.title[0] == "M" && work.category == "album"%>
+          <%= link_to work.title, work_path(work.id) %> by <%= work.creator %>
+          <p><%= rand(1..5)%> votes</p>
+        <% end %>
+    <% end %>
+    </section>
+</main>

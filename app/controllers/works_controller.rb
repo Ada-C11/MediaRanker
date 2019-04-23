@@ -4,7 +4,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    # TODO: why will this not work with find_by
     @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
