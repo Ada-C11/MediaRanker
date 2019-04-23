@@ -4,9 +4,9 @@ describe LandingController do
 
   require "test_helper"
 
-  describe WelcomeController do
+  describe LandingController do
     it "should get index" do
-      get welcome_index_url
+      get landing_index_url
       value(response).must_be :success?
     end
 
