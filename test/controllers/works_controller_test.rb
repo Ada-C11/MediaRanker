@@ -144,5 +144,16 @@ let(:work) { Work.create!(category: "movie", title: "Into the Wild") }
       must_respond_with :redirect
       must_redirect_to works_path
     end
+
+    it "responds with 404 when trying to delete nonexistant media" do 
+      work 
+      work_id = Work.last.id + 1
+
+      expect{
+        delete work_path(work_id)
+      }.wont_change "Work.count"
+
+      must_respond_with :not_found
+    end 
   end
 end
