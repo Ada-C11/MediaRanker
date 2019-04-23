@@ -1,0 +1,6 @@
+<h3><%= link_to @work.title, work_path(@work.id)%></h3>
+  <p>Created by: <%= @work.creator %></p>
+  <p>Published: <%= @work.publication_year %></p>
+  <p><%= @work.description %></p>
+
+  <%=link_to "Back to media ranks", root_path%> 

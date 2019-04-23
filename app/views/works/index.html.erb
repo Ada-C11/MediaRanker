@@ -1,30 +1,45 @@
 <body>
   <main>
-    <h2> Books </h2>
-    <ul>
-    <% @works.where( category: "book").each do |book|%>
-        <li>
-        <%= link_to book.title, work_path(book.id)%> by <%= book.creator %> 
-        </li>
-    <%end%>
-    </ul>
 
-    <h2> Albums </h2>
-    <ul>
-    <% @works.where(category: "album").each do |album|%>
-        <li>
-        <%= link_to album.title, work_path(album.id)%> by <%= album.creator %> 
-        </li>
-    <%end%>
-    </ul>
+  <h1> List of Works </h1>
 
-    <h2> Movies </h2>
-    <ul>
-    <% @works.where( category: "movie").each do |movie|%>
-        <li>
-        <%= link_to movie.title, work_path(movie.id)%> by <%= movie.creator %> 
-        </li>
-    <%end%>
-    </ul> 
+    <section>
+      <h2> Books </h2>
+      <ul>
+      <%@works.where( category: "book").each do |book|%>
+          <li>
+          <%= link_to book.title, work_path(book.id)%> by <%= book.creator %>
+          <%= book.pub_yr %> 
+          </li>
+      <%end%>
+      </ul>
+    </section>
+
+    <section>
+      <h2> Albums </h2>
+      <ul>
+      <% @works.where(category: "album").each do |album|%>
+          <li>
+          <p><%= link_to album.title, work_path(album.id)%></p>
+          <p><%= album.creator %></p>
+          <p><%= album.pub_yr %></p>
+          </li>
+      <%end%>
+      </ul>
+    </section>
+
+    <section>
+      <h2> Movies </h2>
+      <ul>
+      <% @works.where( category: "movie").each do |movie|%>
+          <li>
+          <p><%= link_to movie.title, work_path(movie.id)%></p>       
+          <p><%= movie.creator %></p>
+          <p><%= movie.pub_yr %></p>
+          </li>
+      <%end%>
+      </ul> 
+    </section>
+
   </main>
 </body>
