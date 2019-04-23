@@ -36,6 +36,18 @@ describe WorksController do
       must_redirect_to works_path
     end
   end
+
+  it "removes the work from the database" do
+    work_to_delete = Work.first
+    expect {
+      delete work_path(work_to_delete)
+    }.must_change "Work.count", -1
+    must_respond_with :redirect
+    must_redirect_to works_path
+
+    after_delete_work = Work.find_by(id: work_to_delete.id)
+    expect(after_delete_work).must_be_nil
+  end
 end
 
 #validate things? use fixtures or let?
