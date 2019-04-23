@@ -68,9 +68,9 @@ describe WorksController do
       must_respond_with :success
     end
 
-    # it "will respond with a redirect when attempting to edit a nonexistent passenger" do
-    #   get edit_passenger_path(-1)
-    #   must_redirect_to passengers_path
-    # end
+    it "will respond with a redirect when attempting to edit a nonexistent passenger" do
+      get edit_work_path(-1)
+      must_redirect_to works_path
+    end
   end
 end

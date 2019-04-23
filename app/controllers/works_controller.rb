@@ -35,6 +35,11 @@ class WorksController < ApplicationController
 
   def edit
     @work = Work.find_by(id: params[:id])
+    unless @work
+      redirect_to works_path
+      flash.now[:status] = :error
+      flash.now[:message] = "Could not find work #{params[:id]}"
+    end
   end
 
   private
