@@ -1,8 +1,7 @@
 class HomepagesController < ApplicationController
   def index
     @spotlight = Work.all.sample
-    puts "inside homepage"
-    puts top_ten_movies.inspect
+    puts top_ten_movies
     top_ten_books
     top_ten_albums
   end
