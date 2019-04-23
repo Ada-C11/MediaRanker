@@ -4,12 +4,12 @@ one:
   category: MyString
   title: MyString
   creator: MyString
-  publication_year: MyString
-  description: MyString
+  publication_year: 1
+  description: MyText
 
-two:
+ two:
   category: MyString
   title: MyString
   creator: MyString
-  publication_year: MyString
-  description: MyString
+  publication_year: 1
+  description: MyText
