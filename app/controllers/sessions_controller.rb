@@ -1,13 +1,13 @@
 class SessionsController < ApplicationController
   def login
-    user = User.find_by(name: params[:user][:name])
+    user = User.find_by(username: params[:user][:username])
 
     if user.nil?
-      user = User.create(name: params[:author][:name])
+      user= User.create(username: params[:user][:username], date_joined: DateTime.now)
     end
 
     session[:user_id] = user.id
-    flash[:sucess] = "Successfully logged in as #{user.name}"
+    flash[:success] = "Successfully logged in as #{user.username}"
     redirect_to root_path
   end
 
