@@ -12,7 +12,51 @@
  *
  */
 
+
 /* Custom bootstrap variables must be set or imported *before* bootstrap. */
+
 @import "bootstrap";
+
 /* Import scss content */
+
 @import "**/*";
+.app-header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
+    text-align: center;
+}
+
+#app-title {
+    color: orangered;
+}
+
+#sub-heading {
+    color: white;
+}
+
+.nav-bar #first-ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: space-between;
+    padding-top: 4em;
+    padding-right: 35em;
+    color: #00796b;
+}
+
+.nav-bar #second-ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    color: #00796b;
+}
+
+.text {
+    color: white;
+}
+
+.btn {
+    background-color: rgb(13, 156, 156);
+}
