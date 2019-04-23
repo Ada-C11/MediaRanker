@@ -1,0 +1,23 @@
+<h4>category_name</h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <% @works."#{category_list}".each do |category| %>
+      <td><%=category.votes.length%></td>
+      <td><%=category.title%></td>
+      <td><%=category.creator%></td>
+      <td><%=category.publication_year%></td>
+      <td>Upvote</td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
