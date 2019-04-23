@@ -10,7 +10,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if !@work
-      flash[:failure] = "Sorry, we couldn't find the media page you were looking for."
+      flash[:failure] = "Sorry, we couldn't find the media you were looking for."
       redirect_to root_path
     end
   end
@@ -39,7 +39,10 @@ class WorksController < ApplicationController
   def edit
     @work = Work.find_by(id: params[:id])
 
-    redirect_to root_path if @work.nil?
+    if !@work
+      flash[:failure] = "Sorry, we couldn't find the media you were looking for."
+      redirect_to root_path
+    end
   end
 
   def update
