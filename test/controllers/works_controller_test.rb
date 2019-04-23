@@ -30,8 +30,11 @@ describe WorksController do
   describe "new" do
     it "can get the new page" do
       get new_work_path
-      value(response).must_be :success?
+
+      must_respond_with :success
     end
+
+    it ""
   end
 
   describe "create" do
