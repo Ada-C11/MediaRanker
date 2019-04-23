@@ -1,6 +1,7 @@
 <section> 
   <h2> <%= @work.title %> </h2>
   <ul>
+    <li> Category: <%= @work.category.capitalize %> </li>
     <li> Creator: <%= @work.creator %> </li>
     <li> Published: <%= @work.publication_year %> </li>
     <li> Description: <%= @work.description %> </li>
