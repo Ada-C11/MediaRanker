@@ -104,4 +104,28 @@ describe WorksController do
       must_redirect_to works_path
     end
   end
+
+  describe "destroy" do
+    it "returns a 404 error if a work is not found" do
+      invalid_work_id = -1
+
+      expect {
+        delete work_path(invalid_work_id)
+      }.wont_change "Work.count"
+
+      must_respond_with :not_found
+    end
+
+    it "can delete a work" do
+      new_work = Work.create(title: "This is a title that will be deleted")
+
+      expect {
+        delete work_path(new_work.id)
+      }.must_change "Work.count", -1
+
+      must_respond_with :redirect
+      must_redirect_to works_path
+      #must_redirect_to root
+    end
+  end
 end
