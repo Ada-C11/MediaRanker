@@ -1,16 +1,40 @@
 <section class="media-spotlight">
-    <h2>Media Spotlight: ADD MEDIA WORK HERE</h2>
-    <p>Media work description here</p>
+    <h2>Media Spotlight: <%= @featured.title %> by <%= @featured.creator %></h2>
+    <p><%= @featured.description %></p>
 </section>
 
 <section class="top-ten-container movies">
     <h2>Top Movies</h2>
+    <ul>
+        <% @movies.each do |movie| %>
+            <li>
+                <%= movie.title %> by <%= movie.creator %>
+                ADD votes
+            </li>
+        <% end %>
+    </ul>
 </section>
 
 <section class="top-ten-container books">
     <h2>Top Books</h2>
+    <ul>
+        <% @books.each do |book| %>
+            <li>
+                <%= book.title %> by <%= book.creator %>
+                ADD votes
+            </li>
+        <% end %>
+    </ul>
 </section>
 
 <section class="top-ten-container albums">
     <h2>Top Albums</h2>
+    <ul>
+        <% @albums.each do |album| %>
+            <li>
+                <%= album.title %> by <%= album.creator %>
+                ADD votes
+            </li>
+        <% end %>
+    </ul>
 </section>
