@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'works/index'
-  get 'works/show'
-  get 'works/new'
-  get 'works/create'
-  get 'works/edit'
-  get 'works/update'
-  get 'works/delete'
+  root "home#index"
+  # get 'works/index'
+  # get 'works/show'
+  # get 'works/new'
+  # get 'works/create'
+  # get 'works/edit'
+  # get 'works/update'
+  # get 'works/delete'
   # get 'works/category:string'
   # get 'works/title:string'
   # get 'works/author:string'

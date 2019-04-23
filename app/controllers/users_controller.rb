@@ -6,12 +6,31 @@ class UsersController < ApplicationController
 
   def show
     user_id = params[:id]
+    @user = User.find_by(id: user_id)
+    
+    unless @user
+      redirect_back(fallback_location: users_path)
+      flash[:error] = "That user cannot be found or no longer exists."
+    end
   end
 
   def new
+    @user = User.new
   end
 
   def create
+    @user = User.new(user_params)
+    
+    @user.save
+    
+    unless @user
+      render :new
+      flash[:error] = "Account can't be created at this time."
+    else
+      flash[:success] = "Welcome to the Mediaranker community, #{@user.name}! Take a look around, and start contributing by adding new works and upvoting existing ones."
+      
+      redirect_to root_path
+    end
   end
   
   def login_form
