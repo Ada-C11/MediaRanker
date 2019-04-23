@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
-  get 'users/show'
-  get 'users/index'
-  get 'users/new'
-  get 'users/create'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get 'works/category:string'
+  get 'works/title:string'
+  get 'works/author:string'
+  get 'works/publication_year:integer'
+  get 'works/description:string'
+  # root "homepages#index"
+
+  resources :works do
+    resources :votes
+  end
+
+  resources :users do
+    resources :votes, only: [:index, :new]
+  end
+
+  resources :votes
+
 end
