@@ -14,4 +14,8 @@ class WorksController < ApplicationController
       redirect_to works_path
     end
   end
+
+  def new
+    @work = Work.new
+  end
 end
