@@ -1,4 +1,6 @@
 class Work < ApplicationRecord
+  validates :title, presence: true
+
   def spotlight
     return self.sample
   end
