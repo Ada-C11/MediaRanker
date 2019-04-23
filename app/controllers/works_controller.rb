@@ -33,6 +33,10 @@ class WorksController < ApplicationController
     end
   end
 
+  def edit
+    @work = Work.find_by(id: params[:id])
+  end
+
   private
 
   def work_params

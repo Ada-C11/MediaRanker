@@ -1,6 +1,7 @@
 require "test_helper"
 
 describe WorksController do
+  let (:work) { works(:one) }
   describe "index" do
     it "can get to the root path" do
       get root_path
@@ -62,5 +63,14 @@ describe WorksController do
   end
 
   describe "edit" do
+    it "can get the edit page for an existing work" do
+      get edit_work_path(work.id)
+      must_respond_with :success
+    end
+
+    # it "will respond with a redirect when attempting to edit a nonexistent passenger" do
+    #   get edit_passenger_path(-1)
+    #   must_redirect_to passengers_path
+    # end
   end
 end

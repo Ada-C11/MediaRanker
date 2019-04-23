@@ -1,20 +1,4 @@
 
 <h2>Add a new work</h2>
-<%= form_with model: @work do |f| %>
-  <div class="form">
-    <%=f.label :title, "Title:" %>
-    <%= f.text_field :title %>
-  </div>
-  <div class="form">
-    <%=f.label :creator, "Created by:" %>
-    <%= f.text_field :creator %>
-  </div>
-    <div class="form">
-    <%=f.label :publication_year, "Published:" %>
-    <%= f.text_field :publication_year %>
-  </div>
-  <%# <div class="space"></div> %>
-    <%= f.submit "Submit", class: "button"%>
-  </div>
-<% end %>
+<%= render 'form' %>
 
