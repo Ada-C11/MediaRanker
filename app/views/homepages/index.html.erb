@@ -7,7 +7,7 @@
     <% spotlight = @works.sample(1)%>
     <ul>
         <li>
-            Title: <%= spotlight[0].title %>
+            Title: <%= link_to spotlight[0].title, work_path(spotlight[0].id) %>
         </li>
         <li>
             Media Type: <%= spotlight[0].category %>
@@ -27,7 +27,7 @@
     <ul>
         <% albums.each do |work|%>
             <li>
-                Title: <%= work.title %>
+                Title: <%= link_to work.title, work_path(work.id) %>  
             </li>
             <li>
                 Media type: <%= work.category %>
@@ -47,7 +47,7 @@
     <ul>
         <% books.each do |work|%>
             <li>
-                Title: <%= work.title %>
+                Title: <%= link_to work.title, work_path(work.id) %>  
             </li>
             <li>
                 Media type: <%= work.category %>
@@ -67,7 +67,7 @@
     <ul>
         <% movies.each do |work|%>
             <li>
-                Title: <%= work.title %>
+                Title: <%= link_to work.title, work_path(work.id) %>  
             </li>
             <li>
                 Media type: <%= work.category %>
