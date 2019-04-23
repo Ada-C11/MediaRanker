@@ -61,4 +61,47 @@ describe WorksController do
       must_redirect_to work_path(new_work.id)
     end
   end
+
+  describe "edit" do
+    it "can get the edit page for an existing work" do
+      get edit_work_path(work.id)
+
+      must_respond_with :success
+    end
+
+    it "will respond with redirect when attempting to edit a nonexistent work" do
+      invalid_id = "Not a valid id!"
+
+      get edit_work_path(invalid_id)
+
+      must_respond_with :redirect
+    end
+  end
+
+  describe "update" do
+    it "can update an existing work" do
+      work_change = {
+        work: {
+          publication_year: 2000,
+          description: "this is a new description!",
+        },
+      }
+
+      patch work_path(work.id), params: work_change
+
+      edited_work = Work.find_by(id: work.id)
+      expect(edited_work.publication_year).must_equal work_change[:work][:publication_year]
+      expect(edited_work.description).must_equal work_change[:work][:description]
+
+      must_respond_with :redirect
+      must_redirect_to work_path(work.id)
+    end
+
+    it "will redirect to the works index page if given an invalid id" do
+      invalid_work_id = -1
+      patch work_path(invalid_work_id)
+      must_respond_with :redirect
+      must_redirect_to works_path
+    end
+  end
 end
