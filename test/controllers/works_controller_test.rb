@@ -1,39 +1,51 @@
 require "test_helper"
 
 describe WorksController do
-  it "should get index" do
-    get works_index_url
-    value(response).must_be :success?
+  let(:work) { works(:war_and_peace) }
+
+  describe "index" do
+    it "can get index" do
+      get works_path
+
+      must_respond_with :success
+    end
   end
 
-  it "should get show" do
-    get works_show_url
-    value(response).must_be :success?
+  describe "show" do
+    it "can show an existing valid work" do
+      get work_path(work.id)
+
+      must_respond_with :success
+    end
   end
 
-  it "should get new" do
-    get works_new_url
-    value(response).must_be :success?
+  describe "new" do
+    it "can get the new page" do
+      get new_work_path
+      value(response).must_be :success?
+    end
   end
 
-  it "should get create" do
-    get works_create_url
-    value(response).must_be :success?
+  describe "create" do
+    it "can create a new work" do
+    end
   end
 
-  it "should get edit" do
-    get works_edit_url
-    value(response).must_be :success?
+  describe "edit" do
+    it "can edit an existing valid work" do
+      get edit_work_path(work.id)
+
+      must_respond_with :success
+    end
   end
 
-  it "should get update" do
-    get works_update_url
-    value(response).must_be :success?
+  describe "update" do
+    it "can update an existing valid work" do
+    end
   end
 
-  it "should get delete" do
-    get works_delete_url
-    value(response).must_be :success?
+  describe "delete" do
+    it "can delete an exisiting valid work" do
+    end
   end
-
 end
