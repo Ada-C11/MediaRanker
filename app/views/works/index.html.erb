@@ -1,0 +1,78 @@
+
+
+<table>
+<tbody>
+<tr>
+<td>Title</td>
+<td>Created By</td>
+<td>Published</td>
+<td>Upvote</td>
+</tr>
+<td>
+<p>Albums</p>
+</td>
+  <% @works.select { |work| work.category.downcase == "album" }.each do |work| %>
+  <%# if work.category.downcase == "album" %>
+    <tr>
+    <td>
+      <strong>
+        <%= link_to work.title, work_path(work) %>
+      </strong>
+      </td>
+      <td>
+        <%= work.creator %>
+      </td>
+      <td>
+      <%= work.publication_date %>
+      </td>
+      <td>
+      <%= link_to "Vote" %>
+      </td>
+      </tr>
+    <%# end %>
+    <% end %>
+    </tr>
+    <p>Books</p>
+  <% @works.each do |work| %>
+  <% if work.category.downcase == "book" %>
+    <tr>
+    <td>
+      <strong>
+        <%= link_to work.title, work_path(work) %>
+      </strong>
+      </td>
+      <td>
+        <%= work.creator %>
+      </td>
+      <td>
+      <%= work.publication_date %>
+      </td>
+      <td>
+      <%= link_to "Vote" %>
+      </td>
+      </tr>
+    <% end %>
+    <% end %>
+    </tr>
+    <p>Movies</p>
+  <% @works.each do |work| %>
+  <% if work.category.downcase == "movie" %>
+    <tr>
+    <td>
+      <strong>
+        <%= link_to work.title, work_path(work) %>
+      </strong>
+      </td>
+      <td>
+        <%= work.creator %>
+      </td>
+      <td>
+      <%= work.publication_date %>
+      </td>
+      <td>
+      <%= link_to "Vote" %>
+      </td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

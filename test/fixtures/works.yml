@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_date: 1
-  description: MyString
+Winter Mug:
+  category: album
+  title: winter mug
+  creator: tia weissnat
+  publication_date: 1996
+  description: a nice album
 
 two:
   category: MyString

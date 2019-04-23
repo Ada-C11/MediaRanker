@@ -1,0 +1,28 @@
+<h2>Work details page</h2>
+
+<strong>
+ <%= @work.title %>
+</strong>
+</p>
+<p>
+  Created By: <%= @work.creator %> 
+</p>
+<p>
+Published: <%= @work.publication_date %>
+</p>
+
+<p>
+<%= @work.description %>
+</p>
+
+<section class="votes">
+  <p>
+  Votes for this <% @work.category %>
+  </p>
+<p>
+<%= link_to "Back to media ranker", root_path %>
+<%= link_to "Edit" %>
+<%= link_to "Upvote" %>
+<%= link_to "Delete" %>
+</p>
+</section>
