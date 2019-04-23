@@ -8,6 +8,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: work_id)
 
     if @work.nil?
+      # flash[:error] = ""
       redirect_to works_path
     end
   end
@@ -20,8 +21,12 @@ class WorksController < ApplicationController
     work_to_create = Work.new(work_params)
 
     if work_to_create.save
+      flash[:success] = "Successfully created #{work_to_create.category} #{work_to_create.id}"
       redirect_to work_path(work_to_create.id)
     else
+      work_to_create.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
       render :new
     end
   end
@@ -31,6 +36,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: work_id)
 
     if @work.nil?
+      # flash[:error] = ""
       redirect_to works_path
     end
   end
@@ -42,7 +48,7 @@ class WorksController < ApplicationController
       redirect_to works_path
     else
       work_to_update.update(work_params)
-
+      flash[:success] = "Successfully updated #{work_to_update.category} #{work_to_update.id}"
       redirect_to work_path(work_to_update.id)
     end
   end
@@ -52,8 +58,11 @@ class WorksController < ApplicationController
 
     if work_to_destroy.nil?
       head :not_found
+      # flash[:error] = "This work does not exist"
+      # redirect_to works_path
     else
       work_to_destroy.destroy
+      flash[:success] = "Successfully destroyed #{work_to_destroy.category} #{work_to_destroy.id}"
       redirect_to works_path
       # should be redirected to homepage (root)
     end
