@@ -1,35 +1,29 @@
-<h2>Edit Work</h2>
-
-<%= form_with model: @work, class: 'edit_work' do |f| %>
-<p><strong>Please edit your Work</strong></p>
-
-  <div>
-    <%= f.label :category, "Category:" %>
-    <%= f.text_field :name, placeholder: "Do my taxes" %>
+<h2> Edit this Work </h2>
+<form>
+ <div class="form-group">
+    <label for="exampleFormControlSelect1">Category</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>Select ... </option>
+      <option>Album</option>
+      <option>Book</option>
+      <option>Movie</option>
+    </select>
   </div>
-
-  <div>
-    <%= f.label :title, "Title:" %>
-    <%= f.text_field :description, placeholder: "Get T4 forms" %>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Title</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
   </div>
-
-    <div>
-    <%= f.label :creator, "Creator:" %>
-    <%= f.date_field :completion_date, placeholder: "April 15 2019" %>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Creator</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
   </div>
-
-      <div>
-    <%= f.label :publication_year, "Publication Year:" %>
-    <%= f.date_field :completion_date, placeholder: "April 15 2019" %>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Publication Year</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  </div>    
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Description</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
   </div>
-
-
-    <div>
-    <%= f.label :description, "Description:" %>
-    <%= f.date_field :completion_date, placeholder: "April 15 2019" %>
-  </div>
-
-
-  <%= f.submit "Edit Work", class: 'edit_work_button' %>
-
-<% end %>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
