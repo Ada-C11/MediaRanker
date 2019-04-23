@@ -7,7 +7,9 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     unless @work
-      redirect_to works_path, flash: { error: "Could not find media with that id: #{params[:id]}" }
+      flash[:status] = :error
+      flash[:message] = "Could not find media with that id: #{params[:id]}"
+      redirect_to works_path
       return
     end
 
@@ -47,4 +49,6 @@ class WorksController < ApplicationController
     work.destroy
     redirect_to works_path
   end
+
+
 end
