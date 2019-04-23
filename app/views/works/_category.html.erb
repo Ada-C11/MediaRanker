@@ -1,0 +1,23 @@
+<h4><%= category_name %></h4>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <% category.each do |work| %>
+      <td><%=work.vote_count%></td>
+      <td><%=work.title%></td>
+      <td><%=work.creator%></td>
+      <td><%=work.publication_year%></td>
+      <td>Upvote</td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
