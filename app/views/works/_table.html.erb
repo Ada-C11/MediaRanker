@@ -1,0 +1,19 @@
+
+<table>
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created by</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+  <% list.each do |work| %>
+  <tr>
+    <td><%= work.votes.length %></td>
+    <td><%= work.title %></td>
+    <td><%= work.creator %></td>
+    <td><%= work.publication_year %></td>
+    <td>Upvote</td>
+  </tr>
+  <% end %>
+</table>
