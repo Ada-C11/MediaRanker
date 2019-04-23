@@ -1,0 +1,10 @@
+<h1> List of Works </h1>
+
+<h2> Albums </h2>
+    <ul>
+    <% Work.where(category: "album").each do |album| %>
+    <li> <%= album.title%> </li>
+    <% end %>
+    </ul>
+
+<h2> Books </h2 >

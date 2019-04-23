@@ -16,7 +16,12 @@ class WorksController < ApplicationController
   end
 
   def create
-    @work.save
+    @work = Work.new(work_params)
+    if @work.save
+      redirect_to work_path
+    else
+      render :new, status: :bad_request
+    end
   end
 
   def work_params
