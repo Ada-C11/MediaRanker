@@ -1,0 +1,85 @@
+<h1>Media Ranker Homepage</h1>
+<p>Spotlight Search coming soon...</p>
+<p>All media, listed by media type</p>
+
+<section class="spotlight">
+<h2>Spotlight Title</h2>
+    <% spotlight = @works.sample(1)%>
+    <ul>
+        <li>
+            Title: <%= spotlight[0].title %>
+        </li>
+        <li>
+            Media Type: <%= spotlight[0].category %>
+        </li>
+        <li>
+            Creator: <%= spotlight[0].creator %>
+        </li>
+        <li>
+            Description: <%= spotlight[0].description %>
+        </li>
+    </ul>
+</section>
+
+<section class="albums">
+<h2>Albums</h2>
+    <% albums = @works.where(category: "album") %>
+    <ul>
+        <% albums.each do |work|%>
+            <li>
+                Title: <%= work.title %>
+            </li>
+            <li>
+                Media type: <%= work.category %>
+            <li>
+                Creator: <%= work.creator %>
+            </li>
+            <li>
+                Description: <%= work.description %>
+            </li>
+        <% end %>
+    </ul>
+</section>
+
+<section class="books">
+<h2>Books</h2>
+    <% books = @works.where(category: "book") %>
+    <ul>
+        <% books.each do |work|%>
+            <li>
+                Title: <%= work.title %>
+            </li>
+            <li>
+                Media type: <%= work.category %>
+            <li>
+                Creator: <%= work.creator %>
+            </li>
+            <li>
+                Description: <%= work.description %>
+            </li>
+        <% end %>
+    </ul>
+</section>
+
+<section class="movies">
+<h2>Movies</h2>
+    <% movies = @works.where(category: "movie") %>
+    <ul>
+        <% movies.each do |work|%>
+            <li>
+                Title: <%= work.title %>
+            </li>
+            <li>
+                Media type: <%= work.category %>
+            <li>
+                Creator: <%= work.creator %>
+            </li>
+            <li>
+                Description: <%= work.description %>
+            </li>
+        <% end %>
+    </ul>
+</section>
+
+
+
