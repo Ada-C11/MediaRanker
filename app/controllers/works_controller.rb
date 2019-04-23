@@ -46,14 +46,19 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    # check if user is logged in
-    # find work_id using find_by params
-    # check if user has not already voted on work
+    if @current_user.nil?
+      flash[:warning] = "A problem occurred: You must log in to vote"
+    else
+      work = Work.find_by(id: params[:id].to_i)
 
-      # if above true, Vote.create(user_id: current_user, work_id: params)
-      # flash success message
-
-      # else flash failure message
+      if @current_user.has_voted?(work.id)
+        flash[:warning] = "A problem occured: Could not upvote. User has already voted for this work"
+      else
+        Vote.create(user_id: @current_user.id, work_id: work.id)
+        flash[:success] = "Successfully upvoted!"
+      end
+    end
+    redirect_to works_path
   end
 
   private
