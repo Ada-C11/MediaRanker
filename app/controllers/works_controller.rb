@@ -2,7 +2,7 @@ class WorksController < ApplicationController
   def index
     @works = Work.all
   end
-  
+
   def show
     @work = Work.find_by(id: params[:id])
 
@@ -16,24 +16,35 @@ class WorksController < ApplicationController
     # @trips = @passenger.trips
   end
 
-#   def new
-#     @work = Work.new
-#   end
-# 
-#   def create
-#     @passenger = Passenger.new passenger_params
-#     successful = @passenger.save
-#     if successful
-#       redirect_to passengers_path
-#     else
-#       render :new
-#     end
-#   end
+  #   def new
+  #     @work = Work.new
+  #   end
+  #
+  #   def create
+  #     @passenger = Passenger.new passenger_params
+  #     successful = @passenger.save
+  #     if successful
+  #       redirect_to passengers_path
+  #     else
+  #       render :new
+  #     end
+  #   end
 
-#   def edit
-#     @passenger = Passenger.find_by(id: params[:id])
-#     unless @passenger
-#       redirect_to passengers_path
-#     end
-#   end    
+  def edit
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      redirect_to works_path, flash: { error: "Could not find media with id: #{@work.id}" }
+    end
+  end
+
+  def destroy
+    work_id = params[:id]
+    work = Work.find_by(id: work_id)
+    unless work
+      head :not_found
+      return
+    end
+    work.destroy
+    redirect_to works_path
+  end
 end

@@ -1,0 +1,34 @@
+<div class="form">
+<% if @work.errors.messages.any? %>
+  <section class="error-messages">
+  There are errors with your submission
+  <ul>
+  <% @work.errors.messages.each do |col, prob| %>
+    <% prob.each do |problem|%>
+      <li><%= col%>: <%= problem%></li>
+    <% end %>
+  <% end %>
+  </ul>
+  </section>
+  <% end %>
+
+<%= form_with model: @work, class: "task-form" do |f| %>
+  <div class="place-holder-text-field">
+  <%=f.label :category, "Category" %>
+  <%= f.select :category, ["album", "movie", "book"]%>
+  </div>
+  <div class="place-holder-text-field">
+    <%=f.label :title, "Title:" %>
+  <%= f.text_field :title %>
+  </div>
+  <div class="place-holder-text-field">
+    <%=f.label :publication_year, "Publication year" %>
+  <%= f.text_field :publication_year %>
+  </div>
+
+  <div class="place-holder-text-field">
+    <%=f.label :description, "Description" %>
+  <%= f.text_area :description %>
+  </div>
+<% end %>
+</div>

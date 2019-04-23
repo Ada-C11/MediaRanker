@@ -1,0 +1,6 @@
+<h2>Edit This <%=@work.category.capitalize%></h2>
+<%= render 'form' %>
+<div class="space"></div>
+<%= form_with model: @work, class: "task-form" do |f| %>
+<%= f.submit "Update Work", class: "task-button"%>
+<%end%>
