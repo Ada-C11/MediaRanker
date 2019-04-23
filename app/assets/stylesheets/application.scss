@@ -20,38 +20,78 @@ body {
 
 header {
   background-color: #B2DFDB;
+  padding-top: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .title {
-  font-size: 2.5rem;
-  font-weight: 700;
+  border-right: solid;
+  border-width: .1rem;
+  margin: 1rem 1rem;
+  padding: 0 1.5rem;
 }
 
 h1 {
   text-align: center;
   color: white;
+  font-weight: bold;
 }
 
 h1 a:link, h1 a:visited {
-  color: tomato;
+  color: #FF5722;
+  text-decoration: none;
 }
 
-nav ul {
+nav {
   display: flex;
-  padding: 1rem 1rem;
   flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 3rem;
+  padding-bottom: .5rem;
 }
 
-.nav-links {
-  width: 200px;
+.nav-link {
+  color: #00796B;
+  text-decoration: none;
 }
 
+.nav-link:hover {
+  color: #00796B;
+}
+
+.btn-primary {
+  background-color: #26A69A;
+  border-color: #26A69A;
+  color: white;
+  margin-left: 1rem;
+}
+
+.btn-primary:hover {
+  background-color: #00796B;
+}
+
+a, h2, h3 {
+  color: #26A69A;
+}
 
 a {
   text-decoration: none;
-  color: #27A08B;
+
 }
 
 ul {
   list-style: none;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.flash {
+  padding-top: 2rem;
+}
+
+main {
+  padding: 1rem 2rem;
 }
