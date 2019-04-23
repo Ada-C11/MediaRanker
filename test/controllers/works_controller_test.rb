@@ -106,4 +106,23 @@ describe WorksController do
       expect(flash[:title]).must_equal ["can't be blank"]
     end
   end
+
+  describe "destroy" do
+    it "shows a flash message if work is not found" do
+      invalid_id = "NOT A VALID ID"
+      expect {
+        delete work_path(invalid_id)
+      }.wont_change "Work.count"
+      expect(flash[:error]).must_equal "Work already does not exist."
+      must_respond_with :redirect
+    end
+
+    it "can delete a work" do
+      delete_work = works(:two)
+      expect {
+        delete work_path(delete_work.id)
+      }.must_change "Work.count", -1
+      must_redirect_to works_path
+    end
+  end
 end

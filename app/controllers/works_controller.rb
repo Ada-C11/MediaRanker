@@ -48,11 +48,11 @@ class WorksController < ApplicationController
   def destroy
     work = Work.find_by(id: params[:id])
     if work.nil?
-      head :not_found
+      flash[:error] = "Work already does not exist."
     else
       work.destroy
-      redirect_to works_path
     end
+    redirect_to works_path
   end
 
   private
