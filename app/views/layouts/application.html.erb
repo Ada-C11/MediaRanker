@@ -13,18 +13,20 @@
   <a href="/">Media Ranker</a>
   <a class="small">Ranking the Best of Everything</a>
   </h1>
-  <nav class="header-nav">
+  <nav class="app-header">
   <ul class="links_pages">
-  <li><a class="nav-link" href="/">View top media</a></li>
-  <li><a class="nav-link" href="/works">View all media</a></li>
-  <li><a class="nav-link" href="/works">Add a new work</a></li>
-  <li><a class="nav-link" href="/works">View all users</a></li>
+  <li class="nav-item"><a class="nav-link" href="/">View top media</a></li>
+  <li class="nav-item"><a class="nav-link" href="/works">View all media</a></li>
+  <li class="nav-item"><a class="nav-link" href="/works">Add a new work</a></li>
+  <li class="nav-item"><a class="nav-link" href="/works">View all users</a></li>
   </ul>
   <ul class="button">
-  <li><a class="btn" href = "/login">Log In</a></li>
+  <li><a class="btn btn-primary" href = "/login">Log In</a></li>
   </nav>
   </header>
   <body>
+  <!-- check this-->
+  <% alert_type = flash[:status] == :error ? :danger, flash[:status]%>
   <section class="flash<%=flash[:status]%>">
     <%=flash[:message]%>
   </section>
