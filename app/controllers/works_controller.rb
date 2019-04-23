@@ -33,6 +33,16 @@ class WorksController < ApplicationController
   end
 
   def update
+    work = Work.find_by(id: params[:id])
+
+    is_successful = work.update(work_params)
+
+    if is_successful
+      redirect_to work_path(work.id)
+    else
+      @work = work
+      render :edit, status: :bad_request
+    end
   end
 
   def delete
