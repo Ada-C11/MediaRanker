@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
   
   def index
-    @works = Works.all.sort_by(&:id)
+    # @works = Works.all.sort_by(&:id)
   end
 
   def new
@@ -72,6 +72,4 @@ def work_params
     :description,
     :votes
   )
-  end
-
 end

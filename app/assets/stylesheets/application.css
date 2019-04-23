@@ -1,0 +1,113 @@
+ body {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  font-family: 'Raleway', sans-serif;
+  margin: 0px;
+}
+
+.nav_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+header {
+  background-color: #EAFFFD;
+  color: #FFFFFF;
+}
+
+.main_title {
+  margin: 70px;
+  text-align: center;
+
+}
+
+.media_spotlight {
+  padding: 0;
+  font-size: 25px; 
+  flex-direction: row; 
+  margin-left: 50px;
+}
+.main_options {
+  display: flex;
+  padding: 0;
+  font-size: 25px; 
+  flex-direction: row; 
+  justify-content: space-around;
+}
+
+.main_options li {
+  margin: 75px;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+footer {
+  background-color: #D5CAD6;
+  grid-column: span 2;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+footer p {
+text-align: center;
+} 
+
+a:hover {
+  color: #000000
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: auto;
+  text-align: left;
+  margin: 20px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+h2, .rating, form {
+  margin-left: 20px;
+}
+
+form div {
+  margin: 0 10px 20px 0px;
+}
+
+
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
