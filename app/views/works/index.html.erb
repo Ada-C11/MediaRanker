@@ -25,4 +25,15 @@
         <%= work.creator %><br>
         <%= work.publication_year %><br>
     <% end %>
+    
+<% end %>
+
+<h3>None</h3>
+<% @works.each do |work|%>
+    <% if work.category == ""%>
+        <%= link_to work.title, work_path(work.id) %><br>
+        <%= work.creator %><br>
+        <%= work.publication_year %><br>
+    <% end %>
+    
 <% end %>

@@ -1,4 +1,4 @@
-
+<!--
 <% if @work.errors.any? %>
   <ul class="errors">
     <% @work.errors.each do |column, message| %>
@@ -8,12 +8,18 @@
     <% end %>
   </ul>
 <% end %>
+-->
 
 <%= form_with model: @work, class: form_class do |f| %>
 
   <%= f.label :category %>
-  <%= f.text_field :category %><br>
-
+  <%= f.select :category, [
+    
+                  ["album"],
+                  ["book"],
+                  ["movie"]
+  ] %> <br>
+                  
   <%= f.label :title %>
   <%= f.text_field :title %><br>
 

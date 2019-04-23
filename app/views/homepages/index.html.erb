@@ -1,37 +1,28 @@
 <main class="homepage">
     <section class="spotlight">
-    <% spotlight_work = @works.sample%>
-    <h2>Media spotlight: <%= link_to spotlight_work.title, work_path(spotlight_work.id) %> by <%= spotlight_work.creator %></h2>
-    <p><%= spotlight_work.description %></p>
+    <% spotlight = @works.sample %>
+    <h2>Media spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %> by <%= spotlight.creator %></h2>
+    <p><%= spotlight.description %></p>
     </section>
 
     <section class="top-books">
+    <% top_book = @works.sample%>
     <h3>Top Books</h3>
-    <% @works.each do |work| %>
-        <% if work.title[0] == "B" && work.category == "book"%>
-          <%= link_to work.title, work_path(work.id) %> by <%= work.creator %>
-          <p><%= rand(1..5)%> votes</p>
-        <% end %>
-    <% end %>
+    <%= top_book.title %> by <%= top_book.creator %>
+    <p><%= rand(1..5)%> votes</p>
     </section>
 
     <section class="top-movies">
+    <% top_movie = @works.sample%>
     <h3>Top Movies</h3>
-    <% @works.each do |work| %>
-        <% if work.title[0] == "G" && work.category == "movie"%>
-          <%= link_to work.title, work_path(work.id) %> by <%= work.creator %>
-          <p><%= rand(1..5)%> votes</p>
-        <% end %>
-    <% end %>
+    <%= top_movie.title %> by <%= top_movie.creator %>
+    <p><%= rand(1..5)%> votes</p>
     </section>
 
     <section class="top-albums">
+    <% top_album = @works.sample %>
     <h3>Top Albums</h3>
-    <% @works.each do |work| %>
-        <% if work.title[0] == "M" && work.category == "album"%>
-          <%= link_to work.title, work_path(work.id) %> by <%= work.creator %>
-          <p><%= rand(1..5)%> votes</p>
-        <% end %>
-    <% end %>
+    <%= top_album.title %> by <%= top_album.creator %>
+    <p><%= rand(1..5)%> votes</p>
     </section>
 </main>
