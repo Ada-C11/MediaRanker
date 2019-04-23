@@ -3,6 +3,20 @@ class WorksController < ApplicationController
     @works = Work.all
   end
 
+  def new
+    @work = Work.new
+  end
+
+  def create
+    @work = Work.new(work_params)
+    successful = @work.save
+    if successful
+      redirect_to works_path
+    else
+      render :new
+    end
+  end
+
   def show
     @work = Work.find_by(id: params[:id])
 
@@ -18,24 +32,27 @@ class WorksController < ApplicationController
     # @trips = @passenger.trips
   end
 
-  #   def new
-  #     @work = Work.new
-  #   end
-  #
-  #   def create
-  #     @passenger = Passenger.new passenger_params
-  #     successful = @passenger.save
-  #     if successful
-  #       redirect_to passengers_path
-  #     else
-  #       render :new
-  #     end
-  #   end
-
   def edit
     @work = Work.find_by(id: params[:id])
     unless @work
       redirect_to works_path, flash: { error: "Could not find media with id: #{params[:id]}" }
+    end
+  end
+
+  def update
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      head :not_found
+      return
+    end
+    if @work.update(work_params)
+      flash[:status] = :success
+      flash[:message] = "Successfully updated media #{@work.id}"
+      redirect_to work_path(@work)
+    else
+      flash.now[:status] = :error
+      flash.now[:message] = "Could not save work #{@work.id}"
+      render :edit, status: :bad_request
     end
   end
 
@@ -50,5 +67,11 @@ class WorksController < ApplicationController
     flash[:status] = :success
     flash[:message] = "Successfully deleted work #{work.id}"
     redirect_to works_path
+  end
+
+  private
+
+  def work_params
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 end

@@ -17,7 +17,7 @@
   <ul class="links_pages">
   <li class="nav-item"><a class="nav-link" href="/">View top media</a></li>
   <li class="nav-item"><a class="nav-link" href="/works">View all media</a></li>
-  <li class="nav-item"><a class="nav-link" href="/works">Add a new work</a></li>
+  <li class="nav-item"><a class="nav-link" href="/works/new">Add a new work</a></li>
   <li class="nav-item"><a class="nav-link" href="/works">View all users</a></li>
   </ul>
   <ul class="button">
@@ -31,7 +31,6 @@
   </header>
   <main>
   <body>
-  <!-- check this-->
   <% alert_type = flash[:status] == :error ? :danger : flash[:status] %>
   <section class="flash alert alert-<%= alert_type %>">
   <%= flash[:message] %>
