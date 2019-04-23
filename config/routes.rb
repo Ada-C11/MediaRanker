@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'works#index', as: 'home'
+
   resources :works
   resources :users
 
