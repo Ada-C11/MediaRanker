@@ -1,0 +1,39 @@
+<h2>Media details page</h2>
+
+<ul>
+<li>
+  Name: 
+  <%= @work.title %>
+</li>
+<li>
+  Creator: 
+  <%= @work.creator %>
+</li>
+<li>
+  Published_by: 
+  <%= @work.publication_year %>
+</li>
+
+<li>
+  Description: 
+  <%= @work.description %>
+</li>
+
+<li>
+  <%= link_to "Back to Media ranks" %>
+</li>
+
+<li>
+  <%= link_to "Edit"%>
+</li>
+
+<li>
+  <%= link_to "upvote"%>
+</li>
+
+
+<li>
+  <%= link_to "Delete"%>
+</li>
+
+</ul>
