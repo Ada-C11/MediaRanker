@@ -1,7 +1,7 @@
 
 class LandingController < ApplicationController
   def index
-    @work = Work.spotlight
+    @work = Work.top_media
     @vote_count = @work.votes.length
   end
 end
