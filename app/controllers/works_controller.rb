@@ -40,6 +40,7 @@ class WorksController < ApplicationController
 
     unless @work
       head :not_found
+      return
     end
 
     if @work.update(work_params)

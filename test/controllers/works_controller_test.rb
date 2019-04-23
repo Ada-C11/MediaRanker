@@ -82,11 +82,49 @@ let(:work) { Work.create!(category: "movie", title: "Into the Wild") }
 
   describe "edit" do 
     it "can successfully render edit media form" do 
+      get edit_work_path(work.id)
+
+      must_respond_with :ok
+    end
+
+    it "will respond with 404 not found for invalid media id" do 
+      get edit_work_path(1337)
+
+      must_respond_with :not_found
     end
   end
 
   describe "update" do 
+    let(:edit_params) {
+      {
+      work:{
+        publication_year: 2010,
+        description: "Mass Incarceration in the Age of Colorblindness"
+      }
+    }
+  }
     it "can successfully update a media record" do 
+      work.assign_attributes(edit_params[:work])
+      expect(work).must_be :valid?
+      work.reload
+
+      patch work_path(work), params: edit_params
+
+      must_respond_with :redirect
+      must_redirect_to work_path(work.id)
+
+      work.reload
+      expect(work.publication_year).must_equal edit_params[:work][:publication_year]
+    end
+
+    it "responds with 404 not found for nonexistant media" do 
+      work 
+
+      work_id = Work.last.id + 1
+
+      patch work_path(work_id), params: edit_params
+
+      must_respond_with :not_found
     end
   end
 
