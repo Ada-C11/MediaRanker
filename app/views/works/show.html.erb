@@ -24,7 +24,7 @@
 </li>
 
 <li>
-  <%= link_to "Edit"%>
+  <%= link_to "Edit", edit_work_path(@work.id)%>
 </li>
 
 <li>
@@ -33,7 +33,7 @@
 
 
 <li>
-  <%= link_to "Delete"%>
+  <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Do you really want to delete?" } %>
 </li>
 
 </ul>
