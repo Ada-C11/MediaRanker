@@ -13,3 +13,10 @@ two:
   creator: MyString
   publication_year: 1
   description: MyString
+
+custom1:
+  category: book
+  title: "Pride and Prejudice"
+  creator: "Jane Austen"
+  publication_year: 1813
+  description: "Emotional development of protagonist, Elizabeth Bennett"
