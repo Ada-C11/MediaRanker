@@ -17,7 +17,7 @@
 <tr>
 
   <% if work.category == category%>
-    <td><%=link_to "#{work.title}", work_path(work.id), method: :get %></td>
+    <td><%=link_to "#{work.title}", work_path(work.id), method: :ge t %></td>
     <td><%=work.creator%></td>
    <td><%=work.publication_year%></td>
      <%end%>
