@@ -29,7 +29,22 @@ let(:work) { Work.create!(category: "movie", title: "Into the Wild") }
 
   describe "create" do 
     it "can successfully create and save a new media record" do 
+      media_params = {
+        work:{
+          category: "book",
+          title: "The New Jim Crow",
+          creator: "Michelle Alexander",
+          publication_year: 2010,
+          description: "Mass Incarceration in the Age of Colorblindness"
+        }
+      }
 
+      expect {
+        post works_path, params: media_params
+      }.must_change "Work.count", +1
+
+      must_respond_with :redirect
+      must_redirect_to works_path
     end
   end
 
