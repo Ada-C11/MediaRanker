@@ -1,0 +1,35 @@
+<h1>Media Ranker</h1>
+
+<section class="spotlight">
+  <h2>Media Spotlight</h2>
+  <% top = Work.all.max_by do |work| work.votes.length end %>
+  <%# Move the above line's logic somewhere else... Work model? %>
+  <%= top.title %>
+</section>
+
+<section class="top-list">
+  <h2>Top Movies</h2>
+  <ul>
+  <% Work.where(category:"movie").each do |movie| %>
+    <li><%= movie.title %></li>
+  <% end %>
+  </ul>
+</section>
+
+<section class="top-list">
+  <h2>Top Books</h2>
+  <ul>
+  <% Work.where(category:"book").each do |book| %>
+    <li><%= book.title %></li>
+  <% end %>
+  </ul>
+</section>
+
+<section class="top-list">
+  <h2>Top Albums</h2>
+  <ul>
+  <% Work.where(category:"album").each do |album| %>
+    <li><%= album.title %></li>
+  <% end %>
+  </ul>
+</section>
