@@ -4,13 +4,15 @@
 </section>
 
 <section class="top-ten_container" >
-  <section class="top-ten-list_container" >
-    <h2>Top Movies</h2>
-  </section>
-  <section class="top-ten-list_container" >
-    <h2>Top Books</h2>
-  </section>
-  <section class="top-ten-list_container" >
-    <h2>Top Albums</h2>
-  </section>
+<section class="top-ten-list_container" >
+
+<% @categories.each do |category| %>
+    <h2>Top <%= category.name %></h2>
+    <% category.works.sample(10).each do |work| %>
+    <h4><%= link_to work.title, work_path(work) %></h4>
+    <%= work.creator %>
+    <% end %>
+<% end %>
+
+</section>
 </section>
