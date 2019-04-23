@@ -9,7 +9,10 @@ class WorksController < ApplicationController
   def show
     @work = Work.find_by(id: params[:id])
 
-    redirect_to root_path if @work.nil?
+    if !@work
+      redirect_to root_path if @work.nil?
+      flash[:failure] = "Sorry, we couldn't find the media page you were looking for."
+    end
   end
 
   def new
@@ -19,9 +22,16 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
 
+    # could move this to the application controller as a method, and use it for all controllers!
     if @work.save
+      flash[:success] = "Successfully created #{@work.title} #{@work.category}!"
       redirect_to work_path(@work.id)
     else
+      flash.now[:failure] = "A problem occurred: Could not create #{@work.category}"
+      @work.errors.messages.each do |field, messages|
+        # storing these messages in the flash.now hash so we can loop through in the view
+        flash.now[field] = messages
+      end
       render :new, status: :bad_request
     end
   end
