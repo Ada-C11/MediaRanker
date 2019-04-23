@@ -1,10 +1,46 @@
 <h2>Media Spotlight</h2>
+<%= link_to @spotlight.title, work_path(@spotlight) %> by <%= @spotlight.creator %>
 <div>
+
 <p>Top Movies</p>
+<table>
+<tbody>
+<% @top_ten_movies.each do |movie| %>
+<tr>
+<td>
+<%= link_to movie.title, work_path(movie)%> by <%= movie.creator %>
+<td>
+</tr>
+<% end %>
+</tbody>
+</table>
 </div>
 <div>
 <p>Top Books</p>
+<table>
+<tbody>
+<% @top_ten_books.each do |book| %>
+<tr>
+<td>
+<%= link_to book.title, work_path(book)%> by <%= book.creator %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
+
 </div>
 <div>
 <p>Top Albums</p>
+<table>
+<tbody>
+<% @top_ten_albums.each do |album| %>
+<tr>
+<td>
+<%= link_to album.title, work_path(album)%> by <%= album.creator %>
+</td>
+</tr>
+<% end %>
+</tbody>
+</table>
 </div>
