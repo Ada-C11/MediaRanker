@@ -29,6 +29,16 @@ h1, h2, h3, h4, h5 {
   font-weight: bold;
 }
 
+ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+li {
+  list-style: none;
+  padding: 12px 20px;
+}
+
 a:hover {
   color: #00796B;
   text-decoration: none;
@@ -83,4 +93,40 @@ table {
 
 .width-100 {
   width: 100px;
+}
+
+.spotlight {
+  padding: 0 2rem 2rem 2rem;
+}
+
+.spotlight__header--prefix {
+  color: #424242;
+}
+
+.spotlight__link-to {
+  border-bottom: 2px solid;
+}
+
+.spotlight__description {
+  margin-bottom: 0;
+}
+
+.root__hr {
+  margin: 0px auto 3rem auto;
+  color: #EEEEEE;
+}
+
+.top-ten__header {
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+}
+
+.top-ten__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+}
+
+.top-ten__creator {
+  color: slategrey;
 }

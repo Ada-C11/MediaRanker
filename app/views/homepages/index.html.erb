@@ -1,65 +1,66 @@
 <section class="spotlight">
   <h2>
-    <span>Media Spotlight:</span>
+    <span class="spotlight__header--prefix">Media Spotlight:</span>
     <% top = Work.all.max_by do |work| work.votes.length end %>
     <%# Move the above line's logic somewhere else... Work model? %>
-    <a><%= top.title %></a> by <%= top.creator %>
+    <%= link_to top.title, work_path(top.id), class: "spotlight__link-to"%> by <%= top.creator %>
+
   </h2>
-  <p>
+  <p class="spotlight__description">
     <%= top.votes.length %> votes - <%= top.description %>
   </p>
 </section>
-
-<section class="top-list">
-  <h2>Top Movies</h2>
-  <ul>
-  <% top_movies = Work.where(category:"movie").sort_by do |movie| -movie.votes.length end %>
-  <% top_movies[0...10].each do |movie| %>
-    <li>
-      <h4>
-        <a><%= movie.title %></a>
-        <small>by <%= movie.creator %></small>
-      </h4>
-      <p>
-        <%= movie.votes.length %> votes
-      </p>
-    </li>
-  <% end %>
-  </ul>
-</section>
-
-<section class="top-list">
-  <h2>Top Books</h2>
-  <ul>
-  <% top_books = Work.where(category:"book").sort_by do |book| -book.votes.length end %>
-  <% top_books[0...10].each do |book| %>
-    <li>
-      <h4>
-        <a><%= book.title %></a>
-        <small>by <%= book.creator %></small>
-      </h4>
-      <p>
-        <%= book.votes.length %> votes
-      </p>
-    </li>
-  <% end %>
-  </ul>
-</section>
-
-<section class="top-list">
-  <h2>Top Albums</h2>
-  <ul>
-  <% top_albums = Work.where(category:"album").sort_by do |album| -album.votes.length end %>
-  <% top_albums[0...10].each do |album| %>
-    <li>
-      <h4>
-        <a><%= album.title %></a>
-        <small>by <%= album.creator %></small>
-      </h4>
-      <p>
-        <%= album.votes.length %> votes
-      </p>
-    </li>
-  <% end %>
-  </ul>
+<hr class="root__hr">
+<section class="top-ten__container">
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">Top Movies</h2>
+    <ul>
+      <% top_movies = Work.where(category:"movie").sort_by do |movie| -movie.votes.length end %>
+      <% top_movies[0...10].each do |movie| %>
+        <li>
+          <h4>
+            <%= link_to movie.title, work_path(movie.id)%>
+            <small class="top-ten__creator">by <%= movie.creator %></small>
+          </h4>
+          <p>
+            <%= movie.votes.length %> votes
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">Top Books</h2>
+    <ul>
+      <% top_books = Work.where(category:"book").sort_by do |book| -book.votes.length end %>
+      <% top_books[0...10].each do |book| %>
+        <li>
+          <h4>
+            <%= link_to book.title, work_path(book.id)%>
+            <small class="top-ten__creator">by <%= book.creator %></small>
+          </h4>
+          <p>
+            <%= book.votes.length %> votes
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">Top Albums</h2>
+    <ul>
+      <% top_albums = Work.where(category:"album").sort_by do |album| -album.votes.length end %>
+      <% top_albums[0...10].each do |album| %>
+        <li>
+          <h4>
+            <%= link_to album.title, work_path(album.id)%>
+            <small class="top-ten__creator">by <%= album.creator %></small>
+          </h4>
+          <p>
+            <%= album.votes.length %> votes
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </section>
 </section>
