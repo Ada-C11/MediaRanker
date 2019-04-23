@@ -26,7 +26,7 @@
   </header>
   <body>
   <!-- check this-->
-  <% alert_type = flash[:status] == :error ? :danger, flash[:status]%>
+  <%# <% alert_type = flash[:status] == :error ? :danger, flash[:status]%> 
   <section class="flash<%=flash[:status]%>">
     <%=flash[:message]%>
   </section>
