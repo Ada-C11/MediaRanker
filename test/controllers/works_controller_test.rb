@@ -160,8 +160,7 @@ describe WorksController do
 
       expect(flash[:success]).must_equal "Successfully destroyed #{new_work.category} #{new_work.id}"
       must_respond_with :redirect
-      must_redirect_to works_path
-      #must_redirect_to root
+      must_redirect_to root_path
     end
   end
 end
