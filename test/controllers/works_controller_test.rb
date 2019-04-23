@@ -25,6 +25,7 @@ describe WorksController do
       get work_path(invalid_id)
       must_respond_with :redirect
       must_redirect_to root_path
+      expect(flash[:failure]).must_equal "Sorry, we couldn't find the media you were looking for."
     end
   end
 
@@ -60,13 +61,14 @@ describe WorksController do
 
       must_respond_with :redirect
       must_redirect_to work_path(new_work.id)
+      expect(flash[:success]).must_equal "Successfully created #{new_work.title} #{new_work.category}!"
     end
 
     it "will respond with bad request when asked to update with invalid data" do
       work_hash = {
-        "work": {
-          category: "",
-          title: "99 Bottles of OOP",
+        work: {
+          category: "book",
+          title: "",
           creator: "Sandi Metz",
           publication_year: 2004,
           description: "Holy RUBY!",
@@ -78,6 +80,7 @@ describe WorksController do
       }.wont_change "Work.count"
 
       must_respond_with :bad_request
+      expect(flash[:failure]).must_equal "A problem occurred: Could not create #{work_hash[:work][:category]}"
     end
   end
 
@@ -95,13 +98,14 @@ describe WorksController do
 
       must_respond_with :redirect
       must_redirect_to root_path
+      expect(flash[:failure]).must_equal "Sorry, we couldn't find the media you were looking for."
     end
   end
 
   describe "update" do
     it "can update an existing valid work" do
       work_hash = {
-        "work": {
+        work: {
           category: "album",
           title: "Paint it Black",
           creator: "The Rolling Stones",
@@ -121,6 +125,8 @@ describe WorksController do
       expect(work_two.creator).must_equal work_hash[:work][:creator]
       expect(work_two.publication_year).must_equal work_hash[:work][:publication_year]
       expect(work_two.description).must_equal work_hash[:work][:description]
+      expect(flash[:success]).must_equal "Successfully updated #{work_hash[:work][:title]} " \
+                                         "#{work_hash[:work][:category]}!"
     end
 
     it "will return a bad request when asked to update with invalid data" do
@@ -151,10 +157,11 @@ describe WorksController do
       expect(work_two.creator).must_equal starter_creator
       expect(work_two.publication_year).must_equal starter_publication_year
       expect(work_two.description).must_equal starter_description
+      expect(flash[:failure]).must_equal "A problem occurred: Could not update #{update_input[:work][:category]}"
     end
   end
 
-  describe "delete" do
+  describe "destroy" do
     it "can delete an exisiting valid work" do
       expect {
         delete work_path(work.id)
@@ -162,6 +169,7 @@ describe WorksController do
 
       must_respond_with :redirect
       must_redirect_to works_path
+      expect(flash[:success]).must_equal "Succesfully deleted #{work.title} #{work.category}."
     end
 
     it "redirects to the root path for a non-existant work" do
@@ -173,6 +181,7 @@ describe WorksController do
 
       must_respond_with :redirect
       must_redirect_to root_path
+      expect(flash[:failure]).must_equal "Failed to delete media."
     end
   end
 end
