@@ -1,3 +1,17 @@
+<% if @work.errors.messages.any? %>
+  <section>
+    <p>A problem occurred: Could not create/update <% Category.find(@work.category_id) %> </p>
+    <ul>
+      <% @work.errors.messages.each do |column, problem_list| %>
+        <% problem_list.each do |problem| %>
+          <li>
+            <%= column %>: <%= problem %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>  
+  </section>
+<% end %>
 <%= form_with model:@work do |f| %>
 <div>
 <%= f.label :category_id, "Category" %>
