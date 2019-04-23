@@ -15,7 +15,7 @@ describe WorksController do
     it "can show a valid work" do
 
       # Act
-      get work_path(works(:one).id)
+      get work_path(works(:work_one).id)
 
       # Assert
       must_respond_with :success
@@ -23,7 +23,7 @@ describe WorksController do
     it "will redirect for an invalid work" do
 
       #Arrange
-      work = works(:one)
+      work = works(:work_one)
       invalid_work_id = work.id
       work.destroy
 
@@ -103,7 +103,7 @@ describe WorksController do
     it "can get the edit work page" do
 
       # Act
-      get edit_work_path(works(:one).id)
+      get edit_work_path(works(:work_one).id)
 
       # Assert
       must_respond_with :success
@@ -113,7 +113,7 @@ describe WorksController do
   describe "update" do
     it "will update an exiting work" do
       # Arrange
-      work_to_update = works(:one)
+      work_to_update = works(:work_one)
 
       work_hash = {
         "work": {
@@ -142,7 +142,7 @@ describe WorksController do
 
     it "will return a 400 when asked to update with invalid data" do
       # Arrange
-      work_to_update = works(:one)
+      work_to_update = works(:work_one)
 
       work_hash = {
         "work": {
@@ -159,17 +159,34 @@ describe WorksController do
         patch work_path(work_to_update.id), params: work_hash
       }.wont_change "Work.count"
 
-      # Assert
       must_respond_with :bad_request
-      # book_to_update.reload
-      # expect(book_to_update.title).must_equal starter_input[:title]
-      # expect(book_to_update.author.name).must_equal Author.find(starter_input[:author_id]).name
-      # expect(book_to_update.description).must_equal starter_input[:description]
+
+      work_to_update.reload
+
+      expect(work_to_update.title).must_equal works(:work_one).title
+      expect(work_to_update.description).must_equal works(:work_one).description
+      expect(work_to_update.publication_year).must_equal works(:work_one).publication_year
+      expect(work_to_update.creator).must_equal works(:work_one).creator
+      expect(work_to_update.category).must_equal works(:work_one).category
     end
   end
 
-  # it "should get destroy" do
-  #   get works_destroy_url
-  #   value(response).must_be :success?
-  # end
+  describe "destroy" do
+    it "returns a 404 if the work is not found" do
+      invalid_id = "not a valid ID"
+
+      # Act-Assert
+      expect { delete work_path(invalid_id) }.wont_change "Work.count"
+
+      must_respond_with :not_found
+    end
+
+    it "can delete a work" do
+      # Act-Assert
+      expect { delete work_path(works(:work_one).id) }.must_change "Work.count", -1
+
+      must_respond_with :redirect
+      must_redirect_to works_path
+    end
+  end
 end
