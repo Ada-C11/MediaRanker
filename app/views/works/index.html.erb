@@ -1,0 +1,74 @@
+<h1>List of Works</h1>
+
+<h2>Albums</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @albums.each do |album| %>
+      <tr>
+        <td>5</td>
+        <td><%= album[:title] %></td>
+        <td><%= album[:creator] %></td>
+        <td><%= album[:publication_year] %></td>
+        <td>Upvote</td>
+      </tr>
+    <% end %>  
+  </tbody>
+</table>
+
+
+<h2>Books</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td>5</td>
+        <td><%= book[:title] %></td>
+        <td><%= book[:creator] %></td>
+        <td><%= book[:publication_year] %></td>
+        <td>Upvote</td>
+      </tr>
+    <% end %>  
+  </tbody>
+</table>
+
+<h2>Movies</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td>5</td>
+        <td><%= movie[:title] %></td>
+        <td><%= movie[:creator] %></td>
+        <td><%= movie[:publication_year] %></td>
+        <td>Upvote</td>
+      </tr>
+    <% end %>  
+  </tbody>
+</table>
