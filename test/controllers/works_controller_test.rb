@@ -46,6 +46,24 @@ let(:work) { Work.create!(category: "movie", title: "Into the Wild") }
       must_respond_with :redirect
       must_redirect_to works_path
     end
+
+    it "will send 400 bad request with invalid parameters" do 
+      media_params = {
+        work:{
+          category: "book",
+          title: "",
+          creator: "Michelle Alexander",
+          publication_year: 2010,
+          description: "Mass Incarceration in the Age of Colorblindness"
+        }
+      }
+
+      expect {
+        post works_path, params: media_params
+      }.wont_change "Work.count"
+
+      must_respond_with :bad_request
+    end
   end
 
   describe "show" do 
