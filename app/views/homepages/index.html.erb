@@ -1,0 +1,38 @@
+<section class="spotlight">
+  <% spotlight = @works.sample %>
+  <h2> Media Spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %> by <%= spotlight.creator %> </h2> 
+  <p><%= rand(1..20)%> votes - Description: <%= spotlight.description %> </p>
+</section>
+
+<section class="top-ten-header">
+    <h2>Top Movies</h2>
+    <% top_movie = @works.sample %>
+    <ul>
+        <li><%= top_movie.title %> by <%= top_movie.creator %></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</section>
+
+<section class="top-ten-header">
+    <h2>Top Books</h2>
+    <% top_book = @works.sample %>
+    <ul>
+        <li><%= top_book.title %> by <%= top_book.creator %></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</section>
+
+<section class="top-ten-header">
+    <h2>Top Album</h2>
+    <% top_album = @works.sample %>
+    <ul>
+        <li><%= top_album.title %> by <%= top_album.creator %></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</section>
