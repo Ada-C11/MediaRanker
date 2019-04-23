@@ -1,9 +1,9 @@
 class WorksController < ApplicationController
   
   def index
-    @works = Works.all.sort_by(&:id)
-    @spotlight = @works.sample
+    @works = Work.all.sort_by(&:id)
   end
+
 
   def new
     @work = Work.new

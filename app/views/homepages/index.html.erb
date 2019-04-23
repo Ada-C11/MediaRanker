@@ -1,9 +1,9 @@
 <div>
   <h2 class='media_spotlight'>
     <% if @spotlight %>
-      <strong>Media Spotlight: <%= @spotlight %></strong>
+      <strong>Media Spotlight:</strong> <u><%= @spotlight.title %></u>  by <%=  @spotlight.creator %>  
     <% else %>
-      <p>No spotlight today</p>
+      <p>Media Spotlight: No Spotlight Today</p>
     <% end %>
   </h2>
 </div>
