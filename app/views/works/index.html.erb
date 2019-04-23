@@ -1,6 +1,7 @@
 <h1>List of Works</h1>
 <article>
-<h4>Albums<h4>
+<% @categories.each do |category| %>
+<h4><%= category.name.capitalize %><h4>
   <table>
     <thead>
       <tr>
@@ -12,6 +13,7 @@
       </tr>
     </thead>
     <tbody>
+    <% category.works.each do |work|%>
       <tr>
         <td></td>
         <td><%= link_to work.title, work_path(work)%></td>
@@ -19,7 +21,11 @@
         <td><%= work.publication_year%></td>
         <td></td>
       </tr>
+    <% end %>
     </tbody>
-
   </table>
+  <% end %>
 </article>
+
+<button><%= link_to "View top media" %></button>
+<button><%= link_to "Add a new work", new_work_path%></button>

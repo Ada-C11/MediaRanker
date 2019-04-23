@@ -1,6 +1,9 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.all
+    # @works = Work.all
+    # @categories = Category.all.includes(:works)
+    @categories = Category.all
+    
   end
 
   def new
