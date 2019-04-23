@@ -1,4 +1,3 @@
-
 <table class="table">
   <tr>
     <th class="width-80">Votes</th>
@@ -8,12 +7,12 @@
     <th class="width-100">Upvote</th>
   </tr>
   <% list.each do |work| %>
-  <tr>
-    <td><%= work.votes.length %></td>
-    <td><a href=work_path(work.id)><%= work.title %></a></td>
-    <td><%= work.creator %></td>
-    <td><%= work.publication_year %></td>
-    <td><a href="" class="btn btn-primary">Upvote</a></td>
-  </tr>
+    <tr>
+      <td><%= work.votes.length %></td>
+      <td><a href=work_path(work.id)><%= work.title %></a></td>
+      <td><%= work.creator %></td>
+      <td><%= work.publication_year %></td>
+      <td><%= link_to "Upvote", homepages_index_path, class: "btn btn-primary" %></td>
+    </tr>
   <% end %>
 </table>
