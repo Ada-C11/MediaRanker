@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  category: Book
-  title: MyString
-  creator: MyString
+  category: book
+  title: Name of the Wind
+  creator: Patrick Rolfus
   publication_year: 2013
 
 two:
-  category: Movie
-  title: MyString
-  creator: MyString
+  category: movie
+  title: My Movie
+  creator: Movie creator
   publication_year: 1999
