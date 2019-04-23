@@ -1,17 +1,29 @@
-<h1>Media Ranker</h1>
-
 <section class="spotlight">
-  <h2>Media Spotlight</h2>
-  <% top = Work.all.max_by do |work| work.votes.length end %>
-  <%# Move the above line's logic somewhere else... Work model? %>
-  <%= top.title %>
+  <h2>
+    <span>Media Spotlight:</span>
+    <% top = Work.all.max_by do |work| work.votes.length end %>
+    <%# Move the above line's logic somewhere else... Work model? %>
+    <a><%= top.title %></a> by <%= top.creator %>
+  </h2>
+  <p>
+    <%= top.votes.length %> votes - <%= top.description %>
+  </p>
 </section>
 
 <section class="top-list">
   <h2>Top Movies</h2>
   <ul>
-  <% Work.where(category:"movie").each do |movie| %>
-    <li><%= movie.title %></li>
+  <% top_movies = Work.where(category:"movie").sort_by do |movie| -movie.votes.length end %>
+  <% top_movies[0...10].each do |movie| %>
+    <li>
+      <h4>
+        <a><%= movie.title %></a>
+        <small>by <%= movie.creator %></small>
+      </h4>
+      <p>
+        <%= movie.votes.length %> votes
+      </p>
+    </li>
   <% end %>
   </ul>
 </section>
@@ -19,8 +31,17 @@
 <section class="top-list">
   <h2>Top Books</h2>
   <ul>
-  <% Work.where(category:"book").each do |book| %>
-    <li><%= book.title %></li>
+  <% top_books = Work.where(category:"book").sort_by do |book| -book.votes.length end %>
+  <% top_books[0...10].each do |book| %>
+    <li>
+      <h4>
+        <a><%= book.title %></a>
+        <small>by <%= book.creator %></small>
+      </h4>
+      <p>
+        <%= book.votes.length %> votes
+      </p>
+    </li>
   <% end %>
   </ul>
 </section>
@@ -28,8 +49,17 @@
 <section class="top-list">
   <h2>Top Albums</h2>
   <ul>
-  <% Work.where(category:"album").each do |album| %>
-    <li><%= album.title %></li>
+  <% top_albums = Work.where(category:"album").sort_by do |album| -album.votes.length end %>
+  <% top_albums[0...10].each do |album| %>
+    <li>
+      <h4>
+        <a><%= album.title %></a>
+        <small>by <%= album.creator %></small>
+      </h4>
+      <p>
+        <%= album.votes.length %> votes
+      </p>
+    </li>
   <% end %>
   </ul>
 </section>
