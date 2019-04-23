@@ -1,9 +1,9 @@
 require "test_helper"
 
 describe WorksController do
-let (:work) {
-  works(:movie)
-}
+  let (:work) {
+    works(:movie)
+  }
 
   describe "index" do
     it "should get index" do
@@ -21,7 +21,7 @@ let (:work) {
     end
 
     it "will redirect for an invalid work" do
-    invalid_id = -1
+      invalid_id = -1
       get work_path(invalid_id)
 
       must_respond_with :redirect
@@ -43,7 +43,7 @@ let (:work) {
           category: "book",
           title: "A Song of Ice and Fire",
           creator: "George R. R. Martin",
-          publication_date: 1996, 
+          publication_year: 1996,
           description: "epic fantasy novel",
         },
       }
@@ -53,9 +53,9 @@ let (:work) {
       }.must_change "Work.count", 1
 
       new_work = Work.find_by(title: work_hash[:work][:title])
-      expect(new_work.category).must_equal task_hash[:work][:category]
-      expect(new_work.publication_date).must_equal task_hash[:work][:publication_date]
-      expect(new_work.description).must_equal task_hash[:work][:description]
+      expect(new_work.category).must_equal work_hash[:work][:category]
+      expect(new_work.publication_year).must_equal work_hash[:work][:publication_year]
+      expect(new_work.description).must_equal work_hash[:work][:description]
 
       must_respond_with :redirect
       must_redirect_to work_path(new_work.id)
