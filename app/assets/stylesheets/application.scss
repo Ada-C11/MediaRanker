@@ -13,46 +13,69 @@
  */
 /* Custom bootstrap variables must be set or imported *before* bootstrap. */
 @import "bootstrap";
-/* Import scss content */
-@import "**/*";
 
-body {
+ body {
   font-family: 'Gudea', sans-serif;
 }
 
-header {
-  background-color: #AACFCC;
+ header {
+  background-color: #B2DFDB;
+  padding: 3rem 2rem;
 }
 
-.title {
-  font-size: larger;
-  font-weight: 700;
+ .title {
+  border-right: solid;
+  margin: 1rem 1rem;
 }
 
-h1 {
+ h1 {
   text-align: center;
+  color: white;
+  font-weight: bold;
 }
 
-h1 a:link, h1 a:visited {
-  color: tomato;
+ h1 a:link, h1 a:visited {
+  color: #FF5722;
+  text-decoration: none;
 }
 
-nav ul {
+ nav {
   display: flex;
-  padding: 1rem 1rem;
   flex-wrap: wrap;
 }
 
-.nav-links {
-  width: 200px;
-}
-
-
-a {
+ .nav-link {
+  color: #00796B;
   text-decoration: none;
-  color: #27A08B;
 }
 
-ul {
+ .nav-link:hover {
+  color: #00796B;
+}
+
+ .btn-primary {
+  background-color: #26A69A;
+  border-color: #26A69A;
+  color: white;
+}
+
+ .btn-primary:hover {
+  background-color: #00796B;
+}
+
+ a, h2, h3 {
+  color: #26A69A;
+}
+
+ a {
+  text-decoration: none;
+
+ }
+
+ ul {
   list-style: none;
+}
+
+ h2 {
+  font-weight: bold;
 }
