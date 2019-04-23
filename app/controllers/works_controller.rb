@@ -55,7 +55,7 @@ class WorksController < ApplicationController
 
     work.destroy
 
-    redirect_to root_path
+    redirect_to works_path
   end
 
   def work_params

@@ -130,6 +130,19 @@ let(:work) { Work.create!(category: "movie", title: "Into the Wild") }
 
   describe "delete" do 
     it "can successfully remove a media record" do 
+      work
+
+      media = Work.last
+
+      expect{
+        delete work_path(media.id)
+      }.must_change "Work.count", -1
+
+      deleted_media = Work.find_by(id: media.id)
+      expect(deleted_media).must_be_nil
+
+      must_respond_with :redirect
+      must_redirect_to works_path
     end
   end
 end
