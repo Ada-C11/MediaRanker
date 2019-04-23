@@ -1,0 +1,11 @@
+<h2><%=@work.title%></h2>
+<p>Created by: <%= @work.creator %></p>
+<p>Published: <%= @work.publication_year%></p>
+<p><%= @work.description%></p>
+
+<section>
+<a class="btn btn-primary" href= <%= works_path %> role="button">Back to Media Ranks</a>
+<a class="btn btn-primary" href= <%= edit_work_path(@work) %> role="button">Edit</a>
+<a class="btn btn-primary" href= <%= work_path %> role="button">Upvote</a>
+<a class="btn btn-danger" data-confirm="Are You Sure?" rel="nofollow" data-method="delete" href= <%= work_path(@work) %> role="button">Delete</a>
+</section>

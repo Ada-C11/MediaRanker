@@ -1,0 +1,73 @@
+<h1>List of Works</h1>
+
+<h3>Albums</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+    </tr>
+    </thead>
+  <% Work.where(category: "album").each do |a| %>
+  <tbody>
+    <tr>
+        <td><%= "No Votes Yet" %></td>
+        <td><%= a.title%></td>
+        <td><%= a.creator %></td>
+        <td><%= a.publication_year%> </td>
+        <td><%= "No Upvoting Yet"%></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+<h3>Books</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+    </tr>
+    </thead>
+  <% Work.where(category: "book").each do |a| %>
+  <tbody>
+    <tr>
+        <td><%= "No Votes Yet" %></td>
+        <td><%= a.title%></td>
+        <td><%= a.creator %></td>
+        <td><%= a.publication_year%> </td>
+        <td><%= "No Upvoting Yet"%></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+<h3>Movies</h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+    </tr>
+    </thead>
+  <% Work.where(category: "movie").each do |a| %>
+  <tbody>
+    <tr>
+        <td><%= "No Votes Yet" %></td>
+        <td><%= a.title%></td>
+        <td><%= a.creator %></td>
+        <td><%= a.publication_year%> </td>
+        <td><%= "No Upvoting Yet"%></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

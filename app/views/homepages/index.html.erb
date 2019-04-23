@@ -1,0 +1,41 @@
+<% spotlight = Work.all.sample%>
+<h3>Media Spotlight: <%= spotlight.title%> by <%= spotlight.creator%> </h3>
+
+<h2>Top Movies</h2>
+<ul class="list-group top-ten__list">
+<% Work.where(category:"movie").sample(10).each do |a| %>
+    <li class="list-group-item">
+    <h4>
+    <%= work_path(a)%> <%=a.title%>
+    <small class= "top-ten__creator">by <%=a.creator%></small>
+    </h4>
+    <p>votes</p>
+    </li>
+    <% end %>
+</ul>
+
+<h2>Top Books</h2>
+<ul class="list-group top-ten__list">
+<% Work.where(category:"book").sample(10).each do |a| %>
+    <li class="list-group-item">
+    <h4>
+    <a href= <%= work_path(a)%>><%=a.title%></a>
+    <small class= "top-ten__creator">by <%=a.creator%></small>
+    </h4>
+    <p>votes</p>
+    </li>
+    <% end %>
+</ul>
+
+<h2>Top Albums</h2>
+<ul class="list-group top-ten__list">
+<% Work.where(category:"album").sample(10).each do |a| %>
+    <li class="list-group-item">
+    <h4>
+    <a href= <%= work_path(a)%>><%=a.title%></a>
+    <small class= "top-ten__creator">by <%=a.creator%></small>
+    </h4>
+    <p>votes</p>
+    </li>
+    <% end %>
+</ul>
