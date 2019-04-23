@@ -98,6 +98,15 @@ describe WorksController do
 
       must_respond_with :success
     end
+
+    it "will redirect to root path if given an invalid work id" do
+      invalid_id = -10
+
+      get edit_work_path(invalid_id)
+
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
   end
 
   describe "update" do
