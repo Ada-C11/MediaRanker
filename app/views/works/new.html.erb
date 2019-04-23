@@ -1,2 +1,8 @@
-<h1>Works#new</h1>
-<p>Find me in app/views/works/new.html.erb</p>
+<section class="new_work">
+<h2>Add a New Work</h2>
+
+<%= render partial: "form", locals: {
+    form_class: "new-work", 
+    action_name: "Create Work"
+    } %>
+</section>
