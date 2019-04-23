@@ -7,10 +7,37 @@
     <% end %>
   </h2>
 </div>
-<div>
-  <ul class='main_options'>
-    <li><%= link_to 'Top Movies'%></li> 
-    <li><%= link_to 'Top Books'%></li>
-    <li><%= link_to 'Top Albums'%></li>
-  </ul>
+
+<div  class='main_options' >
+  <table class='main_options'>
+    <tr>
+      <th>Top Movies</th>
+    <tr>
+      <% @top_ten_movies.each do |movie| %>
+      <td><%= movie.title %></td>
+      <td><%= movie.creator %></td>
+      <td><%= movie.category %></td>
+    </tr>
+      <% end %>
+    </table>
+  <table>
+    <tr>
+      <th>Top Books</th>
+    <tr>
+      <% @top_ten_books.each do |book| %>
+      <td><%= book.title %></td>
+      <td><%= book.creator %></td>
+    </tr>
+    <% end %>
+  </table>
+  <table>
+    <tr>
+      <th>Top Albums</th>
+    <tr>
+      <% @top_ten_albums.each do |album| %>
+      <td><%= album.title %></td>
+      <td><%= album.creator %></td>
+    </tr>
+    <% end %>
+  </table>
 </div>

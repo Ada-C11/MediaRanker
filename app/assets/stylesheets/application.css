@@ -36,7 +36,7 @@ header {
   padding: 0;
   font-size: 25px; 
   flex-direction: row; 
-  justify-content: space-around;
+  /* justify-content: space-around; */
 }
 
 .main_options li {

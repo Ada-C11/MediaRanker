@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root 'homepages#index'
 
+  # get '/homepages#top_ten_books'
+  # get '/homepages#top_ten_movies'
+  # get '/homepages#top_ten_albums'
+
   resources :works
   resources :users
 
