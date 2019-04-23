@@ -128,4 +128,38 @@ describe WorksController do
     #   check_flash(:error)
     # end
   end
+
+  describe "destroy" do
+    it "removes the work from the database" do
+      # Act
+      expect {
+        delete work_path(work)
+      }.must_change "Work.count", -1
+
+      # Assert
+      must_respond_with :redirect
+      must_redirect_to works_path
+
+      # check_flash
+
+      nonexistent_work = Work.find_by(id: work.id)
+      expect(nonexistent_work).must_be_nil
+    end
+
+    it "returns a 404 if the book does not exist" do
+      # Arrange
+      work_id = -1
+
+      # Assumptions
+      expect(Work.find_by(id: work_id)).must_be_nil
+
+      # Act
+      expect {
+        delete work_path(work_id)
+      }.wont_change "Work.count"
+
+      # Assert
+      must_respond_with :not_found
+    end
+  end
 end
