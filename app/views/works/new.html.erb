@@ -1,0 +1,35 @@
+<h2>Add New Work</h2>
+
+<%= form_with model: @work, class: 'create_work' do |f| %>
+<p><strong>Please fill out the details of your new Work</strong></p>
+
+  <div>
+    <%= f.label :category, "Category:" %>
+    <%= f.text_field :name, placeholder: "Do my taxes" %>
+  </div>
+
+  <div>
+    <%= f.label :title, "Title:" %>
+    <%= f.text_field :description, placeholder: "Get T4 forms" %>
+  </div>
+
+    <div>
+    <%= f.label :creator, "Creator:" %>
+    <%= f.date_field :completion_date, placeholder: "April 15 2019" %>
+  </div>
+
+      <div>
+    <%= f.label :publication_year, "Publication Year:" %>
+    <%= f.date_field :completion_date, placeholder: "April 15 2019" %>
+  </div>
+
+
+    <div>
+    <%= f.label :description, "Description:" %>
+    <%= f.date_field :completion_date, placeholder: "April 15 2019" %>
+  </div>
+
+
+  <%= f.submit "Add new work", class: 'create_work_button' %>
+
+<% end %>
