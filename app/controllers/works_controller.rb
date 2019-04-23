@@ -7,7 +7,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     unless @work
-      redirect_to works_path
+      redirect_to works_path, flash: { error: "Could not find media with that id: #{params[:id]}" }
       return
     end
 
@@ -33,7 +33,7 @@ class WorksController < ApplicationController
   def edit
     @work = Work.find_by(id: params[:id])
     unless @work
-      redirect_to works_path, flash: { error: "Could not find media with id: #{@work.id}" }
+      redirect_to works_path, flash: { error: "Could not find media with id: #{params[:id]}" }
     end
   end
 

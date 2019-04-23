@@ -23,6 +23,19 @@ describe WorksController do
       must_respond_with :redirect
     end
   end
+
+  describe "edit" do
+    it "can get the edit page for an existing work" do
+      work = Work.first
+      get edit_work_path(work.id)
+      must_respond_with :success
+    end
+
+    it "will respond with a redirect when attempting to edit a nonexistent work" do
+      get edit_work_path(-1)
+      must_redirect_to works_path
+    end
+  end
 end
 
 #validate things? use fixtures or let?
