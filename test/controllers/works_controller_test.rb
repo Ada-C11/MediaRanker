@@ -1,8 +1,18 @@
 require "test_helper"
 
 describe WorksController do
+let(:work) { Work.create!(category: "movie", title: "Into the Wild") }
+
   describe "index" do 
-    it "will show index page successfully" do
+    it "will show works index page successfully" do
+      get works_path
+
+      must_respond_with :ok
+    end
+
+    it "will render even with no media" do 
+      Work.destroy_all
+
       get works_path
 
       must_respond_with :ok
@@ -11,16 +21,29 @@ describe WorksController do
 
   describe "new" do 
     it "can render new form for Work media" do 
+      get new_work_path
+
+      must_respond_with :ok
     end
   end
 
   describe "create" do 
     it "can successfully create and save a new media record" do 
+
     end
   end
 
   describe "show" do 
-    it "can successfully show a work's page" do 
+    it "can successfully show a work's page" do
+      get work_path(work.id) 
+
+      must_respond_with :ok
+    end
+
+    it "responds with 404 when work record not found" do 
+      get work_path(1337)
+
+      must_respond_with :not_found
     end
   end
 

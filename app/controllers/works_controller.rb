@@ -15,7 +15,7 @@ class WorksController < ApplicationController
     if successful
       redirect_to works_path
     else
-      render :new, status :bad_request
+      render :new, status: :bad_request
     end
   end
 
@@ -45,7 +45,7 @@ class WorksController < ApplicationController
     if @work.update(work_params)
       redirect_to work_path(@work)
     else
-      render :edit, status :bad_request
+      render :edit, status: :bad_request
     end
   end
 
