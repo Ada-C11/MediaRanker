@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'homepages/index'
   get 'votes/index'
   get 'votes/show'
   get 'works/index'
