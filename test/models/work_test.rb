@@ -58,4 +58,38 @@ describe Work do
       expect(result).must_equal false
     end
   end
+
+  describe "top_ten" do
+    it "generates a list of 10 works of the given category" do
+      # Arrange
+      10.times do
+        Work.create(title: "test book", creator: "author", category: "book")
+      end
+
+      # Act
+      top_ten_books = Work.top_ten("book")
+
+      # Assert
+      expect(top_ten_books.length).must_equal 10
+    end
+
+    it "generates a list of all works if there are less than 10 works in the category" do
+      # Act
+      top_ten_books = Work.top_ten("book")
+
+      # Assert
+      expect(top_ten_books).wont_be_empty
+    end
+
+    it "returns an empty array when there are no works in the category" do
+      # Arrange
+      Work.destroy_all
+
+      # Act
+      top_ten_books = Work.top_ten("book")
+
+      # Assert
+      expect(top_ten_books.length).must_equal 0
+    end
+  end
 end
