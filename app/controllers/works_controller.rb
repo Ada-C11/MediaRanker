@@ -10,8 +10,8 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if !@work
-      redirect_to root_path if @work.nil?
       flash[:failure] = "Sorry, we couldn't find the media page you were looking for."
+      redirect_to root_path
     end
   end
 
@@ -29,9 +29,9 @@ class WorksController < ApplicationController
     else
       flash.now[:failure] = "A problem occurred: Could not create #{@work.category}"
       @work.errors.messages.each do |field, messages|
-        # storing these messages in the flash.now hash so we can loop through in the view
         flash.now[field] = messages
       end
+
       render :new, status: :bad_request
     end
   end
@@ -48,9 +48,15 @@ class WorksController < ApplicationController
     is_successful = work.update(work_params)
 
     if is_successful
+      flash[:success] = "Successfully updated #{work.title} #{work.category}!"
       redirect_to work_path(work.id)
     else
       @work = work
+      flash.now[:failure] = "A problem occurred: Could not update #{@work.category}"
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
+
       render :edit, status: :bad_request
     end
   end
@@ -58,7 +64,7 @@ class WorksController < ApplicationController
   def destroy
     work = Work.find_by(id: params[:id])
 
-    if work.nil?
+    if !work
       redirect_to root_path
     else
       work.destroy
