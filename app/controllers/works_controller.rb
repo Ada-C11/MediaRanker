@@ -3,7 +3,6 @@ class WorksController < ApplicationController
     # @works = Work.all
     # @categories = Category.all.includes(:works)
     @categories = Category.all
-    
   end
 
   def new
@@ -11,18 +10,51 @@ class WorksController < ApplicationController
   end
 
   def create
-    work = Work.new(work_params)
-    work.save
-    redirect_to work_path(work.id)
+    @work = Work.new(work_params)
+    successful = @work.save
+    if successful
+      redirect_to work_path(@work)
+    else
+      render :new, status: :bad_request
+    end
   end
 
-  def show; end
+  def show
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
 
-  def edit; end
+    head :not_found unless @work
+  end
 
-  def update; end
+  def edit
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
 
-  def delete; end
+    head :not_found unless @work
+  end
+
+  def update
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
+
+    head :not_found unless @work
+
+    if @work.update(work_params)
+      redirect_to work_path(@work)
+    else
+      render :edit, status: :bad_request
+    end
+  end
+
+  def destroy
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
+
+    head :not_found unless @work
+
+    work.destroy
+    redirect_to work_path
+  end
 
   private
 
