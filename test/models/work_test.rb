@@ -8,6 +8,17 @@ describe Work do
   end
 
   describe "validations" do
+    it "must have a category" do
+      work.category = nil
+
+      valid_work = work.valid?
+
+      expect(valid_work).must_equal false
+
+      expect(work.errors.messages).must_include :category
+      expect(work.errors.messages[:category]).must_equal ["can't be blank"]
+    end
+
     it "must have a title" do
       work.title = nil
 
@@ -19,7 +30,7 @@ describe Work do
     end
 
     it "requires a unique title" do
-      duplicate_work = Work.new(title: "War and Peace", creator: "Michael Jackson")
+      duplicate_work = Work.new(category: "book", title: "War and Peace", creator: "Michael Jackson")
 
       expect(duplicate_work.save).must_equal false
 

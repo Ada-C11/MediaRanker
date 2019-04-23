@@ -37,6 +37,58 @@ describe WorksController do
 
   describe "create" do
     it "can create a new work" do
+      category = "book"
+      title = "Fresh and Clean"
+      creator = "That One Guy"
+      publication_year = 1920
+      description = "Hey There Fancy Pants knock off!"
+
+      work_hash = {
+        "work": {
+          category: category,
+          title: title,
+          creator: creator,
+          publication_year: publication_year,
+          description: description,
+        },
+      }
+
+      expect {
+        post works_path, params: work_hash
+      }.must_change "Work.count", 1
+
+      new_work = Work.find_by(title: title)
+      expect(new_work.category).must_equal(category)
+      expect(new_work.creator).must_equal(creator)
+      expect(new_work.publication_year).must_equal(publication_year)
+      expect(new_work.description).must_equal(description)
+
+      must_respond_with :redirect
+      must_redirect_to work_path(new_work.id)
+    end
+
+    it "will return a 400 with an invalid book" do
+      category = ""
+      title = "Sandi Metz"
+      creator = "A look at how to design object-oriented systems"
+      publication_year = 2004
+      description = "Holy Ruby HEAVEN!"
+
+      work_hash = {
+        "work": {
+          category: category,
+          title: title,
+          creator: creator,
+          publication_year: publication_year,
+          description: description,
+        },
+      }
+
+      expect {
+        post works_path, params: work_hash
+      }.wont_change "Work.count"
+
+      must_respond_with :bad_request
     end
   end
 
