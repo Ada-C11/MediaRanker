@@ -1,6 +1,32 @@
 <section class="spotlight">
-  <h2>Media Spotlight: </h2>	  <h2>Media Spotlight: <%="#{@work.title} by #{@work.creator}"%></h2>
-  <%= "#{@vote_count} votes - #{@work.description}" %>
-</section>	</section>
-<section class="top_ten_container">	<section class="top_ten_container">
-  <section class="top_ten">	  <section class="top_ten">
+  <h2>Media Spotlight: <%="#{@work.title} by #{@work.creator}"%></h2>
+  <%= "#{@work.vote_count} votes - #{@work.description}" %>
+</section>
+<section class="top_ten_container">
+  <section class="top_ten">
+    <h2>Top Movies</h2>
+    <ul>
+      <% @top_movies.each do |movie| %>
+        <li><%= "#{movie.title} by #{movie.creator}" %></li>
+      <% end %>
+    </ul>
+  </section>
+  <section class="top_ten">
+    <h2>Top Books</h2>
+    <ul>
+      <% @top_books.each do |book| %>
+        <li><%= "#{book.title} by #{book.creator}" %></li>
+        <%= "#{book.vote_count} votes" %>
+      <% end %>
+    </ul>
+  </section>
+  <section class="top_ten">
+    <h2>Top Albums</h2>
+    <ul>
+      <% @top_albums.each do |album| %>
+        <li><%= "#{album.title} by #{album.creator}" %></li>
+        <%= "#{album.vote_count} votes" %>
+      <% end %>
+    </ul>
+  </section>
+</section>
