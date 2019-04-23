@@ -26,4 +26,8 @@ class Work < ApplicationRecord
     end
     return media_spotlight
   end
+
+  def vote_count
+    return self.votes.length
+  end
 end
