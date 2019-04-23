@@ -47,8 +47,8 @@ class WorksController < ApplicationController
       return
     end
     work.destroy
+    flash[:status] = :success
+    flash[:message] = "Successfully deleted work #{work.id}"
     redirect_to works_path
   end
-
-
 end

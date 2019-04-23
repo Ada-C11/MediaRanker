@@ -1,6 +1,7 @@
 require "test_helper"
 
 describe WorksController do
+
   describe "index" do
     it "can get the index" do
       get works_path
@@ -44,6 +45,9 @@ describe WorksController do
     }.must_change "Work.count", -1
     must_respond_with :redirect
     must_redirect_to works_path
+
+    check_flash
+    # check_flash(:error)
 
     after_delete_work = Work.find_by(id: work_to_delete.id)
     expect(after_delete_work).must_be_nil
