@@ -33,10 +33,14 @@ class WorksController < ApplicationController
   end
 
   def update
-    work = Work.find_by(id: params[:id])
-    if work.update(work_params)
-      redirect_to work_path(work.id)
+    @work = Work.find_by(id: params[:id])
+    if @work.update(work_params)
+      flash[:success] = "Work updated successfully!"
+      redirect_to work_path(@work.id)
     else
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
       render :edit, status: :bad_request
     end
   end

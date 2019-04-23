@@ -69,4 +69,41 @@ describe WorksController do
       must_respond_with :bad_request
     end
   end
+
+  describe "update" do
+    it "will update an existing work" do
+      work_to_update = works(:one)
+
+      updates = {
+        work: {
+          title: "changed title",
+        },
+      }
+
+      expect {
+        patch work_path(work_to_update.id), params: updates
+      }.wont_change "Work.count"
+      must_respond_with :redirect
+      work_to_update.reload
+      expect(work_to_update.title).must_equal "changed title"
+      expect(flash[:success]).must_equal "Work updated successfully!"
+    end
+
+    it "should flash and return a 400 with an invalid updates" do
+      work_to_update = works(:one)
+
+      updates = {
+        work: {
+          title: "",
+        },
+      }
+
+      expect {
+        patch work_path(work_to_update.id), params: updates
+      }.wont_change "Work.count"
+      must_respond_with :bad_request
+      expect(work_to_update.title).wont_equal ""
+      expect(flash[:title]).must_equal ["can't be blank"]
+    end
+  end
 end
