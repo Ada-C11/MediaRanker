@@ -100,18 +100,13 @@ describe WorksController do
 
   describe "update" do
     it "can update an existing valid work" do
-      category = "book"
-      title = "101 Bottles of OOP"
-      creator = "Sandi Metz"
-      publication_year = 2006
-      description = "A look at how to design object-oriented systems"
       work_hash = {
         "work": {
-          category: category,
-          title: title,
-          creator: creator,
-          publication_year: publication_year,
-          description: description,
+          category: "album",
+          title: "Paint it Black",
+          creator: "The Rolling Stones",
+          publication_year: 1966,
+          description: "The best song on the planet",
         },
       }
 
@@ -120,7 +115,7 @@ describe WorksController do
       }.wont_change "Work.count"
 
       must_respond_with :redirect
-      # work_two.reload
+      work_two.reload
       expect(work_two.category).must_equal work_hash[:work][:category]
       expect(work_two.title).must_equal work_hash[:work][:title]
       expect(work_two.creator).must_equal work_hash[:work][:creator]
@@ -128,40 +123,34 @@ describe WorksController do
       expect(work_two.description).must_equal work_hash[:work][:description]
     end
 
-    it "will return a bad_request (400) when asked to update with invalid data" do
+    it "will return a bad request when asked to update with invalid data" do
+      starter_category = work_two.category
+      starter_title = work_two.title
+      starter_creator = work_two.creator
+      starter_publication_year = work_two.publication_year
+      starter_description = work_two.description
 
-      # Arrange
-      starter_input = {
-        title: "Becoming",
-        author_id: Author.create(name: "Michelle Obama").id,
-        description: "A book by the 1st lady",
-      }
-
-      book_to_update = Book.create(starter_input)
-
-      input_title = "" # Invalid Title
-      input_author = "Sandi Metz"
-      input_description = "A look at how to design object-oriented systems"
-      test_input = {
-        "book": {
-          title: input_title,
-          author_id: Author.create(name: input_author).id,
-          description: input_description,
+      update_input = {
+        "work": {
+          category: "",
+          title: "Monty Python and the Holy Grail",
+          creator: "Monty Python",
+          publication_year: 1975,
+          description: "The silliest movie",
         },
       }
 
-      # Act
       expect {
-        patch book_path(book_to_update.id), params: test_input
-      }.wont_change "Book.count"
-      # .must_change "Book.count", 0
+        patch work_path(work_two.id), params: update_input
+      }.wont_change "Work.count"
 
-      # Assert
       must_respond_with :bad_request
-      book_to_update.reload
-      expect(book_to_update.title).must_equal starter_input[:title]
-      expect(book_to_update.author.name).must_equal Author.find(starter_input[:author_id]).name
-      expect(book_to_update.description).must_equal starter_input[:description]
+      work_two.reload
+      expect(work_two.category).must_equal starter_category
+      expect(work_two.title).must_equal starter_title
+      expect(work_two.creator).must_equal starter_creator
+      expect(work_two.publication_year).must_equal starter_publication_year
+      expect(work_two.description).must_equal starter_description
     end
   end
 
