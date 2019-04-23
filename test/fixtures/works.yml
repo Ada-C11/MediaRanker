@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+book:
+  category: "book"
+  title: "Grokking Algorithms"
+  creator: "Aditya Y. Bhargava"
+  publication_year: 2016
+  description: "an illustrated guide to learning programming algorithms"
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+movie:
+  category: "movie"
+  title: "The Thing"
+  creator: "John Carpenter"
+  publication_year: 1982
+  description: "a group of American researchers in Antarctica who encounter a parasitic extraterrestrial life-form that assimilates then imitates other organisms"
