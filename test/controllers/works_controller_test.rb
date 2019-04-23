@@ -46,7 +46,7 @@ describe WorksController do
           title: "New work",
           creator: "Creator",
           description: "new work description",
-          production_year: 2000,
+          publication_year: 2000,
         },
       }
       expect {
@@ -72,5 +72,60 @@ describe WorksController do
       get edit_work_path(-1)
       must_redirect_to works_path
     end
+  end
+  describe "update" do
+    let(:work_data) {
+      {
+        work: {
+          title: "Harry Potter",
+          creator: "JKR",
+          description: "Im a wizard",
+          publication_year: 2000,
+        },
+      }
+    }
+
+    it "changes the data on the model" do
+      # Assumptions
+      work.assign_attributes(work_data[:work])
+      expect(work).must_be :valid?
+      work.reload
+
+      # Act
+      patch work_path(work), params: work_data
+
+      # Assert
+      must_respond_with :redirect
+      must_redirect_to work_path(work)
+
+      # check_flash
+
+      work.reload
+      expect(work.title).must_equal(work_data[:work][:title])
+    end
+    it "responds with NOT FOUND if givin an invalid id" do
+      fake_id = -1
+
+      patch work_path(fake_id), params: work_data
+
+      must_respond_with :not_found
+    end
+    # it "responds with BAD REQUEST for bad data" do
+    #   # Arrange
+    #   work_data[:work][:title] = ""
+
+    #   # Assumptions
+    #   work.assign_attributes(work_data[:work])
+    #   expect(@work).wont_be :valid?
+    #   work.reload
+
+    #   # Act
+    #   patch book_path(work), params: work_data
+
+    #   # Assert
+    #   must_respond_with :bad_request
+
+    #   check_flash(:error)
+    # end
   end
 end
