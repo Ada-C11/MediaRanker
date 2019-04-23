@@ -1,2 +1,55 @@
-<h1>Works#new</h1>
-<p>Find me in app/views/works/new.html.erb</p>
+<h2>Add a new work</h2>
+<%= form_with model: @work, class: "new-work-form" do |f| %>
+  <div class="form-group">
+    <%= f.label :category %>
+    <%= f.select :category, ["album", "book", "movie"], {}, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :title%>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :creator %>
+    <%= f.text_field :creator, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :publication_year %>
+    <%= f.text_field :publication_year, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
+  <%= f.submit "Create work", class: "btn btn-primary" %>
+<% end %>
+<!--
+<form action="/works" method="post">
+  <input type="hidden" name="authenticity_token" value=params[:authenticity_token]>
+    <label for="category">Category</label>
+    <select class="form-control" id="category" name="work[category]">
+      <option value="album">album</option>
+      <option value="book">book</option>
+      <option value="movie">movie</option>
+    </select>
+  </div class="form-group">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input class="form-control" id="title" type="text" name="work[title]">
+  </div class="form-group">
+  <div class="form-group">
+    <label for="creator">Creator</label>
+    <input class="form-control" id="creator" type="text" name="work[creator]">
+  </div class="form-group">
+  <div class="form-group">
+    <label for="publication_year">Publication year</label>
+    <input class="form-control" id="publication_year" type="text" name="work[publication_year]">
+  </div class="form-group">
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" id="description" type="text" name="work[description]"></textarea>
+  </div class="form-group">
+  <div class="form-group">
+    <input type="submit" name="commit" value="Create Work" class="btn btn-primary" data-disable-with="Create Work">
+  </div class="form-group">
+</form>
+-->

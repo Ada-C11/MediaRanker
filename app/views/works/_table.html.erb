@@ -1,19 +1,19 @@
 
-<table>
+<table class="table">
   <tr>
-    <th>Votes</th>
+    <th class="width-80">Votes</th>
     <th>Title</th>
     <th>Created by</th>
-    <th>Published</th>
-    <th>Upvote</th>
+    <th class="width-100">Published</th>
+    <th class="width-100">Upvote</th>
   </tr>
   <% list.each do |work| %>
   <tr>
     <td><%= work.votes.length %></td>
-    <td><%= work.title %></td>
+    <td><a href=work_path(work.id)><%= work.title %></a></td>
     <td><%= work.creator %></td>
     <td><%= work.publication_year %></td>
-    <td>Upvote</td>
+    <td><a href="" class="btn btn-primary">Upvote</a></td>
   </tr>
   <% end %>
 </table>

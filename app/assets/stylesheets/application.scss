@@ -15,3 +15,72 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+
+body {
+  font-family: "Gudea", sans-serif;
+}
+
+a, h2, h3 {
+  color: #26A69A;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+a:hover {
+  color: #00796B;
+  text-decoration: none;
+}
+
+body { /* change to main? */
+  padding: 2rem;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.table th, .table td {
+  padding: 0.75rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.table th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+// table .btn {
+//   display: inline-block;
+//   align-content: center;
+//   vertical-align: center;
+// }
+
+.btn {
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: #00796B;
+  border-color: #00796b;
+}
+
+.btn-primary {
+  background-color: #26A69A;
+  border-color: #26A69A;
+}
+
+.width-80 {
+  width: 80px;
+}
+
+.width-100 {
+  width: 100px;
+}
