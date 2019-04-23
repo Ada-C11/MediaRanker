@@ -10,6 +10,24 @@
   </head>
 
   <body>
+    <% if flash.count > 0 %>
+      <section class="flash">
+        <div class="alert">
+          <% flash.each do |name, message| %>
+            <% if message.class == Array %>
+              <ul>
+              <% message.each do |msg| %>
+                <li> <%= name %>: <%= msg %> </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <%= message %>
+            <% end %>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
