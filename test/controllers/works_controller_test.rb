@@ -38,27 +38,28 @@ describe WorksController do
     end
   end
 
-  # describe "create" do
+  describe "create" do
+    it "can create a new work" do
+      work_hash = {
+        work: {
+          title: "New work",
+          creator: "Creator",
+          description: "new work description",
+          production_year: 2000,
+        },
+      }
+      expect {
+        post works_path, params: work_hash
+      }.must_change "Work.count", 1
 
-  #   it "can create a new work" do
-  #     work_hash = {
-  #       title: "New work",
-  #       creator: "Creator",
-  #       description: "new work description",
-  #       production_year: 2000,
-  #     }
-  #     expect {
-  #       post works_path, params: work_hash
-  #     }.must_change "Work.count", 1
+      new_work = Work.find_by(title: work_hash[:work][:title])
+      expect(new_work.description).must_equal work_hash[:work][:description]
+      expect(new_work.creator).must_equal work_hash[:work][:creator]
 
-  #     new_work = Work.find_by(title: work_hash[:title])
-  #     expect(new_work.description).must_equal work_hash[:description]
-  #     expect(new_work.creator).must_equal work_hash[:creator]
-
-  #     must_respond_with :redirect
-  #     must_redirect_to work_path(new_work.id)
-  #   end
-  # end
+      must_respond_with :redirect
+      must_redirect_to work_path(new_work.id)
+    end
+  end
 
   describe "edit" do
   end
