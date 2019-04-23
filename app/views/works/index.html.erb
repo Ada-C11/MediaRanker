@@ -3,42 +3,63 @@
 
 <section>
 <h2> Books </h2>
-<ul>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Created By</th>
+            <th>Published</th>
+        </tr>
+    </thead>
 <% @works.where( category: "book").each do |book|%>
-    <li>
-    <p><%= link_to book.title, work_path(book.id)%></p> 
-    <p><%= book.creator %></p> 
-    <p><%= book.publication_year %></p>
-    </li>
+    <tr>
+        <td><%= link_to book.title, work_path(book.id)%></td> 
+        <td><%= book.creator %></td> 
+        <td><%= book.publication_year %></td>
+    </tr>
 <%end%>
-</ul>
+</table>
 </section>
 
 <section>
 <h2> Albums </h2>
-<ul>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Created By</th>
+            <th>Published</th>
+        </tr>
+    </thead>
 <% @works.where(category: "album").each do |album|%>
-    <li>
-    <p><%= link_to album.title, work_path(album.id)%></p>
-    <p><%= album.creator %></p>
-    <p><%= album.publication_year %></p>
-    </li>
+    <tr>
+        <td><%= link_to album.title, work_path(album.id)%></td>
+        <td><%= album.creator %></td>
+        <td><%= album.publication_year %></td>
+    </tr>
 <%end%>
 </ul>
-</section>
+</table>
 
 
 <section>
 <h2> Movies </h2>
-<ul>
+<table>
+    <thead>
+        <tr>
+                <th>Title</th>
+                <th>Created By</th>
+                <th>Published</th>
+        </tr>
+    </thead>
 <% @works.where( category: "movie").each do |movie|%>
-    <li>
-    <p><%= link_to movie.title, work_path(movie.id)%></p> 
-    <p><%= movie.creator %></p>
-    <p><%= movie.publication_year %></p>
-    </li>
+    <tr>
+        <td><%= link_to movie.title, work_path(movie.id)%></td> 
+        <td><%= movie.creator %></td>
+        <td><%= movie.publication_year %></td>
+    </tr>
 <%end%>
-</ul>
+<table>
 </section>
 
 <%=link_to "View top media", root_path%>
