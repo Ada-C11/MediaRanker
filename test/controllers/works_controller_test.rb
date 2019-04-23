@@ -9,6 +9,26 @@ describe WorksController do
                 publication_year: 2019)
   }
 
+  describe "root" do
+    it "can get the root path" do
+      # Act
+      get root_path
+
+      # Assert
+      must_respond_with :success
+    end
+
+    it "displays the root page even if there are no works" do
+      # Arrange
+      Work.destroy_all
+
+      # Act
+      get root_path
+
+      # Assert
+      must_respond_with :success
+    end
+  end
   describe "index" do
     it "can get the index path" do
       # Act
@@ -18,9 +38,12 @@ describe WorksController do
       must_respond_with :success
     end
 
-    it "can get the root path" do
+    it "displays the index even if there are no works" do
+      # Arrange
+      Work.destroy_all
+
       # Act
-      get root_path
+      get works_path
 
       # Assert
       must_respond_with :success

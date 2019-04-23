@@ -1,7 +1,8 @@
 <% media = Work.all.sample%>
-<h2>Media Spotlight: <%= link_to media.title, work_path(media.id)%> by <%= media.creator%> </h2>
-<p><%= media.description%></p>
-
+<%if media%>
+    <h2>Media Spotlight: <%= link_to media.title, work_path(media.id)%> by <%= media.creator%> </h2>
+    <p><%= media.description%></p>
+<%end%>
 <h3> Top 10 Books </h3>
 <ol>
 <% Work.top_ten("book").each do |book|%>
