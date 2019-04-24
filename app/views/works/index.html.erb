@@ -7,11 +7,39 @@
 
 
 <section>
+    <h2>Top Movies</h2>
+    <ul>
+        <% @works.each do |work|%>
+            <% category = work.category.downcase %>
+            <% if  category == "movie"%>
+                <li>
+                    <%= link_to work.title, work_path(work.id) %>
+                <li>
+            <% end %>
+        <% end %>
+    <ul>
+</section>
+
+<section>
     <h2>Top Books</h2>
     <ul>
         <% @works.each do |work|%>
             <% category = work.category.downcase %>
             <% if  category == "book"%>
+                <li>
+                    <%= link_to work.title, work_path(work.id) %>
+                <li>
+            <% end %>
+        <% end %>
+    <ul>
+</section>
+
+<section>
+    <h2>Top Albums</h2>
+    <ul>
+        <% @works.each do |work|%>
+            <% category = work.category.downcase %>
+            <% if  category == "album"%>
                 <li>
                     <%= link_to work.title, work_path(work.id) %>
                 <li>
