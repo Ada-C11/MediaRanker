@@ -1,2 +1,9 @@
-<h1>Works#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<article class="forms">
+  <h2> Create New Media </h2>
+  <p> Please update media's data below: </p>
+
+  <%= render partial: "forms", locals: {
+    form_class: "create-work",
+    action_name: "Create Work"
+  } %>
+</article>

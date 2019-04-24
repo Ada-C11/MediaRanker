@@ -1,2 +1,9 @@
-<h1>Works#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<article class="forms">
+  <h2> Edit </h2>
+  <p> Please update media's information below: </p>
+
+  <%= render partial: "forms", locals: {
+    form_class: "edit-work",
+    action_name: "Update Work"
+  } %>
+</article>
