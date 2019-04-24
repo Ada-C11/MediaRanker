@@ -1,9 +1,11 @@
 require "test_helper"
 
 describe HomepagesController do
-  it "can get the homepage" do
-    get root_path
+  describe "index" do
+    it "can get the homepage" do
+      get root_path
 
-    must_respond_with :success
+      must_respond_with :success
+    end
   end
 end
