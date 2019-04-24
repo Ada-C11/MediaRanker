@@ -9,15 +9,17 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <nav>
-    <header>
+  
+    <header class="app-header__header">
       <h1>Media Ranker | Ranking The Best of Everything</h1>
+      <nav>
+        <%= link_to "View Top Media", root_path, class: "app-header__nav" %>
+        <%= link_to "View All Media", works_path %>
+        <%= link_to "Add A New Work", new_work_path %>
+        <%= link_to "View All Users", users_path %>
+      </nav>
     </header>
-    <%= link_to "View Top Media", root_path %>
-    <%= link_to "View All Media", works_path %>
-    <%= link_to "Add A New Work", new_work_path %>
-    <%= link_to "View All Users", users_path %>
-  </nav>
+ 
 
   <body>
     <% if flash.count > 0 %>
