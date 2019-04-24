@@ -1,24 +1,30 @@
-<h2>Media Spotlight</h2>
-<%= link_to @spotlight.title, work_path(@spotlight) %> by <%= @spotlight.creator %>
-<div>
+<main>
+<section class="spotlight">
+<h2 class="spotlight__header">
+<span class="spotlight__heaser--prefix">
+Media Spotlight:
+</span>
+<%= link_to @spotlight.title, work_path(@spotlight), class: "spotlight__link-to" %> by <%= @spotlight.creator %>
+</h2>
 
-<p>Top Movies</p>
-<table>
-<tbody>
+</section>
+<hr class="root__hr">
+<section class="top-ten__container">
+<section class="top-ten__list-container">
+<h2 class="top-ten__header">
+Top Movies
+</h2>
+<ul clas="list-group top-ten__list">
+<li class="list-group-item">
 <% @top_ten_movies.each do |movie| %>
-<tr>
-<td>
-<%= link_to movie.title, work_path(movie)%> by <%= movie.creator %>
-<td>
-</tr>
+<h4>
+<%= link_to movie.title, work_path(movie)%> 
+by <small class="top-ten__creator><%= movie.creator %></small>
+</h4>
+
+</li>
 <% end %>
-</tbody>
-</table>
-</div>
-<div>
-<p>Top Books</p>
-<table>
-<tbody>
+
 <% @top_ten_books.each do |book| %>
 <tr>
 <td>
@@ -26,21 +32,32 @@
 </td>
 </tr>
 <% end %>
-</tbody>
-</table>
+<section class="top-ten__list-container">
+<h2 class="top-ten__header">
+Top Books
+</h2>
+<ul clas="list-group top-ten__list">
+<li class="list-group-item">
+<% @top_ten_books.each do |book| %>
+<h4>
+<%= link_to book.title, work_path(book)%> 
+by <small class="top-ten__creator><%= book.creator %></small>
+</h4>
 
-</div>
-<div>
-<p>Top Albums</p>
-<table>
-<tbody>
-<% @top_ten_albums.each do |album| %>
-<tr>
-<td>
-<%= link_to album.title, work_path(album)%> by <%= album.creator %>
-</td>
-</tr>
+</li>
 <% end %>
-</tbody>
-</table>
-</div>
+
+<section class="top-ten__list-container">
+<h2 class="top-ten__header">
+Top Movies
+</h2>
+<ul clas="list-group top-ten__list">
+<li class="list-group-item">
+<% @top_ten_albums.each do |album| %>
+<h4>
+<%= link_to album.title, work_path(album)%> 
+by <small class="top-ten__creator><%= album.creator %></small>
+</h4>
+
+</li>
+<% end %>

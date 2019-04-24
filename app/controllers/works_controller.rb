@@ -10,11 +10,15 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-
     successful = @work.save
+
     if successful
+      flash[:status] = :success
+      flash[:message] = "successfully saved a work with title #{@work.title}"
       redirect_to works_path
     else
+      flash.now[:status] = :error
+      flash.now[:message] = "Could not save work"
       render :new, status: :bad_request
     end
   end
@@ -47,9 +51,13 @@ class WorksController < ApplicationController
       return
     end
 
-    if @work.update(work_params)
+    if @workk.update(work_params)
+      flash[:status] = :success
+      flash[:message] = "Successfully updated work #{@book.title}"
       redirect_to work_path(@work)
     else
+      flash.now[:status] = :error
+      flash.now[:message] = "Could not save work #{@work.title}"
       render :edit, status: :bad_request
     end
   end

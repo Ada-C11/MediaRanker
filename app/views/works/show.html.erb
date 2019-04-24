@@ -1,16 +1,12 @@
-
-
-<h2>
- <%= @work.title %>
-</h2>
-</p>
+<main>
+<section>
+<h2><%= @work.title %></h2>
 <p>
   Created By: <%= @work.creator %> 
 </p>
 <p>
 Published: <%= @work.publication_date %>
 </p>
-
 <p>
 <%= @work.description %>
 </p>
@@ -20,9 +16,30 @@ Published: <%= @work.publication_date %>
   Votes for this <% @work.category %>
   </p>
 <p>
-<%= link_to "Back to media ranker", root_path, class: "btn btn-success" %>
-<%= link_to "Edit" %>
-<%= link_to "Upvote", class: "btn btn-success" %>
-<%= link_to "Delete", class: "btn btn-success" %>
+<%= link_to "Back to media ranker", root_path, class: "btn btn-primary" %>
+<%= link_to "Edit", work_path(@work), class: "btn btn-primary" %>
+<%= link_to "Upvote", root_path, class: "btn btn-primary" %>
+<%= link_to "Delete", work_path(@work), method: :delete,data:{confirm: "Are you sure you want to delete that passenger?"}, class: "btn btn-primary" %>
 </p>
 </section>
+</section>
+<section class="works-votes__container">
+<h3 class="works-votes__header">10 Votes for this <%= @work.category %></h3>
+<table class="table">
+<thead>
+<tr>
+<th>User</th>
+<th>Date<th>
+</tr>
+</head>
+<tbody>
+<tr>
+<td>
+a user
+</td>
+<td>Apr 24, 2019</td>
+</tr>
+</tbody>
+</table>
+</section>
+</main>
