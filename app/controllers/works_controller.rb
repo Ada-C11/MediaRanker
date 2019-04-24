@@ -63,15 +63,15 @@ class WorksController < ApplicationController
 
   def upvote
     if @current_user.nil?
-      flash[:warning] = "A problem occurred: You must log in to vote"
+      flash[:warning] = "Please log in so your vote can be counted."
       redirect_to login_path
     else
       if @current_user.has_voted?(@work.id)
-        flash[:warning] = "A problem occured: Could not upvote. User has already voted for this work"
+        flash[:warning] = "Sorry, you can't vote twice on the same work."
         redirect_back fallback_location: works_path
       else
         Vote.create(user_id: @current_user.id, work_id: @work.id)
-        flash[:success] = "Successfully upvoted!"
+        flash[:success] = "Your vote has been counted!"
         redirect_back fallback_location: works_path
       end
     end
