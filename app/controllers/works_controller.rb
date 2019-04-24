@@ -1,12 +1,11 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def index
     @works = Work.all
   end
 
   def show
-    work_id = params[:id].to_i
-    @work = Work.find_by(id: work_id)
-
     if @work.nil?
       flash[:error] = "That work does not exist"
       redirect_to works_path
@@ -32,9 +31,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    work_id = params[:id].to_i
-    @work = Work.find_by(id: work_id)
-
     if @work.nil?
       flash[:error] = "That work does not exist"
       redirect_to works_path
@@ -42,8 +38,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
-
     if @work.update(work_params)
       flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
@@ -56,19 +50,21 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    work_to_destroy = Work.find_by(id: params[:id])
-
-    if work_to_destroy.nil?
+    if @work.nil?
       flash[:error] = "That work does not exist"
       redirect_to works_path
     else
-      work_to_destroy.destroy
-      flash[:success] = "Successfully destroyed #{work_to_destroy.category} #{work_to_destroy.id}"
+      @work.destroy
+      flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
       redirect_to root_path
     end
   end
 
   private
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
+  end
 
   def work_params
     return params.require(:work).permit(:title, :description, :creator, :category, :publication_year)
