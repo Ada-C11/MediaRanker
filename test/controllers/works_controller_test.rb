@@ -110,8 +110,8 @@ describe WorksController do
       expect(work.creator).must_equal "Pfeiffer"
     end
 
-    it "cannot update an invalid work" do
-      invalid_work = works(:album)
+    it "cannot update book without valid fields" do
+      work = works(:album)
 
       update_hash = {
         work: {
@@ -123,10 +123,9 @@ describe WorksController do
         },
       }
 
-      patch work_path(invalid_work.id, params: update_hash)
-      invalid_work.reload
+      patch work_path(work.id, params: update_hash)
 
-      expect(invalid_work.errors.messages[:category]).must_equal "can't be blank"
+      expect(work.category).must_equal "album"
     end
   end
 
