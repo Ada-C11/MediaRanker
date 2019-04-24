@@ -131,24 +131,23 @@ describe WorksController do
   end
 
   describe "destroy" do
-    # it "returns a 404 if the work is not found" do
-    #   invalid_id = "NOT A VALID ID"
-    # end
+    it "returns a 404 if the work is not valid" do
+      invalid_work_id = -1
 
-    # it "can delete a work" do
-    #   # Arrange - Create a work
-    #   new_work = Work.create(title: "The Martian", author_id: Author.create(name: "Someone").id)
+      get work_path(invalid_work_id)
+      must_respond_with :redirect
+      expect(flash[:error]).must_equal "Unknown work"
+    end
 
-    #   expect {
+    it "can delete a work" do
+      new_work = works(:one)
 
-    #     # Act
-    #     delete work_path(new_work.id)
+      expect {
+        delete work_path(new_work.id)
+      }.must_change "Work.count", -1
 
-    #     # Assert
-    #   }.must_change "Work.count", -1
-
-    #   must_respond_with :redirect
-    #   must_redirect_to works_path
-    # end
+      must_respond_with :redirect
+      must_redirect_to works_path
+    end
   end
 end

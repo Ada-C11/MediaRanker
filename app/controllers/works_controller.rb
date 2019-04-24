@@ -63,7 +63,7 @@ class WorksController < ApplicationController
     work = Work.find_by(id: params[:id])
 
     if work.nil?
-      flash[:error] = "That work does not exist"
+      flash[:error] = "Unknown work"
       redirect_to works_path
     else
       work.destroy
