@@ -8,12 +8,16 @@
   border-radius: 0;
 }
 
+
 body {
   display: grid;
-  margin: 2rem;
   grid-template-areas: 
   "header",
   "main"
+}
+
+main {
+  margin: 3rem;
 }
 
 ul {
@@ -22,6 +26,26 @@ ul {
 
 li {
   list-style-type: none;
+}
+
+header.page-header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: baseline;
+  padding: 4rem;
+  background-color: #20c997;
+}
+
+header.page-header h1 {
+  color: white;
+  border-right: 1px solid white;
+  padding-right: 1rem;
+  margin-right: 1rem;
+}
+
+header.page-header a {
+  color: white;
 }
 
 div.top-media-container {

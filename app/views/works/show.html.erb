@@ -1,2 +1,10 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+<header class="details-page">
+  <h1><%= @work.title %></h1>
+  Created by: <%= @work.author %><br>
+  Published: <%= @work.publication_year %><br>
+  
+  <%= link_to "Back to media ranks", root_path, class: "btn btn-primary btn-sm" %>
+ 
+</header>
+
+
