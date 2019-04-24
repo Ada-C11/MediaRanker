@@ -79,4 +79,9 @@ class WorksController < ApplicationController
   def work_params
     return params.require(:work).permit(:title, :creator, :description, :publication_year, :category)
   end
+
+  # optional
+  # def set_flash_status(message, status)
+  #   flash[status] = message
+  # end
 end
