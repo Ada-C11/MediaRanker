@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  category: MyString
-  description: MyString
-  publication_year: 1
-  creator: MyString
+  category: album
+  description: Sweet slow jams
+  publication_year: 1972
+  creator: Bonnie Raitt
+  title: Sweet Forgiveness
 
 two:
-  category: MyString
-  description: MyString
-  publication_year: 1
-  creator: MyString
+  category: movie
+  description: Incredible
+  publication_year: 2019
+  creator: Beyonce
+  title: Homecoming
