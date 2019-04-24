@@ -6,25 +6,10 @@ describe HomepagesController do
   end
   describe "index" do
     it "renders without crashing" do
+      get works_path
 
-    end
-
-    it "It can randomly determine a spotlight" do
-
+      must_respond_with :ok
     end
   end
 
-  describe "top ten" do
-    it "it samples 10 albums" do
-
-    end
-
-    it "it samples 10 books" do
-
-    end
-
-    it "it samples 10 movies" do
-
-    end
-  end
 end
