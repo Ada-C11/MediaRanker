@@ -9,6 +9,36 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header class="app-header_header">
+    <h1>
+      <a href="/">Media Ranker</a>
+      <small>Ranking the best of everything</small>
+    </h1>
+    <nav class="app-header_nav">
+      <ul class="nav app-header_site-nav-container">
+        <li class="nav-item app-header_nav_item">
+          <a class="nav-link" href="/">View top media</a>
+        </li>
+        <li class="nav-item app-header_nav_item">
+          <a class="nav-link" href="/works">View all media</a>
+        </li>
+        <li class="nav-item app-header_nav_item">
+          <a class="nav-link" href="/works/new">Add a new work</a>
+        </li>
+        <li class="nav-item app-header_nav_item">
+          <a class="nav-link" href="/users">View all users</a>
+        </li>
+      </ul>
+      <ul class="nav app-header_user-nav-container">
+
+        <li class="nav-item app-header_nav_item">
+          <a class="btn btn-primary" href="/login">Log In</a>
+        </li>
+
+      </ul>
+    </nav>
+  </header>
+
   <body>
     <%= yield %>
   </body>
