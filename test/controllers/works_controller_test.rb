@@ -178,7 +178,8 @@ describe WorksController do
       # Act-Assert
       expect { delete work_path(invalid_id) }.wont_change "Work.count"
 
-      must_respond_with :not_found
+      must_respond_with :redirect
+      must_redirect_to works_path
     end
 
     it "can delete a work" do
