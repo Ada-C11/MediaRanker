@@ -1,0 +1,5 @@
+<%spotlight = Work.all.sample %>
+<h1>
+  Media Spotlight:
+  <%= link_to spotlight.title, work_path(spotlight.id) %>, by <%= spotlight.author %>
+</h1>

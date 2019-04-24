@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root "home#index"
+  resources :home, only: :index
   # get 'works/index'
   # get 'works/show'
   # get 'works/new'
