@@ -1,4 +1,14 @@
-<h1> ONLY HOMEPAGE MEDIA RANKER</h1>
+<section class="spotlight">
+  <h2 class="spotlight__header">
+  <span class="spotlight__header--prefix">
+    Media Spotlight
+  </span>
+  <% random_work = Work.all.sample%>
+  <%= link_to random_work.title, work_path(random_work)%>
+  </h2>
+  </section>
+
+</section>
 
 <h2> Top Movies </h2>
 <% top_movies = Work.movies.sample(10) %>
@@ -8,7 +18,7 @@
   <% top_movies.each do |movie|%>
     <li>
       <h4>
-        <%= link_to movie.title, works_path(movie) %>, 
+        <%= link_to movie.title, work_path(movie) %>, 
         <small> created by <%= movie.creator%></small>
       </h4>
       <p> Votes </p>
@@ -23,7 +33,7 @@
   <% top_albums.each do |media|%>
     <li>
       <h4>
-        <%= link_to media.title, works_path(media) %>, 
+        <%= link_to media.title, work_path(media) %>, 
        <small> created by  <%= media.creator%></small>
       </h4>
       <p> Votes </p>
@@ -38,7 +48,7 @@
   <% top_books.each do |media|%>
     <li>
       <h4>
-        <%= link_to media.title, works_path(media) %>, 
+        <%= link_to media.title, work_path(media) %>, 
         <small> created by <%= media.creator%></small>
       </h4>
       <p> Votes </p>

@@ -1,3 +1,12 @@
 // Place all the styles related to the Homepages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// spotlight styling
+.spotlight__header--prefix {
+  color: #424242;
+}
+
+.spotlight__header--prefix::after {
+  content: ":";
+}

@@ -19,7 +19,7 @@
         <a class ="nav-link" href ="/" alt="View top media"> View top media </a>
       </li>
        <li class="nav-item app-header__nav_item"> 
-        <a class ="nav-link" href ="/" alt="View all media"> View all media </a>
+        <%= link_to "View all media", works_path, class: "nav-link" %>
       </li>
        <li class="nav-item app-header__nav_item"> 
         <a class ="nav-link" href ="/" alt="Add new media"> Add a new work </a>
@@ -30,10 +30,10 @@
     </ul>
     <ul class="nav app-header__user-nav-container">
        <li class="nav-item app-header__nav_item"> 
-        <a class="btn btn-primary" href ="/" alt="Log In"> Login</a>
+        <%= link_to "Login", root_path, class: "btn btn-primary", alt: "Log In" %>
       </li>
        <li class="nav-item app-header__nav_item"> 
-        <a class="btn btn-primary" href ="/" alt="Log Out"> Log Out </a>
+       <%= linkt_to "Log Out", root_path, class: "btn btn-primary", alt: "Log Out" %>
       </li>
     </ul>
   </nav>

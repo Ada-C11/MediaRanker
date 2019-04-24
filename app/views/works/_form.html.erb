@@ -1,7 +1,7 @@
 <%= form_with model: @work, class: 'create-work' do |f| %>
   <div class="form-group">
     <%= f.label :category %>
-    <%= f.select :category, options_for_select([['movie', "movie"], ['book', "book"], ["album", "album"]]) %>
+    <%= f.select :category,  options_for_select([['movie', "movie"], ['book', "book"], ["album", "album"]]), {},  { class: "form-control" } %>
   </div>
 
   <div class="form-group">
