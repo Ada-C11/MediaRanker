@@ -23,6 +23,32 @@ describe WorksController do
       must_respond_with :redirect
     end
   end
+  describe "create" do
+    it "creates a new work" do
+      work_data = {
+        work: {
+          title: "new title",
+          category: "album",
+          creator: "new creator",
+          publication_year: 1989,
+          description: "new description",
+        },
+      }
+
+      expect {
+        post works_path, params: work_data
+      }.must_change "Work.count", +1
+
+      must_respond_with :redirect
+      must_redirect_to works_path
+
+      check_flash
+
+      work = Work.last
+      expect(work.title).must_equal work_data[:work][:title]
+      expect(work.publication_year).must_equal work_data[:work][:publication_year]
+    end
+  end
 
   describe "edit" do
     it "can get the edit page for an existing work" do
@@ -46,50 +72,44 @@ describe WorksController do
       }
     }
     it "changes the data on the model" do
-      work = works[:custom1]
-      @book.assign_attributes(book_data[:book])
-      expect(@book).must_be :valid?
-      @book.reload
+      work = Work.first
+      # work.assign_attributes(work_data[:work])
+      # expect(work).must_be :valid?
+      # work.reload
 
-      # Act
-      patch book_path(@book), params: book_data
+      patch work_path(work), params: work_data
 
-      # Assert
       must_respond_with :redirect
-      must_redirect_to book_path(@book)
+      must_redirect_to work_path(work)
 
       check_flash
 
-      @book.reload
-      expect(@book.title).must_equal(book_data[:book][:title])
+      work.reload
+      expect(work.publication_year).must_equal(work_data[:work][:publication_year])
     end
 
     it "responds with NOT FOUND for a fake book" do
-      book_id = Book.last.id + 1
-      patch book_path(book_id), params: book_data
+      patch work_path(-1), params: work_data
       must_respond_with :not_found
     end
 
     it "responds with BAD REQUEST for bad data" do
-      # Arrange
-      book_data[:book][:title] = ""
+      skip
+      work = Work.first
+      work_data[:work][:publication_year] = ""
 
-      # Assumptions
-      @book.assign_attributes(book_data[:book])
-      expect(@book).wont_be :valid?
-      @book.reload
+      work.assign_attributes(work_data[:work])
+      expect(work).wont_be :valid?
+      work.reload
 
-      # Act
-      patch book_path(@book), params: book_data
+      patch work_path(work), params: work_data
 
-      # Assert
       must_respond_with :bad_request
 
       check_flash(:error)
     end
   end
 
-  
   describe "destroy" do
     it "removes the work from the database" do
       work_to_delete = Work.first
@@ -106,8 +126,6 @@ describe WorksController do
       expect(after_delete_work).must_be_nil
     end
   end
-
-
 end
 
 #validate things? use fixtures or let?

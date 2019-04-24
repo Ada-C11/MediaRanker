@@ -11,8 +11,12 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
     successful = @work.save
     if successful
+      flash[:status] = :success
+      flash[:message] = "Successfully created media #{@work.id}"
       redirect_to works_path
     else
+      flash[:status] = :error
+      flash[:message] = "Could not find media with that id: #{params[:id]}"
       render :new
     end
   end
@@ -21,8 +25,8 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     unless @work
-      flash[:status] = :error
-      flash[:message] = "Could not find media with that id: #{params[:id]}"
+      flash.now[:status] = :error
+      flash.now[:message] = "Could not find media with that id: #{params[:id]}"
       redirect_to works_path
       return
     end
