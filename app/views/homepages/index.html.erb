@@ -26,7 +26,7 @@
 
     <section class="albums">
     <h2>Albums</h2>
-        <% albums = @works.where(category: "album") %>
+        <% albums = @works.where(category: "album").sample(10) %>
         <ul>
             <% albums.each do |work|%>
                 <li>
@@ -46,7 +46,7 @@
 
     <section class="books">
     <h2>Books</h2>
-        <% books = @works.where(category: "book") %>
+        <% books = @works.where(category: "book").sample(10) %>
         <ul>
             <% books.each do |work|%>
                 <li>
@@ -66,7 +66,7 @@
 
     <section class="movies">
     <h2>Movies</h2>
-        <% movies = @works.where(category: "movie") %>
+        <% movies = @works.where(category: "movie").sample(10) %>
         <ul>
             <% movies.each do |work|%>
                 <li>
