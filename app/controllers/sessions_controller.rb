@@ -13,7 +13,6 @@ class SessionsController < ApplicationController
         @user.errors.messages.each do |field, messages|
           flash.now[field] = messages
         end
-
         render :new
       end
     else
