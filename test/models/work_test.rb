@@ -25,19 +25,17 @@ describe Work do
   end
 
   describe "relationships" do
-    # let(:vote) { votes(:vote_one) }
-    # let(:vote_2) { votes(:vote_two) }
-    # let(:work) { works(:one) }
+    let(:vote) { votes(:vote_one) }
+    let(:vote_2) { votes(:vote_two) }
+    let(:work) { works(:one) }
+    let(:work2) { works(:two) }
 
-    # it "can have 0 votes" do
-    #   votes = work.votes
-    #   expect(votes.count).must_equal 0
-    # end
+    it "can have 0 votes" do
+      expect(work2.votes.count).must_equal 0
+    end
 
-    # it "can have many votes" do
-    #   new_vote1 = vote
-    #   new_vote2 = vote_2
-    #   expect(work.votes.length).must_equal 2
-    # end
+    it "can have many votes" do
+      expect(work.votes.length).must_equal 2
+    end
   end
 end

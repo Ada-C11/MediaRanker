@@ -5,9 +5,9 @@
 # below each fixture, per the syntax in the comments below
 #
 vote_one:
-  work_id: one.id
-  user_id: user1.id
+  work: one
+  user: user1
 
 vote_two: 
-  work_id: one.id
-  user_id: user2.id
+  work: one
+  user: user2
