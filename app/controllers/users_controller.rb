@@ -25,11 +25,11 @@ class UsersController < ApplicationController
       flash[:status] = :error
       flash[:message] = "You must be logged in to see this page."
     end
-    # redirect_to root_path
+    redirect_to root_path
   end
 
   def logout
     session[:user_id] = nil
-    redirect_to works_path
+    redirect_to root_path
   end
 end

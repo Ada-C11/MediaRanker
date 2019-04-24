@@ -2,6 +2,8 @@
 <p>Created by: <%=@work.creator%>
 <p>Published: <%= @work.publication_year %></p>
 <p><%=@work.description%>
+<section>
 <a><%= link_to 'Back to media ranks', works_path, class: "btn btn-primary"%></a>
 <a><%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary" %></a>
-<a><%= link_to "Delete", work_path(@work.id), class:"btn btn-primary", method: :delete, confirm: "Are you sure?" %></a>
+<a><%= link_to "Delete", work_path(@work.id), class:"btn btn-danger", method: :delete, confirm: "Are you sure?" %></a>
+</section>

@@ -38,6 +38,7 @@
     margin-block-end: 0.67em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+    text-align: center;
 }
 
 .overall-header h1 a {
@@ -51,8 +52,11 @@
     color: white;
     border-right: none;
 }
+
 nav {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .overall-header .nav-link {
@@ -72,8 +76,12 @@ ul {
     // margin-inline-start: 0px;
     // margin-inline-end: 0px;
 }
+.btn-primary {
+    background-color: #26A69A;
+    border-color:  #26A69A; 
+}
 
-.btn {
+.btn:hover {
     background-color: #26A69A;
     border-color:  #26A69A;
 }

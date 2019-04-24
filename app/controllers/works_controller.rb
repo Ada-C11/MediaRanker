@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+
+    before_action :find_work, only: [:show, :edit, :update]
   def index
     @works = Work.all
   end
@@ -21,34 +23,34 @@ class WorksController < ApplicationController
     end
   end
 
-  def show
-    @work = Work.find_by(id: params[:id])
+#   def show
+    # @work = Work.find_by(id: params[:id])
 
-    unless @work
-      flash.now[:status] = :error
-      flash.now[:message] = "Could not find media with that id: #{params[:id]}"
-      redirect_to works_path
-      return
-    end
+    # unless @work
+    #   flash.now[:status] = :error
+    #   flash.now[:message] = "Could not find media with that id: #{params[:id]}"
+    #   redirect_to works_path
+    #   return
+    # end
 
     # @unrated_trip = @passenger.trips.find_by(rating: nil)
     # @trip = Trip.new
     # @trips = @passenger.trips
-  end
+#   end
 
-  def edit
-    @work = Work.find_by(id: params[:id])
-    unless @work
-      redirect_to works_path, flash: { error: "Could not find media with id: #{params[:id]}" }
-    end
-  end
+#   def edit
+    # @work = Work.find_by(id: params[:id])
+    # unless @work
+    #   redirect_to works_path, flash: { error: "Could not find media with id: #{params[:id]}" }
+    # end
+#   end
 
   def update
-    @work = Work.find_by(id: params[:id])
-    unless @work
-      head :not_found
-      return
-    end
+    # @work = Work.find_by(id: params[:id])
+    # unless @work
+    #   head :not_found
+    #   return
+    # end
     if @work.update(work_params)
       flash[:status] = :success
       flash[:message] = "Successfully updated media #{@work.id}"
@@ -77,5 +79,15 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
+    unless @work
+        flash.now[:status] = :error
+        flash.now[:message] = "Could not find media with that id: #{params[:id]}"
+        redirect_to works_path
+        return
+      end  
   end
 end
