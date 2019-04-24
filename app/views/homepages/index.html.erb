@@ -1,0 +1,31 @@
+<section class = "spotlight">
+<h2><span class = "spotlight-header">Media Spotlight</span>
+<% spotlight = Homepage.spotlight%>
+<%=link_to "#{spotlight.title}", work_path(spotlight), class: "spotlight-link-to"%> by <%="#{spotlight.creator}"%> 
+</h2>
+<p>10 votes: etc</p>
+</section>
+<hr>
+<section class = "top-ten-container">
+<section class = "top-ten-lists">
+<h2 class="top-ten-header">
+Top Movies</h2>
+<ul class="list-group">
+<li class="list-group-item"></li>
+</ul>
+</section>
+<section class = "top-ten-lists">
+<h2 class="top-ten-header">
+Top Books</h2>
+<ul class="list-group">
+<li class="list-group-item"></li>
+</ul>
+</section>
+<section class = "top-ten-lists">
+<h2 class="top-ten-header">
+Top Albums</h2>
+<ul class="list-group">
+<li class="list-group-item"></li>
+</ul>
+</section>
+</section>
