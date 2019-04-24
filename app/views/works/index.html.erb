@@ -1,4 +1,23 @@
 
+<section>
 
+    
+</section>
+
+
+
+<section>
+    <h2>Top Books</h2>
+    <ul>
+        <% @works.each do |work|%>
+            <% category = work.category.downcase %>
+            <% if  category == "book"%>
+                <li>
+                    <%= link_to work.title, work_path(work.id) %>
+                <li>
+            <% end %>
+        <% end %>
+    <ul>
+</section>
 
 
