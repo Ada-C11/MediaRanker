@@ -5,6 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
+  category: Movie
   title: Star Wars
-  creator: lucasfilms
+  creator: Lucasfilms
   description: Jedi! Sith! The Force! Oh My!
