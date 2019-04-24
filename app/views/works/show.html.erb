@@ -1,8 +1,11 @@
 <header class="details-page">
   <h2><%= @work.title %></h2>
-  Created by: <%= @work.author %><br>
-  Published: <%= @work.publication_year %><br>
-  <%= @work.description %><br>
+    <section class="details">
+      Created by: <%= @work.author %><br>
+      Published: <%= @work.publication_year %><br>
+      <%= @work.description %><br>
+    </section>
+</header>
   
   <section class="actions">
     <%= link_to "Back to media ranks", root_path, class: "btn btn-primary btn-lg" %>
