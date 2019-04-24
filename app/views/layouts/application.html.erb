@@ -10,6 +10,34 @@
   </head>
 
   <body>
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-warning">
+      <!-- Brand link or heading -->
+      <a class="navbar-brand" href="#">Media Ranker</a>
+      <small> Ranking the Best of Everything </small>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          
+          <!-- items on navigation -->
+          <li class="nav-item">
+            <a class="nav-link" href="#">View Top Media</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">View All Media</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Add A New Network</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">View All Users</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
