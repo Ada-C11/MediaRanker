@@ -7,31 +7,33 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('owl.jpg') %>
   </head>
 
-  <header class="app-header_header">
+  <header class="app-header__header">
     <h1>
       <a href="/">Media Ranker</a>
-      <small>Ranking the best of everything</small>
+      <small>Ranking the Best of Everything</small>
     </h1>
-    <nav class="app-header_nav">
-      <ul class="nav app-header_site-nav-container">
-        <li class="nav-item app-header_nav_item">
+
+    <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
           <a class="nav-link" href="/">View top media</a>
         </li>
-        <li class="nav-item app-header_nav_item">
+        <li class="nav-item app-header__nav_item">
           <a class="nav-link" href="/works">View all media</a>
         </li>
-        <li class="nav-item app-header_nav_item">
+        <li class="nav-item app-header__nav_item">
           <a class="nav-link" href="/works/new">Add a new work</a>
         </li>
-        <li class="nav-item app-header_nav_item">
+        <li class="nav-item app-header__nav_item">
           <a class="nav-link" href="/users">View all users</a>
         </li>
       </ul>
-      <ul class="nav app-header_user-nav-container">
+      <ul class="nav app-header__user-nav-container">
 
-        <li class="nav-item app-header_nav_item">
+        <li class="nav-item app-header__nav_item">
           <a class="btn btn-primary" href="/login">Log In</a>
         </li>
 
