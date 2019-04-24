@@ -11,6 +11,14 @@
 
   <body>
     <header>
+      <section class="login">
+        <% current_user = User.find_by(id: session[:user_id])%>
+        <% if current_user.nil? %>
+          <%= link_to "login now", login_path %> 
+        <% else %> 
+          <%= link_to "logout now", logout_path, method: :post %> 
+        <% end %>
+      </section>
       <section class="flash">
         <% flash.each do |name, message| %>
           <div class="<%= name %>"><%= message %></div>
