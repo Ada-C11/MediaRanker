@@ -1,0 +1,9 @@
+<%= form_with model: @user, url: login_path do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <% if logged_in? %> 
+  <%= f.submit "Log out", logout_path, method: :post %>
+  <% else %>
+  <%= f.submit "Log In", login_path, method: :post %>
+  <% end %>
+<% end %>

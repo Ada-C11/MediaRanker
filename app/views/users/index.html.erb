@@ -1,0 +1,26 @@
+<h2>List of Users</h2>
+<table class="table" >
+<thead>
+<th>Username</th>
+<th>Votes</th>
+<th>Joined</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<% @users.each do |user| %>
+<td>
+<%= link_to user.name, user_path(user) %>
+</td>
+<td>
+<%= user.votes %>
+</td>
+<td>
+<%= user.joined_date %>
+</td>
+</tr>
+</tbody>
+</table>
+<% end %>
+<% link_to "Back to Media list", root_path, class:"btn btn-secondary" %>
+
