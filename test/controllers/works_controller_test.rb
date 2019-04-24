@@ -76,109 +76,79 @@ describe WorksController do
     end
   end
 
-  # describe "update" do
-  #   # nominal: it should update a book and redirect to the book show page
-  #   it "will update an existing book" do
-  #     # Arrange
-  #     starter_input = {
-  #       title: "Becoming",
-  #       author_id: Author.create(name: "Michelle Obama").id,
-  #       description: "A book by the 1st lady",
-  #     }
+  describe "update" do
+    it "will update an existing work" do
+      work = works(:two)
 
-  #     book_to_update = Book.create(starter_input)
+      input_title = "Home Coming"
+      input_creator = "Yonce"
+      input_description = "Amazing"
+      test_input = {
+        "work": {
+          title: input_title,
+          creator: input_creator,
+          description: input_description,
+          category: work.category,
+          publication_year: work.publication_year,
+        },
+      }
 
-  #     input_title = "101 Bottles of OOP" # Valid Title
-  #     input_author = "Sandi Metz"
-  #     input_description = "A look at how to design object-oriented systems"
-  #     test_input = {
-  #       "book": {
-  #         title: input_title,
-  #         author_id: Author.create(name: input_author).id,
-  #         description: input_description,
-  #       },
-  #     }
+      expect {
+        patch work_path(work.id), params: test_input
+      }.wont_change "Work.count"
 
-  #     # Act
-  #     expect {
-  #       patch book_path(book_to_update.id), params: test_input
-  #     }.wont_change "Book.count"
-  #     # .must_change "Book.count", 0
+      must_respond_with :redirect
+      work.reload
+      expect(work.title).must_equal test_input[:work][:title]
+      expect(work.creator).must_equal test_input[:work][:creator]
+      expect(work.description).must_equal test_input[:work][:description]
+    end
 
-  #     # Assert
-  #     must_respond_with :redirect
-  #     book_to_update.reload
-  #     expect(book_to_update.title).must_equal test_input[:book][:title]
-  #     expect(book_to_update.author.name).must_equal Author.find(test_input[:book][:author_id]).name
-  #     expect(book_to_update.description).must_equal test_input[:book][:description]
-  #   end
+    it "will return a bad_request (400) when asked to update work with invalid data" do
+      starter_input = works(:two)
+      work_to_update = works(:two)
 
-  #   it "will return a bad_request (400) when asked to update with invalid data" do
+      input_title = ""
+      test_input = {
+        "work": {
+          title: input_title,
+          creator: work_to_update.creator,
+          description: work_to_update.description,
+          category: work_to_update.category,
+          publication_year: work_to_update.publication_year,
+        },
+      }
 
-  #     # Arrange
-  #     starter_input = {
-  #       title: "Becoming",
-  #       author_id: Author.create(name: "Michelle Obama").id,
-  #       description: "A book by the 1st lady",
-  #     }
+      expect {
+        patch work_path(work_to_update.id), params: test_input
+      }.wont_change "Work.count"
+      must_respond_with :bad_request
+      work_to_update.reload
+      expect(work_to_update.title).must_equal starter_input.title
+      expect(work_to_update.creator).must_equal starter_input.creator
+      expect(work_to_update.description).must_equal starter_input.description
+    end
+  end
 
-  #     book_to_update = Book.create(starter_input)
+  describe "destroy" do
+    # it "returns a 404 if the work is not found" do
+    #   invalid_id = "NOT A VALID ID"
+    # end
 
-  #     input_title = "" # Invalid Title
-  #     input_author = "Sandi Metz"
-  #     input_description = "A look at how to design object-oriented systems"
-  #     test_input = {
-  #       "book": {
-  #         title: input_title,
-  #         author_id: Author.create(name: input_author).id,
-  #         description: input_description,
-  #       },
-  #     }
+    # it "can delete a work" do
+    #   # Arrange - Create a work
+    #   new_work = Work.create(title: "The Martian", author_id: Author.create(name: "Someone").id)
 
-  #     # Act
-  #     expect {
-  #       patch book_path(book_to_update.id), params: test_input
-  #     }.wont_change "Book.count"
-  #     # .must_change "Book.count", 0
+    #   expect {
 
-  #     # Assert
-  #     must_respond_with :bad_request
-  #     book_to_update.reload
-  #     expect(book_to_update.title).must_equal starter_input[:title]
-  #     expect(book_to_update.author.name).must_equal Author.find(starter_input[:author_id]).name
-  #     expect(book_to_update.description).must_equal starter_input[:description]
-  #   end
+    #     # Act
+    #     delete work_path(new_work.id)
 
-  #   # edge case: it should render a 404 if the book was not found
-  # end
+    #     # Assert
+    #   }.must_change "Work.count", -1
 
-  # describe "destroy" do
-  #   it "returns a 404 if the book is not found" do
-  #     invalid_id = "NOT A VALID ID"
-
-  #     # Act
-  #     # Try to do the Books#destroy action
-
-  #     # Assert
-  #     # Should respond with not found
-  #     # The count will change by 0, i.e. won't change
-
-  #   end
-
-  #   it "can delete a book" do
-  #     # Arrange - Create a book
-  #     new_book = Book.create(title: "The Martian", author_id: Author.create(name: "Someone").id)
-
-  #     expect {
-
-  #       # Act
-  #       delete book_path(new_book.id)
-
-  #       # Assert
-  #     }.must_change "Book.count", -1
-
-  #     must_respond_with :redirect
-  #     must_redirect_to books_path
-  #   end
-  # end
+    #   must_respond_with :redirect
+    #   must_redirect_to works_path
+    # end
+  end
 end
