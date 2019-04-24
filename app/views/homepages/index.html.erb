@@ -3,7 +3,7 @@
 
 <h2>Top Movies</h2>
 <ul class="list-group top-ten__list">
-<% Work.where(category:"movie").sample(10).each do |a| %>
+<% Work.top_ten("movie").each.each do |a| %>
     <li class="list-group-item">
     <h4>
     <%= work_path(a)%> <%=a.title%>
@@ -16,7 +16,7 @@
 
 <h2>Top Books</h2>
 <ul class="list-group top-ten__list">
-<% Work.where(category:"book").sample(10).each do |a| %>
+<% Work.top_ten("book").each do |a| %>
     <li class="list-group-item">
     <h4>
     <a href= <%= work_path(a)%>><%=a.title%></a>
@@ -29,7 +29,7 @@
 
 <h2>Top Albums</h2>
 <ul class="list-group top-ten__list">
-<% Work.where(category:"album").sample(10).each do |a| %>
+<% Work.top_ten("album").each.each do |a| %>
     <li class="list-group-item">
     <h4>
     <a href= <%= work_path(a)%>><%=a.title%></a>
