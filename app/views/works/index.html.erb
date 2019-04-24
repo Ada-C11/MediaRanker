@@ -1,78 +1,92 @@
 
-
-<table>
+<main>
+<h2>List of Works</h2>
+<section class="media-table">
+<h4>Albums</h4>
+<table class="table">
+<thead>
+<tr>
+<th>Votes</th>
+<th>Title</th>
+<th>Published</th>
+<th>Upvote</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td>Title</td>
-<td>Created By</td>
-<td>Published</td>
-<td>Upvote</td>
-</tr>
-<td>
-<p>Albums</p>
-</td>
-  <% @works.select { |work| work.category.downcase == "album" }.each do |work| %>
-  <%# if work.category.downcase == "album" %>
-    <tr>
-    <td>
-      <strong>
-        <%= link_to work.title, work_path(work) %>
-      </strong>
-      </td>
-      <td>
-        <%= work.creator %>
-      </td>
-      <td>
-      <%= work.publication_date %>
-      </td>
-      <td>
-      <%= link_to "Upvote", class: "btn btn-success" %>
-      </td>
-      </tr>
-    <%# end %>
-    <% end %>
-    </tr>
-    <p>Books</p>
-  <% @works.each do |work| %>
-  <% if work.category.downcase == "book" %>
-    <tr>
-    <td>
-      <strong>
-        <%= link_to work.title, work_path(work) %>
-      </strong>
-      </td>
-      <td>
-        <%= work.creator %>
-      </td>
-      <td>
-      <%= work.publication_date %>
-      </td>
-      <td>
-      <%= link_to "Vote" %>
-      </td>
-      </tr>
-    <% end %>
-    <% end %>
-    </tr>
-    <p>Movies</p>
-  <% @works.each do |work| %>
-  <% if work.category.downcase == "movie" %>
-    <tr>
-    <td>
-      <strong>
-        <%= link_to work.title, work_path(work) %>
-      </strong>
-      </td>
-      <td>
-        <%= work.creator %>
-      </td>
-      <td>
-      <%= work.publication_date %>
-      </td>
-      <td>
-      <%= link_to "Upvote", class: "btn btn-success" %>
-      </td>
-      </tr>
-    <% end %>
+  <% @albums.each do |album| %>
+  <td>
+  <%= link_to album.title, work_path(album) %>
+  </td>
+  <td>
+  <%= album.creator %>
+  </td>
+  <td>
+  <%= album.publication_date %>
+  </td>
+  <td>
+  <%= link_to "Upvote", class: "btn btn-primary"%>
+  </td>
+  </tr>
   <% end %>
-</table>
+  </section>
+  <section class="media-table">
+  <h4>Movies</h4>
+  <table class="table">
+  <thead>
+  <tr>
+  <th>Votes</th>
+  <th>Title</th>
+  <th>Published</th>
+  <th>Upvote</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <% @movies.each do |movie| %>
+  <td>
+  <%= link_to movie.title, work_path(movie) %>
+  </td>
+  <td>
+  <%= movie.creator %>
+  </td>
+  <td>
+  <%= movie.publication_date %>
+  </td>
+  <td>
+  <%= link_to "Upvote", class: "btn btn-primary"%>
+  </td>
+  </tr>
+  <% end %>
+  </section>
+  <section class="media-table">
+  <h4>Books</h4>
+  <table class="table">
+  <thead>
+  <tr>
+  <th>Votes</th>
+  <th>Title</th>
+  <th>Published</th>
+  <th>Upvote</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <% @books.each do |book| %>
+  <td>
+  <%= link_to book.title, work_path(book) %>
+  </td>
+  <td>
+  <%= book.creator %>
+  </td>
+  <td>
+  <%= book.publication_date %>
+  </td>
+  <td>
+  <%= link_to "Upvote", class: "btn btn-primary"%>
+  </td>
+  </tr>
+  <% end %>
+  </section>
+ 
+  
