@@ -1,6 +1,7 @@
 <section class = "spotlight">
 <h2><span class = "spotlight-header">Media Spotlight</span>
 <% spotlight = Homepage.spotlight%>
+<%if spotlight%>
 <%=link_to "#{spotlight.title}", work_path(spotlight), class: "spotlight-link-to"%> by <%="#{spotlight.creator}"%> 
 </h2>
 <p>10 votes: etc</p>
@@ -28,4 +29,5 @@ Top Albums</h2>
 <li class="list-group-item"></li>
 </ul>
 </section>
+<%end%>
 </section>

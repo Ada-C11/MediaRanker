@@ -1,5 +1,6 @@
 <h2>List of Works</h2>
 <div class = "index-list">
+<% if @works != []%>
 <%Work.category(@works).each do |category|%>
 <h4><%=category.capitalize+"s"%></h4>
 <table class = "table">
@@ -27,6 +28,7 @@
 <% end %>
 </tbody>
 </table>
+<%end%>
 <%end%>
 
 
