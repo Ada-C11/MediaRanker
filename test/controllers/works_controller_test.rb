@@ -23,6 +23,14 @@ describe WorksController do
       must_respond_with :redirect
     end
   end
+
+  describe "new" do
+    it "retruns status code 200" do
+      get new_work_path
+      must_respond_with :ok
+    end
+  end
+
   describe "create" do
     it "creates a new work" do
       work_data = {
