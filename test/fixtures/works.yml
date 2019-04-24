@@ -1,15 +1,28 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+book1:
+  category: book
+  title: Nest Building
+  creator: Big Bird
+  publication_year: 2004
+  description: This book is amazing
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyText
+book2:
+  category: book
+  title: Recipes with Salt
+  creator: Bingo, the Farmer's Dog
+  publication_year: 2012
+  description: Srsly you gotta read this
 
- two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyText
+album1:
+  category: album
+  title: Zoo Noises
+  creator: Literally the Animals at the Zoo
+  publication_year: 1963
+  description: So much variety here
+
+album2:
+  category: album
+  title: Learn Spanish while You Sleep II
+  creator: Subliminal Language Courses
+  publication_year: 1966
+  description: Works best with headphones
