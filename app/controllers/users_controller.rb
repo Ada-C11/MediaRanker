@@ -64,9 +64,8 @@ class UsersController < ApplicationController
   end
   
   def logout
-    @user = User.find_by(id: params[:id])
     session[:user_id] = nil
-    flash[:success] = "Successfully logged out."
+    flash[:message] = "Successfully logged out."
     
     redirect_to root_path
   end

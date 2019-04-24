@@ -1,2 +1,29 @@
-<h1>Works#edit</h1>
-<p>Find me in app/views/works/edit.html.erb</p>
+<header class="page-header">
+  <h2>Edit</h2>
+</header>
+
+<section class="new-form">
+  <select class="custom-select">
+    <option value="album">Album</option>
+    <option value="book">Book</option>
+    <option value="movie">Movie</option>
+  </select>
+    
+  <%= form_for @work do |f| %> 
+    <div class="form-group">
+      <%= f.text_field :title, class: "form-control", placeholder: "Title" %>
+    </div>
+    <div class="form-group">      
+      <%= f.text_field :author, class: "form-control", placeholder: "Author" %>
+    </div>
+    <div class="form-group">      
+      <%= f.text_field :publication_year, class: "form-control", placeholder: "Year of publication" %>
+    </div> 
+    <div class="form-group">
+      <%= f.text_area :description, class: "form-control", placeholder: "Description" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Update", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</section>
