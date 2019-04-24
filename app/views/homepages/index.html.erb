@@ -6,25 +6,37 @@
 
 <h2>Top Movies</h2>
 <% top_movies = movies.sample(10)%>
-<% top_movies.each do |movie|%>
-    <li>
-        <%= movie.title%>
-        <%= movie.creator%> votes
-    </li>
+<% if top_movies.empty? %>
+    <p>There are no movies.</p>
+<% else %>
+    <% top_movies.each do |movie|%>
+        <li>
+            <%= movie.title%>
+            <%= movie.creator%> votes
+        </li>
+    <% end %>
 <% end %>
 <h2>Top Books</h2>
 <% top_books = books.sample(10)%>
-<% top_books.each do |book|%>
-    <li>
-        <%= book.title%>
-        <%= book.creator%> votes
-    </li>
+<% if top_books.empty? %>
+    <p>There are no books.</p>
+<% else %>
+    <% top_books.each do |book|%>
+        <li>
+            <%= book.title%>
+            <%= book.creator%> votes
+        </li>
+    <% end %>
 <% end %>
 <h2>Top Albums</h2> 
 <% top_albums = albums.sample(10)%>
-<% top_albums.each do |album|%>
-    <li>
-        <%= album.title%>
-        <%= album.creator%> votes
-    </li>
+<% if top_albums.empty? %>
+    <p>There are no albums.</p>
+<% else %>
+    <% top_albums.each do |album|%>
+        <li>
+            <%= album.title%>
+            <%= album.creator%> votes
+        </li>
+    <% end %>
 <% end %>
