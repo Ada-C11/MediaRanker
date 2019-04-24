@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class WorksController < ApplicationController
-  before_action :find_work, except: %i[index new create]
+  before_action :find_work, only: [:show, :edit, :update, :delete]
 
   def index
     @work = Work.ordered
@@ -19,9 +19,10 @@ class WorksController < ApplicationController
       render :new
     end
 
-  def show; end 
+    # show and edit are in the find_books helper 
+#   def show; end 
 
-  def show; end 
+#   def show; end 
 
   def update
     @work.update(work_params[:work])
