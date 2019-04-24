@@ -8,7 +8,6 @@
   border-radius: 0;
 }
 
-
 body {
   display: grid;
   grid-template-areas: 
@@ -28,24 +27,42 @@ li {
   list-style-type: none;
 }
 
-header.page-header {
+
+
+header.site-header {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: baseline;
   padding: 4rem;
-  background-color: #20c997;
+  background-color: #007bff;
 }
 
-header.page-header h1 {
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+.site-header h1 {
   color: white;
   border-right: 2px solid white;
   padding-right: 1.5rem;
   margin-right: 1.5rem;
 }
 
-header.page-header a {
+.site-header a {
   color: white;
+}
+
+.site-header a:visited {
+  color: white;
+}
+
+section.actions {
+  display: inline;
+}
+
+.btn {
+    margin: 1rem .25rem 1.5rem 0;
 }
 
 div.top-media-container {
@@ -64,6 +81,16 @@ h4.top-media-heading {
 }
 
 article.top-media-container {
-  padding: 1.5rem;
+  padding: 1rem;
   margin: 1rem;
+}
+
+.form-control {
+  display: block;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.custom-select {
+  margin-bottom: 1rem;
 }

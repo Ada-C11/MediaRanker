@@ -28,7 +28,7 @@ class WorksController < ApplicationController
     else
       flash[:success] = "#{@work.title} has been successfully added."
       
-      redirect_to works_path
+      redirect_to work_path(@work.id)
     end
   end
 

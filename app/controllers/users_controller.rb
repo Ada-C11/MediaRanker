@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       render :new
       flash[:error] = "Account can't be created at this time."
     else
-      flash[:success] = "Welcome to the Mediaranker community, #{@user.name}! Take a look around, and start contributing by adding new works and upvoting existing ones."
+      flash[:success] = "Welcome to the Media Ranker community, #{@user.name}! Take a look around, and start contributing by adding new works and upvoting existing ones."
       
       redirect_to root_path
     end
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     else
       @user = User.create!(name: username)
       session[:user_id] = @user.id
-      flash[:success] = "Welcome to the Mediaranker community, #{@user.name}!"
+      flash[:success] = "Welcome to the Media Ranker community, #{@user.name}!"
     end
     
     redirect_back(fallback_location: root_path)
