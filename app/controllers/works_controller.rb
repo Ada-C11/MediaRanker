@@ -22,7 +22,7 @@ class WorksController < ApplicationController
     # show and edit are in the find_books helper 
 #   def show; end 
 
-#   def show; end 
+#   def edit; end 
 
   def update
     @work.update(work_params[:work])
