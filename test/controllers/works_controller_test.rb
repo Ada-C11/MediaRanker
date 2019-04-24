@@ -71,14 +71,9 @@ describe WorksController do
       work_data = {
         work: {
           category: "",
-          title: "",
-          creator: "",
-          publication_year: "",
-          description: "",
-          votes: "",
         },
       }
-      expect(Work.create(work_data[:work])).wont_be :valid?
+      expect(Work.new(work_data[:work])).wont_be :valid?
 
       expect {
         post works_path, params: work_data
@@ -154,8 +149,6 @@ describe WorksController do
 
       must_respond_with :redirect
       must_redirect_to works_path
-
-      check_flash
 
       after_work = Work.find_by(id: @work.id)
       expect(after_work).must_be_nil
