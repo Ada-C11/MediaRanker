@@ -7,3 +7,39 @@
 * {
   border-radius: 0;
 }
+
+body {
+  display: grid;
+  margin: 2rem;
+  grid-template-areas: 
+  "header",
+  "main"
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+div.top-media-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 1rem;
+  // align-items: center;
+  justify-items: center;
+}
+
+h4.top-media-heading {
+  margin: 1rem 0;
+  padding-bottom: .5rem;
+  border-bottom: solid 1px;
+}
+
+article.top-media-container {
+  padding: 1.5rem;
+  margin: 1rem;
+}
