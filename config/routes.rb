@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   get 'users/show', to: 'users#show', as: 'user'
 
   root 'landing#index'
+  post 'works/:id/upvote', to: 'works#upvote', as: 'upvote'
 
   resources :works
-  get 'works/:id/upvote', to: 'works#upvote', as: 'upvote_work'
   resources :users, only: [:index, :show, :new]
 end

@@ -3,16 +3,16 @@ class Work < ApplicationRecord
 
   validates :title, presence: true
 
+  def vote_count
+    return self.votes.length
+  end
+
   def self.top_media
-    media_spotlight = Work.first
-    max_votes = Work.first.votes.length
-    Work.all.each do |work|
-      if work.votes.length > max_votes
-        max_votes = work.votes.length
-        media_spotlight = work
-      end
+    if Work.all == nil || Work.all == []
+      return nil
     end
-    return media_spotlight
+
+    return Work.all.max_by { |work| work.vote_count }
   end
 
   def self.category_list(category_type)
@@ -26,7 +26,4 @@ class Work < ApplicationRecord
     return works.first(10)
   end
 
-  def vote_count
-    return self.votes.length
-  end
 end
