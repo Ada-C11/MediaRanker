@@ -1,0 +1,31 @@
+<h3> List of works</h3>
+
+
+<ul>
+    <h4>Albums</h4>
+    <% @albums.each do |album| %>
+        <li>
+            <%= link_to album.title, work_path(album.id)%>
+        </li>
+    <% end %>
+
+   
+</ul>
+
+<ul>
+    <h4>Books</h4>
+     <% @books.each do |book|%>
+        <li>
+            <%= link_to book.title, work_path(book.id)%>
+        </li>
+    <% end %>
+</ul>
+
+<ul>
+    <h4>Movies</h4>   
+     <% @movies.each do |movie|%>
+        <li>
+            <%= link_to movie.title, work_path(movie.id)%>
+        </li>
+    <% end %>
+</ul>
