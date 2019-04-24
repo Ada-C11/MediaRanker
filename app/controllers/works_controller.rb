@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class WorksController < ApplicationController
+  before_action :find_work, only: %i[show edit destroy update]
+
   def index
     @works = Work.all.sort_by(&:id)
   end
@@ -25,28 +27,27 @@ class WorksController < ApplicationController
   end
 
   def show
-    work_id = params[:id]
+    # work_id = params[:id]
 
-    @work = Work.find_by(id: work_id)
+    # @work = Work.find_by(id: work_id)
 
-    head :not_found unless @work
+    # head :not_found unless @work
   end
 
   def edit
-    work_id = params[:id]
+    # work_id = params[:id]
 
-    @work = Work.find_by(id: work_id)
+    # @work = Work.find_by(id: work_id)
 
-    head :not_found unless @work
+    # head :not_found unless @work
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
+    # work_id = params[:id]
 
-    unless @work
-      head :not_found
-      return
-    end
+    # @work = Work.find_by(id: work_id)
+
+    # head :not_found unless @work
 
     if @work.update(work_params)
       flash[:status] = :success
@@ -60,19 +61,16 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    work_id = params[:id]
+    # work_id = params[:id]
 
-    work = Work.find_by(id: work_id)
+    # @work = Work.find_by(id: work_id)
 
-    unless work
-      head :not_found
-      return
-    end
+    # head :not_found unless @work
 
-    work.destroy
+    @work.destroy
 
     flash[:status] = :success
-    flash[:message] = "Successfully deleted work #{work.id}"
+    flash[:message] = "Successfully deleted work #{@work.id}"
     redirect_to works_path
   end
 end
@@ -88,4 +86,10 @@ def work_params
     :description,
     :votes
   )
+end
+
+# Method so i dont repeat this
+def find_work
+  @work = Work.find_by_id(params[:id])
+  head :not_found unless @work
 end
