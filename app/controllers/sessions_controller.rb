@@ -1,16 +1,26 @@
 class SessionsController < ApplicationController
   def login
-    user = User.find_by(username: params[:user][:username])
+    @user = User.find_by(username: params[:user][:username])
 
-    if user.nil?
-      user= User.create(username: params[:user][:username], date_joined: DateTime.now)
-      flash[:success] = "Successfully created new user #{user.username} with ID #{user.id}"
+    if @user.nil?
+      @user= User.create(username: params[:user][:username], date_joined: DateTime.now)
+      if @user.save
+        flash[:success] = "Successfully created new user #{@user.username} with ID #{@user.id}"
+        redirect_to root_path
+      else
+        flash.now[:warning] = "A problem occurred: Could not log in"
+
+        @user.errors.messages.each do |field, messages|
+          flash.now[field] = messages
+        end
+
+        render :new
+      end
     else
-      flash[:success] = "Successfully logged in as existing user #{user.username}"
+      flash[:success] = "Successfully logged in as existing user #{@user.username}"
+      redirect_to root_path
     end
-
-    session[:user_id] = user.id
-    redirect_to root_path
+    session[:user_id] = @user.id
   end
 
   def new
