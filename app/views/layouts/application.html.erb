@@ -8,10 +8,40 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header>
-  <h1>HEADER SITEWIDE</h1>
+  <header class="app-header__header">
+  <h1>
+    <a href="/" alt="Link to homepage"> Media Ranker</a>
+    <small> Ranking the best of everything </small>
+  </h1>
+  <nav class="app-header__nav">
+    <ul class="nav app-header__site-nav-container">
+      <li class="nav-item app-header__nav_item"> 
+        <a class ="nav-link" href ="/" alt="View top media"> View top media </a>
+      </li>
+       <li class="nav-item app-header__nav_item"> 
+        <a class ="nav-link" href ="/" alt="View all media"> View all media </a>
+      </li>
+       <li class="nav-item app-header__nav_item"> 
+        <a class ="nav-link" href ="/" alt="Add new media"> Add a new work </a>
+      </li>
+       <li class="nav-item app-header__nav_item"> 
+        <a class ="nav-link" href ="/" alt="View all users"> View all users </a>
+      </li>
+    </ul>
+    <ul class="nav app-header__user-nav-container">
+       <li class="nav-item app-header__nav_item"> 
+        <a class="btn btn-primary" href ="/" alt="Log In"> Login</a>
+      </li>
+       <li class="nav-item app-header__nav_item"> 
+        <a class="btn btn-primary" href ="/" alt="Log Out"> Log Out </a>
+      </li>
+    </ul>
+  </nav>
   </header>
   <body>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
+
