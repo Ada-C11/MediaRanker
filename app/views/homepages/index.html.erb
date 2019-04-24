@@ -1,1 +1,30 @@
-<h1>You're on the homepages index</h1>
+<h1>MediaRanker</h1>
+
+<% albums = Work.where(category: "album") %>
+<% movies = Work.where(category: "movie") %>
+<% books = Work.where(category: "book") %>
+
+<h2>Top Movies</h2>
+<% top_movies = movies.sample(10)%>
+<% top_movies.each do |movie|%>
+    <li>
+        <%= movie.title%>
+        <%= movie.creator%> votes
+    </li>
+<% end %>
+<h2>Top Books</h2>
+<% top_books = books.sample(10)%>
+<% top_books.each do |book|%>
+    <li>
+        <%= book.title%>
+        <%= book.creator%> votes
+    </li>
+<% end %>
+<h2>Top Albums</h2> 
+<% top_albums = albums.sample(10)%>
+<% top_albums.each do |album|%>
+    <li>
+        <%= album.title%>
+        <%= album.creator%> votes
+    </li>
+<% end %>
