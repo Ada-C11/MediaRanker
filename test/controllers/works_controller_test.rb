@@ -17,11 +17,7 @@ describe WorksController do
     end
 
     it "should redirect to the works index page when given an invalid work id" do
-      work = works(:album)
-      invalid_work_id = work.id
-      work.destroy
-
-      get work_path(invalid_work_id)
+      get work_path(-1)
 
       must_respond_with :redirect
     end
@@ -83,9 +79,7 @@ describe WorksController do
     end
 
     it "will respond with bad request attempting to edit a nonexistant work" do
-      invalid_id = -1
-
-      get edit_work_path(invalid_id)
+      get edit_work_path(-1)
 
       must_redirect_to works_path
     end
@@ -123,14 +117,21 @@ describe WorksController do
         },
       }
 
-      patch work_path(work.id, params: update_hash)
+      expect { patch work_path(work.id, params: update_hash) }.wont_change "Work.count"
 
-      expect(work.category).must_equal "album"
+      must_respond_with :bad_request
     end
   end
 
-  it "should get destroy" do
-    # get works_destroy_url
-    # value(response).must_be :success?
+  describe "destroy" do
+    it "can delete a work" do
+      expect { delete work_path(works(:album).id) }.must_change "Work.count", -1
+    end
+
+    it "redirects to the index page if the work is not found" do
+      delete work_path(-1)
+
+      must_respond_with :not_found
+    end
   end
 end
