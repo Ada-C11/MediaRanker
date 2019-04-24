@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  
   def index
     @works = Work.all.order(:title)
   end
@@ -70,5 +71,9 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:title, :creator, :description, :category, :publication_year)
+  end
+  
+  def find_work_by_id
+   @work = Work.find_by(id: params[:id])
   end
 end
