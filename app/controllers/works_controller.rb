@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: %i[show edit update]
   def index
     # @works = Work.all
     # @categories = Category.all.includes(:works)
@@ -19,26 +20,7 @@ class WorksController < ApplicationController
     end
   end
 
-  def show
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
-
-    head :not_found unless @work
-  end
-
-  def edit
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
-
-    head :not_found unless @work
-  end
-
   def update
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
-
-    head :not_found unless @work
-
     if @work.update(work_params)
       redirect_to work_path(@work)
     else
@@ -62,5 +44,12 @@ class WorksController < ApplicationController
 
   def work_params
     params.require(:work).permit(:title, :creator, :publication_year, :description, :category_id)
+  end
+
+  def find_work
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
+
+    head :not_found unless @work
   end
 end
