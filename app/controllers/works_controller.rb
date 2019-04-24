@@ -15,7 +15,7 @@ class WorksController < ApplicationController
     if successful
       flash[:status] = :success
       flash[:message] = "successfully saved a work with title #{@work.title}"
-      redirect_to works_path
+      redirect_to work_path(@work)
     else
       flash.now[:status] = :error
       flash.now[:message] = "Could not save work"

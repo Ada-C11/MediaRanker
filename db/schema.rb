@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_24_193459) do
+ActiveRecord::Schema.define(version: 2019_04_24_222531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,6 @@ ActiveRecord::Schema.define(version: 2019_04_24_193459) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "homepage_id"
-    t.index ["homepage_id"], name: "index_works_on_homepage_id"
   end
 
-  add_foreign_key "works", "homepages"
 end
