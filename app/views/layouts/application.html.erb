@@ -7,7 +7,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Gudea:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gudea:400,700" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/owl.png" />
   </head>
 
   <body>
@@ -24,7 +25,7 @@
           <% if @current_user == nil %>
             <li class="nav-item"><%= link_to "Log In", login_path, class: "btn btn-primary" %></li>
           <% else %>
-            <li class="nav-item"><%= link_to "Logged in as #{@current_user.username}", user_path, class: "btn btn-primary" %></li>
+            <li class="nav-item"><%= link_to "Logged in as #{@current_user.username}", user_path(@current_user.id), class: "btn btn-primary user" %></li>
             <li class="nav-item"><%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary" %></li>
           <% end %>
         </ul>
@@ -49,4 +50,4 @@
     <%= yield %>
     </main>
   </body>
-</html>
+  </html>
