@@ -10,6 +10,31 @@
   </head>
 
   <body>
+    <header>
+      <h1>Media Ranker</h1>
+      <% if flash.count > 0 %>
+        <section class="flash">
+          <div class="alert">
+          <% flash.each do |name, message| %>
+            <% if message.class == Array %>
+              <ul>
+              <% message.each do |msg| %>
+                <li><%= name %>: <%= msg %> </li>
+              <% end %>
+            <% else %>
+              <%= message %>
+            <% end %>
+            </ul>
+            <% end %>
+            <% end %>
+          
+
+
+          </div>
+        </section>
+
+
+
     <%= yield %>
   </body>
 </html>

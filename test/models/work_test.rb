@@ -1,9 +1,9 @@
 require "test_helper"
 
-describe Medium do
-  let(:medium) { Medium.new }
+describe Work do
+  let(:work) { Work.new }
 
   it "must be valid" do
-    value(medium).must_be :valid?
+    value(work).must_be :valid?
   end
 end
