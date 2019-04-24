@@ -9,7 +9,7 @@
   <% list.each do |work| %>
     <tr>
       <td><%= work.votes.length %></td>
-      <td><a href=work_path(work.id)><%= work.title %></a></td>
+      <td><%= link_to work.title, work_path(work.id) %></td>
       <td><%= work.creator %></td>
       <td><%= work.publication_year %></td>
       <td><%= link_to "Upvote", homepages_index_path, class: "btn btn-primary" %></td>
