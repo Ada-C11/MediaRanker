@@ -1,9 +1,13 @@
 require "test_helper"
 
- describe Vote do
-  let(:vote) { Vote.new }
+describe Vote do
+  let(:vote) { votes(:vote1) }
 
-   it "must be valid" do
-    value(vote).must_be :valid?
+  describe 'validations' do
+    it 'is valid when all fields are present' do
+      result = vote.valid?
+      expect(result).must_equal true
+    end
+
   end
 end
