@@ -58,4 +58,4 @@ end
     params.permit(work: %i[title creator publication_year])
   end
 end
-
+end
