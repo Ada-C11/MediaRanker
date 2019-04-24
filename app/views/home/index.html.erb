@@ -31,4 +31,17 @@
       <% end %>
     </ul>
   </article>
+  
+  <article class="top-media-container">
+    <h4 class="top-media-heading">Top 10 Movies</h4>
+    <ul class="top-media">
+      <% movies = Work.movies.sample(10) %>
+      <% movies.each do |movie| %>
+        <li class="top-media-item">
+          <h5><%= link_to movie.title, work_path(movie.id) %></h5> by <%= movie.author %>
+          <%# <%= album.votes %>
+        </li>
+      <% end %>
+    </ul>
+  </article>
 </div>
