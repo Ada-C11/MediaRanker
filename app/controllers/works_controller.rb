@@ -33,22 +33,28 @@ class WorksController < ApplicationController
 
   def edit
     @work = Work.find_by(id: params[:id])
+
+    head :not_found unless @work
   end
 
   def update
     work = Work.find_by(id: params[:id])
 
-    is_successful = work.update(work_params)
-
-    if is_successful
-      flash[:success] = "Successfully updated #{work.category} #{work.id}"
-      redirect_to work_path(work.id)
+    unless work
+      head :not_found
     else
-      @work = work
-      @work.errors.messages.each do |field, messages|
-        flash.now[field] = messages
+      is_successful = work.update(work_params)
+
+      if is_successful
+        flash[:success] = "Successfully updated #{work.category} #{work.id}"
+        redirect_to work_path(work.id)
+      else
+        @work = work
+        @work.errors.messages.each do |field, messages|
+          flash.now[field] = messages
+        end
+        render :edit, status: :bad_request
       end
-      render :edit, status: :bad_request
     end
   end
 
@@ -57,7 +63,7 @@ class WorksController < ApplicationController
 
     if work.nil?
       flash[:error] = "That work does not exist"
-      redirect_to works_path
+      head :not_found
     else
       work.destroy
       flash[:success] = "Successfully destroyed #{work.category} #{work.id}"
