@@ -28,7 +28,7 @@
     text-align: center;
 }
 
-#app-title {
+.app-header .app-title {
     color: orangered;
 }
 
@@ -46,11 +46,9 @@
     color: #00796b;
 }
 
-.nav-bar #second-ul {
+#user-session {
     display: flex;
-    flex-direction: row;
-    list-style: none;
-    color: #00796b;
+    border: ipx solid red;
 }
 
 .text {
