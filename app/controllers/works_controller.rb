@@ -13,10 +13,16 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
 
-    if @work.save
-      redirect_to @work, notice: "Work was successfully created."
+    successful = @work.save
+
+    if successful
+      flash[:status] = :success
+      flash[:message] = "Successfully created #{@work.category} #{@work.id}"
+      redirect_to works_path
     else
-      render :new
+      flash.now[:status] = :error
+      flash.now[:message] = "A problem occurred: Could not create #{@work.category}"
+      render :new, status: :bad_request
     end
   end
 
@@ -52,6 +58,22 @@ class WorksController < ApplicationController
     else
       render :edit, status: :bad_request
     end
+  end
+
+  def destroy
+    work_id = params[:id]
+    work = Work.find_by(id: work_id)
+
+    unless work
+      head :not_found
+      return
+    end
+
+    work.destroy
+
+    flash[:status] = :success
+    flash[:message] = "Successfully deleted book #{work.category} #{work.id}"
+    redirect_to works_path
   end
 
   private
