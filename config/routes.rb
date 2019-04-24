@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   root 'homepages#index', as: 'home'
 
-  get '/works', to: 'works#index', as: 'works'
-
   resources :works
   resources :users
 
