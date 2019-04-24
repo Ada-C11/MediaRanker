@@ -1,10 +1,134 @@
 <h2 >MediaRanker</h2>
 
-<ul>
-<% @works.each do |work| %>
-  <li>
-    <%= link_to work.title, work_path(work.id) %>
-    by <%= work.creator %>
-  </li>
+
+
+<% albums = Work.where(category: "album") %>
+<% movies = Work.where(category: "movie") %>
+<% books = Work.where(category: "book") %>
+
+
+<h1>Albums</h1>
+<table>
+  <thead>
+     <td>
+      Votes
+     </td>
+     <td>
+      Title
+     </td>
+     <td>
+      Created By
+     </td>
+     <td>
+      Published
+     </td>
+     <td>
+      Upvote
+     </td>
+ </thead>
+ <tbody>
+ <% albums.each do |album| %>
+    <tr>
+      <td>
+        votes<br>
+      </td>
+      <td>
+        <%= link_to "#{album.title}", work_path(album.id) %><br>
+      </td>
+      <td>
+        <%= album.creator %><br>
+      </td>
+      <td>
+        <%= album.publication_year %><br>
+      </td>
+      <td>
+        Upvote<br>
+      </td>
+    </tr>
 <% end %>
-</ul>
+ </tbody>
+</table>
+
+<h1>Books</h1>
+<table>
+  <thead>
+     <td>
+      Votes
+     </td>
+     <td>
+      Title
+     </td>
+     <td>
+      Created By
+     </td>
+     <td>
+      Published
+     </td>
+     <td>
+      Upvote
+     </td>
+ </thead>
+ <tbody>
+ <% books.each do |book| %>
+    <tr>
+      <td>
+        votes<br>
+      </td>
+      <td>
+        <%= link_to "#{book.title}", work_path(book.id) %><br>
+      </td>
+      <td>
+        <%= book.creator %><br>
+      </td>
+      <td>
+        <%= book.publication_year %><br>
+      </td>
+      <td>
+        Upvote<br>
+      </td>
+    </tr>
+<% end %>
+ </tbody>
+</table>
+
+<h1>Movies</h1>
+<table>
+  <thead>
+     <td>
+      Votes
+     </td>
+     <td>
+      Title
+     </td>
+     <td>
+      Created By
+     </td>
+     <td>
+      Published
+     </td>
+     <td>
+      Upvote
+     </td>
+ </thead>
+ <tbody>
+ <% movies.each do |movie| %>
+    <tr>
+      <td>
+        votes<br>
+      </td>
+      <td>
+        <%= link_to "#{movie.title}", work_path(movie.id) %><br>
+      </td>
+      <td>
+        <%= movie.creator %><br>
+      </td>
+      <td>
+        <%= movie.publication_year %><br>
+      </td>
+      <td>
+        Upvote<br>
+      </td>
+    </tr>
+<% end %>
+ </tbody>
+</table>
