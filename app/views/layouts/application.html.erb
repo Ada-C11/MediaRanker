@@ -8,8 +8,29 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <header>
+    <div class="flex">
+      <h1><%= link_to "Media Ranker", root_path, class: "title-one" %><small class="title-two"> Ranking the Best of Everything</small></h1>
+    </div>
+
+
+    <nav class="navbar navbar-light">
+      <ul>
+        <li><%= link_to "View all media", works_path, class: "nav-item nav-link" %></li>
+        <li><%= link_to "Add new work", new_work_path, class: "nav-item nav-link" %></li>
+        <li><%= link_to "View all media", works_path, class: "nav-item nav-link" %></li>
+        <li><%= link_to "Add new work", new_work_path, class: "nav-item nav-link" %></li>
+      </ul>
+    <span class="navbar-text">
+      <%= link_to "Login", root_path, class: "btn btn-primary" %>
+    </span>
+    </nav>
+
+  </header>
 
   <body>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

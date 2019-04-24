@@ -5,22 +5,22 @@
   <% if media_group.length >= 1 %>
     <h3><%= media_group.first.category.capitalize + "s" %></h3>
   <% end %>
-  <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Creator</th>
-      <th>Publication Year</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% media_group.each do |work| %>
-    <tr>
-      <td><%= link_to work.title, work_path(work.id) %></td>
-      <td><%= work.creator %></td>
-      <td><%= work.publication_year %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Creator</th>
+        <th>Publication Year</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% media_group.each do |work| %>
+      <tr>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 <% end %>
