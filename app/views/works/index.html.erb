@@ -1,22 +1,4 @@
-<section>
-<!--
-    <% spotlight = @works.sample%>
-    <h1>Media Spotlight: <%= spotlight.title %> by <%= spotlight.creator%> <h2>
-    need to add # votes -->
-</section>
 
-<ul>
-    <h2>Top Movies</h2>
-    <% @works.each do |work|%>
-        
-        <% if work.category.downcase == "movie"%>
-            <li>
-                <%= link_to work.title, work_path(work.id) %>
-            <li>
-        <% end %>
-    <% end %>
-
-<ul>
 
 
 
