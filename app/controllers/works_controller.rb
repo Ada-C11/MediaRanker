@@ -28,7 +28,7 @@ class WorksController < ApplicationController
   end
 
   def update
-    if @work.save(work_params)
+    if @work.update(work_params)
       flash[:status] = :success
       flash[:message] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work)

@@ -1,4 +1,5 @@
 require "test_helper"
+require "pry"
 
 describe WorksController do
   before do
@@ -43,7 +44,8 @@ describe WorksController do
 
       # Act: Hey server, can you find the work
       # that we just made
-      get work_path(@work.id)
+      # binding.pry
+      get work_path(@work)
 
       # Assert
       must_respond_with :ok
@@ -71,15 +73,15 @@ describe WorksController do
         post works_path, params: work_data
       }.must_change "Work.count", +1
 
+      work = Work.last
+
       # Assert
       must_respond_with :redirect
-      must_redirect_to works_path
+      must_redirect_to work_path(work)
 
       check_flash
 
-      work = work.last
       expect(work.title).must_equal work_data[:work][:title]
-      expect(work.author).must_equal @author
 
       # work_data[:work].keys.each do |key|
       #   expect(work.attributes[key]).must_equal work_data[:work][key]
@@ -92,17 +94,15 @@ describe WorksController do
           title: "",
         },
       }
-      expect(work.new(work_data[:work])).wont_be :valid?
+      expect(Work.new(work_data[:work])).wont_be :valid?
 
       # Act
       expect {
         post works_path, params: work_data
-      }.wont_change "work.count"
+      }.wont_change "Work.count"
 
       # Assert
       must_respond_with :bad_request
-
-      check_flash(:error)
     end
   end
 
@@ -113,7 +113,7 @@ describe WorksController do
     end
 
     it "responds with NOT FOUND for a fake work" do
-      work_id = work.last.id + 1
+      work_id = Work.last.id + 1
       get edit_work_path(work_id)
       must_respond_with :not_found
     end
@@ -141,7 +141,6 @@ describe WorksController do
       must_redirect_to work_path(@work)
 
       check_flash
-
       @work.reload
       expect(@work.title).must_equal(work_data[:work][:title])
     end
@@ -166,8 +165,6 @@ describe WorksController do
 
       # Assert
       must_respond_with :bad_request
-
-      check_flash(:error)
     end
   end
 
