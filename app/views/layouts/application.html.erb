@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>MediaRanker</title>
+    <%# <link rel="icon" href="favicon.ico" type="image/x-icon" /> %>
+    <%# <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /> %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +12,15 @@
   </head>
 
   <body>
+  <header>
+    <h3>Media Ranker | Ranking the Best of Everything</h3>
+    <section>
+      <%= link_to "View top media" %>
+      <%= link_to "View all media", works_path %>
+      <%= link_to "Add a new work", new_work_path %>
+      <%= link_to "View all users" %>
+    </section>
+  </header>
     <%= yield %>
   </body>
 </html>
