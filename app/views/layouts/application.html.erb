@@ -42,6 +42,11 @@
   </header>
 
   <body>
+    <section class="flash alert__container">
+      <% flash.each do |name, message| %>
+        <div class='alert alert-sucess' class="<%= name %>"><%= message %></div>
+      <% end %>
+    </section>
     <%= yield %>
   </body>
 </html>

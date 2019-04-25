@@ -4,12 +4,6 @@
   margin-bottom: 0.5rem;
   padding: 2rem 1rem 0.5rem 1rem;
 }
-.app-header__header {
-  max-width: 100%;
-  background-color: #B2DFDB;
-  margin-bottom: 0.5rem;
-  padding: 2rem 1rem 0.5rem 1rem;
-}
 
 .app-header__header h1 {
   text-align: center;
@@ -27,8 +21,26 @@
   color: white;
 }
 
+.app-header__nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .app-header__nav_item .nav-link {
   color: #00796B;
+}
+
+.btn-primary {
+  background-color: #26A69A;
+  color: white;
+  border-color: #26A69A;
+}
+
+a.btn {
+  background-color: #26A69A;
+  color: white;
+  border-color: #26A69A;
 }
 
 .btn {
@@ -47,12 +59,6 @@
   line-height: 1.5;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.btn-primary {
-  background-color: #26A69A;
-  color: white;
-  border-color: #26A69A;
 }
 
 small, .small {
@@ -121,38 +127,25 @@ ul, menu, dir {
   padding-inline-start: 40px;
 }
 
-:root {
-  --blue: #007bff;
-  --indigo: #6610f2;
-  --purple: #6f42c1;
-  --pink: #e83e8c;
-  --red: #dc3545;
-  --orange: #fd7e14;
-  --yellow: #ffc107;
-  --green: #28a745;
-  --teal: #20c997;
-  --cyan: #17a2b8;
-  --white: #fff;
-  --gray: #6c757d;
-  --gray-dark: #343a40;
-  --primary: #007bff;
-  --secondary: #6c757d;
-  --success: #28a745;
-  --info: #17a2b8;
-  --warning: #ffc107;
-  --danger: #dc3545;
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+a, h2, h3 {
+  color: #26A69A;
 }
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
 :root {
-  --blue: #007bff;
+  // --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
   --pink: #e83e8c;
@@ -165,7 +158,7 @@ ul, menu, dir {
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #007bff;
+  // --primary: #007bff;
   --secondary: #6c757d;
   --success: #28a745;
   --info: #17a2b8;
