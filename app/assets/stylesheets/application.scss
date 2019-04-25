@@ -18,6 +18,39 @@
  main, nav, section {
      display: block;
  }
+ header {
+     display: block;
+ }
+ h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+ }
+ section {
+     display: block;
+ }
+ .list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+ }
+ .nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+ }
+ ul {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+ }
 
  .top-ten__container {
     display: grid;
@@ -25,6 +58,7 @@
     grid-column-gap: 2em;
 
 }
+
 .top-ten__header {
     color: #26A69A;
     border-bottom: 2px solid;
@@ -32,4 +66,10 @@
 }
 .top-ten__creator {
     color: slategrey;
+}
+.app-header__header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
 }
