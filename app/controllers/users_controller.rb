@@ -39,33 +39,34 @@ class UsersController < ApplicationController
   
   def login
     username = params[:user][:name]
-    @user = User.find_by(username: username)
+    @user = User.find_by(name: username)
+    @user = User.create!(name: username) if @user.nil?
     
-    if @user
+    if @user.id
       session[:user_id] = @user.id
-      flash[:success] = "Welcome back, #{@user.name}!"
-      redirect_back(fallback_location: root_path)
+      flash[:message] = "Logged in as #{@user.name}!"
+      redirect_to root_path
     else
-      @user = User.create!(name: username)
-      session[:user_id] = @user.id
-      flash[:success] = "Welcome to the Media Ranker community, #{@user.name}!"
+      flash[:error] = "Unable to log in"
+      redirect_to root_path
     end
-    
-    redirect_back(fallback_location: root_path)
   end
   
   def current
     @current_user = User.find_by(id: session[user_id])
       
-    unless @current_user
-      redirect_to login_path
-      flash[:error] = "Could not find user. Try logging in again."
+    if @current_user.nil?
+      flash[:error] = "You must be logged in."
+      
+      redirect_to root_path
+      return
     end
   end
   
   def logout
-    session[:user_id] = nil
+    user = User.find_by(id: session[:user_id])
     flash[:message] = "Successfully logged out."
+    session[:user_id] = nil
     
     redirect_to root_path
   end

@@ -24,17 +24,16 @@
         </ul>
         
         <div class="Login">
-          <% if @current_user %>
-            <p>Logged in as <%= @current_user.username %></p>
-            <%= link_to "Log Out", logout_path, class: "btn btn-primary btn-lg" %>
-          <% else %>
-            <%= link_to "Log In", login_path, class: "btn btn-primary btn-lg" %>
-          <% end %>
+         <%= link_to("Login", login_path) if session[:user_id].nil? %>
+          <%= link_to("Logout", logout_path, method: :post) if session[:user_id] %>
         </div>
       </nav>
     </header>
     
     <main>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-"><%= value %></div>
+      <% end %>
       <%= yield %>
     </main>
   </body>

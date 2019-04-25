@@ -1,11 +1,13 @@
 <h1>User Log In</h1>
 
-<% form_with model: @user, url: login_path do |f| %>
+  <%= form_with model: @user, url: login_path do |f| %>
+    <%= f.text_field :name, placeholder: "Username", class: "form-control" %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name, placeholder: "Username" %>
-  
-  <%= f.submit "Log In" %>
-<% end %>
-  
-  
+
+    <%= f.submit "Log in", class: "btn btn-primary" %>
+  <% end %>
+
+
+
+
+
