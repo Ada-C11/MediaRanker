@@ -12,7 +12,7 @@
     <tbody>
     <tr>
         <th class="username-link"><%= link_to user.username, user_path(user.id) %></th>
-        <th><%= user.vote_count%></th>
+        <th><%= user.vote_counter%></th>
         <th><%= user.created_at%></th>
     </tr>
     <% end %>

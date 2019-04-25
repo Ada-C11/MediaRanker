@@ -16,7 +16,7 @@
         <tbody>
         <tr>
         <% if work.category == "album"%>
-            <th><%= work.vote_count %></th>
+            <th><%= work.vote_counter %></th>
             <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
             <th><%= work.creator %></th>
             <th><%= work.publication_year %></th>
@@ -39,7 +39,7 @@
     <% @works.each do |work|%>
         <tr>
         <% if work.category == "book"%>
-            <th><%= work.vote_count %></th>
+            <th><%= work.vote_counter %></th>
             <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
             <th><%= work.creator %></th>
             <th><%= work.publication_year %></th>
@@ -61,7 +61,7 @@
     <% @works.each do |work|%>
         <tr>
         <% if work.category == "movie"%>
-            <th><%= work.vote_count %></th>
+            <th><%= work.vote_counter %></th>
             <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
             <th><%= work.creator %></th>
             <th><%= work.publication_year %></th>

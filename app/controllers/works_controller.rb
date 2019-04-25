@@ -1,6 +1,16 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.all.order(:title)
+    all_works = Work.all
+    # store all works into @works
+    # for each work, assign work.vote_count into vote column
+    # order @works by vote count
+
+    all_works.each do |work|
+      work.vote_count = work.vote_counter
+      work.save
+    end
+    @works = all_works.order(:vote_count).reverse
+    # raise
   end
 
   def show

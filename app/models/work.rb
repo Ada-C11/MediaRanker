@@ -3,7 +3,7 @@ class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
 
-  def vote_count
+  def vote_counter
     return self.votes.length
   end
 
