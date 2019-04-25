@@ -47,4 +47,6 @@ ActiveRecord::Schema.define(version: 2019_04_25_201115) do
 
   add_foreign_key "votes", "users"
   add_foreign_key "votes", "works"
+
+  # add_index "votes", ["user_id", "work_id"], :unique => true
 end

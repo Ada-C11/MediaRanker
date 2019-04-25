@@ -6,6 +6,8 @@ class Work < ApplicationRecord
   validates :description, presence: true
 
   has_many :votes
+  has_many :users, through: :votes
+
   def self.category
     works = Work.all
     hash = Hash.new { }
@@ -19,21 +21,7 @@ class Work < ApplicationRecord
   end
 
   def self.media_votes(category)
-    media_count_hash = {}
-    works = Work.all
-    works.each do |work|
-      if work.category == category
-        num_votes = work.votes.count
-        media_count_hash[work] = num_votes
-      end
-    end
-    media_count = self.top_ten_media_descending(media_count_hash)
-    return media_count
-  end
-
-  def self.top_ten_media_descending(media_count)
-    media_count = media_count.sort_by { |work, count| count }
-    media_count.reverse!
-    return media_count[0,9]
+    works = Work.where(category: "album").left_joins(:votes).select("works.*, COUNT(votes.id) as vote_count").group(:id).order("COUNT(votes.id) DESC").limit(10)
+    return works
   end
 end

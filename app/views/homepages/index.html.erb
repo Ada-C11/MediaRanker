@@ -15,7 +15,7 @@
 Top <%=category.capitalize+"s"%></h2>
 <ul class="list-group">
 <%media_count.each do |work|%>
-<li class="list-group-item"><h4><a><%= link_to "#{work[0].title}", work_path(work[0].id)%></a><small> by <%=work[0].creator%></small></h4><p><%=work[1]%> counts</p></li>
+<li class="list-group-item"><h4><a><%= link_to "#{work.title}", work_path(work.id)%></a><small> by <%=work.creator%></small></h4><p><%=work.vote_count%> votes</p></li>
 <%end%>
 </ul>
 </section>
