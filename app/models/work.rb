@@ -3,6 +3,10 @@ class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
 
+  def vote_count
+    return self.votes.length
+  end
+
   def spotlight
     return self.sample
   end

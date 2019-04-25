@@ -13,7 +13,7 @@
     <% @works.each do |work|%>
         <tr>
         <% if work.category == "album"%>
-            <th><%= rand(1..7) %></th>
+            <th><%= work.vote_count %></th>
             <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
             <th><%= work.creator %></th>
             <th><%= work.publication_year %></th>
@@ -35,11 +35,11 @@
     <% @works.each do |work|%>
         <tr>
         <% if work.category == "book"%>
-            <th><%= rand(1..7) %></th>
+            <th><%= work.vote_count %></th>
             <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
             <th><%= work.creator %></th>
             <th><%= work.publication_year %></th>
-            <th><%= link_to "Upvote", "#", class: "btn btn-primary" %></th>
+            <th><%= link_to "Upvote", work_path(work.id), class: "btn btn-primary", method: :post%></th>
         <% end %>
         </tr>
     <% end %>
@@ -57,11 +57,11 @@
     <% @works.each do |work|%>
         <tr>
         <% if work.category == "movie"%>
-            <th><%= rand(1..7) %></th>
+            <th><%= work.vote_count %></th>
             <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
             <th><%= work.creator %></th>
             <th><%= work.publication_year %></th>
-            <th><%= link_to "Upvote", "#", class: "btn btn-primary" %></th>
+            <th><%= link_to "Upvote", work_path(work.id), class: "btn btn-primary", method: :post %></th>
         <% end %>
         </tr>
     <% end %>
