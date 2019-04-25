@@ -9,6 +9,19 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+<header><h1>
+<%= link_to "Media Ranker", root_path %>
+| Ranking the Best of Everything
+</h1>
+<nav>
+<ul>
+<li><%= link_to "View top media", root_path %></li>
+<li> <%= link_to "View all media", works_path %></li>
+<li> <%= link_to "Add a new work", new_work_path %></li>
+<li> <%= link_to "View all user", users_path %></li>
+</ul>
+</nav>
+</header>
   <body>
     <%= yield %>
   </body>
