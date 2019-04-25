@@ -5,10 +5,10 @@
   <p> <%= @work.description %> </p>
   <section>
     <%= link_to "Back to media ranks", root_path, class: "btn btn-primary" %>
-    <%= link_to "Edit", work_path(@work), class: "btn btn-primary" %>
+    <%= link_to "Edit", edit_work_path(@work), class: "btn btn-primary" %>
     <%= link_to "Upvote", "#", rel: "nofollow", class: "btn btn-primary" %>
     <%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Press OK to confirm deletion" }, class: "btn btn-danger" %>
   </section>
 </section>
 
-#TODO: Add Work-votes table below
+<div class="alert"> #TODO: Add Work-votes table below </div>
