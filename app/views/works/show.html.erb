@@ -4,13 +4,14 @@
       Created by: <%= @work.author %><br>
       Published: <%= @work.publication_year %><br>
       <%= @work.description %><br>
+      Total votes: <%= @work.votes.length %>
     </section>
 </header>
   
   <section class="actions">
     <%= link_to "Back to media ranks", root_path, class: "btn btn-primary btn-lg" %>
     <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary btn-lg" %>
-    <%= link_to "Upvote", class: "btn btn-primary btn-lg" %>
+    <%= link_to "Upvote", work_votes_path(@work.id), method: :post, class: "btn btn-primary btn-lg" %>
     <%= link_to "Delete", class: "btn btn-danger btn-lg" %> 
   </section>
 </header>

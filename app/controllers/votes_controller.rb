@@ -10,11 +10,11 @@ class VotesController < ApplicationController
     
     unless @vote
       render :new
-      flash[:error] = "Item can't be created at this time."
+      flash[:error] = "Vote not counted"
     else
-      flash[:success] = "#{@vote.title} has been successfully added."
+      flash[:success] = "Thanks for your vote!"
       
-      redirect_to work_path(@vote.id)
+      redirect_to work_path(work.id)
     end
   end
   
