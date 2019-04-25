@@ -50,6 +50,19 @@ class WorksController < ApplicationController
     end
   end
 
+  def destroy
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      flash[:error] = "That work does not exist"
+    else
+      @work.destroy
+      flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
+    end
+
+    redirect_to works_path
+  end
+
   private
 
   def work_params
