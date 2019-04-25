@@ -73,6 +73,13 @@ class WorksController < ApplicationController
     flash[:message] = "Successfully deleted work #{@work.id}"
     redirect_to works_path
   end
+
+   def upvote
+    @work = Work.find(params[:id])
+    @work.upvote.create
+    redirect_to(works_path)
+  end
+  
 end
 
 private
@@ -84,7 +91,9 @@ def work_params
     :creator,
     :publication_year,
     :description,
-    :votes
+    :votes,
+    user_ids: [],
+
   )
 end
 
