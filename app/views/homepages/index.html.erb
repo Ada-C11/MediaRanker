@@ -7,54 +7,55 @@
   <%= link_to random_work.title, work_path(random_work)%>
   </h2>
   </section>
-
 </section>
 
-<h2> Top Movies </h2>
-<% top_movies = Work.movies.sample(10) %>
-
 <section class="top-ten-container">
-<ul>
-  <% top_movies.each do |movie|%>
-    <li>
-      <h4>
-        <%= link_to movie.title, work_path(movie) %>, 
-        <small> created by <%= movie.creator%></small>
-      </h4>
-      <p> Votes </p>
-    </li>
-  <% end %>
-</ul>
+  <section class="top-ten-list-container">
+  <h2 class="top-ten-header"> Top Movies </h2>
+  <% top_movies = Work.movies.sample(10) %>
+  <ul class="list-group top-ten__list" >
+    <% top_movies.each do |movie|%>
+      <li class="list-group-item">
+        <h4>
+          <%= link_to movie.title, work_path(movie) %>, 
+          <small> created by <%= movie.creator%></small>
+        </h4>
+        <p> Votes </p>
+      </li>
+    <% end %>
+  </ul>
+  </section>
 
-
-<% top_albums = Work.albums.sample(10)%>
-<section class="top-ten-container">
-<ul class="top-ten-list-container">
-<h2> Top Albums </h2>
-  <% top_albums.each do |media|%>
-    <li>
-      <h4>
-        <%= link_to media.title, work_path(media) %>, 
-       <small> created by  <%= media.creator%></small>
-      </h4>
-      <p> Votes </p>
-    </li>
-  <% end %>
-</ul>
-
-<h2> Top Books</h2>
-<% top_books = Work.books.sample(10)%>
-<section class="top-ten-container">
-<ul>
+  <section class="top-ten-list-container">
+    <h2 class="top-ten-header"> Top Albums </h2>
+    <% top_albums = Work.albums.sample(10)%>
+    <ul class="list-group top-ten__list">
+      <% top_albums.each do |media|%>
+        <li class="list-group-item">
+          <h4>
+            <%= link_to media.title, work_path(media) %>, 
+          <small> created by  <%= media.creator%></small>
+          </h4>
+          <p> Votes </p>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+    
+  <section class="top-ten-list-container">
+  <h2 class="top-ten-header"> Top Books </h2>
+  <% top_books = Work.books.sample(10)%>
+  <ul class="list-group top-ten__list">
   <% top_books.each do |media|%>
-    <li>
-      <h4>
-        <%= link_to media.title, work_path(media) %>, 
-        <small> created by <%= media.creator%></small>
-      </h4>
-      <p> Votes </p>
-    </li>
-  <% end %>
-</ul>
-
+        <li class="list-group-item">
+          <h4>
+            <%= link_to media.title, work_path(media) %>, 
+            <small> created by <%= media.creator%></small>
+          </h4>
+          <p> Votes </p>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</section>
 
