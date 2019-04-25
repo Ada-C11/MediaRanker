@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :works
   # will need a nested route for upvotes
 
-  # helper method for user routes
-  user_routes
+  # user routes
+  get "/login", to: "users#login_form", as: "login"
+  post "/login", to: "users#login"
+  post "/logout", to: "users#logout", as: "logout"
+  get "/users/current", to: "users#current", as: "current_user"
 end

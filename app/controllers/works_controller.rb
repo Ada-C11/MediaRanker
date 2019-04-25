@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  before_action :find_work, except: [:index, :new, :create]
   def index
     @works = Work.all
   end
@@ -13,14 +14,18 @@ class WorksController < ApplicationController
     successful = @work.save
 
     if successful
+      flash[:status] = :success
+      flash[:message] = "Work: #{@work.title}, ID: #{@work.id} successfully created"
       redirect_to works_path
     else
+      flash.now[:status] = :error
+      flash.now[:message] = "There were some errors with your "
       render :new, status: :bad_request
     end
   end
 
   def show 
-    @work = Work.find_by(id: params[:id])
+    # @work = Work.find_by(id: params[:id])
 
     unless @work
       head :not_found
@@ -28,7 +33,7 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
+    # @work = Work.find_by(id: params[:id])
 
     unless @work
       head :not_found
@@ -36,7 +41,7 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
+    # @work = Work.find_by(id: params[:id])
 
     unless @work
       head :not_found
@@ -51,20 +56,26 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    work = Work.find_by(id: params[:id])
+    # work = Work.find_by(id: params[:id])
 
-    unless work
+    unless @work
       head :not_found
       return
     end
 
-    work.destroy
+    @work.destroy
 
     redirect_to works_path
   end
 
   def work_params
     params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  private 
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 
 end
