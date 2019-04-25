@@ -16,7 +16,7 @@
                     <%= Vote.where(user_id: user.id).length %>  
                 </td>
                 <td>
-                    <%= user.created_at%>
+                    <%= (user.created_at).strftime("%B %d, %Y")%>
                 </td>
         </tr>
             <% end %>

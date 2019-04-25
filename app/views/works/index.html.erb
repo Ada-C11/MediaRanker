@@ -10,11 +10,9 @@
             <th>Published</th>
             <th>Upvote</th>
         </tr>
-    <% albums = @works.where(category: "album") %>
-    <% albums.sort_by { |work| Vote.where(work_id: work.id).length }%>
     
     <tr>
-        <% albums.each do |work|%>
+        <% @albums.each do |work|%>
             <td>
             <%= Vote.where(work_id: work.id).length %>   
             </td>
@@ -45,8 +43,7 @@
             <th>Published</th>
             <th>Upvote</th>
         </tr>
-        <% books = @works.where(category: "book") %>
-            <% books.each do |work|%>
+            <% @books.each do |work|%>
             <tr>
                 <td>
                     <%= Vote.where(work_id: work.id).length %>   
@@ -79,9 +76,8 @@
             <th>Published</th>
             <th>Upvote</th>
         </tr>
-    <% movies = @works.where(category: "movie") %>
         <tr>
-            <% movies.each do |work|%>
+            <% @movies.each do |work|%>
                 <td>
                     <%= Vote.where(work_id: work.id).length %>   
                 </td>

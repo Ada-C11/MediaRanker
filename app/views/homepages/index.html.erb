@@ -7,25 +7,23 @@
 <% else %>
     <section class="spotlight">
     <h2>Spotlight Title</h2>
-        <% spotlight = @works.sample(1)%>
         <ul>
             <li>
-                Title: <%= link_to spotlight[0].title, work_path(spotlight[0].id) %>
+                Title: <%= link_to Work.highest_vote.title, work_path(Work.highest_vote.id) %>
             </li>
             <li>
-                Creator: <%= spotlight[0].creator %>
+                Creator: <%= Work.highest_vote.creator %>
             </li>
             <li>
-                Votes: <%= Vote.where(work_id: spotlight[0].id).length %>
+                Votes: <%= Vote.where(work_id: Work.highest_vote.id).length %>
             </li>
         </ul>
     </section>
 
     <section class="albums">
     <h2>Albums</h2>
-        <% albums = @works.where(category: "album").sample(10) %>
         <ul>
-            <% albums.each do |work|%>
+            <% Work.top_ten("album").each do |work|%>
                 <li>
                     Title: <%= link_to work.title, work_path(work.id) %>  
                 </li>
@@ -41,9 +39,8 @@
 
     <section class="books">
     <h2>Books</h2>
-        <% books = @works.where(category: "book").sample(10) %>
         <ul>
-            <% books.each do |work|%>
+            <% Work.top_ten("book").each do |work|%>
                 <li>
                     Title: <%= link_to work.title, work_path(work.id) %>  
                 </li>
@@ -51,7 +48,7 @@
                     Creator: <%= work.creator %>
                 </li>
                 <li>
-                    Votes: <%= Vote.where(work_id: spotlight[0].id).length %>
+                    Votes: <%= Vote.where(work_id: work.id).length %>
                 </li>
             <% end %>
         </ul>
@@ -59,9 +56,8 @@
 
     <section class="movies">
     <h2>Movies</h2>
-        <% movies = @works.where(category: "movie").sample(10) %>
         <ul>
-            <% movies.each do |work|%>
+            <% Work.top_ten("movie").each do |work|%>
                 <li>
                     Title: <%= link_to work.title, work_path(work.id) %>  
                 </li>
@@ -69,7 +65,7 @@
                     Creator: <%= work.creator %>
                 </li>
                <li>
-                    Votes: <%= Vote.where(work_id: spotlight[0].id).length %>
+                    Votes: <%= Vote.where(work_id: work.id).length %>
                 </li>
             <% end %>
         </ul>

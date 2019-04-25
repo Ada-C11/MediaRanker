@@ -2,7 +2,10 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def index
-    @works = Work.all
+    # @works = Work.all
+    @albums = Work.sort_work("album")
+    @movies = Work.sort_work("movie")
+    @books = Work.sort_work("book")
   end
 
   def show
