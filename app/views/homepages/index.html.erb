@@ -4,7 +4,7 @@
 
 <div>
    
-<% if @works.where(category: "movie") != [] %>
+<% if @works.where(category: "movie") != [] || @works.where(category: "movie") != nil %>
     <h2>Top Movies:</h2>
       <ul>
     <% @works.each do |work| %>

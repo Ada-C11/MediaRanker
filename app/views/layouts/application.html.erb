@@ -33,6 +33,17 @@
           </div>
         </section>
 
+<section>
+      <%= link_to("Login", login_path) if session[:user_id].nil? %>
+      <%= link_to("Logout", logout_path, method: :post) if session[:user_id] %>
+      
+
+      <%= link_to "View all media", works_path %>
+      
+        <%= link_to "Add a new work",
+            new_work_path  %>
+        
+      </section>
 
 
     <%= yield %>
