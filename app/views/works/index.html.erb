@@ -1,3 +1,4 @@
+
 <h2 class="work-index">List of Works</h2>
 
 <h4><strong>Albums</strong></h4>
@@ -16,7 +17,7 @@
             <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
             <th><%= work.creator %></th>
             <th><%= work.publication_year %></th>
-            <th><%= link_to "Upvote", "#", class: "btn btn-primary" %></th>
+            <th><%= link_to "Upvote", work_path(work.id), class: "btn btn-primary", method: :post %></th>
         <% end %>
         </tr>
     <% end %>

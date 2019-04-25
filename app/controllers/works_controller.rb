@@ -55,6 +55,18 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
+  def vote
+    work = Work.find_by(id: params[:id])
+    if session[:user_id]
+      user_vote_id = session[:user_id]
+      Vote.create(user_id: user_vote_id, work_id: work.id)
+      flash[:success] = "Work updated successfully!"
+    else
+      flash[:error] = "You must be logged in to vote!"
+    end
+    redirect_to works_path
+  end
+
   private
 
   def work_params
