@@ -24,25 +24,39 @@ describe WorksController do
     end
   end
 
-  describe "destory" do
-    it "should destroy works" do
+  describe "new" do
+    it "should get new" do
+      get new_work_path
+
+      must_respond_with :success
+    end
+  end
+
+  describe "create" do
+    it "should create new works" do
+      work_hash = {
+        work: {
+          title: "test 3",
+        },
+      }
       expect {
-        delete work_path(works(:one).id)
-      }.must_change "Work.count", -1
+        post works_path, params: work_hash
+      }.must_change "Work.count", 1
 
       must_respond_with :redirect
     end
 
-    it "should respond with 404 if the work does not exist" do
-      work = works(:one)
-      invalid_work_id = work.id
-      work.destroy
-
+    it "should respond with bad request if the work is missing a title" do
+      work_hash = {
+        work: {
+          title: "",
+        },
+      }
       expect {
-        delete work_path(invalid_work_id)
+        post works_path, params: work_hash
       }.wont_change "Work.count"
 
-      must_respond_with :not_found
+      must_respond_with :bad_request
     end
   end
 
@@ -107,39 +121,25 @@ describe WorksController do
     end
   end
 
-  describe "new" do
-    it "should get new" do
-      get new_work_path
-
-      must_respond_with :success
-    end
-  end
-
-  describe "create" do
-    it "should create new works" do
-      work_hash = {
-        work: {
-          title: "test 3",
-        },
-      }
+  describe "destory" do
+    it "should destroy works" do
       expect {
-        post works_path, params: work_hash
-      }.must_change "Work.count", 1
+        delete work_path(works(:one).id)
+      }.must_change "Work.count", -1
 
       must_respond_with :redirect
     end
 
-    it "should respond with bad request if the work is missing a title" do
-      work_hash = {
-        work: {
-          title: "",
-        },
-      }
+    it "should respond with 404 if the work does not exist" do
+      work = works(:one)
+      invalid_work_id = work.id
+      work.destroy
+
       expect {
-        post works_path, params: work_hash
+        delete work_path(invalid_work_id)
       }.wont_change "Work.count"
 
-      must_respond_with :bad_request
+      must_respond_with :not_found
     end
   end
 end
