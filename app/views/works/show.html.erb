@@ -7,7 +7,7 @@ Published: <%= @work.published %><br>
 <%= @work.description %><br>
 
 link to homepage
-link to edit
+<%= link_to "Edit", edit_work_path(@work.id) %>
 link to upvote
 link to delete <br>
 
