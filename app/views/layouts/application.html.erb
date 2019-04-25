@@ -42,11 +42,14 @@
   </header>
 
   <body>
-    <section class="flash alert__container">
-      <% flash.each do |name, message| %>
-        <div class='alert alert-sucess' class="<%= name %>"><%= message %></div>
+    <section class="alert__container">
+      <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+            <%= value %>
+        </div>
       <% end %>
     </section>
+    
     <%= yield %>
   </body>
 </html>
