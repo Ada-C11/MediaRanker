@@ -67,7 +67,7 @@ div.button {
 }
 
 /* ----------------------- TABLE/WORKS INDEX STYLING ----------------------- */
-h2.work-index {
+h2.index {
     color: #26A69A;
     font-weight: bold;
 }
@@ -78,5 +78,16 @@ h2.work-index {
     border: 1px solid grey;
   }
 .works-table th.title-link a {
+    color: #26A69A;
+}
+/* ----------------------- TABLE/USERS INDEX STYLING ----------------------- */
+
+.users-table th.username-link a {
+    color: #26A69A;
+}
+.users-table th, td {
+    border: 1px solid grey;
+  }
+.users-table th.title-link a {
     color: #26A69A;
 }

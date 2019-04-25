@@ -1,4 +1,16 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all.order(:id)
+  end
+
+  def show
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      flash[:error] = "User not found!"
+      redirect_to users_path
+    end
+  end
+
   def login_form
     @user = User.new
   end

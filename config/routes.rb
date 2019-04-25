@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :works
   post "/works/:id", to: "works#vote", as: "vote"
 
+  resources :users
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"
   post "/logout", to: "users#logout", as: "logout"

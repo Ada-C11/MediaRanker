@@ -1,0 +1,16 @@
+<h2 class="index">List of Users</h2>
+
+<table class="users-table">
+    <tr>
+        <th class="table-header">Username</th>
+        <th class="table-header">Votes</th>
+        <th class="table-header">Joined</th>
+    </tr>
+    <% @users.each_with_index do |user, index| %>
+    <tr>
+        <th class="username-link"><%= link_to user.username, user_path(user.id) %></th>
+        <th><%= user.username%></th>
+        <th><%= user.username%></th>
+    <% end %>
+    </tr>
+</table>
