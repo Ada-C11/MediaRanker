@@ -31,10 +31,12 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         flash[:success] = "Successfully created new user #{username} with ID #{user.id}!"
         redirect_to root_path
-      else
-        flash.now[:failure] = "Login Unsuccessful. Please Try Again"
-        render :login_form, status: :bad_request
       end
+    end
+
+    if !user.id
+      flash.now[:failure] = "Login Unsuccessful. Please Try Again"
+      render :login_form, status: :bad_request
     end
   end
 end
