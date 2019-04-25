@@ -36,19 +36,15 @@
     color: white;
 }
 
+.nav-bar #first-ul a {
+    color: #00796b;
+}
+
 .nav-bar #first-ul {
     display: flex;
     flex-direction: row;
     list-style: none;
     justify-content: space-between;
-    padding-top: 4em;
-    padding-right: 35em;
-    color: #00796b;
-}
-
-#user-session {
-    display: flex;
-    border: ipx solid red;
 }
 
 .text {
@@ -57,4 +53,12 @@
 
 .btn {
     background-color: rgb(13, 156, 156);
+}
+
+.nav-bar #user-session a {
+    color: #00796b;
+}
+
+.nav-bar #user-session {
+    justify-content: space-between;
 }
