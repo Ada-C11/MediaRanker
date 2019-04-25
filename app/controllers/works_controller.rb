@@ -1,11 +1,18 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.all
+    @books = Work.books
+    @albums = Work.albums
+  end
+
+  def top
+    @featured_work = Work.spotlight
+    @top_albums = Work.top_ten_albums
+    @top_books = Work.top_ten_books
   end
 
   def show
     work_id = params[:id]
-    @work = Work.find_by(work_id)
+    @work = Work.find_by(id: work_id)
     unless @work
       head :not_found
     end
@@ -25,6 +32,6 @@ class WorksController < ApplicationController
   end
 
   def work_params
-    return params.require(:work).permit(:type, :title, :created_by, :published)
+    return params.require(:work).permit(:category, :title, :creator, :publication_year)
   end
 end

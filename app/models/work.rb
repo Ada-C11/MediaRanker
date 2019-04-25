@@ -1,28 +1,30 @@
 class Work < ApplicationRecord
-  def albums
+  validates :title, presence: true
+
+  def self.albums
     return Work.where(category: "album")
   end
 
-  def books
+  def self.books
     return Work.where(category: "book")
   end
 
-  def spotlight
+  def self.spotlight
     return Work.all.sample
   end
 
-  def top_ten_albums
+  def self.top_ten_albums
     albums_array = []
     10.times do
-      albums_array << albums.sample
+      albums_array << Work.albums.sample
     end
     return albums_array
   end
 
-  def top_ten_books
+  def self.top_ten_books
     books_array = []
     10.times do
-      books_array << books.sample
+      books_array << Work.books.sample
     end
     return books_array
   end
