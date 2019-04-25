@@ -1,11 +1,11 @@
 class WorksController < ApplicationController
+before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def index
     @works = Work.all
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
-
     if !@work
       flash[:error] = "Unknown work"
 
@@ -34,11 +34,9 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
     is_successful = @work.update(work_params)
 
     if is_successful
@@ -53,8 +51,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       flash[:error] = "That work does not exist"
     else
@@ -66,6 +62,10 @@ class WorksController < ApplicationController
   end
 
   private
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
+  end
 
   def work_params
     return params.require(:work).permit(:category, :title, :created_by, :published, :description)
