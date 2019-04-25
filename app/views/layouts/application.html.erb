@@ -31,10 +31,26 @@
   </nav>
   </header>
   <main>
-    <p id="notice">
-      <%= flash[:success] if flash[:success] %>
-      <%= flash[:error] if flash[:error] %>
-    </p>
+  <%# TODO: Can probably add a view helper here %>
+    <% if flash[:success] %>
+    <p id="success"><%= flash[:success] %></p> 
+    <% elsif flash[:error] %>
+      <p id="error">
+      <%= flash[:error] %>
+      <%if @work && @work.errors%>
+        <ul>
+        <% @work.errors.messages.each do |column, message|%>
+          <li><%= column%>: < %=message% ></li>
+        </ul>
+      <%end%>
+       <%if @user && @user.errors%>
+        <ul>
+        <% @user.errors.messages.each do |column, message|%>
+          <li><%= column%>: < %=message% ></li>
+        </ul>
+      <%end%>
+      </p> 
+    <%end%>
     <%= yield %>
     </main>
   <footer></footer>
