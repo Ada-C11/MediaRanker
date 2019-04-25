@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'homepages/index'
   # update to homepage once done
   root to: "works#index"
 
