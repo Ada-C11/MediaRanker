@@ -1,3 +1,26 @@
-<h1>Homepage#index</h1>
-<p>Find me in app/views/homepage/index.html.erb</p>
-
+<section>
+  <% spotlight = @works.sample %>
+  <h4> Media Spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %> by <%= spotlight.creator %> </h4> 
+  <p> Description: <%= spotlight.description %> </p>
+</section>
+<br/>
+<section>
+  <% album = @works.sample %>
+  <h4> Top Album: <%= link_to album.title, work_path(spotlight.id) %> by <%= album.creator %> </h4> 
+  <p> Description: <%= album.description %> </p>
+  <%= rand(1..5)%> votes
+</section>
+<br/>
+<section>
+  <% book = @works.sample %>
+  <h4> Top Book: <%= link_to book.title, work_path(spotlight.id) %> by <%= book.creator %> </h4> 
+  <p> Description: <%= book.description %> </p>
+  <%= rand(1..5)%> votes
+</section>
+<br/>
+<section>
+  <% movie = @works.sample %>
+  <h4> Top Movie: <%= link_to movie.title, work_path(spotlight.id) %> by <%= movie.creator %> </h4> 
+  <p> Description: <%= movie.description %> </p>
+  <%= rand(1..5)%> votes
+</section>

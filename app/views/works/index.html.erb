@@ -5,7 +5,7 @@
     <% if work.category == "book" %>  
     <ul class="works-list">
       <li>
-        <strong>Title:</strong> <%= work.title %>
+        <strong>Title:</strong> <%= link_to work.title, work_path(work.id) %>
         <strong>Creator:</strong> <li><%= work.creator %></li>
         <strong>Description:</strong> <li><%= work.description %></li>
       </li>
@@ -20,7 +20,7 @@
     <% if work.category == "album" %>  
     <ul class="works-list">
       <li>
-        <strong>Title:</strong> <%= work.title %>
+        <strong>Title:</strong> <%= link_to work.title, work_path(work.id) %>
         <strong>Creator:</strong> <li><%= work.creator %></li>
         <strong>Description:</strong> <li><%= work.description %></li>
       </li>
@@ -35,7 +35,7 @@
     <% if work.category == "movie" %>  
     <ul class="works-list">
       <li>
-        <strong>Title:</strong> <%= work.title %>
+        <strong>Title:</strong> <%= link_to work.title, work_path(work.id) %>
         <strong>Creator:</strong> <li><%= work.creator %></li>
         <strong>Description:</strong> <li><%= work.description %></li>
       </li>

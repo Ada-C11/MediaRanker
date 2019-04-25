@@ -1,0 +1,12 @@
+<article class="forms">
+  <h2> Edit Details of Work of Art </h2>
+  <p> Please enter work of art's new data below: </p>
+
+  <%= render partial: "forms", locals: {
+    form_class: "edit-work",
+    action_name: "Update"
+  } %>
+  <div>
+    <p class="button"><%= link_to "View all media", works_path %></p>
+  </div>
+</article>

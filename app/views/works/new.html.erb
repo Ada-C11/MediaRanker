@@ -1,0 +1,13 @@
+<article>
+  <h2> Add a new Work of Art! </h2>
+  <p> Please enter work of art information below:</p>
+
+  <%= render partial: "forms", locals: {
+    form_class: "new-work",
+    action_name: "Add Work of Art"
+  } %>
+
+  <div>
+    <p class="button"><%= link_to "View all media", works_path %></p>
+  </div> 
+</article>
