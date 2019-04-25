@@ -103,4 +103,23 @@ describe WorksController do
     end
   end
 
+  describe "destroy" do
+    it "should destroy work" do 
+      expect {
+        delete work_path(works(:two).id)
+      }.must_change "Work.count", -1
+
+      must_respond_with :redirect
+      expect(flash[:success]).must_equal "Successfully destroyed #{works(:two).category} #{works(:two).id}"
+    end
+
+    it "should respond with flash error if work not found" do
+      expect {
+        delete work_path(-1)
+      }.wont_change "Work.count"
+
+      must_respond_with :redirect
+      expect(flash[:error]).must_equal "That work does not exist"
+    end
+  end
 end
