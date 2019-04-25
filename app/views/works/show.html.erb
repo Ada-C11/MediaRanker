@@ -7,6 +7,9 @@
     <li>
         Published: <%= @work.publication_year %>
     </li>
+    <li>
+        Votes: <%= Vote.where(work_id: @work.id).length%>
+    </li>
 </ul>
 
 <%= link_to "Upvote work", work_votes_path(@work.id), method: :post %>
