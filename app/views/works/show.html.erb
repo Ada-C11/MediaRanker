@@ -1,0 +1,37 @@
+<ul>
+    <li>
+        <h2><%= @work.title %></h2>
+    </li>
+
+    <li>
+        Create by: <%= @work.creator %>
+    </li>
+    <li>
+        Publish: <%= @work.publication_year%>
+    </li>
+    <li>
+        <%= @work.description %>
+    </li>
+</ul>
+
+<%#section>
+<h4>
+  Votes
+</h4> 
+
+<ul>
+ <% @work.votes.each do |vote|%>
+
+ <%#li>
+  <%= vote.username%>
+<%#/ul>
+<% end %>
+<%#/section%>
+<%= link_to "Back to media ranks", edit_work_path(@work.id), class: "btn btn-info" %>
+
+<%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-info" %>
+
+<%= link_to "Upvote", edit_work_path(@work.id), class: "btn btn-info" %>
+
+<%= link_to "Delete", 
+    work_path(@work.id), method: :delete, class: "btn btn-danger" %>

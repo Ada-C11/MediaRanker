@@ -1,15 +1,28 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  category: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+<% 11.times do |n| %>
+album_<%= n %>:
+  category: album
+  title: <%= "album_number_#{n}" %>
+  creator: some writer
+  publication_year: 1990
+  description: random
+<% end %>
 
-two:
-  title: MyString
-  category: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+<% 11.times do |n| %>
+book_<%= n %>:
+  category: book
+  title: <%= "book_number_#{n}" %>
+  creator: some writer
+  publication_year: 1990
+  description: random
+<% end %>
+
+<% 11.times do |n| %>
+movie_<%= n %>:
+  category: 
+  title: <%= "movie_number_#{n}" %>
+  creator: some writer
+  publication_year: 1990
+  description: random
+<% end %>
