@@ -26,10 +26,11 @@
   <% end %>
 </ul>
 
-<h2> Top Albums </h2>
+
 <% top_albums = Work.albums.sample(10)%>
 <section class="top-ten-container">
-<ul>
+<ul class="top-ten-list-container">
+<h2> Top Albums </h2>
   <% top_albums.each do |media|%>
     <li>
       <h4>

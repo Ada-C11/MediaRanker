@@ -8,31 +8,31 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header class="app-header__header">
+  <header class="site-header">
   <h1>
-    <a href="/" alt="Link to homepage"> Media Ranker</a>
+    <%= link_to "Media Ranker", root_path, alt: "Link to homepage" %>
     <small> Ranking the best of everything </small>
   </h1>
-  <nav class="app-header__nav">
-    <ul class="nav app-header__site-nav-container">
-      <li class="nav-item app-header__nav_item"> 
+  <nav class="header_nav">
+    <ul class="nav nav-container">
+      <li class="nav_item"> 
         <%= link_to "View top media", root_path, class: "nav-link"%>
       </li>
-       <li class="nav-item app-header__nav_item"> 
+       <li class="nav_item"> 
         <%= link_to "View all media", works_path, class: "nav-link" %>
       </li>
-       <li class="nav-item app-header__nav_item"> 
+       <li class="nav_item"> 
         <%= link_to "Add a new work", new_work_path, class: "nav-link"%>
       </li>
-       <li class="nav-item app-header__nav_item"> 
+       <li class="nav_item"> 
         <%= link_to "View all Users", root_path, class: "nav-link" %>
       </li>
     </ul>
-    <ul class="nav app-header__user-nav-container">
-       <li class="nav-item app-header__nav_item"> 
+    <ul class="nav user-nav-container">
+       <li class="user_nav_item"> 
         <%= link_to "Login", root_path, class: "btn btn-primary", alt: "Log In" %>
       </li>
-       <li class="nav-item app-header__nav_item"> 
+       <li class="user_nav_item"> 
        <%= link_to "Log Out", root_path, class: "btn btn-primary", alt: "Log Out" %>
       </li>
     </ul>
