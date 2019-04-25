@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def current
-    # @user = User.find_by(id: session[:user_id])
+    @user = User.find_by(id: session[:user_id])
     if @user.nil?
       flash[:error] = "You must log in to do that"
       redirect_to root_path
