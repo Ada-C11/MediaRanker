@@ -1,9 +1,18 @@
 require "test_helper"
 
 describe Work do
-  let(:work) { Work.new }
 
-  it "must be valid" do
-    value(work).must_be :valid?
+  describe "validations" do
+    before do
+      user = User.new(username: "john")
+      work = works(:idaho)
+      work.user_id = 1
+    end
+
+    it "passes validations with good data" do
+      result = work.valid?
+
+      expect(result).must_equal true
+    end
   end
 end

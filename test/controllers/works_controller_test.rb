@@ -15,7 +15,8 @@ describe WorksController do
   
     describe "show" do
       it "can get a valid work" do
-        get work_path(work.id)
+      goldfinch = Work.find_by(title: "The Goldfinch")
+        get work_path(goldfinch.id)
   
         # Assert
         must_respond_with :success
@@ -29,172 +30,126 @@ describe WorksController do
         must_respond_with :redirect
       end
     end
-  #######################################################
+
     describe "edit" do
       it "can get the edit page for an existing work" do
         # Act
-        driver = Driver.new(name: "Jessica Sanchez", vin: "XF9HBFH148FLD41K8")
-        driver.name = "John Randall"
-        driver.save
+        goldfinch = Work.find_by(creator: "Donna Tartt")
   
-        get edit_driver_path(driver.id)
+        get edit_work_path(goldfinch.id)
   
         # Assert
         must_respond_with :success
       end
   
-      it "will respond with redirect when attempting to edit a nonexistant driver" do
-        get edit_driver_path(999)
+      it "will respond with redirect when attempting to edit a nonexistant work" do
+        get edit_work_path(999)
   
         must_respond_with :redirect
-        must_redirect_to drivers_path
+        must_redirect_to works_path
       end
     end
   
     describe "update" do
-      it "can update an existing driver" do
-        driver = Driver.new(name: "Jessica Sanchez", vin: "XF9HBFH148FLD41K8")
-        driver.name = "John Randall"
-        driver.save
+      it "can update an existing work" do
+       idaho = Work.find_by(creator: "Gus Van Sant")
         
-        driver_hash = {
-          driver: {
-            name: "John Randall",
-            vin: "123456789",
-            car_make: "Honda",
-            car_model: "Accord"
+        work_hash = {
+          work: {
+            category: "movie",
+            title: "Drugstore Cowboy",
+            creator: "Gus Van Sant",
+            publication_year: 1989,
+            description: "Matt Dillon as a drug addict"
           },
         }
   
         # Act-Assert
         expect {
-          patch driver_path(driver.id), params: driver_hash
-        }.must_change "Driver.count", 0
+          patch work_path(idaho.id), params: work_hash
+        }.must_change "Work.count", 0
   
-        expect(driver.name).must_equal "John Randall"
+        expect(idaho.title).must_equal "My Own Private Idaho"
         #Repulling from database - updating the title variable
-        driver.reload
-        expect(driver.name).must_equal driver_hash[:driver][:name]
-        expect(driver.vin).must_equal driver_hash[:driver][:vin]
-        expect(driver.car_make).must_equal driver_hash[:driver][:car_make]
-        expect(driver.car_model).must_equal driver_hash[:driver][:car_model]
+        idaho.reload
+        expect(idaho.category).must_equal work_hash[:work][:category]
+        expect(idaho.title).must_equal work_hash[:work][:title]
+        expect(idaho.creator).must_equal work_hash[:work][:creator]
+        expect(idaho.publication_year).must_equal work_hash[:work][:publication_year]
+        expect(idaho.description).must_equal work_hash[:work][:description]
+
   
         must_respond_with :redirect
-        must_redirect_to driver_path(driver.id)
+        must_redirect_to work_path(idaho.id)
       end
   
       it "will redirect to the root page if given an invalid id" do
-          patch driver_path(999)
+          patch work_path(999)
           must_respond_with :redirect
-          must_redirect_to drivers_path
+          must_redirect_to works_path
       end
     end
   
     describe "new" do
-      it "can get the new driver page" do
+      it "can get the new work page" do
   
-        get new_driver_path
+        get new_work_path
   
         must_respond_with :success
       end
     end
   
     describe "create" do
-      it "can create a new driver" do
-  
-        driver_hash = {
-          driver: {
-            name: "John Randall",
-            vin: "123456789",
-            car_make: "Honda",
-            car_model: "Accord"
+      it "can create a new work" do
+        zeds_dead = Work.find_by(title: "Somewhere Else")
+        work_hash = {
+          work: {
+            category: zeds_dead.category,
+            title: zeds_dead.title,
+            creator: zeds_dead.creator,
           },
         }
   
         # Act-Assert
         expect {
-          post drivers_path, params: driver_hash
-        }.must_change "Driver.count", 1
+          post works_path, params: work_hash
+        }.must_change "Work.count", 1
   
-        new_driver = Driver.find_by(name: driver_hash[:driver][:name])
-        expect(new_driver.vin).must_equal driver_hash[:driver][:vin]
-        expect(new_driver.car_make).must_equal driver_hash[:driver][:car_make]
-        expect(new_driver.car_model).must_equal driver_hash[:driver][:car_model]
-  
+        new_work = Work.find_by(title: work_hash[:work][:title])
+        expect(new_work.category).must_equal work_hash[:work][:category]
+        expect(new_work.creator).must_equal work_hash[:work][:creator]
+        
         must_respond_with :redirect
-        must_redirect_to driver_path(new_driver.id)
+        must_redirect_to work_path(new_work.id)
       end
     end
   
     describe "destroy" do
-      it "destroy action updates driver's 'deleted' attribute" do
-        test_driver = driver
+      it "removes the work from the database" do
+        work = Work.create(category: "movie", title: "My Own Private Idaho")
         
         expect {
-          post destroy_driver_path(test_driver.id)
-        }.wont_change 'Driver.count'
-  
-        test_driver.reload
-  
-        test_driver.deleted.must_equal true
+          delete work_path(work)
+        }.must_change "Work.count", -1
   
         must_respond_with :redirect
-        must_redirect_to drivers_path
+        must_redirect_to works_path
+  
+        after_work = Work.find_by(id: work.id)
+        expect(after_work).must_be_nil
       end
   
-      it "returns a 404 if the driver does not exist" do
-        driver_id = 999
+      it "returns a 404 if the work does not exist" do
+        work_id = 999
   
-        expect(Driver.find_by(name: driver_id)).must_be_nil
+        expect(Work.find_by(id: work_id)).must_be_nil
   
         expect {
-          post destroy_driver_path(driver_id)
-        }.wont_change "Driver.count"
+          delete work_path(work_id)
+        }.wont_change "Work.count"
   
         must_respond_with :not_found
       end
     end
-  
-    describe "available" do
-      it "can toggle driver from offline to online" do
-        test_driver = driver
-  
-        expect {
-          post driver_availability_path(test_driver.id)
-        }.wont_change 'Driver.count'
-  
-        test_driver.reload
-  
-        test_driver.available.must_equal true
-  
-        must_respond_with :redirect
-        must_redirect_to driver_path(test_driver.id)
-      end
-      it "can toggle driver from online to offline" do
-        driver_hash = {
-          driver: {
-            name: "John Randall",
-            vin: "123456789",
-            car_make: "Honda",
-            car_model: "Accord",
-            available: true,
-          }
-        }
-  
-        test_driver = Driver.create driver_hash[:driver]
-  
-        expect {
-          post driver_availability_path(test_driver.id)
-        }.wont_change 'Driver.count'
-  
-        test_driver.reload
-  
-        test_driver.available.must_equal false
-  
-        must_respond_with :redirect
-        must_redirect_to driver_path(test_driver.id)
-      end
-    end
   end
-  
 end

@@ -43,19 +43,19 @@ class WorksController < ApplicationController
 
         redirect_to work_path(@work.id)
     end
+    def destroy
+        unless @work
+            head :not_found
+            return
+        end
+
+        @work.destroy
+
+        redirect_to works_path
+    end
+
 end
 
-
-def destroy
-   unless work
-    head :not_found
-    return
-   end
-
-    work.destroy
-
-    redirect_to works_path
-end
 
 private
 

@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: MyString
-  description: MyString
+idaho:
+  category: movie
+  title: My Own Private Idaho
+  creator: Gus Van Sant
+  publication_year: 1991
+  description: Keanu Reeves and River Phoenix in Idaho
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: MyString
-  description: MyString
+goldfinch:
+  category: book
+  title: The Goldfinch
+  creator: Donna Tartt
+  publication_year: 2013
+  description: Sad story about a guy
+
+zeds_dead:
+  category: album
+  title: Somewhere Else
+  creator: Zeds Dead
+  publication_year:
+  description: 
