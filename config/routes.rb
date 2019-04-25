@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   root "homepages#index"
   resources :works, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
+  get "/login", to: "users#login_form", as: "login"
 end
