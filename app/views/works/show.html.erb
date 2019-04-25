@@ -1,2 +1,20 @@
 <h1>Works#show</h1>
 <p>Find me in app/views/works/show.html.erb</p>
+
+<h2><%= @work.title %></h2>
+
+<p>Created by: <%= @work.creator %></p>
+<p>Published: <%= @work.publication_year %></p>
+<p><%= @work.description %></p>
+<%= button_to "back to media rank", root_path %>
+<%= button_to "edit", edit_work_path(@work.id), method: :get %>
+<%= button_to "upvote", work_vote_path(@work.id) %>
+<!-- definitely need to check on that one -->
+<%= button_to "delete", work_path(@work.id), method: :delete %>
+
+<h3>placeholder Votes for this <%= @work.category %></h3>
+
+<table>
+<thead><tr><th>User</th><th>Date</th></tr></thead>
+
+</table>

@@ -2,3 +2,30 @@
 <p>Find me in app/views/works/index.html.erb</p>
 
 
+<h2>List of Works</h2>
+
+<!-- cut and paste this into a form -->
+<h4>Albums</h4>
+<table>
+<tr>
+<th>Votes</th>
+<th>Title</th>
+<th>Created By</th>
+<th>Published</th>
+<th>Upvote</th>
+</tr>
+<% @works.where(category: "album").each do |album| %>
+<tr>
+<td>placeholder for votes</td>
+<td><%= link_to album.title, work_path(album.id) %></td>
+<td><%= album.creator %></td>
+<!-- data migration to integer for year -->
+<td><%= album.publication_year %></td>
+<td>placeholder button</td>
+</tr>
+<% end %>
+</table>
+
+<h4>Books</h4>
+
+<h4>Movies</h4>
