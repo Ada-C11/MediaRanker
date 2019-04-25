@@ -18,6 +18,15 @@
           <li><%= link_to "View all media", works_path %></li>
           <li><%= link_to "Add a new work", new_work_path %></li>
           <li><%= link_to "View all users", "#" %></li>
+            
+          <div class="button">
+          <% if session[:user_id].nil? %>
+            <li><%= link_to "Login", login_path, class: "btn btn-primary" %></li>
+          <% else %>
+            <li> <%= link_to "Logged in as #{User.find(session[:user_id]).username}", current_user_path, class: "btn btn-primary"%></li>
+            <li><%= link_to "Log Out", logout_path, method: :post, class: "btn btn-primary" %></li>
+          <% end %>
+          </div>
         </ul>
       </nav>
     </header>

@@ -33,6 +33,7 @@ ul {
     list-style: none;
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 header.app-header a {
     color: tomato;
@@ -51,5 +52,17 @@ nav li {
     margin-left: 5px;
     margin-right: 5px;
 }
-
+div.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-content: flex-end;
+}
+.btn-primary {
+    background-color: #26A69A;
+    border-color: #26A69A;
+}
+.button a:visited {
+    color: white;
+}
 
