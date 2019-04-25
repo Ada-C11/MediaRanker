@@ -66,7 +66,7 @@ describe UsersController do
       expect(flash[:success]).must_equal "Successfully created new user #{user.username} with ID #{user.id}!"
       must_respond_with :redirect
       must_redirect_to root_path
-      # expect(session[:user_id]).must_equal user.id
+      expect(session[:user_id]).must_equal user.id
     end
   end
 end
