@@ -103,5 +103,19 @@ h2.index {
 .spotlight-work h2 {
     font-weight: bold;
     color: #26A69A;
-    text-decoration: underline;
+    border-bottom: solid 1px #26A69A;
+}
+section.spotlight {
+    border-bottom: 1px lightgrey solid;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+div.spotlight-works {
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
