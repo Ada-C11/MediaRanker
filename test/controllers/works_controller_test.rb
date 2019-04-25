@@ -3,7 +3,7 @@ require "test_helper"
 describe WorksController do
   describe "index" do
     it "should get index" do
-      get users_path
+      get works_path
       must_respond_with :success
     end
   end

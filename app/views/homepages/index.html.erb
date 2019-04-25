@@ -1,5 +1,14 @@
 <h1>MediaRanker</h1>
 
+<%= link_to("View top media", root_path) %>
+<%= link_to("View all media", works_path) %>
+<%= link_to("Add new work", new_work_path) %>
+<%= link_to("All Users", users_path) %>
+<%= link_to("Login", login_path) if session[:user_id].nil? %>
+<%= link_to("Logout", logout_path, method: :post) if session[:user_id] %>
+<%= link_to("Logged in as #{session[:user_name]}", current_user_path) if session[:user_id] %>
+
+
 <% albums = Work.where(category: "album") %>
 <% movies = Work.where(category: "movie") %>
 <% books = Work.where(category: "book") %>
