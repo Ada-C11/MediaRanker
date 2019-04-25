@@ -88,6 +88,9 @@ h2.index {
     border-bottom: 1px solid #dee2e6;
     padding: .75rem;
 }
+.works-table tbody th {
+    font-weight: normal;
+}
 /* ----------------------- TABLE/USERS INDEX STYLING ----------------------- */
 .users-table {
     border-collapse: collapse;
@@ -104,6 +107,9 @@ h2.index {
     vertical-align: bottom;
     border-bottom: 2px solid #dee2e6;
     border-top: 1px solid #dee2e6;
+}
+.users-table tbody th {
+    font-weight: normal;
 }
 .users-table th {
     border-bottom: 1px solid #dee2e6;
@@ -131,6 +137,9 @@ tbody {
     display: table-row-group;
     vertical-align: middle;
     border-color: inherit;
+}
+.work-show-table tbody th {
+    font-weight: normal;
 }
 
 /* ----------------------- TABLE/USERSHOW STYLING ----------------------- */
