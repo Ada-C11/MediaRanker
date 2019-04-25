@@ -1,2 +1,32 @@
 <h1>Works#show</h1>
 <p>Find me in app/views/works/show.html.erb</p>
+
+<h3> <%= @work.title %> </h3>
+Created by: <%= @work.created_by %><br>
+Published: <%= @work.published %><br>
+<%= @work.description %><br>
+
+link to homepage
+link to edit
+link to upvote
+link to delete
+
+
+
+
+
+# votes for this Album
+
+<table>
+<tr>
+<th>User</th>
+<th>Date</th>
+<tr>
+<tr>
+<%# @work.votes.each do |vote| %>
+<td> <%#= vote.user %></td>
+<td> <%#= vote.date %></td>
+<%# end %>
+</tr>
+
+</table>
