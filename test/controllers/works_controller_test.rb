@@ -65,4 +65,32 @@ describe WorksController do
     end
   end
 
+  describe "edit" do
+    it "should get edit" do
+      get edit_work_path(works(:one).id)
+
+      must_respond_with :success
+    end
+  end
+
+  describe "update" do
+    it "should update work" do
+      work_hash = {
+        work: {
+          category: "movie",
+          title: "Me, Working!"
+        }
+      }
+
+      patch work_path(works(:one).id), params: work_hash
+
+      must_respond_with :redirect
+      expect(Work.find_by(title: "Me, Working!")).wont_be_nil
+    end
+
+    it "will respond with a bad requet if the title is empty" do
+    
+    end
+  end
+
 end
