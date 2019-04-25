@@ -6,7 +6,7 @@
 <%= link_to("All Users", users_path) %>
 <%= link_to("Login", login_path) if session[:user_id].nil? %>
 <%= link_to("Logout", logout_path, method: :post) if session[:user_id] %>
-<%= link_to("Logged in as #{session[:user_name]}", current_user_path) if session[:user_id] %>
+<%= link_to("Logged in as #{User.find(session[:user_id]).name}", current_user_path) if session[:user_id] %>
 
 
 <% albums = Work.where(category: "album") %>
