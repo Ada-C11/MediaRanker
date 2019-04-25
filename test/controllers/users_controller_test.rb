@@ -2,6 +2,21 @@ require "test_helper"
 
 describe UsersController do
   describe "login" do
+    it "successfully adds user information to session hash" do
+      logged_in_user = perform_login
+
+      get current_user_path
+      must_respond_with :success
+    end
+    it "responds with a redirect if no username is invalid" do
+      login_data = {
+        user: {
+          name: "",
+        },
+      }
+      post login_path, params: login_data
+      must_respond_with :redirect
+    end
   end
   describe "current" do
     it "responds with success if a user is logged in" do
@@ -16,33 +31,10 @@ describe UsersController do
     end
   end
   describe "logout" do
+    it "reponds with a redirect and sets session user id to nil" do
+      logged_in_user = perform_login
+      post logout_path
+      must_respond_with :redirect
+    end
   end
 end
-
-# def login
-#   username = params[:name]
-#   user = User.find_by(name: username)
-#   user = User.create(name: username) if user.nil?
-#   if user.id
-#     session[:user_id] = user.id
-#     flash[:alert] = "#{user.name} logged in"
-#   else
-#     flash[:error] = "Unable to log in"
-#   end
-#   redirect_to root_path
-# end
-
-# def current
-#   @user = User.find_by(id: session[:user_id])
-#   if @user.nil?
-#     flash[:error] = "You must be logged in first!"
-#     redirect_to root_path
-#   end
-# end
-
-# def logout
-#   user = User.find_by(id: session[:user_id])
-#   session[:user_id] = nil
-#   flash[:notice] = "Logged out #{user.name}"
-#   redirect_to root_path
-# end
