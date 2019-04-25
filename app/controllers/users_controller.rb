@@ -3,6 +3,16 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find_by(id: params[:id])
+    # @user = User.find_by(username: username)
+
+    if @user.nil?
+      flash[:error] = "That user does not exist"
+      redirect_to users_path
+    end
+  end
+
   def login_form
     @user = User.new
   end

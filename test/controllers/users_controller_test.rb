@@ -2,7 +2,7 @@ require "test_helper"
 # require "pry"
 
 describe UsersController do
-  let (:user_one) {
+  let (:user) {
     users(:user_one)
   }
 
@@ -11,6 +11,22 @@ describe UsersController do
       get users_path
 
       must_respond_with :success
+    end
+  end
+
+  describe "show" do
+    it "can get a valid user" do
+      get user_path(user.id)
+
+      must_respond_with :success
+    end
+
+    it "will redirect for an invalid user" do
+      invalid_id = -1
+      get user_path(invalid_id)
+
+      expect(flash[:error]).must_equal "That user does not exist"
+      must_respond_with :redirect
     end
   end
 
