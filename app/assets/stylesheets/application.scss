@@ -16,6 +16,9 @@
 /* Import scss content */
 @import "**/*";
 
+/* Impoty Gudea font from google */
+@import url('https://fonts.googleapis.com/css?family=Gudea');
+
 // .content {
 //     grid-template-rows: 150px 1;
 // }
@@ -90,9 +93,24 @@ h2, a, h3 {
     color: #26A69A;
 }
 
-h1, h2, h3, h4, h5 {
-    font-weight: bold;
+h2 {
+    font-size: 2rem;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 900;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+        line-height: 1.2;
+    
+    }
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Gudea', sans-serif;
+
+}
+
+
 
 p {
     margin-top: 0;
