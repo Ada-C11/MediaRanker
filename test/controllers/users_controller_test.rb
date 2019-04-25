@@ -66,4 +66,22 @@ describe UsersController do
       must_respond_with :redirect
     end
   end
+
+  describe "logout" do
+    it "can log out a current user" do
+      user = User.first
+      login_data = {
+        user: {
+          username: user.username,
+        },
+      }
+      post login_path, params: login_data
+
+      post logout_path, params: login_data
+
+      expect(session[:user_id]).must_be_nil
+      expect(flash[:success]).must_equal "Successfully logged out"
+      must_respond_with :redirect
+    end
+  end
 end
