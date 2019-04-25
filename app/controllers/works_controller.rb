@@ -7,7 +7,7 @@ class WorksController < ApplicationController
 
   def show
     # @work = Work.find_by(id: params[:id])
-
+    # raise
     if @work.nil?
       redirect_to works_path
       flash[:error] = "Unknown work"
@@ -77,7 +77,7 @@ class WorksController < ApplicationController
   end
 
   def work_params
-    return params.require(:work).permit(:title, :creator, :description, :publication_year, :category)
+    return params.require(:work).permit(:title, :creator, :description, :publication_year, :category, vote_id: [])
   end
 
   # optional

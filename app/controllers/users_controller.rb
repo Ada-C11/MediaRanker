@@ -30,4 +30,10 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
+
+  private
+
+  def user_params
+    return params.require(:user).permit(:username, vote_id: [])
+  end
 end

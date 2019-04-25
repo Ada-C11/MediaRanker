@@ -9,9 +9,12 @@ Rails.application.routes.draw do
   post "/logout", to: "users#logout", as: "logout"
   get "/users/current", to: "users#current", as: "current_user"
 
-  resources :works
+  resources :works do
+    resources :votes, only: [:create]
+  end
+  # post "/works/:id/upvote", to: "works#upvote", as: "upvote"
 
-  post "/upvote", to: "votes#upvote", as: "upvote"
+  # resources :votes, only: [:create]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
