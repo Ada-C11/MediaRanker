@@ -1,12 +1,17 @@
 <h1> List of Works </h1>
 
-// create table 
+
+<h2> Books </h2>
+<ul>
+    <% @books.each do |book| %>
+    <li> <%= link_to book.title, work_path(book) %> by <%= book.creator%> </li>
+    <% end %>
+</ul>
+
 
 <h2> Albums </h2>
-    <ul>
-    <% Work.where(category: "album").each do |album| %>
-    <li> <%= album.title%> </li>
+<ul>
+    <% @albums.each do |album| %>
+    <li> <%= link_to album.title, work_path(album) %> by <%= album.creator%> </li>
     <% end %>
-    </ul>
-
-<h2> Books </h2 >
+</ul>
