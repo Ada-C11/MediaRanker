@@ -8,26 +8,21 @@
 </section>
 <hr>
 <section class = "top-ten-container">
+<%Work.category.each do |category|%>
+<% media_count = Work.media_votes(category)%>
 <section class = "top-ten-lists">
 <h2 class="top-ten-header">
-Top Movies</h2>
+Top <%=category.capitalize+"s"%></h2>
 <ul class="list-group">
-<li class="list-group-item"></li>
-</ul>
-</section>
-<section class = "top-ten-lists">
-<h2 class="top-ten-header">
-Top Books</h2>
-<ul class="list-group">
-<li class="list-group-item"></li>
-</ul>
-</section>
-<section class = "top-ten-lists">
-<h2 class="top-ten-header">
-Top Albums</h2>
-<ul class="list-group">
-<li class="list-group-item"></li>
+<%media_count.each do |work|%>
+<li class="list-group-item"><h4><a><%= link_to "#{work[0].title}", work_path(work[0].id)%></a><small> by <%=work[0].creator%></small></h4><p><%=work[1]%> counts</p></li>
+<%end%>
 </ul>
 </section>
 <%end%>
 </section>
+
+
+
+
+<%end%>

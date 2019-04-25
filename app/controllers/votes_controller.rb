@@ -6,7 +6,7 @@ class VotesController < ApplicationController
       user_id = session[:user_id]
       @vote.user_id = user_id
       @vote.work_id = params[:work_id]
-      if check_unique_work(user_id, work_id)
+      if Vote.check_unique_work(user_id, work_id)
         @vote.save
         redirect_to works_path
       else
