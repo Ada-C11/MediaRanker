@@ -92,6 +92,25 @@ h2.index {
     color: #26A69A;
 }
 
+/* ----------------------- TABLE/WORK SHOW STYLING ----------------------- */
+.work-show-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: grey;
+}
+.work-show-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
+}
+.work-show-table th {
+    border-bottom: 1px solid #dee2e6;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
 /* ----------------------- HOMEPAGE INDEX STYLING ----------------------- */
 .spotlight h2 {
     font-weight: bold;
