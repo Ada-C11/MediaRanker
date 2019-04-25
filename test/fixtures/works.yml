@@ -2,14 +2,14 @@
 
 one:
   category: MyString
-  name: MyString
+  title: MyString
   created_by: MyString
   published: MyString
   description: MyString
 
 two:
   category: MyString
-  name: MyString
+  title: MyString
   created_by: MyString
   published: MyString
   description: MyString
