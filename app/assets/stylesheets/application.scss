@@ -28,14 +28,34 @@ li {
 }
 
 
-
 header.site-header {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: baseline;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-items: center;
   padding: 4rem;
   background-color: #007bff;
+}
+
+nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: baseline
+}
+
+nav ul {
+  margin-rightt: auto;
+}
+
+nav ul li {
+  
+}
+
+section.site-title {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+  font-size: 28px
 }
 
 .page-header {
