@@ -41,7 +41,19 @@ describe UsersController do
   end
 
   describe "login" do
-    it "" do
+    it "can login an existing user" do
+      user_hash = {
+        user: {
+          username: User.first.username,
+          join_date: User.first.join_date,
+        },
+      }
+
+      expect {
+        post login_path, params: user_hash
+      }.wont_change "User.count"
     end
+
+    it "should"
   end
 end
