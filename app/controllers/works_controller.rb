@@ -68,7 +68,7 @@ class WorksController < ApplicationController
   def update
     if @work.update(work_params)
       flash[:success] = "Details of #{@work.title} have been updated"
-      redirect_to works_path
+      redirect_to work_path(@work.id)
     else
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages

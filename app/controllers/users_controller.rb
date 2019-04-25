@@ -3,67 +3,42 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show
-    user_id = params[:id]
-    @user = User.find_by(id: user_id)
-
-    if @user.nil?
-      flash[:error] = "Unknown user"
-      redirect_to users_path
-    end
-  end
-
-  # def new
-  #   @user = User.new
-  # end
-
-  # def create
-  #   @user = User.new( user_params )
-
-  #   save_is_successful = @user.save
-
-  #   if save_is_successful
-  #     flash[:success] = "Successfully added User to database"
-  #     redirect_to user_path(@user.id)
-  #   else
-  #     @user.error.messages.each do |field, messages|
-  #       flash.now[field] = messages
-  #     end
-  #     render :new, status: :bad_request
-  #   end
-  # end
-
   def login_form
     @user = User.new
   end
 
-  def login
+   def login
     username = params[:user][:name]
     user = User.find_by(name: username)
+
     if user
       session[:user_id] = user.id
-      flash[:success] = "Successfully logged in as returning user #{username}"
+      flash[:alert] = "#{user.name} logged in"
+      redirect_to root_path
     else
       user = User.create(name: username)
-      session[:user_id] = user.id
-      flash[:success] = "Successfully logged in as new user #{username}"
+      flash[:error] = "Unable to log in"
+      render :login_form, status: :bad_request
     end
-    redirect_to root_path
   end
 
   def current
     @current_user = User.find_by(id: session[:user_id])
-    if @current_user.nil?
+
+    puts "VVVVVVVVVV"
+    puts "#{@current_user}"
+
+    unless @current_user
       flash[:error] = "You must be logged in first!"
       redirect_to root_path
     end
   end
 
   def logout
-    user = User.find_by(id: session[:user_id]).name
-    session[:user_id] = nil
-    flash[:notice] = "Logged out #{user.name}"
+    user = User.find_by(id: session[:user_id])
     redirect_to root_path
+    flash[:notice] = "You have been successfully logged out"
+    session[:user_id] = nil
   end
 
   private

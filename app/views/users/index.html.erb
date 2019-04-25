@@ -2,7 +2,7 @@
   <h3> List of Users </h3>
   <% @users.each do |user| %>
     <li>
-      <a><%= link_to user.name, users_path(user.id) %></a>
+      <a><%= link_to user.name, users_path %></a>
     </li>
   <% end %>
 </section>

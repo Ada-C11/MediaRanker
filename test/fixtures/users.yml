@@ -5,7 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 jane:
-  name: janedoe
+  name: "janedoe"
 
 john:
-  name: johndoe
+  name: "johndoe"
