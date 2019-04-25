@@ -13,13 +13,10 @@
                 Title: <%= link_to spotlight[0].title, work_path(spotlight[0].id) %>
             </li>
             <li>
-                Media Type: <%= spotlight[0].category %>
-            </li>
-            <li>
                 Creator: <%= spotlight[0].creator %>
             </li>
             <li>
-                Description: <%= spotlight[0].description %>
+                Votes: <%= Vote.where(work_id: spotlight[0].id).length %>
             </li>
         </ul>
     </section>
@@ -33,12 +30,10 @@
                     Title: <%= link_to work.title, work_path(work.id) %>  
                 </li>
                 <li>
-                    Media type: <%= work.category %>
-                <li>
                     Creator: <%= work.creator %>
                 </li>
                 <li>
-                    Description: <%= work.description %>
+                    Votes: <%= Vote.where(work_id: work.id).length %>
                 </li>
             <% end %>
         </ul>
@@ -53,12 +48,10 @@
                     Title: <%= link_to work.title, work_path(work.id) %>  
                 </li>
                 <li>
-                    Media type: <%= work.category %>
-                <li>
                     Creator: <%= work.creator %>
                 </li>
                 <li>
-                    Description: <%= work.description %>
+                    Votes: <%= Vote.where(work_id: spotlight[0].id).length %>
                 </li>
             <% end %>
         </ul>
@@ -73,12 +66,10 @@
                     Title: <%= link_to work.title, work_path(work.id) %>  
                 </li>
                 <li>
-                    Media type: <%= work.category %>
-                <li>
                     Creator: <%= work.creator %>
                 </li>
-                <li>
-                    Description: <%= work.description %>
+               <li>
+                    Votes: <%= Vote.where(work_id: spotlight[0].id).length %>
                 </li>
             <% end %>
         </ul>

@@ -4,25 +4,31 @@
 <h2>Albums</h2>
     <table class="index-table">
         <tr>
+            <th>Votes</th>
             <th>Title</th>
-            <th>Media Type</th>
-            <th>Creator</th>
-            <th>Description</th>
-            <%# <th>Votes</th> %>
+            <th>Created By</th>
+            <th>Published</th>
+            <th>Upvote</th>
         </tr>
     <% albums = @works.where(category: "album") %>
+    <% albums.sort_by { |work| Vote.where(work_id: work.id).length }%>
+    
     <tr>
         <% albums.each do |work|%>
+            <td>
+            <%= Vote.where(work_id: work.id).length %>   
+            </td>
             <td>
             <%= link_to work.title, work_path(work.id) %>   
             </td>
             <td>
-                <%= work.category %>
-            <td>
                 <%= work.creator %>
             </td>
             <td>
-                <%= work.description %>
+                <%= work.publication_year %>
+            </td>
+             <td>
+                <%= link_to "Upvote", work_votes_path(work.id), method: :post %>
             </td>
         </tr>
         <% end %>
@@ -33,26 +39,29 @@
 <h2>Books</h2>
     <table class="index-table">
         <tr>
+            <th>Votes</th>
             <th>Title</th>
-            <th>Media Type</th>
-            <th>Creator</th>
-            <th>Description</th>
-            <%# <th>Votes</th> %>
+            <th>Created By</th>
+            <th>Published</th>
+            <th>Upvote</th>
         </tr>
         <% books = @works.where(category: "book") %>
             <% books.each do |work|%>
             <tr>
                 <td>
-                    <%= link_to work.title, work_path(work.id) %>  
+                    <%= Vote.where(work_id: work.id).length %>   
                 </td>
                 <td>
-                    <%= work.category %>
+                    <%= link_to work.title, work_path(work.id) %>  
                 </td>
                 <td>
                     <%= work.creator %>
                 </td>
                 <td>
-                    <%= work.description %>
+                    <%= work.publication_year %>
+                </td>
+                 <td>
+                    <%= link_to "Upvote", work_votes_path(work.id), method: :post %>
                 </td>
             </tr>
             <% end %>
@@ -64,25 +73,29 @@
 <h2>Movies</h2>
     <table class="index-table">
         <tr>
+            <th>Votes</th>
             <th>Title</th>
-            <th>Media Type</th>
-            <th>Creator</th>
-            <th>Description</th>
-            <%# <th>Votes</th> %>
+            <th>Created By</th>
+            <th>Published</th>
+            <th>Upvote</th>
         </tr>
     <% movies = @works.where(category: "movie") %>
         <tr>
             <% movies.each do |work|%>
                 <td>
-                    <%= link_to work.title, work_path(work.id) %>  
+                    <%= Vote.where(work_id: work.id).length %>   
                 </td>
                 <td>
-                    <%= work.category %>
+                    <%= link_to work.title, work_path(work.id) %>  
+                </td>
                 <td>
                     <%= work.creator %>
                 </td>
                 <td>
-                    <%= work.description %>
+                    <%= work.publication_year %>
+                </td>
+                <td>
+                    <%= link_to "Upvote", work_votes_path(work.id), method: :post %>
                 </td>
         </tr>
             <% end %>
