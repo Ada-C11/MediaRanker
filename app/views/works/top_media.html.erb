@@ -1,0 +1,40 @@
+
+<section>
+    <h1>Spotlight: <%= Work.spotlight.first.title%> by <%= Work.spotlight.first.creator%></h2>
+</section>
+
+<section>
+    <h2>Top Movies</h2>
+    <ul>
+        <% @top_works.each do |work|%>
+            <li>
+                <%= link_to work.title, work_path(work.id) %> by <%= work.creator%>
+                <%= work.votes.length%> votes
+            </li>
+        <% end %>
+    </ul>
+</section>
+
+<section>
+    <h2>Top Books</h2>
+    <ul>
+        <% @top_works.each do |work|%>
+            <li>
+                <%= link_to work.title, work_path(work.id) %> by <%= work.creator%>
+                <%= work.votes.length%> votes
+            </li>
+        <% end %>
+    </ul>
+</section>
+
+<section>
+    <h2>Top Albums</h2>
+    <ul>
+        <% @top_works.each do |work|%>
+            <li>
+                <%= link_to work.title, work_path(work.id) %> by <%= work.creator%>
+                <%= work.votes.length%> votes
+            </li>
+        <% end %>
+    </ul>
+</section>

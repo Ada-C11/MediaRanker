@@ -26,6 +26,14 @@ describe Work do
       expect(work.errors.messages).must_include :title
       expect(work.errors.messages[:title]).must_equal ["can't be blank"]
     end
+
+    it "requires a category" do
+      work.category = nil
+      valid_work = work.valid?
+      expect(valid_work).must_equal false
+      expect(work.errors.messages).must_include :category
+      expect(work.errors.messages[:category].must_equal ["can't be blank"])
+    end
   end
 
   describe "relationships" do

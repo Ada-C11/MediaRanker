@@ -1,51 +1,88 @@
-
+<h1>List of Works</h1>
 <section>
-    <% spotlight = @works.sample%>
-    <h1>Media Spotlight: <%= spotlight.title %> by <%= spotlight.creator%> <h2>
-    <!--need to add # votes -->
-
-</section>
-
-<section>
-    <h2>Top Movies</h2>
-    <ul>
+    <h2>Books</h2>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+        </tr>
+    </thead>
+    <tbody>
         <% @works.each do |work|%>
-            <% category = work.category.downcase %>
-            <% if  category == "movie"%>
-                <li>
-                    <%= link_to work.title, work_path(work.id) %>
-                <li>
+            <% if work.category.downcase == "book"%>
+            <tr>
+                <td><%= work.votes.length %></td>
+                <td><%= link_to work.title, work_path(work.id) %></td>
+                <td><%= work.creator %></td>
+                <td><%= work.publication_year %></td>
+                <td>Upvote</td>
+            </tr>
             <% end %>
         <% end %>
-    <ul>
+    </tbody>
+    </table>
 </section>
 
 <section>
-    <h2>Top Books</h2>
-    <ul>
+    <h2>Albums</h2>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+        </tr>
+    </thead>
+    <tbody>
         <% @works.each do |work|%>
-            <% category = work.category.downcase %>
-            <% if  category == "book"%>
-                <li>
-                    <%= link_to work.title, work_path(work.id) %>
-                <li>
+            <% if work.category.downcase == "album"%>
+            <tr>
+                <td><%= work.votes.length %></td>
+                <td><%= link_to work.title, work_path(work.id) %></td>
+                <td><%= work.creator %></td>
+                <td><%= work.publication_year %></td>
+                <td>Upvote</td>
+            </tr>
             <% end %>
         <% end %>
-    <ul>
+    </tbody>
+    </table>
 </section>
 
 <section>
-    <h2>Top Albums</h2>
-    <ul>
+    <h2>Movies</h2>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+        </tr>
+    </thead>
+    <tbody>
         <% @works.each do |work|%>
-            <% category = work.category.downcase %>
-            <% if  category == "album"%>
-                <li>
-                    <%= link_to work.title, work_path(work.id) %>
-                <li>
+            <% if work.category.downcase == "movie"%>
+            <tr>
+                <td><%= work.votes.length %></td>
+                <td><%= link_to work.title, work_path(work.id) %></td>
+                <td><%= work.creator %></td>
+                <td><%= work.publication_year %></td>
+                <td>Upvote</td>
+            </tr>
             <% end %>
         <% end %>
-    <ul>
+    </tbody>
+    </table>
 </section>
+
+
 
 

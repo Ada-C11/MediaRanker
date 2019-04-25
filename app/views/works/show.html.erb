@@ -1,0 +1,40 @@
+
+
+
+<section>
+    <h1><%= @work.title %></h1>
+    <p>Created By: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year %></p>
+    <p><%= @work.description %></p>
+</section>
+
+<section class="card">
+  <section class="card-body">
+    <%= link_to "Back to top media", root_path, class: "btn btn-info" %>
+    <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-info"%>
+    <%= link_to "Upvote", "#", class: "btn btn-info" %>
+    <%= link_to "Delete", work_path(@work.id), class: "btn btn-danger", 
+        :data => {:confirm => "Are you sure you want to delete #{@work.title}?"}, method: :delete %>
+  </section>
+</section>
+
+<section>
+    <h3><%= @work.votes.length%> Votes for this <%= @work.category%></h3>
+
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">User</th>
+        <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @work.votes.each do |vote|%>
+            <tr>
+                <td><%= User.find_by(id: vote.user_id).username %></td>
+                <td><%= vote.date %></td>
+            </tr>
+        <% end %>
+    </tbody>
+    </table>
+</section>

@@ -13,7 +13,8 @@
 
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-warning">
       <!-- Brand link or heading -->
-      <a class="navbar-brand" href="#">Media Ranker</a>
+      <%= link_to "Media Ranker", root_path, class: "navbar-brand" %>
+      <!--<a class="navbar-brand" href="#">Media Ranker</a>-->
       <small> Ranking the Best of Everything </small>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,13 +25,13 @@
           
           <!-- items on navigation -->
           <li class="nav-item">
-            <a class="nav-link" href="#">View Top Media</a>
+            <%= link_to "View Top Media", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">View All Media</a>
+            <%= link_to "View All Media", list_of_works_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Add A New Network</a>
+            <%= link_to "Add A New Network", new_work_path, class: "nav-link"%>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">View All Users</a>
@@ -38,6 +39,28 @@
         </ul>
       </div>
     </nav>
+
+    <section class="flash">
+        
+        <% flash.each do |name, message| %>
+            <div class="alert alert-danger">
+
+          <% if message.class == Array %>
+              <ul>
+                <% message.each do |msg| %>
+                  <li><%= name %>: <%= msg %> </li>
+                <% end %>
+          <% else %>
+            <%= message %>
+          <% end %>
+              </ul>
+            </div>
+        <% end %>
+       
+      </section>
+
+    <main>
     <%= yield %>
+    </main>
   </body>
 </html>
