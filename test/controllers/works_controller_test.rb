@@ -47,6 +47,7 @@ describe WorksController do
       }.must_change "Work.count", 1
 
       must_respond_with :redirect
+      expect(flash[:success]).must_equal "Work added successfully"
     end
 
     it "should respond with bad request if title missing" do
