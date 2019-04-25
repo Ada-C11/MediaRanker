@@ -15,6 +15,9 @@
 <tbody>
 <tr>
   <% @albums.each do |album| %>
+    <td>
+  <%= Vote.where(work_id: album.id).length %>
+  </td>
   <td>
   <%= link_to album.title, work_path(album) %>
   </td>
@@ -25,7 +28,7 @@
   <%= album.publication_date %>
   </td>
   <td>
-  <%= link_to "Upvote", class: "btn btn-primary"%>
+  <%= link_to "Upvote", work_votes_path(album), method: :post, class: "btn btn-primary"%>
   </td>
   </tr>
   <% end %>
@@ -45,6 +48,9 @@
   <tbody>
   <tr>
   <% @movies.each do |movie| %>
+      <td>
+  <%= Vote.where(work_id: movie.id).length %>
+  </td>
   <td>
   <%= link_to movie.title, work_path(movie) %>
   </td>
@@ -55,7 +61,7 @@
   <%= movie.publication_date %>
   </td>
   <td>
-  <%= link_to "Upvote", class: "btn btn-primary"%>
+  <%= link_to "Upvote", work_votes_path(movie), method: :post, class: "btn btn-primary"%>
   </td>
   </tr>
   <% end %>
@@ -75,6 +81,9 @@
   <tbody>
   <tr>
   <% @books.each do |book| %>
+      <td>
+  <%= Vote.where(work_id: book.id).length %>
+  </td>
   <td>
   <%= link_to book.title, work_path(book) %>
   </td>
@@ -85,7 +94,7 @@
   <%= book.publication_date %>
   </td>
   <td>
-  <%= link_to "Upvote", class: "btn btn-primary"%>
+  <%= link_to "Upvote", work_votes_path(book), method: :post, class: "btn btn-primary"%>
   </td>
   </tr>
   <% end %>

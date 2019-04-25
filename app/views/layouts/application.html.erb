@@ -15,6 +15,21 @@
       <%= link_to "Media Ranker", root_path %>
       <small>Ranking the Best of Everything</small>
       </h1>
+            <% if flash.count > 0 %>
+        <section class="flash">
+          <div class="alert alert-danger">
+          <% flash.each do |name, message| %>
+            <% if message.class == Array %>
+              <ul>
+              <% message.each do |msg| %>
+                <li><%= name %>: <%= msg %> </li>
+              <% end %>
+            <% else %>
+              <%= message %>
+            <% end %>
+            </ul>
+          <% end %>
+          <% end %>
       <nav class="app-header__nav">
       <ul class="app-header__site-nav-container" >
       <li class="nav-item app-header__nav_item">
