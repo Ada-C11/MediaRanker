@@ -95,6 +95,7 @@ class UsersController < ApplicationController
       flash[:success] = "You have successfully logged out"
       redirect_to home_path
   end
+
 end
 
 private

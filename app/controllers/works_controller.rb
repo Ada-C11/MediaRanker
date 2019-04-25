@@ -74,12 +74,29 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
-   def upvote
+  def upvote
     @work = Work.find(params[:id])
-    @work.votes.create
+    user_id = session[:user_id]
+    @user = User.find(user_id )
+
+    # @work.votes.create(work_id: @work.id, user_id: @work.users)
+
+    if @work.number_of_votes.nil?
+      @work.update(number_of_votes: 1)
+    else
+      @work.update(number_of_votes: @work.number_of_votes + 1)
+    end
+
+    if @user.number_of_votes.nil?
+      @user.update(number_of_votes: 1)
+    else
+      @user.update(number_of_votes: @user.number_of_votes + 1)
+    end
+
+    puts @work.errors.messages
+
     redirect_to(works_path)
   end
-  
 end
 
 private
@@ -91,7 +108,7 @@ def work_params
     :creator,
     :publication_year,
     :description,
-    :votes,
+    :votes
   )
 end
 

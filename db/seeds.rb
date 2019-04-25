@@ -12,7 +12,7 @@ CSV.foreach(WORK_FILE, :headers => true) do |row|
   work.creator = row['creator']
   work.publication_year = row['publication_year'].to_i
   work.description = row['description']
-  work.votes = row['votes']
+  work.number_of_votes = row['votes']
 
 
   successful = work.save
@@ -27,9 +27,8 @@ end
 puts "Added #{Work.count} work records"
 puts "#{work_failures.length} works failed to save"
 
-require 'csv'
 
-USER_FILE = Rails.root.join('db', 'media_seeds.csv')
+USER_FILE = Rails.root.join('db', 'user_seeds.csv')
 puts "Loading raw user data from #{USER_FILE}"
 
 user_failures = []
@@ -37,7 +36,7 @@ CSV.foreach(USER_FILE, :headers => true) do |row|
   user = User.new
   user.id = row['id']
   user.username = row['username']
-  user.votes = row['votes']
+  user.number_of_votes = row['votes']
   successful = user.save
   if !successful
     user_failures << user

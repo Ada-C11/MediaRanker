@@ -26,7 +26,7 @@ end
 CSV.open("db/user_seeds.csv", "w", :write_headers => true,
                                     :headers => ["username", "votes"]) do |csv|
   25.times do
-    username = Faker::Name.name
+    username = Faker::Name.first_name
     votes = rand(0..10)
 
     csv << [username, votes]

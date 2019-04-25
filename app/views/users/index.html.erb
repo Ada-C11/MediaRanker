@@ -12,7 +12,7 @@
     <tr>
       <% @users.each do |user| %>
       <td><%= link_to "#{user.username}", user_path(user.id) %></td>
-      <td><%= user.votes %></td>
+      <td><%= user.number_of_votes %></td>
       <td><%= user.created_at %></td>
     </tr>
     <% end %>    
