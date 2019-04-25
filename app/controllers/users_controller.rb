@@ -11,4 +11,8 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
+
+  def login_form
+    @user = User.new
+  end
 end
