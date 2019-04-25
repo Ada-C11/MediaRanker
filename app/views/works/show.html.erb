@@ -9,7 +9,7 @@ Published: <%= @work.published %><br>
 link to homepage
 <%= link_to "Edit", edit_work_path(@work.id) %>
 link to upvote
-link to delete <br>
+<%= link_to "Delete", work_path(@work.id), method: :delete %> <br>
 
 
 
