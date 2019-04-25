@@ -8,10 +8,14 @@ class UsersController < ApplicationController
     user_name = params[:user][:username]
     @user = User.find_by(username: user_name)
 
-    unless @user 
-      flash[:status] = :danger
-      flash[:message]
+    if @user
+      flash[:status] = :success
+      flash[:message] = "Hello #{@user.username} you are successfully logged in"
+    else 
+      User.create(username: user_name)
+      flash[:status] = success
+      flash[:message = "Successfully created #{@user.username}"
+    end
+
   end
-
-
 end
