@@ -47,7 +47,7 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    return params.require(:work).permit(:category, :title, :creator, :publication_year)
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 
   def find_work

@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true
 
   def self.albums
     return Work.where(category: "album")
