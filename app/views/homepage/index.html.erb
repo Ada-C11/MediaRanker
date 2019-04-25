@@ -1,0 +1,32 @@
+
+<% rand_name = Work.all.sample.title %>
+<% %>
+<h2> Media Spotlight: <%= rand_name %></h2>
+
+<section>
+    <h2>Top Movies</h2>
+    <ul>
+        <% @top_10_movies.each do |movie|%>
+            <li><%= movie.title %> by <%= movie.creator %></li>
+        <% end %>
+    </ul>
+</section>
+
+<section>
+    <h2>Top Books</h2>
+        <ul>
+        <% @top_10_books.each do |book|%>
+            <li><%= book.title %> by <%= book.creator %></li>
+        <% end %>
+        </ul>
+</section>
+
+<section>
+    <h2>Top Albums</h2>
+        <ul>
+            <% @top_10_albums.each do |album|%>
+                <li><%= album.title %> by <%= album.creator %></li>
+            <% end %>
+        </ul>
+
+</section>
