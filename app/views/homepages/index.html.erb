@@ -1,3 +1,7 @@
+<p id="notice">
+    <%= flash[:success] if flash[:success] %>
+    <%= flash[:error] if flash[:error] %>
+</p>
 <% media = Work.all.sample%>
 <%if media%>
     <h2>Media Spotlight: <%= link_to media.title, work_path(media.id)%> by <%= media.creator%> </h2>

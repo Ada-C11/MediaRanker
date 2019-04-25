@@ -15,6 +15,8 @@ class UsersController < ApplicationController
     @user ||= @user = User.create(username: params["user"]["username"])
     session[:user_id] = @user.id
 
+    flash[:success] = "Successfully logged in as #{@user.username}"
+
     redirect_to root_path
   end
 
@@ -24,7 +26,6 @@ class UsersController < ApplicationController
       flash[:error] = "You must be logged in to see this page"
       redirect_to root_path
     end
-    render :show
   end
 
   def logout
