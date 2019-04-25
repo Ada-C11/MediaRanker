@@ -66,6 +66,37 @@ div.button {
     color: white;
 }
 
+/* ----------------------- HOMEPAGE INDEX STYLING ----------------------- */
+.spotlight h2 {
+    font-weight: bold;
+}
+.spotlight h2 span {
+    color: #26A69A;
+}
+.spotlight h2 a{
+    color: #26A69A;
+    text-decoration: underline;
+}
+.spotlight-work h2 {
+    font-weight: bold;
+    color: #26A69A;
+    border-bottom: solid 1px #26A69A;
+}
+section.spotlight {
+    border-bottom: 1px lightgrey solid;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+div.spotlight-works {
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 /* ----------------------- TABLE/WORKS INDEX STYLING ----------------------- */
 h2.index {
     color: #26A69A;
@@ -172,30 +203,3 @@ h3.user-show {
     font-weight: bold;
 }
 
-/* ----------------------- HOMEPAGE INDEX STYLING ----------------------- */
-.spotlight h2 {
-    font-weight: bold;
-}
-.spotlight h2 a{
-    color: #26A69A;
-    text-decoration: underline;
-}
-.spotlight-work h2 {
-    font-weight: bold;
-    color: #26A69A;
-    border-bottom: solid 1px #26A69A;
-}
-section.spotlight {
-    border-bottom: 1px lightgrey solid;
-    margin-top: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-div.spotlight-works {
-    margin-top: 10px;
-    margin-left: 15px;
-    margin-right: 15px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
