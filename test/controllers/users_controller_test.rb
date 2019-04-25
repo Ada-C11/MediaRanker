@@ -82,4 +82,16 @@ describe UsersController do
       must_respond_with :bad_request
     end
   end
+
+  describe "logout" do
+    it "can logout a user" do
+      logged_in_user = perform_login
+
+      post logout_path
+
+      expect(session[:user_id]).must_equal nil
+      expect(flash[:notice]).must_equal "Succesfully logged out"
+      must_redirect_to root_path
+    end
+  end
 end
