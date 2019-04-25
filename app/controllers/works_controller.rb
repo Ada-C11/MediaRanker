@@ -31,6 +31,25 @@ class WorksController < ApplicationController
     end
   end
 
+  def edit
+    @work = Work.find_by(id: params[:id])
+  end
+
+  def update
+    @work = Work.find_by(id: params[:id])
+    is_successful = @work.update(work_params)
+
+    if is_successful
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
+      redirect_to work_path(@work.id)
+    else
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
+      render :edit, status: :bad_request
+    end
+  end
+
   private
 
   def work_params
