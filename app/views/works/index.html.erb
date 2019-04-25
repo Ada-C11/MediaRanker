@@ -3,6 +3,7 @@
 
 <h4><strong>Albums</strong></h4>
 <table class="works-table">
+    <thead>
     <tr>
         <th class="table-header">Votes</th>
         <th class="table-header">Title</th>
@@ -10,7 +11,9 @@
         <th class="table-header">Publication Year</th>
         <th class="table-header">Upvote</th>
     </tr>
+    </thead>
     <% @works.each do |work|%>
+        <tbody>
         <tr>
         <% if work.category == "album"%>
             <th><%= work.vote_count %></th>
@@ -21,6 +24,7 @@
         <% end %>
         </tr>
     <% end %>
+    </tbody>
 </table>
 
 <h4><strong>Books</strong></h4>
