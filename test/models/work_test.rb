@@ -42,13 +42,8 @@ describe Work do
       end
 
       it "returns nil for no works" do
-        # Arrange
-        Work.destroy
-        binding.pry
-        spotlight_work = Work.spotlight
-        binding.pry
-        # Assert
-        expect(spotlight_work).must_equal nil
+        Work.destroy_all
+        expect(Work.spotlight).must_equal nil
       end
     end
 

@@ -1,5 +1,10 @@
 <h2> 
-Media Spotlight: <%= link_to @featured_work.title, work_path(@featured_work) %> by <%= @featured_work.creator %> 
+Media Spotlight: 
+    <% if Work.all.count > 0 %>
+    <%= link_to @featured_work.title, work_path(@featured_work) %> by <%= @featured_work.creator %> 
+    <% else %>
+    No spotlight work for today :(
+    <% end %>
 </h2>
 
 <h2> Top Books </h2>
