@@ -50,7 +50,6 @@ class WorksController < ApplicationController
 
     if is_successful
       flash[:success] = "Medium updated successfully"
-      #not sure why flash doens't work, raised it and flash is success
       redirect_to work_path(work.id)
     else
       @work = work

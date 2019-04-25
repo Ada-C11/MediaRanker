@@ -2,8 +2,8 @@ require "test_helper"
 
 describe HomepagesController do
   it "should get index" do
-    get homepages_index_url
-    value(response).must_be :success?
-  end
+    get root_path
 
+    must_respond_with :success
+  end
 end

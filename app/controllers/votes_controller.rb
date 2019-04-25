@@ -73,5 +73,3 @@ class VotesController < ApplicationController
     return params.require(:vote).permit(:votename)
   end
 end
-
-end
