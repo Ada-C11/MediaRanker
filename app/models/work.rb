@@ -9,6 +9,10 @@ class Work < ApplicationRecord
     return Work.where(category: "book")
   end
 
+  def self.movies
+    return Work.where(category: "movie")
+  end
+
   def self.spotlight
     return Work.all.sample
   end

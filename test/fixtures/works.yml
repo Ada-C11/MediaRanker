@@ -5,3 +5,15 @@ test:
   title: test work
   category: album
   publication_year: 1999
+
+whee:
+  creator: big bird
+  title: whee
+  category: movie
+  publication_year: 2000
+
+love:
+  creator: barney
+  title: I love you
+  category: book
+  publication_year: 1995

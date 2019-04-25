@@ -9,15 +9,34 @@ Media Spotlight:
 
 <h2> Top Books </h2>
 <ul>
-    <% @top_books.each do |book| %>
-    <li> <%= link_to book.title, work_path(book) %> by <%= book.creator%> </li>
+    <% if @top_books.class == Array && @top_books.count > 0 %>
+        <% @top_books.each do |book| %>
+        <li> <%= link_to book.title, work_path(book) %> by <%= book.creator%> </li>
+        <% end %>
+    <% else %>
+        <p> No books yet! </p>
     <% end %>
 </ul>
 
 
 <h2> Top Albums </h2>
 <ul>
-    <% @top_albums.each do |album| %>
-    <li> <%= link_to album.title, work_path(album) %> by <%= album.creator%> </li>
+    <% if @top_albums.class == Array && @top_albums.count > 0 %>
+        <% @top_albums.each do |album| %>
+        <li> <%= link_to album.title, work_path(album) %> by <%= album.creator%> </li>
+        <% end %>
+    <% else %>
+        <p> No albums yet! </p>
+    <% end %>
+</ul>
+
+<h2> Top Movies </h2>
+<ul>
+    <% if @top_movies.class == Array && @top_movies.count > 0 %>
+        <% @top_movies.each do |movie| %>
+        <li> <%= link_to movie.title, work_path(album) %> by <%= movie.creator%> </li>
+        <% end %>
+    <% else %>
+        <p> No movies yet! </p>
     <% end %>
 </ul>
