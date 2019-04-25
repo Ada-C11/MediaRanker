@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def index
     @works = Work.all
   end
@@ -17,49 +19,35 @@ class WorksController < ApplicationController
     end
   end
 
-  def show
-    @work = Work.find_by(id: params[:id])
+  def show; end
 
-    unless @work
-      redirect_to root_path, :flash => { :error => "Could not find work with id: #{params[:id]}" }
-    end
-  end
-
-  def edit
-    @work = Work.find_by(id: params[:id])
-
-    unless @work
-      redirect_to root_path, :flash => { :error => "Could not find work with id: #{params[:id]}" }
-    end
-  end
+  def edit; end
 
   def update
-    @work = Work.find_by(id: params[:id])
-    if @work
-      if @work.update work_params
-        redirect_to work_path(@work.id), { :flash => { :success => "Successfully updated work!" } }
-      else
-        redirect_to :edit, :flash => { :error => "Failed to update work" }
-      end
+    if @work.update work_params
+      redirect_to work_path(@work.id), { :flash => { :success => "Successfully updated work!" } }
     else
-      redirect_to root_path, :flash => { :error => "Could not find work with id: #{params[:id]}" }
+      redirect_to :edit, :flash => { :error => "Failed to update work" }
     end
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
-    if @work
-      if @work.destroy
-        redirect_to root_path, { :flash => { :success => "Successfully deleted work!" } }
-      else
-        redirect_to root_path, :flash => { :error => "Failed to delete work" }
-      end
+    if @work.destroy
+      redirect_to root_path, { :flash => { :success => "Successfully deleted work!" } }
     else
-      redirect_to root_path, status: 302, :flash => { :error => "Could not find work with id: #{params[:id]}" }
+      redirect_to root_path, :flash => { :error => "Failed to delete work" }
     end
   end
 
   private
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
+
+    unless @work
+      redirect_to root_path, :flash => { :error => "Could not find work with id: #{params[:id]}" }
+    end
+  end
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
