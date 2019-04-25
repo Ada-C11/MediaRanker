@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:login, :show]
+  before_action :find_user, only: [:show]
 
   def index
     @users = User.all
@@ -12,7 +12,8 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user ||= @user = User.create(username: params["user"]["username"])
+    @user = User.find_by(username: params["user"]["username"])
+    @user ||= User.create(username: params["user"]["username"])
     session[:user_id] = @user.id
 
     flash[:success] = "Successfully logged in as #{@user.username}"
@@ -36,6 +37,6 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find_by(id: params["user"]["username"])
+    @user ||= User.find_by(id: params["id"])
   end
 end
