@@ -16,7 +16,7 @@
 <% end %>
 
 
-<% if @works.where(category: "movie") != nil %>
+<% if @works.where(category: "movie") != [] %>
     <h2>Movies:</h2>
     <% @works.each do |work| %>
         <% if work.category == "movie" %>
