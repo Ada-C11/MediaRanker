@@ -62,3 +62,15 @@ table {
   display: table;
   border-spacing: 2px;
 }
+
+.btn:hover {
+  background-color: #00796B;
+  color: white;
+}
+
+// remove this alert before final submission
+.alert {
+  padding: 20px;
+  background-color: yellow;
+  color: black;
+}
