@@ -89,7 +89,17 @@ describe WorksController do
     end
 
     it "will respond with a bad requet if the title is empty" do
-    
+      work_hash = {
+        work: {
+          category: "movie", 
+          title: ""
+        }
+      }
+
+      patch work_path(works(:one).id), params: work_hash
+
+      must_respond_with :bad_request
+      expect(Work.find_by(title: "Me, Working!")).must_be_nil
     end
   end
 
