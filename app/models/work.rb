@@ -1,11 +1,12 @@
 class Work < ApplicationRecord
+  validates :title, presence: true
+  validates :publication_year, presence: true
+  validates :creator, presence: true
+  validates :category, presence: true
+  validates :description, presence: true
 
-    validates :title, presence: true
-    validates :publication_year, presence: true
-    validates :creator, presence: true
-    validates :category, presence: true
-    validates :description, presence: true
-    def self.category(works)
+  has_many :votes
+  def self.category(works)
     hash = Hash.new { }
     works.each do |work|
       category = work.category
