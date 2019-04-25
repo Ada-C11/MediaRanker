@@ -10,7 +10,6 @@ class WorksController < ApplicationController
 
   def show
     # @work = Work.find_by(id: params[:id])
-    # raise
     if @work.nil?
       redirect_to works_path
       flash[:error] = "Unknown work"
