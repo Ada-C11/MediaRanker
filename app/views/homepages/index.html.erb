@@ -1,9 +1,11 @@
 
-<section class="spotlight">
-<h2>Media Spotlight: <%= @spotlight.title + " by " + @spotlight.creator %></h2>
 
-<p><%= @spotlight.description %></p>
-</section>
+<% if @spotlight %>
+  <section class="spotlight">
+    <h2>Media Spotlight: <%= @spotlight.title + " by " + @spotlight.creator %></h2>
+    <p><%= @spotlight.description %></p>
+  </section>
+<% end %>
 
 <section class="top-ten grid">
   <section class="top-media top-movies">
