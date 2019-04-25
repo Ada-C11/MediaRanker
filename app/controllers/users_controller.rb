@@ -11,21 +11,24 @@ class UsersController < ApplicationController
     username = params[:user][:name]
     user = User.find_by(name: username)
 
+    if !user
+      flash[:error] = "Unable to login"
+    end
+    
     if user
       session[:user_id] = user.id
       flash[:alert] = "#{user.name} logged in"
-      redirect_to root_path
+      # redirect_to root_path
     else
       user = User.create(name: username)
-      flash[:error] = "Unable to log in"
-      render :login_form, status: :bad_request
     end
+    redirect_to root_path
   end
 
   def current
     @current_user = User.find_by(id: session[:user_id])
 
-    puts "VVVVVVVVVV"
+    puts "WWWWWWWWWWWWWWWWWWW"
     puts "#{@current_user}"
 
     unless @current_user
