@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
+
   def login_form
     @user = User.new
   end
@@ -15,7 +19,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       flash[:success] = "Successfully created new user #{username} with ID #{user.id}"
     end
-  
+
     redirect_to root_path
   end
 
@@ -29,8 +33,8 @@ class UsersController < ApplicationController
   end
 
   def logout
-      session[:user_id] = nil
-      flash[:success] = "Successfully logged out"
-      redirect_to root_path
+    session[:user_id] = nil
+    flash[:success] = "Successfully logged out"
+    redirect_to root_path
   end
 end

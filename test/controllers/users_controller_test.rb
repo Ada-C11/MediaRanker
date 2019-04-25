@@ -5,6 +5,15 @@ describe UsersController do
   let (:user_one) {
     users(:user_one)
   }
+
+  describe "index" do
+    it "should get index" do
+      get users_path
+
+      must_respond_with :success
+    end
+  end
+
   describe "login_form" do
     it "should get login form" do
       get login_path
