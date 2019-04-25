@@ -21,6 +21,25 @@
 <li> <%= link_to "View all user", users_path %></li>
 </ul>
 </nav>
+     <% if flash.count > 0 %>
+        <section class="flash">
+          <div class="alert alert-danger">
+          <% flash.each do |name, message| %>
+            <% if message.class == Array %>
+              <ul>
+              <% message.each do |msg| %>
+                <li><%= name %>: <%= msg %> </li>
+              <% end %>
+            <% else %>
+              <%= message %>
+            <% end %>
+            </ul>
+          <% end %>
+
+
+          </div>
+        </section>
+      <% end %>
 </header>
   <body>
     <%= yield %>

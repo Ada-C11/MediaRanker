@@ -2,7 +2,7 @@
 
 <h2>Add a new work</h2>
 <%= f.label :category %>
-<%= f.select :category, Work.all.uniq  {|work| [work.category] } %>
+<%= f.select :category, ["movie", "album", "book"] %>
 <!-- maybe a better use for flatten? -->
 
 <%= f.label :title %>

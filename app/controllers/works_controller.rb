@@ -16,13 +16,17 @@ class WorksController < ApplicationController
   end
 
   def create
-    work = Work.new(work_params)
+    @work = Work.new(work_params)
 
-    is_successful = work.save
+    is_successful = @work.save
 
     if is_successful
-      redirect_to work_path(work.id)
+      flash[:success] = "Medium added successfully"
+      redirect_to work_path(@work.id)
     else
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
       render :new, status: :bad_request
     end
   end
@@ -41,13 +45,18 @@ class WorksController < ApplicationController
     if work.nil?
       redirect_to works_path
     else
-      is_successful = Work.update(work_params)
+      is_successful = work.update(work_params)
     end
 
     if is_successful
+      flash[:success] = "Medium updated successfully"
+      #not sure why flash doens't work, raised it and flash is success
       redirect_to work_path(work.id)
     else
       @work = work
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
       render :edit, status: :bad_request
     end
   end
@@ -56,12 +65,10 @@ class WorksController < ApplicationController
     work = Work.find_by(id: params[:id])
 
     if work.nil?
-      head :not_found
+      flash[:error] = "the work DOES NOT EXIST"
     else
-      work.trips.each do |trip|
-        trip.destroy
-      end
       work.destroy
+      flash[:success] = "you KILLED it"
       redirect_to works_path
     end
   end
