@@ -1,4 +1,6 @@
 class Work < ApplicationRecord
+  validates :title, presence: true
+
   def self.get_media_catagories
     books = Work.where(category: "book")
     albums = Work.where(category: "album")
