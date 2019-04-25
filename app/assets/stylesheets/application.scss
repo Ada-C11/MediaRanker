@@ -111,6 +111,22 @@ tbody {
     vertical-align: middle;
     border-color: inherit;
 }
+
+/* ----------------------- TABLE/USERSHOW STYLING ----------------------- */
+.user-show-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: grey;
+}
+.user-show-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
+}
+.user-show-table th {
+    border-bottom: 1px solid #dee2e6;
+}
+
 /* ----------------------- HOMEPAGE INDEX STYLING ----------------------- */
 .spotlight h2 {
     font-weight: bold;

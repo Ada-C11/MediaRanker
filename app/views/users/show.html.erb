@@ -1,2 +1,27 @@
-<h1>Username: <%= @user.username %></h1>
-<h4>Number of Votes: <%= @user.votes %></h4>
+<h2>User Summary: <%= @user.username %></h2>
+<p>Joined Site: <%= @user.created_at %></p>
+<h3> Votes </h3>
+
+<table class="user-show-table">
+    <thead>
+        <tr>
+            <th>Media Title</th>
+            <th>Created By</th>
+            <th>Published</th>
+            <th>Category</th>
+            <th>Voted On</th>
+        </th>
+    </thead>
+    <tbody>
+        <tr>
+        <% @user.works.each do |work|%>
+            <th><%= work.title %></th>
+            <th><%= work.creator %></th>
+            <th><%= work.publication_year %></th>
+            <th><%= work.category %></th>
+            <%# find date that the user voted on the work%>
+            <th><%= Vote.find_by(user_id: @user.id).created_at %></th>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
