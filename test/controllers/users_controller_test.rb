@@ -44,14 +44,16 @@ describe UsersController do
     it "can login an existing user" do
       user_hash = {
         user: {
-          username: User.first.username,
-          join_date: User.first.join_date,
+          username: kim.username,
+          join_date: kim.join_date,
         },
       }
 
       expect {
         post login_path, params: user_hash
       }.wont_change "User.count"
+
+      expect(session[:user_id]).must_equal kim.id
     end
 
     it "should"
