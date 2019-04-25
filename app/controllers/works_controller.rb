@@ -76,7 +76,7 @@ class WorksController < ApplicationController
 
    def upvote
     @work = Work.find(params[:id])
-    @work.upvote.create
+    @work.votes.create
     redirect_to(works_path)
   end
   
@@ -92,8 +92,6 @@ def work_params
     :publication_year,
     :description,
     :votes,
-    user_ids: [],
-
   )
 end
 
