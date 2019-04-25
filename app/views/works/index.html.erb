@@ -19,7 +19,7 @@
 <% @works.where(category: "album").each do |work| %>
   <tr>
   <td><%#= work.votes .order(votes: :desc) %></td>
-  <td><%= work.title %></td>
+  <td><%= link_to work.title, work_path(work.id) %></td>
   <td><%= work.created_by %></td>
   <td><%= work.published %></td>
   <td>link_to vote</td>
@@ -40,7 +40,7 @@
 <% @works.where(category: "book").each do |work| %>
   <tr>
   <td><%#= work.votes .order(votes: :desc) %></td>
-  <td><%= work.title %></td>
+  <td><%= link_to work.title, work_path(work.id) %></td>
   <td><%= work.created_by %></td>
   <td><%= work.published %></td>
   <td>link_to vote</td>
@@ -61,7 +61,7 @@
 <% @works.where(category: "movie").each do |work| %>
   <tr>
   <td><%#= work.votes .order(votes: :desc) %></td>
-  <td><%= work.title %></td>
+  <td><%= link_to work.title, work_path(work.id) %></td> <%# link to show page%>
   <td><%= work.created_by %></td>
   <td><%= work.published %></td>
   <td>link_to vote</td>
