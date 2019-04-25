@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # update to homepage once done
   root to: "homepages#index"
 
   resources :works
@@ -9,6 +8,4 @@ Rails.application.routes.draw do
   post "/login", to: "users#login"
   post "/logout", to: "users#logout", as: "logout"
   get "/users/current", to: "users#current", as: "current_user"
-
-  # get "/homepages", to: "homepages#index", as: "homepages"
 end
