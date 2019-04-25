@@ -31,6 +31,10 @@
   </nav>
   </header>
   <main>
+    <p id="notice">
+      <%= flash[:success] if flash[:success] %>
+      <%= flash[:error] if flash[:error] %>
+    </p>
     <%= yield %>
     </main>
   <footer></footer>

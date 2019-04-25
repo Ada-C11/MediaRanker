@@ -13,12 +13,21 @@ class UsersController < ApplicationController
 
   def login
     @user = User.find_by(username: params["user"]["username"])
-    @user ||= User.create(username: params["user"]["username"])
-    session[:user_id] = @user.id
-
-    flash[:success] = "Successfully logged in as #{@user.username}"
-
-    redirect_to root_path
+    if @user
+      flash[:success] = "Successfully logged in as returning user #{@user.username}"
+      session[:user_id] = @user.id
+      redirect_to root_path
+      return
+    end
+    @user ||= User.new(username: params["user"]["username"])
+    if @user.save
+      session[:user_id] = @user.id
+      flash[:success] = "Successfully logged in as new user #{@user.username}"
+      redirect_to root_path
+    else
+      flash.now[:error] = "A problem occured. Could not log in"
+      render :login_form
+    end
   end
 
   def current
