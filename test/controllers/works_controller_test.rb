@@ -59,4 +59,45 @@ describe WorksController do
       
     end
   end
+  
+  describe "edit" do
+    it "get the edit path" do
+      get edit_work_path(work.id)
+      
+      must_respond_with :success
+    end
+    
+    it "will return a NOT FOUND response for a nonexistent work" do
+      work_id = Work.last.id + 1
+      get edit_work_path(work_id)
+      
+      must_respond_with :not_found
+    end
+  end
+  
+  describe "update" do
+    let(:work_data) {
+      {
+        work:{
+          title: "FAKE NEWS",
+        }
+      }
+    }
+    it "changes the data on the model" do
+      work.assign_attributes(work_data[:work])
+      expect(work).must_be :valid?
+      work.reload
+      
+      patch work_path(work), params: work_data
+      
+      must_respond_with :redirect
+      must_redirect_to work_path(work)
+      
+      expect(flash[:status]).must_equal :success
+      
+      work.reload
+      expect(work.title).must_equal(work_data[:work][:title])
+    end
+  end
+  
 end

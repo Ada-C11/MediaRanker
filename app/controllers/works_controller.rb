@@ -44,7 +44,7 @@ class WorksController < ApplicationController
   def update
     @work = Work.find_by(id: params[:id])
     
-    if @work.update(book_params)
+    if @work.update(work_params)
       flash[:status] = :success
       flash[:message] = "Successfully updated work #{@work.id}"
       
@@ -53,7 +53,7 @@ class WorksController < ApplicationController
       flash.now[:status] = :error
       flash.now[:message] = "Could not save work #{@work.id}"
       
-      render :edit, status: :bad_request
+      render :edit
     end
   end
 
