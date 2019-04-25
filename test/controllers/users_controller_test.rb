@@ -31,4 +31,17 @@ describe UsersController do
       expect(flash[:failure]).must_equal "User Not Found."
     end
   end
+
+  describe "login form" do
+    it "can get the login form" do
+      get login_path
+
+      must_respond_with :success
+    end
+  end
+
+  describe "login" do
+    it "" do
+    end
+  end
 end
