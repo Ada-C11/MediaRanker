@@ -25,7 +25,44 @@ describe WorksController do
     end
   end 
 
+  describe "new" do
+    it "should get new" do
+      get new_work_path
+
+      must_respond_with :success
+    end
+  end
+
   describe "create" do
+    it "should create new work" do
+      work_hash = {
+        work: {
+          category: "album",
+          title: "Working!"
+        }
+      }
+
+      expect {
+        post works_path, params: work_hash
+      }.must_change "Work.count", 1
+
+      must_respond_with :redirect
+    end
+
+    it "should respond with bad request if title missing" do
+      work_hash = {
+        work: {
+          category: "album",
+          title: ""
+        }
+      }
+
+      expect {
+        post works_path, params: work_hash
+      }.wont_change "Work.count"
+
+      must_respond_with :bad_request
+    end
   end
 
 end
