@@ -37,7 +37,7 @@
       <%= link_to("Login", login_path) if session[:user_id].nil? %>
       <%= link_to("Logout", logout_path, method: :post) if session[:user_id] %>
       
-
+<%= link_to "View all users", users_path %>
       <%= link_to "View all media", works_path %>
       
         <%= link_to "Add a new work",

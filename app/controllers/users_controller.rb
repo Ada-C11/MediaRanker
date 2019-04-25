@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :find_user, only: [:current, :logout]
 
+  def index
+    @users = User.all
+  end
+
   def login_form
     @user = User.new
   end

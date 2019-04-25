@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "homepages/index"
   resources :works
   resources :homepages, only: [:index]
+  resources :users, only: [:index]
 
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"
