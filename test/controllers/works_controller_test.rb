@@ -79,10 +79,90 @@ describe WorksController do
       }.wont_change "Work.count"
 
       must_respond_with :bad_request
-      expect(flash[:error]).must_equal "title: can't be blank"
+      #   expect(flash[:error]).must_equal "title: can't be blank"
     end
   end
 
   describe "update" do
+    it "will update an existing work" do
+      test_work = Work.first
+      input_to_edit = {
+        work: {
+          title: "awesome work",
+          creator: "awesome creator",
+          category: "awesome category",
+          publication_year: 2008,
+          description: "awesome description",
+        },
+      }
+
+      expect {
+        patch work_path(test_work), params: input_to_edit
+      }.wont_change "Work.count"
+
+      must_respond_with :redirect
+      test_work.reload
+
+      expect(flash[:success]).must_equal "Work updated successfully!"
+      expect(test_work.title).must_equal input_to_edit[:work][:title]
+      expect(test_work.creator).must_equal input_to_edit[:work][:creator]
+      expect(test_work.category).must_equal input_to_edit[:work][:category]
+      expect(test_work.publication_year).must_equal input_to_edit[:work][:publication_year]
+      expect(test_work.description).must_equal input_to_edit[:work][:description]
+    end
+
+    it "will return bad request when asked to update with invalid data" do
+      test_work = Work.first
+      test_title = test_work.title
+      test_creator = test_work.creator
+      test_description = test_work.description
+      test_publication_year = test_work.publication_year
+      test_category = test_work.category
+      input_to_edit = {
+        work: {
+          title: "",
+          creator: "awesome creator",
+          category: "",
+          publication_year: 2008,
+          description: "awesome description",
+        },
+      }
+
+      expect {
+        patch work_path(test_work.id), params: input_to_edit
+      }.wont_change "Work.count"
+
+      must_respond_with :bad_request
+      test_work.reload
+      expect(test_work.title).must_equal test_title
+      expect(test_work.creator).must_equal test_creator
+      expect(test_work.description).must_equal test_description
+      expect(test_work.publication_year).must_equal test_publication_year
+      expect(test_work.category).must_equal test_category
+    end
+  end
+
+  describe "destroy" do
+    it "can delete the work" do
+      test_work = Work.first
+      test_title = test_work.title
+      expect {
+        delete work_path(test_work.id)
+      }.must_change "Work.count", -1
+
+      must_respond_with :redirect
+      must_redirect_to works_path
+      expect(flash[:success]).must_equal "#{test_title} has been deleted!"
+    end
+
+    it "returns a flash error if the work does not exist " do
+      expect {
+        delete work_path(-1)
+      }.wont_change "Work.count"
+
+      must_respond_with :redirect
+      must_redirect_to works_path
+      expect(flash[:error]).must_equal "The work does not exist!"
+    end
   end
 end
