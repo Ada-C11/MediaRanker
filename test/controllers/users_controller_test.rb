@@ -42,18 +42,44 @@ describe UsersController do
 
   describe "login" do
     it "can login an existing user" do
-      user_hash = {
+      logged_in_user = perform_login
+
+      expect(flash[:success]).must_equal "Successfully logged in as existing user #{kim.username}!"
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
+
+    it "can create and login a new user" do
+      login_data = {
         user: {
-          username: User.first.username,
-          join_date: User.first.join_date,
+          username: "Brand New User",
         },
       }
 
       expect {
-        post login_path, params: user_hash
-      }.wont_change "User.count"
+        post login_path, params: login_data
+      }.must_change "User.count", 1
+
+      user = User.find_by(username: login_data[:user][:username])
+
+      expect(flash[:success]).must_equal "Successfully created new user #{user.username} with ID #{user.id}!"
+      expect(session[:user_id]).must_equal user.id
+      must_respond_with :redirect
+      must_redirect_to root_path
     end
 
-    it "should"
+    it "responds accordingly when a user can't be logged in" do
+      login_data = {
+        user: {
+          username: "",
+        },
+      }
+
+      expect {
+        post login_path, params: login_data
+      }.wont_change "User.count"
+
+      must_respond_with :bad_request
+    end
   end
 end
