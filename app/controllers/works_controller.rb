@@ -7,7 +7,9 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if !@work
-      head :not_found
+      flash[:error] = "Unknown work"
+
+      redirect_to works_path
     end
   end
 
