@@ -12,18 +12,16 @@
       <th>Created by</th>
       <th>Published</th>
       <th>Category</th>
-      <th>Voted On</th>
+      <th onclick="sortTable(0)">Voted On</th>
     </tr>
     <tr>
-      <td><% @user.works.each do |work|%></td>
-      <td><%= work.title%></td>
-      <td><%= work.creator%></td>
-      <td><%= work.published_by%></td>
-      <td><%= work.category%></td>
-      <td><%= work.number_of_votes%></td>
+      <td><%= @user.votes.count %></td>
+      <td><%= @user.votes.count %></td>
+      <td><%= @user.votes.count %></td>
+      <td><%= @user.votes.count %></td>
+      <td><%= @user.votes.count %></td>
 
     </tr>
-    <% end %>
   </table>
 </div>
 

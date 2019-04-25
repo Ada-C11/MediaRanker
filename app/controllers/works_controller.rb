@@ -4,7 +4,10 @@ class WorksController < ApplicationController
   before_action :find_work, only: %i[show edit destroy update]
 
   def index
-    @works = Work.all.sort_by(&:id)
+    @works = Work.all.sort_by(&:number_of_votes).reverse
+    @books = @works.select { |work| work.category == 'book'}
+    @albums = @works.select { |work| work.category == 'album'}
+    @movies = @works.select { |work| work.category == 'movie'}
   end
 
   def new
@@ -77,9 +80,9 @@ class WorksController < ApplicationController
   def upvote
     @work = Work.find(params[:id])
     user_id = session[:user_id]
-    @user = User.find(user_id )
+    @user = User.find(user_id)
 
-    # @work.votes.create(work_id: @work.id, user_id: @work.users)
+    Vote.create(work_id: @work.id, user_id: @user.id)
 
     if @work.number_of_votes.nil?
       @work.update(number_of_votes: 1)
@@ -92,8 +95,6 @@ class WorksController < ApplicationController
     else
       @user.update(number_of_votes: @user.number_of_votes + 1)
     end
-
-    puts @work.errors.messages
 
     redirect_to(works_path)
   end

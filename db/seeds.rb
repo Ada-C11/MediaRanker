@@ -12,7 +12,7 @@ CSV.foreach(WORK_FILE, :headers => true) do |row|
   work.creator = row['creator']
   work.publication_year = row['publication_year'].to_i
   work.description = row['description']
-  work.number_of_votes = row['votes']
+  work.number_of_votes = 0
 
 
   successful = work.save
