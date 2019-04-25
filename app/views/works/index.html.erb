@@ -7,6 +7,7 @@
         <th class="table-header">Title</th>
         <th class="table-header">Creator</th>
         <th class="table-header">Publication Year</th>
+        <th class="table-header">Upvote</th>
     </tr>
     <% @works.each do |work|%>
         <tr>
@@ -15,6 +16,7 @@
             <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
             <th><%= work.creator %></th>
             <th><%= work.publication_year %></th>
+            <th><%= link_to "Upvote", "#", class: "btn btn-primary" %></th>
         <% end %>
         </tr>
     <% end %>
@@ -27,6 +29,7 @@
         <th class="table-header">Title</th>
         <th class="table-header">Creator</th>
         <th class="table-header">Publication Year</th>
+        <th class="table-header">Upvote</th>
     </tr>
     <% @works.each do |work|%>
         <tr>
@@ -35,6 +38,7 @@
             <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
             <th><%= work.creator %></th>
             <th><%= work.publication_year %></th>
+            <th><%= link_to "Upvote", "#", class: "btn btn-primary" %></th>
         <% end %>
         </tr>
     <% end %>
@@ -47,6 +51,7 @@
         <th class="table-header">Title</th>
         <th class="table-header">Creator</th>
         <th class="table-header">Publication Year</th>
+        <th class="table-header">Upvote</th>
     </tr>
     <% @works.each do |work|%>
         <tr>
@@ -55,6 +60,7 @@
             <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
             <th><%= work.creator %></th>
             <th><%= work.publication_year %></th>
+            <th><%= link_to "Upvote", "#", class: "btn btn-primary" %></th>
         <% end %>
         </tr>
     <% end %>
