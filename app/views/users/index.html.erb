@@ -1,0 +1,24 @@
+<section class="all-users">
+<h2>List of Users</h2>
+    <table class="user-table">
+        <tr>
+            <th>Username</th>
+            <th>Votes</th>
+            <th>Joined</th>
+        </tr>
+    <% users = User.all %>
+        <tr>
+            <% users.each do |user|%>
+                <td>
+                    <%= user.username %>   
+                </td>
+                <td>
+                    <%= Vote.where(user_id: user.id).length %>  
+                </td>
+                <td>
+                    <%= user.created_at%>
+                </td>
+        </tr>
+            <% end %>
+    </table>
+</section>

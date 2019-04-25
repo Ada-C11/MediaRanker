@@ -2,7 +2,7 @@ require "test_helper"
 
 describe VotesController do
   describe "create" do
-    it "logged in vote can vote" do
+    it "logged in user can vote" do
       user = perform_login(users(:user_one))
       work = works(:work_one)
 
