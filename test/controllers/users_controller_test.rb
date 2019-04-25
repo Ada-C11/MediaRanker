@@ -79,7 +79,8 @@ describe UsersController do
         post login_path, params: login_data
       }.wont_change "User.count"
 
-      must_respond_with :bad_request
+      must_respond_with :redirect
+      must_redirect_to root_path
     end
   end
 
