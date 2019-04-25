@@ -29,8 +29,19 @@ describe Work do
   end
 
   describe "self.top_media" do
+    it "gets 10 works from each category" do
+    end
+
+    it "returns nil for catagories without any works" do
+    end
+
+    it "returns less than 10 works for categories with less than 10 works"
   end
 
   describe "self.spotlight" do
+    it "returns a Work" do
+    end
+    it "returns nil if there are no works" do
+    end
   end
 end
