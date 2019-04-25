@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     else
       user = User.create(username: username, join_date: Date.current)
       if user.id
+        session[:user_id] = user.id
         flash[:success] = "Successfully created new user #{username} with ID #{user.id}!"
         redirect_to root_path
       else
