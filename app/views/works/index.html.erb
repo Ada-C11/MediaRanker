@@ -1,32 +1,64 @@
-<h1>List of Works</h1>
+<h2 class="work-index">List of Works</h2>
 
-<h3>Albums</h3>
-<% @works.each do |work|%>
-    <% if work.category == "album"%>
-        <%= link_to work.title, work_path(work.id) %><br>
-        <%= work.creator %><br>
-        <%= work.publication_year %><br>
+<h4><strong>Albums</strong></h4>
+<table class="works-table">
+    <tr>
+        <th class="table-header">Votes</th>
+        <th class="table-header">Title</th>
+        <th class="table-header">Creator</th>
+        <th class="table-header">Publication Year</th>
+    </tr>
+    <% @works.each do |work|%>
+        <tr>
+        <% if work.category == "album"%>
+            <th><%= rand(1..7) %></th>
+            <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
+            <th><%= work.creator %></th>
+            <th><%= work.publication_year %></th>
+        <% end %>
+        </tr>
     <% end %>
-<% end %>
+</table>
 
-<h3>Books</h3>
-<% @works.each do |work|%>
-    <% if work.category == "book"%>
-        <%= link_to work.title, work_path(work.id) %><br>
-        <%= work.creator %><br>
-        <%= work.publication_year %><br>
+<h4><strong>Books</strong></h4>
+<table class="works-table">
+    <tr>
+        <th class="table-header">Votes</th>
+        <th class="table-header">Title</th>
+        <th class="table-header">Creator</th>
+        <th class="table-header">Publication Year</th>
+    </tr>
+    <% @works.each do |work|%>
+        <tr>
+        <% if work.category == "book"%>
+            <th><%= rand(1..7) %></th>
+            <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
+            <th><%= work.creator %></th>
+            <th><%= work.publication_year %></th>
+        <% end %>
+        </tr>
     <% end %>
-<% end %>
+</table>
 
-<h3>Movies</h3>
-<% @works.each do |work|%>
-    <% if work.category == "movie"%>
-        <%= link_to work.title, work_path(work.id) %><br>
-        <%= work.creator %><br>
-        <%= work.publication_year %><br>
+<h4><strong>Movies</strong></h4>
+<table class="works-table">
+    <tr>
+        <th class="table-header">Votes</th>       
+        <th class="table-header">Title</th>
+        <th class="table-header">Creator</th>
+        <th class="table-header">Publication Year</th>
+    </tr>
+    <% @works.each do |work|%>
+        <tr>
+        <% if work.category == "movie"%>
+            <th><%= rand(1..7) %></th>
+            <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
+            <th><%= work.creator %></th>
+            <th><%= work.publication_year %></th>
+        <% end %>
+        </tr>
     <% end %>
-    
-<% end %>
+</table>
 
 <h3>None</h3>
 <% @works.each do |work|%>
@@ -34,6 +66,5 @@
         <%= link_to work.title, work_path(work.id) %><br>
         <%= work.creator %><br>
         <%= work.publication_year %><br>
-    <% end %>
-    
+    <% end %>  
 <% end %>

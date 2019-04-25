@@ -18,7 +18,7 @@
 @import "**/*";
 
 
-
+/* ----------------------- HEADER/NAV STYLING ----------------------- */
 body {
     font-family: "Gudea", sans-serif;
 }
@@ -66,3 +66,17 @@ div.button {
     color: white;
 }
 
+/* ----------------------- TABLE/WORKS INDEX STYLING ----------------------- */
+h2.work-index {
+    color: #26A69A;
+    font-weight: bold;
+}
+.works-table {
+    width: 100%;
+}
+.works-table th, td {
+    border: 1px solid grey;
+  }
+.works-table th.title-link a {
+    color: #26A69A;
+}
