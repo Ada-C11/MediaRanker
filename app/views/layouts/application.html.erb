@@ -33,22 +33,13 @@
   <main>
   <%# TODO: Can probably add a view helper here %>
     <% if flash[:success] %>
-    <p id="success"><%= flash[:success] %></p> 
-    <% elsif flash[:error] %>
+      <p id="success"><%= flash[:success] %></p> 
+    <%end%>
+    <% if flash[:error] %>
       <p id="error">
-      <%= flash[:error] %>
-      <%if @work && @work.errors%>
-        <ul>
-        <% @work.errors.messages.each do |column, message|%>
-          <li><%= column%>: < %=message% ></li>
-        </ul>
-      <%end%>
-       <%if @user && @user.errors%>
-        <ul>
-        <% @user.errors.messages.each do |column, message|%>
-          <li><%= column%>: < %=message% ></li>
-        </ul>
-      <%end%>
+      <%= flash[:error] %> 
+      <%= error_list(@work) if @work%>
+      <%= error_list(@user) if @user%>
       </p> 
     <%end%>
     <%= yield %>
