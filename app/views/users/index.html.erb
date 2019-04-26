@@ -10,7 +10,7 @@
     <tbody>
     <%  User.all.each do |user|%>
         <tr>
-            <td><%=user.username%></td>
+            <td><%=link_to user.username, user_path(user.id)%></td>
             <td><%=user.votes.count%></td>
             <td><%=user.created_at.to_date%></td>
         </tr>
