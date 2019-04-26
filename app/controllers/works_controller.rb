@@ -5,6 +5,10 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
     @works = Work.all
   end
 
+  def homepage
+    @works = Work.all
+  end
+
   def show
     if !@work
       flash[:error] = "Unknown work"
