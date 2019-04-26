@@ -26,18 +26,30 @@ describe Work do
     it "requires a unique title" do
       # Arrange
       duplicate_work = Work.new( title: work.title )
-
       # Act - Assert
       expect(duplicate_work.save).must_equal false
-
+      
       # Assert
       expect(duplicate_work.errors.messages[:title]).must_equal ["has already been taken"]
     end
-
+    
     it "work must have a category" do
       # Arrange
-      work.category = ""
+      work.category = "album"
+      
+      puts "XXXXXXXXXXXXXXXXXXXXX"
+      puts work.category
+      # Act
+      work_category = work.valid?
 
+      # Assert
+      expect(work_category).must_equal true
+    end
+
+    it "will show an error if work has no category" do
+      # Arrange
+      work.category = ""
+      
       # Act
       work_category = work.valid?
 
