@@ -23,4 +23,11 @@ describe "WorksController" do
       must_respond_with :ok
     end
   end
+
+  describe "new" do
+    it "retruns status code 200" do
+      get new_work_path
+      must_respond_with :ok
+    end
+  end
 end
