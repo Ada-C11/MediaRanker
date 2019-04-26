@@ -2,7 +2,7 @@
   <% if Work.all.length > 0 %>
     <h2>
       <span class="spotlight__header--prefix">Media Spotlight:</span>
-      <% top = Homepage.top_media %>
+      <% top = Work.top %>
       <%= link_to top.title, work_path(top.id), class: "spotlight__link-to"%> by <%= top.creator %>
     </h2>
     <p class="spotlight__description">
@@ -18,7 +18,7 @@
     <h2 class="top-ten__header">Top Movies</h2>
     <ul>
       <%# below could be view helper? %>
-      <% Homepage.top_ten("movie").each do |movie| %>
+      <% Work.top_ten("movie").each do |movie| %>
         <li>
           <h4>
             <%= link_to movie.title, work_path(movie.id)%>
@@ -34,7 +34,7 @@
   <section class="top-ten__list-container">
     <h2 class="top-ten__header">Top Books</h2>
     <ul>
-      <% Homepage.top_ten("book").each do |book| %>
+      <% Work.top_ten("book").each do |book| %>
         <li>
           <h4>
             <%= link_to book.title, work_path(book.id)%>
@@ -50,7 +50,7 @@
   <section class="top-ten__list-container">
     <h2 class="top-ten__header">Top Albums</h2>
     <ul>
-      <% Homepage.top_ten("album").each do |album| %>
+      <% Work.top_ten("album").each do |album| %>
         <li>
           <h4>
             <%= link_to album.title, work_path(album.id)%>
