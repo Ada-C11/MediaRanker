@@ -44,8 +44,8 @@ describe Work do
 
     it "can have 1 or more votes by shoveling a vote into work.votes" do
       vote = Vote.create(date: Date.today,
-                         work_id: Work.all.first,
-                         user_id: User.all.first)
+                         work_id: Work.first,
+                         user_id: User.first)
       work.votes << vote
       work.save
 
