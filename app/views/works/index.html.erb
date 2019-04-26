@@ -3,7 +3,7 @@
 
 <section>
 <h2> Books </h2>
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Title</th>
@@ -11,13 +11,15 @@
                 <th>Published</th>
             </tr>
         </thead>
-    <%=list_works("book")%>
+        <tbody>
+            <%=list_works("book")%>
+        </tbody>
     </table>
 </section>
 
 <section>
 <h2> Albums </h2>
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Title</th>
@@ -25,13 +27,15 @@
                 <th>Published</th>
             </tr>
         </thead>
-    <%=list_works("album")%>
-</table>
+        <tbody>
+            <%=list_works("album")%>
+        </tbody>
+    </table>
 </section>
 
 <section>
 <h2> Movies </h2>
-    <table>
+    <table class=table>
         <thead>
             <tr>
                     <th>Title</th>
@@ -39,8 +43,10 @@
                     <th>Published</th>
             </tr>
         </thead>
-    <%=list_works("movie")%>
-<table>
+        <tbody>
+            <%=list_works("movie")%>
+        </tbody>
+    <table>
 </section>
 
 <%=link_to "View top media", root_path%>

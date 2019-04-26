@@ -13,4 +13,15 @@ module WorksHelper
     end
     return works_rows.html_safe
   end
+
+  def vote_list(work)
+    voters = ""
+    work.votes.each do |vote|
+      voters += "<tr>" +
+                "<td>#{vote.user.username}</td>" +
+                "<td>#{vote.created_at.to_date}</td>" +
+                "</tr>"
+    end
+    return voters.html_safe
+  end
 end

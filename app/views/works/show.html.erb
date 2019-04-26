@@ -7,3 +7,16 @@
     <%= link_to "Edit", edit_work_path(@work.id) %>
     <%=link_to "Upvote", work_votes_path(work_id: @work.id), method: :post%>
     <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?" } %>
+
+<h3><%=@work.votes.count%> votes for this <%=@work.category%></h3>
+    <table class="table">
+        <thead>
+            <tr>
+                    <th>User</th>
+                    <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%= vote_list(@work) %>
+        </tbody>
+    </table>

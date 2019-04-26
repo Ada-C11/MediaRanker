@@ -14,8 +14,9 @@ class VotesController < ApplicationController
       flash[:success] = "Successfully upvoted!"
       redirect_back(fallback_location: root_path)
     else
-      flash.now[:error] = "A problem occured. Try voting again."
-      render :template => "works/show", status: :bad_request
+      flash[:error] = "A problem occured. Try voting again."
+      flash[:messages] = @vote.errors
+      redirect_back(fallback_location: root_path)
     end
   end
 
