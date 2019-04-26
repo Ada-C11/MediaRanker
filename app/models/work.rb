@@ -4,8 +4,13 @@ class Work < ApplicationRecord
   validates :category, presence: true
 
   def self.get_top
-    all_works_by_category = Work.all.sample(10)
-
+    length = Work.all.length
+    return [] if length == 0
+    if length < 10
+      all_works_by_category = Work.all.sample(length)
+    else
+      all_works_by_category = Work.all.sample(10)
+    end
     # work_id_votes = Hash.new
     # votes = []
     # all_works_by_category.each do |work|

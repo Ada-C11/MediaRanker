@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :votes, only: [:index]
   end
+
+  get "/login", to: "users#login_form", as: "login"
+  post "/login", to: "users#login"
 end
