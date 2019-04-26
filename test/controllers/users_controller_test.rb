@@ -64,6 +64,5 @@ describe UsersController do
     # end
   end
   
-  describe "log "
  
 end

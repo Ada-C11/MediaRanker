@@ -20,15 +20,15 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     
-    @work.save
-    
-    unless @work
-      render :new
-      flash[:error] = "Item can't be created at this time."
-    else
-      flash[:success] = "#{@work.title} has been successfully added."
+    successful = @work.save
+    if successful
       
-      redirect_to work_path(@work.id)
+      flash[:message] = "#{@work.title} has been successfully added."
+      
+      redirect_to works_path
+    else
+      flash.now[:message] = "Item can't be created at this time."
+      render :new, status: :bad_request
     end
   end
 

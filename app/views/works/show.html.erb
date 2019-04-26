@@ -27,10 +27,12 @@
         </thead>
          
       
-    <% @work.votes.each do |v| %>
+
+    
+     <% @work.users.each do |user| %>
       <tr>
-        <td><%= link_to (User.find(v.user_id)).name, user_path(v.user_id) %></td>
-        <td><%= v.created_at %></td>
+        <td><%= link_to user.name, user_path(user.id) %></td>
+        <td><%= @work.created_at.strftime('%B %d, %Y') %></td>
       </tr>
     <% end %>
   </table>
