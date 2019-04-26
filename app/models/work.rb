@@ -7,19 +7,47 @@ class Work < ApplicationRecord
     return self.votes.length
   end
 
-  def spotlight
-    return self.sample
+  def self.spotlight_work(works)
+    spotlight_work = works.first
+    works.each do |work|
+      if work.vote_count > spotlight_work.vote_count
+        spotlight_work = work
+      end
+    end
+    return spotlight_work
   end
 
-  def top_book
-    return self.sample
+  def self.top_ten_books(works)
+    top_books = []
+    sorted_works = works.order(:vote_count).reverse
+    sorted_works.each do |work|
+      if work.category == "book"
+        top_books << work
+      end
+    end
+
+    return top_books[0..9]
   end
 
-  def top_album
-    return self.sample
+  def self.top_ten_albums(works)
+    top_albums = []
+    sorted_works = works.order(:vote_count).reverse
+    sorted_works.each do |work|
+      if work.category == "album"
+        top_albums << work
+      end
+    end
+    return top_albums[0..9]
   end
 
-  def top_movie
-    return self.sample
+  def self.top_ten_movies(works)
+    top_movies = []
+    sorted_works = works.order(:vote_count).reverse
+    sorted_works.each do |work|
+      if work.category == "movie"
+        top_movies << work
+      end
+    end
+    return top_movies[0..9]
   end
 end
