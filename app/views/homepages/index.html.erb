@@ -3,7 +3,7 @@
   <span class="spotlight__header--prefix">
     Media Spotlight
   </span>
-  <% spotlight = Work.all.sample %>
+  <% spotlight = Work.spotlight %>
     <% if spotlight %>
       <%= link_to spotlight.title, work_path(spotlight)%>
     <% else %>

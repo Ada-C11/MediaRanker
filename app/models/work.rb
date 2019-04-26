@@ -19,7 +19,7 @@ class Work < ApplicationRecord
 
   def self.spotlight
     max_votes = self.all.max_by { | work |
-     work.votes.length     
+     work.upvotes.count   
     }  
 
     return max_votes
