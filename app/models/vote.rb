@@ -15,4 +15,6 @@ class Vote < ApplicationRecord
   def self.vote(user, work)
     return Vote.find_by(user_id: user.id, work_id: work.id)
   end
+
+  
 end

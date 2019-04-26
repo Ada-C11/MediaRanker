@@ -8,4 +8,6 @@ two:
   user: two
   work: two
 
-
+custom1:
+  user: User.first
+  work: Work.first
