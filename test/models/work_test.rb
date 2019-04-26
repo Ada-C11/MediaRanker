@@ -13,42 +13,54 @@ describe Work do
           description: "Ain't That Good News is the thirteenth and final studio album by American R&B and soul singer-songwriter Sam Cooke, released March 1, 1964, on RCA Victor Records, in both mono and stereo, LPM 2899 and LSP 2899."    
       }
       
-       @work = Work.new(work_data)
-       
+       @work = Work.new(work_data)   
     end
     
-  it "is valid when fields are present" do
-    result = @work.valid?
-    
-    expect(result).must_equal true
+    it "is valid when fields are present" do
+      result = @work.valid?
+      
+      expect(result).must_equal true
     end
 
-  
-  it "is invalid with missing author" do
-    @work.author = nil
     
-    result = @work.valid?
+    it "is invalid with missing author" do
+      @work.author = nil
+      
+      result = @work.valid?
+      
+      expect(result).must_equal false
+    end
     
-    expect(result).must_equal false
+    it "is invalid with missing title" do
+      @work.title = nil
+      
+      result = @work.valid?
+      
+      expect(result).must_equal false
+    end
+    
+    it "is invalid with missing category" do
+      @work.category = nil
+      
+      result = @work.valid?
+      
+      expect(result).must_equal false
+    end
   end
   
-  it "is invalid with missing title" do
-    @work.title = nil
+  describe "top ten method" do
+    it "can get the top books" do
     
-    result = @work.valid?
+    top_books = Work.top_ten("book")
     
-    expect(result).must_equal false
+    expect(top_books.count).must_equal 2
+    end
+    
+    it "will display a message if there are no works in that category" do
+      top_books = Work.top_ten("salad")
+      
+      expect(top_books).must_equal "There are no salads right now. Go add some!"
+    end
   end
   
-  it "is invalid with missing category" do
-    @work.category = nil
-    
-    result = @work.valid?
-    
-    expect(result).must_equal false
-  end
-  
-  end
-  
-
 end

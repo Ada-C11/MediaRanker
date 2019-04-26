@@ -12,3 +12,15 @@ moon:
   author: Neil Young
   publication_year: 1991
   description: 19th studio album
+shrill:
+  category: book
+  title: Shrill
+  author: Lindy West
+  publication_year: 2016
+  description: fat girls rule!
+homegoing:
+  category: book
+  title: Homegoing
+  author: Yaa Agasi
+  publication_year: 2012
+  description: a multi-generational tale of black women

@@ -8,7 +8,12 @@ class Work < ApplicationRecord
   
 
   def self.top_ten(category)
-    return Work.where(category: category).max_by(10) { |work| work.votes.length }
+    top_ten = Work.where(category: category).max_by(10) { |work| work.votes.length }
+    
+    if top_ten.empty?
+      top_ten = "There are no #{category}s right now. Go add some!"
+    end
+    return top_ten
   end
 
 end

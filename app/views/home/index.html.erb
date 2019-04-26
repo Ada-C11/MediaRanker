@@ -1,7 +1,7 @@
 <%spotlight = Work.all.max_by { |work| work.votes.length } %>
 <h2>
   Media Spotlight:
-  <%# <%= link_to spotlight.title, work_path(spotlight.id) %>, by <%= spotlight.author %> %>
+  <%= link_to spotlight.title, work_path(spotlight.id) %>, by <%= spotlight.author %>
 </h2>
 <p><%= spotlight.votes.length %> votes</p>
 <br>
