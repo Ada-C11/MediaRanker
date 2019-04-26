@@ -26,13 +26,30 @@ class WorksController < ApplicationController
     is_successful = @work.save
 
     if is_successful
-      flash[:success] = "work added successfully"
+      flash[:success] = "media added successfully"
       redirect_to work_path(@work.id)
     else
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
       render :new, status: :bad_request
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    is_successful = @work.update(work_params)
+
+    if is_successful
+      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
+      redirect_to work_path(@work.id)
+    else
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
+      render :edit, status: :bad_request
     end
   end
 

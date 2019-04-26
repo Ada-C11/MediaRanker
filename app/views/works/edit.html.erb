@@ -1,0 +1,7 @@
+<h2 class="text-capitalize">Edit This <%= @work.category%></h2>
+
+
+<%= render partial: "form", locals: {
+  form_class: "edit-work",
+  action_name: "Update Work"
+} %>
