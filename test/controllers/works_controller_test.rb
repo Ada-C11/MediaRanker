@@ -3,7 +3,7 @@ require "pry"
 
 describe WorksController do
   before do
-    @work = Work.create!(title: "test work")
+    @work = Work.first
   end
   describe "index" do
     it "renders without crashing" do
