@@ -69,13 +69,16 @@ class WorksController < ApplicationController
       flash[:failure] = "Failed to delete media."
       redirect_to root_path
     else
-      work.votes.each do |vote|
-        vote.destroy
-      end
+      work.votes.each { |vote| vote.destroy }
       work.destroy
       flash[:success] = "Succesfully deleted #{work.title} #{work.category}."
       redirect_to works_path
     end
+  end
+
+  def upvote
+    @work = Work.find_by(id: params[:id])
+    @work.users << User.find_by(id: session[:id])
   end
 
   private
