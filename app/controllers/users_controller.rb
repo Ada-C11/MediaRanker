@@ -5,6 +5,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    unless @user
+      flash.now[:status] = :error
+      flash.now[:message] = "Could not find that user."
+      redirect_to users_path
+      return
+    end
   end
 
   def login_form

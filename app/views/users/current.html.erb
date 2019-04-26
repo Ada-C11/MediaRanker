@@ -1,1 +1,25 @@
-<h2>You are logged in as user <%= @user.username %></h2>
+<h2>User summary: <%=link_to "#{@user.username}", current_user_path%></h2>
+<p>Joined site: <%=@user.created_at.to_date.to_formatted_s(:rfc822)%>
+<section>
+<h3>Votes</h3>
+<table class = "table">
+<thead>
+<th scope="col">Media Title</th>
+<th scope ="col">Created by</th>
+<th scope ="col">Published</th>
+<th scope ="col">Category</th>
+<th scope ="col">Voted On</th>
+</thead>
+<tbody>
+<%@user.works.each do |work|%>
+<tr>
+<td><%=link_to "#{work.title}", work_path(work.id)%></td>
+<td><%=work.creator%></td>
+<td><%=work.publication_year%></td>
+<td><%=work.category.capitalize%>
+<td><%=Vote.vote(@user.id,work.id).created_at.to_date.to_formatted_s(:rfc822)%></td>
+</tr>
+<%end%>
+</tbody>
+</table>
+</section>
