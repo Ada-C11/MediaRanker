@@ -161,7 +161,29 @@ describe WorksController do
       expect(album_to_update.publication_year).must_equal album_to_update.publication_year
       expect(album_to_update.description).must_equal album_to_update.description
     end
+  end
 
-    # edge case: it should render a 404 if the book was not found
+  describe "destroy" do
+    let (:work) {
+      works(:book_1)
+    }
+    describe "destroy" do
+      it "returns a flash error message if the work is not found" do
+        delete work_path("INVALID ID")
+        expect(flash[:error]).must_equal "That work does not exist"
+        must_respond_with :redirect
+        must_redirect_to works_path
+      end
+
+      it "can delete a work" do
+        expect {
+          delete work_path(work.id)
+        }.must_change "Work.count", -1
+
+        expect(flash[:success]).must_equal "#{work.title} was deleted"
+        must_respond_with :redirect
+        must_redirect_to works_path
+      end
+    end
   end
 end

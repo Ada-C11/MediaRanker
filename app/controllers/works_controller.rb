@@ -58,7 +58,7 @@ class WorksController < ApplicationController
       flash[:error] = "That work does not exist"
     else
       @work.destroy
-      flash[:success] = "#{@work.title} deleted"
+      flash[:success] = "#{@work.title} was deleted"
     end
     redirect_to works_path
   end
