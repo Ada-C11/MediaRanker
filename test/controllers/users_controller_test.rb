@@ -29,6 +29,15 @@ describe UsersController do
     end
 
     it "will redirect if invalid user" do
+      user_params = {
+        user: {
+          username: nil,
+        },
+      }
+      post login_path(user_params)
+
+      expect(flash[:error]).must_equal "Unable to log in"
+      must_redirect_to root_path
     end
   end
 
@@ -46,6 +55,22 @@ describe UsersController do
     it "responds with a redirect if no user is logged in" do
       get current_user_path
       must_respond_with :redirect
+    end
+  end
+
+  describe "logout" do
+    it "can successfully log out a user" do
+      logged_in_user = perform_login
+
+      user_params = {
+        user: {
+          username: logged_in_user.username,
+        },
+      }
+
+      post logout_path
+
+      expect(flash[:notice]).must_include "Logged out"
     end
   end
 end
