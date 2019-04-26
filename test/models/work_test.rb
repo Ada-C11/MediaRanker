@@ -51,4 +51,37 @@ describe Work do
       expect(work.errors.messages[:category]).must_equal ["is not included in the list"]
     end
   end
+
+  describe "sort_work model method" do
+    it "sorts work of a certain category by votes" do
+      # Act-Assert
+      expect(Work.sort_work("album").first).must_equal works(:work_ten)
+    end
+  end
+
+  describe "highest_vote model method" do
+    it "spotligts the work with the most votes" do
+      # Act-Assert
+      expect(Work.highest_vote).must_equal works(:work_ten)
+    end
+
+    it "spotlights a work even if no works have votes" do
+      # Arrange
+      Vote.delete_all
+
+      # Act-Assert
+      expect(Work.highest_vote).wont_be_nil
+    end
+  end
+
+  describe "top_ten model method" do
+    it "shows ten works of a certain type with the most votes" do
+      # Act-Assert
+      expect(Work.top_ten("album").first).must_equal works(:work_ten)
+    end
+
+    it "shows 10 works even when there are less than 10 works with votes" do
+      expect(Work.top_ten("album").length).must_equal 10
+    end
+  end
 end
