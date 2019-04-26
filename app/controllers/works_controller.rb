@@ -4,4 +4,8 @@ class WorksController < ApplicationController
     @albums = Work.where(category: "album")
     @movies = Work.where(category: "movie")
   end
+
+  def new
+    @work = Work.new
+  end
 end
