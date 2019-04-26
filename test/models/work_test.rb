@@ -25,8 +25,6 @@ describe Work do
   end
 
   describe "relationships" do
-    let(:vote) { votes(:vote_one) }
-    let(:vote_2) { votes(:vote_two) }
     let(:work) { works(:one) }
     let(:work2) { works(:two) }
 
@@ -35,7 +33,7 @@ describe Work do
     end
 
     it "can have many votes" do
-      expect(work.votes.length).must_equal 2
+      expect(work.votes.length).must_equal 11
     end
   end
 end

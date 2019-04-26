@@ -11,3 +11,39 @@ vote_one:
 vote_two: 
   work: one
   user: user2
+
+vote_3: 
+  work: one
+  user: user3
+
+vote_4: 
+  work: one
+  user: user4
+
+vote_5: 
+  work: one
+  user: user5
+
+vote_6: 
+  work: one
+  user: user6
+
+vote_7: 
+  work: one
+  user: user7
+
+vote_8: 
+  work: one
+  user: user8
+
+vote_9: 
+  work: one
+  user: user9
+
+vote_10: 
+  work: one
+  user: user10
+
+vote_11: 
+  work: one
+  user: user11

@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :find_user
 
+  def index
+    @users = User.all
+  end
+
   def login
     username = params[:name]
     @user = User.create(name: username) if @user.nil?
@@ -24,11 +28,5 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     flash[:notice] = "Logged out #{@user.name}"
     redirect_to root_path
-  end
-
-  private
-
-  def find_user
-    @user = User.find_by(id: session[:user_id])
   end
 end

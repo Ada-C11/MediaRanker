@@ -1,12 +1,3 @@
-<h2 >MediaRanker</h2>
-
-
-
-<% albums = Work.where(category: "album") %>
-<% movies = Work.where(category: "movie") %>
-<% books = Work.where(category: "book") %>
-
-
 <h1>Albums</h1>
 <table>
   <thead>
@@ -27,23 +18,25 @@
      </td>
  </thead>
  <tbody>
- <% albums.each do |album| %>
+ <% @works.each do |work| %>
+    <% if work.category == "album" %>
     <tr>
       <td>
-        votes<br>
+        <%= work.votes.length %>
       </td>
       <td>
-        <%= link_to "#{album.title}", work_path(album.id) %><br>
+        <%= link_to "#{work.title}", work_path(work.id) %><br>
       </td>
       <td>
-        <%= album.creator %><br>
+        <%= work.creator %><br>
       </td>
       <td>
-        <%= album.publication_year %><br>
+        <%= work.publication_year %><br>
       </td>
       <td>
-        Upvote<br>
+        <%= link_to "Upvote", work_votes_path(work.id), method: :post %><br>
       </td>
+    <% end %>  
     </tr>
 <% end %>
  </tbody>
@@ -69,24 +62,26 @@
      </td>
  </thead>
  <tbody>
- <% books.each do |book| %>
+ <% @works.each do |work| %>
+     <% if work.category == "book" %>
     <tr>
       <td>
-        votes<br>
+        <%= work.votes.length %><br>
       </td>
       <td>
-        <%= link_to "#{book.title}", work_path(book.id) %><br>
+        <%= link_to "#{work.title}", work_path(work.id) %><br>
       </td>
       <td>
-        <%= book.creator %><br>
+        <%= work.creator %><br>
       </td>
       <td>
-        <%= book.publication_year %><br>
+        <%= work.publication_year %><br>
       </td>
       <td>
-        Upvote<br>
+        <%= link_to "Upvote", work_votes_path(work.id), method: :post %><br>
       </td>
     </tr>
+    <% end %>
 <% end %>
  </tbody>
 </table>
@@ -111,24 +106,26 @@
      </td>
  </thead>
  <tbody>
- <% movies.each do |movie| %>
+ <% @works.each do |work| %>
+    <% if work.category == "movie" %>
     <tr>
       <td>
-        votes<br>
+        <%= work.votes.length %>
       </td>
       <td>
-        <%= link_to "#{movie.title}", work_path(movie.id) %><br>
+        <%= link_to "#{work.title}", work_path(work.id) %><br>
       </td>
       <td>
-        <%= movie.creator %><br>
+        <%= work.creator %><br>
       </td>
       <td>
-        <%= movie.publication_year %><br>
+        <%= work.publication_year %><br>
       </td>
       <td>
-        Upvote<br>
+        <%= link_to "Upvote", work_votes_path(work.id), method: :post %><br>
       </td>
     </tr>
+    <% end %>
 <% end %>
  </tbody>
 </table>

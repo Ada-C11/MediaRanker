@@ -10,6 +10,35 @@
   </head>
 
   <body>
+    <header>
+    <h1>MediaRanker</h1>
+    <nav>
+      <%= link_to("View top media", root_path) %>
+      <%= link_to("View all media", works_path) %>
+      <%= link_to("Add new work", new_work_path) %>
+      <%= link_to("All Users", users_path) %>
+      <%= link_to("Login", login_path) if session[:user_id].nil? %>
+      <%= link_to("Logout", logout_path, method: :post) if session[:user_id] %>
+      <%= link_to("Logged in as #{User.find(session[:user_id]).name}", current_user_path) if session[:user_id] %>
+    <nav>
+      <% if flash.count > 0 %>
+        <section class="flash">
+          <div class="alert alert-danger">
+          <% flash.each do |name, message| %>
+            <% if message.class == Array %>
+              <ul>
+              <% message.each do |msg| %>
+                <li><%= name %>: <%= msg %> </li>
+              <% end %>
+            <% else %>
+              <%= message %>
+            <% end %>
+            </ul>
+          <% end %>
+          </div>
+        </section>
+      <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>
