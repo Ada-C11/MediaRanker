@@ -21,7 +21,7 @@ describe UsersController do
     it "Will respond with redirect" do
       post login_path(@login_data)
 
-      must_redirect_to root_path
+      must_redirect_to current_user_path
     end
     it "will login a returning user" do
       post login_path(@login_data)
@@ -66,5 +66,22 @@ describe UsersController do
   end
 
   describe "logout" do
+    it "returns 200 OK for a logged-in user" do
+      perform_login
+
+      post logout_path
+
+      must_redirect_to root_path
+      expect(session[:user_id]).must_equal nil
+    end
+
+    it "returns 200 OK if there is no logged-in user" do
+      get root_path
+      expect(session[:user_id]).must_equal nil
+
+      post logout_path
+
+      must_redirect_to root_path
+    end
   end
 end
