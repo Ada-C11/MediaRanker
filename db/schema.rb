@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_25_175339) do
+ActiveRecord::Schema.define(version: 2019_04_26_032017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "homepages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "works_id"
+    t.index ["works_id"], name: "index_homepages_on_works_id"
+  end
 
   create_table "works", force: :cascade do |t|
     t.string "category"
@@ -23,6 +30,10 @@ ActiveRecord::Schema.define(version: 2019_04_25_175339) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "homepages_id"
+    t.index ["homepages_id"], name: "index_works_on_homepages_id"
   end
 
+  add_foreign_key "homepages", "works", column: "works_id"
+  add_foreign_key "works", "homepages", column: "homepages_id"
 end
