@@ -10,11 +10,15 @@ class Work < ApplicationRecord
   end
 
   def self.top_media
-    top_works = get_media_catagories.map { |category| category.sample(10) }
+    top_works = get_media_catagories.map do |category|
+      max = category.max_by(10) { |work| work.votes.count }
+      max.sort_by! { |work| work.votes.count * -1 }
+    end
     return top_works
   end
 
   def self.spotlight
-    return Work.all.sample
+    spotlight = Work.all.max_by { |work| work.votes.count }
+    return spotlight
   end
 end
