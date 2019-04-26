@@ -23,7 +23,7 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
     is_successful = work.save
 
     if is_successful
-      flash[:success] = "Work added successfully"
+      flash[:success] = "Successfully created #{work.category} #{work.id}"
       redirect_to work_path(work.id)
     else
       flash.now[:error] = "A problem occurred: Could not update #{work.category}"
