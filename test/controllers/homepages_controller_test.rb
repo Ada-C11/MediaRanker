@@ -1,7 +1,14 @@
 require "test_helper"
 
 describe HomepagesController do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
+  describe "root" do
+    it "can get the root" do
+
+      # Act
+      get root_path
+
+      # Assert
+      must_respond_with :success
+    end
+  end
 end

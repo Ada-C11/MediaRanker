@@ -5,7 +5,11 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def show; end
+  def show
+    unless @user
+      head :not_found
+    end
+  end
 
   def login_form
     @user = User.new
@@ -27,14 +31,6 @@ class UsersController < ApplicationController
     else
       flash.now[:error] = "A problem occured. Could not log in"
       render :login_form
-    end
-  end
-
-  def current
-    @user = User.find_by(id: session[:user_id])
-    unless @user
-      flash[:error] = "You must be logged in to see this page"
-      redirect_to root_path
     end
   end
 
