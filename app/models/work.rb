@@ -3,10 +3,6 @@ class Work < ApplicationRecord
 
   validates :title, presence: true
 
-  def vote_count
-    return self.votes.length
-  end
-
   def self.top_media
     if Work.all == nil || Work.all == []
       return nil
@@ -15,15 +11,19 @@ class Work < ApplicationRecord
     return Work.all.max_by { |work| work.vote_count }
   end
 
-  def self.category_list(category_type)
-    category_list =  Work.select { |work| work.category == category_type }
+  def self.category_list(category)
+    category_list =  Work.select { |work| work.category == category }
     return category_list.sort_by { |work| work.vote_count }.reverse!
   end
 
-  def self.top_ten(category_type)
-    works = Work.category_list(category_type)
+  def self.top_ten(category)
+    works = Work.category_list(category)
 
-    return works.first(10)
+    return works[0..9]
+  end
+
+  def vote_count
+    return self.votes.length
   end
 
 end
