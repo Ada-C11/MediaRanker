@@ -5,19 +5,17 @@ class UsersController < ApplicationController
   end
 
   def login
-    user_name = params[:user][:username]
-    @user = User.find_by(username: user_name)
-
-    @user ||= User.create(username: user_name)
-    
+    username = params[:user][:username]
+    @user = User.find_by(username: username)
     if @user
-      flash[:status] = :success
-      flash[:message] = "Hello #{@user.username} you are successfully logged in"
       session[:user_id] = @user.id
+      flash[:status] = :success
+      flash[:message] = "Successfully logged in as #{username}"
     else
-      flash.now[:status] = :error
-      flash.now[:message] = "Please try again"
-      render :login_form, status: :bad_request
+      @user = User.create!(username: params[:user][:username])
+      session[:user_id] = @user.id
+      flash[:status] = :success
+      flash[:message] = "Successfully logged in as #{username}"
     end
 
     redirect_to root_path
