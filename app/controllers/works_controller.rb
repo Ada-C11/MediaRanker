@@ -80,7 +80,7 @@ class WorksController < ApplicationController
   def upvote
     @work = Work.find(params[:id])
     user_id = session[:user_id]
-    g
+    
     if user_id.nil?
       flash[:error] = 'You must be logged in to see this page'
       redirect_to login_path
