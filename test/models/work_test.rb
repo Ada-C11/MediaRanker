@@ -1,9 +1,24 @@
-require "test_helper"
+require 'test_helper'
 
 describe Work do
-  let(:work) { Work.new }
+  describe 'validations' do
+    before do
+      category = Category.create(name: 'movie')
+      @work = Work.new(title: 'Star Trek', creator: 'Gene Roddenberry', publication_year: 2009, category_id: category.id)
+    end
 
-  it "must be valid" do
-    value(work).must_be :valid?
+    it 'is valid when all fields are present' do
+      result = @work.valid?
+
+      expect(result).must_equal true
+    end
+
+    it 'is invalid without a title' do
+      @work.title = nil
+
+      result = @work.valid?
+
+      expect(result).must_equal false
+    end
   end
 end
