@@ -10,7 +10,7 @@
     </thead>
     <tbody>
       <tr>
-      <% @users.each do |user| %>
+      <% @super_users.each do |user| %>
         <td><%= link_to "#{user.username} ", user_path(user.id) %></td>
         <td><%= user.votes.length %></td>
         <td><%= user.created_at.strftime("%B %d, %Y") %></td>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Media Ranker 2.0</title>
+    <title>Media Ranker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,7 +12,7 @@
 
   <body>
     <header>
-      <h1><span class="title"><a href="/">Media Ranker</a></span><small>Ranking the Best of Everything</small></h1>
+      <h1 class="title"><a href="/">Media Ranker</a><small>Ranking the Best of Everything</small></h1>
       <nav>
         <ul class="nav">
           <li class="nav-item"><%= link_to "View top media", root_path, class: "nav-link" %></li>
@@ -20,31 +20,41 @@
           <li class="nav-item"><%= link_to "Add a new work", new_work_path, class: "nav-link" %></li>
           <li class="nav-item"><%= link_to "View all users", users_path, class: "nav-link" %></li>
         </ul>
-        <ul class="nav">
-          <% if @current_user == nil %>
-            <li class="nav-item"><%= link_to "Log In", login_path, class: "btn btn-primary" %></li>
-          <% else %>
-            <li class="nav-item"><%= link_to "Logged in as #{@current_user.username}", user_path(@current_user.id), class: "btn btn-primary user" %></li>
-            <li class="nav-item"><%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary" %></li>
-          <% end %>
-        </ul>
+         <ul class="nav">
+        <% if @super_user %>
+
+        <li class="nav-item">
+          <%= link_to "Logged in as #{@super_user.username}", user_path(@super_user), class: "btn btn-primary" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Log Out", logout_path, method: :post, class: "btn btn-primary" %>
+        </li>
+
+        <% else %>
+
+        <li class="nav-item">
+          <%= link_to "Log In", login_path, class: "btn btn-primary" %>
+        </li>
+        <% end %>
+
+      </ul>
       </nav>
     </header>
-    <section class="flash">
-      <% flash.each do |name, message| %>
-        <% if message.class == Array %>
-          <div class="alert-warning">
-          <% message.each do |msg| %>
-            <p><strong><%= "#{name}:" %></strong><%= " #{msg}" %></p>
-          <% end %>
-          </div>
-        <% else %>
-          <div class="alert-<%= name %>">
-            <%= message %>
-          </div>
-        <% end %>
-      <% end %>
-    </section>
+
+    <% flash.each do |name, message| %>
+      <% if message.class == Array %>
+        <div class="alert alert-warning">
+          <ul>
+            <% message.each do |msg| %>
+              <li class="alert alert-warning"><%= "#{name.capitalize}: #{msg}\n" %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% else %>
+          <div class="alert-<%= name %>"><%= message %></div>
+      <%end%>
+    <% end %>
+  </section>
     <main>
     <%= yield %>
     </main>

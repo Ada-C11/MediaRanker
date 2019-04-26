@@ -1,11 +1,11 @@
 <h2>Log In</h2>
-<%= form_with model: @user, url: login_path, method: :post do |f| %>
+<%= form_with model: @super_user, url: login_path, method: :post do |f| %>
   <%= f.label :name, 'Username' %>
-  <%= f.text_field :username %>
-  <%= f.submit 'Log In' %>
+  <%= f.text_field :username, class: "form-control" %>
+  <%= f.submit 'Log In', class: "btn btn-primary" %>
 <% end %>
-
+<article>
  <p>
 <h4>A note about logging in</h4>
-  <p>There is no password. Log in honorably!</p>
-</p>
+  <p>There is no password field. Be nice. Friends do not impersonate friends.</p>
+  </article>
