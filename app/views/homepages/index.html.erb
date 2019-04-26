@@ -15,7 +15,7 @@
 <section class="top-ten-container">
   <section class="top-ten-list-container">
   <h2 class="top-ten-header"> Top Movies </h2>
-  <% top_movies = Work.list("movies").sample(10) %>
+  <% top_movies = Work.list("movie").sample(10) %>
   <ul class="list-group top-ten__list" >
     <% top_movies.each do |movie|%>
       <li class="list-group-item">

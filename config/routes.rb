@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   root "homepages#index"
 
-  resources :works
-  # will need a nested route for upvotes
-
+  resources :works do 
+    post "/upvote", to: 'upvotes#upvote', as: 'upvote'
+  end
+  
   # user routes
   resources :users, only: [:index, :show]
   get "/login", to: "users#login_form", as: "login"
