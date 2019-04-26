@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root "homepages#index"
   get "/", to: "homepages#index"
   resources :works, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :votes, only: [:create]
 
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"
