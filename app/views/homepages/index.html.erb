@@ -11,7 +11,7 @@
 
     <div class="spotlight-works">
         <section class="spotlight-work">
-        <% top_books = Work.top_ten_books(@works)%>
+        <% top_books = Work.top_ten(@works, "book")%>
         <h2>Top Books</h2>
         <% top_books.each do |book|%>
             <h4><%= book.title %> <small>by <%= book.creator %></small></h4>
@@ -20,7 +20,7 @@
         </section>
 
         <section class="spotlight-work">
-        <% top_movies = Work.top_ten_movies(@works) %>
+        <% top_movies = Work.top_ten(@works, "movie") %>
         <h2>Top Movies</h2>
         <% top_movies.each do |movie|%>
             <h4><%= movie.title %> <small>by <%= movie.creator %></small></h4>
@@ -29,7 +29,7 @@
         </section>
 
         <section class="spotlight-work">
-        <% top_albums = Work.top_ten_albums(@works) %>
+        <% top_albums = Work.top_ten(@works, "album") %>
         <h2>Top Albums</h2>
         <% top_albums.each do |album|%>
             <h4><%= album.title %> <small></small>by <%= album.creator %></small></h4>
