@@ -1,26 +1,30 @@
-<h1>Works#index</h1>
-<p>Find me in app/views/works/index.html.erb</p>
+<h1>List of Works</h1>
 
 <h2>Albums:</h2>
+    <ul>
 <% @works.each do |work| %>
     <% if work.category == "album" %>
-        <%= work.title %>
+        <li><%= link_to work.title, work_path(work.id) %></li>
     <% end %>
 <% end %>
+</ul>
 
 <h2>Books:</h2>
+<ul>
 <% @works.each do |work| %>
     <% if work.category == "book" %>
-        <%= work.title %>
+        <li><%= link_to work.title, work_path(work.id) %></li>
     <% end %>
 <% end %>
+</ul>
 
 
 
     <h2>Movies:</h2>
+    <ul>
     <% @works.each do |work| %>
         <% if work.category == "movie" %>
-            <%= work.title %>
+            <li><%= link_to work.title, work_path(work.id) %></li>
         <% end %>
     <% end %>
-
+</ul>
