@@ -122,3 +122,11 @@ main {
     display: block;
 }
 
+.btn:hover {
+    background-color: #00796B;
+    color: white;
+}
+
+.btn-danger:hover {
+    border-color: #bd2130;
+}
