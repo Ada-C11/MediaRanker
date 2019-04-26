@@ -1,7 +1,7 @@
 Media Spotlight: <%= @ranked_works.first.title %> by <%= @ranked_works.first.created_by %> <br>
-<%#= @ranked_works.first.votes %> <%= @ranked_works.first.description %><%# will be order by vote count next %> <br>
-Top Movies: <%= @ranked_works.where(category: "movie")[0..10] %><br>
+<%#= @ranked_works.first.votes %> - <%= @ranked_works.first.description %> <%# will be order by vote count next %> <br><br>
+<p>Top Movies: <%= @ranked_works.where(category: "movie")[0..10] %></p>
 
-Top Books: <%= @ranked_works.where(category: "book")[0..10] %><br>
+<p>Top Books: <%= @ranked_works.where(category: "book")[0..10] %></p>
 
-Top Albums: <%= @ranked_works.where(category: "album")[0..10] %><br>
+<p>Top Albums: <%= @ranked_works.where(category: "album")[0..10] %></p>
