@@ -1,9 +1,33 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 kim:
-  username: Kim!!!!
+  username: Kim
   join_date: 2019-04-23
 
 aj:
-  username: AJ!!!!
+  username: AJ
   join_date: 2019-04-23
+
+dee:
+  username: Dee
+  join_date: 2019-04-23
+
+chris:
+  username: Chris
+  join_date: 2019-04-23
+
+devin:
+  username: Devin
+  join_date: 2019-04-23
+
+dan:
+  username: Dan
+  join_date: 2019-04-23
+
+jessica:
+  username: Jessica
+  join_date: 2019-04-23
+
+elise:
+  username: Elise
+  join_date: 2019-04-23  

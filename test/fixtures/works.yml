@@ -14,4 +14,11 @@ war_and_peace:
   publication_year: 1869
   description: There is some war. There is some peace. 
 
+paint_it_black:
+  category: Movie
+  title: Amelie
+  creator: Some Cool Guy
+  publication_year: 1999
+  description: Super amazing movie, even though it's a hipster fave.
+
 

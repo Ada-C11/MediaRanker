@@ -1,6 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  work_id: 1
-  user_id: 2
+  work: spaghetti
+  user: kim
+
+two:
+  work: war_and_peace
+  user: dee
+
+three:
+  work: paint_it_black
+  user: dan
 
