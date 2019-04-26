@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "homepages#index"
+  root to: "homepages#index"
 
   resources :works
   # custom upvote method
