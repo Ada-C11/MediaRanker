@@ -1,6 +1,15 @@
 require "test_helper"
 
 describe WorksController do
+  #instance variables in before block are used to test create and update methods
+  before do
+    @input_title = "Good album"
+    @input_category = "album"
+    @input_creator = "Good singer"
+    @input_publication_year = 2019
+    @input_description = "A good album"
+  end
+
   describe "index" do
     it "should get index" do
       # Action
@@ -40,18 +49,11 @@ describe WorksController do
   end
 
   describe "create" do
-    before do
-      @input_title = "Good album"
-      @input_category = "album"
-      @input_creator = "Good singer"
-      @input_publication_year = 2019
-      @input_description = "A good album"
-    end
     it "will save a new work and redirect if given valid inputs" do
 
       # Arrange
       test_input = {
-        work: {
+        "work": {
           title: @input_title,
           category: @input_category,
           creator: @input_creator,
@@ -94,10 +96,72 @@ describe WorksController do
       expect {
         post works_path, params: test_input
       }.wont_change "Work.count"
-      # .must_change "Book.count", 0
 
       # Assert
       must_respond_with :bad_request
     end
+  end
+
+  describe "update" do
+    it "will update an existing work" do
+      # Arrange
+      album_to_update = works(:album_1)
+
+      test_input = {
+        "work": {
+          title: @input_title,
+          category: @input_category,
+          creator: @input_creator,
+          publication_year: @input_publication_year,
+          description: @input_description,
+        },
+      }
+
+      # Act
+      expect {
+        patch work_path(album_to_update.id), params: test_input
+      }.wont_change "Work.count"
+
+      # Assert
+      album_to_update.reload
+      expect(album_to_update.title).must_equal @input_title
+      expect(album_to_update.category).must_equal @input_category
+      expect(album_to_update.creator).must_equal @input_creator
+      expect(album_to_update.publication_year).must_equal @input_publication_year
+      expect(album_to_update.description).must_equal @input_description
+      must_respond_with :redirect
+    end
+
+    it "will return a bad_request (400) when asked to update with invalid data" do
+
+      # Arrange
+      album_to_update = works(:album_1)
+
+      test_input = {
+        "work": {
+          title: "",
+          category: @input_category,
+          creator: @input_creator,
+          publication_year: @input_publication_year,
+          description: @input_description,
+        },
+      }
+
+      # Act
+      expect {
+        patch work_path(album_to_update.id), params: test_input
+      }.wont_change "Work.count"
+
+      # Assert
+      must_respond_with :bad_request
+      album_to_update.reload
+      expect(album_to_update.title).must_equal album_to_update.title
+      expect(album_to_update.category).must_equal album_to_update.category
+      expect(album_to_update.creator).must_equal album_to_update.creator
+      expect(album_to_update.publication_year).must_equal album_to_update.publication_year
+      expect(album_to_update.description).must_equal album_to_update.description
+    end
+
+    # edge case: it should render a 404 if the book was not found
   end
 end

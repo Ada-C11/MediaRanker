@@ -43,7 +43,7 @@ class WorksController < ApplicationController
     is_successful = @work.update(work_params)
 
     if is_successful
-      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
     else
       @work.errors.messages.each do |field, messages|
@@ -51,6 +51,16 @@ class WorksController < ApplicationController
       end
       render :edit, status: :bad_request
     end
+  end
+
+  def destroy
+    if @work.nil?
+      flash[:error] = "That work does not exist"
+    else
+      @work.destroy
+      flash[:success] = "#{@work.title} deleted"
+    end
+    redirect_to works_path
   end
 
   private
