@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(version: 2019_04_25_222034) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "work_id"
-    t.index ["user_id"], name: "index_votes_on_user_id", unique: true
-    t.index ["work_id"], name: "index_votes_on_work_id", unique: true
+    t.index ["user_id", "work_id"], name: "index_votes_on_user_id_and_work_id", unique: true
+    t.index ["user_id"], name: "index_votes_on_user_id"
+    t.index ["work_id"], name: "index_votes_on_work_id"
   end
 
   create_table "works", force: :cascade do |t|

@@ -6,10 +6,11 @@ class Work < ApplicationRecord
   has_many :votes, dependent: :destroy
 
   def self.top_ten(category)
-    if self.where(category: category).length > 10
-      return self.where(category: category).sample(10)
+    works_in_category = self.where(category: category).sort_by { |work| work.votes.count }
+    if works_in_category.length > 10
+      return works_in_category[0...10]
     else
-      return self.where(category: category)
+      return works_in_category
     end
   end
 end

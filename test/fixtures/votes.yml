@@ -10,3 +10,12 @@ two:
   work: :hitchhikers
   user: :fry
 
+three:
+  value: 1
+  work: :hitchhikers
+  user: :leela
+
+three:
+  value: 1
+  work: :return
+  user: :leela
