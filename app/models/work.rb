@@ -9,19 +9,23 @@ class Work < ApplicationRecord
   has_many :users, through: :votes
 
   def self.category
-    works = Work.all
-    hash = Hash.new { }
-    works.each do |work|
-      category = work.category
-      if !hash.include?(category)
-        hash[category] = 1
-      end
-    end
-    return hash.keys.sort
+    return ["album", "book", "movie"]
   end
 
+  # def self.list_sorted_media_per_category(category)
+  #   works = Work.where(category: category).vot
+  # end
+
+  # def self.vote_count(work)
+  #   return work.votes.count
+  # end
+
   def self.media_votes(category)
-    works = Work.where(category: "album").left_joins(:votes).select("works.*, COUNT(votes.id) as vote_count").group(:id).order("COUNT(votes.id) DESC").limit(10)
+    works = Work.where(category: category).left_joins(:votes).select("works.*, COUNT(votes.id) as vote_count").group(:id).order("COUNT(votes.id) DESC").limit(10)
     return works
+  end
+
+  def self.top_ten_media_votes(category)
+    return self.media_votes(category).limit(10)
   end
 end
