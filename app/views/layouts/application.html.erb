@@ -8,7 +8,27 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <header class="app-header__header">
+    <h1>
+      <%= link_to "Media Ranker"%>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+    <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+        <% navigation_options ={
+        "View top media": works_path,
+        "View all media": works_path,
+        "Add a new work": works_path,
+        "View all users": works_path,
+        }%>
+        <% navigation_options.each do |option_name, option_path|%>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to option_name, option_path, class:"nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
   
 
   <body>
