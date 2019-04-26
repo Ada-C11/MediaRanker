@@ -7,6 +7,24 @@ describe UsersController do
     must_respond_with :success
   end
 
+  describe "show" do
+    it "should be able to show an existing user" do
+      valid_user_id = users(:one).id
+
+      get user_path(valid_user_id)
+
+      must_respond_with :success
+    end
+
+    it "should redirect to the users index page when given an invalid work id" do
+      get user_path(-1)
+
+      expect(flash[:error]).must_equal "User not found"
+
+      must_respond_with :redirect
+    end
+  end
+
   describe "login_form" do
     it "can get the login page" do
       get login_path

@@ -5,6 +5,15 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find_by(id: params[:id])
+
+    if @user.nil?
+      flash[:error] = "User not found"
+      redirect_to users_path
+    end
+  end
+
   def login_form
     @user = User.new
   end
@@ -12,10 +21,6 @@ class UsersController < ApplicationController
   def login
     @user = User.find_by(username: params[:user][:username])
     @user = User.create(user_params) if @user.nil?
-
-    # if user.nil?
-    #   user = User.create(username: username)
-    # end
 
     if @user.id
       session[:user_id] = @user.id
