@@ -21,7 +21,7 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
     if @work.save
       flash[:success] = "Successfully created #{@work.category} #{@work.id}"
-      redirect_to works_path
+      redirect_to work_path(@work)
     else
       flash.now[:warning] = "A problem occurred: Could not create #{@work.category}"
       render :new
@@ -52,15 +52,15 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    if @current_user.nil?
+    if @super_user.nil?
       flash[:warning] = "Please log in so your vote can be counted."
       redirect_to login_path
     else
-      if @current_user.has_voted?(@work.id)
+      if @super_user.has_voted?(@work.id)
         flash[:warning] = "Sorry, you can't vote twice on the same work."
         redirect_back fallback_location: works_path
       else
-        Vote.create(user_id: @current_user.id, work_id: @work.id)
+        Vote.create(user_id: @super_user.id, work_id: @work.id)
         flash[:success] = "Your vote has been counted!"
         redirect_back fallback_location: works_path
       end
@@ -70,10 +70,10 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+    params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 
   def find_work
-    @work = Work.find_by(id: params[:id].to_i)
+    @work = Work.find_by(id: params[:id])
   end
 end
