@@ -24,17 +24,11 @@ class WorksController < ApplicationController
       redirect_to works_path
     else
       flash.now[:warning] = "A problem occurred: Could not create #{@work.category}"
-
-      @work.errors.messages.each do |field, messages|
-        flash.now[field] = messages
-      end
-
       render :new
     end
   end
 
   def edit
-
   end
 
   def update
@@ -42,23 +36,19 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
     else
-      flash.now[:warning] = "A problem occurred: Could not update #{@work.category}"
-
-      @work.errors.messages.each do |field, messages|
-        flash.now[field] = messages
-      end
+      flash.now[:warning] = "Could not update #{@work.category}"
       render :edit
     end
   end
 
   def destroy
-    @work.votes.each do |vote|
-      vote.destroy
+    unless @work.nil?
+    @work.votes.destroy_all
     end
 
     @deleted_work = @work.destroy
     flash[:success] = "Successfully destroyed #{@deleted_work.category} #{@deleted_work.id}"
-    redirect_to works_path
+    redirect_to root_path
   end
 
   def upvote
