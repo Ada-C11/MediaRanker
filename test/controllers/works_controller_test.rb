@@ -10,7 +10,7 @@ describe WorksController do
 
   describe "show" do
     it "should get show" do
-      get work_path(works(:one).id)
+      get work_path(works(:works_1).id)
       must_respond_with :success
     end
 
