@@ -184,4 +184,15 @@ describe WorksController do
       expect(flash[:failure]).must_equal "Failed to delete media."
     end
   end
+
+  describe "upvote" do
+    it "allows a user to add a vote for a given media" do
+      expect {
+        post upvote_path
+      }.must_change "Vote.count", 1
+    end
+
+    it "doesn't allow a user who is not logged in to vote" do
+    end
+  end
 end
