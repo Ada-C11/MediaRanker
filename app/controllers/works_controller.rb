@@ -5,18 +5,10 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
     @works = Work.all
   end
 
-  # def homepage
-  #   @works = Work.all
-  #   def spotlight
-  #     #.order(:id) #would be order(:votes)
-  #     return @works.sample
-  #   end
-
-  #   def top_10
-  #     ranked_works = @works.sample(10) 
-  #     return ranked_works.length < 10 ? ranked_works : ranked_works[0..10]
-  #   end
-  # end
+  def homepage
+    @works = Work.all 
+    @ranked_works = @works.order(:id)
+  end
 
   def show
     if !@work
