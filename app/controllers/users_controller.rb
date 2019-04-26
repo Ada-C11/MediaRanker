@@ -3,6 +3,14 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = User.find_by(id: params[:id])
+
+    if !@user
+      head :not_found
+    end
+  end
+
   def login_form
     @user = User.new
   end
@@ -11,9 +19,6 @@ class UsersController < ApplicationController
     username = params[:user][:name]
     user = User.find_by(name: username)
 
-    if !user
-      flash[:error] = "Unable to login"
-    end
     
     if user
       session[:user_id] = user.id
@@ -22,6 +27,11 @@ class UsersController < ApplicationController
     else
       user = User.create(name: username)
     end
+
+    if !user
+      flash[:error] = "Unable to login"
+    end
+
     redirect_to root_path
   end
 

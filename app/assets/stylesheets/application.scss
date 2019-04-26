@@ -55,10 +55,32 @@
     background-color: rgb(13, 156, 156);
 }
 
-.nav-bar #user-session a {
-    color: #00796b;
+// .nav-bar #user-session a {
+//     color: #00796b;
+// }
+// .nav-bar #user-session {
+//     justify-content: space-between;
+// }
+.nav-bar #user-session .btn-primary a {
+    color: white;
 }
 
-.nav-bar #user-session {
-    justify-content: space-between;
+.btn {
+    position: relative;
+    // padding: 0.75rem 1.25rem;
+    // margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    background-color: #2FA599;
+    color: white;
+}
+
+.btn:hover {
+    background-color: rgb(11, 150, 133);
+}
+
+.delete-btn {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
 }
