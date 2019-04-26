@@ -2,6 +2,7 @@
   <% spotlight = @works.sample %>
   <h4> Media Spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %> by <%= spotlight.creator %> </h4> 
   <p> Description: <%= spotlight.description %> </p>
+  <p ><%= readable_date(spotlight.created_at) %> </p>
 </section>
 <br/>
 <section>
