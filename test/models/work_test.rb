@@ -91,5 +91,31 @@ describe Work do
       # Assert
       expect(top_ten_books.length).must_equal 0
     end
+    it "returns the works in the category with the most votes" do
+      10.times do
+        Work.create(title: "test book", creator: "author", category: "book")
+      end
+
+      books = Work.where(category: "book")
+      max_vote_counts = books.map { |book| book.votes.count }.sort.reverse.first(10)
+      top_ten_vote_counts = Work.top_ten("book").map { |book| book.votes.count }
+      expect(max_vote_counts).must_equal top_ten_vote_counts
+    end
+  end
+  describe "spotlight" do
+    it "returns the work with the maximum number of votes" do
+      work_with_max_votes = Work.all.max_by { |work| work.votes.count }
+      expect(Work.spotlight).must_equal work_with_max_votes
+    end
+    it "will return the first work found in the event of a tie" do
+      Vote.destroy_all
+      10.times do |user|
+        user = User.create(username: "#{user}")
+        Vote.create(work_id: Work.first.id, user_id: user.id)
+        Vote.create(work_id: Work.last.id, user_id: user.id)
+      end
+
+      expect(Work.spotlight).must_equal Work.first
+    end
   end
 end
