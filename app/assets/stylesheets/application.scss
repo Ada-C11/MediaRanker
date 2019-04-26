@@ -6,116 +6,202 @@
  * vendor/assets/stylesheets directory can be referenced here using a relative path.
  *
  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
  */
-
+ @import url('https://fonts.googleapis.com/css?family=Gudea:300,400,600,700,800');
 
 /* Custom bootstrap variables must be set or imported *before* bootstrap. */
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
 
-* {
-  border-radius: 0;
+
+.user-votes__container {
+    margin-top: 2rem;
 }
 
-body {
-  display: grid;
-  grid-template-areas: 
-  "header",
-  "main";
-  color: 	#53A69A;
+.user-votes__header {
+    color: black;
 }
 
-main {
-  margin: 3rem;
+.works-votes__container {
+    margin-top: 2rem;
+}
+
+.works-votes__header {
+    color: black;
 }
 
 ul {
-  padding: 0;
+    padding:0;
+}
+body,h1, h2, h3, h4, h5 {
+    font-family: "Gudea", sans-serif;
 }
 
-li {
-  list-style-type: none;
+h1, h2, h3, h4, h5 {
+    font-weight: bold;
 }
 
-/* TODO: this not working for some reason, orange title
-.main-title {
-  color: #F45F3A;
-} */
-
-header.site-header {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: baseline;
-  padding: 4rem;
-  background-color: #BBDDDC;
+a, h2, h3 {
+    color: #26A69A;
 }
 
-.page-header {
-  margin-bottom: 1.5rem;
+a:hover {
+    color: #00796B;
+    text-decoration: none;
 }
 
-.site-header h1 {
-  color: white;
-  border-right: 2px solid white;
-  padding-right: 1.5rem;
-  margin-right: 1.5rem;
+.alert {
+    margin: 0
 }
 
-.site-header a {
-  color: white;
+.btn-primary {
+    background-color: #26A69A;
+    color: white;
+    border-color: #26A69A;
 }
 
-.site-header a:visited {
-  color: white;
+.btn:hover {
+    background-color: #00796B;
+    color: white
 }
 
-section.actions {
-  display: inline;
+.table td {
+    vertical-align: middle;
 }
 
-.btn {
-    margin: 1rem .25rem 1.5rem 0;
+.app-header__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-div.top-media-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto;
-  grid-gap: 1rem;
-  // align-items: center;
-  justify-items: center;
+.app-header__nav_item {
+    margin-top: 1rem;
 }
 
-h2.top-media-heading {
-  margin: 1rem 0;
-  padding-bottom: .5rem;
-  border-bottom: solid 1px;
+.app-header__nav_item .nav-link {
+    color: #00796B;
 }
 
-article.top-media-container {
-  padding: 1rem;
-  margin: 1rem;
+.app-header__site-nav-container .app-header__nav_item {
+    margin-right: 2rem;
 }
 
-.form-control {
-  display: block;
-  justify-content: space-between;
-  margin-bottom: 1rem;
+.app-header__user-nav-container .nav-item {
+    margin-left: 2rem;
 }
 
-.custom-select {
-  margin-bottom: 1rem;
+.list-group-item {
+    border: none;
 }
 
-.details {
-  line-height: 250%
+.app-header__header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem
 }
 
-nav {
-  font-size: .5em;
+.app-header__header h1 {
+    text-align: center;
+    margin: 25px auto 40px auto
+}
+
+.app-header__header h1 a {
+    color: #FF5722;
+    padding-right: 25px;
+    margin-right: 15px;
+    border-right: white 2px solid
+}
+
+.app-header__header h1 small {
+    color: white;
+}
+
+.app-header__header p {
+    margin-bottom: 5px;
+}
+
+.alert__container {
+    margin: 2rem 0 1rem 0;
+}
+
+
+.spotlight {
+    padding: 0 2rem 2rem 2rem;
+}
+
+.spotlight__header {
+    color: #26A69A;
+}
+
+.spotlight__header--prefix {
+    color: #424242;
+}
+
+.spotlight__header--prefix::after {
+    content: ":";
+}
+
+.spotlight__link-to {
+    border-bottom: 2px solid;
+}
+
+.spotlight__description {
+    margin-bottom: 0;
+}
+
+.root__hr {
+    margin: 0px auto 3rem auto;
+    color: #EEEEEE;
+}
+
+.top-ten__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2em;
+}
+
+.top-ten__header {
+    color: #26A69A;
+    border-bottom: 2px solid;
+    border-bottom-color: #B2DFDB;
+}
+
+.top-ten__list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0
+}
+
+.top-ten__creator {
+    color: slategrey;
+}
+
+main {
+    padding: 2rem;
+}
+
+table {
+    .vote-column {
+        width:5%;
+    }
+    .title-column {
+        width: 50%;
+    }
+    .creator-column {
+        width: 25%;
+    }
+    .published-column {
+        width: 10%;
+    }
+
+    .upvote-column {
+        width: 10%;
+    }
 }
