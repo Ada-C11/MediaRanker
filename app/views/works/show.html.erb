@@ -4,7 +4,7 @@
 <p><%= @work.description %></p>
 <%= link_to "Back to media ranks", homepages_index_path, class: "btn btn-primary"%>
 <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary"%>
-<%= link_to "Upvote", edit_work_path(@work.id), class: "btn btn-primary"%>
+<%= link_to "Upvote", work_votes_path(work_id: @work.id), method: :post, class: "btn btn-primary"%>
 <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%>
 <section class="works-votes__container">
   <h3 class="works-votes__header">0 Votes for this Album</h3>

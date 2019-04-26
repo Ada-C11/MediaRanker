@@ -65,6 +65,7 @@ class WorksController < ApplicationController
       flash[:error] = "That work does not exist"
       head :not_found
     else
+      work.votes.each { |vote| vote.destroy }
       work.destroy
       flash[:success] = "Successfully destroyed #{work.category} #{work.id}"
       redirect_to works_path
