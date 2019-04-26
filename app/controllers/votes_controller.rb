@@ -1,9 +1,11 @@
 class VotesController < ApplicationController
   def create
-    # if Vote.find_by(user_id: session[:user_id], work_id: params[:work_id])
-    # flash[:error] = "You can't vote twice ~~"
-    # redirect_to works_path
-    # else
+    unless session[:user_id]
+      flash[:alert] = "A problem occurred: You must log in to do that"
+      redirect_to works_path
+      return
+    end
+
     @vote = Vote.new(user_id: session[:user_id], work_id: params[:work_id])
 
     is_successful = @vote.save
