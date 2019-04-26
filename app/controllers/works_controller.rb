@@ -88,13 +88,20 @@ class WorksController < ApplicationController
     end
 
     @user = User.find(user_id)
-    
-    @user.votes.filter {} is found in votes_user.id
-      flash[:error] = 'You have already voted for this media'
-      return
-    end
 
-    @user.votes.create!(work_id: @work.id)
+    users_votes = @user.votes
+
+    results = users_votes.where(work_id: @work.id).present?
+
+    puts results
+
+    if results
+      flash[:error] = 'You Already voted'
+      redirect_to(works_path)
+      return
+    else
+      @user.votes.create(work_id: @work.id)
+    end
 
     if @work.number_of_votes.nil?
       @work.update(number_of_votes: 1)
@@ -108,7 +115,7 @@ class WorksController < ApplicationController
       @user.update(number_of_votes: @user.number_of_votes + 1)
     end
 
-    redirect_to(works_path)
+    redirect_to(work_path)
   end
 end
 

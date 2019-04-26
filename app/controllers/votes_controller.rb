@@ -5,4 +5,8 @@ class VotesController <
       @works_votes = @votes.find(params[:work_id])
   end
 
+  def new
+    @vote = Vote.new
+  end
+
 end
