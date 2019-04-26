@@ -1,8 +1,12 @@
 <main class="homepage">
     <section class="spotlight">
     <% spotlight_work = Work.spotlight_work(@works) %>
-    <h2>Media spotlight: <%= link_to spotlight_work.title, work_path(spotlight_work.id) %> <span>by <%= spotlight_work.creator %></span></h2>
-    <p><%= spotlight_work.vote_count %> votes - <%= spotlight_work.description %></p>
+    <% if spotlight_work != nil %>
+        <h2>Media spotlight: <%= link_to spotlight_work.title, work_path(spotlight_work.id) %> <span>by <%= spotlight_work.creator %></span></h2>
+        <p><%= spotlight_work.vote_count %> votes - <%= spotlight_work.description %></p>
+    <% else %>
+        <h2>No votes have been cast yet...</h2>
+    <% end %>
     </section>
 
     <div class="spotlight-works">

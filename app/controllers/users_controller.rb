@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all.order(:created_at)
+    all_users = User.all   #.order(:created_at)
+    all_users.each do |user|
+      user.vote_count = user.vote_counter
+      user.save
+    end
+    @users = all_users.order(:created_at)
+    # raise
   end
 
   def show

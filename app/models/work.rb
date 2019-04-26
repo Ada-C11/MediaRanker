@@ -10,7 +10,9 @@ class Work < ApplicationRecord
   def self.spotlight_work(works)
     spotlight_work = works.first
     works.each do |work|
-      if work.vote_count > spotlight_work.vote_count
+      if work.vote_count == nil
+        return nil
+      elsif work.vote_count > spotlight_work.vote_count
         spotlight_work = work
       end
     end

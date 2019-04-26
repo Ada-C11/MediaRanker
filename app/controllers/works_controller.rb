@@ -71,6 +71,7 @@ class WorksController < ApplicationController
       user_vote_id = session[:user_id]
       vote = Vote.new(user_id: user_vote_id, work_id: work.id)
       is_successful = vote.save
+      raise
       if is_successful
         # raise
         flash[:success] = "Work updated successfully!"
