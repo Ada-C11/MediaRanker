@@ -7,7 +7,7 @@ describe SessionsController do
   end
 
   it "should get logout" do
-    post destroy_session_path
+    post logout_path
     must_respond_with :success
   end
 
