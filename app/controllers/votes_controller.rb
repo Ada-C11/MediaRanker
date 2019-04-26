@@ -26,7 +26,7 @@ class VotesController < ApplicationController
       redirect_back(fallback_location: root_path)
       return
     end
-    @vote = Vote.where({ user_id: session[:user_id], work_id: params[:work_id] }).last
+    @vote = Vote.find_by(id: params[:id])
 
     unless @vote
       flash[:error] = "There was a problem finding your vote for this work"
