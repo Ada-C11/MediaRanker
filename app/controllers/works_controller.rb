@@ -77,6 +77,7 @@ class WorksController < ApplicationController
   end
 
   def upvote
+
     @work = Work.find(params[:id])
     user_id = session[:user_id]
 
@@ -87,6 +88,11 @@ class WorksController < ApplicationController
     end
 
     @user = User.find(user_id)
+    
+    @user.votes.filter {} is found in votes_user.id
+      flash[:error] = 'You have already voted for this media'
+      return
+    end
 
     @user.votes.create!(work_id: @work.id)
 
