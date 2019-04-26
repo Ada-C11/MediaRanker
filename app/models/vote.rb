@@ -12,10 +12,7 @@ class Vote < ApplicationRecord
     end
   end
 
-  # def sort_votes_descending
-  #   votes_hash = Hash.new
-  #   @votes.each do |vote|
-  #     work = Work.find_by(vote.work_id)
-  #   end
-  # end
+  def self.vote(user, work)
+    return Vote.find_by(user_id: user.id, work_id: work.id)
+  end
 end
