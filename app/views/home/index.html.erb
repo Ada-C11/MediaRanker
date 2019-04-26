@@ -3,7 +3,7 @@
   Media Spotlight:
   <%= link_to spotlight.title, work_path(spotlight.id) %>, by <%= spotlight.author %>
 </h2>
-<p><%= spotlight.votes %> votes</p>
+<p><%= spotlight.votes.length %> votes</p>
 <br>
 
 <div class="top-media-container">
@@ -14,7 +14,7 @@
       <% albums.each do |album| %>
         <li class="top-media-item">
           <h5><%= link_to album.title, work_path(album.id) %></h5> by <%= album.author %>
-          <%# <%= album.votes %>
+          <p><%= album.votes.length %> votes</p>
         </li>
       <% end %>
     </ul>
@@ -27,7 +27,7 @@
       <% book.each do |book| %>
         <li class="top-media-item">
           <h5><%= link_to book.title, work_path(book.id) %></h5> by <%= book.author %>
-          <%# <%= album.votes %>
+          <p><%= book.votes.length %> votes</p>
         </li>
       <% end %>
     </ul>
@@ -40,7 +40,7 @@
       <% movies.each do |movie| %>
         <li class="top-media-item">
           <h5><%= link_to movie.title, work_path(movie.id) %></h5> by <%= movie.author %>
-          <%# <%= album.votes %>
+          <p><%= movie.votes.length %> votes</p>
         </li>
       <% end %>
     </ul>

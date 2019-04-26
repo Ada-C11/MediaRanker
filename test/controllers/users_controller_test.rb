@@ -64,27 +64,6 @@ describe UsersController do
     # end
   end
   
-    describe "current" do
-    it "returns 200 OK for a logged-in user" do
-      # Arrange
-      user = User.first
-      # matches the format that data is sent in through params on the server
-      login_data = {  
-        user: {
-          name: user.name
-        }
-      }
-      post login_path, params: login_data
-
-      # Verify the user ID was saved - if that didn't work, this test is invalid
-      expect(session[:user_id]).must_equal user.id
-
-      # Act
-      get current_user_path
-
-      # Assert
-      must_respond_with :success
-    end
-  end
+  describe "log "
  
 end

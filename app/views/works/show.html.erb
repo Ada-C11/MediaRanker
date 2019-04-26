@@ -16,4 +16,22 @@
   </section>
 </header>
 
-
+<section class="vote-details">
+    <h4><%= @work.votes.length%> Votes for <%= @work.title %></h4>
+    <table class="table"> 
+      <thead>
+          <tr>
+            <th scope="col">User</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+         
+      
+    <% @work.votes.each do |v| %>
+      <tr>
+        <td><%= link_to (User.find(v.user_id)).name, user_path(v.user_id) %></td>
+        <td><%= v.created_at %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
