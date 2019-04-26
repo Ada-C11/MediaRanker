@@ -1,10 +1,21 @@
 require "test_helper"
 
 describe User do
-  let(:user) { User.new(username: "username") }
+  describe "validations" do
+    before do
+      @user = User.new(username: "username")
+    end
 
-  it "must be valid" do
-    value(user).must_be :valid?
+    it "is valid when username is present" do
+      result = @user.valid?
+      result.must_equal true
+    end
+
+    it "is not valid when username is absent" do
+      @user.username = nil
+      result = @user.valid?
+      result.must_equal false
+    end
   end
 
   describe "relations" do
