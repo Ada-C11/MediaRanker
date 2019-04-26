@@ -1,15 +1,57 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  creator: MyString
-  description: MyString
-  category: MyString
-  publication_year: 1
+hp1:
+  title: "Harry Potter and the Socreror's Stone",
+  creator: "JK Rowling",
+  description: "The first one",
+  category: "book",
+  publication_year: 1997
 
-two:
-  title: MyString
-  creator: MyString
-  description: MyString
-  category: MyString
-  publication_year: 1
+hp2:
+  title: "Harry Potter and the Chamber of Secrets",
+  creator: "JK Rowling",
+  description: "The second one",
+  category: "book",
+  publication_year: 1998
+
+hp3:
+  title: "Harry Potter and the Prisoner of Azkaban",
+  creator: "JK Rowling",
+  description: "The third one",
+  category: "book",
+  publication_year: 1999
+
+seat_table:
+  title: "A Seat at the Table",
+  creator: "Solange Knowles",
+  description: "A soulful ode to the Black experience",
+  category: "album",
+  publication_year: 2016
+
+thank_u:
+  title: "Thank u, next",
+  creator: "Ariana Grande",
+  description: "A pop princess's journey forward",
+  category: "album",
+  publication_year: 2019
+
+am:
+  title: "AM",
+  creator: "Arctic Monkeys",
+  description: "Reflections through rock",
+  category: "album",
+  publication_year: 2013
+
+departed:
+  title: "The Departed",
+  creator: "Martin Scorese",
+  description: "Every dies, except Wahlberg",
+  category: "movie",
+  publication_year: 2006
+
+us:
+  title: "Us",
+  creator: "Jordan Peele",
+  description: "Scary, spooky, and unsettling",
+  category: "movie",
+  publication_year: 2019
