@@ -8,8 +8,19 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
-    <%= yield %>
+    <body>
+    <header>
+      <h1>Media Ranker | Ranking the Best of Everything</h1>
+      <section>
+      <%= link_to "View top media", works_path %>
+      <%= link_to "View all media", works_path %>
+      <%= link_to "Add a new work", new_work_path %>
+        <%= link_to "View all Users",
+            users_path  %>
+      </section>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
