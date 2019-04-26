@@ -8,7 +8,10 @@ describe HomepagesController do
     end
 
     it "should get index even if there are no works" do
-      Work.all.each { |work| work.destroy }
+      Work.all.each do |work|
+        work.votes.each { |vote| vote.destroy }
+        work.destroy
+      end
       get homepages_index_path
       must_respond_with :success
     end

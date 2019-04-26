@@ -17,6 +17,7 @@ describe WorksController do
     it "will respond with 404 if the work is not found" do
       work = works(:hp1)
       invalid_work_id = work.id
+      work.votes.each { |vote| vote.destroy }
       work.destroy
 
       get work_path(invalid_work_id)
@@ -70,6 +71,7 @@ describe WorksController do
     it "should respond with 404 if the work doesn't exist" do
       work = works(:hp1)
       invalid_work_id = work.id
+      work.votes.each { |vote| vote.destroy }
       work.destroy
 
       get edit_work_path(invalid_work_id)
@@ -112,6 +114,7 @@ describe WorksController do
 
       work = works(:hp1)
       invalid_work_id = work.id
+      work.votes.each { |vote| vote.destroy }
       work.destroy
 
       patch work_path(invalid_work_id), params: work_hash
@@ -133,6 +136,7 @@ describe WorksController do
     it "should respond with 404 if the work does not exist" do
       work = works(:hp1)
       invalid_work_id = work.id
+      work.votes.each { |vote| vote.destroy }
       work.destroy
 
       expect {

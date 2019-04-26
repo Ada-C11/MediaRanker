@@ -1,2 +1,77 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+one:
+  user: becky
+  work: hp4
+
+two:
+  user: jingleheimer
+  work: hp6
+
+three:
+  user: jessica
+  work: mbdtf
+
+four:
+  user: dee
+  work: hp4
+
+five:
+  user: becky
+  work: aliebn
+
+six:
+  user: beyonce
+  work: hp4
+
+seven:
+  user: becky
+  work: poodr
+
+eight:
+  user: schmidt
+  work: freesolo
+
+nine:
+  user: jessica
+  work: youvegotmail
+
+ten:
+  user: chris
+  work: aliebn
+
+eleven:
+  user: jacob
+  work: youvegotmail
+
+twelve:
+  user: jacob
+  work: hp1
+
+thirteen:
+  user: jacob
+  work: hp2
+
+fourteen:
+  user: jacob
+  work: hp3
+
+fifteen:
+  user: jacob
+  work: hp5
+
+sixteen:
+  user: jacob
+  work: hp7
+
+seventeen:
+  user: jacob
+  work: poodr
+
+eighteen:
+  user: jacob
+  work: nightingale
+
+nineteen:
+  user: jacob
+  work: aliebn

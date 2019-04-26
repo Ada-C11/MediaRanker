@@ -21,6 +21,7 @@ describe Work do
     end
   end
 
+  # weird because has_many not belongs_to
   # describe "relations" do
   #   it 'can set the author through "author"' do
   #     # Create two models
@@ -53,10 +54,15 @@ describe Work do
     end
 
     it "returns object of media with the most votes" do
+      expect(Work.top).must_equal works(:hp4) # based on fixtures
     end
 
     it "returns nil if no media" do
-      Work.all.each { |work| work.destroy }
+      Work.all.each do |work|
+        work.votes.each { |vote| vote.destroy }
+        work.destroy
+      end
+
       expect(Work.top).must_be_nil
     end
   end
@@ -82,7 +88,10 @@ describe Work do
 
     it "returns an empty array if no media of that type" do
       all_albums = Work.where(category: "album")
-      all_albums.each { |album| album.destroy }
+      all_albums.each do |album|
+        album.votes.each { |vote| vote.destroy }
+        album.destroy
+      end
 
       expect(Work.where(category: "album").length).must_equal 0
 
@@ -93,6 +102,9 @@ describe Work do
     end
 
     it "returns the 10 objects of given type with most votes" do
+      top_books = Work.top_ten("book")
+
+      expect(top_books.include?(works(:book11))).must_equal false # only book fixture with no votes
     end
   end
 end
