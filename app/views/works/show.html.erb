@@ -6,13 +6,13 @@
 <p>Created by: <%= @work.creator %></p>
 <p>Published: <%= @work.publication_year %></p>
 <p><%= @work.description %></p>
-<%= button_to "back to media rank", root_path %>
-<%= button_to "edit", edit_work_path(@work.id), method: :get %>
-<%= button_to "upvote", work_vote_path(@work.id) %>
+<%= button_to "back to media rank", root_path, class: "btn btn-primary" %>
+<%= button_to "edit", edit_work_path(@work.id), method: :get, class: "btn btn-primary" %>
+<%= button_to "upvote", work_votes_path(work_id: params[:id]), method: :post, class: "btn btn-primary" %>
 <!-- definitely need to check on that one -->
-<%= button_to "delete", work_path(@work.id), method: :delete %>
+<%= button_to "delete", work_path(@work.id), method: :delete, class: "btn btn-primary" %>
 
-<h3>placeholder Votes for this <%= @work.category %></h3>
+<h3><%= Vote.where(work_id: params[:id]).count %> Votes for this <%= @work.category %></h3>
 
 <table>
 <thead><tr><th>User</th><th>Date</th></tr></thead>

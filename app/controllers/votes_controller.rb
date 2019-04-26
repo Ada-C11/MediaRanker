@@ -1,75 +1,15 @@
 class VotesController < ApplicationController
-  def index
-    @votes = Vote.all
-  end
-
-  def show
-    @vote = Vote.find_by(id: params[:id])
-
-    if @vote.nil?
-      redirect_to votes_path
-    end
-  end
-
-  def new
-    @vote = Vote.new
-  end
-
   def create
-    vote = Vote.new(vote_params)
+    @vote = Vote.new(user_id: session[:user_id], work_id: params[:work_id])
 
-    is_successful = vote.save
-
-    if is_successful
-      redirect_to vote_path(vote.id)
+    if Vote.find_by(user_id: session[:user_id], work_id: params[:work_id]).nil?
+      @vote.save
+      flash[:success] = "Successfully upvoted!"
     else
-      render :new, status: :bad_request
-    end
-  end
-
-  def edit
-    @vote = Vote.find_by(id: params[:id])
-
-    if @vote.nil?
-      redirect_to votes_path
-    end
-  end
-
-  def update
-    vote = Vote.find_by(id: params[:id])
-
-    if vote.nil?
-      redirect_to votes_path
-    else
-      is_successful = Vote.update(vote_params)
+      flash[:error] = "you can only vote for that work once!"
     end
 
-    if is_successful
-      redirect_to vote_path(vote.id)
-    else
-      @vote = vote
-      render :edit, status: :bad_request
-    end
-  end
-
-  def destroy
-    vote = vote.find_by(id: params[:id])
-
-    if vote.nil?
-      head :not_found
-    else
-      vote.trips.each do |trip|
-        trip.destroy
-      end
-      vote.destroy
-      redirect_to votes_path
-    end
-  end
-
-  private
-
-  #CAN YOU DO STRONG PARAMS THERES????
-  def vote_params
-    return params.require(:vote).permit(:votename)
+    redirect_to "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+    #can I just re render somehow and use flash.now instead of redirect?
   end
 end

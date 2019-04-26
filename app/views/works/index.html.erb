@@ -16,12 +16,11 @@
 </tr>
 <% @works.where(category: "album").each do |album| %>
 <tr>
-<td>placeholder for votes</td>
+<td><%= Vote.where(work_id: params[:id]).count %></td>
 <td><%= link_to album.title, work_path(album.id) %></td>
 <td><%= album.creator %></td>
-<!-- data migration to integer for year -->
 <td><%= album.publication_year %></td>
-<td>placeholder button</td>
+<td><%= button_to "upvote", work_votes_path(album.id), method: :post, class: "btn btn-primary" %></td>
 </tr>
 <% end %>
 </table>
