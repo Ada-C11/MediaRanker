@@ -18,10 +18,11 @@ describe User do
     expect(result).must_equal false
   end
 
-  it "won't allow another user in with the same name" do 
-    user = User.new
-    user.username = "First Name"
-    result = user.save
+  it "validates for unique usernames" do 
+    user = User.first
+    next_user = User.new
+    next_user.username = user.username
+    result = next_user.save
 
     expect(result).must_equal false
   end
