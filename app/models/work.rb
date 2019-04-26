@@ -1,5 +1,6 @@
 class Work < ApplicationRecord
   has_many :upvotes
+  has_many :users, through: :upvotes
   
   validates :category, presence: true
   validates :title, presence: true
