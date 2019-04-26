@@ -6,24 +6,22 @@ class UsersController < ApplicationController
   def login
     name = params[:user][:name]
     user = User.find_by(name: name)
-    user = User.create(name: name) if user.nil?
-
-    if user.id
+    if user.nil?
+      user = User.create(name: name)
       session[:user_id] = user.id
       flash[:alert] = "Successfully created new user #{user.name} with ID #{user.id}"
+    else
+      session[:user_id] = user.id
+      flash[:alert] = "Successfully logged in as existing user #{user.name}"
+    end
+
+    if user.id
       redirect_to root_path
     else
       flash[:error] = "Unable to log in"
       redirect_to root_path
     end
   end
-
-  # def current
-  #   @user = User.find_by(id: session[:user_id])
-  #   if @user.nil?
-  #     head :not_found
-  #   end
-  # end
 
   def logout
     user = User.find_by(id: session[:user_id])
