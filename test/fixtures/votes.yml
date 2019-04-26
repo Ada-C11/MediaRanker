@@ -11,3 +11,7 @@ two:
 custom1:
   user: User.first
   work: Work.first
+
+custom2:
+  user: custom1
+  work: custom1
