@@ -1,22 +1,24 @@
 class VotesController < ApplicationController
-  def index
-  end
-
-  def show
-  end
-
-  def new
-  end
-
   def create
-  end
+    # if Vote.find_by(user_id: session[:user_id], work_id: params[:work_id])
+    # flash[:error] = "You can't vote twice ~~"
+    # redirect_to works_path
+    # else
+    @vote = Vote.new(user_id: session[:user_id], work_id: params[:work_id])
 
-  def edit
-  end
+    is_successful = @vote.save
 
-  def update
-  end
+    if is_successful
+      flash[:success] = "Successfully upvoted!"
+      redirect_to works_path
+    else
+      flash[:alert] = "A problem occurred: Could not upvote"
 
-  def destroy
+      @vote.errors.messages.each do |field, messages|
+        flash[field] = messages
+      end
+      redirect_to works_path
+      # end
+    end
   end
 end

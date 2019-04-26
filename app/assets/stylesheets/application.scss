@@ -29,12 +29,12 @@ h1, h2, h3, h4, h5 {
   font-weight: bold;
 }
 
-ul {
+main ul {
   margin-left: 0;
   padding-left: 0;
 }
 
-li {
+main li {
   list-style: none;
   padding: 12px 20px;
 }
@@ -93,6 +93,10 @@ header {
 
 nav li {
   padding: 0;
+  list-style-type: none;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  margin-right: 0;
 }
 
 nav ul:first-of-type li {
@@ -104,12 +108,6 @@ nav ul:first-of-type li {
 nav a {
   color: #00796B;
   padding: 0.5rem 1rem;
-}
-
-nav li {
-  margin-left: 2rem;
-  margin-top: 1rem;
-  margin-right: 0;
 }
 
 article {
