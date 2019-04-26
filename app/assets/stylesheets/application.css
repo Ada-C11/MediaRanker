@@ -118,3 +118,7 @@ article.top-media-container {
 .details {
   line-height: 250%
 }
+
+nav {
+  font-size: .5em;
+}
