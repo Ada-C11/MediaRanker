@@ -128,9 +128,7 @@ a:hover {
     margin: 2rem 0 1rem 0;
 }
 
-.alert__container:empty {
-    display:none
-}
+
 .spotlight {
     padding: 0 2rem 2rem 2rem;
 }
@@ -191,16 +189,16 @@ table {
         width:5%;
     }
     .title-column {
-        width: 30%;
+        width: 50%;
     }
     .creator-column {
         width: 25%;
     }
     .published-column {
-        width: 15%;
+        width: 10%;
     }
 
     .upvote-column {
-        width: 15%;
+        width: 10%;
     }
 }
