@@ -1,5 +1,3 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 rbg:
   category: movie
   title: RBG
@@ -24,3 +22,15 @@ homegoing:
   author: Yaa Agasi
   publication_year: 2012
   description: a multi-generational tale of black women
+rush1:
+  category: movie
+  title: Rush Hour
+  author: Brett Ratner
+  publication_year: 1998
+  description: American documentary
+rush2:
+  category: movie
+  title: Rush Hour
+  author: Brett Ratner
+  publication_year: 2001
+  description: The best of the franchise

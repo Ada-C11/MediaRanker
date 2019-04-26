@@ -51,9 +51,9 @@ describe Work do
   describe "top ten method" do
     it "can get the top books" do
     
-    top_books = Work.top_ten("book")
-    
-    expect(top_books.count).must_equal 2
+      top_books = Work.top_ten("book")
+      
+      expect(top_books.count).must_equal 2
     end
     
     it "will display a message if there are no works in that category" do
