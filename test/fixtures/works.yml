@@ -13,3 +13,10 @@ two:
   publication_year: 2019
   creator: Beyonce
   title: Homecoming
+
+three:
+  category: book
+  description: millenial office drama
+  publication_year: 2019
+  creator: Halle Butler
+  title: The New Me

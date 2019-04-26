@@ -14,7 +14,7 @@ describe VotesController do
 
       expect(flash[:success]).must_equal "Successfully upvoted!"
       expect(@work.vote_ids.last).must_equal Vote.last.id
-      expect(@user.votes.last).must_equal Vote.last
+      expect(@user.vote_ids.first).must_equal Vote.first.id
       must_respond_with :redirect
     end
 
@@ -37,3 +37,5 @@ describe VotesController do
     end
   end
 end
+
+#Votes.delete_all

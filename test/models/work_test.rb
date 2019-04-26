@@ -26,14 +26,14 @@ describe Work do
 
   describe "relationships" do
     let(:work) { works(:one) }
-    let(:work2) { works(:two) }
+    let(:work3) { works(:three) }
 
     it "can have 0 votes" do
-      expect(work2.votes.count).must_equal 0
+      expect(work3.votes.count).must_equal 0
     end
 
     it "can have many votes" do
-      expect(work.votes.length).must_equal 11
+      expect(work.votes.length).must_equal 2
     end
   end
 end

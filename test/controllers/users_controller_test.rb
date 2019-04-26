@@ -1,6 +1,13 @@
 require "test_helper"
 
 describe UsersController do
+  describe "index" do
+    it "should get index" do
+      get users_path
+      must_respond_with :success
+    end
+  end
+
   describe "login" do
     it "successfully adds user information to session hash" do
       logged_in_user = perform_login
