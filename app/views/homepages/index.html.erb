@@ -7,14 +7,15 @@ Media Spotlight:
 <section>
 <% if @spotlight %>
 <%= link_to @spotlight.title, work_path(@spotlight), class: "spotlight__link-to" %> by <%= @spotlight.creator %>
+<p class="spotlight__description">
+<%= @spotlight.description %>
+</p>
 <% else %>
 <p>There is nothig to show</p>
 <% end %>
 </section>
 </h2>
-<p class="spotlight__description">
-<%= @spotlight.description %>
-</p>
+
 </section>
 <hr class="root__hr">
 <section class="top-ten__container">
