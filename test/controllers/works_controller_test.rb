@@ -1,7 +1,6 @@
 require "test_helper"
 
 describe WorksController do
-
   before do
     @work = Work.create(category: "book", title: "test book", creator: "test creator", publication_date: 1996, description: "a good test item")
   end
@@ -53,7 +52,7 @@ describe WorksController do
 
       # Assert
       must_respond_with :redirect
-      must_redirect_to works_path
+      must_redirect_to work_path(Work.last.id)
 
       work = Work.last
       expect(work.title).must_equal work_data[:work][:title]
@@ -147,7 +146,7 @@ describe WorksController do
       @work.reload
 
       # Act
-      patch work_path(@wokk), params: work_data
+      patch work_path(@work), params: work_data
 
       # Assert
       must_respond_with :bad_request
@@ -165,7 +164,6 @@ describe WorksController do
       must_respond_with :redirect
       must_redirect_to works_path
       #expect(flash[:status]).must_equal(:success)
-    
 
       after_work = Work.find_by(id: @work.id)
       expect(after_work).must_be_nil

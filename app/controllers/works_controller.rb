@@ -53,9 +53,9 @@ class WorksController < ApplicationController
       return
     end
 
-    if @workk.update(work_params)
+    if @work.update(work_params)
       flash[:status] = :success
-      flash[:message] = "Successfully updated work #{@book.title}"
+      flash[:message] = "Successfully updated work #{@work.title}"
       redirect_to work_path(@work)
     else
       flash.now[:status] = :error
