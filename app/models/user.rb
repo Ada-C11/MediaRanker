@@ -6,4 +6,8 @@ class User < ApplicationRecord
     user = User.find_by(id: user_id)
     return user
   end
+
+  def self.vote_count(user)
+    user.votes.count
+  end
 end
