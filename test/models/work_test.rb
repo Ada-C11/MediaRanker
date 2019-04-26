@@ -27,14 +27,20 @@ describe Work do
   end
 
   describe "relationships" do
-    it "has many votes" do
+    it "can have many votes" do
       work.votes << vote_one
       work.votes << vote_two
       expect(work.votes.first).must_equal vote_one
       expect(work.votes.last).must_equal vote_two
     end
+
+    it "can have 0 votes" do
+      expect(work.votes.length).must_equal 0
+    end
   end
 
   describe "custom methods" do
+    it "" do
+    end
   end
 end
