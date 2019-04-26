@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
     unless @user
       flash[:status] = :error
-      flash[:message] = "You must be logged in to vote"
+      flash[:message] = "You must be logged in to do that"
       redirect_to login_path
       return
     end
