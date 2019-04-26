@@ -4,7 +4,13 @@
 <span class="spotlight__heaser--prefix">
 Media Spotlight:
 </span>
+<section>
+<% if @spotlight %>
 <%= link_to @spotlight.title, work_path(@spotlight), class: "spotlight__link-to" %> by <%= @spotlight.creator %>
+<% else %>
+<p>There is nothig to show</p>
+<% end %>
+</section>
 </h2>
 <p class="spotlight__description">
 <%= @spotlight.description %>
