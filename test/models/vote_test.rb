@@ -46,4 +46,27 @@ describe Vote do
       expect(result).must_equal true
     end
   end
+  describe "relations" do
+    it "has a work" do
+      vote = votes(:one)
+      vote.work.must_equal works(:return)
+    end
+
+    it "has a user" do
+      vote = votes(:one)
+      vote.user.must_equal users(:bender)
+    end
+
+    it "can set the work" do
+      vote = Vote.new
+      vote.work = works(:return)
+      vote.work_id.must_equal works(:return).id
+    end
+
+    it "can set the user" do
+      vote = Vote.new
+      vote.user = users(:bender)
+      vote.user_id.must_equal users(:bender).id
+    end
+  end
 end
