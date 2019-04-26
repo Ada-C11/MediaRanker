@@ -4,9 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id].to_i)
-    if @user.nil?
-      render :not_found, status: :not_found
-    end
+    @user = User.find_by(id: params[:id])
+    render :not_found unless @user
   end
 end
