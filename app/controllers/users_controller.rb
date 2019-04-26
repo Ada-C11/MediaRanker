@@ -25,7 +25,6 @@ class UsersController < ApplicationController
     @users = Work.where(user_id: user_id.to_i)
     @votes = Vote.all
     @users_votes = @votes.where(user_id: user_id)
-    # puts @users_votes.count
   end
 
   def edit

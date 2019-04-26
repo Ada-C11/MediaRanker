@@ -14,12 +14,15 @@
       <th>Category</th>
       <th>Voted On</th>
     </tr>
+    <% @users_votes.each do |vote| %>
     <tr>
-      <td><%= @users_votes.count %></td> 
-      <td><%= @users_votes.count %></td> 
-
-
+      <td><%=vote.work.title%></td>
+      <td><%=vote.work.creator%></td>
+      <td><%=vote.work.publication_year%></td>
+      <td><%=vote.work.category%></td>
+      <td><%=vote.work.created_at%></td>
     </tr>
+    <% end %>
   </table>
 </div>
 
