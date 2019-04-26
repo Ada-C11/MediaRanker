@@ -18,17 +18,21 @@
   <%= @work.description %>
 </li>
 
+<span>Number of Votes for this <%=@work.category%></span>
+<span><%=@work.number_of_votes%></span>
+
 <div  class='main_options' >
   <table class='main_options'>
-    <tr>
-      <th><%=@work.number_of_votes%></th>
-    </tr>
     <tr>
       <th>User</th>
       <th>Date</th>
     </tr>
+    <% @works_votes.each do |vote| %>
     <tr>
+      <td><%=vote.user.username%></td>
+      <td><%=vote.created_at%></td>
     </tr>
+    <% end %>
   </table>
 </div>
 

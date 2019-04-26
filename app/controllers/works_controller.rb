@@ -30,19 +30,18 @@ class WorksController < ApplicationController
   end
 
   def show
-    # work_id = params[:id]
-
+    work_id = params[:id]
     # @work = Work.find_by(id: work_id)
-
     # head :not_found unless @work
+    @votes = Vote.all
+    @works_votes = @votes.where(work_id: work_id)
   end
 
   def edit
     # work_id = params[:id]
-
     # @work = Work.find_by(id: work_id)
-
     # head :not_found unless @work
+
   end
 
   def update
@@ -80,7 +79,7 @@ class WorksController < ApplicationController
   def upvote
     @work = Work.find(params[:id])
     user_id = session[:user_id]
-    
+
     if user_id.nil?
       flash[:error] = 'You must be logged in to see this page'
       redirect_to login_path
@@ -89,8 +88,7 @@ class WorksController < ApplicationController
 
     @user = User.find(user_id)
 
-
-    Vote.create(work_id: @work.id, user_id: @user.id)
+    @user.votes.create!(work_id: @work.id)
 
     if @work.number_of_votes.nil?
       @work.update(number_of_votes: 1)
@@ -117,7 +115,7 @@ def work_params
     :creator,
     :publication_year,
     :description,
-    :votes
+    :number_of_votes
   )
 end
 

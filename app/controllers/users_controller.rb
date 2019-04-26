@@ -23,6 +23,9 @@ class UsersController < ApplicationController
     user_id = params[:id]
     @user = User.find(user_id)
     @users = Work.where(user_id: user_id.to_i)
+    @votes = Vote.all
+    @users_votes = @votes.where(user_id: user_id)
+    # puts @users_votes.count
   end
 
   def edit
@@ -103,6 +106,6 @@ private
 def user_params
   params.require(:user).permit(
     :username,
-    :votes,
+    :number_of_votes,
   )
 end
