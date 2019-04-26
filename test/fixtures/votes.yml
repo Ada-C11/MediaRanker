@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  value: 1
+  work: :return
+  user: :bender
+
+two:
+  value: 1
+  work: :hitchhikers
+  user: :fry
+

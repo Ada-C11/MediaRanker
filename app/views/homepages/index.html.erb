@@ -2,7 +2,7 @@
 <%if media%>
     <section>
         <h2><span>Media Spotlight:</span> <%= link_to media.title, work_path(media.id)%> by <%= media.creator%> </h2>
-        <p><%= media.description%></p>
+        <p><%=media.votes.count%> votes - <%= media.description%></p>
     </section>
 <%end%>
 <h2> Top 10 Books </h2>
@@ -11,6 +11,7 @@
     <li>
     <h4><%= link_to book.title, work_path(book.id)%><small> by <%= book.creator %></small>
     </h4> 
+    <p><%= book.votes.count %> votes<p>
     </li>
 <%end%>
 </ul>
@@ -21,6 +22,7 @@
     <li>
     <h4><%= link_to album.title, work_path(album.id)%><small> by <%= album.creator %></small>
     </h4> 
+    <p><%= album.votes.count %> votes<p>
     </li>
 <%end%>
 </ul>
@@ -31,6 +33,7 @@
     <li>
     <h4><%= link_to movie.title, work_path(movie.id)%><small> by <%= movie.creator %></small>
     </h4> 
+    <p><%= movie.votes.count %> votes<p>
     </li>
 <%end%>
 </ul>
