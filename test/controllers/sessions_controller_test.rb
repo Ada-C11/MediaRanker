@@ -1,19 +1,14 @@
 require "test_helper"
 
- describe SessionsController do
+describe SessionsController do
   it "should get login" do
-    get sessions_login_url
-    value(response).must_be :success?
+    get login_path
+    must_respond_with :success
   end
 
-   it "should get new" do
-    get sessions_new_url
-    value(response).must_be :success?
+  it "should get logout" do
+    post destroy_session_path
+    must_respond_with :success
   end
 
-   it "should get destroy" do
-    get sessions_destroy_url
-    value(response).must_be :success?
-  end
-
- end
+end

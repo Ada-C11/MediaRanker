@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  username: MyString
-  date_joined: MyString
+  username: superfresh
+  date_joined: 4-10-2019
 
 two:
-  username: MyString
-  date_joined: MyString
+  username: extrafresh
+  date_joined: 10-24-2018

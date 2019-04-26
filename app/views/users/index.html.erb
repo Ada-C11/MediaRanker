@@ -13,7 +13,7 @@
       <% @users.each do |user| %>
         <td><%= link_to "#{user.username} ", user_path(user.id) %></td>
         <td><%= user.votes.length %></td>
-        <td><%= user.date_joined.strftime("%B %d, %Y") %></td>
+        <td><%= user.created_at.strftime("%B %d, %Y") %></td>
       </tr>
       <% end %>
     </tbody>

@@ -1,5 +1,5 @@
 <h2>User Summary: <%= @user.username %></h2>
-<p>Joined site <%= @user.date_joined.strftime("%B %d, %Y") %></p>
+<p>Joined site <%= @user.created_at.strftime("%B %d, %Y") %></p>
 
 <h4>Votes</h4>
 <section class="table_container">

@@ -2,23 +2,23 @@ require "test_helper"
 
 describe WorksController do
   it "should get index" do
-    get works_index_url
-    value(response).must_be :success?
+    get works_path
+    must_respond_with :success
   end
 
   it "should get show" do
-    get works_show_url
-    value(response).must_be :success?
+    get work_path(works(:book1).id)
+    must_respond_with :success
   end
 
   it "should get new" do
-    get works_new_url
-    value(response).must_be :success?
+    get new_work_path
+    must_respond_with :success
   end
 
   it "should get edit" do
-    get works_edit_url
-    value(response).must_be :success?
+    get edit_work_path(works(:book2).id)
+    must_respond_with :success
   end
 
 end
