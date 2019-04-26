@@ -10,16 +10,20 @@ describe UsersController do
   end
 
   describe "log_in" do 
-    user_data = {
-      user: {
-        username: "First User"
-      }
-    }
-
+    
     it "allows a user to login " do 
-      post login_path, params: user_data
-
-      must_respond_with :success
+      user = User.first
+      login_data = {
+        user: {
+          username: user.username,
+        },
+      }
+      post login_path, params: login_data
+    
+        # Verify the user ID was saved - if that didn't work, this test is invalid
+      expect(session[:user_id]).must_equal user.id
+      expect(flash[:status]).must_equal :success
+      must_redirect_to root_path
     end
   end
 end
