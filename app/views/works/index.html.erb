@@ -4,7 +4,7 @@
     <ul>
 <% @works.each do |work| %>
     <% if work.category == "album" %>
-        <li><%= link_to work.title, work_path(work.id) %></li>
+        <li><%= link_to work.title, work_path(work.id) %> <%= link_to "Upvote", upvote_path(id: work.id), method: :post, class:"btn btn-success" %></li>
     <% end %>
 <% end %>
 </ul>
