@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  media_id: 1
+  work_id: 1
+  user_id: 2
 
-two:
-  media_id: 1

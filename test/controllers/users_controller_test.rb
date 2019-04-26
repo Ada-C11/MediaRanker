@@ -28,7 +28,7 @@ describe UsersController do
 
       must_respond_with :redirect
       must_redirect_to root_path
-      expect(flash[:failure]).must_equal "User Not Found."
+      expect(flash[:failure]).must_equal "User not found."
     end
   end
 
@@ -44,9 +44,9 @@ describe UsersController do
     it "can login an existing user" do
       logged_in_user = perform_login
 
-      expect(flash[:success]).must_equal "Successfully logged in as existing user #{kim.username}!"
-      must_respond_with :redirect
       must_redirect_to root_path
+      must_respond_with :redirect
+      expect(flash[:success]).must_equal "Successfully logged in as existing user #{kim.username}!"
     end
 
     it "can create and login a new user" do
@@ -62,10 +62,10 @@ describe UsersController do
 
       user = User.find_by(username: login_data[:user][:username])
 
-      expect(flash[:success]).must_equal "Successfully created new user #{user.username} with ID #{user.id}!"
-      expect(session[:user_id]).must_equal user.id
       must_respond_with :redirect
       must_redirect_to root_path
+      expect(session[:user_id]).must_equal user.id
+      expect(flash[:success]).must_equal "Successfully created new user #{user.username} with ID #{user.id}!"
     end
 
     it "responds accordingly when a user can't be logged in" do
@@ -80,6 +80,7 @@ describe UsersController do
       }.wont_change "User.count"
 
       must_respond_with :bad_request
+      expect(flash[:failure]).must_equal "Log in unsuccessful. Please try again"
     end
   end
 
@@ -89,9 +90,9 @@ describe UsersController do
 
       post logout_path
 
+      must_redirect_to root_path
       expect(session[:user_id]).must_equal nil
       expect(flash[:notice]).must_equal "Succesfully logged out"
-      must_redirect_to root_path
     end
   end
 end
