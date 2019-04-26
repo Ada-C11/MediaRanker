@@ -5,3 +5,9 @@ user_one:
 
 user_two:
   username: usertwo
+
+user_three:
+  username: userthree
+
+user_four:
+  username: userfour 
