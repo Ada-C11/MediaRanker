@@ -10,4 +10,9 @@ class Work < ApplicationRecord
       return self.where(category: category)
     end
   end
+
+  def self.spotlight
+    spotlight = Work.all.sample(1).first
+    return spotlight
+  end
 end

@@ -1,0 +1,10 @@
+<%= form_with model: @work, class: 'form' do |f| %>
+  
+  <div class="form_input">
+    <%= f.label :name%>
+    <%= f.text_field :name, placeholder: "Username" %>
+  </div>
+  
+  <%= f.submit action_name, class: "button" %>
+  
+<% end %>

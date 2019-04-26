@@ -1,6 +1,33 @@
-<h3><%= link_to @work.title, work_path(@work.id)%></h3>
-  <p>Created by: <%= @work.creator %></p>
-  <p>Published: <%= @work.publication_year %></p>
-  <p><%= @work.description %></p>
+<header class="details-page">
+  <h2><%= @work.title %></h2>
+    <section class="details">
+      Created by: <%= @work.author %><br>
+      Published: <%= @work.pub_yr %><br>
+      <%= @work.description %><br>
+    </section>
+</header>
+  
+  <section class="actions">
+    <%= link_to "Back to media ranks", root_path, class: "btn btn-primary btn-lg" %>
+    <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary btn-lg" %>
+    <%= link_to "Upvote", class: "btn btn-primary btn-lg" %>
+    <%= link_to "Delete", class: "btn btn-danger btn-lg" %> 
+  </section>
+</header>
 
-  <%=link_to "Back to media ranks", root_path%> 
+<h3><%= @work.votes.count %> Votes for this <%= @work.category%></h3>
+
+<table class ="votes">
+ <thead>
+  <th>User</th>
+  <th>Date</th>
+  </thead>
+  <tbody>
+    <% @work.votes.each do |vote| %>
+    <tr>
+      <td><%= link_to vote.user.username, user_path(vote.user) %></td>
+      <td> <%= vote.date %> </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

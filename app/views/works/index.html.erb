@@ -11,6 +11,7 @@
           <p><%= link_to book.title, work_path(book.id)%></p>
           <p><%= book.creator %></p>
           <p><%= book.pub_yr %></p>
+          <p><%= link_to "Upvote", class: "btn btn-primary btn-lg" %></p>
           </li>
       <%end%>
       </ul>
@@ -24,6 +25,7 @@
           <p><%= link_to album.title, work_path(album.id)%></p>
           <p><%= album.creator %></p>
           <p><%= album.pub_yr %></p>
+          <p><%= link_to "Upvote", class: "btn btn-primary btn-lg" %></p>
           </li>
       <%end%>
       </ul>
@@ -37,11 +39,12 @@
           <p><%= link_to movie.title, work_path(movie.id)%></p>       
           <p><%= movie.creator %></p>
           <p><%= movie.pub_yr %></p>
+          <p><%= link_to "Upvote", class: "btn btn-primary btn-lg" %></p>
           </li>
       <%end%>
       </ul> 
     </section>
-    <%=link_to "View top media", root_path%>
-    <%=link_to "Add a new work", new_work_path%> 
+    <%= link_to "View Top Works", root_path, class: "btn btn-primary btn-lg" %>
+    <%= link_to "Add a new work", new_work_path, class: "btn btn-primary btn-lg" %>
   </main>
 </body>

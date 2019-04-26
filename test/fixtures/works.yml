@@ -1,20 +1,34 @@
-one:
-  category: Album
-  title: Back to Black
-  creator: Amy Winehouse
-  pub_yr: 2006
-  description: Badassery
+oone:
+  category: MyString
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
 
 two:
-  category: Book
-  title: Becoming
-  creator: Michelle Obama
-  pub_yr: 2019
-  description: First Lady's memoir 
+  category: MyString
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
 
-three:
-  category: Movie
+harvey:
+  category: movie
   title: Harvey
-  creator: Henry Koster
-  pub_yr: 1950
-  description: Man with a big friend that happens to be a huge rabbit
+  creator: Unknown
+  publication_year: 1950
+  description: Man has best friend that happens to be a huge rabbit nobody else can see.
+
+call:
+  category: book
+  title: Pathologies of Power
+  creator: Paul Farmer
+  publication_year: 2003
+  description: Human rights
+
+testing:
+  category: album
+  title: Back to Black
+  creator: Amy Winehouse
+  publication_year: 2006
+  description: Still love it

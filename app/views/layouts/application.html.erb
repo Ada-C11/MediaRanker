@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MediaRanker</title>
+    <title class="main-title">MediaRanker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,21 +10,38 @@
   </head>
 
   <body>
-  <header>
-  <h1>MediaRanker</h1>
-  <h2>Ranking the Best of Everything</h2>
-  <nav>
-    <ul>
-      <li><%=link_to "View top media", root_path%></li>
-      <li><%= link_to "View all media", works_path%></li>
-      <li><%=link_to "Add a new work", new_work_path%></li>
 
-     </ul>
-  </nav>
+  <header class="site-header">
+    <h1> Media Ranker | <small> Ranking the Best of Everything</small>
+
+    <nav class="navbar navbar-light">
+      <ul>
+        <li><%=link_to "View top media", root_path%></li>
+        <li><%= link_to "View all media", works_path%></li>
+        <li><%=link_to "Add a new work", new_work_path%></li>
+        <li> <%= link_to "View all users", users_path %></li>
+        <% if @current_user %>
+            <li> <%= link_to "Logged in as #{@current_user.username}", root_path %></li>
+            <li> <%= link_to "Log out", logout_path, method: :post %></li>
+          <%else%>
+            <li> <%= link_to "Login", login_path %></li>
+          <% end %>
+      </ul>
+      <span class="navbar-button">
+      <%= link_to "Login", root_path, class: "btn btn-primary" %>
+      </span>
+    </nav>
   </header>
+
+  <section class="flash">
+     <% flash.each do |name, message| %>
+        <div class="<%= name %>"><%= message %></div>
+     <% end %>
+  </section>
+
   <main>
     <%= yield %>
-     </main>
+  </main>
   <footer></footer>
   </body>
 </html>

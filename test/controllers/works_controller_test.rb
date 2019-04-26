@@ -108,6 +108,20 @@ describe WorksController do
       must_respond_with :redirect
       must_redirect_to work_path(new_work.id)
     end
+
+    it "doesn't create new work with data that is invalid" do
+      work_data = {
+        work: {
+          title: "",
+        },
+      }
+
+      expect(Work.new(work_data[:work])).wont_be :valid?
+
+      expect {
+        post works_path, params: work_data
+      }.wont_change "Work.count"
+    end
   end
 
   describe "edit" do
@@ -164,6 +178,17 @@ describe WorksController do
       expect(flash[:error]).must_equal "Could not find work with id: -1"
 
       must_redirect_to root_path
+    end
+
+    it "does not update for bad input data" do
+      work_data = {
+        work: {
+          category: "",
+        },
+      }
+
+      patch work_path(works(:call)), params: work_data
+      must_respond_with :redirect
     end
   end
 

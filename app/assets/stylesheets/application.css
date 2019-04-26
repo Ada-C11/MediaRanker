@@ -13,3 +13,108 @@
  *= require_tree .
  *= require_self
  */
+
+
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+
+* {
+  border-radius: 0;
+}
+
+body {
+  display: grid;
+  grid-template-areas: 
+  "header",
+  "main";
+  color: 	#53A69A;
+}
+
+main {
+  margin: 3rem;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+/* TODO: this not working for some reason, orange title
+.main-title {
+  color: #F45F3A;
+} */
+
+header.site-header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: baseline;
+  padding: 4rem;
+  background-color: #BBDDDC;
+}
+
+.page-header {
+  margin-bottom: 1.5rem;
+}
+
+.site-header h1 {
+  color: white;
+  border-right: 2px solid white;
+  padding-right: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.site-header a {
+  color: white;
+}
+
+.site-header a:visited {
+  color: white;
+}
+
+section.actions {
+  display: inline;
+}
+
+.btn {
+    margin: 1rem .25rem 1.5rem 0;
+}
+
+div.top-media-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 1rem;
+  // align-items: center;
+  justify-items: center;
+}
+
+h2.top-media-heading {
+  margin: 1rem 0;
+  padding-bottom: .5rem;
+  border-bottom: solid 1px;
+}
+
+article.top-media-container {
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.form-control {
+  display: block;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.custom-select {
+  margin-bottom: 1rem;
+}
+
+.details {
+  line-height: 250%
+}

@@ -1,34 +1,48 @@
-<body>
-  <main>
-    <% media = Work.all.sample%>
+
+<% media = Work.all.sample%>
     <h2>Media Spotlight: <%= link_to media.title, work_path(media.id)%> by <%= media.creator%> </h2>
     <p><%= media.description%></p>
 
-    <h3> Top 10 Books </h3>
-    <ol>
-    <% Work.top_ten("book").each do |book|%>
-        <li>
-        <%= link_to book.title, work_path(book.id)%> by <%= book.creator %> 
-        </li>
-    <%end%>
-    </ol>
+<div class="top-media-container">
+    <article class="top-media-container">
+        <h2 class="top-media-heading"> Top 10 Books </h2>
+        <ol class="top-media">
+        <% Work.top_ten("book").each do |book|%>
+            <li>
+            <%= link_to book.title, work_path(book.id)%> by <%= book.creator %> 
+            </li>
+            <li>
+            <%= album.votes.count %> Votes
+            </li>
+        <%end%>
+        </ol>
+    </article>
 
-    <h3> Top 10 Albums </h3>
-    <ol>
-    <% Work.top_ten("album").each do |album|%>
-        <li>
-        <%= link_to album.title, work_path(album.id)%> by <%= album.creator %> 
-        </li>
-    <%end%>
-    </ol>
+    <article class="top-media-container">
+        <h2 class="top-media-heading">Top 10 Albums </h2>
+        <ol class="top-media"> 
+        <% Work.top_ten("album").each do |album|%>
+            <li>
+            <%= link_to album.title, work_path(album.id)%> by <%= album.creator %> 
+            </li>
+           <li>
+            <%= album.votes.count %> Votes
+            </li>
+        <%end%>
+        </ol>
+    </article>
 
-    <h3> Top 10 Movies </h3>
-    <ol>
-    <% Work.top_ten("movie").each do |movie|%>
-        <li>
-        <%= link_to movie.title, work_path(movie.id)%> by <%= movie.creator %> 
-        </li>
-    <%end%>
-  </ol> 
-  </main>
-</body>
+    <article class="top-media-container">
+        <h2 class="top-media-heading">Top 10 Movies </h2>
+        <ol class="top-media">
+        <% Work.top_ten("movie").each do |movie|%>
+            <li>
+            <%= link_to movie.title, work_path(movie.id)%> by <%= movie.creator %> 
+            </li>
+            <li>
+            <%= album.votes.count %> Votes
+            </li>
+        <%end%>
+        </ol> 
+    </article>
+</div>
