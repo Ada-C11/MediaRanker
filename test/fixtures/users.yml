@@ -1,7 +1,34 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+john:
+  name: beingjohnmalkovich
 
-two:
-  name: MyString
+jacob:
+  name: hashtagteamjacob
+
+jingleheimer:
+  name: hisnameisMYnametoo
+
+schmidt:
+  name: firstnamewinston
+
+becky:
+  name: withthegoodhair
+
+beyonce:
+  name: queenbey
+
+stillgoing:
+  name: icantbelieveineed11ofthese
+
+jessica:
+  name: thatsmyname
+
+dee:
+  name: heydeethisisyou
+
+chris:
+  name: heresoneforchristoo
+
+eleven:
+  name: yayimdoneeee

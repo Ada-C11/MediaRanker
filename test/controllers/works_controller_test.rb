@@ -10,12 +10,12 @@ describe WorksController do
 
   describe "show" do
     it "should get show" do
-      get work_path(works(:one).id)
+      get work_path(works(:hp1).id)
       must_respond_with :success
     end
 
     it "will respond with 404 if the work is not found" do
-      work = works(:one)
+      work = works(:hp1)
       invalid_work_id = work.id
       work.destroy
 
@@ -62,13 +62,13 @@ describe WorksController do
 
   describe "edit" do
     it "should get edit" do
-      get edit_work_path(works(:one).id)
+      get edit_work_path(works(:hp1).id)
 
       must_respond_with :success
     end
 
     it "should respond with 404 if the work doesn't exist" do
-      work = works(:one)
+      work = works(:hp1)
       invalid_work_id = work.id
       work.destroy
 
@@ -85,7 +85,7 @@ describe WorksController do
           title: "test 2",
         },
       }
-      patch work_path(works(:one)), params: update_work_hash
+      patch work_path(works(:hp1)), params: update_work_hash
 
       must_respond_with :redirect
       expect(Work.find_by(title: "test 2")).wont_be_nil
@@ -97,7 +97,7 @@ describe WorksController do
           title: "",
         },
       }
-      patch work_path(works(:one)), params: bad_work_hash
+      patch work_path(works(:hp1)), params: bad_work_hash
 
       must_respond_with :bad_request
       expect(Work.find_by(title: "test 2")).must_be_nil
@@ -110,7 +110,7 @@ describe WorksController do
         },
       }
 
-      work = works(:one)
+      work = works(:hp1)
       invalid_work_id = work.id
       work.destroy
 
@@ -124,14 +124,14 @@ describe WorksController do
   describe "destory" do
     it "should destroy works" do
       expect {
-        delete work_path(works(:one).id)
+        delete work_path(works(:hp1).id)
       }.must_change "Work.count", -1
 
       must_respond_with :redirect
     end
 
     it "should respond with 404 if the work does not exist" do
-      work = works(:one)
+      work = works(:hp1)
       invalid_work_id = work.id
       work.destroy
 
