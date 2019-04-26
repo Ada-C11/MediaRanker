@@ -1,3 +1,18 @@
+<% if @user.errors.messages.any? %>
+  <section class="alert alert-danger">
+    There were some issues with your submission
+    <ul>
+      <% @user.errors.messages.each do |column, problem_list| %>
+        <% problem_list.each do |problem| %>
+          <li>
+            <%= column %>: <%= problem %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
+
 <%= form_with model: @user, url: login_path do |f| %>
   <%= f.label :username %>
   <%= f.text_field :username %>
