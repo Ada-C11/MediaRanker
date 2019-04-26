@@ -1,15 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  author: MyString
-  publication_year: 1
-  description: MyString
-
-two:
-  category: MyString
-  title: MyString
-  author: MyString
-  publication_year: 1
-  description: MyString
+rbg:
+  category: movie
+  title: RBG
+  author: Betsy West
+  publication_year: 2018
+  description: RBG is a 2018 American documentary
+moon:
+  category: album
+  title: Harvest Moon
+  author: Neil Young
+  publication_year: 1991
+  description: 19th studio album

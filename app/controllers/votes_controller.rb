@@ -14,7 +14,7 @@ class VotesController < ApplicationController
     else
       flash[:success] = "Thanks for your vote!"
       
-      redirect_to work_path(work.id)
+      redirect_back(fallback_location: works_path)
     end
   end
   

@@ -50,9 +50,5 @@ describe Work do
   
   end
   
-  # describe "Ranked Media" do
-  #   it "displays the homepage even with no entries" do
-      
-  #   end
-  # end
+
 end

@@ -21,7 +21,7 @@
           <td><%= link_to album.title, work_path(album.id) %></td>
           <td><%= album.author %></td>
           <td><%= album.publication_year %></td>
-          <td><%= link_to "Upvote", class: "btn btn-primary btn-lg" %>
+          <td><%= link_to "Upvote", work_votes_path(album.id), method: :post, class: "btn btn-primary btn-lg" %></td>
         </tr>
       <% end %>
     </table>
@@ -49,7 +49,7 @@
           <td><%= link_to book.title, work_path(book.id) %></td>
           <td><%= book.author %></td>
           <td><%= book.publication_year %></td>
-          <td><%= link_to "Upvote", class: "btn btn-primary btn-lg" %>
+          <td><%= link_to "Upvote", work_votes_path(book.id), method: :post, class: "btn btn-primary btn-lg" %></td>
         </tr>
       <% end %>
     </table>
@@ -77,7 +77,7 @@
           <td><%= link_to movie.title, work_path(movie.id) %></td>
           <td><%= movie.author %></td>
           <td><%= movie.publication_year %></td>
-          <td><%= link_to "Upvote", class: "btn btn-primary btn-lg" %>
+          <td><%= link_to "Upvote", work_votes_path(movie.id), method: :post, class: "btn btn-primary btn-lg" %></td>
         </tr>
       <% end %>
     </table>

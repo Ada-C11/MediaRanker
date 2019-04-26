@@ -20,7 +20,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     
-    successful = @work.save
+    successful = @work.save!
     if successful
       
       flash[:message] = "#{@work.title} has been successfully added."

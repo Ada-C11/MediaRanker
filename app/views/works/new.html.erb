@@ -4,7 +4,7 @@
 
 <section class="new-form">
   <%= form_with model: @work, class: "create-work" do |f| %>
-    <select class="custom-select">
+    <select class="custom-select", name="work[category]">
       <option selected>Select media type</option>
       <option value="album">Album</option>
       <option value="book">Book</option>

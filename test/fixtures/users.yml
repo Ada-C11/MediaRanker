@@ -1,7 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+amy:
+  name: Amy Phung
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+andrew:
+  name: Andrew Houle
