@@ -30,7 +30,11 @@
     </ul>
     <ul class="nav user-nav-container">
        <li class="user_nav_item"> 
-        <%= link_to "Login", root_path, class: "btn btn-primary", alt: "Log In" %>
+       <% if session[:user_id] %>
+       <%= link_to "Loggin in as #{User.find(session[:user_id]).username}", user_path(session[:user_id]), class: "btn btn-primary", alt: "Link to logged in user show page" %>
+       <% else %>
+        <%= link_to "Log in", login_path, class: "btn btn-primary", alt: "Log in link" %>
+       <% end%>
       </li>
        <li class="user_nav_item"> 
        <%= link_to "Log Out", root_path, class: "btn btn-primary", alt: "Log Out" %>

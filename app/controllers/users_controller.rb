@@ -7,13 +7,16 @@ class UsersController < ApplicationController
   def login
     username = params[:user][:username]
     @user = User.find_by(username: username)
+    
     if @user
       session[:user_id] = @user.id
+      session[:username] = username
       flash[:status] = :success
       flash[:message] = "Successfully logged in as #{username}"
     else
       @user = User.create!(username: params[:user][:username])
       session[:user_id] = @user.id
+      session[:username] = username
       flash[:status] = :success
       flash[:message] = "Successfully logged in as #{username}"
     end
