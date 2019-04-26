@@ -19,36 +19,17 @@ describe UsersController do
       }
     end
     it "Will respond with redirect" do
-      # user = User.first
-      # login_data = {
-      #   user: {
-      #     username: user.username,
-      #   },
-      # }
-
       post login_path(@login_data)
 
       must_redirect_to root_path
     end
     it "will login a returning user" do
-      # user = User.first
-      # login_data = {
-      #   user: {
-      #     username: user.username,
-      #   },
-      # }
-
       post login_path(@login_data)
 
       expect(session[:user_id]).must_equal @user.id
     end
 
     it "will create an account for and login a new user" do
-      # login_data = {
-      #   user: {
-      #     username: "new user",
-      #   },
-      # }
       @login_data[:user][:username] = "new user"
 
       new_user = User.find_by(username: @login_data[:user][:username])
@@ -64,5 +45,26 @@ describe UsersController do
     # it "wont let someone login with a blank username" do
     # do i need this ?
     # end
+  end
+
+  describe "current" do
+    it "returns 200 OK for a logged-in user" do
+      perform_login
+
+      get current_user_path
+
+      must_respond_with :success
+    end
+
+    it "Redirects to login page if not logged in" do
+      get current_user_path
+
+      expect(flash[:status]).must_equal :error
+      expect(flash[:message]).must_equal "You must be logged in to do this"
+      must_redirect_to login_path
+    end
+  end
+
+  describe "logout" do
   end
 end
