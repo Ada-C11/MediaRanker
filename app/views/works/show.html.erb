@@ -13,7 +13,8 @@
     <%= link_to "Back to top media", root_path, class: "btn btn-info" %>
     <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-info"%>
     <%= link_to "Upvote", "#", class: "btn btn-info" %>
-    <%= link_to "Delete", work_path(@work.id), class: "btn btn-danger",method: :delete, :data => {:confirm => "Are you sure you want to delete #{@work.title}?"} %>
+    <%= link_to "Delete", work_path(@work.id), class: "btn btn-danger",method: :delete %>
+    <%#= link_to "Delete", work_path(@work.id), class: "btn btn-danger",method: :delete, :data => {:confirm => "Are you sure you want to delete #{@work.title}?"} %>
   </section>
 </section>
 
