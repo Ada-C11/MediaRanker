@@ -24,4 +24,8 @@ vote_5:
   work: work_ten
   user: user_five
 
+vote_6:
+  work: work_ten
+  user: user_two 
+
 

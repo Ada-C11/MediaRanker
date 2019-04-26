@@ -72,6 +72,17 @@ describe Work do
       # Act-Assert
       expect(Work.highest_vote).wont_be_nil
     end
+
+    it "will spotlight one work if there is a tie for most votes" do
+      # Arrange
+      Vote.delete_all
+
+      vote = Vote.new(user_id: users(:user_one), work_id: works(:work_one))
+      vote2 = Vote.new(user_id: users(:user_two), work_id: works(:work_two))
+
+      # Act-Assert
+      expect(Work.highest_vote).must_equal works(:work_one) || works(:work_two)
+    end
   end
 
   describe "top_ten model method" do
