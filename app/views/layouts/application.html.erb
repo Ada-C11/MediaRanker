@@ -20,14 +20,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-        <a><%= link_to "View top media", works_path, :class=>"nav-link" %></a>
+        <a><%= link_to "View top media", root_path, :class=>"nav-link" %></a>
         
       </li>
       <li class="nav-item">
         <a><%= link_to "View all media", works_path, :class=>"nav-link" %></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Add a new work</a>
+        <a><%= link_to "Add new work", new_work_path, :class=>"nav-link" %></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#" tabindex="-1">View all users</a>

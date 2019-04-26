@@ -6,12 +6,34 @@ class WorksController < ApplicationController
   end
 
   def show
-    
     if @work.nil?
       flash[:error] = "unknown media"
       redirect_to works_path
     end
-    
+  end
+
+  def new
+    @work = Work.new
+
+    # if params[:author_id]
+    #   @book.author = Author.find_by(id: params[:author_id])
+    # end
+  end
+
+  def create
+    @work = Work.new(work_params)
+
+    is_successful = @work.save
+
+    if is_successful
+      flash[:success] = "work added successfully"
+      redirect_to work_path(@work.id)
+    else
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
+      render :new, status: :bad_request
+    end
   end
 
   private
