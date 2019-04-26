@@ -37,13 +37,10 @@ class UsersController < ApplicationController
 
   def current
     @current_user = User.find_by(id: session[:user_id])
-    raise
     if @current_user.nil?
-      raise
       flash[:error] = "You must be logged in to see this info!"
       redirect_to root_path
     end
-    return @current_user
   end
 
   def logout
