@@ -69,3 +69,31 @@ freesolo:
   creator: Alex Honnold
   publication_year: 2018
   description: This is a movie I watched last night
+
+poodr:
+  category: book
+  title: Practical Object-Oriented Design
+  creator: Sandi Metz
+  publication_year: 2019
+  description: I just realized I need more than 10 books for a test; this is 8
+
+aliebn:
+  category: book
+  title: everyone's a aliebn when ur a aliebn too
+  creator: Jonny Sun
+  publication_year: 2017
+  description: This is a very good and wholesome book
+
+nightingale:
+  category: book
+  title: The Nightingale
+  creator: Kristin Hannah
+  publication_year: 2015
+  description: I recently started this book and would love to finish this project so I can continue to read it
+
+book11:
+  category: book
+  title: No Title
+  creator: No Author
+  publication_year: 1234
+  description: This is my 11th book and I'm very excited to be done creating books

@@ -1,14 +1,16 @@
-
 <section class="spotlight">
-  <h2>
-    <span class="spotlight__header--prefix">Media Spotlight:</span>
-    <% top = Homepage.top_media %>
-    <%= link_to top.title, work_path(top.id), class: "spotlight__link-to"%> by <%= top.creator %>
-
-  </h2>
-  <p class="spotlight__description">
-    <%= top.votes.length %> votes - <%= top.description %>
-  </p>
+  <% if Work.all.length > 0 %>
+    <h2>
+      <span class="spotlight__header--prefix">Media Spotlight:</span>
+      <% top = Homepage.top_media %>
+      <%= link_to top.title, work_path(top.id), class: "spotlight__link-to"%> by <%= top.creator %>
+    </h2>
+    <p class="spotlight__description">
+      <%= top.votes.length %> votes - <%= top.description %>
+    </p>
+  <% else %>
+    <h2>No media yet :(</h2>
+  <% end %>
 </section>
 <hr class="root__hr">
 <section class="top-ten__container">

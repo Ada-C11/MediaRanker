@@ -6,5 +6,13 @@ describe HomepagesController do
       get homepages_index_path
       must_respond_with :success
     end
+
+    it "should get index even if there are no works" do
+      Work.all.each { |work| work.destroy }
+      get homepages_index_path
+      must_respond_with :success
+    end
   end
+
+  # WAVE 1 TESTING: DOES THE MAIN PAGE LOAD IF THERE ARE NO WORKS? how do you test that?
 end
