@@ -15,6 +15,9 @@ class Work < ApplicationRecord
   end
 
   def self.spotlight
-    return self.all.max_by { |work| work.votes.count }
+    vote_counts = self.all.map { |work| work.votes.count }
+    max_vote_count = vote_counts.max
+    winners = Work.all.select { |work| work.votes.count == max_vote_count }
+    return winners.sample
   end
 end

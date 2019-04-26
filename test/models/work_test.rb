@@ -117,19 +117,27 @@ describe Work do
     end
   end
   describe "spotlight" do
+    before do
+      Vote.destroy_all
+      @max_votes = 10
+    end
     it "returns the work with the maximum number of votes" do
-      work_with_max_votes = Work.all.max_by { |work| work.votes.count }
+      @max_votes.times do |user|
+        user = User.create(username: "#{user}")
+        Vote.create(work_id: Work.first.id, user_id: user.id)
+      end
+      work_with_max_votes = Work.first
       expect(Work.spotlight).must_equal work_with_max_votes
     end
-    it "will return the first work found in the event of a tie" do
-      Vote.destroy_all
-      10.times do |user|
+    it "will return a randomly sampled work out of the winners in the event of a tie" do
+      @max_votes.times do |user|
         user = User.create(username: "#{user}")
         Vote.create(work_id: Work.first.id, user_id: user.id)
         Vote.create(work_id: Work.last.id, user_id: user.id)
       end
 
-      expect(Work.spotlight).must_equal Work.first
+      expect(Work.spotlight).must_be_instance_of Work
+      expect(Work.spotlight.votes.count).must_equal @max_votes
     end
   end
 end
