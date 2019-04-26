@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     user_id = params[:id]
-    @user = user.find_by(id: user_id)
+    @user = User.find_by(id: user_id)
     unless @user
       head :not_found
     end

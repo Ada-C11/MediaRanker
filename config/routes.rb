@@ -3,6 +3,12 @@ Rails.application.routes.draw do
   root "works#top"
   resources :works
   resources :users, only: [:index, :show, :create]
+
+  resources :works do
+    # route is work_votes_path
+    resources :votes, only: [:create]
+  end
+
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"
   post "/logout", to: "users#logout", as: "logout"
