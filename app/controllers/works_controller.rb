@@ -26,6 +26,7 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
       flash[:success] = "Work added successfully"
       redirect_to work_path(work.id)
     else
+      flash.now[:error] = "A problem occurred: Could not update #{work.category}"
       work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
@@ -43,6 +44,7 @@ before_action :find_work, only: [:show, :edit, :update, :destroy]
       flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
     else
+      flash.now[:error] = "A problem occurred: Could not create album"
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
