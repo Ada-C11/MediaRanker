@@ -13,4 +13,8 @@ class Work < ApplicationRecord
       return works_in_category.reverse
     end
   end
+
+  def self.spotlight
+    return self.all.max_by { |work| work.votes.count }
+  end
 end

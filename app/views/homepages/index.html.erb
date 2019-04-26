@@ -1,4 +1,4 @@
-<% media = Work.all.sample%>
+<% media = Work.spotlight%>
 <%if media%>
     <section>
         <h2><span>Media Spotlight:</span> <%= link_to media.title, work_path(media.id)%> by <%= media.creator%> </h2>
