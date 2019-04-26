@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if user.id
       session[:user_id] = user.id
-      flash[:alert] = "#{user.name} logged in"
+      flash[:alert] = "Successfully created new user #{user.name} with ID #{user.id}"
       redirect_to root_path
     else
       flash[:error] = "Unable to log in"
@@ -18,18 +18,17 @@ class UsersController < ApplicationController
     end
   end
 
-  def current
-    @user = User.find_by(id: session[:user_id])
-    if @user.nil?
-      flash[:error] = "You must be logged in first!"
-      redirect_to root_path
-    end
-  end
+  # def current
+  #   @user = User.find_by(id: session[:user_id])
+  #   if @user.nil?
+  #     head :not_found
+  #   end
+  # end
 
   def logout
     user = User.find_by(id: session[:user_id])
     session[:user_id] = nil
-    flash[:notice] = "Logged out #{user.name}"
+    flash[:notice] = "Successfully logged out"
     redirect_to root_path
   end
 
@@ -37,6 +36,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      head :not_found
+    end
   end
 
   def new
