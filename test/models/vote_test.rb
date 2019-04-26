@@ -11,5 +11,6 @@
     
     it "can access a user through votes" do
       expect(@work.users).wont_be_nil
+      expect(@work.users).must_equal @vote[:user_id]
     end
   end
