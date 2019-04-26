@@ -1,13 +1,10 @@
-<div class="alert"> TODO: ADD LINKS TO UPVOTE AND ACCURATE VOTE COUNT </div>
-<%# remove the above code before final submission%>
-
 <section class="spotlight">
   <h2 class="spotlight__header">
   <span class="spotlight__header--prefix">
     Media Spotlight
   </span>
   <% spotlight = Work.all.sample %>
-    <% if random_work %>
+    <% if spotlight %>
       <%= link_to spotlight.title, work_path(spotlight)%>
     <% else %>
       No work available
@@ -19,7 +16,7 @@
 <section class="top-ten-container">
   <section class="top-ten-list-container">
   <h2 class="top-ten-header"> Top Movies </h2>
-  <% top_movies = Work.list("movie").sample(10) %>
+  <% top_movies = Work.top_ten_list("movie") %>
   <ul class="list-group top-ten__list" >
     <% top_movies.each do |movie|%>
       <li class="list-group-item">
@@ -27,7 +24,7 @@
           <%= link_to movie.title, work_path(movie) %>, 
           <small> created by <%= movie.creator%></small>
         </h4>
-        <p> Votes </p>
+        <p> <%= movie.upvotes.length %> votes </p>
       </li>
     <% end %>
   </ul>
@@ -35,7 +32,7 @@
 
   <section class="top-ten-list-container">
     <h2 class="top-ten-header"> Top Albums </h2>
-    <% top_albums = Work.list("album").sample(10)%>
+    <% top_albums = Work.top_ten_list("album")%>
     <ul class="list-group top-ten__list">
       <% top_albums.each do |media|%>
         <li class="list-group-item">
@@ -43,7 +40,7 @@
             <%= link_to media.title, work_path(media) %>, 
           <small> created by  <%= media.creator%></small>
           </h4>
-          <p> Votes </p>
+          <p> <%= media.upvotes.length %> votes </p>
         </li>
       <% end %>
     </ul>
@@ -51,7 +48,7 @@
     
   <section class="top-ten-list-container">
   <h2 class="top-ten-header"> Top Books </h2>
-  <% top_books = Work.list("book").sample(10)%>
+  <% top_books = Work.top_ten_list("book")%>
   <ul class="list-group top-ten__list">
   <% top_books.each do |media|%>
         <li class="list-group-item">
@@ -59,7 +56,7 @@
             <%= link_to media.title, work_path(media) %>, 
             <small> created by <%= media.creator%></small>
           </h4>
-          <p> Votes </p>
+          <p> <%= media.upvotes.length %> votes </p>
         </li>
       <% end %>
     </ul>
