@@ -59,4 +59,11 @@ describe Work do
       expect(work.errors.messages[:category]).must_equal ["can't be blank"]
     end
   end
+
+  describe "relationshps" do
+    it "has many votes" do
+      expect(work).must_respond_to :votes
+    end
+  end
+
 end # outermost describe
