@@ -88,6 +88,6 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+    params.require(:work).permit(:category, :title, :creator, :publication_year, :description, :vote_id, :vote_count)
   end
 end

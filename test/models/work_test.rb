@@ -2,6 +2,8 @@ require "test_helper"
 
 describe Work do
   let(:work) { works(:one) }
+  let(:vote_one) { votes(:one) }
+  let(:vote_two) { votes(:two) }
 
   it "must be valid" do
     expect(work.valid?).must_equal true
@@ -25,6 +27,12 @@ describe Work do
   end
 
   describe "relationships" do
+    it "has many votes" do
+      work.votes << vote_one
+      work.votes << vote_two
+      expect(work.votes.first).must_equal vote_one
+      expect(work.votes.last).must_equal vote_two
+    end
   end
 
   describe "custom methods" do
