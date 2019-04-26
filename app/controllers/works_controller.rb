@@ -69,6 +69,9 @@ class WorksController < ApplicationController
       flash[:failure] = "Failed to delete media."
       redirect_to root_path
     else
+      work.votes.each do |vote|
+        vote.destroy
+      end
       work.destroy
       flash[:success] = "Succesfully deleted #{work.title} #{work.category}."
       redirect_to works_path
