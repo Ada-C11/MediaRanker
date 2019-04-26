@@ -18,24 +18,23 @@ class UsersController < ApplicationController
 
   def login
     username = params[:user][:username]
-    user = User.find_by(username: username)
+    @user = User.find_by(username: username)
 
-    if user
-      session[:user_id] = user.id
+    if @user
+      session[:user_id] = @user.id
       flash[:success] = "Successfully logged in as existing user #{username}!"
       redirect_to root_path
+      return
     else
-      user = User.create(username: username, join_date: Date.current)
-      if user.id
-        session[:user_id] = user.id
-        flash[:success] = "Successfully created new user #{username} with ID #{user.id}!"
+      @user = User.new(username: username, join_date: Date.current)
+      if @user.save
+        session[:user_id] = @user.id
+        flash[:success] = "Successfully created new user #{username} with ID #{@user.id}!"
         redirect_to root_path
+      else
+        flash.now[:failure] = "Log in unsuccessful. Please try again"
+        render :login_form, status: :bad_request
       end
-    end
-
-    if !user.id
-      flash.now[:failure] = "Log in unsuccessful. Please try again"
-      render :login_form, status: :bad_request
     end
   end
 
@@ -49,6 +48,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    return params.require(:work).permit(:username)
+    return params.require(:user).permit(:username)
   end
 end
