@@ -32,4 +32,23 @@ describe Vote do
       expect(result).must_equal false
     end
   end
+
+  describe "relationships" do
+    before do
+      @vote = votes.first
+    end
+    it "can access its user through .user" do
+      user = @vote.user
+
+      expect(user).must_be_instance_of User
+      expect(user.id).must_equal @vote.user_id
+    end
+
+    it "can access its work through .work" do
+      work = @vote.work
+
+      expect(work).must_be_instance_of Work
+      expect(work.id).must_equal @vote.work_id
+    end
+  end
 end
