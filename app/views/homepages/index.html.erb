@@ -6,6 +6,7 @@
 
 <h2 class="top-ten__header">Top Movies</h2>
 
+
 <% @works.where(category: "movie").each do |movie| %>
 <%= movie.title %>
 <% end %>
