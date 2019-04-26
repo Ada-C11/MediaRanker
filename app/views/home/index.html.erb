@@ -10,7 +10,7 @@
   <article class="top-media-container">
     <h4 class="top-media-heading">Top 10 Albums</h4>
     <ul class="top-media">
-      <% albums = Work.albums.sample(10) %>
+      <% albums = Work.top_ten("album") %>
       <% albums.each do |album| %>
         <li class="top-media-item">
           <h5><%= link_to album.title, work_path(album.id) %></h5> by <%= album.author %>
@@ -23,7 +23,7 @@
   <article class="top-media-container">
     <h4 class="top-media-heading">Top 10 Books</h4>
     <ul class="top-media">
-      <% book = Work.books.sample(10) %>
+      <% book = Work.top_ten("book") %>
       <% book.each do |book| %>
         <li class="top-media-item">
           <h5><%= link_to book.title, work_path(book.id) %></h5> by <%= book.author %>
@@ -36,7 +36,7 @@
   <article class="top-media-container">
     <h4 class="top-media-heading">Top 10 Movies</h4>
     <ul class="top-media">
-      <% movies = Work.movies.sample(10) %>
+      <% movies = Work.top_ten("movie") %>
       <% movies.each do |movie| %>
         <li class="top-media-item">
           <h5><%= link_to movie.title, work_path(movie.id) %></h5> by <%= movie.author %>

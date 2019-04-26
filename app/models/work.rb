@@ -4,6 +4,16 @@ class Work < ApplicationRecord
   validates :author, presence: true
   validates :category, presence: true
   
+  # def top_ten(array)
+  #   return array.max_by(10) { |work| work.votes.length }
+  # end
+  
+
+def self.top_ten(category)
+  return Work.where(category: category).max_by(10) { |work| work.votes.length }
+end
+
+  
   def self.albums
     return self.where(category: "album")
   end
