@@ -3,16 +3,22 @@ class Work < ApplicationRecord
   validates :title, presence: true
 
   def self.get_media_catagories
-    books = Work.where(category: "book")
-    albums = Work.where(category: "album")
-    movies = Work.where(category: "movie")
+    books = get_media("book")
+    albums = get_media("album")
+    movies = get_media("movie")
     return [books, albums, movies]
+  end
+
+  def self.get_media(media_type)
+    media = Work.where(category: media_type)
+    media.sort_by { |work| work.votes.count * -1 }
   end
 
   def self.top_media
     top_works = get_media_catagories.map do |category|
-      max = category.max_by(10) { |work| work.votes.count }
-      max.sort_by! { |work| work.votes.count * -1 }
+      category[0..9]
+      # max = category.max_by(10) { |work| work.votes.count }
+      # max.sort_by! { |work| work.votes.count * -1 }
     end
     return top_works
   end
