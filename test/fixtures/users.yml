@@ -1,9 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  username: MyString
-  join_datetime: 2019-04-23 15:15:08
+Elle:
+  username: Elle
 
-two:
-  username: MyString
-  join_datetime: 2019-04-23 15:15:08
+Moses:
+  username: Moses
+
+Brad:
+  username: Bradley Dean
+
+LG:
+  username: Laura Genevieve
+  

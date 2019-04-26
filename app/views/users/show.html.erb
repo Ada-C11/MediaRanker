@@ -1,0 +1,29 @@
+<h1>User Summary: <%= @user.username%> </h1>
+
+<p>
+  <%= "Joined site @user.created_at" %>
+</p>
+
+<h2> Votes </h2>
+
+<p> Total earnings to date: <%= sprintf("%.2f",@driver.total_earned) %></p>
+
+<p> Average Rating: <%= @driver.avg_rating %></p>
+
+
+
+<ul>
+<% @user.votes.each do |vote| %>
+<li> <%= link_to work.id, work_path(work.id) %> </li>
+
+  
+  *************************
+    <br>
+<% end %>
+</ul>
+
+<ul>
+<li><%= link_to "See all Users", users_path %></li>
+<li><%= link_to "Back to Media List", works_path%></li>
+
+</ul>

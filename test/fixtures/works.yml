@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  created_by: MyString
-  published: 1
-  description: MyString
+readyplayerone:
+  title: Ready Player One
+  creator: Earnest Kline
+  publication_year: 2011
+  description: Ready Player One is a 2011 science fiction novel, and the debut novel of American author Ernest Cline. The story, set in a dystopia in 2044, follows protagonist Wade Watts on his search for an Easter egg in a worldwide virtual reality game, the discovery of which will lead him to inherit the game creator's fortune.
+  category: book
 
 two:
   title: MyString
-  created_by: MyString
-  published: 1
+  creator: MyString
+  publication_year: 1111
   description: MyString
+  category: book
