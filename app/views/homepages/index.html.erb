@@ -6,8 +6,12 @@
   <span class="spotlight__header--prefix">
     Media Spotlight
   </span>
-  <% random_work = Work.all.sample%>
-  <%= link_to random_work.title, work_path(random_work)%>
+  <% spotlight = Work.all.sample %>
+    <% if random_work %>
+      <%= link_to spotlight.title, work_path(spotlight)%>
+    <% else %>
+      No work available
+    <% end%>
   </h2>
   </section>
 </section>
