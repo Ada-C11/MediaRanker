@@ -1,14 +1,16 @@
-<h1>List of Works</h1>
+<h2>List of Works</h2>
 
 
-<section>
-<h2> Books </h2>
+<section class="media-table">
+<h4> Books </h4>
     <table class="table">
         <thead>
             <tr>
+                <th>Votes</th>
                 <th>Title</th>
                 <th>Created By</th>
                 <th>Published</th>
+                <th>Upvote</th>
             </tr>
         </thead>
         <tbody>
@@ -17,14 +19,16 @@
     </table>
 </section>
 
-<section>
-<h2> Albums </h2>
+<section class="media-table">
+<h4> Albums </h4>
     <table class="table">
         <thead>
             <tr>
+                <th>Votes</th>
                 <th>Title</th>
                 <th>Created By</th>
                 <th>Published</th>
+                <th>Upvote</th>
             </tr>
         </thead>
         <tbody>
@@ -33,14 +37,16 @@
     </table>
 </section>
 
-<section>
-<h2> Movies </h2>
+<section class="media-table">
+<h4> Movies </h4>
     <table class=table>
         <thead>
             <tr>
+                    <th>Votes</th>
                     <th>Title</th>
                     <th>Created By</th>
                     <th>Published</th>
+                    <th>Upvote</th>
             </tr>
         </thead>
         <tbody>
@@ -49,5 +55,5 @@
     <table>
 </section>
 
-<%=link_to "View top media", root_path%>
-<%=link_to "Add a new work", new_work_path%>
+<%=link_to "View top media", root_path, class: "btn btn-secondary"%>
+<%=link_to "Add a new work", new_work_path, class: "btn btn-primary"%>
