@@ -59,6 +59,20 @@ describe Work do
     end
   end
 
+  describe "relations" do
+    it "has votes" do
+      work = works(:return)
+      work.votes.must_include votes(:one)
+    end
+
+    it "can add votes" do
+      work = Work.new(title: "newwork", creator: "newauthor", category: "book")
+      vote = Vote.new(user_id: User.last.id, work_id: work.id)
+      work.votes << vote
+      work.votes.must_include vote
+    end
+  end
+
   describe "top_ten" do
     it "generates a list of 10 works of the given category" do
       # Arrange
