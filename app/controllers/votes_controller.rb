@@ -1,12 +1,11 @@
 class VotesController < ApplicationController
-  def create
+  def upvote
     @vote = Vote.new(user_id: session[:user_id], work_id: params[:work_id])
 
     if @vote.save
       flash[:status] = :success
       flash[:message] = "Successfully upvoted!"
 
-      # Cannot figure out 
       redirect_to root_path
     else
       flash[:status] = :failure

@@ -36,36 +36,19 @@ describe UsersController do
     end
   end 
 
-  # describe "current" do
-    # it "responds with success (200 OK) for a logged-in user" do
-    #   user = users(:jane)
-    #   login_data = {
-    #     user: {
-    #       name: user.name,
-    #     },
-    #   }
-    #   post login_path, params: login_data
+  describe "current" do
+    it "responds with success (200 OK) for a logged-in user" do
 
-    #   puts "AAAAAAAAAAAAAAAA"
-    #   puts session[:user_id]
+      logged_in_user = perform_login
+      get current_user_path
+      must_respond_with :success
+    end
 
-    #   expect(session[:user_id]).must_equal user.id
-
-    #   get current_user_path
-    #   puts "AAAAAAAAAAAAAAAA"
-    #   puts current_user_path
-
-    #   must_respond_with :success
-    # end
-
-    # it "must redirect if no user is logged in" do
-    #   get current_user_path
-
-    #   puts "XXXXXXXXXXXXXXX"
-    #   puts current_user_path
-    #   must_respond_with :success
-    # end
-  # end
+    it "must redirect if no user is logged in" do
+      get current_user_path
+      must_respond_with :redirect
+    end
+  end
 
   describe "index" do   
     it "should get index" do
@@ -74,30 +57,10 @@ describe UsersController do
     end
   end 
 
-  #   describe "show" do
-  #   it "should be OK to show a valid user" do
-  #     valid_user_id = users(:john).id
-
-  #     get user_path(valid_user_id)
-
-  #     must_respond_with :success
-  #   end
-
-  #   it "should give a flash message" do
-  #     work = works(:one)
-  #     invalid_work_id = work.id
-  #     work.destroy
-
-  #     get work_path(invalid_work_id)
-
-  #     must_respond_with :redirect
-  #     expect(flash[:error]).must_equal "Unknown work"  
-  #   end
-  # end
-
   describe "show" do
     it "returns success when given a vaild id" do
-      user_id = 1
+      user = User.create(name: 'Faiza')
+      user_id = user.id
       get user_path(user_id)
       must_respond_with :success
     end

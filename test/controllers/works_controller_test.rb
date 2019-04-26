@@ -153,7 +153,6 @@ describe WorksController do
       expect(existing_work_to_update.title).must_equal test_input[:work][:title]
       expect(existing_work_to_update.creator).must_equal test_input[:work][:creator]
       expect(existing_work_to_update.description).must_equal test_input[:work][:description]
-      # expect(existing_work_to_update.category).must_equal test_input[:work][:category]
       expect(existing_work_to_update.publication_year).must_equal test_input[:work][:publication_year]
     end
   end
