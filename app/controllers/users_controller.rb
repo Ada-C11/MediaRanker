@@ -14,5 +14,7 @@ class UsersController < ApplicationController
       @user.save
     end
     session[:user_id] = @user.id
+
+    redirect_to root_path
   end
 end

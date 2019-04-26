@@ -10,36 +10,55 @@ describe UsersController do
   end
 
   describe "login" do
-    it "will login a returning user" do
-      user = User.first
-      login_data = {
+    before do
+      @user = User.first
+      @login_data = {
         user: {
-          username: user.username,
+          username: @user.username,
         },
       }
+    end
+    it "Will respond with redirect" do
+      # user = User.first
+      # login_data = {
+      #   user: {
+      #     username: user.username,
+      #   },
+      # }
 
-      post login_path(login_data)
+      post login_path(@login_data)
 
-      must_respond_with :success
-      expect(session[:user_id]).must_equal user.id
+      must_redirect_to root_path
+    end
+    it "will login a returning user" do
+      # user = User.first
+      # login_data = {
+      #   user: {
+      #     username: user.username,
+      #   },
+      # }
+
+      post login_path(@login_data)
+
+      expect(session[:user_id]).must_equal @user.id
     end
 
     it "will create an account for and login a new user" do
-      login_data = {
-        user: {
-          username: "new user",
-        },
-      }
+      # login_data = {
+      #   user: {
+      #     username: "new user",
+      #   },
+      # }
+      @login_data[:user][:username] = "new user"
 
-      new_user = User.find_by(username: login_data[:user][:username])
+      new_user = User.find_by(username: @login_data[:user][:username])
       expect(new_user).must_equal nil
 
-      post login_path(login_data)
-      new_user = User.find_by(username: login_data[:user][:username])
+      post login_path(@login_data)
+      new_user = User.find_by(username: @login_data[:user][:username])
 
       expect(new_user).must_be_instance_of User
       expect(session[:user_id]).must_equal new_user.id
-      must_respond_with :success
     end
 
     # it "wont let someone login with a blank username" do
