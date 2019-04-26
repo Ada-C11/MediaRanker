@@ -2,13 +2,14 @@
     <p>Created by: <%= @work.creator %></p>
     <p>Published: <%= @work.publication_year %></p>
     <p><%= @work.description %></p>
-
-    <%=link_to "Back to media ranks", root_path%>
-    <%= link_to "Edit", edit_work_path(@work.id) %>
-    <%=link_to "Upvote", work_votes_path(work_id: @work.id), method: :post%>
-    <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?" } %>
-
-<h3><%=@work.votes.count%> votes for this <%=@work.category%></h3>
+<section >
+    <%=link_to "Back to media ranks", root_path, class:"btn btn-primary"%>
+    <%= link_to "Edit", edit_work_path(@work.id), class:"btn btn-primary" %>
+    <%=link_to "Upvote", work_votes_path(work_id: @work.id), method: :post, class:"btn btn-primary"%>
+    <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-danger" %>
+</section>
+<section class="works-votes__container">
+    <h3 class="works-votes__header"><%=@work.votes.count%> votes for this <%=@work.category%></h3>
     <table class="table">
         <thead>
             <tr>
@@ -20,3 +21,4 @@
             <%= vote_list(@work) %>
         </tbody>
     </table>
+</section>
