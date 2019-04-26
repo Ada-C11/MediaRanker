@@ -4,16 +4,13 @@ class Work < ApplicationRecord
   validates :category, presence: true
   validates :title, presence: true
  
-
-  def self.movies
-   return self.where(category: "movie")
+  # helper methods to return lists by category
+  def self.list(category)
+   return self.where(category: category)
   end
 
-  def self.albums
-    return self.where(category: "album")
-  end
-
-  def self.books
-    return self.where(category: "book")
+  # logic for top ten votes
+  def self.top_ten(category)
+    return self.where(category: category).max_by { |work| work.votes.length }
   end
 end

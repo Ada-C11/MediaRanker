@@ -15,7 +15,7 @@
 <section class="top-ten-container">
   <section class="top-ten-list-container">
   <h2 class="top-ten-header"> Top Movies </h2>
-  <% top_movies = Work.movies.sample(10) %>
+  <% top_movies = Work.list("movies").sample(10) %>
   <ul class="list-group top-ten__list" >
     <% top_movies.each do |movie|%>
       <li class="list-group-item">
@@ -31,7 +31,7 @@
 
   <section class="top-ten-list-container">
     <h2 class="top-ten-header"> Top Albums </h2>
-    <% top_albums = Work.albums.sample(10)%>
+    <% top_albums = Work.list("album").sample(10)%>
     <ul class="list-group top-ten__list">
       <% top_albums.each do |media|%>
         <li class="list-group-item">
@@ -47,7 +47,7 @@
     
   <section class="top-ten-list-container">
   <h2 class="top-ten-header"> Top Books </h2>
-  <% top_books = Work.books.sample(10)%>
+  <% top_books = Work.list("book").sample(10)%>
   <ul class="list-group top-ten__list">
   <% top_books.each do |media|%>
         <li class="list-group-item">
