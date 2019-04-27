@@ -23,8 +23,8 @@ describe Vote do
       work = Work.new(title: "Imagine Dragons")
       
       vote.wont_be :valid?
-      vote.errors.messages.must_include :user_id
-      vote.errors.messages.must_include :work_id
+      vote.errors.messages.must_include :user
+      vote.errors.messages.must_include :work
     end
 
     it "same user's vote on same thing won't save" do

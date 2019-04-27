@@ -35,13 +35,18 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  # def current
+  #   @current_user = User.find_by(id: session[:user_id])
+
+  #   unless @current_user
+  #     flash[:error] = "You must be logged in first!"
+  #     redirect_to root_path
+  #   end
+  # end
+
   def current
-    @current_user = User.find_by(id: session[:user_id])
-
-    puts "WWWWWWWWWWWWWWWWWWW"
-    puts "#{@current_user}"
-
-    unless @current_user
+    @user = User.find_by(id: session[:user_id])
+    if @user.nil?
       flash[:error] = "You must be logged in first!"
       redirect_to root_path
     end
