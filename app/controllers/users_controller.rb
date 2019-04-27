@@ -9,11 +9,11 @@ class UsersController < ApplicationController
     @user = User.find_by(name: params[:name])
     if @user.nil?
       @user = User.create(name: params[:name])
-      flash[:alert] = "Welcome #{@user.name}! You are logged in."
+      flash[:success] = "Welcome #{@user.name}! You are logged in."
       session[:user_id] = @user.id
     else
       session[:user_id] = @user.id
-      flash[:alert] = "Welcome back #{@user.name}!"
+      flash[:success] = "Successfully logged in as existing user #{@user.name}"
     end
     redirect_to root_path
   end
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def logout
     session[:user_id] = nil
-    flash[:notice] = "Logged out #{@user.name}"
+    flash[:notice] = "Successfully logged out"
     redirect_to root_path
   end
 end

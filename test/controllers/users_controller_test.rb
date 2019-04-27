@@ -39,6 +39,7 @@ describe UsersController do
     it "reponds with a redirect and sets session user id to nil" do
       logged_in_user = perform_login
       post logout_path
+      expect(flash[:notice]).must_equal "Successfully logged out"
       must_respond_with :redirect
     end
   end
