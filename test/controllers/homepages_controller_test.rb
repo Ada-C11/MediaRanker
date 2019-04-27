@@ -3,6 +3,6 @@ require "test_helper"
 describe HomepagesController do
   it "should get index" do
     get root_path
-    value(response).must_be :success?
+    must_respond_with :success
   end
 end
