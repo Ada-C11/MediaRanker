@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require "csv"
+require "faker"
 
 MEDIA_FILE = Rails.root.join("db", "media_seeds.csv")
 puts "Loading raw media data from #{MEDIA_FILE}"
@@ -28,5 +29,40 @@ CSV.foreach(MEDIA_FILE, :headers => true) do |row|
   end
 end
 
+user_failures = []
+10.times do |i|
+  user = User.new
+  user.name = Faker::Name.first_name.downcase
+
+  successful = user.save
+  if !successful
+    user_failures << user
+    puts "Failed to save user: #{user.inspect}"
+  else
+    puts "Created user: #{user.inspect}"
+  end
+end
+
+vote_failures = []
+30.times do |i|
+  vote = Vote.new
+  vote.user = User.all.sample
+  vote.work = Work.all.sample
+
+  successful = vote.save
+  if !successful
+    vote_failures << vote
+    puts "Failed to save vote: #{vote.inspect}"
+  else
+    puts "Created vote: #{vote.inspect}"
+  end
+end
+
 puts "Added #{Work.count} work records"
 puts "#{work_failures.length} works failed to save"
+
+puts "Added #{User.count} user records"
+puts "#{user_failures.length} users failed to save"
+
+puts "Added #{Vote.count} vote records"
+puts "#{vote_failures.length} votes failed to save"

@@ -7,7 +7,7 @@
 <%= link_to "Upvote", work_votes_path(work_id: @work.id), method: :post, class: "btn btn-primary"%>
 <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%>
 <section class="works-votes__container">
-  <h3 class="works-votes__header">0 Votes for this Album</h3>
+  <h3 class="works-votes__header"><%= @work.votes.length %> Votes for this Album</h3>
   <table class="table">
     <tr>
       <th>User</th>
