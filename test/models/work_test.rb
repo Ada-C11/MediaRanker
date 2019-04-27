@@ -48,9 +48,9 @@ describe Work do
 
   describe "custom methods" do
     describe "media_spotlight" do
-    end 
+    end
 
     describe "top_ten" do
-    end 
+    end
   end
 end
