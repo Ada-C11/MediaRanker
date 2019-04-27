@@ -22,19 +22,16 @@ class UpvotesController < ApplicationController
     else 
       vote = Upvote.new(user_id: current_user_id, work_id: params[:work_id])
       if vote 
-        flash[:status] = [:success]
+        flash[:status] = :success
         flash[:message] = "Successfully upvoted!"
-        redirect_back(fallback_location: root_path)
         vote.save
+        redirect_back(fallback_location: root_path)
       else
-        flash[:status] = [:error]
+        flash[:status] = :error
         flash[:message] = "An error has occurred, unable to save vote"
         redirect_back(fallback_location: root_path)
       end
     end
-
-    
   end
-  
 end
 
