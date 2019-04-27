@@ -38,9 +38,16 @@
 
 //   // display: flex;
 // }
-.top-ten .grid {
-  display: grid ;    
-  grid-template: 1fr 1fr 1fr / 1fr;
+.top-ten.grid {
+  display: grid;    
+  grid-template: 1fr / 1fr 1fr 1fr;
+}
+
+.top-albums, .top-movies, .top-books {
+  // width: 33% ;
+  // display: inline-block;
+  grid-row: 1;
+  padding-right: 2em;
 }
 .top-movies {
   grid-column: 1;
