@@ -23,7 +23,7 @@
         <tbody>
             <% @work.users.each do |voter| %>
                 <tr>
-                    <th> <%= voter.username %> </th>
+                    <th> <%= link_to voter.username, user_path(voter.id) %> </th>
                     <th> <%= time_tag(voter.created_at.to_date) %> </th>
                 </tr>
             <% end %>
