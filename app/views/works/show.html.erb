@@ -22,11 +22,11 @@
       <th>Date</th>
     </tr>
   </thead>
+  
   <tbody>
     <% @work.votes.each do |vote| %>
     <tr>
-      <td><%=  vote.user.username %></td>
-      <%# <td><%= link_to vote.user.username, user_path(vote.user.id) %></td>  
+      <td><%= link_to vote.user.username, current_user_path(vote.user.id) %></td>  
       <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
     </tr>
     <% end %>
