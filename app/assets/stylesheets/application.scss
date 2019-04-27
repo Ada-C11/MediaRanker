@@ -17,6 +17,9 @@
 /* Import scss content */
 @import "**/*";
 
+main {
+    padding: 2rem;
+}
 
 /* ----------------------- HEADER/NAV STYLING ----------------------- */
 body {
@@ -83,9 +86,9 @@ div.button {
 }
 
 /* ----------------------- HOMEPAGE INDEX STYLING ----------------------- */
-main.homepage {
-    margin: 2rem;
-}
+// main.homepage {
+//     margin: 2rem;
+// }
 .spotlight {
     padding: 0 2rem 2rem 2rem;
     border-bottom: lightgrey 1px solid;
@@ -210,9 +213,19 @@ tbody {
     font-weight: normal;
 }
 
-/* ----------------------- TABLE/USERSHOW STYLING ----------------------- */
-main#user-show {
-    padding: 32px;
+/* ----------------------- TABLE/USER SHOW STYLING ----------------------- */
+// main#user-show {
+//     padding: 32px;
+// }
+h2.user-show {
+    font-weight: bold;
+    color: #26A69A;
+}
+h3.user-show {
+    font-weight: bold;
+}
+p.user-show {
+    margin-bottom: 1rem;
 }
 .user-show-table {
     border-collapse: collapse;
@@ -234,12 +247,5 @@ main#user-show {
 .user-show-table tbody th a {
     color: #26A69A;
 }
-h2.user-show {
-    font-weight: bold;
-    color: #26A69A;
 
-}
-h3.user-show {
-    font-weight: bold;
-}
 

@@ -1,6 +1,6 @@
 <main id="user-show">
     <h2 class="user-show">User Summary: <%= @user.username %></h2>
-    <p>Joined Site: <%= @user.created_at %></p>
+    <p class="user-show">Joined Site: <%= time_tag(@user.created_at.to_date) %></p>
     <h3 class="user-show"> Votes </h3>
 
     <table class="user-show-table">
@@ -26,7 +26,7 @@
         </tbody>
     </table>
 
-    <%= link_to "See all Users", users_path, class: "btn btn-primary" %>
+    <%= link_to "See all Users", users_path, class: "btn btn-secondary" %>
     <%= link_to "Back to Media List", works_path, class: "btn btn-primary" %>
 
 </main>
