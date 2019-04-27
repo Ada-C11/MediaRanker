@@ -31,11 +31,13 @@ class WorksController < ApplicationController
   end
 
   def edit
+    @work = Work.find_by(id: params[:id])
+    unless @work
+      head :not_found
+    end
   end
 
   private
-
-
 
   def work_params
     return params.require(:work).permit(:title, :category, :creator, :publication_year, :description)

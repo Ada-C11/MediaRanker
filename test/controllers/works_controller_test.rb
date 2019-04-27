@@ -73,8 +73,21 @@ describe WorksController do
     must_respond_with :bad_request
     expect(flash[:title]).must_equal ["has already been taken"]
   end
-  #   it "should get update" do
-  #     get works_update_url
+
+
+describe "works#edit" do
+  it "will get to edit page if valid id" do
+    id = work.id
+    get edit_work_path(id)
+    must_respond_with :success
+  end
+
+  it "should return a 404 with invalid id" do
+    invalid_id = -1
+    get edit_work_path(invalid_id)
+    must_respond_with :not_found
+  end
+
   #     value(response).must_be :success?
   #   end
 
@@ -82,4 +95,5 @@ describe WorksController do
   #     get works_edit_url
   #     value(response).must_be :success?
   #   end
+end
 end
