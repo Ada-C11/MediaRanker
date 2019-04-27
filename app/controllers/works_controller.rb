@@ -63,22 +63,23 @@ class WorksController < ApplicationController
 
   def vote
     work = Work.find_by(id: params[:id])
+
     if session[:user_id]
       user_vote_id = session[:user_id]
       vote = Vote.new(user_id: user_vote_id, work_id: work.id)
       is_successful = vote.save
 
       if is_successful
-        # raise
         flash[:success] = "Work updated successfully!"
+        work.vote_count = work.vote_counter
+        work.save
       else
         flash[:error] = "You cannot vote on the same work!"
-        # raise
       end
     else
       flash[:error] = "You must be logged in to vote!"
     end
-    # redirect_to works_path
+
     redirect_back fallback_location: works_path
   end
 

@@ -125,4 +125,51 @@ describe WorksController do
       must_redirect_to works_path
     end
   end
+
+  describe "vote" do
+    it "allows a user to make a vote" do
+      perform_login
+      voting_work = Work.create(category: "book", title: "test book", creator: "me", vote_count: 0)
+
+      expect {
+        post vote_path(voting_work.id)
+      }.must_change "Vote.count", 1
+
+      expect(flash[:success]).must_equal "Work updated successfully!"
+    end
+
+    it "allows a user vote on multiple works" do
+      perform_login
+      voting_work_one = Work.create(category: "book", title: "test book", creator: "me", vote_count: 0)
+      voting_work_two = Work.create(category: "album", title: "test album", creator: "me", vote_count: 0)
+
+      expect {
+        post vote_path(voting_work_one.id)
+      }.must_change "Vote.count", 1
+      expect {
+        post vote_path(voting_work_two.id)
+      }.must_change "Vote.count", 1
+      expect(flash[:success]).must_equal "Work updated successfully!"
+    end
+
+    it "does not allow users to vote on work more than once" do
+      perform_login
+      voting_work = Work.create(category: "book", title: "test book", creator: "me", vote_count: 0)
+      post vote_path(voting_work.id)
+
+      expect {
+        post vote_path(voting_work.id)
+      }.wont_change "Vote.count"
+    end
+
+    it "does not allow user to vote if not logged in" do
+      voting_work = Work.create(category: "book", title: "test book", creator: "me", vote_count: 0)
+
+      expect {
+        post vote_path(voting_work.id)
+      }.wont_change "Vote.count"
+
+      expect(flash[:error]).must_equal "You must be logged in to vote!"
+    end
+  end
 end
