@@ -90,3 +90,24 @@ nav ul {
     color: white;
 }
 
+// TABLES
+
+.table h2, .table h4, .table th {
+    font-weight: bold;
+}
+.table h2 { 
+    color: #26A69A;
+}
+
+.table .btn-primary {
+    margin: 0px;
+}
+
+.table td a {
+    color: #26A69A;
+}
+
+.table td a:hover {
+    color: #00796B;
+    text-decoration: none;
+}
