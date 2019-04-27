@@ -15,6 +15,16 @@ class UsersController < ApplicationController
   end
 
   def login
+    username = params[:user][:username]
+    user = User.find_by(username: username)
+    if user
+      flash[:success] = "Successfully logged in as existing user #{user.username}"
+    else
+      user = User.new(username: username)
+      flash[:success] = "Successfully created new user #{user.username} new with ID #{user.id}"
+    end
+    session[:user_id] = user.id
+    redirect_to root
   end
 
   def logout
