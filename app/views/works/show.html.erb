@@ -11,3 +11,25 @@
   </section>
 </section>
 
+<section class="works-votes__container">
+  <h3 class="works-votes__header">
+
+    <%= @work.upvotes.length %> votes for this <%= @work.category %>
+  </h3>
+  <table class="table">
+  <% @work.upvotes.each do |vote| %>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= vote.user.username %> </td>
+        <td><%=parse_date(vote.created_at) %> </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
