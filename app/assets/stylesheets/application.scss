@@ -68,12 +68,6 @@
             color: white;
         }
         
-        .app-header__nav {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
-        
         a {
             color: #00796b;
             text-decoration: none;
@@ -85,27 +79,11 @@
             text-decoration: underline
         }
         
-        nav app-header {
+        nav ul {
+            padding-top: 2em;
+            list-style: none;
             display: flex;
             justify-content: space-between;
-        }
-        
-        .app-header__user-nav-container .nav-item {
-            display: flex;
-            justify-content: space-between;
-            margin-left: 2rem;
-        }
-        
-        ul,
-        menu,
-        dir {
-            display: block;
-            list-style-type: disc;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px;
-            padding-inline-start: 40px;
         }
         
         .btn {
@@ -113,7 +91,7 @@
             color: white;
         }
         
-        nav app-header_user-nav-container {
+        nav ul #login {
             color: white;
         }
         

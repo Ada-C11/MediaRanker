@@ -17,35 +17,34 @@
           <small id="sub-heading"> | Ranking the Best of Everything</small>
         </div>
       </h1>
-      <nav class="app-header__nav">
-        <ul class="nav app-header__site-nav-container">
-          <li class="nav-item app-header__nav_item">
+      <nav>
+        <ul>
+          <li>
             <%= link_to "View top media", root_path %>
           </li>
-          <li class="nav-item app-header__nav_item">
+          <li>
             <%= link_to "View all media", works_path %>
           </li>
-          <li class="nav-item app-header__nav_item">
+          <li>
             <%= link_to "Add a new work", new_work_path %>
           </li>
-          <li class="nav-item app-header__nav_item">
+          <li>
             <%= link_to "View all users", users_path %>
           </li>
         </ul>
-        <ul class="nav app-header__user-nav-container">
-
-          <li class="nav-item app-header__nav_item">
+        <ul>
+        <span id="login">
+          <li class="btn btn-success">
             <%= link_to("Login", login_path) if session[:user_id].nil? %>
           </li>
-
-          <li class="nav-item app-header__nav_item">
+        </span>
+          <li class="btn btn-success">
             <%= link_to("Logout", logout_path, method: :post) if session[:user_id] %>
           </li>
 
-          <li class="nav-item app-header__nav_item">
+          <li class="btn btn-success">
             <%= link_to("Logged in as #{User.find(session[:user_id]).name}", current_user_path) if session[:user_id] %>
           </li>
-
         </ul>
       </nav>
 
