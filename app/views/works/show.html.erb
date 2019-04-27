@@ -24,7 +24,7 @@
             <% @work.users.each do |voter| %>
                 <tr>
                     <th> <%= voter.username %> </th>
-                    <th> <%= voter.created_at %> </th>
+                    <th> <%= time_tag(voter.created_at.to_date) %> </th>
                 </tr>
             <% end %>
         </tbody>

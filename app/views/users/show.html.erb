@@ -1,6 +1,6 @@
 <h2>User Summary: <%= @user.username %></h2>
 
-<p>Joined site <%= @user.created_at %></p>
+<p>Joined site <%= time_tag(@user.created_at.to_date) %></p>
 
 <h3>Votes</h3>
 <table class="table">
@@ -20,7 +20,7 @@
                     <th> <%= work.creator %> </th>
                     <th> <%= work.publication_year %> </th>
                     <th> <%= work.category %> </th>
-                    <th> <%= Vote.find_by(user_id: @user.id, work_id: work.id).created_at %> </th>
+                    <th> <%= time_tag(Vote.find_by(user_id: @user.id, work_id: work.id).created_at.to_date) %> </th>
                 </tr>
             <% end %>
     </tbody>
