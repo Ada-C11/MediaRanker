@@ -8,5 +8,10 @@ module ApplicationHelper
     end
   end
 
-  
+  def spotlight
+    max_votes = Vote.select{ |v| v.work_id }.max
+    media_spotlight = Work.find(max_votes.work_id)
+    return media_spotlight
+  end
 end
+

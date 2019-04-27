@@ -1,8 +1,11 @@
 <section class="spotlight">
   <h2 class="spotlight_header">
   <span class="spotlight_header_prefix">Media Spotlight: </span>
-  <a class="spotlight_link_to" href=#><%= (Work.all).sample.title %></a> by Some Author
+  <%= link_to spotlight.title, work_path(spotlight.id), class:"spotlight_link_to" %><span> by <%= spotlight.creator%></span>
   </h2>
+  <p class="spotlight__description">
+    <%= Vote.where(work_id: spotlight.id).count %> - <%= spotlight.description %>
+  </p>
 </section>
 
 <section class="top-10_container">
@@ -14,7 +17,8 @@
       <% @top_movies.each do |movie| %>
         <li class="list-group-item">
           <h4><%= link_to movie.title, work_path(movie.id) %></h4>
-          <h6>by <%= movie[:creator] %></h6>
+          <small>by <%= movie[:creator] %></small>
+          <p><%= Vote.where(work_id: movie.id).count %></p>
         </li>
       <% end %>
     </ul>
@@ -28,7 +32,8 @@
       <% @top_books.each do |book| %>
         <li class="list-group-item">
           <h4><%= link_to book.title, work_path(book.id) %></h4>
-          <h6>by <%= book[:creator] %></h6>
+          <small>by <%= book[:creator] %></small>
+          <p><%= Vote.where(work_id: book.id).count %></p>
         </li>
       <% end %>
     </ul>
@@ -42,7 +47,8 @@
       <% @top_albums.each do |album| %>
         <li class="list-group-item">
           <h4><%= link_to album.title, work_path(album.id) %></h4>
-          <h6>by <%= album[:creator] %></h6>
+          <small>by <%= album[:creator] %></small>
+          <p><%= Vote.where(work_id: album.id).count %></p>
         </li>
       <% end %>
     </ul>
