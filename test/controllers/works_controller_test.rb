@@ -15,25 +15,6 @@ describe WorksController do
     end
   end
 
-  # NEED TO REVISIT
-  # describe "spotlight" do
-  #   it "can get the spotlight" do
-  #     get root_path
-  #     must_respond_with :success
-  #   end
-
-  #   # it "returns a string message if there's not enough votes to get the spotlight" do
-  #   #   all_votes = Vote.all
-  #   #   all_votes.length.times do |index|
-  #   #     all_votes[index].delete
-  #   #   end
-
-  #   #   get root_path
-  #   #   must_respond_with :success
-
-  #   # end
-  # end
-
   describe "show" do
     it "should be 200 OK to show an existing work" do
       valid_work_id = Work.first.id
