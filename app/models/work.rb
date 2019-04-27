@@ -3,9 +3,15 @@ class Work < ApplicationRecord
   validates :title, uniqueness: true
   has_many :votes
 
-  # def vote_count
-  #   @work = Work.find_by(id: params[:id])
-  #   @votes = Vote.find_by(work_id: @work.id)
-  #   return @votes.length
-  # end
+  def self.spotlight
+    max = 0
+    spotlight = nil
+    Work.all.each do |work|
+      unless work.votes.length < max
+        max = work.votes.length
+        spotlight = work
+      end
+    end
+    return spotlight
+  end
 end

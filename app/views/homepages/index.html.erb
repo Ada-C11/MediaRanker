@@ -10,6 +10,7 @@ Media Spotlight:
 <p class="spotlight__description">
 <%= @spotlight.description %>
 </p>
+<small><%= @spotlight.votes.length %></small>
 <% else %>
 <p>There is nothig to show</p>
 <% end %>
@@ -57,12 +58,7 @@ by <small class="top-ten__creator"><%= book.creator %></small>
 </li>
 <% end %>
 </ul>
-
 </section>
-
-
-
-
 <section class="top-ten__list-container">
 <h2 class="top-ten__header">
 Top Albums

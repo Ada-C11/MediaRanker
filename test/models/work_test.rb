@@ -26,4 +26,5 @@ describe Work do
       expect(@work.errors.messages).must_include :title
     end
   end
+  
 end

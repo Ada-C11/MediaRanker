@@ -4,6 +4,7 @@ class WorksController < ApplicationController
     @movies = Work.where(category: "movie")
     @albums = Work.where(category: "album")
     @books = Work.where(category: "book")
+    #@spotlight = Work.spotlight
   end
 
   def new

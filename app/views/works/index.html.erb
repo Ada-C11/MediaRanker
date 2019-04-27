@@ -15,7 +15,7 @@
 <tbody>
 <tr>
   <% @albums.each do |album| %>
-    <td>
+  <td>
   <%= Vote.where(work_id: album.id).length %>
   </td>
   <td>
@@ -30,9 +30,11 @@
   <td>
   <%= link_to "Upvote", work_votes_path(album), method: :post, class: "btn btn-primary"%>
   </td>
+ 
   </tr>
   <% end %>
   </tbody>
+  </table>
   </section>
   <section class="media-table">
   <h4>Movies</h4>
@@ -48,7 +50,7 @@
   <tbody>
   <tr>
   <% @movies.each do |movie| %>
-      <td>
+  <td>
   <%= Vote.where(work_id: movie.id).length %>
   </td>
   <td>
@@ -63,6 +65,7 @@
   <td>
   <%= link_to "Upvote", work_votes_path(movie), method: :post, class: "btn btn-primary"%>
   </td>
+ 
   </tr>
   <% end %>
   </tbody>
@@ -96,9 +99,11 @@
   <td>
   <%= link_to "Upvote", work_votes_path(book), method: :post, class: "btn btn-primary"%>
   </td>
+ 
   </tr>
-  <% end %>
+ <% end %>
   </tbody>
   </section>
+  </main>
  
   

@@ -1,6 +1,6 @@
 class HomepagesController < ApplicationController
   def index
-    @spotlight = Work.all.sample
+    @spotlight = Work.spotlight
     top_ten_movies
     top_ten_books
     top_ten_albums
