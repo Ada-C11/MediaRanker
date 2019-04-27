@@ -16,5 +16,14 @@
 
 <table>
 <thead><tr><th>User</th><th>Date</th></tr></thead>
+<tbody>
+<% @work.votes.each do |vote| %>
+<tr>
+<td><%= vote.user.username %></td>
+<td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+<% end %>
+</tr>
+
+</tbody>
 
 </table>
