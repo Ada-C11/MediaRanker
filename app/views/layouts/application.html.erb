@@ -17,19 +17,38 @@
           <small id="sub-heading"> | Ranking the Best of Everything</small>
         </div>
       </h1>
-      <nav class="app-header_nav">
-        <ul class='nav app-header_site-nav-container'>
-          <li> <%= link_to "View top media", root_path %></li>
-          <li><%= link_to "View all media", works_path %> </li> 
-          <li><%= link_to "Add a new work", new_work_path %> </li>
-          <li> <%= link_to "View all users", users_path %></li>
-        <div class='nav app-header_user-nav-container'>        
-          <span class="btn btn-light"><%= link_to("Login", login_path) if session[:user_id].nil? %></span>
-          <span class="btn btn-light"><%= link_to("Logout", logout_path, method: :post) if session[:user_id] %></span>
-          <span class="btn btn-light"><%= link_to("Logged in as #{User.find(session[:user_id]).name}", current_user_path) if session[:user_id] %></span>
-        </div>
+      <nav class="app-header__nav">
+        <ul class="nav app-header__site-nav-container">
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "View top media", root_path %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "View all media", works_path %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Add a new work", new_work_path %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "View all users", users_path %>
+          </li>
+        </ul>
+        <ul class="nav app-header__user-nav-container">
+
+          <li class="nav-item app-header__nav_item">
+            <%= link_to("Login", login_path) if session[:user_id].nil? %>
+          </li>
+
+          <li class="nav-item app-header__nav_item">
+            <%= link_to("Logout", logout_path, method: :post) if session[:user_id] %>
+          </li>
+
+          <li class="nav-item app-header__nav_item">
+            <%= link_to("Logged in as #{User.find(session[:user_id]).name}", current_user_path) if session[:user_id] %>
+          </li>
+
         </ul>
       </nav>
+
     </header>
     <% if flash.count > 0 %>
       <section class="flash">

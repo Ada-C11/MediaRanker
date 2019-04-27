@@ -48,16 +48,9 @@
         
         .app-header_nav {
             display: flex;
-            flex-direction: row;
             justify-content: space-between;
         }
         
-        // .app-header {
-        //     max-width: 100%;
-        //     background-color: #B2DFDB;
-        //     margin-bottom: 0.5rem;
-        //     padding: 2rem 1rem 0.5rem 1rem;
-        // }
         .app-header .app-title {
             color: orangered;
         }
@@ -75,6 +68,12 @@
             color: white;
         }
         
+        .app-header__nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        
         a {
             color: #00796b;
             text-decoration: none;
@@ -86,54 +85,58 @@
             text-decoration: underline
         }
         
+        nav app-header {
+            display: flex;
+            justify-content: space-between;
+        }
+        
         .app-header__user-nav-container .nav-item {
+            display: flex;
+            justify-content: space-between;
             margin-left: 2rem;
         }
         
-        .btn-light {
-            background-color: #26A69A;
-            color: white;
-            border-color: #26A69A;
+        ul,
+        menu,
+        dir {
+            display: block;
+            list-style-type: disc;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            padding-inline-start: 40px;
         }
         
-        // .nav-bar #first-ul a {
-        //     color: #00796b;
-        // }
-        // .nav-bar #first-ul {
-        //     display: flex;
-        //     flex-direction: row;
-        //     list-style: none;
-        //     justify-content: space-between;
-        // }
-        // .text {
-        //     color: white;
-        // }
-        // .btn {
-        //     background-color: rgb(13, 156, 156);
-        // }
-        // // .nav-bar #user-session a {
-        // //     color: #00796b;
-        // // }
-        // // .nav-bar #user-session {
-        // //     justify-content: space-between;
-        // // }
-        // .nav-bar #user-session .btn-primary a {
-        //     color: white;
-        // }
-        // .btn {
-        //     position: relative;
-        //     // padding: 0.75rem 1.25rem;
-        //     // margin-bottom: 1rem;
-        //     border: 1px solid transparent;
-        //     border-radius: 0.25rem;
-        //     background-color: #2FA599;
-        //     color: white;
-        // }
-        // .btn:hover {
-        //     background-color: rgb(11, 150, 133);
-        // }
-        // .delete-btn {
-        //     color: #fff;
-        //     background-color: #dc3545;
-        //     border-color: #dc3545;
-        // }
+        .btn {
+            background-color: rgb(13, 156, 156);
+            color: white;
+        }
+        
+        nav app-header_user-nav-container {
+            color: white;
+        }
+        
+        .table-style {
+            width: 100%;
+        }
+        
+        .btn {
+            position: relative;
+            // padding: 0.75rem 1.25rem;
+            // margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+            background-color: #2FA599;
+            color: white;
+        }
+        
+        .btn:hover {
+            background-color: rgb(11, 150, 133);
+        }
+        
+        .delete-btn {
+            color: #fff;
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
