@@ -17,7 +17,7 @@
             <% if work.category == "album" %>
               <tr>
                   <td>
-                      <%= rand(0..20) %>
+                      <%= work.votes.count %>
                   </td>
                   <td>
                       <%= work.title %>
@@ -29,7 +29,7 @@
                       <%= work.publication_year %>
                   </td>
                   <td>
-                      <%= link_to "Upvote", works_path, class: "btn btn-primary" %>
+                      <%= link_to "Upvote", upvote_work_path(work.id), method: :post, class: "btn btn-primary" %>
                   </td>
               </tr>
             <% end %>
@@ -54,7 +54,7 @@
             <% if work.category == "book" %>
               <tr>
                   <td>
-                      <%= rand(0..20) %>
+                      <%= work.votes.count %>
                   </td>
                   <td>
                       <%= work.title %>
@@ -66,7 +66,7 @@
                       <%= work.publication_year %>
                   </td>
                   <td>
-                      <%= link_to "Upvote", works_path, class: "btn btn-primary" %>
+                      <%= link_to "Upvote", upvote_work_path(work.id), method: :post, class: "btn btn-primary" %>
                   </td>
               </tr>
             <% end %>
@@ -91,7 +91,7 @@
             <% if work.category == "movie" %>
               <tr>
                   <td>
-                      <%= rand(0..20) %>
+                      <%= work.votes.count %>
                   </td>
                   <td>
                       <%= work.title %>
@@ -103,7 +103,7 @@
                       <%= work.publication_year %>
                   </td>
                   <td>
-                      <%= link_to "Upvote", works_path, class: "btn btn-primary" %>
+                      <%= link_to "Upvote", upvote_work_path(work.id), method: :post, class: "btn btn-primary" %>
                   </td>
               </tr>
             <% end %>

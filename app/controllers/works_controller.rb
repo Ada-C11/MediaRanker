@@ -60,6 +60,25 @@ class WorksController < ApplicationController
     end
   end
 
+  def upvote
+    current_work = Work.find_by(id: params[:id])
+
+    if session[:user_id]
+      vote = Vote.new(user_id: session[:user_id], work_id: current_work.id)
+
+      if vote.save
+        flash[:success] = "Successfully upvoted!"
+      else
+        flash[:error] = "Could not upvote..."
+      end
+    else
+      flash[:error] = "You must log in to do that"
+      # send a flash error message saying they cannot vote unless signed in
+    end
+
+    redirect_back fallback_location: works_url
+  end
+
   private
 
   def find_work
@@ -67,6 +86,6 @@ class WorksController < ApplicationController
   end
 
   def work_params
-    return params.require(:work).permit(:title, :description, :creator, :category, :publication_year)
+    return params.require(:work).permit(:title, :description, :creator, :category, :publication_year, :vote_count)
   end
 end

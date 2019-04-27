@@ -79,3 +79,5 @@ group :test do
   gem 'minitest-rails'
   gem 'minitest-reporters'
 end
+
+gem 'acts_as_votable', '~> 0.12.0'
