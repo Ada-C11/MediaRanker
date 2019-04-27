@@ -42,4 +42,28 @@ describe Work do
       expect(work.votes.last).must_equal new_vote
     end
   end
+
+  describe "top_media" do
+    it "will return work with the most votes" do
+    end
+    it "will return the first work if there are no votes" do
+    end
+    it "will return the first work if there is a tie" do
+    end
+    it "will return nil if there are no works" do
+    end
+  end
+
+  describe "top_ten" do
+    it "will return a list of works of only one category" do
+    end
+    it "will sort works in descending order" do
+    end
+    it "will return a list of ten works max" do
+    end
+    it "will return an empty array if there are no works in that category" do
+    end
+    it "will return a list of ten works if there are no votes" do
+    end
+  end
 end

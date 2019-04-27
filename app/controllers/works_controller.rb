@@ -5,7 +5,7 @@ class WorksController < ApplicationController
       user_votes = user.votes
       @works = user_votes.map { |vote| Work.find(vote.work_id) }
     else
-      @works = Work.all.sort_by { |work| work.vote_ids.length }.reverse!
+      @works = Work.all.sort_by { |work| work.votes.length }.reverse!
     end
   end
 

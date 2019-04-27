@@ -1,12 +1,8 @@
-<% albums = Work.where(category: "album") %>
-<% movies = Work.where(category: "movie") %>
-<% books = Work.where(category: "book") %>
-
 <h1>Top Media</h1>
 <% top_work = Work.top_media %>
 <%= top_work.title %>
 <h2>Top Movies</h2>
-<% top_movies = movies.sample(10)%>
+<% top_movies = Work.top_ten("movie")%>
 <% if top_movies.empty? %>
     <p>There are no movies.</p>
 <% else %>
@@ -18,7 +14,7 @@
     <% end %>
 <% end %>
 <h2>Top Books</h2>
-<% top_books = books.sample(10)%>
+<% top_books = Work.top_ten("book")%>
 <% if top_books.empty? %>
     <p>There are no books.</p>
 <% else %>
@@ -30,7 +26,7 @@
     <% end %>
 <% end %>
 <h2>Top Albums</h2> 
-<% top_albums = albums.sample(10)%>
+<% top_albums = Work.top_ten("album")%>
 <% if top_albums.empty? %>
     <p>There are no albums.</p>
 <% else %>
