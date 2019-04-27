@@ -1,6 +1,9 @@
 
 
 class UsersController < ApplicationController
+  def index
+  end
+
   def login_form
     @user = User.new
   end

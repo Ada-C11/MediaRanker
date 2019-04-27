@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root "homepages#index"
   get "/", to: "homepages#index"
   resources :works, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :users, only: [:index]
   resources :works do
     resources :votes, only: [:create]
   end

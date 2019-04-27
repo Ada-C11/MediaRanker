@@ -1,6 +1,13 @@
 require "test_helper"
 
 describe UsersController do
+  describe "index" do
+    it "can get the index page" do
+      get users_path
+
+      must_respond_with :success
+    end
+  end
   describe "login_form" do
     it "can get the login page" do
       get login_path
