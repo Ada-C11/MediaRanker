@@ -14,7 +14,7 @@ describe UsersController do
       get current_user_path
       must_respond_with :success
     end
-    it "responds with a redirect if no username is invalid" do
+    it "responds with a redirect if username is invalid" do
       login_data = {
         name: "",
       }
@@ -22,6 +22,7 @@ describe UsersController do
       must_respond_with :redirect
     end
   end
+
   describe "current" do
     it "responds with success if a user is logged in" do
       logged_in_user = perform_login

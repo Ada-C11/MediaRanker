@@ -25,6 +25,13 @@ describe WorksController do
     end
   end
 
+  describe "new" do
+    it "can get the new work page" do
+      get new_work_path
+      must_respond_with :success
+    end
+  end
+
   describe "create" do
     it "will save a new work and redirect if given valid inputs" do
       input_title = "Normal People"
@@ -73,6 +80,14 @@ describe WorksController do
       }.wont_change "Work.count"
 
       must_respond_with :bad_request
+    end
+  end
+
+  describe "edit" do
+    it "can get edit path for work" do
+      work = works(:two)
+      get edit_work_path(work.id)
+      must_respond_with :success
     end
   end
 
