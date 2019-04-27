@@ -6,12 +6,35 @@ class WorksController < ApplicationController
   end
 
   def new
+    @work = Work.new
   end
 
   def create
+    new_work = Work.new(work_params)
+
+    is_successful = new_work.save
+
+    if is_successful
+      flash[:success] = "Successfully created #{params[:category]} #{params[:id]}"
+
+      # NEED TO MAKE HOME PAGE FOR ROOT PATH!!!
+      redirect_to root_path
+    else
+      new_work.errors.messages.each do |field, message|
+        flash.now[field] = message
+      end
+      render :new, status: :bad_request
+    end
   end
 
   def show
+    # The live app gives a 404. I wanted to give a helpful flash message and redirect instead for a better work experience.
+
+    # find_indv_work
+    if !@work
+      flash[:error] = "work not found"
+      redirect_to works_path
+    end
   end
 
   def edit
@@ -21,7 +44,7 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    # find_indv_user
+    # find_indv_work
     if !@work
       flash[:error] = "That item does not exist"
       redirect_to works_path
