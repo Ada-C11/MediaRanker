@@ -23,7 +23,6 @@ describe Vote do
       expect(new_vote.save).must_equal false
     end
 
-    # will do this in controller create action for vote.
     it "will be valid when only user OR works is repeated" do
       new_vote = Vote.new(user: users(:two), work: vote.work)
       expect(new_vote.save).must_equal true
