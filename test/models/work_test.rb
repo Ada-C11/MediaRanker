@@ -48,9 +48,19 @@ describe Work do
 
   describe "custom methods" do
     describe "media_spotlight" do
+      it "must return the work with the top # of votes" do
+        spotlight = Work.media_spotlight
+
+        expect(spotlight.title).must_equal "Blonde"
+      end
     end
 
     describe "top_ten" do
+      it "returns works with the top number of votes given a category (returns all in category if less than 10)" do
+        top_ten = Work.top_10("album")
+
+        expect(top_ten.count).must_equal 3
+      end
     end
   end
 end

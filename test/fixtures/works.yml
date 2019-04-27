@@ -41,3 +41,10 @@ album2:
   creator: "Frank Ocean"
   publication_year: 2016
   description: "avant-garde masterpiece"
+
+album3:
+  category: "album"
+  title: "Unusual"
+  creator: "Marian Hill"
+  publication_year: 2018
+  description: "synth jazz-pop"
