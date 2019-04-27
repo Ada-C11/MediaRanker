@@ -68,15 +68,27 @@ describe Work do
   end
 
   describe "top_ten" do
-    it "will return a list of works of only one category" do
+    before do
+      @top_ten = Work.top_ten("book")
     end
     it "will sort works in descending order" do
+      high_vote = @top_ten.first.votes.length
+      low_vote = @top_ten.last.votes.length
+      boolean = high_vote > low_vote
+      expect(boolean).must_equal true
     end
     it "will return a list of ten works" do
+      expect(@top_ten.length).must_equal 10
     end
     it "will return an empty array if there are no works in that category" do
+      Vote.delete_all
+      Work.delete_all
+      expect(Work.top_ten("book")).must_equal []
     end
     it "will return a list of ten works if there are no votes" do
+      Vote.delete_all
+      expect(@top_ten.length).must_equal 10
+      expect(@top_ten.first.category).must_equal "book"
     end
   end
 end
