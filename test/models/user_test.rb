@@ -2,8 +2,8 @@ require "test_helper"
 
 describe User do
   let(:user) { users(:user1) }
-  let(:vote) { votes(:two) }
-  let(:vote2) { votes(:one) }
+  let(:vote) { votes(:vote_two) }
+  let(:vote2) { votes(:vote_one) }
 
   describe "validations" do
     it "must be valid" do
@@ -24,22 +24,24 @@ describe User do
     end
   end
 
-  # describe "relationships" do
-  #   it "has many votes" do
-  #     new_genre = genres(:one)
-  #     book.genres << new_genre
-  #     expect(new_genre.books).must_include book
-  #   end
+  describe "relationships" do
+    it "has many votes" do
+      user_twelve = users(:user12)
+      vote_1 = votes(:vote_5)
+      vote_2 = votes(:vote_6)
+      expect(user_twelve.votes).must_include vote_1
+      expect(user_twelve.votes).must_include vote_2
+    end
 
-  #   it "can have 0 votes" do
-  #     genres = book.genres
-  #     expect(genres.length).must_equal 0
-  #   end
+    it "can have 0 votes" do
+      Vote.delete_all
+      expect(user.votes.length).must_equal 0
+    end
 
-  #   it "can set the vote through the vote_id" do
-  #     new_author = Author.create(name: "new author")
-  #     book.author_id = new_author.id
-  #     expect(book.author).must_equal new_author
-  #   end
-  # end
+    it "can set the vote through the vote_id" do
+      new_vote = vote2
+      user.vote_ids = vote2.id
+      expect(user.votes.last).must_equal new_vote
+    end
+  end
 end

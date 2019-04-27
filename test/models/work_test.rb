@@ -35,5 +35,11 @@ describe Work do
     it "can have many votes" do
       expect(work.votes.length).must_equal 2
     end
+
+    it "can set the vote through the vote_id" do
+      new_vote = votes(:vote_7)
+      work.vote_ids = new_vote.id
+      expect(work.votes.last).must_equal new_vote
+    end
   end
 end

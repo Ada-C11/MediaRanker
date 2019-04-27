@@ -20,10 +20,4 @@ class VotesController < ApplicationController
     end
     redirect_to works_path
   end
-
-  private
-
-  def find_user
-    @user = User.find_by(id: session[:user_id])
-  end
 end

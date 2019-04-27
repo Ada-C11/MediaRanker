@@ -25,13 +25,13 @@ vote_5:
   work: four
   user: user12
 
-# vote_6: 
-#   work: two
-#   user: user6
+vote_6: 
+  work: two
+  user: user12
 
-# vote_7: 
-#   work: two
-#   user: user7
+vote_7: 
+  work: two
+  user: user7
 
 # vote_8: 
 #   work: two

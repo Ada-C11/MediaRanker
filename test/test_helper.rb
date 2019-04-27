@@ -25,9 +25,7 @@ class ActiveSupport::TestCase
     user ||= users(:user1)
 
     login_data = {
-      user: {
-        name: user.name,
-      },
+      name: user.name,
     }
     post login_path, params: login_data
     return user

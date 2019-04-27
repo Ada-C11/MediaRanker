@@ -16,9 +16,7 @@ describe UsersController do
     end
     it "responds with a redirect if no username is invalid" do
       login_data = {
-        user: {
-          name: "",
-        },
+        name: "",
       }
       post login_path, params: login_data
       must_respond_with :redirect
