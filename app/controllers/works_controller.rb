@@ -4,7 +4,6 @@ class WorksController < ApplicationController
     @movies = Work.where(category: "movie").sort_by { |work| work.votes.length }.reverse
     @albums = Work.where(category: "album").sort_by { |work| work.votes.length }.reverse
     @books = Work.where(category: "book").sort_by { |work| work.votes.length }.reverse
-    #@spotlight = Work.spotlight
   end
 
   def new
@@ -83,6 +82,6 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    return params.require(:work).permit(:category, :title, :creator, :creation_date, :description)
+    return params.require(:work).permit(:category, :title, :creator, :publication_date, :description)
   end
 end

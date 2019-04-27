@@ -7,9 +7,9 @@ Winter Mug:
   publication_date: 1996
   description: a nice album
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
+Blue:
+  category: album
+  title: Blue Baker
+  creator: Dr. Sarai Langosh
   publication_date: 1
-  description: MyString
+  description: Et et expedita non aut quo.
