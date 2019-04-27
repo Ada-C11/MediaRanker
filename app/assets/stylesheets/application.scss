@@ -137,6 +137,14 @@ div.spotlight-works section.spotlight-work:last-child {
     grid-column: 3;
     grid-row: 1;
 }
+div.list-item {
+    padding: 0.75rem 1.25rem;
+    color: slategrey;
+}
+div.list-item a {
+    color:  #26A69A;
+    font-weight: bold;
+}
 /* ----------------------- TABLE/WORKS INDEX STYLING ----------------------- */
 h2.index {
     color: #26A69A;
