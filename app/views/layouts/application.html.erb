@@ -55,11 +55,6 @@
       <% flash.each do |name, message| %>
         <div class="<%= name %>"><%= message %></div>
       <% end %>
-
-      <% if flash.message.include? "success" %>
-        <% :class => "alert alert-success" %>
-
-      <% end %>
     </section>
 
     <main>
