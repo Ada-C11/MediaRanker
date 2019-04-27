@@ -1,31 +1,40 @@
 class UpvotesController < ApplicationController
   
   def create
-    current_user = session[:user_id]
+    current_user_id = session[:user_id]
 
-    unless current_user
+    unless current_user_id
       flash[:status] = :error
       flash[:message] = "A problem occurred: You must be logged in to do that."
       redirect_back(fallback_location: root_path)
       return
     end
 
-      media = Vote.where(work_id: params[:work_id])
-      already_voted = media.users.find_by(id: user_id)
+    #finds the work in the database and checks to see if user has voted for it already
+    corresponding_votes = Upvote.where(work_id: params[:work_id])
+    not_found = corresponding_votes.find_by(user_id: current_user_id).present?
 
-    if !already_voted
-      vote = Vote.new(user_id: current_user, work_id: params[:work_id])
-      vote.save
-    else
-      flash[:status] = :success
+
+    if not_found
+      flash[:status] = :error
       flash[:message] = "You already upvoted this item!"
+      redirect_back(fallback_location: root_path)
+    else 
+      vote = Upvote.new(user_id: current_user_id, work_id: params[:work_id])
+      if vote 
+        flash[:status] = [:success]
+        flash[:message] = "Successfully upvoted!"
+        redirect_back(fallback_location: root_path)
+        vote.save
+      else
+        flash[:status] = [:error]
+        flash[:message] = "An error has occurred, unable to save vote"
+        redirect_back(fallback_location: root_path)
+      end
     end
 
     
   end
   
-  private
-    def valid_vote(user_id)
-      return already_voted
-    end
 end
+

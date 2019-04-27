@@ -30,7 +30,7 @@
             <%= movie.publication_year %>
           </td>
           <td> 
-            <%= "Upvote" %>
+            <%= link_to "Upvote", work_upvotes_path(movie.id), method: :post %>
           </td>
         </tr>
       <% end %>
@@ -108,7 +108,7 @@
             <%= book.publication_year %>
           </td>
           <td>
-            <%= "Upvote" %>
+            <%= link_to "Upvote", work_upvotes_path(book.id), method: :post %>
           </td>
         </tr>
       <% end %>
