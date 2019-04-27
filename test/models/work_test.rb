@@ -7,10 +7,6 @@ require "pry"
 describe Work do
   let(:work) { Work.first }
 
-  it "must be valid" do
-    value(work).must_be :valid?
-  end
-
   describe "validation" do
     it "has valid data" do
       expect(work).must_be :valid?
@@ -22,6 +18,10 @@ describe Work do
       error_message = invalid_work.errors.messages[:title][0]
       expect(invalid_work.valid?).must_equal false
       expect(error_message).must_equal "can't be blank"
+    end
+
+    it "responds to votes" do
+      assert_respond_to(work, :votes)
     end
 
     it "rejects a duplicate title" do
