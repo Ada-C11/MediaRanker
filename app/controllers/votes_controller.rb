@@ -2,7 +2,7 @@ class VotesController < ApplicationController
   def upvote
     user = User.find_by(id: session[:user_id])
     if user.nil?
-      flash[:error] = "You need to log in to upvote!"
+      flash[:error] = "You need to log in to be able to upvote!"
     else
       work_id = params[:id]
       date = Date.today

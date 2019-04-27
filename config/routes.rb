@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :works
 
   resources :users
+  # resources :votes, only: [:create]
 
   # resources :works do
   #   resources :votes, only: [:index]
@@ -23,8 +24,10 @@ Rails.application.routes.draw do
   post "/logout", to: "users#logout", as: "logout"
   get "/users/current", to: "users#current", as: "current_user"
 
-  get "/works/:id/upvote", to: "votes#upvote", as: "upvote"
-  post "/works/:id/upvote", to: "votes#upvote"
+  # get "/votes", to: "votes#index", as: "votes"
+  # post "/votes", to: "votes#upvote"
+  get "/works/:id/vote", to: "votes#upvote", as: "upvote"
+  post "/works/:id/vote", to: "votes#upvote"
   # get "/works/:id/upvote", to: "users#upvote", as: "upvote"
   # post "/works/:id/upvote", to: "users#upvote"
 end
