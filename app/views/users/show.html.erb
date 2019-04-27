@@ -1,6 +1,6 @@
 <h2>User Summary: <%= @user.username %></h2>
 
-<p>Joined site <%= Date.today %></p>
+<p>Joined site <%= @user.created_at %></p>
 
 <h3>Votes</h3>
 <table class="table">
@@ -13,6 +13,17 @@
             <th>Voted On</th>
         </tr>
     </thead>
+    <tbody>
+        <% @user.works.each do |work| %>
+                <tr>
+                    <th> <%= work.title %> </th>
+                    <th> <%= work.creator %> </th>
+                    <th> <%= work.publication_year %> </th>
+                    <th> <%= work.category %> </th>
+                    <th> <%= Vote.find_by(user_id: @user.id, work_id: work.id).created_at %> </th>
+                </tr>
+            <% end %>
+    </tbody>
 
     
 </table>

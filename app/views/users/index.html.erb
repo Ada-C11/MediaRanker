@@ -13,13 +13,13 @@
         <% @users.each do |user| %>
             <tr>
                 <td>
-                    <%= user.username %>
+                    <%= link_to user.username, user_path(user.id) %>
                 </td>
                 <td>
-                    <%= rand(0..20) %>
+                    <%= user.votes.count %>
                 </td>
                 <td>
-                    <%= Date.today %>
+                    <%= user.created_at %>
                 </td>
             </tr>
         <% end %>
