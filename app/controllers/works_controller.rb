@@ -24,14 +24,15 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new work_params
-    successful = @work.save
-    if successful
+    @successful = @work.save
+    if @successful
       redirect_to work_path(@work.id)
       flash[:status] = :success
       flash[:message] = "successfully saved a work with ID #{@work.id}"
     else
       flash.now[:status] = :warning
       flash.now[:message] = "A problem occurred: Could not create #{@work.category}"
+      @errors = @work.errors
       render :new, status: :bad_request
     end
   end

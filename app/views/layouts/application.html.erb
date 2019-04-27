@@ -44,7 +44,18 @@
 
 
       <section class="alert alert-<%= flash[:status] %>">
-        <%= flash[:message] %>
+
+          <%= flash[:message] %>
+          <% if @errors %>
+          <ul>
+            <% @errors.messages.each do |col, prob| %>
+              <% prob.each do |problem|%>
+                <li><%= col%>: <%= problem%></li>
+              <% end %>
+            <% end %>
+          </ul>
+          <% end %>
+
       </section>
 
     <main>
