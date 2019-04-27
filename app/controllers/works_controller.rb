@@ -2,9 +2,12 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def index
-    @works = Work.all
-    # @works = Work.order(vote: vote)
-    # Vote.joins(:works).where(works: { vote: vote })
+    # @works = Work.find_by_sql("SELECT COUNT(votes.work_id), title, creator, publication_year FROM works LEFT JOIN votes ON works.id = votes.work_id GROUP BY title, creator, publication_year ORDER BY COUNT(votes.work_id) desc")
+    @works = Work.find_by_sql("SELECT COUNT(votes.work_id), works.id, title, creator, publication_year, category 
+                              FROM works LEFT JOIN votes 
+                              ON works.id = votes.work_id 
+                              GROUP BY works.id, title, creator, publication_year, category 
+                              ORDER BY COUNT(votes.work_id) desc")
   end
 
   def top_media

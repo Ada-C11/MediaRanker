@@ -5,8 +5,10 @@ class UsersController < ApplicationController
 
   def login
     username = params[:user][:username]
-    user = User.find_by(username: username)
-    user = User.create(username: username) if user.nil?
+    user = User.find_or_create_by(username: username)
+
+    # user = User.find_by(username: username)
+    # user = User.create(username: username) if user.nil?
 
     if user.id
       session[:user_id] = user.id
