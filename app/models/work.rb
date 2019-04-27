@@ -26,7 +26,6 @@ class Work < ApplicationRecord
         top_works << work
       end
     end
-
     return top_works[0..9]
   end
 end

@@ -11,7 +11,13 @@ describe User do
   end
 
   describe "validations" do
-    # Don't think there are any validations?
+    it "requires a username" do
+      user.username = nil
+      valid_user = user.valid?
+      expect(valid_user).must_equal false
+      expect(user.errors.messages).must_include :username
+      expect(user.errors.messages[:username]).must_equal ["can't be blank"]
+    end
   end
 
   describe "relationships" do
@@ -32,6 +38,9 @@ describe User do
         user.votes << vote_one
         user.votes << vote_two
         expect(user.vote_counter).must_equal 2
+
+        user.votes << vote_three
+        expect(user.vote_counter).must_equal 3
       end
 
       it "returns 0 when no votes have been made" do

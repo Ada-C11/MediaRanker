@@ -82,7 +82,8 @@ class WorksController < ApplicationController
     else
       flash[:error] = "You must be logged in to vote!"
     end
-    redirect_to works_path
+    # redirect_to works_path
+    redirect_back fallback_location: works_path
   end
 
   private
