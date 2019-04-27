@@ -7,12 +7,12 @@ describe HomepagesController do
     must_respond_with :ok
   end
 
-  # it "still displays if there are no Works" do 
-  #   Work.destroy_all
+  it "still displays if there are no Works" do 
+    Work.destroy_all
 
-  #   get root_path
+    get root_path
 
-  #   must_respond_with :ok
-  # end
+    must_respond_with :ok
+  end
 end
 

@@ -15,7 +15,8 @@
       </tr>
     </thead>
     <tbody>
-    <% @user.works.each do |media| %>
+    <% if @user.works.empty? %>
+      <% @user.works.each do |media| %>
         <tr>
           <td><%= media.title %></td>
           <td><%= media.creator%></td>
@@ -25,6 +26,7 @@
           <td><%= parse_date(vote.created_at) %></td>
         </tr>
       <% end %>
+    <% end %>
     </tbody>
   </table>
   
