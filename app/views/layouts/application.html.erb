@@ -42,11 +42,14 @@
 
   <body>
 
-    <section class="flash">
-        <div class="alert alert-<%= flash[:status]%>"><%= flash[:message] %></div>
-    </section>
+
+      <section class="alert alert-<%= flash[:status] %>">
+        <%= flash[:message] %>
+      </section>
 
     <main>
+
+
       <%= yield %>
     </main>
   </body>

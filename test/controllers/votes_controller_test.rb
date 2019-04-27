@@ -22,14 +22,14 @@ describe VotesController do
         post work_votes_path(work)
       }.wont_change "Vote.count"
 
-      expect(flash[:status]).must_equal :error
+      expect(flash[:status]).must_equal :warning
     end
     it "Flashes error status if no user logged in" do
       expect {
         post work_votes_path(work)
       }.wont_change "Vote.count"
 
-      expect(flash[:status]).must_equal :error
+      expect(flash[:status]).must_equal :warning
     end
   end
 end

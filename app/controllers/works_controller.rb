@@ -30,8 +30,8 @@ class WorksController < ApplicationController
       flash[:status] = :success
       flash[:message] = "successfully saved a work with ID #{@work.id}"
     else
-      flash.now[:status] = :error
-      flash.now[:message] = "Could not save work"
+      flash.now[:status] = :warning
+      flash.now[:message] = "A problem occurred: Could not create #{@work.category}"
       render :new, status: :bad_request
     end
   end
@@ -40,7 +40,7 @@ class WorksController < ApplicationController
     # @work = Work.find_by(id: params[:id])
     unless @work
       redirect_to works_path
-      flash.now[:status] = :error
+      flash.now[:status] = :warning
       flash.now[:message] = "Could not find work #{params[:id]}"
     end
   end
@@ -57,8 +57,8 @@ class WorksController < ApplicationController
       flash[:message] = "Successfully updated work #{@work.id}"
       redirect_to work_path(@work)
     else
-      flash.now[:status] = :error
-      flash.now[:message] = "Could not save work #{@work.id}"
+      flash.now[:status] = :warning
+      flash.now[:message] = "A problem occurred: Could not update #{@work.category}"
       render :edit, status: :bad_request
     end
   end
