@@ -32,6 +32,11 @@ body {
     background-color: #fff;
 }
 
+h2 {
+    font-weight: bold;
+    color: #26A69A;
+}
+
 header {
     max-width: 100%;
     background-color: #B2DFDB;
@@ -94,9 +99,6 @@ nav ul {
 
 .table h2, .table h4, .table th {
     font-weight: bold;
-}
-.table h2 { 
-    color: #26A69A;
 }
 
 .table .btn-primary {

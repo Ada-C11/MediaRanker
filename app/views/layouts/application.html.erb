@@ -37,7 +37,7 @@
         <% current_user = User.find_by(id: session[:user_id])%>
         <% if current_user.nil? %>
           <li>
-            <%= link_to "Log in", login_path %>
+            <%= link_to "Log in", login_path, :class=> "btn btn-primary"  %>
           </li>
           <% else %>
           <li>
@@ -54,6 +54,11 @@
     <section class="flash">
       <% flash.each do |name, message| %>
         <div class="<%= name %>"><%= message %></div>
+      <% end %>
+
+      <% if flash.message.include? "success" %>
+        <% :class => "alert alert-success" %>
+
       <% end %>
     </section>
 

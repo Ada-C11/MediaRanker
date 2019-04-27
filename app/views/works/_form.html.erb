@@ -4,24 +4,26 @@
 
 <div>
     <%= f.label :category %>
+    <div>
     <%= f.select :category, categories.each {|category| category } %>
+    </div>
 </div>
 <div>
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :class => "form-control" %>
 </div>
 <div>
     <%= f.label :creator %>
-    <%= f.text_field :creator %>
+    <%= f.text_field :creator, :class => "form-control" %>
 </div>
 <div>
     <%= f.label :publication_year %>
-    <%= f.text_field :publication_year %>
+    <%= f.text_field :publication_year, :class => "form-control"%>
 </div>
 <div>
     <%= f.label :description %>
-    <%= f.text_field :description %>
+    <%= f.text_field :description , :class => "form-control"%>
 </div>
 
-<%= f.submit action_name, class: "works-form_save-button" %>
+<%= f.submit action_name, class: "btn btn-primary" %>
 <% end %>
