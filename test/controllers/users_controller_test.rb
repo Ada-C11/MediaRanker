@@ -40,8 +40,8 @@ describe UsersController do
 
       expect(user.username).must_equal params[:user][:username]
       expect(flash[:success]).must_equal "Successfully created new user #{user.username} new with ID #{user.id}"
-
-      must_redirect_to root
+      expect(session[:user_id]).must_equal user.id
+      must_redirect_to root_path
     end
 
     it "will login existing user" do
@@ -54,18 +54,31 @@ describe UsersController do
 
       user = User.find_by(username: username)
       expect(user.username).must_equal params[:user][:username]
-
       expect(flash[:success]).must_equal "Successfully logged in as existing user #{user.username}"
-    end
+      expect(session[:user_id]).must_equal user.id
 
-    #     it "will update session user to previously created user" do
-    #     end
+      must_redirect_to root_path
+    end
   end
 
-  #   describe "user#logout" do
-  #     it "will log out user" do
-  #     end
-  #   end
+  describe "user#logout" do
+    it "will log out user" do
+      username = user.username
+      params = { user: { username: username } }
+      # sets session id
+      post login_user_path params: params
+      expect(session[:user_id]).must_equal user.id
+
+      expect {
+        post logout_user_path
+      }.wont_change "User.count"
+
+      expect(session[:user_id]).must_be_nil
+      expect(flash[:success]).must_equal "Successfully logged out"
+
+      must_redirect_to root_path
+    end
+  end
 
   #   #   it "should get new" do
   #   #     get users_new_url
