@@ -5,7 +5,7 @@ class Work < ApplicationRecord
   validates :title, presence: true, uniqueness: true
 
   def self.media_spotlight
-    all_works = Work.all
+    all_works = self.all
     if all_works.length > 0
       popular_works = all_works.sort_by { |work| -work.votes.count }
       return popular_works.first
@@ -15,7 +15,7 @@ class Work < ApplicationRecord
   end
 
   def self.top_10(category)
-    work_with_category = Work.where(category: category)
+    work_with_category = self.where(category: category)
     if work_with_category.length > 0
       popular_works = work_with_category.sort_by { |work| -work.votes.count }
       if popular_works.length >= 10
