@@ -1,14 +1,16 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
   end
 
   def show
   end
 
-  def new
+  def login_form
   end
 
-  def create
+  def login
+  end
+
+  def logout
   end
 end
