@@ -35,16 +35,9 @@ class WorksController < ApplicationController
 
   private
 
-  # had some trouble here should follow up
+
 
   def work_params
-    # return params.fetch(:work, {}).permit(:title, :category, :creator, :publication_year, :description)
     return params.require(:work).permit(:title, :category, :creator, :publication_year, :description)
   end
 end
-
-# title: params[:title],
-#                     category: params[:category],
-#                     creator: params[:creator],
-#                     publication_year: params[:publication_year],
-#                     description: params[:description]
