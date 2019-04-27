@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root "homepages#index"
   resources :homepages, only: :index
 
-  resources :works, only: [:index, :new, :create, :show]
+  resources :works, only: [:index, :new, :create, :show, :edit]
 end

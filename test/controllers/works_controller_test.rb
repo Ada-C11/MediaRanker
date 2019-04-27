@@ -101,4 +101,18 @@ describe "WorksController" do
       must_respond_with :ok
     end
   end
+
+  describe "edit" do
+    it "responds with OK for a real work" do
+      work = Work.first
+      get edit_work_path(work)
+      must_respond_with :ok
+    end
+
+    it "responds with NOT FOUND for a fake work" do
+      work_id = Work.last.id + 1
+      get edit_work_path(work_id)
+      must_respond_with :not_found
+    end
+  end
 end
