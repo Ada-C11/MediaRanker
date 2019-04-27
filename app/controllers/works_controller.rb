@@ -2,6 +2,7 @@ class WorksController < ApplicationController
   before_action :find_indv_work, only: [:show, :edit, :update, :destroy]
 
   def index
+    @works = Work.all
   end
 
   def new

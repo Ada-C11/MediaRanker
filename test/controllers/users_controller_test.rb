@@ -33,4 +33,13 @@ describe UsersController do
       must_respond_with :success
     end
   end
+
+  describe "create" do
+    it "create a new user" do
+    end
+
+    it "re-load and show flash message if given invalid input" do
+      # username can't be blank
+    end
+  end
 end
