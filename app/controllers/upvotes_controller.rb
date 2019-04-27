@@ -10,28 +10,25 @@ class UpvotesController < ApplicationController
       return
     end
 
-    #finds the work in the database and checks to see if user has voted for it already
-    corresponding_votes = Upvote.where(work_id: params[:work_id])
-    not_found = corresponding_votes.find_by(user_id: current_user_id).present?
+    #finds the work in the database to see if user has voted already
+    already_voted = Upvote.find_by(user_id: current_user_id, work_id: params[:work_id]).present?
 
 
-    if not_found
+    if already_voted
       flash[:status] = :error
       flash[:message] = "You already upvoted this item!"
-      redirect_back(fallback_location: root_path)
     else 
       vote = Upvote.new(user_id: current_user_id, work_id: params[:work_id])
       if vote 
         flash[:status] = :success
         flash[:message] = "Successfully upvoted!"
         vote.save
-        redirect_back(fallback_location: root_path)
       else
         flash[:status] = :error
         flash[:message] = "An error has occurred, unable to save vote"
-        redirect_back(fallback_location: root_path)
       end
     end
+    redirect_back(fallback_location: root_path)
   end
 end
 

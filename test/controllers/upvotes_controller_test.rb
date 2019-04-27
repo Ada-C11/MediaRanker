@@ -1,7 +1,18 @@
 require "test_helper"
 
 describe UpvotesController do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
+  
+  describe "create" do 
+  vote = Vote.new
+  
+    it "verifies that a user is logged in" do 
+      expect(session[:user_id]).must_be_nil
+
+    end
+
+    it "allows a logged in user to vote" do 
+
+    end
+  end
+
 end

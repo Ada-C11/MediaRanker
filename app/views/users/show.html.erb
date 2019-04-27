@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-    <% if @user.works.empty? %>
+    <% if !@user.works.empty? %>
       <% @user.works.each do |media| %>
         <tr>
           <td><%= media.title %></td>
