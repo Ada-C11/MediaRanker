@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-lilly:
-  username: Lilly Potter
+one:
+  work: one
+  user: lilly
 
-severus:
-  username: Severus Snape
+two:
+  work: two
+  user: severus
