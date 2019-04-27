@@ -4,16 +4,16 @@ describe VotesController do
   describe "create" do
     before do
       @user = perform_login
-      @work = works(:one)
+      @work = works(:two)
     end
 
     it "will save a new vote and redirect if given valid inputs" do
+      Vote.delete_all
       expect {
         post work_votes_path(@work.id)
       }.must_change "Vote.count", 1
-
       expect(flash[:success]).must_equal "Successfully upvoted!"
-      expect(@work.vote_ids.last).must_equal Vote.last.id
+      expect(@work.vote_ids.first).must_equal Vote.first.id
       expect(@user.vote_ids.first).must_equal Vote.first.id
       must_respond_with :redirect
     end
@@ -37,5 +37,3 @@ describe VotesController do
     end
   end
 end
-
-#Votes.delete_all

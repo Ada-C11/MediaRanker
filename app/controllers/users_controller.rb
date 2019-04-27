@@ -1,3 +1,5 @@
+require "pry"
+
 class UsersController < ApplicationController
   before_action :find_user
 
@@ -6,18 +8,20 @@ class UsersController < ApplicationController
   end
 
   def login
-    username = params[:name]
-    @user = User.create(name: username) if @user.nil?
-    if @user.id
+    @user = User.find_by(name: params[:user][:name])
+    if @user.nil?
+      @user = User.create(name: params[:user][:name])
+      flash[:alert] = "Welcome {@user.name}! You are logged in."
       session[:user_id] = @user.id
-      flash[:alert] = "#{@user.name} logged in"
     else
-      flash[:error] = "Unable to log in"
+      session[:user_id] = @user.id
+      flash[:alert] = "#Welcome back {@user.name}!"
     end
     redirect_to root_path
   end
 
   def current
+    @user = User.find_by(id: session[:user_id])
     if @user.nil?
       flash[:error] = "You must be logged in first!"
       redirect_to root_path
@@ -28,5 +32,11 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     flash[:notice] = "Logged out #{@user.name}"
     redirect_to root_path
+  end
+
+  private
+
+  def find_user
+    @user = User.find_by(id: session[:user_id])
   end
 end

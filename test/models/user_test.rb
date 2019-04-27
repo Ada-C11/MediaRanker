@@ -1,99 +1,45 @@
 require "test_helper"
 
 describe User do
-  let(:user) { User.new }
+  let(:user) { users(:user1) }
+  let(:vote) { votes(:two) }
+  let(:vote2) { votes(:one) }
 
-  it "must be valid" do
-    value(user).must_be :valid?
+  describe "validations" do
+    it "must be valid" do
+      value(user).must_be :valid?
+    end
+    it "requires a name" do
+      user.name = nil
+      expect(user.save).must_equal false
+      expect(user.errors.messages).must_include :name
+      expect(user.errors.messages[:name]).must_equal ["can't be blank"]
+    end
+
+    it "requires a unique name" do
+      duplicate_user = User.new(name: "Mollie")
+      expect(duplicate_user.save).must_equal false
+      expect(duplicate_user.errors.messages).must_include :name
+      expect(duplicate_user.errors.messages[:name]).must_equal ["has already been taken"]
+    end
   end
 
-  # describe Book do
-  #   let (:author) { authors(:metz) }
-  #   let (:book) {
-  #     # Book.find_by(title: "99 Bottles of OOP")
-  #     books(:oop)
-  #   }
-
-  #   it "must be valid" do
-  #     book = books(:oop)
-  #     valid_book = book.valid?
-  #     # valid_book = book.save
-  #     expect(valid_book).must_equal true
-  #     # expect(book.valid?).must_equal true
+  # describe "relationships" do
+  #   it "has many votes" do
+  #     new_genre = genres(:one)
+  #     book.genres << new_genre
+  #     expect(new_genre.books).must_include book
   #   end
 
-  #   describe "validations" do
-  #     it "requires a title" do
-  #       # Arrange
-  #       book.title = nil
-
-  #       # Act
-  #       valid_book = book.valid?
-
-  #       # Assert
-  #       expect(valid_book).must_equal false
-  #       expect(book.errors.messages).must_include :title
-  #       expect(book.errors.messages[:title]).must_equal ["can't be blank"]
-  #     end
-
-  #     it "requires a unique title" do
-  #       # Arrange
-  #       duplicate_book = Book.new(title: book.title, author_id: Author.first.id)
-
-  #       # Act-Assert
-  #       expect(duplicate_book.save).must_equal false
-
-  #       # Assert
-  #       expect(duplicate_book.errors.messages).must_include :title
-  #       expect(duplicate_book.errors.messages[:title]).must_equal ["has already been taken"]
-  #     end
+  #   it "can have 0 votes" do
+  #     genres = book.genres
+  #     expect(genres.length).must_equal 0
   #   end
 
-  #   describe "relationships" do
-  #     it "belongs to an author" do
-  #       # Arrange
-  #       author = Author.create(name: "new author")
-
-  #       # Act
-  #       book.author = author
-
-  #       # Assert
-  #       expect(book.author_id).must_equal author.id
-  #     end
-
-  #     it "can set the author through the author_id" do
-  #       # Arrange
-  #       new_author = Author.create(name: "new author")
-
-  #       # Act
-  #       book.author_id = new_author.id
-
-  #       # Assert
-  #       expect(book.author).must_equal new_author
-  #     end
-
-  #     it "can have 0 genres" do
-
-  #       # Act
-  #       genres = book.genres
-
-  #       # Assert
-  #       expect(genres.length).must_equal 0
-  #     end
-
-  #     it "can have 1 or more genres by shoveling a genre into book.genres" do
-  #       # Arrange
-  #       new_genre = genres(:one)
-
-  #       # Act
-  #       book.genres << new_genre
-
-  #       # Assert
-  #       expect(new_genre.books).must_include book
-  #     end
-  #   end
-
-  #   describe "custom methods" do
+  #   it "can set the vote through the vote_id" do
+  #     new_author = Author.create(name: "new author")
+  #     book.author_id = new_author.id
+  #     expect(book.author).must_equal new_author
   #   end
   # end
 end

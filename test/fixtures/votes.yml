@@ -5,7 +5,6 @@
 # below each fixture, per the syntax in the comments below
 #
 
-
 vote_two: 
   work: one
   user: user2
@@ -18,13 +17,13 @@ vote_3:
   work: two
   user: user3
 
-# vote_4: 
-#   work: two
-#   user: user4
+vote_4: 
+  work: four
+  user: user11
 
-# vote_5: 
-#   work: two
-#   user: user5
+vote_5: 
+  work: four
+  user: user12
 
 # vote_6: 
 #   work: two

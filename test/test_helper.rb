@@ -15,14 +15,14 @@ Minitest::Reporters.use!(
 # require "minitest/rails/capybara"
 
 # Uncomment for awesome colorful output
-# require "minitest/pride"
+require "minitest/pride"
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
   # Add more helper methods to be used by all tests here...
   def perform_login(user = nil)
-    user ||= users(:user2)
+    user ||= users(:user1)
 
     login_data = {
       user: {

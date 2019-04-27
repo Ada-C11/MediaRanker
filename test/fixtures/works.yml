@@ -20,3 +20,10 @@ three:
   publication_year: 2019
   creator: Halle Butler
   title: The New Me
+
+four:
+  category: book
+  description: speculative fiction
+  publication_year: 2018
+  creator: Leni Zumas
+  title: Red Clocks

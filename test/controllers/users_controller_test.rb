@@ -11,7 +11,6 @@ describe UsersController do
   describe "login" do
     it "successfully adds user information to session hash" do
       logged_in_user = perform_login
-
       get current_user_path
       must_respond_with :success
     end
