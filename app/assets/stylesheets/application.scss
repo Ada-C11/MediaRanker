@@ -32,8 +32,6 @@ body {
     background-color: #fff;
 }
 
-// HOMEPAGE
-
 header {
     max-width: 100%;
     background-color: #B2DFDB;
@@ -45,11 +43,12 @@ header h1 {
     font-size: 2.5rem;
 }
 
-header h1 a {
+header h1 a, header h1 a:hover {
     color: #FF5722;
     padding-right: 25px;
     margin-right: 15px;
     border-right: white 2px solid;
+    text-decoration: none;
 }
 
 header small {
@@ -73,4 +72,95 @@ nav ul {
     flex-wrap: wrap;
     padding-left: 0;
     margin-bottom: 0;
+}
+
+.nav-link, .nav-link:hover {
+    color: #00796B;
+}
+
+.btn-primary {
+    background-color: #26A69A;
+    color: white;
+    border-color: #26A69A;
+    margin: 15px;
+}
+
+.btn-primary:hover {
+    background-color: #00796B;
+    color: white;
+}
+
+// HOMEPAGE/TOP MEDIA PAGE
+
+// SPOTLIGHT
+
+.spotlight_prefix {
+    color: black; 
+    font-weight: bold;
+}
+.spotlight h2 {
+    color: #26A69A;
+    font-weight: bold;
+}
+.spotlight h2 a {
+    color: #26A69A;
+    text-decoration: underline;
+}
+
+.spotlight h2 a:hover {
+    color: #00796B;
+}
+
+.text-following-a {
+    color: #26A69A;
+}
+
+// MAIN
+
+main {
+    padding: 2rem;
+}
+
+.top-ten-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2em;
+}
+
+.top-ten h2 {
+    color: #26A69A;
+    border-bottom: 2px solid;
+    border-bottom-color: #B2DFDB;
+    font-weight: bold;
+}
+
+.top-ten ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    }
+
+.top-ten ul li {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border:none;
+}
+
+.top-ten ul li h4 a {
+    color: #26A69A;
+    font-weight: bold;
+}
+
+.top-ten ul li h4 a:hover {
+    color: #00796B;
+    text-decoration: none;
+}
+
+.top-ten ul li h4 small {
+    color: slategrey;
 }

@@ -4,12 +4,13 @@
 <% else %>
     <section class="spotlight">
     <% spotlight_work = Work.highest_vote %>
-    <h2>Media Spotlight 
+    <h2><span class="spotlight_prefix">Media Spotlight</span>
         <%= link_to spotlight_work.title, work_path(spotlight_work.id) %> by <%= spotlight_work.creator %> 
     </h2>
     <p><%= Vote.where(work_id: spotlight_work.id).length %> votes - <%= spotlight_work.description %> </p>
     </section>
 
+    <section class="top-ten-container">
     <section class="top-ten">
         <h2>Top Movies</h2>
         <ul>
@@ -53,6 +54,7 @@
                 </li>
             <% end %>
         </ul>
+    </section>
     </section>
 
     <% end %>
