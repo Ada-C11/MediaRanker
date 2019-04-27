@@ -25,19 +25,25 @@ describe User do
   end
 
   describe "relations" do
-    it "will have 0 users" do
-      expect(work.users).must_equal []
+    it "can have no votes" do
+      work = Work.new(title: "Something Else", category: "book")
+      expect(work.votes.to_a).must_equal []
     end
 
-    it "will have 1 or many users" do
-      work.users << user
-      expect(work.users).must_include user
-      expect(work.users.last.id).must_equal user.id
+    it "will have one or more votes" do
+      work.votes << votes(:two)
+      expect(work.votes.to_a).must_equal [votes(:one), votes(:two)]
+    end
+
+    it "will have relationship through votes with users" do #may need to add additional tests here
+      work.votes << votes(:two)
+      expect(work.votes.find_by(user_id: user.id).user_id).must_equal user.id
+      expect(work.users.include?(user)).must_equal true
       expect(user.works).must_include work
-      expect(user.works.last.id).must_equal work.id
+      expect(work.users).must_include user
     end
   end
 
-  describe "custom methos" do
+  describe "custom methods" do
   end
 end

@@ -6,6 +6,7 @@ one:
   creator: moglue
   publication_year: 1991
   description: boy fights tiger
+  id: 1
 
 two:
   category: book
@@ -13,3 +14,4 @@ two:
   creator: Metz Sandi
   publication_year: 2011
   description: Book on OOP
+  id: 2

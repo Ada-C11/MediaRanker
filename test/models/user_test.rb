@@ -20,14 +20,16 @@ describe User do
   end
 
   describe "relations" do
-    it "will have 0 works" do
-      expect(user.works).must_equal []
+    it "will have 0 votes" do
+      user = User.new(name: "no votes")
+      expect(user.votes).must_equal []
     end
 
-    it "will have 1 or many works" do
-      user.works << work
+    it "will have 1 or more works through votes" do
+      user.votes << votes(:two)
+      expect(user.votes.find_by(user_id: work.id).work_id).must_equal work.id
       expect(user.works).must_include work
-      expect(user.works.last.id).must_equal work.id
+      expect(user.works.find(work.id).id).must_equal work.id
       expect(work.users).must_include user
       expect(work.users.last.id).must_equal user.id
     end
