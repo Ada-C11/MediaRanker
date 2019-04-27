@@ -3,6 +3,8 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.all
+    # @works = Work.order(vote: vote)
+    # Vote.joins(:works).where(works: { vote: vote })
   end
 
   def top_media

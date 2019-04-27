@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"
 
-  get "/works/:id/upvote", to: "users#upvote", as: "upvote"
-  post "/works/:id/upvote", to: "users#upvote"
+  get "/works/:id/upvote", to: "votes#upvote", as: "upvote"
+  post "/works/:id/upvote", to: "votes#upvote"
+  # get "/works/:id/upvote", to: "users#upvote", as: "upvote"
+  # post "/works/:id/upvote", to: "users#upvote"
 end

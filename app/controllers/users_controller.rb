@@ -18,21 +18,32 @@ class UsersController < ApplicationController
     end
   end
 
-  def upvote
-    user_id = session[:user_id]
-    work_id = params[:id]
-    date = Date.today
-    vote = Vote.new(date: date, user_id: user_id, work_id: work_id)
+  #   def upvote
+  #     user_id = session[:user_id]
+  #     work_id = params[:id]
+  #     date = Date.today
+  #     vote = Vote.new(date: date, user_id: user_id, work_id: work_id)
 
-    if vote.save
-      flash[:success] = "Work has been voted!"
-    else
-      vote.errors.messages.each do |field, messeges|
-        flash.now[field] = messages
-      end
-    end
-    redirect_to work_path(work_id)
-  end
+  #     if params[:id]
+  #       if vote.save
+  #         flash[:success] = "Successfully upvoted!"
+  #       else
+  #         vote.errors.messages.each do |field, messeges|
+  #           flash.now[field] = messages
+  #         end
+  #       end
+  #       redirect_to work_path(work_id)
+  #     else
+  #       if vote.save
+  #         flash[:success] = "Successfully upvoted!"
+  #       else
+  #         vote.errors.messages.each do |field, messeges|
+  #           flash.now[field] = messages
+  #         end
+  #       end
+  #       redirect_to works_path
+  #     end
+  #   end
 
   #   def current
   #     @user = User.find_by(id: session[:user_id])
