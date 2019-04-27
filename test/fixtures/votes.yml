@@ -37,7 +37,7 @@ vote_eight:
   user: user_two
 
 vote_nine:
-  work: movie2
+  work: album2
   user: user_five
 
 vote_ten:

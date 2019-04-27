@@ -1,38 +1,35 @@
 <section class="spotlight">
-  <% spotlight = @works.sample %>
+  <% spotlight = Work.media_spotlight %>
   <h2> Media Spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %> by <%= spotlight.creator %> </h2> 
-  <p><%= rand(1..20)%> votes - Description: <%= spotlight.description %> </p>
+  <p><%= spotlight.votes.count %> votes - Description: <%= spotlight.description %> </p>
 </section>
 
 <section class="top-ten-header">
     <h2>Top Movies</h2>
-    <% top_movie = @works.sample %>
+    <% top_movies = Work.top_10("movie") %>
     <ul>
-        <li><%= top_movie.title %> by <%= top_movie.creator %></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <% top_movies.each do |movie| %>
+            <li><%= link_to movie.title, work_path(movie.id) %> by <%= movie.creator %></li>
+        <% end %>
     </ul>
 </section>
 
 <section class="top-ten-header">
     <h2>Top Books</h2>
-    <% top_book = @works.sample %>
+    <% top_books = Work.top_10("book") %>
     <ul>
-        <li><%= top_book.title %> by <%= top_book.creator %></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <% top_books.each do |book| %>
+            <li><%= link_to book.title, work_path(book.id) %> by <%= book.creator %></li>
+        <% end %>
     </ul>
 </section>
 
 <section class="top-ten-header">
     <h2>Top Album</h2>
-    <% top_album = @works.sample %>
+    <% top_albums = Work.top_10("album") %>
     <ul>
-        <li><%= top_album.title %> by <%= top_album.creator %></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <% top_albums.each do |album| %>
+            <li><%= link_to album.title, work_path(album.id) %> by <%= album.creator %></li>
+        <% end %>
     </ul>
 </section>
