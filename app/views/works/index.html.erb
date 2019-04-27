@@ -1,4 +1,4 @@
-<main>
+<main class="works-index">
     <h2>List of Works</h2>
 
 <section class="media-table">
@@ -6,11 +6,11 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Votes</th>
+                <th width=80>Votes</th>
                 <th>Title</th>
                 <th>Created By</th>
-                <th>Published</th>
-                <th>Upvote</th>
+                <th width=100>Published</th>
+                <th width=100>Upvote</th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +29,7 @@
                     <%= work.publication_year %>
                 </td>
                 <td>
-                    <%= button_to "Upvote", work_votes_path(work.id), method: :post %>
+                    <%= button_to "Upvote", work_votes_path(work.id), method: :post,  :class => "btn btn-primary" %>
                 </td>
             </tr>
         </tbody>
@@ -42,11 +42,11 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Votes</th>
+                <th width=80>Votes</th>
                 <th>Title</th>
                 <th>Created By</th>
-                <th>Published</th>
-                <th>Upvote</th>
+                <th width=100>Published</th>
+                <th width=100>Upvote</th>
             </tr>
         </thead>
         <tbody>
@@ -65,7 +65,7 @@
                     <%= work.publication_year %>
                 </td>
                 <td>
-                    <%= button_to "Upvote", work_votes_path(work.id), method: :post %>
+                    <%= button_to "Upvote", work_votes_path(work.id), method: :post, :class => "btn btn-primary" %>
                 </td>
             </tr>
         </tbody>
@@ -78,11 +78,11 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Votes</th>
+                <th width=80>Votes</th>
                 <th>Title</th>
                 <th>Created By</th>
-                <th>Published</th>
-                <th>Upvote</th>
+                <th width=100>Published</th>
+                <th width=100>Upvote</th>
             </tr>
         </thead>
         <tbody>
@@ -101,13 +101,16 @@
                     <%= work.publication_year %>
                 </td>
                 <td>
-                    <%= button_to "Upvote", work_votes_path(work.id), method: :post %>
+                    <%= button_to "Upvote", work_votes_path(work.id), method: :post,  :class => "btn btn-primary" %>
                 </td>
             </tr>
         </tbody>
         <% end %>
     </table>
 </section>
+
+<%= link_to "View top media", homepages_path, :class => "btn btn-secondary" %>
+<%= link_to "Add a new work", new_work_path, :class => "btn btn-primary" %>
 
 </main>
 
