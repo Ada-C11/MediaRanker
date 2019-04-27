@@ -14,7 +14,7 @@
     </thead>
     <% @work.votes.each do |vote| %>
       <tr>
-        <td><%= link_to (User.find(vote.user_id)).name, user_path(vote.user_id) %></td>
+        <td><%= link_to (User.find(vote.user_id)).name, users_path(vote.user_id) %></td>
         <td><%= vote.created_at %></td>
       </tr>
     <% end %>
