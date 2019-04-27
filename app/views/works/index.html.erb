@@ -14,9 +14,9 @@
 <th>Published</th>
 <th>Upvote</th>
 </tr>
-<% @works.where(category: "album").each do |album| %>
+<% Work.list_works("album").each do |album| %>
 <tr>
-<td><%= Vote.where(work_id: params[:id]).count %></td>
+<td><%= Vote.where(work_id: album.id).count %></td>
 <td><%= link_to album.title, work_path(album.id) %></td>
 <td><%= album.creator %></td>
 <td><%= album.publication_year %></td>

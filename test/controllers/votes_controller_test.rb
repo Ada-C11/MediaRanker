@@ -1,14 +1,12 @@
 require "test_helper"
 
 describe VotesController do
-  it "should get index" do
-    get votes_index_url
-    value(response).must_be :success?
-  end
+  it "should make vote" do
+    tester = votes(:vote_1)
+    @vote = Vote.new(user_id: tester.user, work_id: tester.work)
 
-  it "should get show" do
-    get votes_show_url
-    value(response).must_be :success?
+    expect {
+      post @vote
+    }.must_change "Vote.count", 1
   end
-
 end

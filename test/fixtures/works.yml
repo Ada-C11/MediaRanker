@@ -14,12 +14,11 @@ two:
   publication_year: 2011-04-22 15:54:20
   description: "please"
 
-
 <% 11.times do |n| %>
 works_<%= n %>:
   category: "album"
-  title: <%= title_#{n}%>
+  title: <%= "title_#{n}" %>
   creator: "me"
   publication_year: 2019
-  description: <%= des_#{n}%>
+  description: <%= "des_#{n}"%>
 <% end %>
