@@ -63,6 +63,11 @@ class WorksController < ApplicationController
 
   def vote
     work = Work.find_by(id: params[:id])
+    if work.nil?
+      flash[:error] = "Work no longer exists!"
+      redirect_to works_path
+      return
+    end
 
     if session[:user_id]
       user_vote_id = session[:user_id]

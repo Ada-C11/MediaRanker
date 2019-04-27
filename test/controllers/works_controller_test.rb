@@ -51,7 +51,7 @@ describe WorksController do
       expect(flash[:success]).must_equal "Work added successfully!"
     end
 
-    it "should flash and return a 400 witha an invalid work" do
+    it "should flash and return a 400 with an invalid work" do
       test_input = {
         work: {
           category: "movie",
@@ -170,6 +170,13 @@ describe WorksController do
       }.wont_change "Vote.count"
 
       expect(flash[:error]).must_equal "You must be logged in to vote!"
+    end
+
+    it "flashes an error and redirects if work is no longer valid" do
+      invalid_id = "INVALID ID"
+      post vote_path(invalid_id)
+      expect(flash[:error]).must_equal "Work no longer exists!"
+      must_redirect_to works_path
     end
   end
 end
