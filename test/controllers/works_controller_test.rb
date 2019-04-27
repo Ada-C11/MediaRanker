@@ -81,9 +81,6 @@ describe WorksController do
     }
     it "changes the data on the model" do
       work = Work.first
-      # work.assign_attributes(work_data[:work])
-      # expect(work).must_be :valid?
-      # work.reload
 
       patch work_path(work), params: work_data
 

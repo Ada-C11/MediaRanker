@@ -35,3 +35,12 @@ monkey:
   publication_year: 1995
   description: "American neo-noir science fiction film"
 
+avengers:
+  category: movie
+  title: "Avengers Infinity War"
+  creator: "Anthony Russo"
+  publication_year: 2018
+  description: "Iron Man, Thor, the Hulk and the rest of the Avengers unite to battle their most powerful enemy yet -- the evil Thanos"
+
+
+
