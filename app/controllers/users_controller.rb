@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
-  
   def login_form
     @user = User.new
+  end
+
+  def index
+    @users = User.all
   end
 
   def login

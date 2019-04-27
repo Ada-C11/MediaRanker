@@ -45,7 +45,35 @@ describe UsersController do
   end
 
   describe "show" do 
-    it "shows a user showpage"
+    it "shows a user showpage" do
+      user = User.first
+      get user_path(user.id)
+
+      must_respond_with :ok
+    end
+
+    it "responds with 404 for nonextant user" do 
+      user_id = 1337
+
+      get user_path(user_id)
+
+      must_respond_with :not_found
+    end
+  end
+
+  describe "index" do 
+    it "shows the all users list page" do 
+      get works_path
+
+      must_respond_with :ok
+    end
+
+    it "still renders page with no media present" do 
+      User.destroy_all
+
+      get works_path
+
+      must_respond_with :ok
     end
   end
 end
