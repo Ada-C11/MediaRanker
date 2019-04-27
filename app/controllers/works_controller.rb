@@ -69,7 +69,7 @@ class WorksController < ApplicationController
       if vote.save
         flash[:success] = "Successfully upvoted!"
       else
-        flash[:error] = "Could not upvote..."
+        flash[:error] = "user: has already voted for this work"
       end
     else
       flash[:error] = "You must log in to do that"

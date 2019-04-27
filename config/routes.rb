@@ -15,6 +15,4 @@ Rails.application.routes.draw do
   get "/users/current", to: "users#current", as: "current_user"
 
   resources :users, only: [:index, :show]
-
-  # post "/works/:id", to: "works#upvote", as: "upvote"
 end
