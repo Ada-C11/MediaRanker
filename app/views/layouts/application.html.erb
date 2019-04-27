@@ -14,9 +14,10 @@
       <section class="login">
         <% current_user = User.find_by(id: session[:user_id])%>
         <% if current_user.nil? %>
-          <%= link_to "login now", login_path %> 
+          <%= link_to "Log in", login_path %> 
         <% else %> 
-          <%= link_to "logout now", logout_path, method: :post %> 
+          <%= link_to "Logged in as #{current_user.username}", user_path(current_user.id) %> 
+          <%= link_to "Log Out", logout_path, method: :post %> 
         <% end %>
       </section>
       <section class="flash">
@@ -25,9 +26,10 @@
         <% end %>
       </section>
       <nav>
-        <%= link_to "Homepage",  homepages_path%>
-        <%= link_to "All works", works_path %>
-        <%= link_to "Add Work", new_work_path  %>
+        <%= link_to "View top media",  homepages_path%>
+        <%= link_to "View all media", works_path %>
+        <%= link_to "Add a new work", new_work_path %>
+        <%= link_to "View all users", users_path %>
       </nav>
     </header>
 

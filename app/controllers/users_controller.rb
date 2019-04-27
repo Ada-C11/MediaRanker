@@ -18,11 +18,21 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def current
-    @current_user = User.find_by(id: session[:user_id])
-    if @current_user.nil?
-      flash[:error] = "You must be logged in to see this page"
-      redirect_to root_path
+  # def current
+  #   @current_user = User.find_by(id: session[:user_id])
+  #   if @current_user.nil?
+  #     flash[:error] = "You must be logged in to see this page"
+  #     redirect_to root_path
+  #   end
+  # end
+
+  def show
+    @user = User.find_by(id: params[:id])
+
+    if @user.nil?
+      flash[:error] = "Unknown user"
+
+      redirect_to users_path
     end
   end
 
