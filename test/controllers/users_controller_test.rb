@@ -11,7 +11,8 @@ describe UsersController do
 
   describe "show" do
     it "can get the show page" do
-      get user_path(users.first)
+      user = users(:lilly)
+      get user_path(user)
 
       must_respond_with :success
     end

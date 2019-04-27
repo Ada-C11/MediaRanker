@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root "homepages#index"
   get "/", to: "homepages#index"
   resources :works, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-  resources :users, only: [:index, :show]
   resources :works do
     resources :votes, only: [:create]
   end
@@ -13,4 +12,5 @@ Rails.application.routes.draw do
   post "/login", to: "users#login"
   get "/users/current", to: "users#current", as: "current_user"
   post "/logout", to: "users#logout", as: "logout"
+  resources :users, only: [:index, :show]
 end
