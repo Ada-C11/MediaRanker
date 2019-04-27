@@ -1,4 +1,4 @@
-
+<!--
 <h3>List of works</h3>
 
 <h4>Albums</h4>
@@ -13,7 +13,8 @@
 <%= link_to "View top media", root_path, class:"btn btn-success" %>
 
 <%= link_to "Add a new work", new_work_path, class:"btn btn-success" %>
-<!--
+-->
+
 <section>
   <h3> Books </h3>
   <% @works.each do |work| %>
@@ -57,53 +58,9 @@
     <% end %>
   <% end %>
 </section>
--->
-<!--
-<section>
-  <table>
-    <tr>
-      <th>Title</th>
-      <th>Created by</th>
-      <th>Description</th>
-    </tr>
-    <tr>
-      <% @works.each do |work| %>
-        <% if work.category == "book" %>  
-          <td><%= link_to work.title, work_path(work.id) %>
-          <td><%= work.creator %></td>
-          <td><%= work.description %></td>
-    <% end %>
-  <% end %>
-      <td>Alfreds Futterkiste</td>
-      <td>Maria Anders</td>
-      <td>Germany</td>
-    </tr>
-    <tr>
-      <td>Centro comercial Moctezuma</td>
-      <td>Francisco Chang</td>
-      <td>Mexico</td>
-    </tr>
-    <tr>
-      <td>Ernst Handel</td>
-      <td>Roland Mendel</td>
-      <td>Austria</td>
-    </tr>
-    <tr>
-      <td>Island Trading</td>
-      <td>Helen Bennett</td>
-      <td>UK</td>
-    </tr>
-    <tr>
-      <td>Laughing Bacchus Winecellars</td>
-      <td>Yoshi Tannamuri</td>
-      <td>Canada</td>
-    </tr>
-    <tr>
-      <td>Magazzini Alimentari Riuniti</td>
-      <td>Giovanni Rovelli</td>
-      <td>Italy</td>
-    </tr>
-  </table>
-</section>
--->
+
+
+
+
+
 

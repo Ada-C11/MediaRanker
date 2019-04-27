@@ -13,6 +13,7 @@
       <tr>
         <td><%= link_to "#{user.name}", user_path(user) %></td>
         <td><%= "#{user.votes.count}" %></td>
+        <td><%= readable_date(user.created_at) %></td>
       </tr>
     <% end %>
   </tbody>

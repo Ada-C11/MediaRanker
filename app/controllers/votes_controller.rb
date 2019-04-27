@@ -6,7 +6,7 @@ class VotesController < ApplicationController
       flash[:status] = :success
       flash[:message] = "Successfully upvoted!"
 
-      redirect_to root_path
+      redirect_to work_path(params[:work_id])
     else
       flash[:status] = :failure
       if @vote.errors.messages.include?(:user_id)
