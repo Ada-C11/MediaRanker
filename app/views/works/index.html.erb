@@ -15,11 +15,11 @@
         <tbody>
             <tr>
             <% @works.each do |work| %>
-                <th scope="row"><%=work.votes.length%></th>
+                <th scope="row"><%=work.vote_count%></th>
                 <td><%= link_to work.title, work_path(work.id) %></td>
                 <td><%=work.creator%></td>
                 <td><%=work.publication_year%></td>
-                <td><%= link_to "Upvote", upvote_path(id: work.id), method: :post, class:"btn btn-success" %></td>
+                <td><%= link_to "Upvote", upvote_path(work.id), method: :post, class:"btn btn-success" %></td>
             </tr>
                 <% end %>
         </tbody>
@@ -31,7 +31,7 @@
     <ul>
 <% @works.each do |work| %>
     <% if work.category == "album" %>
-        <li><%= link_to work.title, work_path(work.id) %> <%= link_to "Upvote", upvote_path(id: work.id), method: :post, class:"btn btn-success" %></li>
+        <li><%= link_to work.title, work_path(work.id) %> </li>
     <% end %>
 <% end %>
 </ul>

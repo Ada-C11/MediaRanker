@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: "homepages#index"
 
   get "homepages/index"
+  post "/votes/:id/upvote", to: "votes#upvote", as: "upvote"
   resources :works
   resources :homepages, only: [:index]
 
@@ -11,8 +12,6 @@ Rails.application.routes.draw do
   get "/users/current", to: "users#current", as: "current_user"
 
   resources :users, only: [:index, :show]
-
-  post "/works/:id/upvote", to: "votes#upvote", as: "upvote"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
