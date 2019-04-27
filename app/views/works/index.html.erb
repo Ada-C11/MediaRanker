@@ -1,6 +1,33 @@
 <h1>List of Works</h1>
 
 <h2>Albums:</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Votes</th>
+                <th scope="col">Title</th>
+                <th scope="col">Created By</th>
+                <th scope="col">Publish</th>
+                <th scope="col">Upvote</th>
+            </tr>
+        </thead>  
+        <tbody>
+            <tr>
+            <% @works.each do |work| %>
+                <th scope="row">Votes</th>
+                <td><%= link_to work.title, work_path(work.id) %></td>
+                <td><%=work.creator%></td>
+                <td><%=work.publication_year%></td>
+                <td><%= link_to "Upvote", upvote_path(id: work.id), method: :post, class:"btn btn-success" %></td>
+            </tr>
+                <% end %>
+        </tbody>
+    </table>      
+
+
+
+
     <ul>
 <% @works.each do |work| %>
     <% if work.category == "album" %>
