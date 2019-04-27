@@ -12,7 +12,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    # @work = Work.find_by(id: params[:id])
     if @work.nil?
       flash[:error] = "Unknown work!"
       redirect_to works_path
@@ -37,11 +36,9 @@ class WorksController < ApplicationController
   end
 
   def edit
-    # @work = Work.find_by(id: params[:id])
   end
 
   def update
-    # @work = Work.find_by(id: params[:id])
     if @work.update(work_params)
       flash[:success] = "Work updated successfully!"
       redirect_to work_path(@work.id)
@@ -54,7 +51,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    # work = Work.find_by(id: params[:id])
     if @work.nil?
       flash[:error] = "Work already does not exist."
     else
@@ -64,7 +60,6 @@ class WorksController < ApplicationController
   end
 
   def vote
-    # work = Work.find_by(id: params[:id])
     if @work.nil?
       flash[:error] = "Work no longer exists!"
       redirect_to works_path

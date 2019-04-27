@@ -1,27 +1,28 @@
-<h2 class="user-show">User Summary: <%= @user.username %></h2>
-<p>Joined Site: <%= @user.created_at %></p>
-<h3 class="user-show"> Votes </h3>
+<main id="user-show">
+    <h2 class="user-show">User Summary: <%= @user.username %></h2>
+    <p>Joined Site: <%= @user.created_at %></p>
+    <h3 class="user-show"> Votes </h3>
 
-<table class="user-show-table">
-    <thead>
-        <tr>
-            <th>Media Title</th>
-            <th>Created By</th>
-            <th>Published</th>
-            <th>Category</th>
-            <th>Voted On</th>
-        </th>
-    </thead>
-    <tbody>
-        <tr>
-        <% @user.works.each do |work|%>
-            <th><%= link_to work.title, work_path(work.id) %></th>
-            <th><%= work.creator %></th>
-            <th><%= work.publication_year %></th>
-            <th><%= work.category %></th>
-            <%# find date that the user voted on the work%>
-            <th><%= time_tag(Vote.find_by(user_id: @user.id).created_at.to_date) %></th>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
+    <table class="user-show-table">
+        <thead>
+            <tr>
+                <th>Media Title</th>
+                <th>Created By</th>
+                <th>Published</th>
+                <th>Category</th>
+                <th>Voted On</th>
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+            <% @user.works.each do |work|%>
+                <th><%= link_to work.title, work_path(work.id) %></th>
+                <th><%= work.creator %></th>
+                <th><%= work.publication_year %></th>
+                <th><%= work.category %></th>
+                <th><%= time_tag(Vote.find_by(user_id: @user.id).created_at.to_date) %></th>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</main>
