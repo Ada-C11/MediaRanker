@@ -5,7 +5,23 @@
 
 
 
-<%= link_to "Back to media ranks", root_path %>
+<h4><%= @work.votes.length %> votes for this <%= @work.category %></h4>
+<section class="vote-details">
+  <table class="table"> 
+    <thead>
+      <tr>
+        <th scope="col">User</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <% @work.votes.each do |vote| %>
+      <tr>
+        <td><%= link_to (User.find(vote.user_id)).name, user_path(vote.user_id) %></td>
+        <td><%= vote.created_at %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
 
 <%= link_to "Edit", edit_work_path(@work.id) %>
 
