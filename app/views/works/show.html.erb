@@ -1,0 +1,19 @@
+<h2><%= @work.title %></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year %></p>
+    <p><%= @work.description %></p>
+
+
+
+<a class="btn btn-primary" href="root_path">Back to media ranks</a>
+<a class="btn btn-primary" href="edit_work_path">Edit</a>
+<%# <a class="btn btn-primary" href="">Upvote</a>
+<a class="btn btn-primary" href="">Delete</a> %>
+
+<table>
+    <h2>ADD Votes for this <%= @work.category %></h2>
+    <tr>
+        <th>User</th>
+        <th>Date</th>
+    </tr>
+</table>

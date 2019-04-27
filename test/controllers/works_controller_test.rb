@@ -82,4 +82,23 @@ describe "WorksController" do
       check_flash(:error)
     end
   end
+
+  describe "show" do
+    it "returns a 404 status code if the work doesn't exist" do
+      # TODO come back to this
+      work_id = -1
+
+      get work_path(work_id)
+
+      must_respond_with :not_found
+    end
+
+    it "works for a work that exists" do
+      work = Work.first
+      get work_path(work.id)
+
+      # Assert
+      must_respond_with :ok
+    end
+  end
 end
