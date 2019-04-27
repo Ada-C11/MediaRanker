@@ -89,6 +89,16 @@ describe Work do
 
         expect(top_works.length).must_equal 1
       end
+
+      it "includes works with zero votes if the there are 10+ works in category but not all have been voted on" do
+        works = Work.all
+        works.first.votes << vote_one
+        works[1].votes << vote_two
+        top_works = Work.top_ten(works, works.first.category)
+        expect(top_works.length).must_equal works[0..9].length
+        expect(top_works).must_include works[9]
+        expect(top_works).must_include works[3]
+      end
     end
   end
 end

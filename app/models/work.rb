@@ -20,6 +20,9 @@ class Work < ApplicationRecord
 
   def self.top_ten(works, category)
     top_works = []
+    if works.nil?
+      return []
+    end
     sorted_works = works.order(:vote_count).reverse
     sorted_works.each do |work|
       if work.category == category
