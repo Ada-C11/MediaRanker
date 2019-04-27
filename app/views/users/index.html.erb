@@ -11,7 +11,7 @@
 <tr>
 <td><%=link_to "#{user.username}", user_path(user.id)%></td>
 <td><%=User.vote_count(user)%></td>
-<td><%=user.created_at.to_date.to_formatted_s(:rfc822)%></td>
+<td><%=user.created_at.strftime("%b %d, %Y")%></td>
 <%end%>
 </tbody>
 </table>

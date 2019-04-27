@@ -19,7 +19,7 @@
 <%@work.users.each do |user|%>
 <tr>
 <td><%=link_to "#{user.username}", user_path(user.id)%></td>
-<td><%=Vote.vote(user,@work).created_at.to_date.to_formatted_s(:rfc822)%>
+<td><%=Vote.vote(user,@work).created_at.strftime("%b %d, %Y")%>
 </tr>
 <%end%>
 </table>
