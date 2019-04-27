@@ -1,9 +1,9 @@
 require "test_helper"
+require "pry"
 
 describe Work do
+  let(:work) { works(:one) }
   describe "validations" do
-    let(:work) { works(:one) }
-
     it "must be valid" do
       value(work).must_be :valid?
     end
@@ -45,12 +45,25 @@ describe Work do
 
   describe "top_media" do
     it "will return work with the most votes" do
+      work_two = works(:two)
+      top_work = Work.top_media
+      expect(top_work).must_equal work_two
+      expect(top_work.title).must_equal "Homecoming"
     end
     it "will return the first work if there are no votes" do
+      Vote.delete_all
+      expect(Work.top_media).must_equal works(:one)
     end
     it "will return the first work if there is a tie" do
+      Vote.delete_all
+      vote = Vote.create(work_id: works(:one), user_id: users(:user1))
+      vote = Vote.create(work_id: works(:two), user_id: users(:user1))
+      expect(Work.top_media).must_equal works(:one)
     end
     it "will return nil if there are no works" do
+      Vote.delete_all
+      Work.delete_all
+      expect(Work.top_media).must_equal nil
     end
   end
 
@@ -59,7 +72,7 @@ describe Work do
     end
     it "will sort works in descending order" do
     end
-    it "will return a list of ten works max" do
+    it "will return a list of ten works" do
     end
     it "will return an empty array if there are no works in that category" do
     end

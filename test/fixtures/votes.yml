@@ -33,18 +33,18 @@ vote_7:
   work: two
   user: user7
 
-# vote_8: 
-#   work: two
-#   user: user8
+vote_8: 
+  work: seven
+  user: user8
 
-# vote_9: 
-#   work: two
-#   user: user9
+vote_9: 
+  work: eight
+  user: user9
 
-# vote_10: 
-#   work: two
-#   user: user10
+vote_10: 
+  work: nine
+  user: user10
 
-# vote_11: 
-#   work: two
-#   user: user11
+vote_11: 
+  work: ten
+  user: user11

@@ -27,3 +27,59 @@ four:
   publication_year: 2018
   creator: Leni Zumas
   title: Red Clocks
+
+five:
+  category: album
+  description: Sweet slow jams
+  publication_year: 1972
+  creator: Bonnie Raitt
+  title: Sweet Forgiveness
+
+six:
+  category: movie
+  description: Incredible
+  publication_year: 2019
+  creator: Beyonce
+  title: Homecoming
+
+seven:
+  category: book
+  description: millenial office drama
+  publication_year: 2019
+  creator: Halle Butler
+  title: The New Me
+
+eight:
+  category: book
+  description: speculative fiction
+  publication_year: 2018
+  creator: Leni Zumas
+  title: Red Clocks
+
+nine:
+  category: album
+  description: Sweet slow jams
+  publication_year: 1972
+  creator: Bonnie Raitt
+  title: Sweet Forgiveness
+
+ten:
+  category: movie
+  description: Incredible
+  publication_year: 2019
+  creator: Beyonce
+  title: Homecoming
+
+eleven:
+  category: book
+  description: millenial office drama
+  publication_year: 2019
+  creator: Halle Butler
+  title: The New Me
+
+twelve:
+  category: book
+  description: speculative fiction
+  publication_year: 2018
+  creator: Leni Zumas
+  title: Red Clocks
