@@ -34,7 +34,7 @@ describe Work do
       list_all_movies = Work.media_votes("movie")
       expect(list_all_movies[0]).must_equal monkey
       expect(list_all_movies[1]).must_equal works(:avengers)
-      expect(list_all_movies[2]).must_equal works(:movie)
+      expect(list_all_movies[2]).must_equal works(:random8)
     end
 
     it "returns an empty array if category doesnt exist" do
@@ -45,6 +45,18 @@ describe Work do
     it "returns an empty array if no works associated with that category" do
       list_all_movies = Work.media_votes("album")
       expect(list_all_movies).must_equal []
+    end
+  end
+
+  describe "#top_ten_media_votes" do
+    it "returns only ten media if there are ten or more media in that category" do
+      list_all_movies = Work.top_ten_media_votes("movie")
+      expect(list_all_movies.length).must_equal 10
+    end
+
+    it "return less than ten media if the total works for a given category is less than ten" do
+      list_all_movies = Work.top_ten_media_votes("book")
+      expect(list_all_movies.length).must_be :<, 10
     end
   end
 
