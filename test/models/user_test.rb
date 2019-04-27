@@ -8,20 +8,20 @@ describe User do
       expect(user.valid?).must_equal true
     end
 
-    it "will not be valid without name" do
-      user.name = nil
+    it "will not be valid without username" do
+      user.username = nil
       expect(user.save).must_equal false
     end
 
-    it "will not be valid with same name twice" do
-      user_new = User.new(name: user.name)
+    it "will not be valid with same username twice" do
+      user_new = User.new(username: user.username)
       expect(user_new.save).must_equal false
     end
   end
 
   describe "relations" do
     it "will have 0 votes" do
-      user = User.new(name: "no votes")
+      user = User.new(username: "no votes")
       expect(user.votes).must_equal []
     end
 
