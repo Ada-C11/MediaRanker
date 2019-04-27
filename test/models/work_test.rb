@@ -45,4 +45,12 @@ describe Work do
       expect(work.users.count).must_equal 2
     end
   end
+
+  describe "custom methods" do
+    describe "media_spotlight" do
+    end 
+
+    describe "top_ten" do
+    end 
+  end
 end
