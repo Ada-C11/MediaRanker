@@ -4,30 +4,14 @@ class Work < ApplicationRecord
   validates :category, presence: true
 
   def self.get_top
-    length = Work.all.length
-    return [] if length == 0
-    if length < 10
-      all_works_by_category = Work.all.sample(length)
-    else
-      all_works_by_category = Work.all.sample(10)
-    end
-    # work_id_votes = Hash.new
-    # votes = []
-    # all_works_by_category.each do |work|
-    #   work_id_votes[work.id] = work.votes.length
-    #   votes << work.votes.length
-    # end
-    # sorted_votes = votes.sort
-    # top_10_work = []
-    # 10.times do |index|
-    #   sorted_votes.each do |num_votes|
-    #     top_10_work << work_id_votes.key(num_votes)
-    #   end
-    # end
-    # return top_10_work
+    @works = Work.find_by_sql("SELECT COUNT(votes.work_id), works.id, title, creator, publication_year, category 
+                              FROM works LEFT JOIN votes 
+                              ON works.id = votes.work_id 
+                              GROUP BY works.id, title, creator, publication_year, category 
+                              ORDER BY COUNT(votes.work_id) desc")
   end
 
-  def self.spotlight
-    return Work.all.sample(1)
-  end
+  # def self.spotlight
+  #   return Work.all.sample(1)
+  # end
 end

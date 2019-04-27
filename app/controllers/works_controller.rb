@@ -1,16 +1,12 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
+  before_action :all_works_sorted_by_votes, only: [:index, :top_media]
 
   def index
-    @works = Work.find_by_sql("SELECT COUNT(votes.work_id), works.id, title, creator, publication_year, category 
-                              FROM works LEFT JOIN votes 
-                              ON works.id = votes.work_id 
-                              GROUP BY works.id, title, creator, publication_year, category 
-                              ORDER BY COUNT(votes.work_id) desc")
   end
 
   def top_media
-    @top_works = Work.get_top
+    @top_works = @works
   end
 
   def show
@@ -67,6 +63,10 @@ class WorksController < ApplicationController
   end
 
   private
+
+  def all_works_sorted_by_votes
+    @works = Work.get_top
+  end
 
   def find_work
     @work = Work.find_by(id: params[:id])

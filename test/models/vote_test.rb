@@ -54,4 +54,18 @@ describe Vote do
       expect(vote.work).must_equal work
     end
   end
+
+  describe "upvote" do
+    it "can upvote a work" do
+      expect {
+        Vote.upvote(date: Date.today, work_id: Work.first.id, user_id: User.first.id)
+      }.must_change "Vote.count", 1
+    end
+
+    it "return nil if the user has already voted the work" do
+      Vote.upvote(date: Date.today - 3, work_id: Work.first.id, user_id: User.first.id)
+      vote = Vote.upvote(date: Date.today, work_id: Work.first.id, user_id: User.first.id)
+      expect(vote).must_equal nil
+    end
+  end
 end
