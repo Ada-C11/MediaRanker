@@ -10,7 +10,7 @@ describe WorksController do
       # Arrange
 
       # Act
-      get works_path(@work)
+      get works_path
 
       # Assert
       must_respond_with :ok
@@ -21,7 +21,7 @@ describe WorksController do
       Work.destroy_all
 
       # Act
-      get works_path(@work)
+      get works_path
 
       # Assert
       must_respond_with :ok

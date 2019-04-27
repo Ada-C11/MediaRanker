@@ -22,7 +22,6 @@ class UsersController < ApplicationController
     @user = User.find_by(username: username)
     @user ||= User.create(username: username)
     result = @user.save
-    # binding.pry
     if result
       session[:user_id] = @user.id
       flash[:status] = :success
