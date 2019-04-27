@@ -3,23 +3,7 @@
 <p>Published:<%= @work.publication_year %></p>
 <p><%= @work.description %></p>
 
-<h4><%= @work.votes.length %> votes for this <%= @work.category.upcase %></h4>
-<section class="vote-details">
-  <table class="table"> 
-    <thead>
-      <tr>
-        <th scope="col">User</th>
-        <th scope="col">Date</th>
-      </tr>
-    </thead>
-    <% @work.votes.each do |vote| %>
-      <tr>
-        <td><%= link_to (User.find(vote.user_id)).name, user_path(vote.user_id) %></td>
-        <td><%= vote.created_at %></td>
-      </tr>
-    <% end %>
-  </table>
-</section>
+
 
 <%= link_to "Back to media ranks", root_path %>
 
