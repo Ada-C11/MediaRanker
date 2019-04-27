@@ -13,7 +13,7 @@
     <tr>
         <th class="username-link"><%= link_to user.username, user_path(user.id) %></th>
         <th><%= user.vote_counter%></th>
-        <th><%= user.created_at%></th>
+        <th><%= time_tag(user.created_at.to_date)%></th>
     </tr>
     <% end %>
     </tbody>
