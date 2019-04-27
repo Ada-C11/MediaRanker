@@ -2,6 +2,9 @@
 <% movies = Work.where(category: "movie") %>
 <% books = Work.where(category: "book") %>
 
+<h1>Top Media</h1>
+<% top_work = Work.top_media %>
+<%= top_work.title %>
 <h2>Top Movies</h2>
 <% top_movies = movies.sample(10)%>
 <% if top_movies.empty? %>

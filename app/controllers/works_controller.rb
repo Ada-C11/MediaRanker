@@ -1,12 +1,12 @@
 class WorksController < ApplicationController
   def index
-    # if params[:user_id]
-    #   user = User.find(params[:user_id])
-    #   user_votes = user.votes
-    #   @works = user_votes.map { |vote| Work.find(vote.work_id) }
-    # else
-    @works = Work.all.sort_by { |work| work.vote_ids.length }.reverse!
-    # end
+    if params[:user_id]
+      user = User.find(params[:user_id])
+      user_votes = user.votes
+      @works = user_votes.map { |vote| Work.find(vote.work_id) }
+    else
+      @works = Work.all.sort_by { |work| work.vote_ids.length }.reverse!
+    end
   end
 
   def show
