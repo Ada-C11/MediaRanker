@@ -1,6 +1,10 @@
 require "test_helper"
 
 describe "WorksController" do
+  before do
+    @work = Work.first
+  end
+
   describe "index" do
     it "renders without crashing" do
       # Arrange
@@ -94,8 +98,7 @@ describe "WorksController" do
     end
 
     it "works for a work that exists" do
-      work = Work.first
-      get work_path(work.id)
+      get work_path(@work.id)
 
       # Assert
       must_respond_with :ok
@@ -104,8 +107,7 @@ describe "WorksController" do
 
   describe "edit" do
     it "responds with OK for a real work" do
-      work = Work.first
-      get edit_work_path(work)
+      get edit_work_path(@work)
       must_respond_with :ok
     end
 
@@ -113,6 +115,55 @@ describe "WorksController" do
       work_id = Work.last.id + 1
       get edit_work_path(work_id)
       must_respond_with :not_found
+    end
+  end
+
+  describe "update" do
+    let (:work_data) {
+      {
+        work: {
+          title: "Updated Title",
+        },
+      }
+    }
+
+    it "changes the data on the work given valid info" do
+      @work.assign_attributes(work_data[:work])
+      expect(@work).must_be :valid?
+      @work.reload
+
+      patch work_path(@work), params: work_data
+
+      must_respond_with :redirect
+      must_redirect_to work_path(@work)
+
+      check_flash
+
+      @work.reload
+      expect(@work.title).must_equal(work_data[:work][:title])
+    end
+
+    it "responds with NOT FOUND for a fake work" do
+      work_id = Work.last.id + 1
+      patch work_path(work_id), params: work_data
+      must_respond_with :not_found
+    end
+
+    it "responds with BAD REQUEST for bad data" do
+      work_data[:work][:title] = ""
+
+      # Assumptions
+      @work.assign_attributes(work_data[:work])
+      expect(@work).wont_be :valid?
+      @work.reload
+
+      # Act
+      patch work_path(@work), params: work_data
+
+      # Assert
+      must_respond_with :bad_request
+
+      check_flash(:error)
     end
   end
 end
