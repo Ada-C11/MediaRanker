@@ -13,9 +13,9 @@ class Work < ApplicationRecord
   end
 
   # logic for top ten votes
-  # def self.top_ten(category)
-  #   return self.where(category: category).max_by { |work| work.upvotes.length }
-  # end
+  def self.list(category)
+    return self.where(category: category)
+  end
 
   def self.spotlight
     max_votes = self.all.max_by { | work |

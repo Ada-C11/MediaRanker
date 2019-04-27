@@ -69,7 +69,7 @@
             <%= album.publication_year %>
           </td>
           <td> 
-            <%= "Upvotes" %>
+            <%= link_to "Upvote",  work_upvotes_path(album.id), method: :post %>
           </td>
         </tr>
       <% end %>

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root to: "homepages#index"
 
-  resources :works
-  # custom upvote method
-  post "works/:id/upvote", to: 'upvotes#upvote', as: 'upvote'
+  resources :works do
+    resources :upvotes, only: [:create]
+  end
   
   # user routes
   resources :users, only: [:index, :show]

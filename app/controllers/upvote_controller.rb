@@ -1,6 +1,6 @@
 class UpvoteController < ApplicationController
   
-  def upvote
+  def create
     current_user = session[:user_id]
 
     unless current_user
@@ -10,20 +10,22 @@ class UpvoteController < ApplicationController
       return
     end
 
-    if valid_vote(current_user)
-      vote = Vote.new(user_id: current_user, work_id: params[:id])
-      vote.save
-    else
-      flash[:status] = :success
-      flash[:message] = "Successfully upvoted!"
-    end
+    #   media = Vote.where(work_id: params[:work_id])
+    #   already_voted = media.users.find_by(id: user_id)
+
+    # if !already_voted
+    #   vote = Vote.new(user_id: current_user, work_id: params[:work_id])
+    #   vote.save
+    # else
+    #   flash[:status] = :success
+    #   flash[:message] = "You already upvoted this item!"
+    # end
+
+    
   end
 end
 
 private
   def valid_vote(user_id)
-    media = Vote.where(work_id: params[:id])
-    already_voted = media.users.find_by(id: user_id)
-
     return already_voted
   end
