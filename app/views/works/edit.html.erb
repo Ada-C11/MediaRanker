@@ -1,8 +1,9 @@
-<section class="edit_work">
-<h2>Edit This Work</h2>
-
+<main>
+    <h2>Edit This <%= @work.category.capitalize %> </h2>
+<section>
 <%= render partial: "form", locals: {
     form_class: "edit-work", 
     action_name: "Edit Work"
     } %>
 </section>
+</main>
