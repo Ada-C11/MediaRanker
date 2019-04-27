@@ -1,15 +1,21 @@
 class VotesController < ApplicationController
   def upvote
-    user_id = session[:user_id]
-    work_id = params[:id]
-    date = Date.today
-    vote = Vote.upvote(date: date, work_id: work_id, user_id: user_id)
-
-    if vote
-      flash[:success] = "Successfully upvoted!"
+    user = User.find_by(id: session[:user_id])
+    if user.nil?
+      flash[:error] = "You need to log in to upvote!"
     else
-      flash[:error] = "You have already upvoted this work!"
+      work_id = params[:id]
+      date = Date.today
+      user_id = user.id
+      vote = Vote.upvote(date: date, work_id: work_id, user_id: user_id)
+
+      if vote
+        flash[:success] = "Successfully upvoted!"
+      else
+        flash[:error] = "You have already upvoted this work!"
+      end
     end
+
     redirect_back fallback_location: works_path
   end
 end
