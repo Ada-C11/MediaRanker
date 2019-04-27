@@ -1,76 +1,62 @@
-<h1>Media Ranker Homepage</h1>
-<p>Spotlight Search coming soon...</p>
-<p>All media, listed by media type</p>
-
+<main>
 <% if @works.empty? %>
-    <h2> No media </h2>
+    <h2> There is no media to rank, please add some! </h2>
 <% else %>
     <section class="spotlight">
-    <h2>Spotlight Title</h2>
-        <ul>
-            <li>
-                Title: <%= link_to Work.highest_vote.title, work_path(Work.highest_vote.id) %>
-            </li>
-            <li>
-                Creator: <%= Work.highest_vote.creator %>
-            </li>
-            <li>
-                Votes: <%= Vote.where(work_id: Work.highest_vote.id).length %>
-            </li>
-        </ul>
+    <% spotlight_work = Work.highest_vote %>
+    <h2>Media Spotlight 
+        <%= link_to spotlight_work.title, work_path(spotlight_work.id) %> by <%= spotlight_work.creator %> 
+    </h2>
+    <p><%= Vote.where(work_id: spotlight_work.id).length %> votes - <%= spotlight_work.description %> </p>
     </section>
 
-    <section class="albums">
-    <h2>Albums</h2>
-        <ul>
-            <% Work.top_ten("album").each do |work|%>
-                <li>
-                    Title: <%= link_to work.title, work_path(work.id) %>  
-                </li>
-                <li>
-                    Creator: <%= work.creator %>
-                </li>
-                <li>
-                    Votes: <%= Vote.where(work_id: work.id).length %>
-                </li>
-            <% end %>
-        </ul>
-    </section>
-
-    <section class="books">
-    <h2>Books</h2>
-        <ul>
-            <% Work.top_ten("book").each do |work|%>
-                <li>
-                    Title: <%= link_to work.title, work_path(work.id) %>  
-                </li>
-                <li>
-                    Creator: <%= work.creator %>
-                </li>
-                <li>
-                    Votes: <%= Vote.where(work_id: work.id).length %>
-                </li>
-            <% end %>
-        </ul>
-    </section>
-
-    <section class="movies">
-    <h2>Movies</h2>
+    <section class="top-ten">
+        <h2>Top Movies</h2>
         <ul>
             <% Work.top_ten("movie").each do |work|%>
                 <li>
-                    Title: <%= link_to work.title, work_path(work.id) %>  
-                </li>
-                <li>
-                    Creator: <%= work.creator %>
-                </li>
-               <li>
-                    Votes: <%= Vote.where(work_id: work.id).length %>
+                    <h4>
+                        <%= link_to work.title, work_path(work.id) %>  
+                        <small> by <%= work.creator %> </small>
+                    </h4>
+                    <p><%= Vote.where(work_id: work.id).length %> votes</p>
                 </li>
             <% end %>
         </ul>
     </section>
+
+    <section class="top-ten">
+        <h2>Top Books</h2>
+        <ul>
+            <% Work.top_ten("book").each do |work|%>
+                <li>
+                    <h4>
+                        <%= link_to work.title, work_path(work.id) %>  
+                        <small> by <%= work.creator %> </small>
+                    </h4>
+                    <p><%= Vote.where(work_id: work.id).length %> votes</p>
+                </li>
+            <% end %>
+        </ul>
+    </section>
+
+    <section class="top-ten">
+        <h2>Top Albums</h2>
+        <ul>
+            <% Work.top_ten("album").each do |work|%>
+                <li>
+                    <h4>
+                        <%= link_to work.title, work_path(work.id) %>  
+                        <small> by <%= work.creator %> </small>
+                    </h4>
+                    <p><%= Vote.where(work_id: work.id).length %> votes</p>
+                </li>
+            <% end %>
+        </ul>
+    </section>
+
     <% end %>
+    </main>
 
 
 
