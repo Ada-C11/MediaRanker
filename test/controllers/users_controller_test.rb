@@ -25,16 +25,42 @@ describe UsersController do
 
   describe "users#login_form" do
     it "will get to log in page" do
+      get login_user_path
+      must_respond_with :success
     end
   end
 
-  #   describe "users#login" do
-  #     it "will create a new user if username does not exist" do
-  #     end
+  describe "users#login" do
+    it "will create a new user if username does not exist" do
+      params = { user: { username: "new_user" } }
+      expect {
+        post login_user_path params: params
+      }.must_change "User.count", 1
+      user = User.last
 
-  #     it "will update session user to previously created user" do
-  #     end
-  #   end
+      expect(user.username).must_equal params[:user][:username]
+      expect(flash[:success]).must_equal "Successfully created new user #{user.username} new with ID #{user.id}"
+
+      must_redirect_to root
+    end
+
+    it "will login existing user" do
+      username = user.username
+      params = { user: { username: username } }
+
+      expect {
+        post login_user_path params: params
+      }.must_change "User.count", 0
+
+      user = User.find_by(username: username)
+      expect(user.username).must_equal params[:user][:username]
+
+      expect(flash[:success]).must_equal "Successfully logged in as existing user #{user.username}"
+    end
+
+    #     it "will update session user to previously created user" do
+    #     end
+  end
 
   #   describe "user#logout" do
   #     it "will log out user" do
