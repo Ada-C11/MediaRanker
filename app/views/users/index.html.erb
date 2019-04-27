@@ -1,14 +1,17 @@
-<section class="all-users">
+<main>
 <h2>List of Users</h2>
-    <table class="user-table">
-        <tr>
-            <th>Username</th>
-            <th>Votes</th>
-            <th>Joined</th>
-        </tr>
-    <% users = User.all %>
-        <tr>
-            <% users.each do |user|%>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Votes</th>
+                <th>Joined</th>
+            </tr>
+        </thead>
+        <% users = User.all %>
+        <tbody>
+            <tr>
+                <% users.each do |user|%>
                 <td>
                     <%= link_to user.username, user_path(user.id)%>   
                 </td>
@@ -18,7 +21,10 @@
                 <td>
                     <%= (user.created_at).strftime("%B %d, %Y")%>
                 </td>
-        </tr>
+            </tr>
             <% end %>
+        </tbody>
     </table>
-</section>
+
+    <%= button_to "Back to Media List", works_path %>
+</main>
