@@ -8,4 +8,8 @@ class Work < ApplicationRecord
   def self.movies
     where(category: "movie")
   end
+
+  def self.spotlight
+    all.first
+  end
 end
