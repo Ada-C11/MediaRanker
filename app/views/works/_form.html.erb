@@ -1,12 +1,18 @@
 <%= form_with model: @work do |f| %>
-  <div class="form-group row ">
-    <%= f.label :category, "Category"%>
-    <%= f.select :category, ["book", "movie", "album"], class: "form-control"  %>
+  <div class="form-group row">
+    <%# <%= f.label :category, "Category"%> 
+    <%# <%= f.select :category, ["book", "movie", "album"], class: "form-control browser-default custom-select" %> 
+    <label>Category:</label>
+    <select class="form-control" name="work[category]">
+      <option>book</option>
+      <option>movie</option>
+      <option>album</option>
+    </select>
   </div>
+
   <div class="form-group row">
     <%= f.label :title, "Title" %>
     <%= f.text_field :title, class: "form-control" %>
-        <%# <%= f.input :title, type: "text", class: "form-control" %> 
   </div>
   <div class="form-group row">
     <%=f.label :creator, "Created by" %>
@@ -17,8 +23,8 @@
     <%= f.text_field :publication_year, class: "form-control"  %>
   </div>
   <div class="form-group row">
-  <%# <div class="space"></div> %>
     <%= f.submit "Submit", class: "btn btn-primary"%>
   </div>
 
 <% end %> 
+
