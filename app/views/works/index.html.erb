@@ -20,7 +20,7 @@
                       <%= work.votes.count %>
                   </td>
                   <td>
-                      <%= work.title %>
+                      <%= link_to work.title, work_path(work.id) %>
                   </td>
                   <td>
                       <%= work.creator %>
@@ -57,7 +57,7 @@
                       <%= work.votes.count %>
                   </td>
                   <td>
-                      <%= work.title %>
+                      <%= link_to work.title, work_path(work.id) %>
                   </td>
                   <td>
                       <%= work.creator %>
@@ -94,7 +94,7 @@
                       <%= work.votes.count %>
                   </td>
                   <td>
-                      <%= work.title %>
+                      <%= link_to work.title, work_path(work.id) %>
                   </td>
                   <td>
                       <%= work.creator %>

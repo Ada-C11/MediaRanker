@@ -10,3 +10,23 @@
 <%= link_to "Upvote", upvote_work_path(@work.id), method: :post, class: "btn btn-primary" %>
 
 <%= link_to 'Delete', work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+
+<section class="works-votes__container">
+    <h3><%= @work.votes.count %> Votes for this <%= @work.category %></h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @work.users.each do |voter| %>
+                <tr>
+                    <th> <%= voter.username %> </th>
+                    <th> <%= voter.created_at %> </th>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</section>

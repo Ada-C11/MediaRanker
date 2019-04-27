@@ -73,7 +73,6 @@ class WorksController < ApplicationController
       end
     else
       flash[:error] = "You must log in to do that"
-      # send a flash error message saying they cannot vote unless signed in
     end
 
     redirect_back fallback_location: works_url
