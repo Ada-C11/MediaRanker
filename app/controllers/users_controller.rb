@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     end
     session[:user_id] = @user.id
 
-    redirect_to current_user_path
+    redirect_to root_path
   end
 
   def current
@@ -38,6 +38,6 @@ class UsersController < ApplicationController
 
   def logout
     session[:user_id] = nil
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
 end

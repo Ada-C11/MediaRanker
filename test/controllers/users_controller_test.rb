@@ -37,7 +37,7 @@ describe UsersController do
     it "Will respond with redirect" do
       post login_path(@login_data)
 
-      must_redirect_to current_user_path
+      must_redirect_to root_path
     end
     it "will login a returning user" do
       post login_path(@login_data)
@@ -87,7 +87,7 @@ describe UsersController do
 
       post logout_path
 
-      must_redirect_to root_path
+      must_respond_with :redirect
       expect(session[:user_id]).must_equal nil
     end
 

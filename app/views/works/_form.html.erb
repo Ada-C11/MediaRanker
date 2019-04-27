@@ -4,9 +4,9 @@
     <%# <%= f.select :category, ["book", "movie", "album"], class: "form-control browser-default custom-select" %> 
     <label>Category:</label>
     <select class="form-control" name="work[category]">
+      <option>album</option>
       <option>book</option>
       <option>movie</option>
-      <option>album</option>
     </select>
   </div>
 
@@ -19,11 +19,15 @@
     <%= f.text_field :creator, class: "form-control"  %>
   </div>
   <div class="form-group row">
-    <%=f.label :publication_year, "Published" %>
+    <%=f.label :publication_year, "Publication year" %>
     <%= f.text_field :publication_year, class: "form-control"  %>
   </div>
+    <div class="form-group row">
+    <%=f.label :description, "Description" %>
+    <%= f.text_field :description, class: "form-control"  %>
+  </div>
   <div class="form-group row">
-    <%= f.submit "Submit", class: "btn btn-primary"%>
+    <%= f.submit "Create Work", class: "btn btn-primary"%>
   </div>
 
 <% end %> 
