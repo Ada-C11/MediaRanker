@@ -1,28 +1,34 @@
-<h1>Homepages#index</h1>
+<h1>Media Spotlight</h1>
 
 
 <div>
-<h2>Top Albums:</h2>
-    <ul>
-<% @works.top_ten("album").each do |work| %>
-        <li>
-        <%= work.title %>
-        </li>
-    <% end %>
-
-</ul>
+    <h2>Top Albums:</h2>
+        <ul>
+        <% @works.top_ten("album").each do |work| %>
+            <li>
+            <%= link_to work.title, work_path(work.id) %>
+            by
+            <%= work.creator%>
+           
+            <br>
+            <%=work.vote_count%> votes
+             </li>
+            <% end %>
+        </ul>
 </div>
 
 <div>
-<h2>Top Books:</h2>
-    <ul>
-<% @works.top_ten("book").each do |work| %>
-        <li>
-        <%= work.title %>
-        </li>
-    <% end %>
+    <h2>Top Books:</h2>
+        <ul>
+        <% @works.top_ten("book").each do |work| %>
+            <li>
+            <%= link_to work.title, work_path(work.id) %>
+            by
+            <%= work.creator%>
+            </li>
+            <% end %>
 
-</ul>
+        </ul>
 </div>
 
 <div>
