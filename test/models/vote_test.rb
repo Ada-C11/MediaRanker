@@ -1,9 +1,11 @@
 require "test_helper"
 
 describe Vote do
-  let(:vote) { Vote.new }
+  let(:vote) { votes(:vote_one) }
 
   it "must be valid" do
-    value(vote).must_be :valid?
+    valid_vote = vote.valid?
+
+    expect(valid_vote).must_equal true
   end
 end
