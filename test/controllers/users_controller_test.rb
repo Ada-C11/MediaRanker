@@ -8,6 +8,14 @@ describe UsersController do
       must_respond_with :success
     end
   end
+
+  describe "show" do
+    it "can get the show page" do
+      get user_path(users.first)
+
+      must_respond_with :success
+    end
+  end
   describe "login_form" do
     it "can get the login page" do
       get login_path
