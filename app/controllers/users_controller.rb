@@ -40,6 +40,8 @@ class UsersController < ApplicationController
       flash[:error] = "You must be logged in to see this page!"
       redirect_to root_path
     end
+
+    redirect_to user_path(@current_user.id)
   end
 
   def logout
@@ -47,24 +49,4 @@ class UsersController < ApplicationController
     flash[:success] = "Successfully logged out"
     redirect_to root_path
   end
-
-  # def upvote
-  #   current_work = Work.find_by(id: params[:id])
-
-  #   if session[:user_id]
-  #     vote = Vote.new(user_id: session[:user_id], work_id: current_work.id)
-
-  #     if vote.save
-  #       flash[:success] = "Successfully upvoted!"
-  #     else
-  #       flash[:error] = "Could not upvote..."
-  #     end
-  #   else
-  #     flash[:error] = "You must log in to do that"
-  #     # send a flash error message saying they cannot vote unless signed in
-
-  #   end
-
-  #   redirect_back #fallback_location: works_url
-  # end
 end
