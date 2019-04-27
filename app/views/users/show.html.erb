@@ -1,2 +1,32 @@
 <h1>Users#show</h1>
 <p>Find me in app/views/users/show.html.erb</p>
+
+
+<h2>User Summary: <%= link_to "#{@user.username}", user_path(@user.id) %></li></h2>
+<p>Joined site <%= @user.created_at.strftime("%b %d, %Y")%></p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Media Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
+    </thead>
+    <tbody>
+        
+        <% @user.works.each do |work|%>
+        <tr>
+        <td><%= work.title %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td><%= work.category %></td>
+        <td><%= (work.votes.first).created_at.strftime("%b %d, %Y") %></td>
+        </tr>
+        <% end %>
+    </tbody>
+    </table>
+<%= link_to "View all users", users_path, class: "btn btn-primary" %>
+    <%= link_to "View all media", works_path, class: "btn btn-primary" %>

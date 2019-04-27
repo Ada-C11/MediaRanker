@@ -11,4 +11,15 @@ describe UsersController do
     value(response).must_be :success?
   end
 
+  it "allows a user to log in" do
+  end
+
+  it "allows a user to log out" do
+  end
+
+  it "allows you to create a user" do
+  end
+
+  it "wont let a user vote more than once for the same work" do
+  end
 end
