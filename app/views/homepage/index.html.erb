@@ -1,27 +1,30 @@
 <section>
-  <% spotlight = @works.sample %>
-  <h4> Media Spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %> by <%= spotlight.creator %> </h4> 
-  <p> Description: <%= spotlight.description %> </p>
-  <p ><%= readable_date(spotlight.created_at) %> </p>
+  <h3>Media Spotlight:
+
+      <% if @no_data %>
+      <%=@no_data %> </span></h3>
+      <% else %>
+      <%= link_to "#{@spotlight.title}", work_path(@spotlight)%> by <%= @spotlight.creator %>
+ 
+  </h3>
+  <p>
+    <%= @spotlight.votes.count %> votes - <%= @spotlight.description %>
+  </p>
+  <% end %>
 </section>
-<br/>
-<section>
-  <% album = @works.sample %>
-  <h4> Top Album: <%= link_to album.title, work_path(spotlight.id) %> by <%= album.creator %> </h4> 
-  <p> Description: <%= album.description %> </p>
-  <%= rand(1..5)%> votes
+<hr class="root-hr" />
+
+<section class='top-ten small-12 large-4 columns'>
+  <h3>Top Movies</h3>
+  <%= render partial: 'titles_column', locals: { media: @movies } %>
 </section>
-<br/>
-<section>
-  <% book = @works.sample %>
-  <h4> Top Book: <%= link_to book.title, work_path(spotlight.id) %> by <%= book.creator %> </h4> 
-  <p> Description: <%= book.description %> </p>
-  <%= rand(1..5)%> votes
+
+<section class='top-ten small-12 large-4 columns'>
+  <h3>Top Books</h3>
+  <%= render partial: 'titles_column', locals: { media: @books } %>
 </section>
-<br/>
-<section>
-  <% movie = @works.sample %>
-  <h4> Top Movie: <%= link_to movie.title, work_path(spotlight.id) %> by <%= movie.creator %> </h4> 
-  <p> Description: <%= movie.description %> </p>
-  <%= rand(1..5)%> votes
+
+<section class='top-ten small-12 large-4 columns'>
+  <h3>Top Albums</h3>
+  <%= render partial: 'titles_column', locals: { media: @albums } %>
 </section>

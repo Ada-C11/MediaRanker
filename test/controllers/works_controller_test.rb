@@ -15,7 +15,7 @@ describe WorksController do
   describe "show" do
     it "should be OK to show a valid work" do
       # Arrange
-      valid_work_id = works(:one).id
+      valid_work_id = works(:uprooted).id
 
       # Act
       get work_path(valid_work_id)
@@ -26,7 +26,7 @@ describe WorksController do
 
     it "should give a flash message" do
       # Arrange
-      work = works(:one)
+      work = works(:uprooted)
       invalid_work_id = work.id
       work.destroy
 

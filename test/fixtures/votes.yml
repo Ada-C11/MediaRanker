@@ -5,10 +5,13 @@
 # below each fixture, per the syntax in the comments below
 #
 vote1: 
-  work: TheRook
+  work: The Rook
   user: jane
 
 vote2: 
-  work: TheOldKingdom
+  work: The Hunger Games
   user: john
 
+vote3: 
+  work: The Hunger Games
+  user: jane

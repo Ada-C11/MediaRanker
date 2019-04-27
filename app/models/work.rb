@@ -15,10 +15,23 @@ class Work < ApplicationRecord
     return works_sorted_by_category
   end
 
-  def self.top_10
-    @top_10_works_sorted_by_category = sort_by_category(category)
-    top_10 = @top_10_works_sorted_by_category.sort_by {|work| work.votes.count}.reverse!
-    return top_10
+  def self.popular(category: nil)
+    if category
+      works = Work.sort_by_category(category)
+    else
+      works = Work.all
+    end
+
+    return works.sort_by{ |work| -work.votes.count}
   end
+
+  def self.media_spotlight
+    return popular.first
+  end
+
+  def self.top_10(category)
+    return popular(category: category)[0..9]
+  end
+
   
 end # class end
