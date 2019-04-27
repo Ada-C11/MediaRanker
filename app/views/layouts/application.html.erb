@@ -41,6 +41,11 @@
   </header>
 
   <body>
+
+    <section class="flash">
+        <div class="alert alert-<%= flash[:status]%>"><%= flash[:message] %></div>
+    </section>
+
     <main>
       <%= yield %>
     </main>
