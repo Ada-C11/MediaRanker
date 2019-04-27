@@ -1,5 +1,6 @@
 class Work < ApplicationRecord
   has_many :votes
+  has_many :users, through: :votes, dependent: :destroy
   validates :title, presence: true
 
   def self.get_media_catagories
