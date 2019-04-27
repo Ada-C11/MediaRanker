@@ -80,6 +80,35 @@ describe Work do
     end
 
     describe "top ten" do
+      it "returns top ten voted works" do
+        albums = Work.albums
+        movies = Work.movies
+        films = Work.films
+
+        [albums, movies, films].each do |category|
+          category_top_ten = top_ten(category)
+          category_top_ten.each do |top_work|
+            expect(top_work).must_be_instance_of category.class
+          end
+          most_votes = category.maximum(:votes.count)
+          expect(category_top_ten.first.votes.count).must_equal most_votes
+          expect(category_top_ten)
+        end
+      end
+
+      it "returns all works if less than 10 works" do
+      end
+
+      it "selects the first item in a tie" do
+      end
+    end
+
+    describe "spotlight" do
+      it "selects the most voted item" do
+        spotlight_work = Work.spotlight
+        most_votes = Work.maximum(:votes.count)
+        expect(spotlight_work.vote.counts)
+      end
     end
   end
 end

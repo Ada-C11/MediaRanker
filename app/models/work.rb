@@ -18,19 +18,14 @@ class Work < ApplicationRecord
     return Work.all.sample
   end
 
-  def self.top_ten_albums
-    albums_array = []
-    10.times do
-      albums_array << Work.albums.sample
+  def self.top_ten(works)
+    sorted_works = works.sort_by {|work| work.votes.count }
+    if sorted_works.count < 10
+      top_ten_works = sorted_works
+    else 
+      top_ten_works = sorted_works.slice(0..9)
     end
-    return albums_array
+    return top_ten_works
   end
 
-  def self.top_ten_books
-    books_array = []
-    10.times do
-      books_array << Work.books.sample
-    end
-    return books_array
-  end
 end

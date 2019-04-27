@@ -9,7 +9,7 @@ describe User do
     expect(@user).must_be :valid?
   end
 
-  it "rejects users with the same username" do
+  it "rejects duplicate usernames" do
     # arrange
     duplicate_name = @user.username 
     user = User.new(username: duplicate_name)
@@ -19,6 +19,14 @@ describe User do
     expect(result).must_equal false
     expect(user.errors.messages).must_include :username
   end
+
+  it 'requires username to exist' do
+    user = User.new(username: '')
+    result = user.valid?
+
+    expect(result).must_equal false
+    expect(user.errors.messages).must_include :username
+  end 
 
   it "responds to votes" do
     assert_respond_to(@user, :votes)
