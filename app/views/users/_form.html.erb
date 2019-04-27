@@ -1,0 +1,9 @@
+
+
+
+<% form_with model: @user do |field| %>
+    <%= field.label :Username %>
+    <%= field.text_field :username %>
+    <%= field.submit "Log In" %>
+<% end %>
+

@@ -6,11 +6,6 @@
 
 <h2> Votes </h2>
 
-<p> Total earnings to date: <%= sprintf("%.2f",@driver.total_earned) %></p>
-
-<p> Average Rating: <%= @driver.avg_rating %></p>
-
-
 
 <ul>
 <% @user.votes.each do |vote| %>

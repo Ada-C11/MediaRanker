@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-Elle:
+elle:
   username: Elle
 
-Moses:
+moses:
   username: Moses
 
-Brad:
+brad:
   username: Bradley Dean
 
-LG:
+lg:
   username: Laura Genevieve
   

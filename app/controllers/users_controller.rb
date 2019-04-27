@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_action :find_indv_user, only: [:show, :edit, :update, :destroy]
 
-  #   def login_form
-  #     @user = User.new
-  #   end
+  def loginform
+    @user = User.new
+  end
 
   #   def login
   #     username = params[:user][:username]
@@ -39,9 +39,9 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def new
-    @user = User.new
-  end
+  #   def new
+  #     @user = User.new
+  #   end
 
   def create
     new_user = User.new[:user_params]
