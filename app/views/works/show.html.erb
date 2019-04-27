@@ -1,18 +1,36 @@
-<h1><%= @work.title %></h1>
+<section>
+    <h2><%= @work.title %></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year %></p>
+    <p><%= @work.description %></p>
+</section>
 
-<ul>
-    <li>
-        Created by: <%= @work.creator %>
-    </li>
-    <li>
-        Published: <%= @work.publication_year %>
-    </li>
-    <li>
-        Votes: <%= Vote.where(work_id: @work.id).length%>
-    </li>
-</ul>
+<section>
+    <%= button_to "Upvote", work_votes_path(@work.id), method: :post %>
+    <%= button_to "Back to media ranks", homepages_path, method: :get %> 
+    <%= button_to "Edit", edit_work_path, method: :get %>
+    <%= button_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to delete this work?"}%> 
+</section>
 
-<%= link_to "Upvote work", work_votes_path(@work.id), method: :post %>
-<%= link_to "Back to all works", works_path %> 
-<%= link_to "Update work", edit_work_path %>
-<%= link_to "Delete work", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to delete this work??"}%> 
+<section>
+    <table>
+        <tr>
+            <th>User</th>
+            <th>Date</th>
+        </tr>
+        <tr>
+        <% votes = Vote.where(work_id: @work.id)%>
+        <% votes.each do |vote| %>
+        <tr>
+            <td>
+                <%= User.find_by(id: vote.user_id).username %>
+            </td>
+            <td>
+                <%= vote.created_at.strftime("%B %d, %Y") %>
+            </td>    
+        </tr>
+           <% end %>
+    </table>
+</section>
+
+   
