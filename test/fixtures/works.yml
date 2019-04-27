@@ -21,4 +21,17 @@ custom1:
   publication_year: 1813
   description: "Emotional development of protagonist, Elizabeth Bennett"
 
-  
+movie:
+  category: "movie"
+  title: "Green Book"
+  creator: "Peter Farrelly"
+  publication_year: 2018
+  description: "story of deep south"
+
+monkey:
+  category: movie
+  title: "12 Monkeys"
+  creator: "Terry Gilliam"
+  publication_year: 1995
+  description: "American neo-noir science fiction film"
+
