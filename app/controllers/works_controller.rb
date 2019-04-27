@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_a_work, only: [:show, :edit, :update, :destroy, :vote]
+
   def index
     all_works = Work.all
 
@@ -10,7 +12,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
+    # @work = Work.find_by(id: params[:id])
     if @work.nil?
       flash[:error] = "Unknown work!"
       redirect_to works_path
@@ -35,11 +37,11 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
+    # @work = Work.find_by(id: params[:id])
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
+    # @work = Work.find_by(id: params[:id])
     if @work.update(work_params)
       flash[:success] = "Work updated successfully!"
       redirect_to work_path(@work.id)
@@ -52,18 +54,18 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    work = Work.find_by(id: params[:id])
-    if work.nil?
+    # work = Work.find_by(id: params[:id])
+    if @work.nil?
       flash[:error] = "Work already does not exist."
     else
-      work.destroy
+      @work.destroy
     end
     redirect_to works_path
   end
 
   def vote
-    work = Work.find_by(id: params[:id])
-    if work.nil?
+    # work = Work.find_by(id: params[:id])
+    if @work.nil?
       flash[:error] = "Work no longer exists!"
       redirect_to works_path
       return
@@ -71,13 +73,13 @@ class WorksController < ApplicationController
 
     if session[:user_id]
       user_vote_id = session[:user_id]
-      vote = Vote.new(user_id: user_vote_id, work_id: work.id)
+      vote = Vote.new(user_id: user_vote_id, work_id: @work.id)
       is_successful = vote.save
 
       if is_successful
         flash[:success] = "Work updated successfully!"
-        work.vote_count = work.vote_counter
-        work.save
+        @work.vote_count = @work.vote_counter
+        @work.save
       else
         flash[:error] = "You cannot vote on the same work!"
       end
@@ -89,6 +91,10 @@ class WorksController < ApplicationController
   end
 
   private
+
+  def find_a_work
+    @work = Work.find_by(id: params[:id])
+  end
 
   def work_params
     params.require(:work).permit(:category, :title, :creator, :publication_year, :description, :vote_id, :vote_count)

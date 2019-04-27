@@ -20,7 +20,7 @@
             <th><%= work.publication_year %></th>
             <th><%= work.category %></th>
             <%# find date that the user voted on the work%>
-            <th><%= Vote.find_by(user_id: @user.id).created_at %></th>
+            <th><%= time_tag(Vote.find_by(user_id: @user.id).created_at.to_date) %></th>
         </tr>
         <% end %>
     </tbody>
