@@ -1,9 +1,8 @@
 require "test_helper"
 
 describe WorksController do
-  let (:work) {
-    works(:movie)
-  }
+  let (:work) { works(:movie) }
+  let (:user) { users(:user_five) }
 
   describe "index" do
     it "should get index" do
@@ -161,6 +160,48 @@ describe WorksController do
       expect(flash[:success]).must_equal "Successfully destroyed #{new_work.category} #{new_work.id}"
       must_respond_with :redirect
       must_redirect_to root_path
+    end
+  end
+
+  describe "upvote" do
+    it "allows a logged in user to vote for a new work" do
+      login_data = {
+        user: {
+          username: user.username,
+        },
+      }
+      post login_path, params: login_data
+
+      expect {
+        post upvote_work_path(work.id)
+      }.must_change "work.votes.count", 1
+
+      expect(flash[:success]).must_equal "Successfully upvoted!"
+    end
+
+    it "does not allow a user who is not logged in to vote" do
+      expect {
+        post upvote_work_path(work.id)
+      }.must_change "work.votes.count", 0
+
+      expect(flash[:error]).must_equal "You must log in to do that"
+    end
+
+    it "must send an error message when a person tries to vote on the same work more than once" do
+      login_data = {
+        user: {
+          username: user.username,
+        },
+      }
+      post login_path, params: login_data
+
+      post upvote_work_path(work.id)
+
+      expect {
+        post upvote_work_path(work.id)
+      }.must_change "work.votes.count", 0
+
+      expect(flash[:error]).must_equal "user: has already voted for this work"
     end
   end
 end
