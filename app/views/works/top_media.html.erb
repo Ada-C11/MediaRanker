@@ -1,6 +1,8 @@
 
 <section>
-    <h1>Spotlight: <%= @works.first.title%> by <%= @works.first.creator%></h2>
+    <% if Work.spotlight %>
+        <h1>Spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight.id) %> by <%= Work.spotlight.creator %></h1>
+    <% end %>
 </section>
 
 <section>

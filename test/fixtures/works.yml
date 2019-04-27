@@ -13,3 +13,10 @@ two:
   creator: MyString
   publication_year: 1
   description: MyString
+
+three:
+  category: MyString
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString

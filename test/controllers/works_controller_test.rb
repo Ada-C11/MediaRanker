@@ -8,6 +8,32 @@ describe WorksController do
     end
   end
 
+  describe "top_media" do
+    it "can get top works" do
+      get root_path
+      must_respond_with :success
+    end
+  end
+
+  # NEED TO REVISIT
+  # describe "spotlight" do
+  #   it "can get the spotlight" do
+  #     get root_path
+  #     must_respond_with :success
+  #   end
+
+  #   # it "returns a string message if there's not enough votes to get the spotlight" do
+  #   #   all_votes = Vote.all
+  #   #   all_votes.length.times do |index|
+  #   #     all_votes[index].delete
+  #   #   end
+
+  #   #   get root_path
+  #   #   must_respond_with :success
+
+  #   # end
+  # end
+
   describe "show" do
     it "should be 200 OK to show an existing work" do
       valid_work_id = Work.first.id
@@ -79,7 +105,7 @@ describe WorksController do
       }.wont_change "Work.count"
 
       must_respond_with :bad_request
-      #   expect(flash[:error]).must_equal "title: can't be blank"
+      expect(flash[:title]).must_equal ["can't be blank"]
     end
   end
 
@@ -139,6 +165,7 @@ describe WorksController do
       expect(test_work.description).must_equal test_description
       expect(test_work.publication_year).must_equal test_publication_year
       expect(test_work.category).must_equal test_category
+      expect(flash[:title]).must_equal ["can't be blank"]
     end
   end
 

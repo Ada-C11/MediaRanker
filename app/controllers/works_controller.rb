@@ -44,7 +44,6 @@ class WorksController < ApplicationController
       flash[:success] = "Work updated successfully!"
       redirect_to work_path(@work.id)
     else
-      # do i need to write tests for this?
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
@@ -65,7 +64,7 @@ class WorksController < ApplicationController
   private
 
   def all_works_sorted_by_votes
-    @works = Work.get_top
+    @works = Work.sort_by_votes
   end
 
   def find_work
