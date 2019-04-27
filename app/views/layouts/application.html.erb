@@ -25,7 +25,7 @@
         </ul>
         <ul>
           <% if session[:user_id] %>
-            <li><%= link_to "Logged in as #{display_username(session[:user_id])}", current_user_path, class: "btn btn-primary" %></li>
+            <li><%= link_to "Logged in as #{User.find_by(id: session[:user_id]).username}", current_user_path, class: "btn btn-primary" %></li>
             <li><%= link_to "Log out", logout_path, method: :post, class: "btn btn-primary" %></li>
           <% else %>
             <li><%= link_to "Log In", login_path, class: "btn btn-primary" %></li>

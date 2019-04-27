@@ -1,5 +1,4 @@
 require "test_helper"
-# require "pry"
 
 describe UsersController do
   let (:user) {
@@ -69,7 +68,6 @@ describe UsersController do
 
   describe "current" do
     it "responds with success (200 OK) for a logged-in user" do
-      user = User.first
       login_data = {
         user: {
           username: user.username,
