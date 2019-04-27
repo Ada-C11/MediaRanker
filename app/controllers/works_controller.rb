@@ -50,10 +50,10 @@ class WorksController < ApplicationController
   def destroy
     @work = Work.find_by(id: params[:id])
     if @work
-    flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
-    @work.destroy
-    redirect_to root_path
-    else 
+      flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
+      @work.destroy
+      redirect_to root_path
+    else
       head :not_found
     end
   end

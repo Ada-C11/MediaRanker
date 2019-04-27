@@ -2,3 +2,4 @@
 <p>Find me in app/views/works/show.html.erb</p>
 
 <%= button_to "Delete", work_path(@work.id), method: :delete%>
+<%= button_to "Upvote", work_votes_path(@work.id)%>
