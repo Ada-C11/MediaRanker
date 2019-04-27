@@ -78,104 +78,98 @@ describe WorksController do
     end
   end
 
-  # describe "edit" do
-  #   it "get the edit page for a work" do
-  #     get edit_work_path(work.id)
-  #     must_respond_with :success
-  #   end
+  describe "edit" do
+    it "get the edit page for a work" do
+      valid_work_id = works(:readyplayerone).id
+      get edit_work_path(valid_work_id)
+      must_respond_with :success
+    end
 
-  #   it "respond with 404 not found when loading the edit page for a nonexistant work" do
-  #     get edit_work_path(-1)
-  #     must_respond_with :not_found
-  #   end
-  # end
+    it "respond with 404 not found when loading the edit page for a nonexistant work" do
+      get edit_work_path(-1)
+      must_respond_with :not_found
+    end
+  end
 
-  # describe "update" do
-  #   new_params = {
-  #     work: {
-  #       name: "Terry Turtle",
-  #       phone_num: "555-1212",
-  #     },
-  #   }
+  describe "update" do
+    new_params = {
+      work: {
+        title: "Gotta Go Slow To Go Fast",
+        description: "A look into the techniques for getting faster at a skill by learning it well.",
+      },
+    }
+    it "update an existing work" do
+      work_to_update = works(:readyplayerone)
+      expect {
+        patch work_path(work_to_update.id), params: new_params
+      }.wont_change "Work.count"
 
-  #   it "update an existing work" do
-  #     work_to_update = Work.create!(
-  #       name: "Fredrica Fishes",
-  #       phone_num: "+42 857-757-5736",
-  #     )
-  #     expect {
-  #       patch work_path(work_to_update.id), params: new_params
-  #     }.wont_change "Work.count"
+      work_to_update.reload
+      expect(work_to_update.title).must_equal new_params[:work][:title]
+      expect(work_to_update.description).must_equal new_params[:work][:description]
+    end
 
-  #     work_to_update.reload
-  #     expect(work_to_update.name).must_equal new_params[:work][:name]
-  #     expect(work_to_update.phone_num).must_equal new_params[:work][:phone_num]
-  #   end
+    it "respond with 404 not found if updating a non-existant work" do
+      # edge case: it should render a 404 if the work is not found
+      # ASK MEG ABOUT THIS. CAN'T USE RENDER/REDIRECT MORE THAN ONCE IN AN ACTION.
 
-  #   it "respond with 404 not found if updating a non-existant work" do
-  #     # edge case: it should render a 404 if the work is not found
-  #     # THIS TEST IS GIVING AN ERROR. WHY? It's trying to call .update on a nil object. Line 22 of controller should catch this.
+      skip
 
-  #     skip
-  #     expect {
-  #       patch work_path(-1), params: new_params
-  #     }.wont_change "Work.count"
+      expect {
+        patch work_path(-1), params: new_params
+      }.wont_change "Work.count"
 
-  #     must_respond_with :not_found
-  #   end
+      must_respond_with :not_found
+    end
 
-  #   it "return a 400 bad_request when asked to update with invalid data" do
+    it "return a 400 bad_request when asked to update with invalid data" do
 
-  #     # Arrange
-  #     original_work = {
-  #       name: "Katniss",
-  #       phone_num: "RU43U3R4U",
-  #     }
+      # Arrange
+      original_work = works(:endersgame)
+      work_to_update = works(:endersgame)
 
-  #     work_to_update = Work.create(original_work)
+      new_work_title = "" # invalid name
+      new_work_des = "bad description here"
 
-  #     new_work_name = "" # invalid name
-  #     new_work_phone = "54321"
+      bad_params = {
+        "work": {
+          title: new_work_title,
+          description: new_work_des,
+        },
+      }
 
-  #     bad_params = {
-  #       "work": {
-  #         name: new_work_name,
-  #         phone_num: new_work_phone,
-  #       },
-  #     }
+      # Act
+      expect {
+        patch work_path(work_to_update.id), params: bad_params
+      }.wont_change "Work.count"
 
-  #     # Act
-  #     expect {
-  #       patch work_path(work_to_update.id), params: bad_params
-  #     }.wont_change "Work.count"
+      # Assert
+      must_respond_with :bad_request
+      work_to_update.reload
+      expect(work_to_update.title).wont_be_nil
+      expect(work_to_update.description).must_equal original_work[:description]
+    end
+  end
 
-  #     # Assert
-  #     must_respond_with :bad_request
-  #     work_to_update.reload
-  #     expect(work_to_update.name).must_equal original_work[:name]
-  #     expect(work_to_update.phone_num).must_equal original_work[:phone_num]
-  #   end
-  # end
+  describe "destroy" do
+    it "delete a work" do
+      work_to_destroy = works(:endersgame)
 
-  # describe "destroy" do
-  #   it "delete a work" do
-  #     new_work = Work.create(name: "Fuzzy Bunny", phone_num: "99955545")
+      expect {
+        delete work_path(work_to_destroy.id)
+      }.must_change "Work.count", -1
 
-  #     expect {
-  #       delete work_path(new_work.id)
-  #     }.must_change "Work.count", -1
+      must_respond_with :redirect
+      must_redirect_to works_path
+    end
 
-  #     must_respond_with :redirect
-  #     must_redirect_to works_path
-  #   end
+    it "return a 404 not found error if the work is not found" do
+      invalid_id = -1
 
-  #   it "return a 404 not found error if the work is not found" do
-  #     invalid_id = -1
-
-  #     expect {
-  #       delete work_path(invalid_id)
-  #     }.wont_change "Work.count"
-  #     must_respond_with :not_found
-  #   end
-  # end
+      expect {
+        delete work_path(invalid_id)
+      }.wont_change "Work.count"
+      must_redirect_to works_path
+    end
+  end
 end

@@ -38,9 +38,23 @@ class WorksController < ApplicationController
   end
 
   def edit
+    head :not_found if !@work
   end
 
   def update
+    is_successful = @work.update(work_params)
+
+    if @work && is_successful
+      flash[:success] = "Successfully updated #{params[:category]} #{params[:id]}"
+
+      # NEED TO MAKE HOME PAGE FOR ROOT PATH!!!
+      redirect_to root_path
+    else
+      @work.errors.messages.each do |field, message|
+        flash.now[field] = message
+      end
+      render :new, status: :bad_request
+    end
   end
 
   def destroy
@@ -49,8 +63,8 @@ class WorksController < ApplicationController
       flash[:error] = "That item does not exist"
       redirect_to works_path
     else
-      work.destroy
-      flash[:success] = "#{work.title} deleted"
+      @work.destroy
+      flash[:success] = "#{@work.title} deleted"
       redirect_to works_path
     end
   end

@@ -1,15 +1,15 @@
 <h1>List of Works</h1>
 
 <h2>Albums</h2>
-<% @works.each do |item| %>
+<ul><% @works.each do |item| %>
 <% if item.category == "album" %>
-<ul>
+
 <li> Votes ??
 Title <%= link_to item.title, work_path(item.id)%>
 Created by <%= item.creator %>
 Published <%= item.publication_year %>
 Upvote button (coming soon, hopefully)
-<% end %>
-<% end %>
 </li>
+<% end %>
 </ul>
+<% end %>
