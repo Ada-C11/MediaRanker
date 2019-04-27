@@ -39,7 +39,7 @@ describe VotesController do
       user = @vote.user
       work = @vote.work 
       perform_login(user)
-      
+
       expect {
         post work_votes_path(work)
       }.wont_change "Vote.count"
