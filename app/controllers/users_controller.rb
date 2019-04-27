@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if user
       flash[:success] = "Successfully logged in as existing user #{user.username}"
     else
-      user = User.new(username: username)
+      user = User.new(user_param)
       user.save
       flash[:success] = "Successfully created new user #{user.username} new with ID #{user.id}"
     end
@@ -33,5 +33,11 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     flash[:success] = "Successfully logged out"
     redirect_to root_path
+  end
+
+  private
+
+  def user_param
+    params.require(:user).permit(:username)
   end
 end
