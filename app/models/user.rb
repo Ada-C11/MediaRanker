@@ -16,20 +16,17 @@ class User < ApplicationRecord
   # get_similar_users returns a list of all other users stored in db, ranked by similarity.
   # Useful for implementing a friend recommendation system
   def get_similar_users
-    users = User.pluck(:id)
-    users.delete(self.id)
-    sorted_by_similarity = users.sort_by { |other_id| j_index(User.find(other_id)) }.reverse
-    return sorted_by_similarity.map { |user_id| User.find(user_id) }
+    users = User.where.not(id: self.id)
+    sorted_by_similarity = users.sort_by { |other| j_index(other) }.reverse
+    return sorted_by_similarity
   end
 
   # get_recommendations returns a list of works by other users ranked by the average
   # j_index of other users who liked the work, and the user the method is called on.
   def get_recommendations
     recommendations = Hash.new { |hash, key| hash[key] = { j_index_sum: 0, users_count: 0 } }
-    users = User.pluck(:id)
-    users.delete(self.id)
-    users.each do |other_id|
-      other = User.find(other_id)
+    users = User.where.not(id: self.id)
+    users.each do |other|
       difference = other.votes.map { |vote| vote.work.id } - self.votes.map { |vote| vote.work.id }
       difference.each do |work_id|
         recommendations["#{work_id}"][:j_index_sum] += j_index(other)
