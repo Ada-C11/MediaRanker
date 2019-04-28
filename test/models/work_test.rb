@@ -43,5 +43,20 @@ describe Work do
   end
 
   describe "custom methods" do
+    describe "top_ten" do
+      it "must return only the top ten works" do
+      end
+
+      it "must return an empty arry of no works" do
+      end
+    end
+
+    describe "spotlight" do
+      it "must return the most voted on work" do
+      end
+
+      it "must return nil if no works" do
+      end
+    end
   end
 end
