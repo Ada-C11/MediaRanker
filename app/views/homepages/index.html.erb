@@ -2,7 +2,7 @@
   <section class="spotlight">
     <h2 class="spotlight__header">
     <span class="spotlight__heade--prefix">Media Spotlight: </span>
-    <%= link_to spotlight.title, work_path(spotlight.id), class:"spotlight__link-to" %><span> by <%= spotlight.creator%></span>
+    <%= link_to show_spotlight.title, work_path(spotlight.id), class:"spotlight__link-to" %><span> by <%= spotlight.creator%></span>
     </h2>
     <p class="spotlight__description">
       <%= Vote.where(work_id: spotlight.id).count %> - <%= spotlight.description %>

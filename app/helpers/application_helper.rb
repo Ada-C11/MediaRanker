@@ -8,7 +8,7 @@ module ApplicationHelper
     end
   end
 
-  def spotlight
+  def show_spotlight
     works = Work.all.to_a
     works.sort_by! { |work| Vote.where(work_id: work.id).length }
     if works[0].nil?
