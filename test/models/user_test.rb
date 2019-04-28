@@ -7,18 +7,10 @@ describe User do
     value(user).must_be :valid?
   end
 
-  # Does this belong here???
-  it "returns 200 OK for a logged-in user" do
-    user = User.first
-    login_data = {
-      user: {
-        username: user.name,
-      },
-    }
-    post login_path, params: login_data
-  end
+  # This doesn't work, which makes me think it's wrong to have a model method for this in the first place.
+  # it "returns current user if user is logged in" do
+  #   perform_login
 
-  expect(session[:user_id]).must_equal user.id
-
-  # get current_user_pa
+  #   expect(User.current(session)).must_be_kind_of User
+  # end
 end

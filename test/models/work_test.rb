@@ -1,8 +1,6 @@
 require "test_helper"
 
 describe Work do
-  require "test_helper"
-
   describe "validations" do
     it "is valid when all fields are present" do
       result = works(:hp1).valid?
@@ -21,33 +19,6 @@ describe Work do
     end
   end
 
-  # weird because has_many not belongs_to
-  # describe "relations" do
-  #   it 'can set the author through "author"' do
-  #     # Create two models
-  #     author = Author.create!(name: "test author")
-  #     book = Book.new(title: "test book")
-
-  #     # Make the models relate to one another
-  #     book.author = author
-
-  #     # author_id should have changed accordingly
-  #     expect(book.author_id).must_equal author.id
-  #   end
-
-  #   it 'can set the author through "author_id"' do
-  #     # Create two models
-  #     author = Author.create!(name: "test author")
-  #     book = Book.new(title: "test book")
-
-  #     # Make the models relate to one another
-  #     book.author_id = author.id
-
-  #     # author should have changed accordingly
-  #     expect(book.author).must_equal author
-  #   end
-  # end
-
   describe "self.top" do
     it "returns object of media" do
       expect(Work.top).must_be_kind_of Work
@@ -64,6 +35,43 @@ describe Work do
       end
 
       expect(Work.top).must_be_nil
+    end
+
+    it "returns one object if there's a tie" do
+      work = works(:youvegotmail)
+      Vote.create(user: users(:dee), work: work)
+
+      expect(work.votes.length).must_equal works(:hp4).votes.length
+      expect(Work.top).must_be_kind_of Work
+    end
+  end
+
+  describe "self.list_by_votes" do
+    it "returns an array of work objects" do
+      list = Work.list_by_votes("movie")
+      expect(list).must_be_kind_of Array
+      expect(list.first).must_be_kind_of Work
+    end
+
+    it "returns an array of every work objects of that category" do
+      list = Work.list_by_votes("movie")
+      full_list = Work.where(category: "movie")
+
+      expect(list.length).must_equal full_list.length
+    end
+
+    it "returns a sorted array by votes, most to least" do
+      list = Work.list_by_votes("album")
+      assert list.first.votes.length >= list.last.votes.length
+    end
+
+    it "returns an empty array if no media of that type" do
+      Work.where(category: "book").each do |book|
+        book.votes.each { |vote| vote.destroy }
+      end
+      Work.where(category: "book").each { |book| book.destroy }
+
+      expect(Work.list_by_votes("book")).must_equal []
     end
   end
 
