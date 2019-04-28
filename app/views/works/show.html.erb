@@ -11,10 +11,10 @@
 <section>
   <ul>
     <li>
-      <%= button_to "Back to Media Ranks", root_path, class: "btn btn-primary" %>
+      <%= button_to "Back to Media Ranks", root_path, class: "btn btn-primary", method: :get %>
     </li>
     <li>
-      <%= button_to "Edit", edit_work_path(@work.id), class: "btn btn-primary" %>
+      <%= button_to "Edit", edit_work_path(@work.id), class: "btn btn-primary", method: :get %>
     </li>
     <li>
       <%= button_to "Upvote", work_votes_path(@work.id), method: :post, class: "btn btn-primary" %>
