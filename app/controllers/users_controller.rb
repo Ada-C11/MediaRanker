@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :current, :logout]
+  before_action :find_user, only: [:current, :logout]
 
   def login_form
     @user = User.new
   end
 
   def index
-    @user = User.all.order(:created_at)
+    @users = User.all.order(:created_at)
   end
 
   def show
+    @user = User.find_by(id: params[:id])
     if @user.nil?
       flash[:error] = "Invalid user"
       redirect_to root_path

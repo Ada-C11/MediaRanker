@@ -14,10 +14,6 @@ class WorksController < ApplicationController
 
   def new
     @work = Work.new
-
-    # if params[:author_id]
-    #   @book.author = Author.find_by(id: params[:author_id])
-    # end
   end
 
   def create

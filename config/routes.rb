@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   post "/login", to: "users#login"
   post "/logout", to: "users#logout", as: "logout"
   get "/users", to: "users#index"
-  get "/users/:id", to: "users#show"
+  get "/users/:id", to: "users#show", as: "user"
 end
