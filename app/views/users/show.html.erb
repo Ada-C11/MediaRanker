@@ -1,3 +1,4 @@
+<% @user = User.find(params[:id]) %>
 <h2>User Summary: <%=link_to @user.name, user_path(@user.id) %></h2>
 <p>Joined site on <%= (@user.created_at).to_date.to_formatted_s(:long) %></p>
 

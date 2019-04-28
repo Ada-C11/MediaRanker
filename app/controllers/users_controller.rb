@@ -1,3 +1,5 @@
+require "pry"
+
 class UsersController < ApplicationController
   before_action :find_user
 
@@ -18,11 +20,13 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def current
-    @user = User.find_by(id: session[:user_id])
-    if @user.nil?
-      flash[:error] = "You must be logged in first!"
-      redirect_to root_path
+  def show
+    user_id = params[:id]
+    user = User.find_by(id: user_id)
+    if user.nil?
+      flash[:error] = "Unknown user"
+
+      redirect_to users_path
     end
   end
 
