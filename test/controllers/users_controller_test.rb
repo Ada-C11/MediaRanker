@@ -17,7 +17,6 @@ describe UsersController do
       must_respond_with :success
     end
     it "returns a 404 not found if the work does not exist" do
-      # TODO come back to this
       user_id = -1
 
       get user_path(user_id)
