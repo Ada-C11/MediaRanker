@@ -34,38 +34,31 @@
       </nav>
     </header>
     <% if flash.count > 0 %>
-      <section class="alert__container">
-        <% if flash[:error] %>
-          <div class="alert alert-warning">
-            <p>A problem occured: </p>
-            <% flash.each do |name, message| %>
-              <% if message.class == Array %>
-                <ul>
-                  <% message.each do |msg| %>
+      <section class="alert-container">
+        <% flash.each do |name, message| %>
+          <% if message.class == Array %>
+            <ul>
+              <% message.each do |msg| %>
+                
+                  <div class="alert alert-warning" role="alert">
+                    <li>A problem occured:</li>
                     <li><%= name %>: <%= msg %></li>
-                  <% end %>
-              <% else %>
-                <%= message %>
+                  </div>
+                
               <% end %>
-                </ul>
+          <% else %>
+            <% if flash[:error] %>
+              <ul>
+                <div class="alert alert-warning" role="alert">
+                  <li>A problem occured:</li>
+                  <li><%= message %></li>
+                </div>
+              <ul>
+            <% else %>
+              <div class="alert alert-success" role="alert"><%= message %></div>
             <% end %>
-          </div>
-        <% end %>
-
-        <% if flash[:success] %>
-          <div class="alert alert-success">
-            <% flash.each do |name, message| %>
-              <% if message.class == Array %>
-                <ul>
-                  <% message.each do |msg| %>
-                    <li><%= name %>: <%= msg %></li>
-                  <% end %>
-              <% else %>
-                <%= message %>
-              <% end %>
-                </ul>
-            <% end %>
-          </div>
+          <% end %>
+            </ul>
         <% end %>
       </section>
     <% end %>

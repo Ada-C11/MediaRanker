@@ -43,6 +43,13 @@ h1, h2, h3, h4, h5 {
     font-weight: bold
 }
 
+ul {
+    list-style-type: none;
+}
+
+.alert-container ul {
+    padding-left: 0%
+}
 .app-header__header {
     max-width: 100%;
     background-color: #DEC1C7;

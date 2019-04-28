@@ -17,13 +17,13 @@ class WorksController < ApplicationController
   end
 
   def create
-    work_to_create = Work.new(work_params)
+    @work = Work.new(work_params)
 
-    if work_to_create.save
-      flash[:success] = "Successfully created #{work_to_create.category} #{work_to_create.id}"
-      redirect_to work_path(work_to_create.id)
+    if @work.save
+      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
+      redirect_to work_path(@work.id)
     else
-      work_to_create.errors.messages.each do |field, message|
+      @work.errors.messages.each do |field, message|
         flash.now[field] = message
       end
       render :new, status: :bad_request
