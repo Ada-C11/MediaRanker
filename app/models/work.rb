@@ -7,14 +7,12 @@ class Work < ApplicationRecord
   validates :creator, presence: true
 
   def self.top_ten(category)
-    works = self.where(category: category)
-
-    top_works = works.sort_by { |work| work.votes.length }
+    top_works = self.top_voted(category)
 
     if top_works.length > 10
-      return top_works.reverse.first(10)
+      return top_works.first(10)
     else
-      return top_works.reverse
+      return top_works
     end
   end
 
@@ -24,5 +22,11 @@ class Work < ApplicationRecord
     spotlight = works.sort_by { |work| work.votes.length }
 
     return spotlight.last
+  end
+
+  def self.top_voted(category)
+    works = self.where(category: category)
+
+    return works.sort_by { |work| work.votes.length }.reverse
   end
 end
