@@ -19,12 +19,12 @@ Published: <%= @work.publication_date %>
 <%= link_to "Back to media ranker", root_path, class: "btn btn-primary" %>
 <%= link_to "Edit", edit_work_path(@work), class: "btn btn-primary" %>
 <%= link_to "Upvote", work_votes_path(@work), method: :post, class: "btn btn-primary" %>
-<%= link_to "Delete", work_path(@work), method: :delete,data:{confirm: "Are you sure you want to delete that passenger?"}, class: "btn btn-primary" %>
+<%= link_to "Delete", work_path(@work), method: :delete,data:{confirm: "Are you sure you want to delete that work?"}, class: "btn btn-primary" %>
 </p>
 </section>
 </section>
 <section class="works-votes__container">
-<h3 class="works-votes__header">10 Votes for this <%= @work.category %></h3>
+<h3 class="works-votes__header"><%= @work.votes.length %>Votes for this <%= @work.category %></h3>
 <table class="table">
 <thead>
 <tr>
@@ -33,12 +33,15 @@ Published: <%= @work.publication_date %>
 </tr>
 </head>
 <tbody>
+<% @work.votes.each do |vote|%>
 <tr>
 <td>
-a user
+<% id = vote.user_id %>
+<%= User.find_by(id: id).username %>
 </td>
 <td>Apr 24, 2019</td>
 </tr>
+<% end %>
 </tbody>
 </table>
 </section>
