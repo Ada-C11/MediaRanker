@@ -15,7 +15,7 @@ describe Vote do
     it "returns the correct vote given a user and work" do
       work = works(:custom1)
       user = users(:custom1)
-      expect (vote.valid?).must_equal false #is this false because I don't have a new action or because it doesn't have a user id or workid
+      expect (vote.valid?).must_equal false 
       expect(Vote.vote(user, work)).must_equal votes(:custom2)
     end
 

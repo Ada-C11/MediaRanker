@@ -17,8 +17,6 @@ class WorksController < ApplicationController
       flash[:message] = "Successfully created media #{@work.id}"
       redirect_to works_path
     else
-      # flash[:status] = :error
-      # flash[:message] = "Could not find media with that id: #{params[:id]}"
       render :new
     end
   end
