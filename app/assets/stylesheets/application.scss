@@ -25,10 +25,13 @@ body {
     font-family: "Gudea", sans-serif
 }
 
+a, h2, h3, .spotlight__header-main {
+    color: #26A69A;
+}
+
 a {
     text-decoration: none;
     background-color: transparent;
-    color: #26A69A;
 }
 
 a:hover {
@@ -123,12 +126,7 @@ main {
     color: #424242;
 }
 
-.spotlight__header-main  {
-    color: #26A69A;
-}
-
 .spotlight__header-main a {
-    color: #26A69A;
     text-decoration: underline
 }
 
@@ -140,7 +138,6 @@ main {
 }
 
 .top-ten h2 {
-   color:  #26A69A;
    border-bottom: #B2DFDB 2px solid
 }
 
