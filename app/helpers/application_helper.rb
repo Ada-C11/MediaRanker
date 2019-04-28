@@ -12,7 +12,7 @@ module ApplicationHelper
     works = Work.all.to_a
     works.sort_by! { |work| Vote.where(work_id: work.id).length }
     if works[0].nil?
-      flash[:notice] = "Start voting to see your title on the Spotlight!"
+      flash[:notice] = "Start voting to see media on the Spotlight!"
     else
       return works.reverse[0]
     end
