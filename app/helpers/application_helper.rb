@@ -10,9 +10,7 @@ module ApplicationHelper
 
   def show_spotlight
     works = Work.all.to_a
-    if works.nil?
-      flash[:notice] = "Start voting to see media on the Spotlight!"
-    else
+    unless works.nil?
       works.sort_by! { |work| Vote.where(work_id: work.id).length }
       return works.reverse[0]
     end
