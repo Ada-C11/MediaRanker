@@ -5,7 +5,8 @@
     <%= link_to show_spotlight.title, work_path(show_spotlight.id), class:"spotlight__link-to" %><span> by <%= show_spotlight.creator%></span>
     </h2>
     <p class="spotlight__description">
-      <%= Vote.where(work_id: show_spotlight.id).count %> - <%= show_spotlight.description %>
+     <!-- <%= Vote.where(work_id: show_spotlight.id).count %> - <%= show_spotlight.description %> -->
+     
     </p>
   </section>
   <hr class="root__hr">
