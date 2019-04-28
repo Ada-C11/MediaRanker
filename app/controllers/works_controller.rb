@@ -23,7 +23,7 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully created #{work_to_create.category} #{work_to_create.id}"
       redirect_to work_path(work_to_create.id)
     else
-      @work.errors.messages.each do |field, message|
+      work_to_create.errors.messages.each do |field, message|
         flash.now[field] = message
       end
       render :new, status: :bad_request
