@@ -50,19 +50,19 @@ describe UsersController do
       
     end
     
-    # it "will raise an error if the user was not created" do
-    #   user_data = {
-    #     user: {
-    #       name: "",
-    #     }
-    #   }
-    #   expect(User.new(user_data[:user])).wont_be :valid?
-      
-    #   expect {
-    #     post users_path, params: user_data
-    #   }.wont_change "User.count"
-    # end
+  describe "current" do
+    it "responds with 302 Found for a logged-in user" do
+      # Arrange
+      perform_login
+
+      # Act
+      get current_user_path
+
+      # Assert
+      must_respond_with :found
+    end
   end
+end
   
  
 end

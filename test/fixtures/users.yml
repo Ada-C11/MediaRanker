@@ -1,8 +1,10 @@
 amy:
   name: Amy Phung
-
 andrew:
-  name: Andrew Houle
-  
+  name: Andrew Houle  
 test:
-  name: Test
+  name: Test 
+user1:
+  name: Tests person
+user2:
+  name: nametwo

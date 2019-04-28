@@ -6,4 +6,8 @@ describe User do
   it "must be valid" do
     value(user).must_be :valid?
   end
+  
+  describe "relationships" do
+    it ""
+  end
 end

@@ -34,3 +34,33 @@ rush2:
   author: Brett Ratner
   publication_year: 2001
   description: The best of the franchise
+rush3:
+  category: movie
+  title: Rush Hour
+  author: Brett Ratner
+  publication_year: 2001
+  description: The best of the franchise
+one:
+  category: movie
+  title: Rush Hour
+  author: Brett Ratner
+  publication_year: 2001
+  description: The best of the franchise
+two:
+  category: movie
+  title: Rush Hour
+  author: Brett Ratner
+  publication_year: 2001
+  description: The best of the franchise
+three:
+  category: movie
+  title: Rush Hour
+  author: Brett Ratner
+  publication_year: 2001
+  description: The best of the franchise
+four:
+  category: movie
+  title: Rush Hour
+  author: Brett Ratner
+  publication_year: 2001
+  description: The best of the franchise

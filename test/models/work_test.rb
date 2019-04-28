@@ -1,7 +1,10 @@
 require "test_helper"
 
 describe Work do
-  let(:work) { Work.new }
+  let(:vote) { votes(:vote_2) }
+  let(:user) { users(:user2) }
+  let(:work) { works(:one) }
+  let(:work3) { works(:three) }
   
   describe "validations" do
     before do
@@ -56,6 +59,16 @@ describe Work do
       expect(top_books.count).must_equal 2
     end
     
+    it "handles ties properly" do
+      works = Work.all
+      
+      works.each do |work|
+        work.votes = 5
+        
+      
+      end
+    end
+    
     it "will display a message if there are no works in that category" do
       top_books = Work.top_ten("salad")
       
@@ -63,4 +76,27 @@ describe Work do
     end
   end
   
+  describe "relationships" do
+    it "belongs to a work" do
+      vote.work = work3
+      expect(vote.work_id).must_equal work3.id
+    end
+
+    it "belongs to a user" do
+      test_user = vote.user
+      expect(vote.user_id).must_equal test_user.id
+    end
+
+    it "can set the user through the user_id" do
+      new_user = User.create(name: "bebop")
+      vote.user_id = new_user.id
+      expect(vote.user).must_equal new_user
+    end
+
+    it "can set the work through the work_id" do
+      new_work = work3
+      vote.work_id = new_work.id
+      expect(vote.work_id).must_equal work3.id
+    end
+  end
 end
