@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     
     if user
       session[:user_id] = user.id
-      flash[:alert] = "#{user.name} logged in"
+      flash[:message] = "#{user.name} logged in"
       # redirect_to root_path
     else
       user = User.create(name: username)
@@ -34,6 +34,8 @@ class UsersController < ApplicationController
 
     redirect_to root_path
   end
+
+
 
   def current
     @user = User.find_by(id: session[:user_id])
