@@ -50,5 +50,18 @@ describe Vote do
       expect(work).must_be_instance_of Work
       expect(work.id).must_equal @vote.work_id
     end
+
+    it "can set work through work_id" do
+      work = works(:three)
+      @vote.work_id = work.id
+
+      expect(@vote.work).must_equal work
+    end
+    it "can set user through user_id" do
+      user = users(:fred)
+      @vote.user_id = user.id
+
+      expect(@vote.user).must_equal user
+    end
   end
 end

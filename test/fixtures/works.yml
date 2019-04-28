@@ -11,3 +11,9 @@ two:
   title: My Movie
   creator: Movie creator
   publication_year: 1999
+
+three:
+  category: album
+  title: Green album
+  creator: Weezer
+  publication_year: 1999

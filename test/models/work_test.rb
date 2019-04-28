@@ -18,6 +18,16 @@ describe Work do
     end
   end
 
+  describe "Relationships" do
+    it "can add a vote through votes" do
+      vote = votes.first
+      work.votes << vote
+
+      expect(work.votes).must_include vote
+      expect(vote.work_id).must_equal work.id
+    end
+  end
+
   describe "self.get_media_catagories" do
     it "returns an array of length 3" do
       media = Work.get_media_catagories
