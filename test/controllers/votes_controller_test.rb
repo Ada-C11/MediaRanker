@@ -10,15 +10,14 @@ describe VotesController do
         vote: {
           user_id: user.id,
           work_id: work.id,
-
         },
       }
-      perform_login
+      perform_login(user)
 
-      # Act
+      #Act
       expect {
         post work_votes_path(work.id), params: vote_data
-      }.must_change "Vote.count", +1
+      }.must_change "work.votes.length", +1
 
       # before_workk_count = Work.count
       # post works_path, params: work_data

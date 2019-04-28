@@ -21,6 +21,19 @@
  header {
      display: block;
  }
+
+ .nav-link{
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+
  h4 {
     display: block;
     margin-block-start: 1.33em;
@@ -73,3 +86,8 @@
     margin-bottom: 0.5rem;
     padding: 2rem 1rem 0.5rem 1rem;
 }
+
+
+
+
+
