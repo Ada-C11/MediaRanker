@@ -1,6 +1,10 @@
 <section class="spotlight">
-<h2>Media Spotlight:<%= "Something" %></h2>
-<p>spotlight description</p>
+<h2>Media Spotlight:
+    <% if Work.most_voted %>
+    <%= link_to Work.most_voted.title, work_path(Work.most_voted.id), class: "spotlight-link" %><span class="spotlight-author"> by <%= Work.most_voted.creator %></span>
+</h2>
+    <p><%= Work.most_voted.votes.count %> votes - <%= Work.most_voted.description %></p>
+  <% end %>
 </section>
 
 <section class="top-ten_container" >
@@ -9,8 +13,8 @@
 <% @categories.each do |category| %>
     <h2>Top <%= category.name %></h2>
     <% category.works.sample(10).each do |work| %>
-    <h4><%= link_to work.title, work_path(work) %></h4>
-    <%= work.creator %>
+    <h4><%= link_to work.title, work_path(work) %> <small><%= work.creator %></small></h4>
+    <p><%= "#{work.votes.count} votes" %></p>
     <% end %>
 <% end %>
 
