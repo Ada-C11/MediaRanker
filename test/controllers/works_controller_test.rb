@@ -1,7 +1,6 @@
 require "test_helper"
 
 describe WorksController do
-  require "test_helper"
 
   describe "DriversController" do
     
@@ -9,6 +8,17 @@ describe WorksController do
       it "can get index" do
         get works_path
   
+        must_respond_with :success
+      end
+
+      it "renders even if there are no works" do
+        # Arrange
+        Work.destroy_all
+  
+        # Act
+        get works_path
+  
+        # Assert
         must_respond_with :success
       end
     end
@@ -27,7 +37,7 @@ describe WorksController do
         get work_path(-1)
   
         # Assert
-        must_respond_with :redirect
+        must_respond_with :not_found
       end
     end
 
@@ -45,48 +55,58 @@ describe WorksController do
       it "will respond with redirect when attempting to edit a nonexistant work" do
         get edit_work_path(999)
   
-        must_respond_with :redirect
-        must_redirect_to works_path
+        must_respond_with :not_found
       end
     end
   
     describe "update" do
-      it "can update an existing work" do
-       idaho = Work.find_by(creator: "Gus Van Sant")
-        
-        work_hash = {
+      let(:work_data) {
+        {
           work: {
-            category: "movie",
-            title: "Drugstore Cowboy",
-            creator: "Gus Van Sant",
-            publication_year: 1989,
-            description: "Matt Dillon as a drug addict"
+            category: "book",
+            title: "test title"
           },
         }
+      }
+      it "can update an existing work" do
+        user = User.create(username: "Test")
+       idaho = Work.create(category: "movie", title: "My Own Private Idaho", user_id: user.id)
   
         # Act-Assert
-        expect {
-          patch work_path(idaho.id), params: work_hash
-        }.must_change "Work.count", 0
-  
-        expect(idaho.title).must_equal "My Own Private Idaho"
-        #Repulling from database - updating the title variable
-        idaho.reload
-        expect(idaho.category).must_equal work_hash[:work][:category]
-        expect(idaho.title).must_equal work_hash[:work][:title]
-        expect(idaho.creator).must_equal work_hash[:work][:creator]
-        expect(idaho.publication_year).must_equal work_hash[:work][:publication_year]
-        expect(idaho.description).must_equal work_hash[:work][:description]
+        patch work_path(idaho), params: work_data
 
-  
+        # Assert
         must_respond_with :redirect
-        must_redirect_to work_path(idaho.id)
+        must_redirect_to work_path(idaho)
+
+        check_flash
+
+        idaho.reload
+        expect(idaho.title).must_equal(work_data[:work][:title])
       end
   
       it "will redirect to the root page if given an invalid id" do
-          patch work_path(999)
-          must_respond_with :redirect
-          must_redirect_to works_path
+        patch work_path(99), params: work_data
+        must_respond_with :not_found
+      end
+
+      it "will respond with bad request for bad parameters" do
+        idaho = Work.find_by(creator: "Gus Van Sant")
+        # Arrange
+        work_data[:work][:title] = ""
+  
+        # Assumptions
+        idaho.assign_attributes(work_data[:work])
+        expect(idaho).wont_be :valid?
+        idaho.reload
+  
+        # Act
+        patch work_path(idaho), params: work_data
+  
+        # Assert
+        must_respond_with :bad_request
+  
+        check_flash(:error)
       end
     end
   
@@ -101,40 +121,65 @@ describe WorksController do
   
     describe "create" do
       it "can create a new work" do
-        zeds_dead = Work.find_by(title: "Somewhere Else")
-        work_hash = {
+        user = User.create(username: "Test")
+        work_data = {
           work: {
-            category: zeds_dead.category,
-            title: zeds_dead.title,
-            creator: zeds_dead.creator,
+            category: "album",
+            title: "Somewhere Else",
+            creator: "Zeds Dead",
+            user_id: user.id
           },
         }
   
         # Act-Assert
         expect {
-          post works_path, params: work_hash
-        }.must_change "Work.count", 1
+          post works_path, params: work_data
+        }.must_change "Work.count", +1
   
-        new_work = Work.find_by(title: work_hash[:work][:title])
-        expect(new_work.category).must_equal work_hash[:work][:category]
-        expect(new_work.creator).must_equal work_hash[:work][:creator]
-        
         must_respond_with :redirect
-        must_redirect_to work_path(new_work.id)
+        must_redirect_to works_path
+
+        check_flash
+
+        work = Work.last
+        expect(work.title).must_equal work_data[:work][:title]
+        expect(work.user).must_equal user
+      end
+
+      it "returns bad request if no data is sent" do
+        work_data = {
+          work: {
+            title: "",
+          },
+        }
+        expect(Work.new(work_data[:work])).wont_be :valid?
+  
+        # Act
+        expect {
+          post works_path, params: work_data
+        }.wont_change "Work.count"
+  
+        # Assert
+        must_respond_with :bad_request
+  
+        check_flash(:error)
       end
     end
   
     describe "destroy" do
       it "removes the work from the database" do
-        work = Work.create(category: "movie", title: "My Own Private Idaho")
+        user = User.create(username: "Test")
+        work = Work.create(category: "movie", title: "My Own Private Idaho", user_id: user.id)
         
         expect {
           delete work_path(work)
         }.must_change "Work.count", -1
-  
+
         must_respond_with :redirect
         must_redirect_to works_path
-  
+
+        check_flash
+
         after_work = Work.find_by(id: work.id)
         expect(after_work).must_be_nil
       end
