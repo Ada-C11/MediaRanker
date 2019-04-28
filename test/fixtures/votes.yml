@@ -5,6 +5,10 @@
 # below each fixture, per the syntax in the comments below
 #
 
+vote_x:
+  work: one
+  user:
+    
 vote_a:
   work: one
   user: one

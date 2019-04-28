@@ -45,15 +45,6 @@ describe WorksController do
       expect(flash[:success]).must_equal "Medium added successfully"
       must_respond_with :redirect
     end
-
-    # it "will flash error if doesnt work" do
-    #   test_work = {
-    #     "work": {
-    #     },
-    #   }
-
-    # expect(flash[:error]).must_equal existence?
-    # end
   end
 
   describe "update" do
@@ -78,18 +69,18 @@ describe WorksController do
       expect(tester.title).must_equal test_work[:work][:title]
     end
 
-    it "will re render on fail" do
-      tester = works(:one)
-      test_work = {
-        "work": {
-          title: "",
-        },
-      }
+    # it "will re render on fail" do
+    #   tester = works(:one)
+    #   test_work = {
+    #     "work": {
+    #       title: "",
+    #     },
+    #   }
 
-      assert_template :edit
-      #do I need a gem? should really look into
+    #   assert_template :edit
+    #do I need a gem? should really look into
 
-    end
+    # end
   end
 
   describe "destroy" do

@@ -86,9 +86,7 @@ describe Work do
     end
 
     it "returns an empty array if no works" do
-      Work.all.each do |work|
-        work.destroy
-      end
+      Work.delete_all
       expect(Work.list_works("album").length).must_equal 0
     end
   end
