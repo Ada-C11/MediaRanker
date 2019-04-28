@@ -14,24 +14,29 @@
     </li>
 </ul>
 
-<%#section>
+<section>
 <h4>
   Votes
 </h4> 
 
 <ul>
- <% @work.votes.each do |vote|%>
+    <% @work.vote_ids.each do |id|%>
+    <li>
+        <% vote = Vote.find_by(id: id) %>
+        <% user = User.find_by(id: vote.user_id) %>
+        <%= link_ to "#{user.username}", users_path(user.id) %>
+        <%= (vote.created_at).to_date.to_formatted_s(:long) %>
+    </li>
+    <% end %>
+</ul>
 
- <%#li>
-  <%= vote.username%>
-<%#/ul>
-<% end %>
-<%#/section%>
+</section>
+
 <%= link_to "Back to media ranks", root_path, class: "btn btn-info" %>
 
 <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-info" %>
 
-<%= link_to "Upvote", edit_work_path(@work.id), class: "btn btn-info" %>
+<%= link_to "Upvote", work_votes_path(@work.id), class: "btn btn-info", method: :post %>
 
 <%= link_to "Delete", 
     work_path(@work.id), method: :delete, class: "btn btn-danger" %>

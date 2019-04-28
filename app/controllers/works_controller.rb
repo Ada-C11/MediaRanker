@@ -57,6 +57,10 @@ class WorksController < ApplicationController
     if @work.nil?
       flash[:error] = "That work does not exist"
     else
+      if !@work.vote_ids.empty?
+        vote = Vote.find_by(work_id: @work.id)
+        vote.destroy
+      end
       @work.destroy
       flash[:success] = "#{@work.title} was deleted"
     end
@@ -70,6 +74,6 @@ class WorksController < ApplicationController
   end
 
   def work_params
-    return params.require(:work).permit(:title, :category, :creator, :publication_year, :description)
+    return params.require(:work).permit(:title, :category, :creator, :publication_year, :description, vote_ids: [])
   end
 end
