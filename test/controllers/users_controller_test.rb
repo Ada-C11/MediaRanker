@@ -29,7 +29,7 @@ describe UsersController do
     end
   end
   describe "login" do
-    it "allows a new user to log in and create adds the user into the database" do
+    it "allows a new user to log in and adds the user into the database" do
       log_in_data = {
         user: {
           username: "newuser",
@@ -43,7 +43,7 @@ describe UsersController do
       must_respond_with :redirect
       must_redirect_to root_path
 
-      expect(flash[:alert]).must_equal "#{log_in_data[:user][:username]} logged in!"
+      expect(flash[:alert]).must_equal "Successfully created new user #{log_in_data[:user][:username]}!"
     end
 
     it "allows an existing user to log in" do
@@ -57,7 +57,7 @@ describe UsersController do
       expect(flash[:alert]).must_equal "#{users(:one).username} logged in!"
     end
 
-    it "gives flash error with invalid user data trying to log in" do
+    it "gives flash error when user trying to log in with invalid username" do
       log_in_data = {
         user: {
           username: "",
@@ -68,10 +68,9 @@ describe UsersController do
         post login_path, params: log_in_data
       }.wont_change "User.count"
 
-      must_respond_with :redirect
-      must_redirect_to root_path
+      must_respond_with :bad_request
 
-      expect(flash[:error]).must_equal "Unable to log in!"
+      expect(flash[:username]).must_equal ["can't be blank"]
     end
   end
 

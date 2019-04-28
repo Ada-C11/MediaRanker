@@ -17,15 +17,25 @@ class UsersController < ApplicationController
 
   def login
     username = params[:user][:username]
-    user = User.find_or_create_by(username: username, joined_date: Date.today)
+    user = User.find_by(username: username)
 
-    if user.id
+    if user
       session[:user_id] = user.id
       flash[:alert] = "#{user.username} logged in!"
+      redirect_to root_path
     else
-      flash[:error] = "Unable to log in!"
+      user = User.new(username: username, joined_date: Date.today)
+      if user.save
+        session[:user_id] = user.id
+        flash[:alert] = "Successfully created new user #{user.username}!"
+        redirect_to root_path
+      else
+        user.errors.messages.each do |field, messages|
+          flash.now[field] = messages
+        end
+        render :login_form, status: :bad_request
+      end
     end
-    redirect_to root_path
   end
 
   def logout

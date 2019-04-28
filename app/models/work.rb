@@ -6,10 +6,10 @@ class Work < ApplicationRecord
   def self.sort_by_votes
     return [] if Work.all.empty?
     return Work.all if Vote.all.empty? #warning: circulating work_id, user_id
-    return Work.find_by_sql("SELECT COUNT(votes.work_id), works.id, title, creator, publication_year, category 
+    return Work.find_by_sql("SELECT COUNT(votes.work_id), works.id, title, creator, publication_year, category, description
                               FROM works LEFT JOIN votes 
                               ON works.id = votes.work_id 
-                              GROUP BY works.id, title, creator, publication_year, category 
+                              GROUP BY works.id, title, creator, publication_year, category, description
                               ORDER BY COUNT(votes.work_id) desc")
   end
 

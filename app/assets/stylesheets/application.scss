@@ -16,10 +16,100 @@
 /* Import scss content */
 @import "**/*";
 
-// .navbar .sticky-top .navbar-expand-lg .navbar-light .bg-warning {
-//     background-color: #B2DFDB;
-// }
+// ********** Style Nav
+body a {
+    color: rgb(28, 122, 113);
+    
+}
 
-// .big-warning {
-//     background-color: #17a2b8;
-// }
+li {
+    list-style: none;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    height: 15%;
+    background-color: #B2DFDB;
+}
+
+nav > div:first-child {
+    text-align: center;
+    padding: 3rem;
+}
+
+nav > div:last-child {
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: space-between;
+}
+
+nav > div:last-child ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.bnt {
+    align-self: flex-end;
+    display: inline-block;
+    margin: 2rem;
+}
+
+nav > div:last-child > ul li {
+    margin-right: 2rem;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.media-ranker {
+    font-size: 2.5rem;
+    border-right: 2px solid white;
+    padding-right: 1.5rem;
+
+}
+
+.small {
+    padding-left: 1.5rem;
+    font-size: 2rem;
+    color: white;
+}
+
+// ********** Style Top Media Page
+
+section {
+    padding: 1rem;
+    margin-left: 3rem;
+}
+
+.spotlight {
+    border-bottom: 1px solid rgb(219, 215, 215);
+}
+
+.top-media-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-left: 0;
+    padding-left: 0;
+    margin-right: 2rem;
+}
+
+.top-media h2 {
+    border-bottom: 1px solid rgb(219, 215, 215);
+}
+
+.top-media ul {
+    padding-left: 0;
+}
+
+.top-media a {
+    font-size: 1.4rem;
+}
+
+.top-media ul li {
+    margin-bottom: 1rem;
+}
