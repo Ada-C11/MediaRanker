@@ -46,11 +46,10 @@ describe WorksController do
       expect {
         post works_path, params: work_data
       }.must_change "Work.count", +1
+      check_flash
 
       must_respond_with :redirect
       must_redirect_to works_path
-
-      check_flash
 
       work = Work.last
       expect(work.title).must_equal work_data[:work][:title]
@@ -93,11 +92,11 @@ describe WorksController do
       expect(work.publication_year).must_equal(work_data[:work][:publication_year])
     end
 
-    # it "responds with NOT FOUND for an invalid work" do
-
-    #   patch work_path(-100), params: work_data
-    #   must_respond_with :not_found
-    # end
+    it "responds with redirect for an invalid work" do
+      patch work_path(-100)
+      check_flash(:error)
+      must_redirect_to works_path
+    end
 
     it "responds with BAD REQUEST for bad data" do
       work = Work.first
@@ -125,12 +124,21 @@ describe WorksController do
       must_redirect_to works_path
 
       check_flash
-      # check_flash(:error)
 
       after_delete_work = Work.find_by(id: work_to_delete.id)
       expect(after_delete_work).must_be_nil
     end
+
+    it "returns a 404 if the work does not exist" do
+      work_id = -1
+
+      expect(Work.find_by(id: work_id)).must_be_nil
+
+      expect {
+        delete work_path(work_id)
+      }.wont_change "Work.count"
+
+      must_respond_with :not_found
+    end
   end
 end
-
-#validate things? use fixtures or let?

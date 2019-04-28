@@ -31,21 +31,26 @@
   </nav>
   </header>
 
-  <main>
 
-  <body>
+  <div class = "flash-container">
   <% if flash[:status]%>
   <% alert_type = flash[:status] == :error ? :danger : flash[:status] %>
   <section class="flash alert alert-<%= alert_type %>">
-
-  <%= flash[:message] %>
-    <ul class = "use-list">
+  <span><%= flash[:message] %></span>
   <% if flash[:notice]== "No vote"%>
+      <ul class = "use-list">
+
     <li>user: has already voted for this work</li>
+    </ul>
+
   <%end%>
-</ul>
   </section>
   <%end%>
+  </div>  
+  <main>
+
+  <body>
+
     <%= yield %>
   </body>
   </main>

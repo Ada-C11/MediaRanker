@@ -19,9 +19,6 @@
 /* Impoty Gudea font from google */
 @import url('https://fonts.googleapis.com/css?family=Gudea:400,700');
 
-// .content {
-//     grid-template-rows: 150px 1;
-// }
 
 .overall-header {
     max-width: 100%;
@@ -29,14 +26,11 @@
     margin-bottom: 0.5rem;
     padding: 2rem 1rem 0.5rem 1rem;
     display: block;
-    // box-sizing: border-box;
 }
 
 .overall-header h1 {
     display: block;
     font-weight: bold;
-    // line-height: 1.2;
-    // color: inherit;
     margin-block-start: 0.67em;
     margin-block-end: 0.67em;
     margin-inline-start: 0px;
@@ -65,7 +59,6 @@ nav {
 .overall-header .nav-link {
     color: #00796b;
     display: inline-block;
-    // padding: 0.5rem 1rem;
 }
 
 
@@ -74,10 +67,8 @@ ul {
     flex-wrap: wrap;
     flex-direction: row;
     list-style-type: none;
-    // margin-block-start: 0.67em;
     margin-block-end: 0.67em;
-    // margin-inline-start: 0px;
-    // margin-inline-end: 0px;
+
 }
 .btn-primary {
     background-color: #26A69A;
@@ -110,8 +101,6 @@ h1, h2, h3, h4, h5, body {
 
 }
 
-
-
 p {
     margin-top: 0;
     margin-bottom: 1rem;
@@ -121,6 +110,7 @@ main {
     padding: 2rem;
     display: block;
 }
+
 
 .btn:hover {
     background-color: #00796B;
@@ -138,4 +128,13 @@ main {
     margin-bottom: 1em;
     margin-left: 0;
     margin-right: 0;
-    padding-left: 40px;}
+    padding-left: 40px;
+}
+
+.alert {
+    margin: 0;
+}
+
+.flash-container {
+    margin: 2rem 0 1rem 0;
+}
