@@ -37,7 +37,8 @@
       </li>
       <li>
       <% if session[:user_id] %>
-        <button class="login"><%= link_to "Logged in as #{User.find(session[:user_id]).username}", logout_path, method: :post%>
+        <% @user = User.find(session[:user_id])%>
+        <button class="login"><%= link_to "Logged in as #{@user.username}", user_path(@user.id) %>
         <button class="logout"><%= link_to "Log Out", logout_path, method: :post%>
         <% end %>
       </li>

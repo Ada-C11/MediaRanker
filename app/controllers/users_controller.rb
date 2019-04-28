@@ -24,17 +24,10 @@ class UsersController < ApplicationController
 
     if user.id
       session[:user_id] = user.id
-      flash[:alert] = "Successfully logged in as #{user.username}"
+      flash[:success] = "Successfully logged in as #{user.username}"
       redirect_to root_path
     else
       flash[:error] = "Unable to log in"
-      redirect_to root_path
-    end
-  end
-
-  def current
-    if @user.nil?
-      flash[:error] = "You must be logged in first!"
       redirect_to root_path
     end
   end

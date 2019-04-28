@@ -7,7 +7,8 @@ class VotesController < ApplicationController
         user_votes.each do |u|
           if w == u
             flash[:error] = "user: has already voted for this work"
-            redirect_to works_path
+            redirect_to work_path(params[:work_id])
+            return
           end
         end
       end

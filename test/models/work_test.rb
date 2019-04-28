@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe Work do
-  let (:work) {
+  let(:work) {
     works(:book_1)
   }
 
@@ -35,6 +35,22 @@ describe Work do
       # Assert
       expect(duplicate_work.errors.messages).must_include :title
       expect(duplicate_work.errors.messages[:title]).must_equal ["has already been taken"]
+    end
+  end
+
+  describe "relationship" do
+    it "can have no vote" do
+      expect(work.votes.length).must_equal 0
+    end
+
+    it "can have one or more votes" do
+      new_vote = Vote.new(user_id: users(:one).id, work_id: work.id)
+      new_vote.save
+
+      another_vote = Vote.new(user_id: users(:two).id, work_id: work.id)
+      another_vote.save
+
+      expect(work.votes.length).must_equal 2
     end
   end
 end
