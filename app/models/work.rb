@@ -8,7 +8,7 @@ class Work < ApplicationRecord
   end
 
   def self.top_ten(type)
-    array_by_type = Work.where(category: type)
+    array_by_type = self.where(category: type)
 
     array_by_votes = array_by_type.sort_by { |work| -work.votes.count }
 
@@ -19,13 +19,12 @@ class Work < ApplicationRecord
     end
   end
 
-  # def top_ten(type)
-  #   array_by_type = self.where(category: type)
-  #   array_by_votes = array_by_type.sort_by { |work| -work.votes.count }
-  #   top_10 = sorted_array[0..9]
-  #   if array_by_votes.length < 10
-  #     return array_by_votes
-  #   else
-  #   return array_by_votes[0..9]
-  # end
+  def self.media_spotlight
+    all_works = self.all
+
+    sorted_works = all_works.sort_by { |work| -work.votes.count }
+    spotlight = sorted_works.first
+
+    return spotlight
+  end
 end

@@ -1,4 +1,9 @@
-<h1>Media Spotlight</h1>
+<% spotlight = @works.media_spotlight %>
+
+<h1>Media Spotlight: <span class="spotlight-title"><%= link_to spotlight.title, work_path(spotlight.id)%> by <%= spotlight.creator%></span></h1>
+
+<%= spotlight.vote_count%> votes
+
 
 
 <div>
