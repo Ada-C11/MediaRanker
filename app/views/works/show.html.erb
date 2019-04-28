@@ -16,4 +16,23 @@
 
 <%= link_to "Delete", work_path(@work.id), method: :delete %>
 
-<h2> [add # here] Votes for this <%= @work.category.capitalize %> </h2>
+<h2> <%= @work.votes.count %> Votes for this <%= @work.category.capitalize %> </h2>
+
+<table class="table">
+        <thead>
+            <tr>
+                <th scope="col">User</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <% all_votes = @work.votes %>
+            <% all_votes.each do |vote| %>
+                <th scope="row"><%= vote.user.username %></th>
+                <% date = vote.user.created_at %>
+                <td><%= date.strftime("%b %e, %Y") %></td>
+            </tr>    
+                <%end%>
+        </tbody>
+     </table>   
