@@ -10,12 +10,10 @@ class VotesController < ApplicationController
     successful = @work.save 
 
     if successful
-      flash[:status] = :success
-      flash[:message] = "Successfully upvoted for #{@work.title}"
+      flash[:success] = "Successfully upvoted for #{@work.title}"
       redirect_to works_path
     else
-      flash.now[:status] = :error
-      flash.now[:message] = "A problem occurred: Could not upvote for #{@work.title}"
+      flash.now[:error] = "A problem occurred: Could not upvote for #{@work.title}"
       render :new, status: :bad_request
     end
 
