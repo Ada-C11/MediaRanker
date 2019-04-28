@@ -2,17 +2,10 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def index
-    # Move this to the Model
-    # books = Work.where(category: "book")
-    # albums = Work.where(category: "album")
-    # movies = Work.where(category: "movie")
-    # @categories = [books, albums, movies]
     @categories = Work.get_media_catagories
   end
 
   def show
-    # @work = Work.find_by(id: params[:id])
-
     unless @work
       redirect_to works_path
     end
@@ -38,7 +31,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    # @work = Work.find_by(id: params[:id])
     unless @work
       redirect_to works_path
       flash.now[:status] = :warning
@@ -47,8 +39,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    # @work = Work.find_by(id: params[:id])
-
     unless @work
       head :not_found
       return
@@ -65,7 +55,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    # @work = Work.find_by(id: params[:id])
     unless @work
       head :not_found
       return

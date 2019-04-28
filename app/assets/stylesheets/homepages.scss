@@ -2,57 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// .top-ten .grid {
-//   display: grid;
-//   grid-template-columns: 1fr 1fr 1fr;
-//   grid-template-rows: 1fr;
-// }
-// .top-albums, .top-movies, .top-books {
-//   max-width: 33% ;
-//   display: inline-block;
-//   grid-row: 1;
-
-//   // display: flex;
-// }
-// .top-movies {
-
-//   grid-column: 1;
-// }
-
-// .top-books {
-//   grid-column: 2;
-// }
-// .top-albums {
-//   grid-column: 3;
-
-// }
-
-// .top-ten .grid {
-//   display:flex;    
-//   align-items:flex-start;
-// }
-// .top-albums, .top-movies, .top-books {
-//   max-width: 33% ;
-//   display: inline-block;
-
-
-//   // display: flex;
-// }
 .top-ten.grid {
   display: grid;    
   grid-template: 1fr / 1fr 1fr 1fr;
 }
-
 .top-albums, .top-movies, .top-books {
-  // width: 33% ;
-  // display: inline-block;
   grid-row: 1;
   padding-right: 2em;
 }
 .top-movies {
   grid-column: 1;
 }
-
 .top-books {
   grid-column: 2;
 }

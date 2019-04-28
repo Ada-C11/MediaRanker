@@ -57,10 +57,6 @@ describe UsersController do
       expect(new_user).must_be_instance_of User
       expect(session[:user_id]).must_equal new_user.id
     end
-
-    # it "wont let someone login with a blank username" do
-    # do i need this ?
-    # end
   end
 
   describe "current" do

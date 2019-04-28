@@ -110,23 +110,6 @@ describe WorksController do
 
       must_respond_with :not_found
     end
-    # it "responds with BAD REQUEST for bad data" do
-    #   # Arrange
-    #   work_data[:work][:title] = ""
-
-    #   # Assumptions
-    #   work.assign_attributes(work_data[:work])
-    #   expect(@work).wont_be :valid?
-    #   work.reload
-
-    #   # Act
-    #   patch book_path(work), params: work_data
-
-    #   # Assert
-    #   must_respond_with :bad_request
-
-    #   check_flash(:error)
-    # end
   end
 
   describe "destroy" do

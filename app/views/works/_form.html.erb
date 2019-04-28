@@ -1,7 +1,5 @@
 <%= form_with model: @work do |f| %>
   <div class="form-group row">
-    <%# <%= f.label :category, "Category"%> 
-    <%# <%= f.select :category, ["book", "movie", "album"], class: "form-control browser-default custom-select" %> 
     <label>Category:</label>
     <select class="form-control" name="work[category]">
       <option>album</option>

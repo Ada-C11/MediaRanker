@@ -18,8 +18,6 @@ class Work < ApplicationRecord
   def self.top_media
     top_works = get_media_catagories.map do |category|
       category[0..9]
-      # max = category.max_by(10) { |work| work.votes.count }
-      # max.sort_by! { |work| work.votes.count * -1 }
     end
     return top_works
   end
