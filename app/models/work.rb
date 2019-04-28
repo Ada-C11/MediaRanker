@@ -7,13 +7,19 @@ class Work < ApplicationRecord
 
   def self.most_voted
     max_votes = 0
-    most_voted = nil 
+    most_voted = nil
     Work.all.each do |work|
       if work.votes.count > max_votes
         max_votes = work.votes.count
         most_voted = work
       end
     end
-    return most_voted
+    most_voted
+  end
+
+  def self.top_ten(name)
+    category = Category.find_by(name: name)
+    works = Work.where(category: category).sort_by { |work| work.votes.count }.reverse!
+    works.take(10)
   end
 end

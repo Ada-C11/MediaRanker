@@ -8,15 +8,15 @@
 </section>
 
 <section class="top-ten_container" >
-<section class="top-ten-list_container" >
+    <section class="top-ten-list_container" >
 
-<% @categories.each do |category| %>
-    <h2>Top <%= category.name %></h2>
-    <% category.works.sample(10).each do |work| %>
-    <h4><%= link_to work.title, work_path(work) %> <small><%= work.creator %></small></h4>
-    <p><%= "#{work.votes.count} votes" %></p>
+    <% @categories.each do |category| %>
+        <h2>Top <%= category.name %></h2>
+        <% Work.top_ten(category.name).each do |work| %>
+        <h4><%= link_to work.title, work_path(work) %> <small><%= work.creator %></small></h4>
+        <p><%= "#{work.votes.count} votes" %></p>
+        <% end %>
     <% end %>
-<% end %>
 
-</section>
+    </section>
 </section>
