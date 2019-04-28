@@ -29,7 +29,6 @@
     padding: 2rem;
 }
 
-/* ----------------------- HEADER/NAV STYLING ----------------------- */
 body {
     font-family: "Gudea", sans-serif;
 }
@@ -93,16 +92,12 @@ div.button {
     color: white;
 }
 
-/* ----------------------- HOMEPAGE INDEX STYLING ----------------------- */
-// main.homepage {
-//     margin: 2rem;
-// }
 .spotlight {
     padding: 0 2rem 2rem 2rem;
     border-bottom: lightgrey 1px solid;
 }
 .spotlight h2 {
-    font-weight: bold;
+    font-weight: bolder;
 }
 .spotlight h2 span {
     color: #26A69A;
@@ -115,7 +110,7 @@ section.spotlight-work {
     padding-top: 2rem;
 }
 .spotlight-work h2 {
-    font-weight: bold;
+    font-weight: bolder;
     color: #26A69A;
     border-bottom: solid 1px #26A69A;
 }
@@ -151,115 +146,5 @@ div.list-item {
 }
 div.list-item a {
     color:  #26A69A;
-    font-weight: bold;
-}
-/* ----------------------- TABLE/WORKS INDEX STYLING ----------------------- */
-h2.index {
-    color: #26A69A;
-    font-weight: bold;
-}
-.works-table {
-    border-collapse: collapse;
-    width: 100%;
-    border: grey;
-}
-.works-table th.title-link a {
-    color: #26A69A;
-}
-.works-table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
-    border-top: 1px solid #dee2e6;
-}
-.works-table th {
-    border-bottom: 1px solid #dee2e6;
-    padding: .75rem;
-}
-.works-table tbody th {
-    font-weight: normal;
-}
-/* ----------------------- TABLE/USERS INDEX STYLING ----------------------- */
-.users-table {
-    border-collapse: collapse;
-    width: 100%;
-    border: grey;
-}
-.users-table th.username-link a {
-    color: #26A69A;
-}
-.users-table th.title-link a {
-    color: #26A69A;
-}
-.users-table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
-    border-top: 1px solid #dee2e6;
-}
-.users-table tbody th {
-    font-weight: normal;
-}
-.users-table th {
-    border-bottom: 1px solid #dee2e6;
-    padding: .75rem;
-}
-
-
-
-/* ----------------------- TABLE/WORK SHOW STYLING ----------------------- */
-.work-show-table {
-    border-collapse: collapse;
-    width: 100%;
-    border: grey;
-}
-.work-show-table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
-    border-top: 1px solid #dee2e6;
-}
-.work-show-table th {
-    border-bottom: 1px solid #dee2e6;
-    padding: .75rem;
-}
-tbody {
-    display: table-row-group;
-    vertical-align: middle;
-    border-color: inherit;
-}
-.work-show-table tbody th {
-    font-weight: normal;
-}
-
-/* ----------------------- TABLE/USER SHOW STYLING ----------------------- */
-// main#user-show {
-//     padding: 32px;
-// }
-h2.user-show {
-    font-weight: bold;
-    color: #26A69A;
-}
-h3.user-show {
-    font-weight: bold;
-}
-p.user-show {
-    margin-bottom: 1rem;
-}
-.user-show-table {
-    border-collapse: collapse;
-    width: 100%;
-    border: grey;
-}
-.user-show-table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
-    border-top: 1px solid #dee2e6;
-}
-.user-show-table th {
-    border-bottom: 1px solid #dee2e6;
-    padding: .75rem;
-}
-.user-show-table tbody th {
-    font-weight: normal;
-}
-.user-show-table tbody th a {
-    color: #26A69A;
+    font-weight: bolder;
 }
