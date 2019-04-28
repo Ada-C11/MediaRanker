@@ -3,63 +3,68 @@
   <span class="spotlight__header--prefix">
     Media Spotlight
   </span>
-  <% spotlight = Work.spotlight %>
-    <% if spotlight %>
-      <%= link_to spotlight.title, work_path(spotlight)%>
-    <% else %>
-      No work available
-    <% end%>
-  </h2>
-  </section>
-</section>
 
-<section class="top-ten-container">
-  <section class="top-ten-list-container">
-  <h2 class="top-ten-header"> Top Movies </h2>
-  <% top_movies = Work.top_ten_list("movie") %>
-  <ul class="list-group top-ten__list" >
-    <% top_movies.each do |movie|%>
-      <li class="list-group-item">
-        <h4>
-          <%= link_to movie.title, work_path(movie) %>, 
-          <small> created by <%= movie.creator%></small>
-        </h4>
-        <p> <%= movie.upvotes.length %> votes </p>
-      </li>
-    <% end %>
-  </ul>
+  <% if @works.empty? %>
+    There's no media available, please add some. 
+  <% else %>
+    <% spotlight = Work.spotlight %>
+      <% if spotlight %>
+        <%= link_to spotlight.title, work_path(spotlight)%>
+      <% else %>
+        No work available
+      <% end%>
+    </h2>
+    </section>
   </section>
 
-  <section class="top-ten-list-container">
-    <h2 class="top-ten-header"> Top Albums </h2>
-    <% top_albums = Work.top_ten_list("album")%>
-    <ul class="list-group top-ten__list">
-      <% top_albums.each do |media|%>
-        <li class="list-group-item">
-          <h4>
-            <%= link_to media.title, work_path(media) %>, 
-          <small> created by  <%= media.creator%></small>
-          </h4>
-          <p> <%= media.upvotes.length %> votes </p>
-        </li>
-      <% end %>
+  <section class="top-ten-container">
+    <section class="top-ten-list-container">
+    <h2 class="top-ten-header"> Top Movies </h2>
+      <% top_movies = Work.top_ten_list("movie") %>
+      <ul class="list-group top-ten__list" >
+        <% top_movies.each do |movie|%>
+          <li class="list-group-item">
+            <h4>
+              <%= link_to movie.title, work_path(movie) %>, 
+              <small> created by <%= movie.creator%></small>
+            </h4>
+            <p> <%= movie.upvotes.length %> votes </p>
+          </li>
+        <% end %>
     </ul>
+    </section>
+
+    <section class="top-ten-list-container">
+      <h2 class="top-ten-header"> Top Albums </h2>
+      <% top_albums = Work.top_ten_list("album")%>
+      <ul class="list-group top-ten__list">
+        <% top_albums.each do |media|%>
+          <li class="list-group-item">
+            <h4>
+              <%= link_to media.title, work_path(media) %>, 
+            <small> created by  <%= media.creator%></small>
+            </h4>
+            <p> <%= media.upvotes.length %> votes </p>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+      
+    <section class="top-ten-list-container">
+    <h2 class="top-ten-header"> Top Books </h2>
+      <% top_books = Work.top_ten_list("book")%>
+      <ul class="list-group top-ten__list">
+      <% top_books.each do |media|%>
+            <li class="list-group-item">
+              <h4>
+                <%= link_to media.title, work_path(media) %>, 
+                <small> created by <%= media.creator%></small>
+              </h4>
+              <p> <%= media.upvotes.length %> votes </p>
+            </li>
+          <% end %>
+        </ul>
+  <% end %>
+    </section>
   </section>
-    
-  <section class="top-ten-list-container">
-  <h2 class="top-ten-header"> Top Books </h2>
-  <% top_books = Work.top_ten_list("book")%>
-  <ul class="list-group top-ten__list">
-  <% top_books.each do |media|%>
-        <li class="list-group-item">
-          <h4>
-            <%= link_to media.title, work_path(media) %>, 
-            <small> created by <%= media.creator%></small>
-          </h4>
-          <p> <%= media.upvotes.length %> votes </p>
-        </li>
-      <% end %>
-    </ul>
-  </section>
-</section>
 

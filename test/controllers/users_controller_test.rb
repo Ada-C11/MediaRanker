@@ -11,7 +11,8 @@ describe UsersController do
 
   describe "log_in" do 
     it "allows a user to login " do 
-      perform_login 
+      perform_login
+
       must_redirect_to root_path
     end
 
@@ -20,7 +21,7 @@ describe UsersController do
 
       login_data = {
         user: {
-          username: "e_leets",
+          username: "A User",
         },
       }
 
