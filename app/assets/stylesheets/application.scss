@@ -45,7 +45,7 @@ h1, h2, h3, h4, h5 {
 
 .app-header__header {
     max-width: 100%;
-    background-color: #B2DFDB;
+    background-color: #DEC1C7;
     margin-bottom: 0.5rem;
     padding-top: 2rem;
     padding-right: 1rem;
@@ -71,8 +71,13 @@ h1, h2, h3, h4, h5 {
 }
 
 .btn-primary {
-    background-color: #26A69A;
-    border-color: #26A69A
+    background-color: #BD7584;
+    border-color: #BD7584
+}
+
+.btn-primary:hover {
+    background-color: #A55363;
+    border-color: #A55363
 }
 
 .nav {
