@@ -10,57 +10,42 @@
     <link href="https://fonts.googleapis.com/css?family=Gudea" rel="stylesheet">
   </head>
 
-  <body>
-    <header class="app-header__header">
-      <h1>
-        <a href="root_path">MediaRanker</a>
-        <small>| Ranking the Best of Everything
-      </h1>
-        <nav class="app-header__nav">
-          <ul class="nav app-header__site-nav-container">
-          <li class="nav-item app-header__nav_item">
-          <%= link_to "View top media", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item app-header__nav_item">
-          <%= link_to "View all media", works_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item app-header__nav_item">
-          <%= link_to "Add new work", new_work_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item app-header__nav_item">
-          <%= link_to "All Users", users_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item app-header__nav_item">
-          <%= link_to "Login", login_path, class: "nav-link" if session[:user_id].nil? %>
-          </li>
-          </ul>
-          <ul class="nav app-header__site-nav-container">
-          <li class="nav-item app-header__nav_item">
-          <%= link_to "Logout", logout_path, method: :post, class: "nav-link" if session[:user_id] %>
-          </li>
-          <li class="nav-item app-header__nav_item">
-          <%= link_to "Logged in as #{User.find(session[:user_id]).name}", user_path(session[:user_id]), class: "nav-link" if session[:user_id]%>
-          </li>
-          </ul>
-        <nav>
-        <% if flash.count > 0 %>
-          <section class="alert__container">
-            <div class="alert alert-success">
-            <% flash.each do |name, message| %>
-              <% if message.class == Array %>
-                <ul>
-                <% message.each do |msg| %>
-                  <span><%= name %>: <%= msg %> </span>
-                <% end %>
-              <% else %>
-                <%= message %>
-              <% end %>
-              </ul>
-            <% end %>
-            </div>
-          </section>
-        <% end %>
+    <body>
+    <header class="app-header">
+      <h1><strong><%= link_to "Media Ranker", "/" %></strong> <small>| Ranking the Best of Everything</small></h1>
+      <nav>
+        <ul>
+          <div class="nav-links">
+          <li><%= link_to "View top media", root_path%></li>
+          <li><%= link_to "View all media", works_path %></li>
+          <li><%= link_to "Add a new work", new_work_path %></li>
+          <li><%= link_to "View all users", users_path %></li>
+          </div> 
+          
+          <div class="button">
+          <% if session[:user_id].nil? %>
+            <li><%= link_to "Login", login_path, class: "btn btn-primary" %></li>
+          <% else %>
+            <li> <%= link_to "Logged in as #{User.find_by(id: session[:user_id]).username}", user_path(session[:user_id]), class: "btn btn-primary"%></li>
+            <li><%= link_to "Log Out", logout_path, method: :post, class: "btn btn-primary" %></li>
+          <% end %>
+          </div>
+        </ul>
+      </nav>
     </header>
-    <%= yield %>
+
+    <% if flash[:success] %>
+      <div class="alert alert-success" role="alert">
+         <%= flash[:success]%>
+      </div>
+    <% elsif flash[:error] %>
+      <div class="alert alert-danger" role="alert">
+        <%= flash[:error]%>
+      </div>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

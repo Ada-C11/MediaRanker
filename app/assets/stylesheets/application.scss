@@ -29,6 +29,7 @@
     padding: 2rem;
 }
 
+/* ----------------------- HEADER/NAV STYLING ----------------------- */
 body {
     font-family: "Gudea", sans-serif;
 }
@@ -64,7 +65,7 @@ div.button {
 header.app-header a {
     color: tomato;
 }
-header.app-header a:visited {
+header.app-header a:visted {
     color: tomato;
 }
 
@@ -90,10 +91,6 @@ div.button {
 }
 .button a:visited {
     color: white;
-}
-
-h1 {
-
 }
 
 /* ----------------------- HOMEPAGE INDEX STYLING ----------------------- */
@@ -233,9 +230,9 @@ tbody {
 }
 
 /* ----------------------- TABLE/USER SHOW STYLING ----------------------- */
-main#user-show {
-     padding: 32px;
- }
+// main#user-show {
+//     padding: 32px;
+// }
 h2.user-show {
     font-weight: bold;
     color: #26A69A;
