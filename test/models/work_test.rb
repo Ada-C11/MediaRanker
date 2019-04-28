@@ -59,16 +59,6 @@ describe Work do
       expect(top_books.count).must_equal 2
     end
     
-    it "handles ties properly" do
-      works = Work.all
-      
-      works.each do |work|
-        work.votes = 5
-        
-      
-      end
-    end
-    
     it "will display a message if there are no works in that category" do
       top_books = Work.top_ten("salad")
       

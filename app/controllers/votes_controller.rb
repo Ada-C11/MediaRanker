@@ -13,7 +13,7 @@ class VotesController < ApplicationController
       @vote = Vote.new(work_id: params[:work_id], user_id: session[:user_id])
 
     
-      if work.vote_ids.include?(user.id)
+      if work.user_ids.include?(user.id)
         flash.now[:error] = "HEY! You already voted for that. Try voting for something else."
         render 'home/index'
       else
