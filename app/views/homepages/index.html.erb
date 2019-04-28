@@ -4,7 +4,7 @@
       Media Spotlight
     </span>
   </h2>
-    <% spotlight = Vote.spotlight %>
+    <% spotlight = Work.spotlight %>
     <% if spotlight %>
       <%= link_to spotlight.title, work_path(spotlight.id) %>
       by <%= spotlight.creator %>
