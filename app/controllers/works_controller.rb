@@ -29,7 +29,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
     else
       @work.errors.messages.each do |field, message|
-        flash.now[field] = message
+        flash.now[:error] = "#{field.capitalize}: #{message}"
         # raise
       end
       render :new, status: :bad_request
@@ -44,8 +44,8 @@ class WorksController < ApplicationController
       flash[:success] = "Work updated successfully!"
       redirect_to work_path(@work.id)
     else
-      @work.errors.messages.each do |field, messages|
-        flash.now[field] = messages
+      @work.errors.messages.each do |field, message|
+        flash.now[:error] = "#{field.capitalize}: #{message}"
       end
       render :edit, status: :bad_request
     end
