@@ -1,25 +1,38 @@
-<%= form_with model: @work, class: form_class do |f| %>
 
-  <%= f.label :category %>
-  <%# f.select :category, Work.all.map {|work| [work.category] } %>
-  <%= f.select :category, [
-      ["movie", "movie"],
-      ["book", "book"], 
-      ["album", "album"]
-  ] %>
+  <%= form_with model: @work, class: form_class do |f| %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+    <div>
+    <%= f.label :category %>
+    <%# f.select :category, Work.all.map {|work| [work.category] } %>
+    <%= f.select :category, [
+        ["movie", "movie"],
+        ["book", "book"], 
+        ["album", "album"]
+    ] %>
+    </div>
 
-  <%= f.label :creator %>
-  <%= f.text_field :creator %>
+    <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    </div>
 
-  <%= f.label :publication_year %>
-  <%= f.text_field :publication_year %>
+    <div>
+    <%= f.label :creator %>
+    <%= f.text_field :creator %>
+    </div>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+    <div>
+    <%= f.label :publication_year %>
+    <%= f.text_field :publication_year %>
+    </div>
 
-  <%= f.submit action_name, class: "submit-button" %>
+    <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    </div>
 
-<% end %>
+    <div>
+    <%= f.submit action_name, class: "submit-button" %>
+    </div>
+
+  <% end %>
