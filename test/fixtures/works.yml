@@ -6,6 +6,12 @@ one:
   creator: Patrick Rolfus
   publication_year: 2013
 
+four:
+  category: book
+  title: Harry Potter
+  creator: JKR
+  publication_year: 2013
+
 two:
   category: movie
   title: My Movie
