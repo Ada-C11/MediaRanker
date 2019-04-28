@@ -33,11 +33,11 @@
           </li>
         </ul>
         <ul>
-        <span id="login">
+        
           <li class="btn btn-success">
             <%= link_to("Login", login_path) if session[:user_id].nil? %>
           </li>
-        </span>
+        
           <li class="btn btn-success">
             <%= link_to("Logout", logout_path, method: :post) if session[:user_id] %>
           </li>
