@@ -39,15 +39,8 @@ describe UsersController do
 
   describe "login" do
     it "can log in an existing user" do
-      user = User.first
-      login_data = {
-        user: {
-          username: user.username,
-        },
-      }
-      post login_path, params: login_data
+      perform_login
 
-      expect(session[:user_id]).must_equal user.id
       expect(flash[:success]).must_equal "Successfully logged in as existing user #{user.username}"
     end
 
@@ -68,14 +61,7 @@ describe UsersController do
 
   describe "current" do
     it "responds with success (200 OK) for a logged-in user" do
-      login_data = {
-        user: {
-          username: user.username,
-        },
-      }
-      post login_path, params: login_data
-
-      expect(session[:user_id]).must_equal user.id
+      perform_login
 
       get current_user_path
 
@@ -92,15 +78,15 @@ describe UsersController do
 
   describe "logout" do
     it "can log out a current user" do
-      user = User.first
-      login_data = {
+      perform_login
+
+      logout_data = {
         user: {
           username: user.username,
         },
       }
-      post login_path, params: login_data
 
-      post logout_path, params: login_data
+      post logout_path, params: logout_data
 
       expect(session[:user_id]).must_be_nil
       expect(flash[:success]).must_equal "Successfully logged out"
