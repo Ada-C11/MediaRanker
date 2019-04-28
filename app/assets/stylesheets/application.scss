@@ -23,7 +23,7 @@
 }
 
 main {
-  padding: 20px;
+  padding: 2rem;
 }
 
 .flex {
@@ -38,12 +38,14 @@ ul {
   margin: 0;
   padding: 0;
 }
-.navbar li {
-  display: inline-block
+.navbar ul:first-child li:first-child a {
+  padding-left: 0;
 }
-// li {
-//   display: inline-block
-// }
+.navbar li {
+  display: inline-block;
+  padding-inline-start: 0;
+}
+
 
 a, .title-one {
   text-decoration: none;
@@ -64,10 +66,73 @@ a, .title-one {
 a, h2 {
   color: #26A69A;
 }
+h4 {
+  color: #26A69A;
+}
 
 .navbar, header {
-
   margin-bottom: 0.5rem;
   padding: 3rem 1rem 0.5rem 1rem;
   background-color: #B2DFDB;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+  background-color:  rgb(25, 119, 110);
+
+}
+
+.spotlight {
+  padding: 0 2rem 1rem 2rem;
+  border-bottom: rgb(221, 234, 247) 1px solid;
+}
+.title-one:hover {
+  text-decoration: none;
+  color: #FF5722
+}
+h2 a {
+  text-decoration: underline;
+}
+
+.top-media h2 {
+  border-bottom: #B2DFDB 2px solid;
+
+}
+small {
+  font-size: 80%;
+  font-weight: 400;
+  color: slategrey;
+}
+
+.top-media ul {
+  padding: 0.75rem 1.25rem;
+}
+.top-media p {
+  padding-bottom: 1rem;
+}
+.top-media {
+  padding-top: 3rem;
+}
+
+h3 {
+  padding-bottom: 1.5rem;
+}
+
+table a:hover {
+  text-decoration: none;
+  color: rgb(36, 134, 125)
+}
+
+header .nav-link:hover {
+  color: #26A69A
+}
+
+.work-list li {
+  padding-bottom: 1rem;
+}
+.button-row {
+  padding-bottom: 2rem;
+}
+
+.alert {
+  margin-top: 2rem;
 }

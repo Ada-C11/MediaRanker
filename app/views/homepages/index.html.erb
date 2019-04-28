@@ -1,9 +1,9 @@
 
 
 <% if @spotlight %>
-  <section class="spotlight">
-    <h2>Media Spotlight: <%= @spotlight.title + " by " + @spotlight.creator %></h2>
-    <p><%= @spotlight.description %></p>
+  <section class="spotlight ">
+    <h2><span class="text-dark">Media Spotlight: </span><%= link_to @spotlight.title, root_path %><%= " by " + @spotlight.creator %></h2>
+    <p><%= @spotlight.votes.count %> votes - <%= @spotlight.description %></p>
   </section>
 <% end %>
 
@@ -12,7 +12,10 @@
     <h2>Top Movies</h2>
       <ul>
         <% @top_ten[2].each do |work| %>
-          <li><%= work.title %> <%= "by " + work.creator %></li>
+          <li>
+            <h4><%= work.title %> <small>by <%= work.creator %></small></h4>
+            <p><%= work.votes.count %> votes</p>
+          </li>
         <% end %>
       </ul>
   </section>
@@ -20,7 +23,10 @@
       <h2>Top Books</h2>
       <ul>
         <% @top_ten[1].each do |work| %>
-          <li><%= work.title %> <%= "by " + work.creator %></li>
+          <li>
+            <h4><%= work.title %> <small>by <%= work.creator %></small></h4>
+            <p><%= work.votes.count %> votes</p>
+          </li>
         <% end %>
       </ul>
   </section>
@@ -28,7 +34,10 @@
       <h2>Top Albums</h2>
       <ul>
         <% @top_ten[0].each do |work| %>
-          <li><%= work.title %> <%= "by " + work.creator %></li>
+           <li>
+            <h4><%= work.title %> <small>by <%= work.creator %></small></h4>
+            <p><%= work.votes.count %> votes</p>
+          </li>
         <% end %>
       </ul>
   </section>

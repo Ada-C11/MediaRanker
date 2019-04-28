@@ -42,7 +42,7 @@
 
   <body>
 
-
+    <% if flash[:status] %>
       <section class="alert alert-<%= flash[:status] %>">
 
           <%= flash[:message] %>
@@ -57,6 +57,7 @@
           <% end %>
 
       </section>
+    <% end %>
 
     <main>
 
