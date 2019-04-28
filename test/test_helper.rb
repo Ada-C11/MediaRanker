@@ -22,8 +22,8 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
   # Add more helper methods to be used by all tests here...
-  def perform_login
-    user = User.first
+  def perform_login(user)
+    user ||= User.first
       login_data = {
         user: {
           username: user.username,
@@ -34,10 +34,13 @@ class ActiveSupport::TestCase
         # Verify the user ID was saved - if that didn't work, this test is invalid
       expect(session[:user_id]).must_equal user.id
       expect(flash[:status]).must_equal :success
+
+      return user
   end
 
   def check_flash(expected_status = :success)
     expect(flash[:status]).must_equal(expected_status)
     expect(flash[:message]).wont_be_nil
   end
+
 end

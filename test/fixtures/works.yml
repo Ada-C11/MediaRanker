@@ -1,22 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# movie:
-#   category: movie
-#   title: Into the Wild
-#   creator: Sean Penn, John Krakaeur
-#   publication_year: 2007
-#   description: Christopher McCandless' posthumous biography
+movie:
+  category: movie
+  title: Into the Wild
+  creator: Sean Penn, John Krakaeur
+  publication_year: 2007
+  description: Christopher McCandless' posthumous biography
 
-# book:
-#   category: book
-#   title: Where the Red Fern Grows
-#   creator: Wilson Rawls
-#   publication_year: 1961
-#   description: Classic novel capturing the bond between man and man's best friend
+book:
+  category: book
+  title: Where the Red Fern Grows
+  creator: Wilson Rawls
+  publication_year: 1961
+  description: Classic novel capturing the bond between man and man's best friend
 
-#   album:
-#     category: album
-#     title: Bad
-#     creator: Michael Jackson
-#     publication_year: 1987
-#     description: Pop, Rock, Funk, Soul - MJ's 7th studio album released by Epic Records
+album:
+  category: album
+  title: Bad
+  creator: Michael Jackson
+  publication_year: 1987
+  description: Pop, Rock, Funk, Soul - MJ's 7th studio album released by Epic Records
