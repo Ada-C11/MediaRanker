@@ -7,9 +7,6 @@ class UsersController < ApplicationController
     username = params[:user][:username]
     user = User.find_or_create_by(username: username)
 
-    # user = User.find_by(username: username)
-    # user = User.create(username: username) if user.nil?
-
     if user.id
       session[:user_id] = user.id
       flash[:alert] = "#{user.username} logged in!"
@@ -18,14 +15,6 @@ class UsersController < ApplicationController
     end
     redirect_to root_path
   end
-
-  #   def current
-  #     @user = User.find_by(id: session[:user_id])
-  #     if @user.nil?
-  #       flash[:error] = "You must be logged in first!"
-  #       redirect_to root_path
-  #     end
-  #   end
 
   def logout
     user = User.find_by(id: session[:user_id])
