@@ -14,15 +14,13 @@
     </thead>
     <tbody>
         <% @user.votes.each do |vote|%>
-            <% if vote %> <!-- to fix problem on heroku when work had been deleted after being voted-->
                 <tr>
-                    <td><%#= link_to vote.work.title, work_path(vote.work.id) %></td>
+                    <td><%= link_to vote.work.title, work_path(vote.work.id) %></td>
                     <td><%= vote.work.creator %></td>
                     <td><%= vote.work.publication_year %></td>
                     <td><%= vote.work.category.capitalize %></td>
                     <td><%= vote.date %></td>
                 </tr>
-            <% end %>
         <% end %>
     </tbody>
     </table>
