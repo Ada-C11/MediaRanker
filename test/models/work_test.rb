@@ -86,6 +86,14 @@ describe Work do
       max_votes = Work.all.max_by { |a_work| a_work.votes.count }
       expect(spotlight).must_equal max_votes
     end
+    it "returns one work even if there is a tie" do
+      most_votes = Work.all.max_by { |work| work.votes.count }
+
+      highest_voted = Work.all.select { |a_work| a_work.votes.length == most_votes.votes.count }
+
+      expect(highest_voted.length).must_equal 2
+      expect(Work.spotlight).must_be_instance_of Work
+    end
   end
 
   describe "Work.get_media_categories" do
