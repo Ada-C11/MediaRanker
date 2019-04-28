@@ -19,12 +19,13 @@
   Votes
 </h4> 
 
+
 <ul>
     <% @work.vote_ids.each do |id|%>
     <li>
         <% vote = Vote.find_by(id: id) %>
         <% user = User.find_by(id: vote.user_id) %>
-        <%= link_ to "#{user.username}", users_path(user.id) %>
+        <%= link_to "#{user.username}", user_path(user.id) %>
         <%= (vote.created_at).to_date.to_formatted_s(:long) %>
     </li>
     <% end %>

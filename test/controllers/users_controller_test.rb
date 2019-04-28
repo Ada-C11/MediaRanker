@@ -5,13 +5,13 @@ describe UsersController do
     it "responds with success if a user is logged in" do
       logged_in_user = perform_login
 
-      get current_user_path
+      get login_path
 
       must_respond_with :success
     end
 
     it "responds with a redirect if no user is logged in" do
-      get current_user_path
+      get user_path
       must_respond_with :redirect
     end
   end
