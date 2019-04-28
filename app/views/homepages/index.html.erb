@@ -13,7 +13,7 @@
       <ul>
         <% @top_ten[2].each do |work| %>
           <li>
-            <h4><%= work.title %> <small>by <%= work.creator %></small></h4>
+            <h4><%= link_to work.title, work_path(work) %> <small>by <%= work.creator %></small></h4>
             <p><%= work.votes.count %> votes</p>
           </li>
         <% end %>
@@ -24,7 +24,7 @@
       <ul>
         <% @top_ten[1].each do |work| %>
           <li>
-            <h4><%= work.title %> <small>by <%= work.creator %></small></h4>
+            <h4><%= link_to work.title, work_path(work) %> <small>by <%= work.creator %></small></h4>
             <p><%= work.votes.count %> votes</p>
           </li>
         <% end %>
@@ -35,7 +35,7 @@
       <ul>
         <% @top_ten[0].each do |work| %>
            <li>
-            <h4><%= work.title %> <small>by <%= work.creator %></small></h4>
+            <h4><%= link_to work.title, work_path(work) %> <small>by <%= work.creator %></small></h4>
             <p><%= work.votes.count %> votes</p>
           </li>
         <% end %>

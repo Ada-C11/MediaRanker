@@ -113,8 +113,11 @@ h3 {
   padding-bottom: 1.5rem;
 }
 
-table a:hover {
+table a:hover, h4 a:hover {
   text-decoration: none;
+  color: rgb(36, 134, 125)
+}
+h2 a:hover{
   color: rgb(36, 134, 125)
 }
 
