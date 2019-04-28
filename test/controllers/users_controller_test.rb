@@ -26,10 +26,11 @@ describe UsersController do
   end
 
   describe "current" do
-    before do
-      perform_login
-    end
+    # before do
+    #   perform_login
+    # end
     it "returns 200 OK for a logged-in user" do
+      perform_login
       # Act
       get current_user_path
 

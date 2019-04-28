@@ -7,7 +7,8 @@ class VotesController < ApplicationController
       redirect_to login_path
     else
       vote = Vote.new(user_id: session[:user_id], work_id: @work.id)
-      unless Vote.find_by(user_id: session[:user_id], work_id: @work.id)
+      # unless Vote.find_by(user_id: session[:user_id], work_id: @work.id)
+      unless !vote.valid?
         vote.save
 
         flash[:status] = :success
