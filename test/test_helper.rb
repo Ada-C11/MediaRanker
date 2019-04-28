@@ -20,22 +20,23 @@ class ActiveSupport::TestCase
   fixtures :all
   # Add more helper methods to be used by all tests here...
   
-  # def perform_login(user = nil)
-  #   user ||= User.first
+  def perform_login(user = nil)
+    user ||= User.first
 
-  #   login_data = {
-  #     user: {
-  #       username: user.name,
-  #     },
-  #   }
-
-  #   post login_path, params: login_data
-  #   expect(session[:user_id]).must_equal user.id
-
-  #   return user
-  # end
   
-  def perform_login
-    
+    login_data = {
+      user: {
+        name: user.name,
+      },
+    }
+
+    post login_path, params: login_data
+    expect(session[:user_id]).must_equal user.id
+
+    return user
   end
+  
+# def perform_login(name)
+#   post login_url, params: { sig: users(name).perishable_signature }
+#   end
 end

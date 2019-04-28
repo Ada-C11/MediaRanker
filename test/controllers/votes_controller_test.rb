@@ -14,12 +14,19 @@ describe VotesController do
     # end
     
   before do
-    @user = perform_login
+    @user = users(:user7)
     @work = works(:moon)
+    
+    @vote_data = {
+      vote: {
+      user_id: @user.id,
+      work_id: @work.id
+      }
+    }
     end
   describe "create" do  
     it "will save a new vote and redirect if given valid inputs" do  
-      Vote.delete_all
+      # Vote.delete_all
       expect {
         post work_votes_path(@work.id)
       }.must_change "Vote.count", +1
@@ -31,12 +38,13 @@ describe VotesController do
     end
 
     it "should not allow user to vote on media that they've already voted on" do
-      post work_votes_path(@work_id)
+      
+      post work_votes_path(@work.id), params: @vote_data
 
       expect {
-        post work_votes_path(@work_id)
+        post work_votes_path(@work.id)
       }.wont_change "Vote.count"
-
+perform login
       expect(flash[:error]).must_equal "HEY! You already voted for that."
     end
 
