@@ -2,8 +2,8 @@
 <h2>User Summary: <%=link_to @user.name, user_path(@user.id) %></h2>
 <p>Joined site on <%= (@user.created_at).to_date.to_formatted_s(:long) %></p>
 
-<section class="user-show-table">
-  <h3 class="user-votes__header">Votes</h3>
+<section class="table">
+  <h3>Votes</h3>
   <table>
     <thead>
       <tr>
