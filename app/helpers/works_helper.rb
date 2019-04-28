@@ -18,8 +18,8 @@ module WorksHelper
     voters = ""
     work.votes.each do |vote|
       voters += "<tr>" +
-                "<td>#{vote.user.username}</td>" +
-                "<td>#{vote.created_at.strftime("%B %e, Y")}</td>" +
+                "<td>#{link_to vote.user.username, user_path(vote.user.id)}</td>" +
+                "<td>#{vote.created_at.strftime("%B %d, %Y")}</td>" +
                 "</tr>"
     end
     return voters.html_safe
