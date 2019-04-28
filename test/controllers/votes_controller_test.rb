@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe VotesController do
-  let(:work) { works(:paint_it_black) }
+  let(:work) { works(:harry_one) }
 
   describe "create" do
     it "can create a vote for a user for a given work" do

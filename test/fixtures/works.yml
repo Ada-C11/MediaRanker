@@ -1,24 +1,78 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 spaghetti:
-  category: Album
+  category: album
   title: Spaghetti and Chill
   creator: Super Fly
   publication_year: 1995
   description: Perfect jam for eating some spaghetti, alone, in a plushy bath robe.
 
 war_and_peace:
-  category: Book
+  category: book
   title: War and Peace
   creator: Leo Tolstoy
   publication_year: 1869
   description: There is some war. There is some peace. 
 
-paint_it_black:
-  category: Movie
-  title: Amelie
-  creator: Some Cool Guy
+anna_karenina:
+  category: book
+  title: Anna Karenina
+  creator: Leo Tolstoy
+  publication_year: 1874
+  description: A beautiful woman leaves her husband and child for a handsome lover, regrets it, and throws herself under a train.
+
+whangdoodles:
+  category: book
+  title: The Last of the Really Great Whangdoodles
+  creator: Julie Andrews
+  publication_year: 1984
+  description: There's a moose who wears slippers and eats ice cream all day.
+
+catcher:
+  category: book
+  title: Catcher in the Rye
+  creator: A Guy Who Thought He was Cool
+  publication_year: 1950
+  description: The original hipster.
+
+harry_one:
+  category: book
+  title: Harry Potter and the Sorcerer's Stone
+  creator: J.K. Rowling
+  publication_year: 1997
+  description: An orphaned boy, who is forced to be adopted by his abusive Aunt and Uncle, finds out he is actually a rich wizard and runs away to magic school.
+
+harry_two:
+  category: book
+  title: Harry Potter and the Chamber of Secrets
+  creator: J.K. Rowling
+  publication_year: 1998
+  description: A wizard boy's future wife almost gets him killed by a giant snake in the basement of their school because she decides it's a good idea to talk to an evil wizard who's soul is trapped in her journal.
+
+harry_three:
+  category: book
+  title: Harry Potter and the Prisoner of Azkaban
+  creator: J.K. Rowling
   publication_year: 1999
-  description: Super amazing movie, even though it's a hipster fave.
+  description: A wizard boy grows to love his terrifying godfather.
 
+harry_four:
+  category: book
+  title: Harry Potter and the Goblet of Fire
+  creator: J.K. Rowling
+  publication_year: 2001
+  description: A wizard boy is forced to participate in a deadly school competition that he is immensely underqualified for and no one intervenes.
 
+harry_five:
+  category: book
+  title: Harry Potter and the Order of the Phoenix
+  creator: J.K. Rowling
+  publication_year: 2003
+  description: Spoiler Alert - his godfather dies. Tear.
+
+harry_six:
+  category: book
+  title: Harry Potter and the Half-Blood Prince
+  creator: J.K. Rowling
+  publication_year: 2005
+  description: Why is Snape so amazing? Forever and always.
