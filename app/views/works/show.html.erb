@@ -29,7 +29,7 @@
     <tbody>
         <% @work.votes.each do |vote|%>
             <tr>
-                <td><%= User.find_by(id: vote.user_id).username %></td>
+                <td><%= link_to vote.user.username, user_path(vote.user.id) %></td>
                 <td><%= vote.date %></td>
             </tr>
         <% end %>
