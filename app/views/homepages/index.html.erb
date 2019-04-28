@@ -3,29 +3,16 @@
     <span class="spotlight__header--prefix">
       Media Spotlight
     </span>
-    <%= link_to "Top Voted Shiz!", "#"%>
-    by That One Cool Cat.
-  <p class="spotlight__description"> Number of Votes + Super rad description.</p>
+    <% spotlight = Vote.spotlight %>
+    <%= link_to spotlight.title, work_path(spotlight.id) %>
+    by <%= spotlight.creator %>
+  <p class="spotlight__description"> <%= spotlight.votes.length %> votes -<%= spotlight.description %> </p>
 </section>
 <hr class="root__hr">
 
-<section class="top-ten__container">
-  <section>
-    <ul class ="list-group top-ten__list-container">
-      <li class="list-group-item">
-      </li>
-    </ul>
-  </section>
-  <section>
-    <ul class ="list-group top-ten__list-container">
-      <li class="list-group-item">
-      </li>
-    </ul>
-  </section>
-  <section>
-    <ul class ="list-group top-ten__list-container">
-      <li class="list-group-item">
-      </li>
-    </ul>
-  </section>
-</section>
+<%= render partial: "top_ten", locals: { category_name: "movie" } %>
+
+<%= render partial: "top_ten", locals: { category_name: "book" } %>
+
+<%= render partial: "top_ten", locals: { category_name: "album" } %>
+
