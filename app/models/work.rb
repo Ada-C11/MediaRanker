@@ -4,15 +4,16 @@ class Work < ApplicationRecord
   has_many :votes
 
   def self.spotlight
-    max = 0
-    spotlight = nil
-    Work.all.each do |work|
-      unless work.votes.length < max
-        max = work.votes.length
-        spotlight = work
-      end
-    end
-    return spotlight
+    # max = 0
+    # spotlight = nil
+    # Work.all.each do |work|
+    #   unless work.votes.length < max
+    #     max = work.votes.length
+    #     spotlight = work
+    #   end
+    # end
+    # return spotlight
+    return Work.all.sort_by { |work| work.votes.length }.last
   end
 
   def self.top_ten_movies

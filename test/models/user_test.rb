@@ -13,7 +13,9 @@ describe User do
     expect(@user).must_be :valid?
   end
 
-  # it "must be valid" do
-  #   value(user).must_be :valid?
-  # end
+  it "can have votes" do
+    user = users(:al)
+
+    expect(user.votes.length).must_equal 2
+  end
 end

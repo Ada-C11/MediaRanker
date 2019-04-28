@@ -27,22 +27,41 @@ describe Work do
   end
   describe "relations" do
     it "has votes" do
-      work = Work.create!(title: "test")
-      user = User.create!(username: "test")
-      Vote.create!(work_id: work.id, user_id: user.id)
-      # Vote.create(work_id: @work.id, user_id: 4)
-
-      expect(@work.votes.length).must_equal 1
-      expect(vote.work_id).must_equal @work.id
+      work = works(:a)
+      expect(work.votes.length).must_equal 3
     end
   end
 
   describe "spotligth" do
+    it "will return the work with most votes" do
+      work1 = works(:a)
+      spot = Work.spotlight
+      expect(spot).must_equal work1
+    end
   end
   describe "top ten movies" do
+    it "will return an empty arrayif there are no movies" do
+      movies = Work.top_ten_movies
+
+      expect(movies).must_equal []
+    end
   end
   describe "top ten books" do
+    it "will return 10 books in ascending order" do
+      books = Work.top_ten_books
+      book1 = works(:a)
+      book2 = works(:c)
+
+      expect(books.length).must_equal 10
+      expect(books.first).must_equal book1
+      expect(books.second).must_equal book2
+    end
   end
   describe "top ten album" do
+    it "will return all the albums if there are less than 10" do
+      albums = Work.top_ten_albums
+
+      expect(albums.length).must_equal 2
+    end
   end
 end
