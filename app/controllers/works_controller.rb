@@ -10,17 +10,16 @@ class WorksController < ApplicationController
   end
 
   def create
-    new_work = Work.new(work_params)
-
-    is_successful = new_work.save
+    @new_work = Work.new(work_params)
+    is_successful = @new_work.save
 
     if is_successful
-      flash[:success] = "Successfully created #{params[:category]} #{params[:id]}"
+      flash[:success] = "Successfully created #{@new_work.category} #{@new_work.id}"
 
       # NEED TO MAKE HOME PAGE FOR ROOT PATH!!!
       redirect_to root_path
     else
-      new_work.errors.messages.each do |field, message|
+      @new_work.errors.messages.each do |field, message|
         flash.now[field] = message
       end
       render :new, status: :bad_request
@@ -45,7 +44,7 @@ class WorksController < ApplicationController
     is_successful = @work.update(work_params)
 
     if @work && is_successful
-      flash[:success] = "Successfully updated #{params[:category]} #{params[:id]}"
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
 
       # NEED TO MAKE HOME PAGE FOR ROOT PATH!!!
       redirect_to root_path

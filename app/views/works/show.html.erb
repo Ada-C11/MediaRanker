@@ -7,7 +7,8 @@
 <div class = "btn btn-normal">
 <%=link_to "Edit", edit_work_path(@work.id) %>
 <%= link_to "Back to media ranks", root_path %>
-<p>upvote and delete buttons will go here.</p>
+<p>upvote button will go here</p>
+<%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>
 </div>
 
 
