@@ -16,6 +16,14 @@ describe UsersController do
 
       must_respond_with :success
     end
+    it "returns a 404 not found if the work does not exist" do
+      # TODO come back to this
+      user_id = -1
+
+      get user_path(user_id)
+
+      must_respond_with :not_found
+    end
   end
   describe "login_form" do
     it "can get the login page" do
