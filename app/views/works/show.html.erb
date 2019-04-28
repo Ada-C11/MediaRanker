@@ -6,6 +6,6 @@
 
 <button><%= link_to "Back to media ranks", root_path %></button>
 <button><%= link_to "Edit", edit_work_path(@work) %></button>
-<button><%= link_to "Upvote" %></button>
+<button><%= link_to "Upvote", upvote_path(@work), method: :post %></button>
 <button><%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure?" }%></button>
 </section>

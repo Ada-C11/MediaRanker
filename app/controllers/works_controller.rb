@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: %i[show edit update]
+  before_action :find_work, only: %i[show edit update upvote]
   def index
     # @works = Work.all
     # @categories = Category.all.includes(:works)
@@ -14,17 +14,30 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
     successful = @work.save
     if successful
+      flash[:status] = :success
+      flash[:message] = "Successfully created #{@work.category.name} #{@work.id}"
       redirect_to work_path(@work)
     else
+      flash.now[:status] = :warning
+      error_message = "A problem occurred: Could not create #{@work.category.name}"
+      @work.errors.messages.each do |column, problem_list|
+        problem_list.each do |problem|
+          error_message += "#{column}: #{problem}"
+        end
+      end
+      flash.now[:message] = error_message
       render :new, status: :bad_request
     end
   end
 
   def update
     if @work.update(work_params)
+      flash[:status] = :success
+      flash[:message] = "Successfully updated #{@work.category.name} #{@work.id}"
       redirect_to work_path(@work)
     else
       render :edit, status: :bad_request
+      flash.now
     end
   end
 
@@ -34,9 +47,31 @@ class WorksController < ApplicationController
 
     if @work
       @work.destroy
+      flash[:status] = :success
+      flash[:message] = "Successfully destroyed #{@work.category.name} #{@work.id}"
       redirect_to works_path
     else
       head :not_found
+    end
+  end
+
+  def upvote
+    @current_user = User.find_by(id: session[:user_id])
+    if !@current_user
+      flash[:status] = :error
+      flash[:message] = 'A problem occurred: You must log in to do that'
+      redirect_to root_path
+    elsif @work.votes.find_by(user_id: @current_user.id)
+      flash[:status] = :error
+      flash[:message] = 'A problem occurred: has already voted for this work'
+      redirect_back(fallback_location: root_path)
+
+    else
+      Vote.create!(work_id: @work.id, user_id: @current_user.id)
+      flash[:status] = :success
+      flash[:message] = 'Successfully Upvoted!'
+      redirect_back(fallback_location: root_path)
+
     end
   end
 
