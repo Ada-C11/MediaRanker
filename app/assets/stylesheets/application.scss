@@ -15,6 +15,14 @@
 /* Custom bootstrap variables must be set or imported *before* bootstrap. */
 @import "bootstrap";
 /* Import scss content */
+
+.app-header__header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1 rem 0.5rem 1 rem;
+}
+
 .btn-primary {
     background-color: #26A69A;
     border-color: #26A69A
