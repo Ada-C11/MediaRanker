@@ -13,9 +13,20 @@
   <section class="top-ten__container">
     <section class="top-ten__list-container">
         <h2 class="top-ten__header">
-        Top Movies
+        Top <%= Work.books.first.title %>
+        <%#= Work.find_by(publication_year: r).title%>
         </h2>
-        <>
+        <p><#% tt = (Work.albums.order("lower(publication_year
+        ) DESC"))%>
+        
+        <%# tt.each_with_index do |here, inde| %>
+        <%# if inde <= 9 %>
+        <%#= here.publication_year + "index#{inde}" %></p>
+        <%#else%>
+         <%#break%>
+        <%# end %>
+        <%# end %>
+
     </section>
   </section>
 </main>

@@ -10,6 +10,8 @@ class Work < ApplicationRecord
   end
 
   def self.spotlight
-    all.first
+    # all.first
+    spotlight_criteria = self.maximum("publication_year")
+    spotlight = self.find_by(publication_year: spotlight_criteria)
   end
 end
