@@ -1,5 +1,3 @@
-require "pry"
-
 class UsersController < ApplicationController
   before_action :find_user
 

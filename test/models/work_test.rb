@@ -1,5 +1,4 @@
 require "test_helper"
-require "pry"
 
 describe Work do
   let(:work) { works(:one) }
