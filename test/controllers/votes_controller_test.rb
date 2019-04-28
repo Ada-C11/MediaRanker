@@ -29,7 +29,7 @@ describe VotesController do
       expect {
         post work_votes_path(work.id)
       }.must_change "Vote.count", 1
-      must_redirect_to works_path
+      must_redirect_to root_path
       vote = Vote.last
       expect(vote.user_id).must_equal session[:user_id]
       expect(vote.work_id).must_equal work.id
@@ -40,8 +40,8 @@ describe VotesController do
         post work_votes_path(work.id)
       }.wont_change "Vote.count"
 
-      must_redirect_to work_path(work.id)
-      check_flash(:error)
+      must_redirect_to root_path
+      check_flash(:warning)
     end
 
     it "requires a vote to be unique (a user cannot upvote medium more than once)" do
@@ -50,8 +50,8 @@ describe VotesController do
       expect {
         post work_votes_path(work_id_dup)
       }.wont_change "Vote.count"
-      must_redirect_to work_path(work_id_dup)
-      check_flash(:error)
+      must_redirect_to root_path
+      check_flash(:warning)
     end
   end
 end

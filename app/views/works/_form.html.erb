@@ -1,8 +1,10 @@
-<div class="form">
+
 <% if @work.errors.messages.any? %>
+<div class="alert alert-warning">
+
   <section class="error-messages">
-  There are errors with your submission
-  <ul>
+  A problem occurred: Could not create <%=@work.category%>
+  <ul class = "use-list">
   <% @work.errors.messages.each do |col, prob| %>
     <% prob.each do |problem|%>
       <li><%= col%>: <%= problem%></li>
@@ -11,7 +13,11 @@
   </ul>
   </section>
   <% end %>
+  </div>
+  
+  <h2><%=heading%></h2>
 
+<div class="form">
 <%= form_with model: @work do |f| %>
   <div class="form-group">
   <%=f.label :category, "Category"%>

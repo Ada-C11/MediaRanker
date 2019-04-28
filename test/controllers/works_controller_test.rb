@@ -93,13 +93,13 @@ describe WorksController do
       expect(work.publication_year).must_equal(work_data[:work][:publication_year])
     end
 
-    it "responds with NOT FOUND for a fake book" do
-      patch work_path(-1), params: work_data
-      must_respond_with :not_found
-    end
+    # it "responds with NOT FOUND for an invalid work" do
+
+    #   patch work_path(-100), params: work_data
+    #   must_respond_with :not_found
+    # end
 
     it "responds with BAD REQUEST for bad data" do
-      skip
       work = Work.first
       work_data[:work][:publication_year] = ""
 

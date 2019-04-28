@@ -30,12 +30,22 @@
   <%end%>
   </nav>
   </header>
+
   <main>
+
   <body>
+  <% if flash[:status]%>
   <% alert_type = flash[:status] == :error ? :danger : flash[:status] %>
   <section class="flash alert alert-<%= alert_type %>">
+
   <%= flash[:message] %>
+    <ul class = "use-list">
+  <% if flash[:notice]== "No vote"%>
+    <li>user: has already voted for this work</li>
+  <%end%>
+</ul>
   </section>
+  <%end%>
     <%= yield %>
   </body>
   </main>

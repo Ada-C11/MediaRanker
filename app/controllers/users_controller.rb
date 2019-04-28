@@ -22,11 +22,11 @@ class UsersController < ApplicationController
     @user = User.find_by(username: username)
     if @user
       flash[:status] = :success
-      flash[:message] = "Succesfully logged in as returning user #{username}"
+      flash[:message] = "Succesfully logged in as existing user #{username}"
     else
       @user = User.create(username: username)
       flash[:status] = :success
-      flash[:message] = "Succesfully logged in as new user #{username}"
+      flash[:message] = "Succesfully created new user #{username} with ID #{@user.id}"
     end
     session[:user_id] = @user.id
 
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   def current
     @user = User.find(session[:user_id])
     unless @user
-      flash[:status] = :error
+      flash[:status] = :warning
       flash[:message] = "You must be logged in to see this page."
     end
     redirect_to root_path
@@ -44,6 +44,9 @@ class UsersController < ApplicationController
 
   def logout
     session[:user_id] = nil
+    flash[:status] = :success
+    flash[:message] = "Successfully logged out"
+
     redirect_to root_path
   end
 end
