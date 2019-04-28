@@ -54,6 +54,18 @@ describe Work do
 
         expect(spotlight.title).must_equal "Blonde"
       end
+
+      it "will only return one work if there is a tie" do
+        tie_work = works(:movie)
+        new_user = User.create(username: "tiemaker")
+        Vote.create(work_id: tie_work.id, user_id: user.id)
+        Vote.create(work_id: tie_work.id, user_id: new_user.id)
+
+        works = Work.all
+        spotlight = works.media_spotlight
+
+        expect(spotlight.title).must_equal "The Thing"
+      end
     end
 
     describe "top_ten" do
