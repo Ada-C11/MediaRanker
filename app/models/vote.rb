@@ -7,6 +7,8 @@ class Vote < ApplicationRecord
 
     top_works = works.sort_by { |work| work.votes.length }
 
+    return top_works if top_works.empty?
+
     return top_works.slice(-10..-1).reverse!
   end
 
