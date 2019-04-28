@@ -3,10 +3,6 @@ class Work < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   has_many :votes
 
-  def vote_count
-    self.votes.length
-  end
-
   def self.top_ten(type)
     array_by_type = self.where(category: type)
 
