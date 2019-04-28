@@ -16,3 +16,253 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+
+/*!
+ * Bootstrap v4.1.3 (https://getbootstrap.com/)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+ main {
+    padding: 2rem;
+}
+
+body {
+    font-family: "Gudea", sans-serif;
+}
+header {
+    background-color: #B2DFDB;
+    max-width: 100%;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
+    text-align: center;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 0;
+    margin-top: 5rem;
+}
+div.nav-links {
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 50%;
+}
+div.button {
+    display: flex; 
+    flex-direction: row;
+    justify-content: flex-end;
+    max-width: 40%;
+}
+header.app-header a {
+    color: tomato;
+}
+header.app-header a:visited {
+    color: tomato;
+}
+
+header.app-header small {
+    color: white;
+}
+header.app-header li a {
+    color: #00796B;
+}
+nav li {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+div.button {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-content: flex-end;
+}
+.btn-primary {
+    background-color: #26A69A;
+    border-color: #26A69A;
+}
+.button a:visited {
+    color: white;
+}
+
+h1 {
+
+}
+
+/* ----------------------- HOMEPAGE INDEX STYLING ----------------------- */
+// main.homepage {
+//     margin: 2rem;
+// }
+.spotlight {
+    padding: 0 2rem 2rem 2rem;
+    border-bottom: lightgrey 1px solid;
+}
+.spotlight h2 {
+    font-weight: bold;
+}
+.spotlight h2 span {
+    color: #26A69A;
+}
+.spotlight h2 a{
+    color: #26A69A;
+    text-decoration: underline;
+}
+section.spotlight-work {
+    padding-top: 2rem;
+}
+.spotlight-work h2 {
+    font-weight: bold;
+    color: #26A69A;
+    border-bottom: solid 1px #26A69A;
+}
+section.spotlight {
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+div.spotlight-works {
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 2em;
+}
+div.spotlight-works section.spotlight-work:first-child {
+    grid-column: 2;
+    grid-row: 1;
+}
+div.spotlight-works section.spotlight-work:nth-child(2) {
+    grid-column: 1;
+    grid-row: 1;
+}
+div.spotlight-works section.spotlight-work:last-child {
+    grid-column: 3;
+    grid-row: 1;
+}
+div.list-item {
+    padding: 0.75rem 1.25rem;
+    color: slategrey;
+}
+div.list-item a {
+    color:  #26A69A;
+    font-weight: bold;
+}
+/* ----------------------- TABLE/WORKS INDEX STYLING ----------------------- */
+h2.index {
+    color: #26A69A;
+    font-weight: bold;
+}
+.works-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: grey;
+}
+.works-table th.title-link a {
+    color: #26A69A;
+}
+.works-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
+}
+.works-table th {
+    border-bottom: 1px solid #dee2e6;
+    padding: .75rem;
+}
+.works-table tbody th {
+    font-weight: normal;
+}
+/* ----------------------- TABLE/USERS INDEX STYLING ----------------------- */
+.users-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: grey;
+}
+.users-table th.username-link a {
+    color: #26A69A;
+}
+.users-table th.title-link a {
+    color: #26A69A;
+}
+.users-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
+}
+.users-table tbody th {
+    font-weight: normal;
+}
+.users-table th {
+    border-bottom: 1px solid #dee2e6;
+    padding: .75rem;
+}
+
+
+
+/* ----------------------- TABLE/WORK SHOW STYLING ----------------------- */
+.work-show-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: grey;
+}
+.work-show-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
+}
+.work-show-table th {
+    border-bottom: 1px solid #dee2e6;
+    padding: .75rem;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+.work-show-table tbody th {
+    font-weight: normal;
+}
+
+/* ----------------------- TABLE/USER SHOW STYLING ----------------------- */
+main#user-show {
+     padding: 32px;
+ }
+h2.user-show {
+    font-weight: bold;
+    color: #26A69A;
+}
+h3.user-show {
+    font-weight: bold;
+}
+p.user-show {
+    margin-bottom: 1rem;
+}
+.user-show-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: grey;
+}
+.user-show-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    border-top: 1px solid #dee2e6;
+}
+.user-show-table th {
+    border-bottom: 1px solid #dee2e6;
+    padding: .75rem;
+}
+.user-show-table tbody th {
+    font-weight: normal;
+}
+.user-show-table tbody th a {
+    color: #26A69A;
+}
