@@ -8,6 +8,39 @@ describe "UsersController" do
     end
   end
 
+  describe "login" do
+    it "logs in an user" do
+      new_user = User.create(username: "newuser")
+
+      login_data = {
+        user: {
+          username: new_user.username,
+        },
+      }
+
+      post login_path, params: login_data
+      expect(session[:user_id]).must_equal new_user.id
+    end
+  end
+
+  describe "login" do
+    it "logs out an user" do
+      user = User.create(username: "logmeout")
+
+      login_data = {
+        user: {
+          username: user.username,
+        },
+      }
+
+      post login_path, params: login_data
+      expect(session[:user_id]).must_equal user.id
+
+      post logout_path, params: login_data
+      expect(session[:user_id]).must_be_nil
+    end
+  end
+
   describe "current" do
     it "returns 200 OK for a logged-in user" do
       user = User.first
