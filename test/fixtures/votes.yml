@@ -5,6 +5,10 @@
 # below each fixture, per the syntax in the comments below
 #
 
+vote_a:
+  work: one
+  user: one
+
 <% 20.times do |n| %>
 vote_<%= n %>:
   work: one
