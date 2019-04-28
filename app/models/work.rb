@@ -27,6 +27,5 @@ class Work < ApplicationRecord
       end
       position += 1
     end
-    #return top_ten
   end
 end

@@ -11,7 +11,7 @@
         <h6><%= "votes i0i -"%></h6>
   </section>
   <section class="top-ten__container">
-    <section class="top-ten__list-container">
+    
         <% categories = [
                           "book", 
                           "album", 
@@ -19,23 +19,25 @@
                           ]%>
 
         <% categories.each do |category|%>
-          <%# category_collection = Work.top(category)%>
+          <section class="top-ten__list-container">
+          <% category_collection = Work.top(category)%>
           <h2 class="top-ten__header">
           Top <%= "#{category.capitalize}s" %>
           </h2>
-          <p>
-          <%# inde = 0 %>
-          <%# category_collection.each do |here| %>
-            <%# if inde <= 9 %>
-              <%#= here.class%>
-              <%#= here.publication_year + "index#{inde}" %></p>
-              <%# inde += 1%>
-            <%#else%>
-              <%#break%>
-            <%# end %>
-          <%#end %>
+          <ul class="list-group top-ten__list">
+            <% category_collection.each do |work| %>
+            <li class="list-group-item">
+              <h4>
+              <%= link_to work.title%> 
+              <small class="top-ten__creator">by <%= work.creator%></small>
+              </h4>
+              <p><%= work.publication_year%> votes</p>
+            </li>
+            <% end %>
+          </section>
         <% end %>
-    </section>
+        
+    
   </section>
 </main>
 
