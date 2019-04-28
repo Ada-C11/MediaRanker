@@ -23,13 +23,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def logout
-    user = User.find_by(id: session[:user_id])
-    session[:user_id] = nil
-    flash[:success] = "Successfully logged out"
-    redirect_to root_path
-  end
-
   def index
   end
 
@@ -53,5 +46,23 @@ class UsersController < ApplicationController
   end
 
   def destroy
+  end
+
+  def logout
+    user = User.find_by(id: session[:user_id])
+    session[:user_id] = nil
+    flash[:success] = "Successfully logged out"
+    redirect_to root_path
+  end
+
+  def current
+    @user = User.find_by(id: session[:user_id])
+    if @user.nil?
+      flash[:error] = "You must be logged in to do that"
+      redirect_to root_path
+    else
+      head :ok
+      #   redirect_back(fallback_location: root_path)
+    end
   end
 end

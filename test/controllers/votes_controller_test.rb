@@ -6,7 +6,7 @@ describe VotesController do
     # end
     # how do you test sessions?????
     it "can create vote for logged user" do
-      post login_path, params: {username: test}
+      # post login_path, params: {username: test}
 
       # vote = Vote.new(vote: {})
 
