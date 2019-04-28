@@ -1,6 +1,16 @@
 require "test_helper"
 
 describe UsersController do
+  describe "login" do
+    it "can log in a user" do
+    
+      user = perform_login
+
+      expect(session[:user_id]).must_equal user.id
+      must_redirect_to root_path
+    end
+  end
+
   describe "current" do
     it "returns 200 OK for a logged-in user" do
       # Arrange
