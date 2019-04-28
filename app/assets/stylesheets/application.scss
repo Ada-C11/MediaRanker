@@ -58,6 +58,7 @@ nav > div:last-child ul {
     margin: 2rem;
 }
 
+
 nav > div:last-child > ul li {
     margin-right: 2rem;
 }
@@ -117,4 +118,16 @@ section {
 // ********** Style Top Media Page
 .list-works {
     margin-left: 4rem;
+}
+
+// ********** Style Form - Create New Work
+
+
+.form-intro-text {
+    font-size: 2rem;
+}
+
+form {
+    margin-left: 5rem;
+    margin-right: 5rem;
 }
