@@ -1,12 +1,12 @@
 class Work < ApplicationRecord
   has_many :votes
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: true
   validates :category, presence: true
 
   def self.sort_by_votes
     return [] if Work.all.empty?
     return Work.all if Vote.all.empty? #warning: circulating work_id, user_id
-    @works = Work.find_by_sql("SELECT COUNT(votes.work_id), works.id, title, creator, publication_year, category 
+    return Work.find_by_sql("SELECT COUNT(votes.work_id), works.id, title, creator, publication_year, category 
                               FROM works LEFT JOIN votes 
                               ON works.id = votes.work_id 
                               GROUP BY works.id, title, creator, publication_year, category 

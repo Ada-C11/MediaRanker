@@ -1,6 +1,27 @@
 require "test_helper"
 
 describe UsersController do
+  describe "index" do
+    it "can get all users" do
+      get users_path
+      must_respond_with :success
+    end
+  end
+
+  describe "show" do
+    it "can get a valid user" do
+      user = User.first
+      get user_path(user.id)
+      must_respond_with :success
+    end
+
+    it "gives a flash error message if the user is not found" do
+      get user_path(-1)
+      must_respond_with :redirect
+      must_redirect_to users_path
+      expect(flash[:error]).must_equal "User not found!"
+    end
+  end
   describe "login-form" do
     it "can get the login-form" do
       get login_path

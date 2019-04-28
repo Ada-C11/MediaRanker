@@ -8,14 +8,18 @@
 <section>
     <h2>Top Movies</h2>
     <ul>
-        <% @works = @top_works.select{|work| work.category == "movie"}%>
+
+        <% @works = @top_works.select{|work| work.category.downcase == "movie"}%>
             <% if !@works.empty? %>
                 <% 10.times do |index|%>
-                <%# @top_works.each do |work|%>
-                    <li>
-                        <%= link_to @works[index].title, work_path(@works[index].id) %> by <%= @works[index].creator%>
-                        <%= @works[index].votes.length%> votes
-                    </li>
+                    <% if @works[index] %>
+                        <li>
+                            <%= link_to @works[index].title, work_path(@works[index].id) %> by <%= @works[index].creator%>
+                            <%= @works[index].votes.length%> votes
+                        </li>
+                    <% else %>
+                        <% break %>
+                    <% end %>
                 <% end %>
             <% end %>
     </ul>
@@ -27,11 +31,14 @@
         <% @works = @top_works.select{|work| work.category == "book"}%>
             <% if !@works.empty? %>
                 <% 10.times do |index|%>
-                <%# @top_works.each do |work|%>
-                    <li>
-                        <%= link_to @works[index].title, work_path(@works[index].id) %> by <%= @works[index].creator%>
-                        <%= @works[index].votes.length%> votes
-                    </li>
+                    <% if @works[index] %>
+                        <li>
+                            <%= link_to @works[index].title, work_path(@works[index].id) %> by <%= @works[index].creator%>
+                            <%= @works[index].votes.length%> votes
+                        </li>
+                    <% else %>
+                        <% break %>
+                    <% end %>
                 <% end %>
             <% end %>
     </ul>
@@ -43,11 +50,14 @@
         <% @works = @top_works.select{|work| work.category == "album"}%>
             <% if !@works.empty? %>
                 <% 10.times do |index|%>
-                <%# @top_works.each do |work|%>
-                    <li>
-                        <%= link_to @works[index].title, work_path(@works[index].id) %> by <%= @works[index].creator%>
-                        <%= @works[index].votes.length%> votes
-                    </li>
+                    <% if @works[index] %>
+                        <li>
+                            <%= link_to @works[index].title, work_path(@works[index].id) %> by <%= @works[index].creator%>
+                            <%= @works[index].votes.length%> votes
+                        </li>
+                    <% else %>
+                        <% break %>
+                    <% end %>
                 <% end %>
             <% end %>
     </ul>

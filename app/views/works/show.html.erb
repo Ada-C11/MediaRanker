@@ -2,8 +2,9 @@
 <section>
     <h1><%= @work.title %></h1>
     <p>Created By: <%= @work.creator %></p>
+    <p>Category: <%= @work.category.capitalize %></p>
     <p>Published: <%= @work.publication_year %></p>
-    <p><%= @work.description %></p>
+    <p>Description: <%= @work.description %></p>
 </section>
 
 <section class="card">

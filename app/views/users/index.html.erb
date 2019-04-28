@@ -1,0 +1,21 @@
+<h1>List of Users</h1>
+<section>
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Votes</th>
+        <th scope="col">Joined</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user|%>
+            <tr>
+                <td><%= link_to user.username, user_path(user.id) %></td>
+                <td><%= user.votes.count %></td>
+                <td><%= user.joined_date %></td>
+            </tr>
+        <% end %>
+    </tbody>
+    </table>
+</section>

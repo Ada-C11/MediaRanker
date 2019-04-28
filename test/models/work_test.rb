@@ -27,6 +27,18 @@ describe Work do
       expect(work.errors.messages[:title]).must_equal ["can't be blank"]
     end
 
+    it "title has to be unique" do
+      title = Work.first.title
+      new_work = Work.create(title: title,
+                             creator: "Sophie",
+                             publication_year: 1987,
+                             category: "movie",
+                             description: "just some random movie")
+      expect(new_work.valid?).must_equal false
+      expect(new_work.errors.messages).must_include :title
+      expect(new_work.errors.messages[:title]).must_equal ["has already been taken"]
+    end
+
     it "requires a category" do
       work.category = nil
       valid_work = work.valid?
