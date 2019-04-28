@@ -9,18 +9,9 @@ module ApplicationHelper
   end
 
   def spotlight
-    max_votes = Vote.select{ |v| v.work_id }.max
-    media_spotlight = Work.find(max_votes.work_id)
-    return media_spotlight
-  end
-
-  def user_collection(user)
-    user_votes = Vote.where(user_id: user.id)
-    # work_ids = user_votes.select{ |v| v.work_id }.uniq
-    # work_ids.each do |work|
-    #   works = Work.where(id: work.work_id)
-    #   return works
-    ##end
+    works = Work.all.to_a
+    works.sort_by! { |work| Vote.where(work_id: work.id).length }
+    return works.reverse[0]
   end
 
 end
