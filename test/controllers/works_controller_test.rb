@@ -7,23 +7,14 @@ describe "WorksController" do
 
   describe "index" do
     it "renders without crashing" do
-      # Arrange
-
-      # Act
       get works_path
-
-      # Assert
       must_respond_with :ok
     end
 
     it "renders even if there are zero books" do
-      # Arrange
       Work.destroy_all
 
-      # Act
       get works_path
-
-      # Assert
       must_respond_with :ok
     end
   end
@@ -54,12 +45,13 @@ describe "WorksController" do
       }.must_change "Work.count", +1
 
       # Assert
+      work = Work.last
+
       must_respond_with :redirect
-      # must_redirect_to work_path (add once details page is added)
+      must_redirect_to work_path(work.id)
 
       check_flash
 
-      work = Work.last
       expect(work.title).must_equal work_data[:work][:title]
       expect(work.creator).must_equal work_data[:work][:creator]
       expect(work.description).must_equal work_data[:work][:description]
@@ -89,7 +81,6 @@ describe "WorksController" do
 
   describe "show" do
     it "returns a 404 status code if the work doesn't exist" do
-      # TODO come back to this
       work_id = -1
 
       get work_path(work_id)
@@ -100,7 +91,6 @@ describe "WorksController" do
     it "works for a work that exists" do
       get work_path(@work.id)
 
-      # Assert
       must_respond_with :ok
     end
   end

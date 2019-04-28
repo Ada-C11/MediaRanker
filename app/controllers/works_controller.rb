@@ -1,8 +1,8 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def index
-    @books = Work.where(category: "book")
-    @albums = Work.where(category: "album")
-    @movies = Work.where(category: "movie")
+    @works = Work.all
   end
 
   def new
@@ -16,7 +16,7 @@ class WorksController < ApplicationController
     if successful
       flash[:status] = :success
       flash[:message] = "Successfully created #{@work.category} #{@work.id}"
-      redirect_to root_path #update to details page once created!
+      redirect_to work_path(@work.id)
     else
       flash.now[:status] = :error
       flash.now[:message] = "A problem occurred: could not create #{@work.category}"
@@ -24,32 +24,11 @@ class WorksController < ApplicationController
     end
   end
 
-  def show
-    @work = Work.find_by(id: params[:id])
+  def show; end
 
-    unless @work
-      head :not_found
-      return
-    end
-  end
-
-  def edit
-    @work = Work.find_by(id: params[:id])
-
-    unless @work
-      head :not_found
-      return
-    end
-  end
+  def edit; end
 
   def update
-    @work = Work.find_by(id: params[:id])
-
-    unless @work
-      head :not_found
-      return
-    end
-
     if @work.update(work_params)
       flash[:status] = :success
       flash[:message] = "Successfully updated work #{@work.id}"
@@ -62,13 +41,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
-
-    unless @work
-      head :not_found
-      return
-    end
-
     @work.destroy
 
     flash[:status] = :success
@@ -80,5 +52,14 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:title, :category, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
+
+    unless @work
+      head :not_found
+      return
+    end
   end
 end

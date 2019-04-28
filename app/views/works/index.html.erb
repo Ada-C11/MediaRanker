@@ -1,60 +1,21 @@
-
-<table>
-    <h2>Albums</h2>
-    <tr>
-        <th>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
-    </tr>
-    <% @albums.each do |album| %>
+<% ["album", "book", "movie"].each do |type| %>
+    <table>
+        <h2><%= type.capitalize %>s</h2>
         <tr>
-            <td>Add Votes</td>
-            <td><%= album.title%></td>
-            <td><%= album.creator %></td>
-            <td><%= album.publication_year %></td>
-            <td>Add upvotes</td>
+            <th>Votes</th>
+            <th>Title</th>
+            <th>Created By</th>
+            <th>Published</th>
+            <th>Upvote</th>
         </tr>
-    <% end %>
-</table>
-
-<table>
-    <h2>Books</h2>
-    <tr>
-        <th>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
-    </tr>
-    <% @books.each do |book| %>
-        <tr>
-            <td>Add Votes</td>
-            <td><%= book.title %></td>
-            <td><%= book.creator %></td>
-            <td><%= book.publication_year %></td>
-            <td>Add upvotes</td>
-        </tr>
-    <% end %>
-</table>
-
-<table>
-    <h2>Movies</h2>
-    <tr>
-        <th>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
-    </tr>
-    <% @movies.each do |movie| %>
-        <tr>
-            <td>Add Votes</td>
-            <td><%= movie.title %></td>
-            <td><%= movie.creator %></td>
-            <td><%= movie.publication_year %></td>
-            <td>Add upvotes</td>
-        </tr>
-    <% end %>
-</table>
+        <% @works.where(category: type).each do |work| %>
+            <tr>
+                <td>Add Votes</td>
+                <td><%= work.title%></td>
+                <td><%= work.creator %></td>
+                <td><%= work.publication_year %></td>
+                <td>Add upvotes</td>
+            </tr>
+        <% end %>
+    </table>
+<% end %>
