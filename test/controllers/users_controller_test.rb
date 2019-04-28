@@ -56,7 +56,7 @@ describe UsersController do
       @login_data[:user][:username] = "new user"
 
       new_user = User.find_by(username: @login_data[:user][:username])
-      expect(new_user).must_equal nil
+      expect(new_user).must_be_nil
 
       post login_path(@login_data)
       new_user = User.find_by(username: @login_data[:user][:username])
@@ -91,12 +91,12 @@ describe UsersController do
       post logout_path
 
       must_redirect_to root_path
-      expect(session[:user_id]).must_equal nil
+      expect(session[:user_id]).must_be_nil
     end
 
     it "returns 200 OK if there is no logged-in user" do
       get root_path
-      expect(session[:user_id]).must_equal nil
+      expect(session[:user_id]).must_be_nil
 
       post logout_path
 

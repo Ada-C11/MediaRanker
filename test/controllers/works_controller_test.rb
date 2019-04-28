@@ -157,18 +157,14 @@ describe WorksController do
     end
 
     it "returns a 404 if the book does not exist" do
-      # Arrange
       work_id = -1
 
-      # Assumptions
       expect(Work.find_by(id: work_id)).must_be_nil
 
-      # Act
       expect {
         delete work_path(work_id)
       }.wont_change "Work.count"
 
-      # Assert
       must_respond_with :not_found
     end
   end
