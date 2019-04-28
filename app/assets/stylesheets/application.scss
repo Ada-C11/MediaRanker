@@ -131,3 +131,28 @@
             border-top: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
         }
+        
+        main {
+            display: block;
+        }
+        
+        main section {
+            border-bottom: 1px solid #ddd;
+        }
+        
+        #top-ten-movies {
+            display: grid;
+            list-style: none;
+        }
+        
+        #top-ten-books {
+            display: grid;
+            float: right;
+            list-style: none;
+        }
+        
+        #top-ten-albums {
+            display: grid;
+            float: right;
+            list-style: none;
+        }

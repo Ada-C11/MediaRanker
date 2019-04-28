@@ -1,3 +1,4 @@
+<main>
 <section>
   <h3>Media Spotlight:
 
@@ -12,19 +13,19 @@
   </p>
   <% end %>
 </section>
-<hr class="root-hr" />
 
-<section class='top-ten small-12 large-4 columns'>
-  <h3>Top Movies</h3>
+<section id='top-ten-movies'>
+  <h4>Top Movies</h4>
   <%= render partial: 'titles_column', locals: { media: @movies } %>
 </section>
 
-<section class='top-ten small-12 large-4 columns'>
-  <h3>Top Books</h3>
+<section id='top-ten-books'>
+  <h4>Top Books</h4>
   <%= render partial: 'titles_column', locals: { media: @books } %>
 </section>
 
-<section class='top-ten small-12 large-4 columns'>
-  <h3>Top Albums</h3>
+<section id='top-ten-albums'>
+  <h4>Top Albums</h4>
   <%= render partial: 'titles_column', locals: { media: @albums } %>
 </section>
+</main>
