@@ -1,61 +1,63 @@
-<section class="spotlight">
-  <h2 class="spotlight_header">
-  <span class="spotlight_header_prefix">Media Spotlight: </span>
-  <%= link_to spotlight.title, work_path(spotlight.id), class:"spotlight_link_to" %><span> by <%= spotlight.creator%></span>
-  </h2>
-  <p class="spotlight__description">
-    <%= Vote.where(work_id: spotlight.id).count %> - <%= spotlight.description %>
-  </p>
-</section>
-
-<section class="top-10_container">
-  <section class="top-10_list_container">
-    <h2 class="top-10_header">
-    Top Movies
+<main>
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+    <span class="spotlight__heade--prefix">Media Spotlight: </span>
+    <%= link_to spotlight.title, work_path(spotlight.id), class:"spotlight__link-to" %><span> by <%= spotlight.creator%></span>
     </h2>
-    <ul class="list-group top-10_list">
-      <% Work.top_ten("movie").each do |movie| %>
-        <li class="list-group-item">
-          <h4><%= link_to movie.title, work_path(movie.id) %></h4>
-          <small>by <%= movie[:creator] %></small>
-          <p><%= Vote.where(work_id: movie.id).count %></p>
-        </li>
-      <% end %>
-    </ul>
+    <p class="spotlight__description">
+      <%= Vote.where(work_id: spotlight.id).count %> - <%= spotlight.description %>
+    </p>
   </section>
+  <hr class="root__hr">
+  <section class="top-ten__container">
+    <section class="top-ten__list_container">
+      <h2 class="top-ten__header">
+      Top Movies
+      </h2>
+      <ul class="list-group top-ten__list">
+        <% Work.top_ten("movie").each do |movie| %>
+          <li class="list-group-item">
+            <h4><%= link_to movie.title, work_path(movie.id) %></h4>
+            <small>by <%= movie[:creator] %></small>
+            <p><%= Vote.where(work_id: movie.id).count %></p>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+    
+    <section class="top-ten__list_container">
+      <h2 class="top-ten__header">
+      Top Books
+      </h2>
+      <ul class="list-group top-ten__list">
+        <% Work.top_ten("book").each do |book| %>
+          <li class="list-group-item">
+            <h4><%= link_to book.title, work_path(book.id) %></h4>
+            <small>by <%= book[:creator] %></small>
+            <p><%= Vote.where(work_id: book.id).count %></p>
+          </li>
+        <% end %>
+      </ul>
+    </section>
 
-  <section class="top-10_list_container">
-    <h2 class="top-10_header">
-    Top Books
-    </h2>
-    <ul class="list-group top-10_list">
-      <% Work.top_ten("book").each do |book| %>
-        <li class="list-group-item">
-          <h4><%= link_to book.title, work_path(book.id) %></h4>
-          <small>by <%= book[:creator] %></small>
-          <p><%= Vote.where(work_id: book.id).count %></p>
-        </li>
-      <% end %>
-    </ul>
+    <section class="top-ten__list_container">
+      <h2 class="top-ten__header">
+      Top Albums
+      </h2>
+      <ul class="list-group top-ten__list">
+        <% Work.top_ten("album").each do |album| %>
+          <li class="list-group-item">
+            <h4><%= link_to album.title, work_path(album.id) %></h4>
+            <small>by <%= album[:creator] %></small>
+            <p><%= Vote.where(work_id: album.id).count %></p>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+
+
   </section>
-
-  <section class="top-10_list_container">
-    <h2 class="top-10_header">
-    Top Albums
-    </h2>
-    <ul class="list-group top-10_list">
-      <% Work.top_ten("album").each do |album| %>
-        <li class="list-group-item">
-          <h4><%= link_to album.title, work_path(album.id) %></h4>
-          <small>by <%= album[:creator] %></small>
-          <p><%= Vote.where(work_id: album.id).count %></p>
-        </li>
-      <% end %>
-    </ul>
-  </section>
-
-
-</section>
+</main>
 
 
 

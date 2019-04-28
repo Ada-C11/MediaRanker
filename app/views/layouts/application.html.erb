@@ -19,27 +19,33 @@
     <nav class="app-header__nav">
       <ul class="nav app-header__site-nav-container">
         <li class="nav-item app-header__nav_item">
-          <a class="nav-link" href="/">View top media</a>
+          <%= link_to "View top media",  root_path, :class=> "nav-link"%>
         </li>
         <li class="nav-item app-header__nav_item">
-          <a class="nav-link" href="/works">View all media</a>
+           <%= link_to "View all media", works_path, :class=> "nav-link" %>
         </li>
         <li class="nav-item app-header__nav_item">
-          <a class="nav-link" href="/works/new">Add a new work</a>
+          <%= link_to "Add a new work", new_work_path, :class=> "nav-link" %>
         </li>
         <li class="nav-item app-header__nav_item">
-          <a class="nav-link" href="/users">View all users</a>
+          <%= link_to "View all users", users_path, :class=> "nav-link" %>
         </li>
       </ul>
       <ul class="nav app-header__user-nav-container">
 
-        <li class="nav-item app-header__nav_item">
-          <%= link_to 'Log In', login_path, class:"btn btn-primary" %>
-        </li>
-        
-        <li class="nav-item app-header__nav_item">
-          <%= link_to 'Log Out', logout_path, method: :post, class:"btn btn-primary" %>
-        </li>
+        <% current_user = User.find_by(id: session[:user_id])%>
+        <% if current_user.nil? %>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Log in", login_path, :class=> "btn btn-primary"  %>
+          </li>
+          <% else %>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Logged in as #{current_user.username}", user_path(current_user.id), :class=> "btn btn-primary" %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Log Out", logout_path, method: :post, :class=> "btn btn-primary"  %>
+          </li>
+        <% end %>
 
       </ul>
     </nav>
