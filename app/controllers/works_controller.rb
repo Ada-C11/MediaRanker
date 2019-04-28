@@ -30,6 +30,7 @@ class WorksController < ApplicationController
     else
       @work.errors.messages.each do |field, message|
         flash.now[field] = message
+        # raise
       end
       render :new, status: :bad_request
     end
