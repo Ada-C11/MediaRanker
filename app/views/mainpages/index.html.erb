@@ -1,6 +1,3 @@
-
-Build a main page, with a list of the media for each category, 
-Since we don't have votes yet, for both the spotlight and top-10 sections you should select works at random (i.e. using .sample)
 <% spotlight = Work.spotlight %>
 <h2>Media Spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %>
     by <%= spotlight.creator %></h2>
