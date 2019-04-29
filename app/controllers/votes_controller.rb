@@ -8,7 +8,7 @@ class VotesController < ApplicationController
       @vote.work_id = params[:work_id]
       begin
         @vote.save
-        redirect_back(fallback_location: root_path)
+        redirect_to work_path(work_id)
         flash[:status] = :success
         flash[:message] = "Successfully upvoted!"
       rescue ActiveRecord::RecordNotUnique
