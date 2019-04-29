@@ -8,5 +8,6 @@ vote1:
   user: two
   work: album
 
-vote2: {}
-# column: value
+vote2: 
+  user: one
+  work: album2

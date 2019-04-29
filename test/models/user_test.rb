@@ -29,5 +29,20 @@ describe User do
   end
 
   describe "relationships" do
+    it "can have 0 votes" do
+      user = users(:no_votes)
+
+      votes = user.votes
+      expect(votes.length).must_equal 0
+    end
+
+    it "can have 1 or more votes" do
+      user = users(:two)
+      vote = votes(:vote1)
+
+      user.votes << vote
+
+      expect(user.votes.length).must_equal 1
+    end
   end
 end

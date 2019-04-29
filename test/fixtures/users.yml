@@ -5,3 +5,6 @@ one:
 
 two:
   username: MyString2
+
+no_votes:
+  username: NoVotes  
