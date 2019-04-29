@@ -2,6 +2,7 @@ class Work < ApplicationRecord
   validates :title, presence: true
   validates :title, uniqueness: true
   has_many :votes
+  has_many :users, through: :votes, dependent: :destroy
 
   def self.spotlight
     # max = 0
