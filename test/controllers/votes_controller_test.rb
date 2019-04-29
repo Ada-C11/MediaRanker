@@ -6,12 +6,7 @@ describe VotesController do
       user = users(:one)
       work = works(:album)
 
-      login_data = {
-        user: {
-          username: user.username,
-        },
-      }
-      post login_path, params: login_data
+      logged_in_user = perform_login
 
       vote_hash = {
         vote: {
@@ -27,12 +22,7 @@ describe VotesController do
       user = users(:one)
       work = works(:album)
 
-      login_data = {
-        user: {
-          username: user.username,
-        },
-      }
-      post login_path, params: login_data
+      logged_in_user = perform_login
 
       vote_hash = {
         vote: {
