@@ -50,6 +50,7 @@ class WorksController < ApplicationController
     else
       flash.now[:status] = :warning
       flash.now[:message] = "A problem occurred: Could not update #{@work.category}"
+      @errors = @work.errors
       render :edit, status: :bad_request
     end
   end
