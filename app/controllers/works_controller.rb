@@ -16,12 +16,10 @@ class WorksController < ApplicationController
     successful = @work.save
 
     if successful
-      flash[:status] = :success
-      flash[:message] = "Successfully created #{@work.category} #{@work.id}"
+      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
       redirect_to works_path
     else
-      flash.now[:status] = :error
-      flash.now[:message] = "A problem occurred: Could not create #{@work.category}"
+      flash.now[:error] = "A problem occurred: Could not create work."
       render :new, status: :bad_request
     end
   end
