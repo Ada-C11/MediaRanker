@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  has_and_belongs_to_many :users
+  has_many :votes
   validates :title, presence: :true
 
   def self.top_ten(category)
