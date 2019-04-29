@@ -1,26 +1,13 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+one:
+  category: books
+  title: becomming
+  creator: michelle obama
+  pub_yr: 2018
+  description: great
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-book: 
-  category: book
-  title: Sapiens
-  creator: Yuval Noah Harari
-  category: book
-  pub_yr: 2015
-  description: Humankind and stuff.
-
-movie: 
-  category: movie
-  title: Harvey
-  pub_yr: 1950
-  description: Man's best friend is a large invisible rabbit.
-
-album: 
-  category: album
-  title: A Seat at the Table
-  creator: Solange Knowles
-  pub_yr: 2016
-  description: Funky vibes. Rage, power, sadness.
+two:
+  category: movies
+  title: Avengers
+  creator: Russo bros
+  pub_yr: 2018
+  description: great

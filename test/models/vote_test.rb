@@ -25,24 +25,24 @@ describe Vote do
   describe "relations" do
     it "has a work" do
       vote = votes(:one)
-      vote.work.must_equal works(:return)
+      vote.work.must_equal works(:one)
     end
 
     it "has a user" do
       vote = votes(:one)
-      vote.user.must_equal users(:bender)
+      vote.user.must_equal users(:one)
     end
 
     it "can set the work" do
       vote = Vote.new
       vote.work = works(:return)
-      vote.work_id.must_equal works(:return).id
+      vote.work_id.must_equal works(:one).id
     end
 
     it "can set the user" do
       vote = Vote.new
       vote.user = users(:bender)
-      vote.user_id.must_equal users(:bender).id
+      vote.user_id.must_equal users(:one).id
     end
   end
 end
