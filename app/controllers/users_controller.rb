@@ -33,6 +33,21 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  def create
+    auth_hash = request.env["omniauth.auth"]
+    user = User.find_by(uid: auth_hash[:uid], provider: "github")
+    if user
+      # User was found in the database
+      flash[:success] = "Logged in as returning user #{user.name}"
+    else
+      # User doesn't match anything in the DB
+      # TODO: Attempt to create a new user
+    end
+
+    session[:user_id] = user.id
+    redirect_to root_path
+  end
+
   def current
     @user = User.find_by(id: session[:user_id])
 
