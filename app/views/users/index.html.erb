@@ -9,7 +9,7 @@
   <% if !@users.nil? %>
     <% @users.each do |user| %>
     <tr>
-      <td><%= user.username %></td>
+      <td><%= link_to "#{user.username}", user_path(user.id)%></td>
       <td> VOTES </td>
       <td><%= user.created_at %></td>
     </tr>

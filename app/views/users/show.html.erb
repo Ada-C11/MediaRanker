@@ -1,0 +1,20 @@
+User Summary: <%= @user.username %>
+Joined site <%= @user.created_at %>
+
+Votes
+
+<table>
+<tr>
+<th>Media Title</th>
+<th>Created By</th>
+<th>Published</th>
+<th>Category</th>
+<th>Voted On</th>
+</tr>
+
+
+</table>
+
+
+<%= link_to "See all Users", users_path %>
+<%= link_to "Back to Media List", homepage_path %>
