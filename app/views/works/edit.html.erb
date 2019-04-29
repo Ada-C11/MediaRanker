@@ -1,0 +1,7 @@
+<h2>Edit <%= @work.title %> below: </h2>
+
+<%= render partial: "form", locals: {
+  form_class: "edit-work",
+  action_name: "Submit Work Edits"
+}
+%>

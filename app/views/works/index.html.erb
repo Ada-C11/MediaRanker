@@ -1,0 +1,81 @@
+
+<h2 class="index">List of Works</h2>
+
+<h4><strong>Albums</strong></h4>
+<table class="works-table">
+    <thead>
+    <tr>
+        <th class="table-header">Votes</th>
+        <th class="table-header">Title</th>
+        <th class="table-header">Creator</th>
+        <th class="table-header">Publication Year</th>
+        <th class="table-header">Upvote</th>
+    </tr>
+    </thead>
+    <% @works.each do |work|%>
+        <tbody>
+        <tr>
+        <% if work.category == "album"%>
+            <th><%= work.vote_counter %></th>
+            <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
+            <th><%= work.creator %></th>
+            <th><%= work.publication_year %></th>
+            <th><%= link_to "Upvote", work_path(work.id), class: "btn btn-primary", method: :post %></th>
+        <% end %>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<h4><strong>Books</strong></h4>
+<table class="works-table">
+    <thead>
+    <tr>
+        <th class="table-header">Votes</th>
+        <th class="table-header">Title</th>
+        <th class="table-header">Creator</th>
+        <th class="table-header">Publication Year</th>
+        <th class="table-header">Upvote</th>
+    </tr>
+    </thead>
+    <% @works.each do |work|%>
+        <tbody>
+        <tr>
+        <% if work.category == "book"%>
+            <th><%= work.vote_counter %></th>
+            <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
+            <th><%= work.creator %></th>
+            <th><%= work.publication_year %></th>
+            <th><%= link_to "Upvote", work_path(work.id), class: "btn btn-primary", method: :post%></th>
+        <% end %>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+
+<h4><strong>Movies</strong></h4>
+<table class="works-table">
+    <thead>
+    <tr>
+        <th class="table-header">Votes</th>       
+        <th class="table-header">Title</th>
+        <th class="table-header">Creator</th>
+        <th class="table-header">Publication Year</th>
+        <th class="table-header">Upvote</th>
+    </tr>
+    </thead>
+    <% @works.each do |work|%>
+        <tbody>
+        <tr>
+        <% if work.category == "movie"%>
+            <th><%= work.vote_counter %></th>
+            <th class="title-link"><%= link_to work.title, work_path(work.id) %></th>
+            <th><%= work.creator %></th>
+            <th><%= work.publication_year %></th>
+            <th><%= link_to "Upvote", work_path(work.id), class: "btn btn-primary", method: :post %></th>
+        <% end %>
+        </tr>
+    <% end %>
+    </tbody>
+</table>
+

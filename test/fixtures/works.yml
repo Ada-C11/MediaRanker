@@ -1,0 +1,68 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  title: titleone
+  creator: MyString
+  publication_year: 1
+  description: MyString
+two:
+  category: MyString
+  title: titletwo
+  creator: MyString
+  publication_year: 1
+  description: MyString
+three:
+  category: MyString
+  title: titlethree
+  creator: MyString
+  publication_year: 1
+  description: MyString
+four:
+  category: MyString
+  title: titlefour
+  creator: MyString
+  publication_year: 1
+  description: MyString
+five:
+  category: MyString
+  title: titlefive
+  creator: MyString
+  publication_year: 1
+  description: MyString
+six:
+  category: MyString
+  title: titlesix
+  creator: MyString
+  publication_year: 1
+  description: MyString
+seven:
+  category: MyString
+  title: titleseven
+  creator: MyString
+  publication_year: 1
+  description: MyString
+eight:
+  category: MyString
+  title: titleeight
+  creator: MyString
+  publication_year: 1
+  description: MyString
+nine:
+  category: MyString
+  title: titlenine
+  creator: MyString
+  publication_year: 1
+  description: MyString
+ten:
+  category: MyString
+  title: titleten
+  creator: MyString
+  publication_year: 1
+  description: MyString
+eleven:
+  category: NotMyString
+  title: titleeleven
+  creator: MyString
+  publication_year: 1
+  description: MyString
