@@ -1,19 +1,19 @@
-<% spotlight = Work.media_spotlight %>
+<%spotlight = Work.media_spotlight%>
 
-<h1>Media Spotlight: <span class="spotlight-title"><%= link_to spotlight.title, work_path(spotlight.id)%> by <%= spotlight.creator%></span></h1>
+<h1>Media Spotlight: <span class="spotlight-title"><%=link_to spotlight.title, work_path(spotlight.id)%> by <%=spotlight.creator%></span></h1>
 
-<%= spotlight.votes.count%> votes - <%= spotlight.description%>
+<%=spotlight.votes.count%> votes - <%=spotlight.description%>
 
 
 
 <div>
     <h2>Top Albums:</h2>
         <ul>
-        <% Work.top_ten("album").each do |work| %>
+        <%Work.top_ten("album").each do |work|%>
             <li>
-            <%= link_to work.title, work_path(work.id) %>
+            <%=link_to work.title, work_path(work.id)%>
             by
-            <%= work.creator%>
+            <%=work.creator%>
            
             <br>
             <%=work.votes.count%> votes
@@ -25,11 +25,11 @@
 <div>
     <h2>Top Books:</h2>
         <ul>
-        <% Work.top_ten("book").each do |work| %>
+        <%Work.top_ten("book").each do |work|%>
             <li>
-            <%= link_to work.title, work_path(work.id) %>
+            <%=link_to work.title, work_path(work.id)%>
             by
-            <%= work.creator%>
+            <%=work.creator%>
 
             <br>
             <%=work.votes.count%> votes
@@ -42,11 +42,11 @@
 <div>
 <h2>Top Movies:</h2>
     <ul>
-<% @works.top_ten("movie").each do |work| %>
+<%@works.top_ten("movie").each do |work|%>
         <li>
-        <%= link_to work.title, work_path(work.id) %>
+        <%=link_to work.title, work_path(work.id)%>
         by
-        <%= work.creator%>
+        <%=work.creator%>
 
         <br>
         <%=work.votes.count%> votes
