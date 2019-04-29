@@ -1,0 +1,46 @@
+
+Build a main page, with a list of the media for each category, 
+Since we don't have votes yet, for both the spotlight and top-10 sections you should select works at random (i.e. using .sample)
+<% spotlight = Work.spotlight %>
+<h2>Media Spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %>
+    by <%= spotlight.creator %></h2>
+    <p><%= spotlight.description %></p>
+
+<section>
+<% top_movies = Work.top_ten("movie") %>
+<h2>Top Movies</h2>
+    <ul>
+    <% top_movies.each do |movie| %>
+        <li><%= link_to movie.title, work_path(movie.id) %>
+        by <%= movie.creator %>
+        </li>
+    <% end %>
+    </ul>
+</section>
+
+<section>
+<% top_books = Work.top_ten("book") %>
+<h2>Top Books</h2>
+    <ul>
+    <% top_books.each do |book| %>
+        <li><%= link_to book.title, work_path(book.id) %>
+        by <%= book.creator %>
+        </li>
+    <% end %>
+    </ul>
+</section>
+
+<section>
+<% top_albums = Work.top_ten("album") %>
+<h2>Top albums</h2>
+    <ul>
+    <% top_albums.each do |album| %>
+        <li><%= link_to album.title, work_path(album.id) %>
+        by <%= album.creator %>
+        </li>
+    <% end %>
+    </ul>
+</section>
+
+
+
