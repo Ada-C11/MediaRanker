@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  work: one
+
+two:
+  user: two
+  work: two
+
+custom1:
+  user: User.first
+  work: Work.first
+
+custom2:
+  user: custom1
+  work: custom1
+
+custom3: 
+  user: custom1
+  work: monkey
+
+custom4:
+  user: bert
+  work: monkey
+
+custom5:
+  user: one
+  work: monkey
+
+custom6:
+  user: bert
+  work: custom1
+  
+custom7:
+  user: bert
+  work: avengers

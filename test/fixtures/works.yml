@@ -1,0 +1,100 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+
+two:
+  category: MyString
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+
+custom1:
+  category: book
+  title: "Pride and Prejudice"
+  creator: "Jane Austen"
+  publication_year: 1813
+  description: "Emotional development of protagonist, Elizabeth Bennett"
+
+movie:
+  category: "movie"
+  title: "Green Book"
+  creator: "Peter Farrelly"
+  publication_year: 2018
+  description: "story of deep south"
+
+monkey:
+  category: movie
+  title: "12 Monkeys"
+  creator: "Terry Gilliam"
+  publication_year: 1995
+  description: "American neo-noir science fiction film"
+
+avengers:
+  category: movie
+  title: "Avengers Infinity War"
+  creator: "Anthony Russo"
+  publication_year: 2018
+  description: "Iron Man, Thor, the Hulk and the rest of the Avengers unite to battle their most powerful enemy yet -- the evil Thanos"
+
+random:
+  category: movie
+  title: "random"
+  creator: "random"
+  publication_year: 1
+  description: "random"
+
+
+random2:
+  category: movie
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+
+random3:
+  category: movie
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+
+random4:
+  category: movie
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+
+random5:
+  category: movie
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+
+random6:
+  category: movie
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+
+random7:
+  category: movie
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+
+random8:
+  category: movie
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString

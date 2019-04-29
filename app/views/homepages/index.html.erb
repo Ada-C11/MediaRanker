@@ -1,0 +1,31 @@
+<section class = "spotlight">
+<h2><span class = "spotlight-header">Media Spotlight</span>
+<% spotlight = Homepage.spotlight%>
+<% if spotlight %>
+<%=link_to "#{spotlight.title}", work_path(spotlight), class: "spotlight-link-to"%> by <%="#{spotlight.creator}"%> 
+</h2>
+<p><%=spotlight.vote_count%> votes -</p>
+</section>
+<hr>
+<section class = "top-ten-container">
+<%Work.category.each do |category|%>
+<% media_count = Work.top_ten_media_votes(category)%>
+<section class = "top-ten-lists">
+<h2 class="top-ten-header">
+Top <%=category.capitalize+"s"%>
+</h2>
+<ul class="list-group">
+<%media_count.each do |work|%>
+<li class="list-group-item"><h4><a><%= link_to "#{work.title}", work_path(work.id)%></a><small class = "top-ten-creator"> by <%=work.creator%></small></h4><p><%=work.vote_count%> votes</p></li>
+<%end%>
+</ul>
+</section>
+<%end%>
+</section>
+<%else%>
+<h2><span class = "spotlight-header">No Media Spotlight Yet</span></h2>
+<%end%>
+
+
+
+
