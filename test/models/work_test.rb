@@ -29,6 +29,18 @@ describe Work do
   end
 
   describe "relationships" do
+    it "can have 0 votes" do
+      work = works(:book)
+
+      expect(work.votes.length).must_equal 0
+    end
+
+    it "can have 1 or more votes" do
+      work = works(:album)
+      vote = votes(:vote1)
+
+      expect(work.votes.length).must_equal 1
+    end
   end
 
   describe "custom methods" do

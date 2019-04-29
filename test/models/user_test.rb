@@ -40,8 +40,6 @@ describe User do
       user = users(:two)
       vote = votes(:vote1)
 
-      user.votes << vote
-
       expect(user.votes.length).must_equal 1
     end
   end
