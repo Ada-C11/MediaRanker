@@ -1,4 +1,4 @@
-<% spotlight = @works.media_spotlight %>
+<% spotlight = Work.media_spotlight %>
 
 <h1>Media Spotlight: <span class="spotlight-title"><%= link_to spotlight.title, work_path(spotlight.id)%> by <%= spotlight.creator%></span></h1>
 
@@ -9,7 +9,7 @@
 <div>
     <h2>Top Albums:</h2>
         <ul>
-        <% @works.top_ten("album").each do |work| %>
+        <% Work.top_ten("album").each do |work| %>
             <li>
             <%= link_to work.title, work_path(work.id) %>
             by
@@ -25,7 +25,7 @@
 <div>
     <h2>Top Books:</h2>
         <ul>
-        <% @works.top_ten("book").each do |work| %>
+        <% Work.top_ten("book").each do |work| %>
             <li>
             <%= link_to work.title, work_path(work.id) %>
             by
