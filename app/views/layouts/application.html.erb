@@ -37,10 +37,11 @@
       </li>
       <li>
       <% if session[:user_id] %>
-        <% @user = User.find(session[:user_id])%>
-        <button class="login"><%= link_to "Logged in as #{@user.username}", user_path(@user.id) %>
         <button class="logout"><%= link_to "Log Out", logout_path, method: :post%>
-        <% end %>
+      <% else %>
+        <% @user = User.find(session[:user_id])%>
+        <button class="login"><%= link_to "Logged in as #{@user.username}", user_path(@user.id) %>  
+      <% end %>
       </li>
     </ul>
     
