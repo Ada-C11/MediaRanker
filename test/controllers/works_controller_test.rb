@@ -184,4 +184,18 @@ describe "WorksController" do
       must_respond_with :not_found
     end
   end
+
+  describe "upvote" do
+    it "flashes an error if user is not logged in" do
+      #code
+    end
+
+    it "adds the user to works if new vote" do
+      #code
+    end
+
+    it "flashes an error if user already voted" do
+      #code
+    end
+  end
 end

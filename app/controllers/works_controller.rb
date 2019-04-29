@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :destroy]
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def index
     @works = Work.all
@@ -46,6 +46,25 @@ class WorksController < ApplicationController
     flash[:status] = :success
     flash[:message] = "Successfully deleted work #{@work.id}"
     redirect_to works_path
+  end
+
+  def upvote
+    if session[:user_id]
+      current_user = User.find(session[:user_id])
+
+      if @work.users.include?(current_user)
+        flash[:status] = :error
+        flash[:message] = "Cannot vote more than once"
+      else
+        @work.users.push(current_user)
+        flash[:status] = :success
+        flash[:message] = "Successfully upvoted"
+        redirect_to work_path(@work)
+      end
+    else
+      flash[:status] = :error
+      flash[:message] = "Must be logged in to vote"
+    end
   end
 
   private

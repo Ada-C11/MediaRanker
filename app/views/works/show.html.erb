@@ -4,14 +4,15 @@
     <p><%= @work.description %></p>
 
 
+<%= link_to "Back to media ranks", root_path %>
+<%= link_to "Edit", edit_work_path(@work) %>
+<%= link_to "Upvote", upvote_path(@work), method: :post %>
+<%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure?" } %>
 
-<a class="btn btn-primary" href="root_path">Back to media ranks</a>
-<a class="btn btn-primary" href="edit_work_path">Edit</a>
-<%# <a class="btn btn-primary" href="">Upvote</a>
-<a class="btn btn-primary" href="">Delete</a> %>
+<%= link_to "Log In", login_path %>
 
 <table>
-    <h2>ADD Votes for this <%= @work.category %></h2>
+    <h2><%= @work.users.length %> Votes for this <%= @work.category %></h2>
     <tr>
         <th>User</th>
         <th>Date</th>

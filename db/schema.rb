@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 2019_04_29_035530) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "votes", force: :cascade do |t|
+  create_table "users_works", force: :cascade do |t|
     t.bigint "work_id"
     t.bigint "user_id"
-    t.index ["user_id"], name: "index_votes_on_user_id"
-    t.index ["work_id"], name: "index_votes_on_work_id"
+    t.index ["user_id"], name: "index_users_works_on_user_id"
+    t.index ["work_id"], name: "index_users_works_on_work_id"
   end
 
   create_table "works", force: :cascade do |t|
