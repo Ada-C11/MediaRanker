@@ -16,6 +16,10 @@
 /* Import scss content */
 @import "**/*";
 
+
+// h1, h2, h3, h4 {
+//   font-family: "Gudea", sans-serif;
+// }
 .btn-primary {
   background-color: #26A69A;
   color: white;
@@ -44,9 +48,11 @@ ul {
 .navbar li {
   display: inline-block;
   padding-inline-start: 0;
+
 }
-
-
+a.nav-item, a.nav-item:hover {
+  color:  rgb(25, 119, 110);
+}
 a, .title-one {
   text-decoration: none;
 }
@@ -56,13 +62,10 @@ a, .title-one {
   margin-right: 15px;
   border-right: white 2px solid;
   font-size: 1em;
-
 }
 .title-two {
   color: white;
 }
-
-
 a, h2 {
   color: #26A69A;
 }
@@ -119,10 +122,6 @@ table a:hover, h4 a:hover {
 }
 h2 a:hover{
   color: rgb(36, 134, 125)
-}
-
-header .nav-link:hover {
-  color: #26A69A
 }
 
 .work-list li {
