@@ -6,7 +6,7 @@ class Work < ApplicationRecord
     spotlight_work = Work.all.max_by {|work| work.votes.count}
   end
 
-  def self.top_ten(category)
+  def self.top_ten(category: category)
     sorted_works = Work.where(category: category).sort_by {|work| work.votes.count }.reverse!
     if sorted_works.count < 10
       top_ten_works = sorted_works
