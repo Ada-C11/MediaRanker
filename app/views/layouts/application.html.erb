@@ -51,11 +51,15 @@
       </nav>
     </header>
 
+    <% if flash.count > 0 %>
     <section class="flash">
-      <% flash.each do |name, message| %>
-        <div class="<%= name %>"><%= message %></div>
-      <% end %>
+      <div class="alert alert-danger">
+        <% flash.each do |name, message| %>
+         <div class="<%= name %>"><%= message %></div>
+       <% end %>
+      </div>
     </section>
+    <% end %>
 
     <main>
       <%= yield %>
