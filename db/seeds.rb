@@ -20,7 +20,7 @@ works.each do |work|
 end
 
 users = [
-  {username: "jillirami"}, 
+  {username: "username"}, 
   {username: "joi"},
   {username: "lovethearts"}
 ]
