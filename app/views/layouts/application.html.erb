@@ -46,6 +46,28 @@
         </ul>
       </nav>
     </header>
+
+    <% if flash[:success] %>
+      <section class="alert__container">
+        <div class="alert alert-success">
+          <span><%= flash[:success] %></span>
+        </div>
+      </section>
+    <% elsif flash[:error] %>
+      <section class="alert__container">
+        <div class="alert alert-warning">
+          <span><%= flash[:error] %></span>
+            <ul>
+              <%flash.each do |label, message|%>
+                <% if label != "error" %>
+                  <li><%=label%>: <%=message%></li>
+                <% end %>
+              <% end %>
+            </ul>
+        </div>
+      </section>
+    <% end %>
+
     <main>
       <%= yield %>
     </main>

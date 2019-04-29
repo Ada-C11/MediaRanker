@@ -20,6 +20,7 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully created #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
     else
+      flash.now[:error] = "A problem occurred: Could not create #{@work.category}"
       @work.errors.messages.each do |label, message|
         flash.now[label.to_sym] = message
       end
@@ -28,11 +29,12 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:work][:id])
+    @work = Work.find_by(id: params[:id])
     if @work.update(work_params)
       flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
     else
+      flash.now[:error] = "A problem occurred: Could not update #{@work.category}"
       @work.errors.messages.each do |label, message|
         flash.now[label.to_sym] = message
       end

@@ -59,6 +59,21 @@ describe UsersController do
 
       must_redirect_to root_path
     end
+
+    it "will render logni_form if login in not valid" do 
+      params = { user: { username: ""} }
+
+      expect {
+        post login_user_path params: params
+      }.must_change "User.count", 0
+
+      must_respond_with :bad_request
+      expect(flash[:error]).must_equal "A problem occurred: Could not log in"
+      expect(flash[:username]).must_equal "can't be blank"
+      expect(session[:user_id]).must_be_nil
+
+
+    end
   end
 
   describe "user#logout" do
