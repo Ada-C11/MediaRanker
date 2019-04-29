@@ -3,7 +3,8 @@ require "test_helper"
 describe VotesController do
   describe "create" do
     it "upvotes" do
-      user = perform_login(User.first)
+      user = User.create(username: "test")
+      user = perform_login(user)
       work = Work.first
 
       vote_data = {
@@ -12,14 +13,13 @@ describe VotesController do
           user_id: user.id,
         },
       }
-
-      # Act-Assert
-      expect {
-        post upvote_work_path(work.id), params: vote_hash
-      }.must_change "Vote.count", 1
+      
+      post upvote_work_path(work.id), params: vote_data
+  
 
       must_respond_with :redirect
       must_redirect_to user_path(user.id)
+
     end
   end
 end

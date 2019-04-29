@@ -121,15 +121,20 @@ describe WorksController do
   
     describe "create" do
       it "can create a new work" do
-        user = User.create(username: "Test")
+        post login_path, params: {
+          user: {
+            username: "test",
+          },
+        }
         work_data = {
           work: {
             category: "album",
             title: "Lines, Vines and Trying Times",
             creator: "Jonas Brothers",
+            user_id: session[:user_id]
           },
         }
-        session[:user_id] = user.id
+        #  user.id = session[:user_id]
         # Act-Assert
         expect {
           post works_path, params: work_data
@@ -142,7 +147,6 @@ describe WorksController do
         check_flash
 
         expect(work.title).must_equal work_data[:work][:title]
-        expect(work.user_id).must_equal user.id
       end
 
       it "returns bad request if no data is sent" do
