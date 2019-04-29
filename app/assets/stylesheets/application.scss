@@ -16,7 +16,9 @@
 /* Import scss content */
 @import "**/*"; 
 
- 
+ .button_to {
+   display: inline;
+ }
  .user-votes__container {
     margin-top: 2rem
 }
