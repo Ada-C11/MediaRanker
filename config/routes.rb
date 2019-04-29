@@ -12,6 +12,4 @@ Rails.application.routes.draw do
   post "/logout", to: "users#logout", as: "logout"
   get "/users/current", to: "users#current", as: "current_user"
   # post "/works/upvote", to: "works#upvote", as: "upvote"
-
-  get "/auth/github", as: "github_login"
 end
