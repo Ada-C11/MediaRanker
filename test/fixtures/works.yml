@@ -6,6 +6,7 @@ hp1:
   description: "The first one"
   category: "book"
   publication_year: 1997
+  users: one, two
 
 hp2:
   title: "Harry Potter and the Chamber of Secrets"
