@@ -8,7 +8,7 @@ class VotesController < ApplicationController
 
         if @vote.save
             flash[:success] = "Successfully upvoted!"
-            redirect_to works_path
+            redirect_to user_path(@user.id)
       
         else
             flash.now[:error] = "A problem occurred: Could not upvote"

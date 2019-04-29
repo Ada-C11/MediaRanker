@@ -1,23 +1,29 @@
+<section class="spotlight">
 <% if Work.all == nil%>
-    <h3>Add Media to Vote For!</h3>
+    <h3 class="spotlight__header">Add Media to Vote For!</h3>
 <% else %>
-<h3>Media Spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight.id)%> by <%= Work.spotlight.creator%> </h3>
+<h3 class="spotlight__header">Media Spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight.id)%> by <%= Work.spotlight.creator%> </h3>
 <% end %>
+</section>
 
-<h2>Top Movies</h2>
+<section class= "top-ten__container">
+    <section class= "top-ten__list_container">
+<h2 class= "top-ten__header">Top Movies</h2>
 <ul class="list-group top-ten__list">
-<% Work.top_ten("movie").each.each do |a| %>
+<% Work.top_ten("movie").each do |a| %>
     <li class="list-group-item">
     <h4>
-    <%= work_path(a)%> <%=a.title%>
+    <a href= <%= work_path(a)%>><%=a.title%></a>
     <small class= "top-ten__creator">by <%=a.creator%></small>
     </h4>
     <p><%=Vote.where(work_id: a.id).count%> votes</p>
     </li>
     <% end %>
 </ul>
+</section>
 
-<h2>Top Books</h2>
+<section class= "top-ten__list_container">
+<h2 class = "top-ten__header">Top Books</h2>
 <ul class="list-group top-ten__list">
 <% Work.top_ten("book").each do |a| %>
     <li class="list-group-item">
@@ -29,8 +35,10 @@
     </li>
     <% end %>
 </ul>
+</section>
 
-<h2>Top Albums</h2>
+<section class= "top-ten__list_container">
+<h2 class= "top-ten__header">Top Albums</h2>
 <ul class="list-group top-ten__list">
 <% Work.top_ten("album").each.each do |a| %>
     <li class="list-group-item">
@@ -42,3 +50,5 @@
     </li>
     <% end %>
 </ul>
+</section>
+</section>

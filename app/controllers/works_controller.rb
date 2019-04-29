@@ -11,6 +11,7 @@ class WorksController < ApplicationController
 
     def create
         @work = Work.new(work_params)
+        @work.user_id = session[:user_id]
 
         successful = @work.save
         if successful

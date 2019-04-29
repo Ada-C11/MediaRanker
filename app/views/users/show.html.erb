@@ -16,10 +16,10 @@
   <% Vote.where(user_id: @user.id).each do |vote| %>
   <tbody>
     <tr>
-        <td><%= link_to Work.find_by(id: vote.work_id).title, work_path(vote) %></td>
+        <td><%= link_to Work.find_by(id: vote.work_id).title, work_path(Work.find_by(id: vote.work_id)) %></td>
         <td><%= Work.find_by(id: vote.work_id).creator %></td>
         <td><%= Work.find_by(id: vote.work_id).publication_year %></td>
-        <td><%= Work.find_by(id: vote.work_id).category %></td>
+        <td><%= Work.find_by(id: vote.work_id).category.capitalize %></td>
         <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
     </tr>
   </tbody>

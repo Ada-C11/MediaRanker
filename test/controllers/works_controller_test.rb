@@ -125,12 +125,11 @@ describe WorksController do
         work_data = {
           work: {
             category: "album",
-            title: "Somewhere Else",
-            creator: "Zeds Dead",
-            user_id: user.id
+            title: "Lines, Vines and Trying Times",
+            creator: "Jonas Brothers",
           },
         }
-  
+        session[:user_id] = user.id
         # Act-Assert
         expect {
           post works_path, params: work_data

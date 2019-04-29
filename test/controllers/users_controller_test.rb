@@ -17,13 +17,13 @@ describe UsersController do
 
   describe "logout" do
     it "verifies session id is nil after logout" do
-      user = perform_login
+      current_user = User.create(username: "test")
 
-      expect(session[:user_id]).must_equal user.id
 
       post logout_path
 
       expect(session[:user_id]).must_be_nil
+      must_respond_with :redirect
     end
   end
 end
