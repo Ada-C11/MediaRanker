@@ -1,8 +1,23 @@
 <h2>User Summary:  <%= @user.username %></h2>
 <p>Joined Site <%=@user.created_at.strftime('%B %d, %Y')%></p>
 
+<% if (session[:user_id].to_s == params[:id]) %>
+<section class="recommendation-list">
+    <h4> Recommendations for  <%= @user.username %>:</h4>
+    <ol >
+        <% @user.get_recommendations[0..4].each do |work_id| %>
+            <%work = Work.find(work_id)%>
+            
+                <li><%=link_to work.title,  work_path(work_id)%>: <%=work.category%>  by <%=work.creator%></li>
+                
+            
+        <%end%>
+    </ol>
+</section>
+<%end%>
+
 <h3>Votes</h3>
-    <table class=table>
+    <table class="table">
         <thead>
             <tr>
                     <th>Media Title</th>
@@ -25,27 +40,3 @@
         </tbody>
     </table>
 
-<% if (session[:user_id].to_s == params[:id]) %>
-<h3>Works you might like:</h3>
-        <table class=table>
-            <thead>
-                <tr>
-                        <th>Media Title</th>
-                        <th>Created By</th>
-                        <th>Published</th>
-                        <th>Category</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @user.get_recommendations[0..4].each do |work_id| %>
-                    <%work = Work.find(work_id)%>
-                    <tr>
-                        <td><%=link_to work.title, work_path(work_id)%></td>
-                        <td><%=work.creator%></td>
-                        <td><%=work.publication_year%></td>
-                        <td><%=work.category.capitalize%></td>
-                    </tr>
-                <%end%>
-            </tbody>
-        </table>
-    <%end%>

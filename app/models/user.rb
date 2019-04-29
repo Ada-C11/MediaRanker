@@ -33,6 +33,7 @@ class User < ApplicationRecord
         recommendations["#{work_id}"][:users_count] += 1
       end
       ranked_recommendations = recommendations.keys.sort_by { |key| recommendations[key][:j_index_sum] / recommendations[key][:users_count] }
+
       return ranked_recommendations
     end
   end

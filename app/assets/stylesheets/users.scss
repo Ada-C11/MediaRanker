@@ -1,3 +1,22 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$color1: #B2DFDB;
+$color2: #EE532F;
+$color3: #FFFFFF;
+$color4: #347A6C;
+
+.recommendation-list {
+    display:inline-block;
+    padding: 20px;
+    background: $color1;
+    color: $color4;
+    h4, a {
+        color:$color2;
+    }
+    a:hover {
+        color:$color3;
+    }
+
+}
