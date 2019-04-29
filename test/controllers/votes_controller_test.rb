@@ -7,17 +7,17 @@ describe VotesController do
     end
 
     it "successfully upvotes" do
-      perform_login(User.first)
       work = Work.first
+
+      perform_login
       expect {
         post work_votes_path(work)
       }.must_change "Vote.count", +1
-
       check_flash
       vote = Vote.last
-      expect(vote.user).must_equal User.first
+      expect(vote.user_id).must_equal session[:user_id]
       expect(vote.work).must_equal work
-
+  
       must_respond_with :redirect
       must_redirect_to work_path(work)
     end

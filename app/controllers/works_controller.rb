@@ -2,15 +2,16 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def index
-    @books = Work.books
-    @albums = Work.albums
-    @movies = Work.movies
+    @books = Work.where(category: "book")
+    @albums = Work.where(category: "album")
+    @movies = Work.where(category: "movie")
   end
 
   def top
     @featured_work = Work.spotlight
-    @top_albums = Work.top_ten_albums
-    @top_books = Work.top_ten_books
+    @top_albums = Work.top_ten(category: "album")
+    @top_books = Work.top_ten(category: "book")
+    @top_movies = Work.top_ten(category: "movie")
   end
 
   def new

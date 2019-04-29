@@ -35,79 +35,61 @@ describe Work do
   end
 
   describe "custom methods" do
-    describe "media category methods" do
-      it "returns an array of albums" do
-        albums = Work.albums
-        albums.each do |album|
-          expect(album.category).must_equal "album"
-        end
-        expect(albums.count).must_equal Work.where(category: "album").count
-      end
-
-      it "returns an array of movies" do
-        movies = Work.movies
-        movies.each do |movie|
-          expect(movie.category).must_equal "movie"
-        end
-        expect(movies.count).must_equal Work.where(category: "movie").count
-      end
-
-      it "returns an array of books" do
-        books = Work.books
-        books.each do |book|
-          expect(book.category).must_equal "book"
-        end
-        expect(books.count).must_equal Work.where(category: "book").count
-      end
-
-      it "returns an empty array when there are no works" do
-        Work.destroy_all
-        expect(Work.albums).must_equal []
-        expect(Work.movies).must_equal []
-        expect(Work.albums).must_equal []
-      end
-    end
     describe "spotlight" do
-      it "displays a spotlighted work" do
+      it "returns top rated work" do
+        Vote.destroy_all
+        perform_vote(work, User.first)
         spotlight_work = Work.spotlight
         expect(spotlight_work).must_be_instance_of Work
+        expect(spotlight_work).must_equal work
       end
 
       it "returns nil for no works" do
         Work.destroy_all
         expect(Work.spotlight).must_equal nil
       end
+
+      it "selects the first item in a tie" do
+        Vote.destroy_all
+        perform_vote(Work.first, User.first)
+        perform_vote(Work.second, User.first)
+        expect(Work.spotlight).must_equal Work.second
+      end
     end
 
     describe "top ten" do
       it "returns top ten voted works" do
-        albums = Work.albums
-        movies = Work.movies
-        films = Work.films
+        Vote.destroy_all
+        categories = ["album", "movie", "book"]
 
-        [albums, movies, films].each do |category|
-          category_top_ten = top_ten(category)
-          category_top_ten.each do |top_work|
-            expect(top_work).must_be_instance_of category.class
+        categories.each do |category|
+          Work.destroy_all
+          # creates and votes for 11 works, per category
+          11.times do |i|
+            work = Work.create!(title: "test #{i}", category: category)
+            perform_vote(work, User.first)
           end
-          most_votes = category.maximum(:votes.count)
-          expect(category_top_ten.first.votes.count).must_equal most_votes
-          expect(category_top_ten)
+
+          # votes a second time for the first work
+          first_work = Work.where(category: category).first
+          perform_vote(first_work, User.second)
+
+          expect(Work.top_ten(category).count).must_equal 10
+          expect(Work.top_ten(category).first).must_equal first_work
         end
       end
 
       it "returns all works if less than 10 works" do
-      end
+        categories = ["album", "movie", "book"]
 
-      it "selects the first item in a tie" do
-      end
-    end
-
-    describe "spotlight" do
-      it "selects the most voted item" do
-        spotlight_work = Work.spotlight
-        most_votes = Work.maximum(:votes.count)
-        expect(spotlight_work.vote.counts)
+        categories.each do |category|
+          Work.destroy_all
+          7.times do |i|
+            work = Work.create!(title: "test #{i}", category: category)
+            expect(Work.top_ten(category)).must_include work
+            expect(Work.top_ten(category).count).must_equal (i + 1)
+          end
+        end
       end
     end
   end
