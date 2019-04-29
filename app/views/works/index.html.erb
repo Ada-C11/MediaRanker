@@ -1,0 +1,64 @@
+<div  class='main_options' >
+  <table class='main_options'>
+    <tr>
+      <th>Books</th>
+    </tr>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Publication</th>
+      <th>UpVote</th>
+    </tr>
+    <tr>
+      <% @books.each do |book| %>
+      <td><%= book.number_of_votes %></td>
+      <td><%= link_to "#{book.title}", work_path(book.id) %></td>
+      <td><%= book.creator %></td>
+      <td><%= book.publication_year %></td>
+      <td><%= link_to 'Up Vote', upvote_path(book.id), method: :post %></td>
+    </tr>
+    <% end %>
+
+    <tr>
+      <th>Albums</th>
+    </tr>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Publication Year</th>
+      <th>UpVote</th>
+    </tr>
+    <tr>
+      <% @albums.each do |album| %>
+      <td><%= album.number_of_votes %></td>
+      <td><%= link_to "#{album.title}", work_path(album.id) %></td>
+      <td><%= album.creator %></td>
+      <td><%= album.publication_year%></td>
+      <td><%= link_to 'Up Vote', upvote_path(album.id), method: :post %></td>
+    </tr>
+    <% end %>
+
+    <tr>
+      <th>Movies</th>
+    </tr>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Publication Year</th>
+      <th>UpVote</th>
+    </tr>
+    <tr>
+      <% @movies.each do |movie| %>
+      <td><%= movie.number_of_votes %></td>
+      <td><%= link_to "#{movie.title}", work_path(movie.id) %></td>
+      <td><%= movie.creator %></td>
+      <td><%= movie.publication_year %></td>
+      <td><%= link_to 'Up Vote', upvote_path(movie.id), method: :post %></td>
+    </tr>
+    <% end %>
+    
+  </table>
+</div>

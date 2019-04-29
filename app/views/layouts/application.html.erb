@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path("owl.png")%>
+
+  </head>
+
+  <body>
+    <header>
+      <h1 class='main_title'>
+        <%= link_to 'Media Ranker | Ranking the Best of Everything', home_path%>
+      </h1>
+      <div class="nav_list">
+        <a><%=link_to 'View Top Media'%></a>
+        <a><%= link_to 'View All Media', works_path%></a>
+        <a><%= link_to 'Add New Work', new_work_path%></a>
+        <a><%= link_to 'View all users', users_path%></a>
+        <% if session[:user_id] == nil %>
+          <a><%= link_to 'Log in', login_path %></a>
+        <% else %>
+          <a><%= link_to 'Log out', logout_path, method: :post %></a>    
+        <% end %>  
+      </div>
+    </header>
+
+
+    <% alert_type = flash[:status] == :error ? :danger : flash[:status] %>
+    <section class="flash alert alert-<%= alert_type %>">
+      <%= flash[:message] %>
+    </section>
+
+    <main>
+    <%= yield %>
+    </main>
+
+    <footer>  
+      <p> © Rosalyn Development 2019</p>
+  </footer>
+  </body>
+</html>

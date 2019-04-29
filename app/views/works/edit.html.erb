@@ -1,0 +1,33 @@
+<h2>Edit This Work</h2>
+
+<%= form_with model: @work, class: 'update_work' do |f| %>
+<p><strong>Update Work Details Below</strong></p>
+
+  <div>
+    <%= f.label :category, "Title of Work:" %>
+    <%= f.select :category, options_for_select(['Album','Book','Movie']) %>
+  </div>
+
+  <div>
+    <%= f.label :title, "Title:" %>
+    <%= f.text_field :title, placeholder: @work.title %>
+  </div>
+
+  <div>
+    <%= f.label :creator, "Creator:" %>
+    <%= f.text_field :creator, placeholder: @work.creator %>
+  </div>
+
+  <div>
+    <%= f.label :publication_year, "Publication Year:" %>
+    <%= f.text_field :publication_year, placeholder: @work.publication_year %>
+  </div>
+
+  <div>
+    <%= f.label :description, "Description:" %>
+    <%= f.text_field :description, placeholder: @work.description %>
+  </div>
+
+  <%= f.submit "Update Work", class: 'update_class_button' %>
+
+<% end %>
