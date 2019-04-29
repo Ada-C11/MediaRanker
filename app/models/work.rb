@@ -14,9 +14,9 @@ class Work < ApplicationRecord
     end
 
     def self.spotlight
-       media_spotlight = Work.all.sort_by { |work| Vote.where(work_id: work.id).length}
-       unless media_spotlight.nil?
-        return media_spotlight.reverse[0]
+       mediaspotlight = Work.all.sort_by { |work| Vote.where(work_id: work.id).length}
+       unless mediaspotlight.nil?
+        return mediaspotlight.reverse[0]
        end
     end
 end
