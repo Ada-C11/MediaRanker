@@ -4,7 +4,7 @@ class Work < ApplicationRecord
 
   def self.find_top_ten(category_name)
     works = Work.where(category: category_name).sort_by { |work| work.vote_ids.length }.reverse!
-    return works[0, 9]
+    return works[0, 10]
   end
 
   def self.find_most_voted
