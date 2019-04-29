@@ -1,5 +1,3 @@
-require "pry"
-
 class VotesController < ApplicationController
   def create
     work_id = params[:work_id]
