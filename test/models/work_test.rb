@@ -41,44 +41,37 @@ describe Work do
     end
   end
 
-  describe "relationships" do
+  describe "relations" do
     # has many votes
     # has many users through votes
-    it "has many users through votes" do
-      vote = Vote.create(work_id: work.id, user_id: kim)
-      vote2 = Vote.create(work_id: work.id, user_id: aj)
-
-      puts "##### #{work.votes}"
-
-      expect(work.votes.length).must_equal 2
-      expect(work.votes.first.work_id).must_equal work.id
+    it "has a list of votes" do
+      work.must_respond_to :votes
+      work.votes.each do |vote|
+        vote.must_be_kind_of Vote
+      end
     end
 
-    it "has many votes" do
-    end
-
-    it "can have 0 users" do
-    end
-
-    it "can have 1 or more genres by shoveling a genre into book.genres" do
+    it "has a list of voting users" do
+      work.must_respond_to :users
+      work.users.each do |user|
+        user.must_be_kind_of User
+      end
     end
   end
 
-  describe "custom methods" do
-    describe "top_ten" do
-      it "must return only the top ten works" do
-      end
-
-      it "must return an empty arry of no works" do
-      end
+  describe "top_ten" do
+    it "must return only the top ten works" do
     end
 
-    describe "spotlight" do
-      it "must return the most voted on work" do
-      end
+    it "must return an empty arry of no works" do
+    end
+  end
 
-      it "must return nil if no works" do
-      end
+  describe "spotlight" do
+    it "must return the most voted on work" do
+    end
+
+    it "must return nil if no works" do
     end
   end
 end
