@@ -8,15 +8,15 @@ describe WorksController do
 
   describe "show" do
     it "should get show" do
-      valid_work_id = works(:one).id
+      valid_work_id = works(:one_w).id
 
       get works_url(valid_work_id)
       value(response).must_be :successful?
     end
 
     it "should give a flash notice instead if invalid work" do
-      invalid_id = works(:one).id
-      works(:one).destroy
+      invalid_id = works(:one_w).id
+      works(:one_w).destroy
 
       get work_path(invalid_id)
 
@@ -70,7 +70,7 @@ describe WorksController do
 
   describe "edit" do
     it "should get edit" do
-      get edit_work_path(works(:one).id)
+      get edit_work_path(works(:one_w).id)
 
       must_respond_with :success
     end
@@ -85,7 +85,7 @@ describe WorksController do
         }
       }
 
-      patch work_path(works(:one).id), params: work_hash
+      patch work_path(works(:one_w).id), params: work_hash
 
       must_respond_with :redirect
       expect(Work.find_by(title: "Me, Working!")).wont_be_nil
@@ -99,7 +99,7 @@ describe WorksController do
         }
       }
 
-      patch work_path(works(:one).id), params: work_hash
+      patch work_path(works(:one_w).id), params: work_hash
 
       must_respond_with :bad_request
       expect(Work.find_by(title: "Me, Working!")).must_be_nil
@@ -109,11 +109,11 @@ describe WorksController do
   describe "destroy" do
     it "should destroy work" do 
       expect {
-        delete work_path(works(:two).id)
+        delete work_path(works(:two_w).id)
       }.must_change "Work.count", -1
 
       must_respond_with :redirect
-      expect(flash[:success]).must_equal "Successfully destroyed #{works(:two).category} #{works(:two).id}"
+      expect(flash[:success]).must_equal "Successfully destroyed #{works(:two_w).category} #{works(:two_w).id}"
     end
 
     it "should respond with flash error if work not found" do
