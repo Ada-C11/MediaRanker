@@ -1,15 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
+<% 11.times do |n| %>
+one_<%= n %>:
+  category: album
   title: MyString
   creator: MyString
   publication_year: 1
   description: MyString
-
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+<% end %>

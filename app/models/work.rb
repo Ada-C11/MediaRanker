@@ -1,6 +1,6 @@
 class Work < ApplicationRecord
   def self.top_ten(category)
-    works = Work.where(category: category.to_s)
+    works = Work.where(category: category)
     if works.length <= 10
       return works
     else
