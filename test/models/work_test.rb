@@ -2,6 +2,8 @@ require "test_helper"
 
 describe Work do
   let(:work) { works(:spaghetti) }
+  let(:kim) { users(:kim) }
+  let(:aj) { users(:aj) }
 
   it "must be valid" do
     expect(work).must_be :valid?
@@ -40,6 +42,26 @@ describe Work do
   end
 
   describe "relationships" do
+    # has many votes
+    # has many users through votes
+    it "has many users through votes" do
+      vote = Vote.create(work_id: work.id, user_id: kim)
+      vote2 = Vote.create(work_id: work.id, user_id: aj)
+
+      puts "##### #{work.votes}"
+
+      expect(work.votes.length).must_equal 2
+      expect(work.votes.first.work_id).must_equal work.id
+    end
+
+    it "has many votes" do
+    end
+
+    it "can have 0 users" do
+    end
+
+    it "can have 1 or more genres by shoveling a genre into book.genres" do
+    end
   end
 
   describe "custom methods" do
