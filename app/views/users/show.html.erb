@@ -16,7 +16,7 @@
   <% Vote.where(user_id: @user.id).each do |vote| %>
   <tbody>
     <tr>
-        <td><%= link_to Work.find_by(id: vote.work_id).title, work_path(Work.find_by(id: vote.waork_id)) %></td>
+        <td><%= link_to Work.find_by(id: vote.work_id).title, work_path(Work.find_by(id: vote.work_id)) %></td>
         <td><%= Work.find_by(id: vote.work_id).creator %></td>
         <td><%= Work.find_by(id: vote.work_id).publication_year %></td>
         <td><%= Work.find_by(id: vote.work_id).category.capitalize %></td>
