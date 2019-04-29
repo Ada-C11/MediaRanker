@@ -14,7 +14,7 @@ describe UsersController do
         value(response).must_be :successful?
       end
   
-      it "should give a flash notice instead if invalid work" do
+      it "should give a flash notice instead if invalid user" do
         invalid_id = users(:one_u).id
         users(:one_u).destroy
   
