@@ -3,17 +3,29 @@ require "test_helper"
 describe Work do
   let(:work) { works(:book) }
   # test custom methods, validations, relationships
-  describe "relationships" do 
-    it "knows that a work has votes" do 
-     vote = Upvote.create!(user_id: users(:first_user).id, work_id: work.id)
+  describe "work instantiation" do 
+    it "can be instantiated" do 
+      new_work = Work.new(category: "album", title: "new work")
 
+      expect(new_work.valid?).must_equal true
+    end
+
+    it "will have the required fields" do 
+      [:category, :title, :creator, :publication_year, :description].each do |field|
+
+        expect(work).must_respond_to field
+      end
+    end
+  end
+  
+  describe "relationships" do 
+    it "knows that a work can have zero to many votes" do 
       expect(work).must_respond_to :upvotes
-      expect(work.upvotes.count).must_equal 1
+      expect(work.upvotes.count).must_be :>=, 0
     end
   end
 
   describe "validations" do 
-
     it "must be valid with good data" do
       good_book = works(:book)
 
