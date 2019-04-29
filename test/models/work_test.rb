@@ -43,7 +43,38 @@ describe User do
       expect(work.users).must_include user
     end
   end
-
   describe "custom methods" do
+    describe "self.top_ten(category)" do
+      it "will return top 10 of a given category given more than 10 works" do
+        expect(Work.top_ten("book").count).must_equal 10
+        book_votes = Hash.new(0)
+        Work.top_ten("book").each do |work|
+          book_votes[work.id] = work.votes.count
+        end
+        expect(book_votes.to_s).must_equal "{6=>13, 5=>12, 13=>11, 11=>11, 14=>11, 7=>11, 17=>11, 16=>10, 8=>10, 12=>10}"
+      end
+
+      it "will return all of a given category if less than 10" do
+        expect(Work.top_ten("Movie")).must_equal [works(:one)]
+      end
+
+      it "will return [] if no items in a given category" do
+        expect(Work.top_ten("album")).must_equal []
+      end
+    end
+
+    describe "def self.spotlight" do
+      it "will return a work with most votes" do
+        expect(Work.spotlight.id).must_equal 6
+      end
+
+      it "will return nil if no works" do
+        Work.all.each do |work|
+          work.destroy
+        end
+        expect(Work.count).must_equal 0
+        expect(Work.spotlight).must_be_nil
+      end
+    end
   end
 end
