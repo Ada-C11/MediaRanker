@@ -123,4 +123,38 @@ describe User do
       expect(result).must_be_empty
     end
   end
+
+  describe "get_recommendations" do
+    it "will return a list of works, sorted by the average j_index of users who voted for them" do
+      @user1 = User.create(username: "newuser")
+      Work.all.each_with_index do |work, index|
+        if index % 2 == 0
+          Vote.create(work_id: work.id, user_id: @user1.id)
+        end
+      end
+
+      result = @user1.get_recommendations
+
+      j_index_averages = result.map do |work_id|
+        work = Work.find(work_id)
+        work_users = work.votes.map { |vote| User.find(vote.user_id) }
+        j_average = (work_users.reduce(0) { |total, user| total += @user1.j_index(user) }) / work_users.length
+      end
+
+      j_index_averages.each_with_index do |average, index|
+        if index != 0
+          expect(average).must_be :<=, @user1.j_index(j_index_averages[index - 1])
+        end
+      end
+    end
+
+    it "will return an empty array if the user has upvoted all works in the database " do
+      @user1 = User.create(username: "newuser")
+      Work.all.each_with_index do |work, index|
+        Vote.create(work_id: work.id, user_id: @user1.id)
+      end
+
+      expect(@user1.get_recommendations).must_be_empty
+    end
+  end
 end
