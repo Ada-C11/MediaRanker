@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= favicon_link_tag asset_path('favicon-16x16.png') %>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header>
+    <h3>Media Ranker | Ranking the Best of Everything</h3>
+    <section>
+      <%= link_to "View top media", homepage_path %>
+      <%= link_to "View all media", works_path %>
+      <%= link_to "Add a new work", new_work_path %>
+      <%= link_to "View all users", users_path %>
+    </section>
+    <section>
+    <% if session[:user_id].nil? %>
+      <%= link_to("Login", login_path) %>
+    <% else %> 
+      <%= link_to("Logged in as #{User.find(session[:user_id]).username}", user_path(id: User.find(session[:user_id]).id)) %>
+      <%= link_to("Logout", logout_path, method: :post)%>
+    <% end %>
+    </section>
+    <% if flash.count > 0 %>
+      <section class="flash">
+        <div class="alert alert-danger">
+        <% flash.each do |name, message| %>
+          <% if message.class == Array %>
+           <ul>
+           <% message.each do |msg| %>
+             <li><%= name %>: <%= msg %></li>
+             <% end %>
+          <% else %>
+             <%= message %>
+          <% end %>
+          </ul>
+          <% end %>
+        </div>
+      </section >
+    <% end %>
+  </header>
+    <%= yield %>
+  </body>
+</html>

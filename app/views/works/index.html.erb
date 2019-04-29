@@ -1,0 +1,71 @@
+<h3>List of Works</h3>
+
+<h4>Albums</h4>
+
+<table>
+<tr>
+<th>Votes</th>
+<th>Title</th>
+<th>Created By</th>
+<th>Published</th>
+<th>Upvote</th>
+
+
+</tr>
+<% @works.where(category: "album").each do |work| %>
+  <tr>
+  <td><%#= work.votes .order(votes: :desc) %></td>
+  <td><%= link_to work.title, work_path(work.id) %></td>
+  <td><%= work.created_by %></td>
+  <td><%= work.published %></td>
+  <td><%= link_to "Upvote", work_votes_path(work), method: "post"%></td>
+  </tr>
+<% end %>
+</table><br>
+
+<h4>Books</h4>
+
+<table>
+<tr>
+<th>Votes</th>
+<th>Title</th>
+<th>Created By</th>
+<th>Published</th>
+<th>Upvote</th>
+</tr>
+<% @works.where(category: "book").each do |work| %>
+  <tr>
+  <td><%#= work.votes .order(votes: :desc) %></td>
+  <td><%= link_to work.title, work_path(work.id) %></td>
+  <td><%= work.created_by %></td>
+  <td><%= work.published %></td>
+  <td><%= link_to "Upvote", work_votes_path(work), method: "post"%></td>
+  </tr>
+<% end %>
+</table><br>
+
+<h4>Movies</h4>
+
+<table>
+<tr>
+<th>Votes</th>
+<th>Title</th>
+<th>Created By</th>
+<th>Published</th>
+<th>Upvote</th>
+</tr>
+<% @works.where(category: "movie").each do |work| %>
+  <tr>
+  <td><%#= work.votes .order(votes: :desc) %></td>
+  <td><%= link_to work.title, work_path(work.id) %></td> <%# link to show page%>
+  <td><%= work.created_by %></td>
+  <td><%= work.published %></td>
+  <td><%= link_to "Upvote", work_votes_path(work), method: "post"%></td>
+  </tr>
+<% end %>
+</table>
+
+
+
+<%# link to homepage with work methods%>
+<br><%= link_to "Add a new work", new_work_path %>

@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one_w:
+  category: album
+  title: Fantastic
+  created_by: MyString
+  published: MyString
+  description: MyString
+
+two_w:
+  category: movie
+  title: Wonderful
+  created_by: MyString
+  published: MyString
+  description: MyString
+
+three_w:
+  category: book
+  title: Awesome
+  created_by: MyString
+  published: MyString
+  description: MyString

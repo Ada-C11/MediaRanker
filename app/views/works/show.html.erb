@@ -1,0 +1,29 @@
+<h3> <%= @work.title %> </h3>
+Created by: <%= @work.created_by %><br>
+Published: <%= @work.published %><br>
+<%= @work.description %><br>
+
+link to homepage
+<%= link_to "Edit", edit_work_path(@work.id) %>
+link to upvote
+<%= link_to "Delete", work_path(@work.id), method: :delete %> <br>
+
+
+
+
+
+NUMBER Votes for this <%= @work.category.capitalize %>
+
+<table>
+<tr>
+<th>User</th>
+<th>Date</th>
+<tr>
+<tr>
+<%# @work.votes.each do |vote| %>
+<td> <%#= vote.user %></td>
+<td> <%#= vote.date %></td>
+<%# end %>
+</tr>
+
+</table>
