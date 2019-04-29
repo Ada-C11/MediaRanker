@@ -69,7 +69,6 @@ class WorksController < ApplicationController
 
   def upvote
 
-    @work = Work.find(params[:id])
     user_id = session[:user_id]
 
     if user_id.nil?
@@ -78,32 +77,33 @@ class WorksController < ApplicationController
       return
     end
 
+    @work = Work.find(params[:id])
+
     @user = User.find(user_id)
 
     users_votes = @user.votes
 
     results = users_votes.where(work_id: @work.id).present?
 
-    puts results
-
     if results
       flash[:error] = 'You Already voted'
       redirect_to(works_path)
       return
     else
-      @user.votes.create(work_id: @work.id)
+      @user.votes.create!(work_id: @work.id)
     end
 
     if @work.number_of_votes.nil?
-      @work.update(number_of_votes: 1)
+      @work.update!(number_of_votes: 1)
     else
-      @work.update(number_of_votes: @work.number_of_votes + 1)
+      @work.update!(number_of_votes: @work.number_of_votes + 1)
     end
 
+    
     if @user.number_of_votes.nil?
-      @user.update(number_of_votes: 1)
+      @user.update!(number_of_votes: 1)
     else
-      @user.update(number_of_votes: @user.number_of_votes + 1)
+      @user.update!(number_of_votes: @user.number_of_votes + 1)
     end
 
     redirect_to(work_path)

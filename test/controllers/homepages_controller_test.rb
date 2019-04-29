@@ -10,22 +10,22 @@
 
 #       must_respond_with :ok
 
-#       # user = User.first
-#       # login_data = {
-#       #   user: {
-#       #     username: user.username
-#       #   }
-#       # }
-#       # post login_path, params: login_data
+#       user = User.first
+#       login_data = {
+#         user: {
+#           username: user.username
+#         }
+#       }
+#       post login_path, params: login_data
 
-#       # # Verify the user ID was saved - if that didn't work, this test is invalid
-#       # expect(session[:user_id]).must_equal user.id
+#       # Verify the user ID was saved - if that didn't work, this test is invalid
+#       expect(session[:user_id]).must_equal user.id
 
-#       # # Act
-#       # get current_user_path
+#       # Act
+#       get current_user_path
 
-#       # # Assert
-#       # must_respond_with :success
+#       # Assert
+#       must_respond_with :success
 
 #     end
 #   end

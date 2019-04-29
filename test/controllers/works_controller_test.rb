@@ -3,11 +3,11 @@ require "test_helper"
 describe WorksController do
   before do
     @work = Work.create!(
-      category: "test work", 
-      title: 'title', 
-      creator: 'Someone', 
-      publication_year: 2016, 
-      description: 'About a book', 
+      category: "test work",
+      title: 'title',
+      creator: 'Someone',
+      publication_year: 2016,
+      description: 'About a book',
       number_of_votes: '5'
     )
   end
@@ -41,6 +41,7 @@ describe WorksController do
 
       must_respond_with :ok
     end
+
   end
 
   describe "new" do
@@ -177,15 +178,45 @@ describe WorksController do
 
   describe 'upvote' do
     it 'Allows you to vote for your work' do
+      post login_path, params:{user: {username: 'Micki'}}
+
+      @work = Work.create!(
+        category: "test work", 
+        title: 'new title', 
+        creator: 'Someone', 
+        publication_year: 2016, 
+        description: 'About a book', 
+        number_of_votes: 5
+      )
+      post upvote_path(@work.id)
+      must_redirect_to work_path
+
 
     end
 
     it 'Wont let you vote for the same work more than once' do
+      post login_path, params:{user: {username: 'Micki'}}
+
+      @work = Work.create!(
+        category: "test work", 
+        title: 'new title', 
+        creator: 'Someone', 
+        publication_year: 2016, 
+        description: 'About a book', 
+        number_of_votes: 5
+      )
+
+      post upvote_path(@work.id)
+      must_redirect_to work_path
+
+      post upvote_path(@work.id)
+      must_redirect_to works_path
       
     end
 
     it 'You must be logged in to vote' do
-      
+      post upvote_path(10)
+      must_redirect_to login_path
     end
 
 

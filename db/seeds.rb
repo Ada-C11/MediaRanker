@@ -36,7 +36,7 @@ CSV.foreach(USER_FILE, :headers => true) do |row|
   user = User.new
   user.id = row['id']
   user.username = row['username']
-  user.number_of_votes = row['votes']
+  user.number_of_votes = 0
   successful = user.save
   if !successful
     user_failures << user
