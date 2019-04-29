@@ -22,7 +22,7 @@ describe VotesController do
         post work_votes_path(work.id)
       }.wont_change "Vote.count"
 
-      expect(flash[:failure]).must_equal "You must log in to do that"
+      expect(flash[:warning]).must_equal "A problem occurred: You must log in to do that"
       must_respond_with :redirect
       must_redirect_to root_path
     end

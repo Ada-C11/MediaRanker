@@ -10,7 +10,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if !@work
-      flash[:failure] = "Sorry, we couldn't find the media you were looking for."
+      flash[:warning] = "A problem occurred: Media not found."
       redirect_to root_path
     end
   end
@@ -27,7 +27,7 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully created #{@work.title} #{@work.category}!"
       redirect_to work_path(@work.id)
     else
-      flash.now[:failure] = "A problem occurred: Could not create #{@work.category}"
+      flash.now[:warning] = "A problem occurred: Could not create #{@work.category}"
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
@@ -39,7 +39,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if !@work
-      flash[:failure] = "Sorry, we couldn't find the media you were looking for."
+      flash[:warning] = "A problem occurred: Media not found."
       redirect_to root_path
     end
   end

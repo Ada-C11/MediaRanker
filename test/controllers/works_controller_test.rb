@@ -25,7 +25,7 @@ describe WorksController do
       get work_path(invalid_id)
       must_respond_with :redirect
       must_redirect_to root_path
-      expect(flash[:failure]).must_equal "Sorry, we couldn't find the media you were looking for."
+      expect(flash[:warning]).must_equal "A problem occurred: Media not found."
     end
   end
 
@@ -80,7 +80,7 @@ describe WorksController do
       }.wont_change "Work.count"
 
       must_respond_with :bad_request
-      expect(flash[:failure]).must_equal "A problem occurred: Could not create #{work_hash[:work][:category]}"
+      expect(flash[:warning]).must_equal "A problem occurred: Could not create #{work_hash[:work][:category]}"
     end
   end
 
@@ -98,7 +98,7 @@ describe WorksController do
 
       must_respond_with :redirect
       must_redirect_to root_path
-      expect(flash[:failure]).must_equal "Sorry, we couldn't find the media you were looking for."
+      expect(flash[:warning]).must_equal "A problem occurred: Media not found."
     end
   end
 
