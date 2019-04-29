@@ -1,5 +1,32 @@
-<h1>Works#index</h1>
-<p>Find me in app/views/works/index.html.erb</p>
-<%@works.each do |work|%>
-  <%= work.title %>
-<%end%>
+<h2>List of Works</h2>
+<% [ "album", "book", "movie"].each do |type|%>
+<section class="media-table">
+  <h4><%=type.capitalize%></h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th width=80>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width=100>Published</th>
+        <th width=100>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%Work.where(category: type).each do |work|%>
+        <tr>
+          <td><%=work.votes.count%></td>
+          <td><%= link_to "#{work.title}", work_path(work.id) %></td>
+          <td><%=work.creator%></td>
+          <td><%=work.publication_year%></td>
+          <td><%= button_to "Upvote", work_votes_path(work.id), class:"btn btn-primary"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+<% end %>
+
+<%= link_to "View top media", root_path, class:"btn btn-secondary" %>
+<%= link_to "Add a new work", new_work_path, class:"btn btn-primary" %>
+
