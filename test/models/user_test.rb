@@ -95,4 +95,32 @@ describe User do
       expect @user1.j_index(@user2).must_equal 0
     end
   end
+
+  describe "get_similar_users" do
+    it "will return a sorted list of similar users" do
+      @user1 = User.create(username: "newuser")
+      @user2 = User.create(username: "othernewuser")
+      Work.all.each_with_index do |work, index|
+        Vote.create(work_id: work.id, user_id: @user1.id)
+        Vote.create(work_id: work.id, user_id: @user2.id)
+      end
+
+      result = @user1.get_similar_users
+      # all likes are common, so @user2 should be first on the list
+      expect(result[0]).must_equal @user2
+
+      result.each_with_index do |user, index|
+        if index != 0
+          expect(@user1.j_index(user)).must_be :<=, @user1.j_index(result[index - 1])
+        end
+      end
+    end
+
+    it "will return an empty array if no other users" do
+      User.destroy_all
+      @user1 = User.create(username: "newuser")
+      result = @user1.get_similar_users
+      expect(result).must_be_empty
+    end
+  end
 end
