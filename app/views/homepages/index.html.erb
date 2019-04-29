@@ -1,5 +1,8 @@
-<% spotlight = Work.all.sample%>
-<h3>Media Spotlight: <%= spotlight.title%> by <%= spotlight.creator%> </h3>
+<% if Work.all == nil%>
+    <h3>Add Media to Vote For!</h3>
+<% else %>
+<h3>Media Spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight.id)%> by <%= Work.spotlight.creator%> </h3>
+<% end %>
 
 <h2>Top Movies</h2>
 <ul class="list-group top-ten__list">
@@ -9,7 +12,7 @@
     <%= work_path(a)%> <%=a.title%>
     <small class= "top-ten__creator">by <%=a.creator%></small>
     </h4>
-    <p>votes</p>
+    <p><%=Vote.where(work_id: a.id).count%> votes</p>
     </li>
     <% end %>
 </ul>
@@ -22,7 +25,7 @@
     <a href= <%= work_path(a)%>><%=a.title%></a>
     <small class= "top-ten__creator">by <%=a.creator%></small>
     </h4>
-    <p>votes</p>
+    <p><%=Vote.where(work_id: a.id).count%> votes</p>
     </li>
     <% end %>
 </ul>
@@ -35,7 +38,7 @@
     <a href= <%= work_path(a)%>><%=a.title%></a>
     <small class= "top-ten__creator">by <%=a.creator%></small>
     </h4>
-    <p>votes</p>
+    <p><%=Vote.where(work_id: a.id).count%> votes</p>
     </li>
     <% end %>
 </ul>

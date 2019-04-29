@@ -11,11 +11,11 @@
   <% Work.where(category: category).each do |a| %>
   <tbody>
     <tr>
-        <td><%= "No Votes Yet" %></td>
+        <td><%= Vote.where(work_id: a.id).count %></td>
         <td><%= link_to a.title, work_path(a)%></td>
         <td><%= a.creator %></td>
         <td><%= a.publication_year%> </td>
-        <td><%= "No Upvoting Yet"%></td>
+        <td><%= link_to 'Upvote', upvote_work_path(a), method: :post, class:"btn btn-primary"%></td>
     </tr>
   </tbody>
   <% end %>

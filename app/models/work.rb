@@ -6,6 +6,17 @@ class Work < ApplicationRecord
     validates :title, presence: true
 
     def self.top_ten(category)
-        Work.where(category: category).sample(10) 
+        works = Work.where(category: category)
+        works.sort_by { |work| Vote.where(work_id: work.id).length }
+        unless works.nil?
+            return works.reverse[0..9]
+        end
+    end
+
+    def self.spotlight
+       media_spotlight = Work.all.sort_by {|work| Vote.where(work_id: work.id).length}
+       unless media_spotlight.nil?
+        return media_spotlight.reverse[0]
+       end
     end
 end

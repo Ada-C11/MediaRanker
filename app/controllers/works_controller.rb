@@ -14,13 +14,13 @@ class WorksController < ApplicationController
 
         successful = @work.save
         if successful
-        flash[:status] = :success
-        flash[:message] = "Successfully saved work with ID ##{@work.id}"
-        redirect_to works_path
+            flash[:status] = :success
+            flash[:message] = "Successfully saved work with ID ##{@work.id}"
+            redirect_to work_path(@work.id)
         else
-        flash.now[:status] = :error
-        flash.now[:message] = "Could not save work"
-        render :new, status: :bad_request
+            flash.now[:status] = :error
+            flash.now[:message] = "Could not save work"
+            render :new, status: :bad_request
         end
     end
 
@@ -43,6 +43,7 @@ class WorksController < ApplicationController
             render :edit, status: :bad_request
         end
     end
+
     def destroy
 
         @work.destroy
@@ -52,13 +53,34 @@ class WorksController < ApplicationController
         redirect_to works_path
     end
 
+    def upvote
+        @current_user = User.find_by(id: session[:user_id])
+        work_id = params[:id]
+        @work = Work.find_by(id: work_id)
+    
+        if @current_user.nil?
+          flash[:error] = "You Must Be Logged In To See This Page"
+          redirect_to login_path
+        elsif Vote.exists?(user_id: @current_user.id, work_id: work_id)
+          flash[:error] = "You Have Already Upvoted This Title."
+          redirect_to work_path(@work)
+        else
+          @vote = Vote.create(
+            user_id: @current_user.id,
+            work_id: @work.id,
+          )
+          flash[:success] = "Successfully Upvoted #{@work.title}"
+          redirect_to user_path(@current_user.id)
+        end  
+      end
+
 end
 
 
 private
 
 def work_params
-  return params.require(:work).permit(:category, :title, :creator, :publication_year, :description, :user_id, vote_id: [])
+  return params.require(:work).permit(:category, :title, :creator, :publication_year, :description, :user_id)
 end
 
 def find_work

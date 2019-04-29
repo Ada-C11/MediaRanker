@@ -136,14 +136,14 @@ describe WorksController do
           post works_path, params: work_data
         }.must_change "Work.count", +1
   
+        work = Work.last
         must_respond_with :redirect
-        must_redirect_to works_path
+        must_redirect_to work_path(work.id)
 
         check_flash
 
-        work = Work.last
         expect(work.title).must_equal work_data[:work][:title]
-        expect(work.user).must_equal user
+        expect(work.user_id).must_equal user.id
       end
 
       it "returns bad request if no data is sent" do

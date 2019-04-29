@@ -6,6 +6,24 @@
 <section>
 <a class="btn btn-primary" href= <%= works_path %> role="button">Back to Media Ranks</a>
 <a class="btn btn-primary" href= <%= edit_work_path(@work) %> role="button">Edit</a>
-<a class="btn btn-primary" href= <%= work_path %> role="button">Upvote</a>
-<a class="btn btn-danger" data-confirm="Are You Sure?" rel="nofollow" data-method="delete" href= <%= work_path(@work) %> role="button">Delete</a>
+<a class="btn btn-primary" href= <%= upvote_work_path(@work) %> role="button">Upvote</a>
+<%= link_to 'Delete', work_path(@work), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-primary" %>
 </section>
+
+<h3> <%= Vote.where(work_id: @work.id).length%> Votes for this <%= @work.category.capitalize %> </h3>
+<table class="table">
+    <thead>
+    <tr>
+        <th>User</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+  <tbody>
+    <% Vote.where(work_id: @work.id).each do |vote| %>
+    <tr>
+        <td><%= link_to User.find_by(id:vote.user_id).username, user_path(vote.user_id)%></td>
+        <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>

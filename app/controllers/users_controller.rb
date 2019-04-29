@@ -1,4 +1,18 @@
 class UsersController < ApplicationController
+    
+    def index
+        @users = User.all
+    end
+    
+    def show
+        user_id = params[:id]
+        @user = User.find_by(id: user_id)
+        unless @user
+          head :not_found
+          return
+        end
+    end
+
     def login_form
         @user = User.new
     end
@@ -6,6 +20,7 @@ class UsersController < ApplicationController
     def login
         username = params[:user][:username]
         user = User.find_by(username: username)
+
         if user
             session[:user_id] = user.id
             flash[:success] = "Successfully logged in as returning user #{username}"
@@ -28,6 +43,7 @@ class UsersController < ApplicationController
 
     def logout
         session[:user_id] = nil
+        flash[:success] = "Successfully logged out"
         redirect_to root_path
     end
 end
