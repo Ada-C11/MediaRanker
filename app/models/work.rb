@@ -6,10 +6,10 @@ class Work < ApplicationRecord
     validates :title, presence: true
 
     def self.top_ten(category)
-        works = Work.where(category: category)
-        works.sort_by { |work| Vote.where(work_id: work.id).length }
+        works = Work.where(category: category).to_a
+        works.sort_by! { |work| Vote.where(work_id: work.id).length }
         unless works.nil?
-            return works.reverse[0..9]
+          return works.reverse[0..9]
         end
     end
 

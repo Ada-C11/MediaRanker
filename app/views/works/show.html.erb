@@ -6,7 +6,7 @@
 <section>
 <a class="btn btn-primary" href= <%= works_path %> role="button">Back to Media Ranks</a>
 <a class="btn btn-primary" href= <%= edit_work_path(@work) %> role="button">Edit</a>
-<a class="btn btn-primary" href= <%= upvote_work_path(@work) %> role="button">Upvote</a>
+<%= link_to 'Upvote', upvote_work_path(@work), method: :post, class:"btn btn-primary" %>
 <%= link_to 'Delete', work_path(@work), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-primary" %>
 </section>
 
