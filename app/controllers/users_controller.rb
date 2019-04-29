@@ -48,4 +48,10 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
+
+  private
+
+  def find_user
+    @user ||= User.find_by(id: params["id"])
+  end
 end

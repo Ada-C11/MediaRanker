@@ -1,34 +1,27 @@
-oone:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+book: 
+  category: book
+  title: Sapiens
+  creator: Yuval Noah Harari
+  category: book
+  publication_year: 2015
+  description: Humankind and stuff.
 
-harvey:
+movie: 
   category: movie
   title: Harvey
-  creator: Unknown
+  creator: Mary Chase
   publication_year: 1950
-  description: Man has best friend that happens to be a huge rabbit nobody else can see.
+  description: Man's best friend is a large invisible rabbit.
 
-call:
-  category: book
-  title: Pathologies of Power
-  creator: Paul Farmer
-  publication_year: 2003
-  description: Human rights
-
-testing:
+album: 
   category: album
-  title: Back to Black
-  creator: Amy Winehouse
-  publication_year: 2006
-  description: Still love it
+  title: A Seat at the Table
+  creator: Solange Knowles
+  publication_year: 2016
+  description: Funky vibes. Rage, power, sadness.
