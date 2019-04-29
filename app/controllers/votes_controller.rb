@@ -4,7 +4,7 @@ class VotesController < ApplicationController
     @user = User.find_by(id: session[:user_id])
 
     if !@user
-      flash[:failure] = "You must log in to do that"
+      flash[:warning] = "A problem occurred: You must log in to do that"
     elsif @user.works.find_by(id: params[:work_id])
       flash[:failure] = "Could not upvote"
     else

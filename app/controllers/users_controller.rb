@@ -33,6 +33,9 @@ class UsersController < ApplicationController
         redirect_to root_path
       else
         flash.now[:warning] = "Log in unsuccessful. Please try again"
+        @user.errors.messages.each do |field, messages|
+          flash.now[field] = messages
+        end
         render :login_form, status: :bad_request
       end
     end
