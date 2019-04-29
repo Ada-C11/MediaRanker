@@ -15,13 +15,19 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       session[:username] = @user.username
       flash[:status] = :success
-      flash[:message] = "Successfully logged in as #{username}"
+      flash[:message] = "Welcome back #{@user.username}"
     else
-      @user = User.create!(username: params[:user][:username])
-      session[:user_id] = @user.id
-      session[:username] = @user.username
-      flash[:status] = :success
-      flash[:message] = "Successfully logged in as #{username}"
+      @user = User.new(username: username)
+      successful = @user.save
+      if successful
+        session[:user_id] = @user.id
+        session[:username] = @user.username
+        flash[:status] = :success
+        flash[:message] = "Successfully logged in new user as #{@user.username}"
+      else
+        flash[:status ] = :error
+        flash[:message] = "Could not log you in"
+      end
     end
 
     redirect_to root_path

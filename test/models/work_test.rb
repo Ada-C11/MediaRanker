@@ -38,6 +38,14 @@ describe Work do
       expect(work.errors.messages).must_include :category
     end
 
+    it "knows category must be book, movie, or album" do 
+      work = Work.new(category: "Incorrect category", title: "Good title")
+      validation = work.save
+
+      expect(validation).must_equal false
+      expect(work.errors.messages).must_include :category
+    end
+
     it "validates title being present" do 
       work = Work.new(title: nil, category: "movie")
       validation = work.save
@@ -58,20 +66,48 @@ describe Work do
   describe "custom methods" do 
     describe "list" do 
       it "lists each media by category" do 
-        
+        all_books = Work.where(category: "book")
+        all_movies = Work.where(category: "movie")
+        all_albums = Work.where(category: "album")
+
+        expect(Work.list("book").count).must_equal all_books.count
+        expect(Work.list("movie").count).must_equal all_movies.count
+        expect(Work.list("album").count).must_equal all_albums.count
       end
     end
 
     describe "top_ten_list" do
       it "shows only the top ten works by votes" do 
-        # it won't have more than 10 works
-        # it is in descending order
+       all_movies = Work.top_ten_list("movie")
+
+       expect(all_movies.count).must_equal 10
       end
     end
 
     describe "spotlight" do 
       it "chooses the work with the highest votes" do 
-        
+        highest_votes = Work.spotlight
+
+        expect(highest_votes).must_be_instance_of Work
+        expect(highest_votes).must_equal works(:movie)
+      end
+
+      it "will choose a work in the event of a tie" do
+        Upvote.destroy_all
+
+        first_vote = Upvote.create(user_id: users(:first_user), work_id: works(:movie))
+        second_vote = Upvote.create(user_id: users(:second_user), work_id: works(:book))
+
+        expect(Work.spotlight).must_equal works(:movie) || works(:book)
+
+      end
+      
+      it "will display a random work if no votes exist" do 
+        Upvote.destroy_all
+
+        spotlight_item = Work.spotlight
+
+        expect(spotlight_item).wont_be_nil
       end
     end
   end

@@ -30,8 +30,9 @@
     </ul>
     <ul class="nav user-nav-container">
        <li class="user_nav_item"> 
-       <% if session[:user_id] %>
-        <%= link_to "Logged in as #{session[:username]}", user_path(session[:user_id]), class: "btn btn-primary", alt: "Link to logged in user show page" %>
+       <% logged_in = User.find_by(id: session[:user_id]) %>
+       <% if logged_in %>
+        <%= link_to "Logged in as #{logged_in.username}", user_path(session[:user_id]), class: "btn btn-primary", alt: "Link to logged in user show page" %>
         <%= link_to "Log Out", logout_path, class: "btn btn-primary", alt: "Log Out", method: :post %>
        <% else %>
         <%= link_to "Log in", login_path, class: "btn btn-primary", alt: "Log in link" %>

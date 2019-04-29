@@ -1,18 +1,14 @@
 class Work < ApplicationRecord
   has_many :upvotes, dependent: :destroy
   
-  validates :category, presence: true
+  validates :category, presence: true, inclusion: {in: ["book", "album", "movie"]}
   validates :title, presence: true
  
   # helper methods to return lists by category
   def self.top_ten_list(category)
-    list = self.where(category: category)
-    if !list.empty?
-      sorted_list =list.sort_by { |media| media.upvotes.count }
-      return sorted_list.reverse!.first(10)
-    else
-      return nil
-    end
+    list = self.where(category: category).to_a
+    list.sort_by! { |media| media.upvotes.count }
+    return list.reverse.first(10)
   end
 
   # logic for top ten votes
