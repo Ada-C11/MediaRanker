@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MediaRanker</title>
-    <link rel="shortcut icon" href="/assets/images/owl.jpg" type = "image/x-icon" />
+    <title>Media Ranker</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -33,11 +33,13 @@
       </nav>
 
     </header>
-    <main>
+    <section class="alert__container">
       <% alert_type = flash[:status] == :error ? :danger : flash[:status] %>
-        <section class=" alert_container alert alert-<%= alert_type %>">
+        <div class="alert alert-<%= alert_type %>">
           <%= flash[:message] %>
-        </section>
+        </div>
+    </section>
+    <main>
       <%= yield %>
     </main>
   </body>

@@ -1,8 +1,6 @@
 class WorksController < ApplicationController
   before_action :find_work, only: %i[show edit update upvote]
   def index
-    # @works = Work.all
-    # @categories = Category.all.includes(:works)
     @categories = Category.all
   end
 
@@ -22,7 +20,7 @@ class WorksController < ApplicationController
       error_message = "A problem occurred: Could not create #{@work.category.name}"
       @work.errors.messages.each do |column, problem_list|
         problem_list.each do |problem|
-          error_message += "#{column}: #{problem}"
+          error_message += " #{column}: #{problem}"
         end
       end
       flash.now[:message] = error_message
@@ -36,8 +34,15 @@ class WorksController < ApplicationController
       flash[:message] = "Successfully updated #{@work.category.name} #{@work.id}"
       redirect_to work_path(@work)
     else
+      flash.now[:status] = :warning
+      error_message = "A problem occurred: Could not update #{@work.category.name}"
+      @work.errors.messages.each do |column, problem_list|
+        problem_list.each do |problem|
+          error_message += " #{column}: #{problem}"
+        end
+      end
+      flash.now[:message] = error_message
       render :edit, status: :bad_request
-      flash.now
     end
   end
 
