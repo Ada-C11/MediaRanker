@@ -14,10 +14,10 @@
   <header>
     <h3>Media Ranker | Ranking the Best of Everything</h3>
     <section>
-      <%= link_to "View top media" %>
+      <%= link_to "View top media", homepage_path %>
       <%= link_to "View all media", works_path %>
       <%= link_to "Add a new work", new_work_path %>
-      <%= link_to "View all users" %>
+      <%= link_to "View all users", users_path %>
     </section>
     <% if flash.count > 0 %>
       <section class="flash">

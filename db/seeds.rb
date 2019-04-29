@@ -18,3 +18,13 @@ works = [
 works.each do |work|
   Work.create(work)
 end
+
+users = [
+  {username: "jillirami"}, 
+  {username: "joi"},
+  {username: "lovethearts"}
+]
+
+users.each do |user|
+  User.create(user)
+end
