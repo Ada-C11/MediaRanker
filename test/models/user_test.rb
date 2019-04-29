@@ -7,7 +7,7 @@ describe User do
     value(user).must_be :valid?
   end
 
-  # This doesn't work, which makes me think it's wrong to have a model method for this in the first place.
+  # This doesn't work, which makes me think it's wrong to have a model method for this in the first place...
   # it "returns current user if user is logged in" do
   #   perform_login
 

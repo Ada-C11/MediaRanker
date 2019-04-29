@@ -23,29 +23,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def index
-  end
-
   def show
     @user = User.find_by(id: params[:id])
     if @user.nil?
       head :not_found
     end
-  end
-
-  def new
-  end
-
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   def logout

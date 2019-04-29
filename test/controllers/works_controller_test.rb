@@ -34,7 +34,22 @@ describe WorksController do
   end
 
   describe "create" do
-    it "should create new works" do
+    it "should create new works if logged in" do
+      perform_login
+
+      work_hash = {
+        work: {
+          title: "test 3",
+        },
+      }
+      expect {
+        post works_path, params: work_hash
+      }.must_change "Work.count", 1
+
+      must_respond_with :redirect
+    end
+
+    it "should also create new works if not logged in" do
       work_hash = {
         work: {
           title: "test 3",
@@ -81,7 +96,21 @@ describe WorksController do
   end
 
   describe "update" do
-    it "should update works" do
+    it "should update works if logged in" do
+      perform_login
+
+      update_work_hash = {
+        work: {
+          title: "test 2",
+        },
+      }
+      patch work_path(works(:hp1)), params: update_work_hash
+
+      must_respond_with :redirect
+      expect(Work.find_by(title: "test 2")).wont_be_nil
+    end
+
+    it "should also update works if not logged in" do
       update_work_hash = {
         work: {
           title: "test 2",
@@ -125,7 +154,17 @@ describe WorksController do
   end
 
   describe "destory" do
-    it "should destroy works" do
+    it "should destroy works if logged in" do
+      perform_login
+
+      expect {
+        delete work_path(works(:hp1).id)
+      }.must_change "Work.count", -1
+
+      must_respond_with :redirect
+    end
+
+    it "should also destroy works if not logged in" do
       expect {
         delete work_path(works(:hp1).id)
       }.must_change "Work.count", -1
