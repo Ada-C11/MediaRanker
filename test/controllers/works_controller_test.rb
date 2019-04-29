@@ -46,8 +46,10 @@ describe WorksController do
         post works_path, params: work_hash
       }.must_change "Work.count", 1
 
+      new_work = Work.find_by(title: "Working!")
+
       must_respond_with :redirect
-      expect(flash[:success]).must_equal "Work added successfully"
+      expect(flash[:success]).must_equal "Successfully created album #{new_work.id}"
     end
 
     it "should respond with bad request if title missing" do

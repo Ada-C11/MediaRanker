@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  category: MyString
-  title: MyString
+  category: album
+  title: Fantastic
   created_by: MyString
   published: MyString
   description: MyString
 
 two:
-  category: MyString
-  title: MyString
+  category: movie
+  title: Wonderful
+  created_by: MyString
+  published: MyString
+  description: MyString
+
+three:
+  category: book
+  title: Awesome
   created_by: MyString
   published: MyString
   description: MyString
