@@ -8,3 +8,7 @@ two:
 
 no_votes:
   username: NoVotes  
+
+three:
+  username: MyString3  
+

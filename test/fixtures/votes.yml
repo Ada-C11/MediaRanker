@@ -11,3 +11,7 @@ vote1:
 vote2: 
   user: one
   work: album2
+
+vote3:
+  user: three
+  work: album3  

@@ -3,7 +3,7 @@ require "test_helper"
 describe Vote do
   let(:user) { users(:one) }
   let(:work) { works(:album) }
-  let(:vote) { votes(:vote1) }
+  let(:vote) { votes(:vote3) }
 
   it "must be valid" do
     expect(vote.valid?).must_equal true
@@ -40,5 +40,22 @@ describe Vote do
   end
 
   describe "relationships" do
+    it "belongs to a work and a user" do
+      vote.user = user
+      vote.work = work
+
+      expect(vote.user_id).must_equal user.id
+      expect(vote.work_id).must_equal work.id
+    end
+
+    it "can set the work through the work_id and the user through the user_id" do
+
+      # user = users(:no_votes)
+      vote.user_id = user.id
+      vote.work_id = work.id
+
+      expect(vote.user).must_equal user
+      expect(vote.work).must_equal work
+    end
   end
 end
