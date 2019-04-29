@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       else
         flash.now[:error] = "A problem occurred: Could not log in"
         @user.errors.messages.each do |label, message|
-          flash.now[label.to_sym] = message[0]
+          flash.now[label.to_sym] = message
         end
         render :login_form, status: :bad_request
       end

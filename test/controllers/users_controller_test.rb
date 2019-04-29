@@ -69,7 +69,7 @@ describe UsersController do
 
       must_respond_with :bad_request
       expect(flash[:error]).must_equal "A problem occurred: Could not log in"
-      expect(flash[:username]).must_equal "can't be blank"
+      expect(flash[:username]).must_equal ["can't be blank"]
       expect(session[:user_id]).must_be_nil
     end
   end

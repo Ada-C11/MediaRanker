@@ -36,7 +36,7 @@
               <%= link_to "Logged in as #{User.find(session[:user_id]).username}", users_path, class:"btn btn-primary" %>
             </li>
             <li class="nav-item app-header__nav_item">
-              <%= link_to "Log Out", logout_user_path, class:"btn btn-primary", method: :post%>
+              <%= button_to "Log Out", logout_user_path, class:"btn btn-primary"%>
             </li>
           <%else%>
             <li class="nav-item app-header__nav_item">
@@ -60,7 +60,7 @@
             <ul>
               <%flash.each do |label, message|%>
                 <% if label != "error" %>
-                  <li><%=label%>: <%=message%></li>
+                  <li><%=label%>: <%=message[0]%></li>
                 <% end %>
               <% end %>
             </ul>
