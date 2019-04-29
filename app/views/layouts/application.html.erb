@@ -20,8 +20,12 @@
       <%= link_to "View all users", users_path %>
     </section>
     <section>
-    <%= session[:user_id].nil? ? link_to("Login", login_path) : link_to("Logged in as #{User.find(session[:user_id]).username}", user_path(id: User.find(session[:user_id]).id))%>
-    <%= link_to("Logout", logout_path, method: :post) %>
+    <% if session[:user_id].nil? %>
+      <%= link_to("Login", login_path) %>
+    <% else %> 
+      <%= link_to("Logged in as #{User.find(session[:user_id]).username}", user_path(id: User.find(session[:user_id]).id)) %>
+      <%= link_to("Logout", logout_path, method: :post)%>
+    <% end %>
     </section>
     <% if flash.count > 0 %>
       <section class="flash">
