@@ -1,15 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+austen:
+  category: book
+  title: Pride and Prejudice
+  creator: Amber
+  publication_year: 1898
+  description: A book about pride
 
-two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+rowling:
+  category: album
+  title: Goblet of fire
+  creator: Samuel
+  publication_year: 2009
+  description: Lots of firey stuff
+
+lee:
+  category: movie
+  title: looper
+  creator: Mike
+  publication_year: 2018
+  description: Going back in time doing bad things
+

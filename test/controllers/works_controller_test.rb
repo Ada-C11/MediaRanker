@@ -2,7 +2,14 @@ require "test_helper"
 
 describe WorksController do
   before do
-    @work = Work.create!(category: "test work", title: 'title', creator: 'Someone', publication_year: 2016, description: 'About a book', votes: 2)
+    @work = Work.create!(
+      category: "test work", 
+      title: 'title', 
+      creator: 'Someone', 
+      publication_year: 2016, 
+      description: 'About a book', 
+      number_of_votes: '5'
+    )
   end
   describe "index" do
     it "renders without crashing" do
@@ -39,7 +46,7 @@ describe WorksController do
   describe "new" do
     it "returns status code 200" do
       get new_work_path
-      must_respond_with :ok
+      must_redirect_to login_path
     end
   end
 
@@ -166,5 +173,21 @@ describe WorksController do
 
       must_respond_with :not_found
     end
+  end
+
+  describe 'upvote' do
+    it 'Allows you to vote for your work' do
+
+    end
+
+    it 'Wont let you vote for the same work more than once' do
+      
+    end
+
+    it 'You must be logged in to vote' do
+      
+    end
+
+
   end
 end

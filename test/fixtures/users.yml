@@ -2,8 +2,8 @@
 
 one:
   username: MyString
-  votes: 1
+  number_of_votes: 1
 
 two:
   username: MyString
-  votes: 1
+  number_of_votes: 1

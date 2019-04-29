@@ -3,7 +3,7 @@
 class HomepagesController < ApplicationController
   def index
     @works = Work.all.sort_by(&:id)
-    @spotlight = Work.all.max_by(&:number_of_votes)
+    @spotlight = @works.max_by(&:number_of_votes)
     top_ten_movies
     top_ten_books
     top_ten_albums

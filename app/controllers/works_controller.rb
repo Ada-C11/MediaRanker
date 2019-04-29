@@ -4,18 +4,28 @@ class WorksController < ApplicationController
   before_action :find_work, only: %i[show edit destroy update]
 
   def index
-    @works = Work.all.sort_by(&:number_of_votes).reverse
-    @books = @works.select { |work| work.category == 'book'}
-    @albums = @works.select { |work| work.category == 'album'}
-    @movies = @works.select { |work| work.category == 'movie'}
+    @works = Work.all
+    @books = @works.select { |work| work.category == 'book'}.sort_by(&:number_of_votes).reverse
+    @albums = @works.select { |work| work.category == 'album'}.sort_by(&:number_of_votes).reverse
+    @movies = @works.select { |work| work.category == 'movie'}.sort_by(&:number_of_votes).reverse
   end
 
   def new
     @work = Work.new
+
+    user_id = session[:user_id]
+
+    if user_id.nil?
+      flash[:error] = 'You must be logged in to see this page'
+      redirect_to login_path
+    end
+
   end
 
   def create
     @work = Work.new(work_params)
+    @work.number_of_votes = 0
+
 
     successful = @work.save
     if successful
@@ -31,26 +41,13 @@ class WorksController < ApplicationController
 
   def show
     work_id = params[:id]
-    # @work = Work.find_by(id: work_id)
-    # head :not_found unless @work
     @votes = Vote.all
     @works_votes = @votes.where(work_id: work_id)
   end
 
-  def edit
-    # work_id = params[:id]
-    # @work = Work.find_by(id: work_id)
-    # head :not_found unless @work
-
-  end
+  def edit; end
 
   def update
-    # work_id = params[:id]
-
-    # @work = Work.find_by(id: work_id)
-
-    # head :not_found unless @work
-
     if @work.update(work_params)
       flash[:status] = :success
       flash[:message] = "Successfully updated work #{@work.id}"
@@ -63,12 +60,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    # work_id = params[:id]
-
-    # @work = Work.find_by(id: work_id)
-
-    # head :not_found unless @work
-
     @work.destroy
 
     flash[:status] = :success
@@ -134,6 +125,7 @@ end
 
 # Method so i dont repeat this
 def find_work
+  work_id = params[:id]
   @work = Work.find_by_id(params[:id])
   head :not_found unless @work
 end
