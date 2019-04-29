@@ -2,7 +2,9 @@ class WorksController < ApplicationController
   before_action :find_individual_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def index
-    @works = Work.all.order(:title)
+    @albums = Work.sort_by_category("album")
+    @books = Work.sort_by_category("book")
+    @movies = Work.sort_by_category("movie")
   end
 
   def show
