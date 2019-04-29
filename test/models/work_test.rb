@@ -9,15 +9,23 @@ describe Work do
   end
 
   describe "top_ten" do
-    it "must return an array of 10" do
+    it "must return an array of 10 and be an instance of Work class" do
       works = Work.top_ten("album")
       expect(works.length).must_equal 10
       expect(works).must_be_kind_of Array
+      expect(works.first).must_be_kind_of Work
     end
 
     it "must return an empty array if no works" do
       works = Work.top_ten("book")
       expect(works).must_equal []
+    end
+  end
+
+  describe "spotlight" do
+    it "must return an instance of Work" do
+      spotlight = Work.spotlight
+      expect(spotlight).must_be_kind_of Work
     end
   end
 end
