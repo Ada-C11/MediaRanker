@@ -19,10 +19,14 @@ class UsersController < ApplicationController
   def login
     username = params[:user][:username]
     user = User.find_by(username: username)
-
+    
     if user 
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in as returning user #{username}"
+    elsif username.nil? || username == ""
+      flash[:error] = "Invalid username."
+      redirect_to login_path
+      return
     else
       user = User.create(username: username)
       session[:user_id] = user.id
