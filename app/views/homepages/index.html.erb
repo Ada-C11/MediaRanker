@@ -2,7 +2,7 @@
 <% if Work.all == nil%>
     <h3 class="spotlight__header">Add Media to Vote For!</h3>
 <% else %>
-<h3 class="spotlight__header">Media Spotlight: <%= link_to Work.spotlight("title"), work_path(Work.spotlight.id)%> by <%= Work.spotlight.creator%> </h3>
+<h3 class="spotlight__header">Media Spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight.id)%> by <%= Work.spotlight.creator%> </h3>
 <% end %>
 </section>
 
