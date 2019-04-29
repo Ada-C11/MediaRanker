@@ -1,0 +1,66 @@
+rbg:
+  category: movie
+  title: RBG
+  author: Betsy West
+  publication_year: 2018
+  description: RBG is a 2018 American documentary
+moon:
+  category: album
+  title: Harvest Moon
+  author: Neil Young
+  publication_year: 1991
+  description: 19th studio album
+shrill:
+  category: book
+  title: Shrill
+  author: Lindy West
+  publication_year: 2016
+  description: fat girls rule!
+homegoing:
+  category: book
+  title: Homegoing
+  author: Yaa Agasi
+  publication_year: 2012
+  description: a multi-generational tale of black women
+rush1:
+  category: movie
+  title: Rush Hour
+  author: Brett Ratner
+  publication_year: 1998
+  description: American documentary
+rush2:
+  category: movie
+  title: Rush Hour
+  author: Brett Ratner
+  publication_year: 2001
+  description: The best of the franchise
+rush3:
+  category: movie
+  title: Rush Hour
+  author: Brett Ratner
+  publication_year: 2001
+  description: The best of the franchise
+one:
+  category: movie
+  title: Rush Hour
+  author: Brett Ratner
+  publication_year: 2001
+  description: The best of the franchise
+two:
+  category: movie
+  title: Rush Hour
+  author: Brett Ratner
+  publication_year: 2001
+  description: The best of the franchise
+three:
+  category: movie
+  title: Rush Hour
+  author: Brett Ratner
+  publication_year: 2001
+  description: The best of the franchise
+four:
+  category: movie
+  title: Rush Hour
+  author: Brett Ratner
+  publication_year: 2001
+  description: The best of the franchise

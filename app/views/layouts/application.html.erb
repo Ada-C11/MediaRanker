@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <section class="site-title">
+        <h1><%= link_to "Media Ranker", root_path %></h1>Ranking the best of everything
+      </section>
+      
+      <nav>
+        <ul class="nav">
+          <li><%= link_to "View Top Media", root_path %></li>
+          <li><%= link_to "View All Media", works_path %></li>
+          <li><%= link_to "Add a New Work", new_work_path %></li>
+          <li><%= link_to "View All Users", users_path %></li>
+        </ul>
+        
+        <div class="Login">
+         <%= link_to("Login", login_path) if session[:user_id].nil? %>
+          <%= link_to("Logout", logout_path, method: :post) if session[:user_id] %>
+        </div>
+      </nav>
+    </header>
+    
+    <main>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-"><%= value %></div>
+      <% end %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

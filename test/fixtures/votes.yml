@@ -1,0 +1,24 @@
+vote_1: 
+    work: rush1
+    user: amy
+
+vote_2: 
+    work: rush2
+    user: amy
+
+vote_3: 
+    work: shrill
+    user: amy
+
+vote_4: 
+    work: rush2
+    user: andrew
+vote_5: 
+    work: one
+    user: user8
+vote_6: 
+    work: one
+    user: user8
+vote_7: 
+    work: one
+    user: test

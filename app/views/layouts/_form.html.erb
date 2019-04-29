@@ -1,0 +1,15 @@
+<%= form_with model: @work, class: 'form' do |f| %>
+  
+  <div class="form_input">
+    <%= f.label :name%>
+    <%= f.text_field :name, placeholder: "Passenger name" %>
+  </div>
+  
+  <div class="form_input">
+    <%= f.label :phone_num, "Phone number" %>
+    <%= f.text_field :phone_num, placeholder: "1234567890" %>
+  </div>
+  
+  <%= f.submit action_name, class: "button" %>
+  
+<% end %>
