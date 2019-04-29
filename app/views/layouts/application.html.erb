@@ -18,7 +18,7 @@
         <% navigation_options ={
         "View top media": root_path,
         "View all media": works_path,
-        "Add a new work": works_path,
+        "Add a new work": new_work_path,
         "View all users": works_path,
         }%>
         <% navigation_options.each do |option_name, option_path|%>
@@ -27,15 +27,34 @@
           </li>
         <% end %>
       </ul>
-      <ul> 
-        <li>
+      <ul class="nav app-header__user-nav-container"> 
+        <li class="nav-item app-header__nav_item">
           <%= link_to "Log in", works_path, class:"btn btn-primary"%>
         </li>
       </ul>
     </nav>
   </header>
+  <%if flash.count > 0 %>
+    <section class="alert__container">
+      <div class="alert alert-success">
+      
+      </div>
+      <div class="alert alert-warning">
+      <% flash.each do |name, message| %>
+        <% if message.class == Array %>
+          <ul>
+          <% message.each do |msg| %>
+            <li><%= name %>: <%= msg %></li>
+          <% end %>
+        <% else %>
+          <%= message %>
+        <% end %>
+        </ul>
+      <% end %>
+      </div>
+    </section>
+  <% end %>
   
-
   <body>
     <%= yield %>
   </body>

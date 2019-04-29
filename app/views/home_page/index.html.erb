@@ -4,11 +4,12 @@
     <span class="spotlight__header--prefix">
        Media Spotlight:
     </span>
-    <%= link_to Work.spotlight.title %> by
-    <%= Work.spotlight.creator%>
+    <% spotlight_work = Work.spotlight%>
+    <%= link_to spotlight_work.title, work_path(spotlight_work.id), class: "spotlight__link-to" %> by
+    <%= spotlight_work.creator%>
     </h2>
     <p class="spotlight__description"   >
-        <h6><%= "votes i0i -"%></h6>
+        <h6><%= "#{Work.spotlight.publication_year} - #{Work.spotlight.description}"%></h6>
   </section>
   <section class="top-ten__container">
     
@@ -28,7 +29,7 @@
             <% category_collection.each do |work| %>
             <li class="list-group-item">
               <h4>
-              <%= link_to work.title%> 
+              <%= link_to work.title, work_path(work.id)%> 
               <small class="top-ten__creator">by <%= work.creator%></small>
               </h4>
               <p><%= work.publication_year%> votes</p>

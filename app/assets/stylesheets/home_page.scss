@@ -6,6 +6,8 @@ li {
     text-align: -webkit-match-parent;
 }
 
+
+
 .top-ten__list {
     list-style-type: none;
     margin-left: 0;
@@ -22,13 +24,17 @@ li {
     color: slategrey;
 }
 
-p {
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
+
 
 .spotlight__header--prefix {
     color: #424242;
+}
+
+.spotlight__link-to {
+    border-bottom: 2px solid;
+}
+.spotlight__description {
+    margin-bottom: 0;
 }
 
 a, h2, h3 {
@@ -39,4 +45,13 @@ a, h2, h3 {
 h2, .h2 {
     font-size: 2rem;
 }
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
 
