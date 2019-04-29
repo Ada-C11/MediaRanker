@@ -10,7 +10,6 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-
     successful = @work.save
 
     if successful
@@ -24,30 +23,7 @@ class WorksController < ApplicationController
     end
   end
 
-  def show 
-    # @work = Work.find_by(id: params[:id])
-
-    unless @work
-      head :not_found
-    end
-  end
-
-  def edit
-    # @work = Work.find_by(id: params[:id])
-
-    unless @work
-      head :not_found
-    end
-  end
-
   def update
-    # @work = Work.find_by(id: params[:id])
-
-    unless @work
-      head :not_found
-      return
-    end
-
     if @work.update(work_params)
       redirect_to work_path(@work)
     else
@@ -55,14 +31,11 @@ class WorksController < ApplicationController
     end
   end
 
+  def show ; end
+
+  def edit ; end
+
   def destroy
-    # work = Work.find_by(id: params[:id])
-
-    unless @work
-      head :not_found
-      return
-    end
-
     @work.destroy
 
     redirect_to works_path
@@ -76,6 +49,10 @@ class WorksController < ApplicationController
 
   def find_work
     @work = Work.find_by(id: params[:id])
+
+    unless @work
+      head :not_found
+    end
   end
 
 end
