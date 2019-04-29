@@ -14,7 +14,7 @@ end
 work_hash = Hash.new(0)
 works.each do |vote|
   work_hash[vote.id] = vote.vote_ids.count
-end 
+end
 
 20.times do |i|
   User.create(username: "somename#{i}")
@@ -36,5 +36,5 @@ end
 end
 
 5.times do |i|
-Work.create(title: "#{i}qweasdzxc", category: "movie")
+  Work.create(title: "#{i}qweasdzxc", category: "movie")
 end
