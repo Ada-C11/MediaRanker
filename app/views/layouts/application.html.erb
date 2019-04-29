@@ -33,7 +33,7 @@
       </nav>
 
     </header>
-    <section class="alert__container">
+    <section class="alert_container">
       <% alert_type = flash[:status] == :error ? :danger : flash[:status] %>
         <div class="alert alert-<%= alert_type %>">
           <%= flash[:message] %>
