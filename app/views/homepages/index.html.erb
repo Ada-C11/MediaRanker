@@ -8,8 +8,8 @@
     <ul>
         <% @movies.each do |movie| %>
             <li>
-                <%= movie.title %> by <%= movie.creator %>
-                ADD votes
+                <%= link_to movie.title, work_path(movie) %> by <%= movie.creator %>
+                <%= movie.users.length%> votes
             </li>
         <% end %>
     </ul>
@@ -20,8 +20,8 @@
     <ul>
         <% @books.each do |book| %>
             <li>
-                <%= book.title %> by <%= book.creator %>
-                ADD votes
+                <%= link_to book.title, work_path(book) %> by <%= book.creator %>
+                <%= book.users.length%> votes
             </li>
         <% end %>
     </ul>
@@ -32,8 +32,8 @@
     <ul>
         <% @albums.each do |album| %>
             <li>
-                <%= album.title %> by <%= album.creator %>
-                ADD votes
+                <%= link_to album.title, work_path(album) %> by <%= album.creator %>
+                <%= album.users.length%> votes
             </li>
         <% end %>
     </ul>

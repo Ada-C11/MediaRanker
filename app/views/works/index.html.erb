@@ -8,13 +8,18 @@
             <th>Published</th>
             <th>Upvote</th>
         </tr>
-        <% @works.where(category: type).each do |work| %>
+        <% selected_works = @works.where(category: type)%>
+        <% ordered_works = selected_works.sort_by do |work| %>
+            <% work.users.length %>
+        <% end %>
+        <% ordered_works.reverse! %>
+        <% ordered_works.each do |work| %>
             <tr>
-                <td>Add Votes</td>
-                <td><%= work.title%></td>
+                <td><%= work.users.length %></td>
+                <td><%= link_to work.title, work_path(work) %></td>
                 <td><%= work.creator %></td>
                 <td><%= work.publication_year %></td>
-                <td>Add upvotes</td>
+                <td><%= link_to "Upvote", upvote_path(work), method: :post %></td>
             </tr>
         <% end %>
     </table>
