@@ -36,14 +36,9 @@ class UsersController < ApplicationController
   end
 
   def logout
-    user = User.find_by(id: session[:user_id])
-    if user
-      session[:user_id] = nil
-      flash[:notice] = "Successfully logged out"
-      redirect_to login_path
-    else
-      redirect_to login_path
-    end
+    session[:user_id] = nil
+    flash[:notice] = "Successfully logged out"
+    redirect_to login_path
   end
 
   private
