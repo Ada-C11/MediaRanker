@@ -10,42 +10,52 @@
   </head>
 
   <body>
-    <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Media Ranker</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <header class="app-header__header">
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-        <a><%= link_to "View top media", root_path, :class=>"nav-link" %></a>
-        
-      </li>
-      <li class="nav-item">
-        <a><%= link_to "View all media", works_path, :class=>"nav-link" %></a>
-      </li>
-      <li class="nav-item">
-        <a><%= link_to "Add new work", new_work_path, :class=>"nav-link" %></a>
-      </li>
-      <li class="nav-item">
-        <a><%= link_to "View all users", users_path, :class=>"nav-link" %></a>
-      </li>
-      <li class="nav-item">
-         <a><%= link_to "Login", login_path, :class=>"nav-link" %></a>
-      </li>
-      <li>
+     <h1>
+      <%= link_to "Media Ranker", root_path %>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+
+    <nav class="app-header__nav">
+       <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View top media", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all media", works_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Add a new work", new_work_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all users", users_path, class: "nav-link" %>
+        </li>
+      </ul>
+      <%##############><%>
+      <ul class="nav app-header__user-nav-container">
       <% if session[:user_id] %>
-        <% @user = User.find(session[:user_id])%>
-        <button class="login"><%= link_to "Logged in as #{@user.username}", user_path(@user.id) %>
-        <button class="logout"><%= link_to "Log Out", logout_path, method: :post%>
-        <% end %>
-      </li>
-    </ul>
-    
-  </div>
-</nav>
+
+      <li class="nav-item app-header__nav_item">
+          <% if User.all.length == 0 %>
+            <li class="nav-item app-header__nav_item">
+              <%= link_to "Login", login_path %>
+            </li>  
+          <% else %>
+            <% @user = User.find(session[:user_id])%>
+            <li class="nav-item app-header__nav_item">
+              <%= link_to "Logged in as #{@user.username}", user_path(@user.id) %>
+            </li> 
+            <li class="nav-item app-header__nav_item">
+              <%= link_to "Log Out", logout_path, method: :post%>
+             </li> 
+          <% end %>
+       </li>   
+      <% end %>
+
+      </ul>
+
+      </nav>
     </header>
 
      <% if flash.count > 0 %>
