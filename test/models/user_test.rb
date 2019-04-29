@@ -38,9 +38,8 @@ describe User do
 
     it "can have 1 or more votes" do
       user = users(:two)
-      vote = votes(:vote1)
 
-      expect(user.votes.length).must_equal 1
+      expect(user.votes.length).must_equal 4
     end
   end
 end

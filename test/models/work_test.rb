@@ -37,12 +37,25 @@ describe Work do
 
     it "can have 1 or more votes" do
       work = works(:album)
-      vote = votes(:vote1)
 
       expect(work.votes.length).must_equal 1
     end
   end
 
-  describe "custom methods" do
+  describe "self.top_ten method" do
+    it "must return the top ten votes, based on works" do
+      top_array = Work.top_ten("album")
+
+      expect(top_array.length).must_equal 10
+      expect(top_array[0][:title]).must_equal "Test Album4"
+    end
+  end
+
+  describe "media_spotlight method" do
+    it "must return the work with the most votes" do
+      top_work = Work.media_spotlight
+
+      expect(top_work.title).must_equal "Book Test2"
+    end
   end
 end
