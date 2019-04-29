@@ -1,13 +1,19 @@
 
 <% rand_name = Work.all.sample.title %>
 <% %>
-<h2> Media Spotlight: <%= rand_name %></h2>
+<h2> Media Spotlight: <%= link_to Work.find_most_voted.title, work_path(Work.find_most_voted.id) %> by <%= Work.find_most_voted.creator %>
+    <p><%= Work.find_most_voted.vote_ids.length %> votes - <%= Work.find_most_voted.description %></p>
+
+</h2>
 
 <section>
     <h2>Top Movies</h2>
     <ul>
+        <% @top_10_movies = Work.find_top_ten("movie") %>
+        <% if !@top_10_movies.nil? %>
         <% @top_10_movies.each do |movie|%>
             <li><%= movie.title %> by <%= movie.creator %></li>
+        <% end %>
         <% end %>
     </ul>
 </section>
@@ -15,8 +21,11 @@
 <section>
     <h2>Top Books</h2>
         <ul>
+        <% @top_10_books = Work.find_top_ten("book") %>
+        <% if !@top_10_books.nil? %>
         <% @top_10_books.each do |book|%>
             <li><%= book.title %> by <%= book.creator %></li>
+        <% end %>
         <% end %>
         </ul>
 </section>
@@ -24,9 +33,13 @@
 <section>
     <h2>Top Albums</h2>
         <ul>
+            <% @top_10_albums = Work.find_top_ten("album") %>
+            <% if !@top_10_albums.nil? %>
             <% @top_10_albums.each do |album|%>
                 <li><%= album.title %> by <%= album.creator %></li>
             <% end %>
+            <% end %>
+
         </ul>
 
 </section>
