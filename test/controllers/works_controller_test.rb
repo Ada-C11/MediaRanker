@@ -25,7 +25,7 @@ describe WorksController do
       get work_path(invalid_id)
       must_respond_with :redirect
       must_redirect_to root_path
-      expect(flash[:warning]).must_equal "A problem occurred: Media not found."
+      expect(flash[:warning]).must_equal "A problem occurred: Media not found"
     end
   end
 

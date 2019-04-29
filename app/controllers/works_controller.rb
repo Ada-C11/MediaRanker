@@ -10,7 +10,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if !@work
-      flash[:warning] = "A problem occurred: Media not found."
+      flash[:warning] = "A problem occurred: Media not found"
       redirect_to root_path
     end
   end
