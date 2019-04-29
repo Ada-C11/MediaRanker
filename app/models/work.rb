@@ -13,7 +13,7 @@ class Work < ApplicationRecord
   end
 
   def self.media_votes(category)
-    works = Work.where(category: category).left_joins(:votes).select("works.*, COUNT(votes.id) as vote_count").group(:id).order("COUNT(votes.id) DESC").limit(10)
+    works = Work.where(category: category).left_joins(:votes).select(Arel.sql("works.*, COUNT(votes.id) as vote_count")).group(:id).order(Arel.sql("COUNT(votes.id) DESC")).limit(10)
     return works
   end
 
