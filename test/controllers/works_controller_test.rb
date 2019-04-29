@@ -186,16 +186,58 @@ describe "WorksController" do
   end
 
   describe "upvote" do
+    before do
+      @user = User.create(username: "generic_name")
+
+      @login_data = {
+        user: {
+          username: @user.username,
+        },
+      }
+    end
+
     it "flashes an error if user is not logged in" do
-      #code
+      post logout_path
+      expect(session[:user_id]).must_be_nil
+
+      post upvote_path(@work)
+
+      check_flash(expected_status = :error)
+
+      must_respond_with :redirect
+      must_redirect_to work_path(@work)
     end
 
     it "adds the user to works if new vote" do
-      #code
+      post login_path, params: @login_data
+      expect(session[:user_id]).must_equal @user.id
+
+      expect {
+        post upvote_path(@work)
+      }.must_change "@work.users.count", +1
+
+      check_flash
+
+      must_respond_with :redirect
+      must_redirect_to work_path(@work)
     end
 
     it "flashes an error if user already voted" do
-      #code
+      post login_path, params: @login_data
+      expect(session[:user_id]).must_equal @user.id
+
+      expect {
+        post upvote_path(@work)
+      }.must_change "@work.users.count", +1
+
+      check_flash
+
+      post upvote_path(@work)
+
+      check_flash(expected_status = :error)
+
+      must_respond_with :redirect
+      must_redirect_to work_path(@work)
     end
   end
 end

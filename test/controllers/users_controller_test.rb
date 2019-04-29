@@ -36,7 +36,7 @@ describe "UsersController" do
       post login_path, params: login_data
       expect(session[:user_id]).must_equal user.id
 
-      post logout_path, params: login_data
+      post logout_path
       expect(session[:user_id]).must_be_nil
     end
   end

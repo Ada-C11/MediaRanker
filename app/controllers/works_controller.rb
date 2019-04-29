@@ -59,12 +59,13 @@ class WorksController < ApplicationController
         @work.users.push(current_user)
         flash[:status] = :success
         flash[:message] = "Successfully upvoted"
-        redirect_to work_path(@work)
       end
     else
       flash[:status] = :error
       flash[:message] = "Must be logged in to vote"
     end
+
+    redirect_to work_path(@work)
   end
 
   private
