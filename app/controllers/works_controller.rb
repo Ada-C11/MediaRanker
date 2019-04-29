@@ -66,12 +66,12 @@ class WorksController < ApplicationController
     work = Work.find_by(id: params[:id])
 
     if !work
-      flash[:failure] = "Failed to delete media."
+      flash[:failure] = "Failed to destroy media"
       redirect_to root_path
     else
       work.votes.each { |vote| vote.destroy }
       work.destroy
-      flash[:success] = "Succesfully deleted #{work.title} #{work.category}."
+      flash[:success] = "Succesfully destroyed #{work.category} #{work.id}"
       redirect_to works_path
     end
   end

@@ -169,7 +169,7 @@ describe WorksController do
 
       must_respond_with :redirect
       must_redirect_to works_path
-      expect(flash[:success]).must_equal "Succesfully deleted #{work.title} #{work.category}."
+      expect(flash[:success]).must_equal "Succesfully destroyed #{work.category} #{work.id}"
     end
 
     it "redirects to the root path for a non-existant work" do
@@ -181,7 +181,7 @@ describe WorksController do
 
       must_respond_with :redirect
       must_redirect_to root_path
-      expect(flash[:failure]).must_equal "Failed to delete media."
+      expect(flash[:failure]).must_equal "Failed to destroy media"
     end
   end
 end
