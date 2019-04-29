@@ -1,5 +1,4 @@
 require "test_helper"
-require "pry"
 
 describe WorksController do
   before do
@@ -44,7 +43,6 @@ describe WorksController do
 
       # Act: Hey server, can you find the work
       # that we just made
-      # binding.pry
       get work_path(@work)
 
       # Assert

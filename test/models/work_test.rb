@@ -1,5 +1,5 @@
 require "test_helper"
-require "pry"
+
 
 # For top-10 or spotlight, what if there are less than 10 works?
 # What if there are no works?
