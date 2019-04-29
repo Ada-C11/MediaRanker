@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :edit, :update, :destroy]
-
   def index
     @users = User.all
   end
 
   def show
+    @user = User.find_by(id: params[:id])
     if !@user
       flash[:error] = "Unknown user"
 
@@ -42,10 +41,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def find_user
-    @user = User.find_by(id: params[:id])
-  end
 
   def user_params
     return params.require(:user).permit(:username)
