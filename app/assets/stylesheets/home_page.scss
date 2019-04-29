@@ -1,0 +1,57 @@
+// Place all the styles related to the home_page controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+li {
+    text-align: -webkit-match-parent;
+}
+
+
+
+.top-ten__list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.top-ten__header {
+    color: #26A69A;
+    border-bottom: 2px solid;
+    border-bottom-color: #B2DFDB;
+}
+
+.top-ten__creator {
+    color: slategrey;
+}
+
+
+
+.spotlight__header--prefix {
+    color: #424242;
+}
+
+.spotlight__link-to {
+    border-bottom: 2px solid;
+}
+.spotlight__description {
+    margin-bottom: 0;
+}
+
+a, h2, h3 {
+    color: #26A69A;
+}
+
+
+h2, .h2 {
+    font-size: 2rem;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+

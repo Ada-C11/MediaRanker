@@ -1,0 +1,38 @@
+<main>
+<h3> List of works</h3>
+
+ <% work_collections = {
+     "albums": @albums, 
+     "books": @books, 
+     "movies": @movies
+     }
+     %>
+
+ <% work_collections.each do |name, collection|%>
+    <section class="media-table">
+      <h4> <%= name.capitalize %> </h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="80">Votes</th>
+            <th>Tittle</th>
+            <th>Created By</th>
+            <th width="100">Published</th>
+            <th width="100">Upvote</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% collection.each do |work| %>
+          <tr>
+            <td>Not yet</td>
+            <td><%= link_to work.title, work_path(work.id)%></td>
+            <td><%= work.creator %></td>
+            <td><%= work.publication_year %></td>
+            <td>Not yet</td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </section>
+<% end %>
+</main>
