@@ -28,7 +28,7 @@ describe UsersController do
 
       must_respond_with :redirect
       must_redirect_to root_path
-      expect(flash[:failure]).must_equal "User not found."
+      expect(flash[:warning]).must_equal "User not found."
     end
   end
 
@@ -80,7 +80,7 @@ describe UsersController do
       }.wont_change "User.count"
 
       must_respond_with :bad_request
-      expect(flash[:failure]).must_equal "Log in unsuccessful. Please try again"
+      expect(flash[:warning]).must_equal "Log in unsuccessful. Please try again"
     end
   end
 
@@ -92,7 +92,7 @@ describe UsersController do
 
       must_redirect_to root_path
       expect(session[:user_id]).must_equal nil
-      expect(flash[:notice]).must_equal "Succesfully logged out"
+      expect(flash[:success]).must_equal "Succesfully logged out"
     end
   end
 end

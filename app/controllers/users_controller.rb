@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
 
     if !@user
-      flash[:failure] = "User not found."
+      flash[:warning] = "User not found."
       redirect_to root_path
     end
   end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
         flash[:success] = "Successfully created new user #{username} with ID #{@user.id}!"
         redirect_to root_path
       else
-        flash.now[:failure] = "Log in unsuccessful. Please try again"
+        flash.now[:warning] = "Log in unsuccessful. Please try again"
         render :login_form, status: :bad_request
       end
     end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def logout
     user = User.find_by(id: session[:user_id])
     session[:user_id] = nil
-    flash[:notice] = "Succesfully logged out"
+    flash[:success] = "Succesfully logged out"
     redirect_to root_path
   end
 
