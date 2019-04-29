@@ -3,38 +3,16 @@
     <p><%= @featured.description %></p>
 </section>
 
-<section class="top-ten-container movies">
-    <h2>Top Movies</h2>
-    <ul>
-        <% Work.top_ten("movie").each do |movie| %>
-            <li>
-                <%= link_to movie.title, work_path(movie) %> by <%= movie.creator %>
-                <%= movie.users.length%> votes
-            </li>
-        <% end %>
-    </ul>
-</section>
-
-<section class="top-ten-container books">
-    <h2>Top Books</h2>
-    <ul>
-        <% Work.top_ten("book").each do |book| %>
-            <li>
-                <%= link_to book.title, work_path(book) %> by <%= book.creator %>
-                <%= book.users.length%> votes
-            </li>
-        <% end %>
-    </ul>
-</section>
-
-<section class="top-ten-container albums">
-    <h2>Top Albums</h2>
-    <ul>
-        <% Work.top_ten("album").each do |album| %>
-            <li>
-                <%= link_to album.title, work_path(album) %> by <%= album.creator %>
-                <%= album.users.length%> votes
-            </li>
-        <% end %>
-    </ul>
-</section>
+<% ["movie", "book", "album"].each do |type| %>
+    <section class="top-ten-container">
+        <h2>Top <%= type.capitalize%>s</h2>
+        <ul>
+            <% Work.top_ten(type).each do |work| %>
+                <li>
+                    <%= link_to work.title, work_path(work) %> by <%= work.creator %>
+                    <%= work.users.length%> votes
+                </li>
+            <% end %>
+        </ul>
+    </section>
+<% end %>
