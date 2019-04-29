@@ -72,6 +72,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'guard'
   gem 'guard-minitest'
+  gem 'dotenv-rails'
 end
 
 group :test do
@@ -80,3 +81,6 @@ group :test do
   gem 'minitest-skip'
 end
 gem 'bootstrap', '~> 4.3.1'
+
+gem "omniauth"
+gem "omniauth-github"
