@@ -2,7 +2,7 @@
 
 <% if @spotlight %>
   <section class="spotlight ">
-    <h2><span class="text-dark">Media Spotlight: </span><%= link_to @spotlight.title, root_path %><%= " by " + @spotlight.creator %></h2>
+    <h2><span class="text-dark">Media Spotlight: </span><%= link_to @spotlight.title, work_path(@spotlight) %><%= " by " + @spotlight.creator %></h2>
     <p><%= @spotlight.votes.count %> votes - <%= @spotlight.description %></p>
   </section>
 <% end %>
