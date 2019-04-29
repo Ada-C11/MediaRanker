@@ -9,19 +9,18 @@ book:
   title: Sapiens
   creator: Yuval Noah Harari
   category: book
-  pub_year: 2015
+  pub_yr: 2015
   description: Humankind and stuff.
 
 movie: 
   category: movie
   title: Harvey
-  creator: Mary Chase
-  pub_year: 1950
+  pub_yr: 1950
   description: Man's best friend is a large invisible rabbit.
 
 album: 
   category: album
   title: A Seat at the Table
   creator: Solange Knowles
-  pub_year: 2016
+  pub_yr: 2016
   description: Funky vibes. Rage, power, sadness.
