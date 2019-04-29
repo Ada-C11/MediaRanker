@@ -21,8 +21,11 @@
         <a><%= link_to 'View All Media', works_path%></a>
         <a><%= link_to 'Add New Work', new_work_path%></a>
         <a><%= link_to 'View all users', users_path%></a>
-        <a><%= link_to 'Log in', login_path %></a>
-        <a><%= link_to 'Log out', logout_path, method: :post %></a>      
+        <% if session[:user_id] == nil %>
+          <a><%= link_to 'Log in', login_path %></a>
+        <% else %>
+          <a><%= link_to 'Log out', logout_path, method: :post %></a>    
+        <% end %>  
       </div>
     </header>
 

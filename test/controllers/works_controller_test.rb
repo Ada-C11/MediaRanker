@@ -137,7 +137,6 @@ describe WorksController do
     it "responds with BAD REQUEST for bad data" do
       work_data[:work][:title] = ""
 
-      # puts work_data
       @work.assign_attributes(work_data[:work])
       expect(@work).wont_be :valid?
       @work.reload
@@ -218,7 +217,6 @@ describe WorksController do
       post upvote_path(10)
       must_redirect_to login_path
     end
-
 
   end
 end

@@ -26,7 +26,6 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
     @work.number_of_votes = 0
 
-
     successful = @work.save
     if successful
       flash[:status] = :success
