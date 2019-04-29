@@ -74,5 +74,15 @@ describe Work do
       # Assert
       expect(top_ten_books.length).must_equal 0
     end
+    it "returns the works in the category with the most votes" do
+      10.times do
+        Work.create(title: "test book", creator: "author", category: "book")
+      end
+
+      books = Work.where(category: "book")
+      max_vote_counts = books.map { |book| book.votes.count }.sort.reverse.first(10)
+      top_ten_vote_counts = Work.top_ten("book").map { |book| book.votes.count }
+      expect(max_vote_counts).must_equal top_ten_vote_counts
+    end
   end
 end
