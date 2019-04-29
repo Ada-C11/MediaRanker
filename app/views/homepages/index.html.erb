@@ -17,7 +17,7 @@
             <%= link_to book.title, work_path(book.id)%> by <%= book.creator %> 
             </li>
             <li class="list-group-item">
-            <%= album.votes.count %> Votes
+            <%= book.votes.count %> Votes
             </li>
         <%end%>
         </ul>
@@ -45,7 +45,7 @@
             <%= link_to movie.title, work_path(movie.id)%> by <%= movie.creator %> 
             </li>
             <li class="list-group-item">
-            <%= album.votes.count %> Votes
+            <%= movie.votes.count %> Votes
             </li>
         <%end%>
         </ul> 
