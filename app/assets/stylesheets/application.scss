@@ -1,0 +1,194 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+
+
+body {
+  font-family: "Gudea", sans-serif;
+}
+
+a, h2, h3 {
+  color: #26A69A;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+main ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+main li {
+  list-style: none;
+  padding: 12px 20px;
+}
+
+a:hover {
+  color: #00796B;
+  text-decoration: none;
+}
+
+main {
+  padding: 2rem;
+}
+
+header {
+  background-color: #B2DFDB;
+  text-align: center;
+  padding: 2rem 1rem 0.5rem 1rem;
+}
+
+header h1 {
+  margin: 25px auto 40px auto;
+  
+}
+
+header h1 a {
+  color: #FF5722;
+  border-right: white 2px solid;
+  padding-right: 25px;
+  margin-right: 15px;
+}
+
+header h1 a:hover {
+  color: #FF5722;
+}
+
+header h1 small {
+  font-size: 80%;
+  color: white;
+}
+
+nav {
+  background-color: #B2DFDB;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-bottom: 0;
+}
+
+header {
+  margin-bottom: .5rem;
+}
+
+nav li {
+  padding: 0;
+  list-style-type: none;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  margin-right: 0;
+}
+
+nav ul:first-of-type li {
+  margin-right: 2rem;
+  margin-top: 1rem;
+  margin-left: 0;
+}
+
+nav li {
+  // flex-direction: column;
+}
+
+nav a {
+  color: #00796B;
+  padding: 0.5rem 1rem;
+}
+
+article {
+  margin-top: 1rem;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.btn {
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: #00796B;
+  border-color: #00796b;
+}
+
+.btn-primary {
+  background-color: #26A69A;
+  border-color: #26A69A;
+}
+
+.width-80 {
+  width: 80px;
+}
+
+.width-100 {
+  width: 100px;
+}
+
+.spotlight {
+  padding: 0 2rem 2rem 2rem;
+}
+
+.spotlight__header--prefix {
+  color: #424242;
+}
+
+.spotlight__link-to {
+  border-bottom: 2px solid;
+}
+
+.spotlight__description {
+  margin-bottom: 0;
+}
+
+.root__hr {
+  margin: 0px auto 3rem auto;
+  color: #EEEEEE;
+}
+
+.top-ten__header {
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+}
+
+.top-ten__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+}
+
+.top-ten__creator {
+  color: slategrey;
+}
+
+.works-votes__header {
+  color: black;
+}
+
+.works-votes__container {
+  margin-top: 2rem;
+}
+
+.flash {
+  margin: 2rem 0 1rem 0;
+}

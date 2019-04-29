@@ -1,0 +1,99 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+hp1:
+  category: book
+  title: Harry Potter and the Sorcerer's Stone
+  creator: J.K. Rowling
+  publication_year: 1997
+  description: Boy goes to new school
+
+hp2:
+  category: book
+  title: Harry Potter and the Chamber of Secrets
+  creator: J.K. Rowling
+  publication_year: 1998
+  description: Boy saves girl from snake cave
+
+hp3:
+  category: book
+  title: Harry Potter and the Prisoner of Azkaban
+  creator: J.K. Rowling
+  publication_year: 1999
+  description: Boy gets canine father figure
+
+hp4:
+  category: book
+  title: Harry Potter and the Goblet of Fire
+  creator: J.K. Rowling
+  publication_year: 2000
+  description: Boy does sports
+
+hp5:
+  category: book
+  title: Harry Potter and the Order of the Phoenix
+  creator: J.K. Rowling
+  publication_year: 2003
+  description: Boy makes fun activity club
+
+hp6:
+  category: book
+  title: Harry Potter and the Half-Blood Prince
+  creator: J.K. Rowling
+  publication_year: 2005
+  description: Boy cheats to get ahead
+
+hp7:
+  category: book
+  title: Harry Potter and the Deathly Hallows
+  creator: J.K. Rowling
+  publication_year: 2007
+  description: Boy saves the world
+
+youvegotmail:
+  category: movie
+  title: You've Got Mail
+  creator: Nora Ephron
+  publication_year: 1998
+  description: Don't you love New York in the fall?
+
+mbdtf:
+  category: album
+  title: My Beautiful Dark Twisted Fantasy
+  creator: Kanye West
+  publication_year: 2010
+  description: Fav album by problematic fav
+
+freesolo:
+  category: movie
+  title: Free Solo
+  creator: Alex Honnold
+  publication_year: 2018
+  description: This is a movie I watched last night
+
+poodr:
+  category: book
+  title: Practical Object-Oriented Design
+  creator: Sandi Metz
+  publication_year: 2019
+  description: I just realized I need more than 10 books for a test; this is 8
+
+aliebn:
+  category: book
+  title: everyone's a aliebn when ur a aliebn too
+  creator: Jonny Sun
+  publication_year: 2017
+  description: This is a very good and wholesome book
+
+nightingale:
+  category: book
+  title: The Nightingale
+  creator: Kristin Hannah
+  publication_year: 2015
+  description: I recently started this book and would love to finish this project so I can continue to read it
+
+book11:
+  category: book
+  title: No Title
+  creator: No Author
+  publication_year: 1234
+  description: This is my 11th book and I'm very excited to be done creating books

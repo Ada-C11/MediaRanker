@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th class="width-80">Votes</th>
+      <th>Title</th>
+      <th>Created by</th>
+      <th class="width-100">Published</th>
+      <th class="width-100">Upvote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% list.each do |work| %>
+      <tr>
+        <td><%= work.votes.length %></td>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td><%= link_to "Upvote", work_votes_path(work_id: work.id), method: :post, class: "btn btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
