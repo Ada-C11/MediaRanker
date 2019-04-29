@@ -1,31 +1,31 @@
-<h1>List of Works</h1>
-<article>
+<h2>List of Works</h2>
+<section class="media-table" >
 <% @categories.each do |category| %>
-<h4><%= category.name %><h4>
-  <table>
+<h4 class="category"><%= "#{category.name}s" %></h4>
+  <table class="table">
     <thead>
       <tr>
-        <th>Votes</th>
+        <th width="80">Votes</th>
         <th>Title</th>
         <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
+        <th width="100">Published</th>
+        <th width="100">Upvote</th>
       </tr>
     </thead>
     <tbody>
     <% category.works.each do |work|%>
       <tr>
-        <td></td>
+        <td><%= work.votes.size %></td>
         <td><%= link_to work.title, work_path(work)%></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_year%></td>
-        <td><button><%= link_to "Upvote", upvote_path(work), method: :post %></button></td>
+        <td><%= link_to "Upvote", upvote_path(work), method: :post, :class => "btn btn-primary" %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
   <% end %>
-</article>
+</section>
 
-<button><%= link_to "View top media", root_path %></button>
-<button><%= link_to "Add a new work", new_work_path%></button>
+<%= link_to "View top media", root_path, :class => "btn btn-secondary" %>
+<%= link_to "Add a new work", new_work_path, :class => "btn btn-primary"%>

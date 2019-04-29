@@ -1,7 +1,5 @@
-<h1>List of Users</h1>
-<article>
-<% @users.each do |user| %>
-  <table>
+<h2>List of Users</h2>
+  <table class="table">
     <thead>
       <tr>
         <th>Username</th>
@@ -9,15 +7,16 @@
         <th>Joined</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td><%= link_to user.username, user_path(user)%></td>
-        <td><%= user.votes.count %></td>
-        <td><%= user.created_at.to_date %></td>
-      </tr>
-    </tbody>
+    <% @users.each do |user| %>
+      <tbody>
+        <tr>
+          <td><%= link_to user.username, user_path(user)%></td>
+          <td><%= user.votes.count %></td>
+          <td><%= user.created_at.to_date %></td>
+        </tr>
+      </tbody>
+    <% end %>
   </table>
-  <% end %>
-</article>
+  
 
-<button><%= link_to "Back to Media List", root_path %></button>
+<%= link_to "Back to Media List", root_path, :class=>"btn btn-secondary" %>

@@ -1,9 +1,9 @@
 <section>
   <h2>User Summary: <%= @user.username %></h2>
   <p>Joined site <%= @user.created_at.to_date %></p>
-  <article>
-    <h2>Votes</h2>
-      <table>
+  <section>
+    <h3>Votes</h3>
+      <table class="table">
         <thead>
           <tr>
             <th>Media Title</th>
@@ -25,8 +25,8 @@
           </tbody>
           <% end %>
       </table>
-  </article>
+  </section>
 
-  <button><%= link_to "See all Users", users_path %></button>
-  <button><%= link_to "Back to Media List", root_path %></button>
+  <%= link_to "See all Users", users_path, :class=>"btn btn-secondary" %>
+  <%= link_to "Back to Media List", root_path, :class=>"btn btn-primary" %>
 </section>
