@@ -22,6 +22,12 @@ describe User do
       work_new = Work.new(title: work.title, category: "book")
       expect(work_new.save).must_equal false
     end
+
+    it "all votes will be deleted with asscoiated deleted work" do
+      expect(work.votes.count).must_equal 1
+      work.destroy
+      expect(work.votes.count).must_equal 0
+    end
   end
 
   describe "relations" do
