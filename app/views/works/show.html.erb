@@ -37,7 +37,7 @@ Published: <%= @work.publication_date %>
 <tr>
 <td>
 <% id = vote.user_id %>
-<%= User.find_by(id: id).username %>
+<%= link_to User.find_by(id: id).username, user_path(id) %>
 </td>
 <td>Apr 24, 2019</td>
 </tr>

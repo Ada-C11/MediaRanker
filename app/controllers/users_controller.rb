@@ -3,15 +3,15 @@ class UsersController < ApplicationController
     @user = User.all
   end
 
-  # def show
-  #   user_id = params[:id]
+  def show
+    user_id = params[:id]
 
-  #   @user = User.find_by(id: user_id)
+    @user = User.find_by(id: user_id)
 
-  #   unless @user
-  #     head :not_found
-  #   end
-  # end
+    unless @user
+      head :not_found
+    end
+  end
 
   def login_form
     @user = User.new
