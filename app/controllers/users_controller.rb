@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @user = User.all
+    @users = User.all
   end
 
   def show
@@ -25,10 +25,10 @@ class UsersController < ApplicationController
     if user.id
       session[:user_id] = user.id
       flash[:alert] = "#{user.username} logged in"
-      redirect_to root_path
+      redirect_to login_path
     else
       flash[:error] = "Unable to log in"
-      redirect_to root_path
+      redirect_to login_path
     end
   end
 
