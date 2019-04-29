@@ -8,20 +8,20 @@ class VotesController < ApplicationController
     @vote = Vote.new(user_id: session[:user_id], work_id: params[:work_id])
 
     if @vote.save
-      flash[:status] = :success
-      flash[:success] = "Successfully upvoted!"
+      # flash[:status] = :success
+      flash[:message] = "Successfully upvoted!"
 
       # redirect_to work_path(params[:work_id])
-      redirect_back(fallback_location: works_path)
       # return
+      redirect_back(fallback_location: works_path)
     
     else
-      flash[:status] = :failure
+      # flash[:status] = :failure
       if @vote.errors.messages.include?(:user_id)
-        flash[:alert] = "You must log in to do that"
+        flash[:error] = "You must log in to do that"
       else @vote.errors.messages.include?(:user)
-        flash[:alert] = "Could not upvote"
-        flash[:details] = @vote.errors.messages
+        flash[:error] = "Could not upvote"
+        # flash[:message] = @vote.errors.messages
       end
       redirect_to works_path
     end

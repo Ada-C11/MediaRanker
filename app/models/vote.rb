@@ -5,6 +5,7 @@ class Vote < ApplicationRecord
   validates :user_id, presence: true
   # validates :user, uniqueness: { scope: :work, message: "has already voted for this work"}
   validates :user, uniqueness: { scope: :work }
+ 
 
   validates :work_id, presence: true
 

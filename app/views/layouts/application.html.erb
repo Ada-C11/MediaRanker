@@ -51,12 +51,12 @@
     </header>
     <% if flash.count > 0 %>
       <section class="flash">
-        <div class="alert">
+        <div class="alert alert-danger">
         <% flash.each do |name, message| %>
           <% if message.class == Array %>
             <ul>
             <% message.each do |msg| %>
-              <li><%= name %>: <%= msg %> </li>
+              <li><%= msg %> </li>
             <% end %>
           <% else %>
             <%= message %>
