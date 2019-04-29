@@ -12,11 +12,10 @@ describe User do
     end
 
     it "doesn't create a user without a name" do 
-      user = User.new
-      user.username = ""
-      result = user.save
-
-      expect(result).must_equal false
+      empty_user = User.new(username: "")
+      nil_username = User.new(username: nil)
+      expect(empty_user.valid?).must_equal false
+      expect(nil_username.valid?).must_equal false
     end
 
     it "validates for unique usernames" do 
