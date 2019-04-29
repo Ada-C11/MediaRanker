@@ -1,7 +1,5 @@
 class HomepageController < ApplicationController
   def index
-    # @works = Work.all.order(:title)
-
     @spotlight = Work.media_spotlight
 
     if @spotlight.nil?
