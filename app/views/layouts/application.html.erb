@@ -11,7 +11,10 @@
 
   <body>
     <header>
-      <h1>Media Ranker</h1>
+      <h1>
+      <%= link_to "Media Ranker", homepages_path %>
+      <small>Ranking the Best of Everything</small>
+      </h1>
       <% if flash.count > 0 %>
         <section class="flash">
           <div class="alert">
@@ -33,20 +36,19 @@
           </div>
         </section>
 
-<section>
+      <nav>
 
-      <%= link_to "View all media", works_path %>
-      
+      <%= link_to "View top media", homepages_path, class:"btn btn-secondary" %>
+      <%= link_to "View all media", works_path, class:"btn btn-secondary" %>
       <%= link_to "Add a new work",
-            new_work_path  %>
-      <%= link_to "View all users", users_path %>
-
-    <%= link_to("Logged in as #{User.find_by(id: session[:user_id]).username}", user_path(session[:user_id]), class:"btn btn-success") if session[:user_id]%>
-
-      <%= link_to("Login", login_path, class:"btn btn-success") if session[:user_id].nil? %>
-      <%= link_to("Logout", logout_path, method: :post, class:"btn btn-success") if session[:user_id] %>
+            new_work_path, class:"btn btn-secondary"  %>
+      <%= link_to "View all users", users_path, class:"btn btn-secondary" %>
+      <%= link_to("Logged in as #{User.find_by(id: session[:user_id]).username}", user_path(session[:user_id]), class:"btn btn-primary") if session[:user_id]%>
+      <%= link_to("Login", login_path, class:"btn btn-primary") if session[:user_id].nil? %>
+      <%= link_to("Logout", logout_path, method: :post, class:"btn btn-primary") if session[:user_id] %>
         
-      </section>
+      </nav>
+      </header>
 
 
     <%= yield %>

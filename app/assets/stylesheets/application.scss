@@ -16,3 +16,52 @@
 @import "bootstrap";
 /* Import scss content */
 @import "**/*";
+
+
+header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
+}
+
+.btn-primary {
+    background-color: #26A69A;
+    color: white;
+    border-color: #26A69A;
+}
+
+.btn-primary:hover {
+    background-color: #26A69A;
+    color: white;
+    border-color: blue;
+}
+
+.btn-secondary {
+    background-color: #B2DFDB;
+    border: #B2DFDB;
+    color: #26A69A;
+}
+
+.btn-secondary:hover {
+    background-color: #B2DFDB;
+    border: #B2DFDB;
+    color: #26A69A;
+}
+
+h1 a {
+    color: #FF5722;
+    border-right: white solid;
+    border-width: 2px;
+    padding-right: 20px;
+}
+
+h1 a:hover {
+    color: #FF5722;
+    text-decoration: none;
+}
+
+h1 small {
+    color: white;
+    padding-left: 20px;
+}

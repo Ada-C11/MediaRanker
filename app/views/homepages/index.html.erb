@@ -1,13 +1,13 @@
 <%spotlight = Work.media_spotlight%>
 
-<h1>Media Spotlight: <span class="spotlight-title"><%=link_to spotlight.title, work_path(spotlight.id)%> by <%=spotlight.creator%></span></h1>
+<h2>Media Spotlight: <span class="spotlight-title"><%=link_to spotlight.title, work_path(spotlight.id)%> by <%=spotlight.creator%></span></h2>
 
 <%=spotlight.votes.count%> votes - <%=spotlight.description%>
 
 
 
 <div>
-    <h2>Top Albums:</h2>
+    <h3>Top Albums:</h3>
         <ul>
         <%Work.top_ten("album").each do |work|%>
             <li>
@@ -23,7 +23,7 @@
 </div>
 
 <div>
-    <h2>Top Books:</h2>
+    <h3>Top Books:</h3>
         <ul>
         <%Work.top_ten("book").each do |work|%>
             <li>
@@ -40,7 +40,7 @@
 </div>
 
 <div>
-<h2>Top Movies:</h2>
+<h3>Top Movies:</h3>
     <ul>
 <%@works.top_ten("movie").each do |work|%>
         <li>
