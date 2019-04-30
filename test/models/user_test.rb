@@ -1,9 +1,33 @@
-require "test_helper"
+require 'test_helper'
 
 describe User do
-  let(:user) { User.new }
+  describe 'relations' do
+    it 'has a list of votes' do
+      arya = users(:arya)
+      arya.must_respond_to :votes
+      arya.votes.each do |vote|
+        vote.must_be_kind_of Vote
+      end
+    end
 
-  it "must be valid" do
-    value(user).must_be :valid?
+  describe 'validations' do
+    it 'requires a username' do
+      user = User.new
+      user.valid?.must_equal false
+      user.errors.messages.must_include :username
+    end
+
+    it 'requires a unique username' do
+      username = 'test username'
+      user1 = User.new(username: username)
+
+      # This must go through, so we use create!
+      user1.save!
+
+      user2 = User.new(username: username)
+      result = user2.save
+      result.must_equal false
+      user2.errors.messages.must_include :username
+    end
   end
 end

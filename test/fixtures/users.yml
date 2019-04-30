@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-ada:
-  username: adalovelace
+arya:
+  username: aryastark
 
-grace:
-  username: gracehopper
+sansa:
+  username: sansastark

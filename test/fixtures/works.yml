@@ -1,13 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+album:
+  title: 25
+  creator: Adele
+  description:  the third studio album 
+  publication_year: 2015
+  category: album
 
-two:
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+lemonade:
+  title: Lemonade
+  creator: Beyonce
+  description: sixth solo studio album 
+  publication_year: 2016
+  category: album
+
+poodr:
+  title: Practical Object Oriented Design in Ruby
+  creator: Sandi Metz
+  description: programming!
+  publication_year: 2012
+  category: book
+
+homecoming:
+  title: Homecoming
+  category: movie
+
