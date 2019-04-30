@@ -18,8 +18,6 @@ describe VotesController do
       expect(vote.user_id).must_equal session[:user_id]
       expect(vote.work).must_equal work
   
-      must_respond_with :redirect
-      must_redirect_to work_path(work)
     end
 
     it "rejects vote when not logged in" do
@@ -28,10 +26,7 @@ describe VotesController do
         post work_votes_path(work)
       }.wont_change "Vote.count"
 
-      check_flash(expected_status = :error)
-
-      must_respond_with :redirect
-      must_redirect_to work_path(work)
+      check_flash(expected_status = :warning)
 
     end
 
@@ -44,10 +39,7 @@ describe VotesController do
         post work_votes_path(work)
       }.wont_change "Vote.count"
 
-      check_flash(expected_status = :error)
-
-      must_respond_with :redirect
-      must_redirect_to work_path(work)
+      check_flash(expected_status = :warning)
 
     end
   end

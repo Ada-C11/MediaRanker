@@ -74,8 +74,8 @@ describe Work do
           first_work = Work.where(category: category).first
           perform_vote(first_work, User.second)
 
-          expect(Work.top_ten(category).count).must_equal 10
-          expect(Work.top_ten(category).first).must_equal first_work
+          expect(Work.top_ten(category: category).count).must_equal 10
+          expect(Work.top_ten(category: category).first).must_equal first_work
         end
       end
 
@@ -86,8 +86,8 @@ describe Work do
           Work.destroy_all
           7.times do |i|
             work = Work.create!(title: "test #{i}", category: category)
-            expect(Work.top_ten(category)).must_include work
-            expect(Work.top_ten(category).count).must_equal (i + 1)
+            expect(Work.top_ten(category: category)).must_include work
+            expect(Work.top_ten(category: category).count).must_equal (i + 1)
           end
         end
       end

@@ -14,7 +14,6 @@
 <% end %>
 
 <%= form_with model: @work, class: 'work-form' do |f| %>
-  <p> Edit This <%= @work.category %> </p>
 
   <div>
     <%= f.label :category %>
@@ -41,6 +40,6 @@
      <%= f.text_area :description %>
   </div>
 
-  <%= f.submit button_text, class: "btn btn-success btn-block" %>
+  <%= f.submit button_text, class: "btn btn-primary" %>
 
 <% end %>

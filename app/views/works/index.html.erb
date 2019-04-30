@@ -1,24 +1,83 @@
-<h1> List of Works </h1>
+<h2> List of Works </h2>
+
+<section class="media-table">
+    <h4> Books </h4>
+
+    <table class='table'>
+        <thead>
+            <tr>
+                <th width='80'>Votes</th>
+                <th>Title</th>
+                <th>Created By</th>
+                <th width='100'>Published</th>
+                <th width='100'>Upvote</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @books.each do |book| %>
+                <tr>
+                    <td><%= book.votes.count %> votes </td> 
+                    <td> <%=link_to book.title, work_path(book) %> </td>
+                    <td> <%= book.creator %>
+                    <td> <%= book.publication_year %>
+                    <td><%= link_to "Upvote", work_votes_path(book), method: :post, class: "btn btn-primary" %> </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</section>
 
 
-<h2> Books </h2>
-<ul>
-    <% @books.each  do |book| %>
-    <li> <%= link_to book.title, work_path(book) %> by <%= book.creator%> </li>
-    <% end %>
-</ul>
+<section class="media-table">
+    <h4> Albums </h4>
 
+    <table class='table'>
+        <thead>
+            <tr>
+                <th width='80'>Votes</th>
+                <th>Title</th>
+                <th>Created By</th>
+                <th width='100'>Published</th>
+                <th width='100'>Upvote</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @albums.each do |album| %>
+                <tr>
+                    <td><%= album.votes.count %> votes </td> 
+                    <td> <%=link_to album.title, work_path(album) %> </td>
+                    <td> <%= album.creator %>
+                    <td> <%= album.publication_year %>
+                    <td><%= link_to "Upvote", work_votes_path(album), method: :post, class: "btn btn-primary" %> </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</section>
 
-<h2> Albums </h2>
-<ul>
-    <% @albums.each do |album| %>
-    <li> <%= link_to album.title, work_path(album) %> by <%= album.creator%> </li>
-    <% end %>
-</ul>
+<section class="media-table">
+    <h4> Movies </h4>
 
-<h2> Movies </h2>
-<ul>
-    <% @movies.each do |movie| %>
-    <li> <%= link_to movie.title, work_path(movie) %> by <%= movie.creator%> </li>
-    <% end %>
-</ul>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th width='80'>Votes</th>
+                <th>Title</th>
+                <th>Created By</th>
+                <th width='100'>Published</th>
+                <th width='100'>Upvote</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @movies.each do |movie| %>
+                <tr>
+                    <td><%= movie.votes.count %> votes </td> 
+                    <td> <%=link_to movie.title, work_path(movie) %> </td>
+                    <td> <%= movie.creator %>
+                    <td> <%= movie.publication_year %>
+                    <td><%= link_to "Upvote", work_votes_path(movie), method: :post, class: "btn btn-primary" %> </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</section>
