@@ -157,7 +157,7 @@ describe WorksController do
       expect(work_two.creator).must_equal starter_creator
       expect(work_two.publication_year).must_equal starter_publication_year
       expect(work_two.description).must_equal starter_description
-      expect(flash[:failure]).must_equal "A problem occurred: Could not update #{update_input[:work][:category]}"
+      expect(flash[:warning]).must_equal "A problem occurred: Could not update #{update_input[:work][:category]}"
     end
   end
 

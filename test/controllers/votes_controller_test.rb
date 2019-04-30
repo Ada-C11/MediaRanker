@@ -35,7 +35,7 @@ describe VotesController do
         post work_votes_path(work.id)
       }.wont_change "Vote.count"
 
-      expect(flash[:failure]).must_equal "Could not upvote"
+      expect(flash[:warning]).must_equal "A problem occurred: Could not upvote"
       must_respond_with :redirect
       must_redirect_to root_path
     end

@@ -6,7 +6,10 @@ class VotesController < ApplicationController
     if !@user
       flash[:warning] = "A problem occurred: You must log in to do that"
     elsif @user.works.find_by(id: params[:work_id])
-      flash[:failure] = "Could not upvote"
+      flash[:warning] = "A problem occurred: Could not upvote"
+      @user.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
     else
       @user.works << @work
       flash[:success] = "Successfully upvoted!"

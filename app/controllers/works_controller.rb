@@ -54,7 +54,7 @@ class WorksController < ApplicationController
       redirect_to work_path(work.id)
     else
       @work = work
-      flash.now[:failure] = "A problem occurred: Could not update #{@work.category}"
+      flash.now[:warning] = "A problem occurred: Could not update #{@work.category}"
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
       end
@@ -74,11 +74,6 @@ class WorksController < ApplicationController
       flash[:success] = "Succesfully destroyed #{work.category} #{work.id}"
       redirect_to works_path
     end
-  end
-
-  def upvote
-    @work = Work.find_by(id: params[:id])
-    @work.users << User.find_by(id: session[:id])
   end
 
   private
