@@ -35,6 +35,7 @@ class VotesController < ApplicationController
     end
 
     if @vote.destroy
+      binding.pry
       flash[:success] = "Successfully removed your vote"
       redirect_back(fallback_location: root_path)
     else
