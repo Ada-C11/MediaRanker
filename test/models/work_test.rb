@@ -5,6 +5,7 @@ describe Work do
   let(:kim) { users(:kim) }
   let(:aj) { users(:aj) }
   let(:harry) { works(:harry_six) }
+  let(:harry2) { works(:harry_two) }
 
   it "must be valid" do
     expect(work).must_be :valid?
@@ -110,13 +111,57 @@ describe Work do
   end
 
   describe "top_voted" do
+    it "returns a list of media" do
+      books = Work.top_voted("book")
+      books.length.must_equal 8
+      books.each do |book|
+        book.must_be_kind_of Work
+        book.category.must_equal "book"
+      end
+    end
+
+    it "orders media by highest vote count" do
+      aj.works.push(work, harry)
+      kim.works << work
+
+      albums = Work.top_voted("album")
+
+      expect(albums.length).must_equal 3
+      expect(albums.first.title).must_equal work.title
+      # one vote in a my votes fixture, two in this test
+      expect(albums.first.votes.length).must_equal 3
+      # second most voted for
+      expect(albums[1]).must_equal harry
+      expect(albums[1].votes.length).must_equal 1
+    end
+
+    it "returns more than 10 items if more than 10 items exist" do
+      albums = Work.top_voted("book")
+      albums.length.must_equal 8
+
+      Work.create(title: "Testing 123", category: "book", creator: "Testing Guy")
+      Work.top_voted("book").length.must_equal 9
+
+      Work.create(title: "Testing 1234", category: "book", creator: "Testing Guy")
+      Work.top_voted("book").length.must_equal 10
+
+      Work.create(title: "Testing 12345", category: "book", creator: "Testing Guy")
+      Work.top_voted("book").length.must_equal 11
+    end
   end
 
   describe "spotlight" do
-    it "must return the most voted on work" do
-    end
+    it "must return the top voted work across all categories" do
+      expect(Work.spotlight).must_equal work
+      expect(Work.spotlight.category).must_equal "album"
+      expect(Work.spotlight.votes.length).must_equal 1
 
-    it "must return nil if no works" do
+      aj.works << harry2
+      kim.works << harry2
+
+      expect(Work.spotlight).must_equal harry2
+      expect(Work.spotlight.category).must_equal "book"
+      expect(Work.spotlight.votes.length).must_equal 2
     end
   end
 end
