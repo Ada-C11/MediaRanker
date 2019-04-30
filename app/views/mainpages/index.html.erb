@@ -4,6 +4,11 @@
     <p><%= spotlight.description %></p>
 
 <section>
+  <%= link_to "View top media", root_path %>
+  <%= link_to "Add a new work", new_work_path %>
+</section>
+
+<section>
 <% top_movies = Work.top_ten("movie") %>
 <h2>Top Movies</h2>
     <ul>

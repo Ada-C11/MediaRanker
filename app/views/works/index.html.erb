@@ -1,2 +1,12 @@
-<h1>Works#index</h1>
-<p>Find me in app/views/works/index.html.erb</p>
+<h2>List of Works</h2>
+<ul>
+  <% @works.each do |work| %>
+    <li>
+      <%= link_to work.title, work_path(work.id) %>
+      <ul>
+      <li> <%= link_to "Edit", edit_work_path(work.id) %></li>
+      <li> <%= link_to "Delete", work_path(work.id), method: :delete %></li>
+      </ul>
+    </li>
+  <% end %>
+</ul>
