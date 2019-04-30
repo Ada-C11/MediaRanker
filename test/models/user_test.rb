@@ -48,7 +48,7 @@ describe User do
       expect @user1.j_index(@user2).must_equal 1
     end
 
-    it "will return a number between 0 and 1 for users with some common votes" do
+    it "will return a number between 0 and 1 for users with some common upvotes" do
       Work.all.each_with_index do |work, index|
         if index % 2 == 0
           Vote.create(work_id: work.id, user_id: @user1.id)
@@ -79,7 +79,74 @@ describe User do
       expect @user1.j_index(@user2).must_equal 0
     end
 
-    it "will return 0 if user in argument has no upvotes" do
+    it "will return -1 for two users where one user's downvotes are identical to another user's upvotes" do
+      Work.all.each_with_index do |work, index|
+        Vote.create(work_id: work.id, user_id: @user1.id)
+        Vote.create(work_id: work.id, user_id: @user2.id, value: -1)
+      end
+
+      expect @user1.j_index(@user2).must_equal -1
+    end
+
+    it "will return a number between 0 and -1 for users who disagree more than agree" do
+      Work.all.each_with_index do |work, index|
+        if index % 2 == 0
+          Vote.create(work_id: work.id, user_id: @user1.id, value: -1)
+        else
+          Vote.create(work_id: work.id, user_id: @user1.id)
+        end
+      end
+
+      Work.all.each_with_index do |work, index|
+        Vote.create(work_id: work.id, user_id: @user2.id, value: 1)
+      end
+
+      expect @user1.j_index(@user2).must_be :<, 0
+      expect @user1.j_index(@user2).must_be :>, -1
+    end
+
+    it "will return a number between 0 and -1 for users who agree more than disagree" do
+      Work.all.each_with_index do |work, index|
+        if index % 2 == 0
+          Vote.create(work_id: work.id, user_id: @user1.id, value: -1)
+        else
+          Vote.create(work_id: work.id, user_id: @user1.id)
+        end
+      end
+
+      Work.all.each_with_index do |work, index|
+        Vote.create(work_id: work.id, user_id: @user2.id, value: -1)
+      end
+
+      expect @user1.j_index(@user2).must_be :>, 0
+      expect @user1.j_index(@user2).must_be :<, 1
+    end
+
+    it "will return 1 for two users who have identical downvote history" do
+      Work.all.each_with_index do |work, index|
+        Vote.create(work_id: work.id, user_id: @user1.id, value: -1)
+        Vote.create(work_id: work.id, user_id: @user2.id, value: -1)
+      end
+
+      expect @user1.j_index(@user2).must_equal 1
+    end
+
+    it "will return a number between 0 and 1 for users with some common downvotes" do
+      Work.all.each_with_index do |work, index|
+        if index % 2 == 0
+          Vote.create(work_id: work.id, user_id: @user1.id, value: -1)
+        end
+      end
+
+      Work.all.each_with_index do |work, index|
+        Vote.create(work_id: work.id, user_id: @user2.id, value: -1)
+      end
+
+      expect @user1.j_index(@user2).must_be :>, 0
+      expect @user1.j_index(@user2).must_be :<, 1
+    end
+
+    it "will return 0 if user in argument has no upvotes or downvotes" do
       Work.all.each_with_index do |work, index|
         Vote.create(work_id: work.id, user_id: @user1.id)
       end
@@ -87,7 +154,7 @@ describe User do
       expect @user1.j_index(@user2).must_equal 0
     end
 
-    it "will return 0 if user the method is called on has no upvotes" do
+    it "will return 0 if user the method is called on has no upvotes or downvotes" do
       Work.all.each_with_index do |work, index|
         Vote.create(work_id: work.id, user_id: @user2.id)
       end
