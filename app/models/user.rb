@@ -6,11 +6,19 @@ class User < ApplicationRecord
   # between a user and another user by taking the ratio of common upvotes to the unique
   # set of all upvotes between the two users.
   def j_index(other)
-    user_works = self.votes.map { |vote| vote.work }
-    other_works = other.votes.map { |vote| vote.work }
-    common_works = user_works & other_works
-    upvoted_works = (user_works + other_works).uniq
-    return (common_works.count.to_f) / (upvoted_works.count.to_f)
+    user_upvotes = self.votes.where(value: 1).map { |vote| vote.work }
+    user_downvotes = self.votes.where(value: -1).map { |vote| vote.work }
+    other_upvotes = other.votes.where(value: 1).map { |vote| vote.work }
+    other_downvotes = other.votes.where(value: -1).map { |vote| vote.work }
+
+    common_upvotes = user_upvotes & other_upvotes
+    common_downvotes = user_downvotes & other_downvotes
+    user_downvote_other_upvote = user_downvotes & other_upvotes
+    user_upvote_other_downvote = user_upvotes & other_downvotes
+
+    all_voted_works = (user_upvotes + other_upvotes + user_downvotes + other_downvotes).uniq
+
+    return (common_upvotes.count + common_downvotes.count) - (user_downvote_other_upvote.count + user_upvote_other_downvote.count) / (all_voted_works.count.to_f)
   end
 
   # get_similar_users returns a list of all other users stored in db, ranked by similarity.
