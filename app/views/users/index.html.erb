@@ -1,0 +1,25 @@
+<main>
+  <h2>List of Users</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Votes</th>
+        <th>Joined</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% User.all.each do |user| %>
+          <td>
+            <%= user.username %>
+          </td>
+          <td>
+            <%= user.votes.length %>
+          </td>
+          <td>
+            <%= readable_date(user.created_at)%>
+          </td>
+        </tr>
+      <% end %>
+    </main>

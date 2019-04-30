@@ -1,0 +1,20 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+al:
+  username: aldo
+
+bal:
+  username: baldo
+
+sal:
+  username: sally
+
+tal:
+  username: tally
+
+gal:
+  username: gally
+
+
+
+

@@ -1,0 +1,92 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+winter:
+  category: album
+  title: winter mug
+  creator: tia weissnat
+  publication_date: 1996
+  description: a nice album
+
+blue:
+  category: album
+  title: Blue Baker
+  creator: Dr. Sarai Langosh
+  publication_date: 1
+  description: Et et expedita non aut quo
+
+diary:
+  category: book
+  title: diary of a wimpy kid
+  creator: a wimpy kid
+  publication_date: 2010
+  description: nil
+
+horrid:
+  category: book
+  title: horrid henry
+  creator: henry
+  publication_date: 2000
+  description: nil
+
+junior:
+  category: book
+  title: junior book
+  creator: ben
+  publication_date: 2000
+  description: nil
+
+search:
+  category: book
+  title: find me
+  creator: henry
+  publication_date: 2000
+  description: nil
+
+minecraft:
+  category: book
+  title: gaming
+  creator: mark
+  publication_date: 2000
+  description: nil
+
+nicola:
+  category: book
+  title: story
+  creator: nicola
+  publication_date: 2000
+  description: nil
+
+nicola:
+  category: book
+  title: story
+  creator: nicola
+  publication_date: 2000
+  description: nil
+
+d:
+  category: book
+  title: story
+  creator: d
+  publication_date: 2000
+  description: nil  
+  
+c:
+  category: book
+  title: story
+  creator: c
+  publication_date: 2000
+  description: nil
+
+b:
+  category: book
+  title: story
+  creator: b
+  publication_date: 2000
+  description: nil
+
+a:
+  category: book
+  title: story
+  creator: a
+  publication_date: 2000
+  description: nil

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path("owl.png") %>
+  </head>
+  <body>
+    <header class="app-header__header">
+      <h1>
+        <%= link_to "Media Ranker", root_path %>
+        <small>Ranking the Best of Everything</small>
+      </h1>
+      <% if flash.count > 0 %>
+        <section class="flash">
+          <div class="alert alert-danger">
+            <% flash.each do |name, message| %>
+              <% if message.class == Array %>
+                <ul>
+                  <% message.each do |msg| %>
+                    <li><%= name %>: <%= msg %> </li>
+                  <% end %>
+                <% else %>
+                  <%= message %>
+                <% end %>
+              </ul>
+            <% end %>
+          <% end %>
+          <nav class="app-header__nav">
+            <ul class="app-header__site-nav-container" >
+              <li class="nav-item app-header__nav_item">
+                <%= link_to "View top media", root_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item app-header__nav_item">
+                <%= link_to "View all media", works_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item app-header__nav_item">
+                <%= link_to "Add a new work", new_work_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item app-header__nav_item">
+                <%= link_to "View all users", users_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item app-header__nav_item">
+                <% if session[:user_id].nil? %>
+                  <%= link_to "Login with GitHub", github_login_path, class: "btn btn-primary" %>
+                <% else %>
+                  <%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary" %>
+                <% end %>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main>
+          <%= yield %>
+        </main>
+      </body>
+    </html>
