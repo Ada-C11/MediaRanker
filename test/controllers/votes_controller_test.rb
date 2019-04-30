@@ -17,6 +17,7 @@ describe VotesController do
       vote = Vote.last
       expect(vote.user_id).must_equal session[:user_id]
       expect(vote.work).must_equal work
+      must_redirect_back 
   
     end
 

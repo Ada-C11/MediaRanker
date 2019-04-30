@@ -6,6 +6,7 @@ class VotesController < ApplicationController
     unless user
       flash[:status] = :warning 
       flash[:message] = "A problem occured: You must log in to do that"
+      redirect_back fallback_location: work_path(work)
       return 
     end
     vote = Vote.new(work: work, user: user)
@@ -18,5 +19,6 @@ class VotesController < ApplicationController
       flash[:status] = :warning
       flash[:message] = "A problem occurred: Could not upvote. User: has already voted for this work"
     end
+    redirect_back fallback_location: work_path(work)
   end
 end
