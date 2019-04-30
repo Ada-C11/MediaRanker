@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+  category: movie
+  title: Mulan
+  creator: Tony Bancroft
+  publication_year: 1998
+  description: A girl saves China
 
 two:
   category: MyString
