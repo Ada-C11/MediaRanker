@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Media Ranker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Gudea:400,700" rel="stylesheet" />
+  </head>
+
+  <body>
+    <header>
+      <h1><span class="title"><a href="/">Media Ranker</a></span><small>Ranking the Best of Everything</small></h1>
+      <nav>
+        <ul class="nav">
+          <li class="nav-item"><%= link_to "View top media", root_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "View all media", works_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Add a new work", new_work_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "View all users", users_path, class: "nav-link" %></li>
+        </ul>
+         <ul class="nav">
+        <% if @super_user.nil? %>
+          <li class="nav-item">
+          <%= link_to "Log In", login_path, class: "btn btn-primary" %>
+          </li>
+        <% else %>
+        <li class="nav-item">
+          <%= link_to "Logged in as #{@super_user.username}", user_path(@super_user), class: "btn btn-primary user" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Log Out", logout_path, method: :post, class: "btn btn-primary" %>
+        </li>
+        <% end %>
+
+      </ul>
+      </nav>
+    </header>
+
+    <% flash.each do |name, message| %>
+      <% if message.class == Array %>
+        <div class="alert alert-warning">
+          <ul>
+            <% message.each do |msg| %>
+              <li class="alert alert-warning"><%= "#{name.capitalize}: #{msg}\n" %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% else %>
+          <div class="alert-<%= name %>"><%= message %></div>
+      <%end%>
+    <% end %>
+  </section>
+    <main>
+    <%= yield %>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+vote1:
+  user: one
+  work: book1
+
+vote2:
+  user: one
+  work: book1
+
+vote3:
+  user: two
+  work: book2

@@ -1,0 +1,10 @@
+<section class="spotlight">
+  <h2><span class="spotlight-header">Media Spotlight: </span><%= link_to "#{@top_media.title}", work_path(@top_media.id), class: "spotlight-title" %><%= " by #{@top_media.creator}"%></h2>
+  <%= "#{@top_media.vote_count} votes - #{@top_media.description}" %>
+</section>
+<section class="top-ten-container">
+  <%= render partial: "category", locals: { category_name: "Top Movies", category: @top_movies } %>
+  <%= render partial: "category", locals: { category_name: "Top Books", category: @top_books } %>
+  <%= render partial: "category", locals: { category_name: "Top Albums", category: @top_albums } %>
+</section>
+</section>
