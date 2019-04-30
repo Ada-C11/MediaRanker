@@ -5,12 +5,21 @@
 <section >
     <%= link_to "Back to media ranks", root_path, class:"btn btn-primary"%>
     <%= link_to "Edit", edit_work_path(@work.id), class:"btn btn-primary" %>
-    <%vote = @work.votes.find_by(user_id: session[:user_id])%>
+    
+    <%vote = @work.votes.find_by(user_id: session[:user_id], value: 1)%>
     <% if vote %>
         <%= link_to "Undo Upvote", vote_path(id: vote.id), method: :delete, class:"btn btn-primary"%> 
     <%else%>
         <%= link_to "Upvote", work_votes_path(work_id: @work.id), method: :post, class:"btn btn-primary"%>
     <%end%>
+
+    <% vote = @work.votes.find_by(user_id: session[:user_id], value:-1)%>
+    <% if vote %>
+        <%= link_to "Undo Downvote", vote_path(id: vote.id,value:-1), method: :delete, class:"btn btn-primary"%> 
+    <%else%>
+        <%= link_to "Downvote", work_votes_path(work_id: @work.id, value:-1), method: :post, class:"btn btn-primary"%>
+    <%end%>
+
     <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-danger" %>
 </section>
 <section class="works-votes__container">

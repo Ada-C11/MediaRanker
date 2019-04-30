@@ -6,12 +6,13 @@ class VotesController < ApplicationController
       return
     end
 
-    @work = Work.find_by(id: params[:work_id])
-    @user = User.find_by(id: session[:user_id])
-    @vote = Vote.new(user_id: @user.id, work_id: @work.id)
+    value = params[:value]
+    value ||= 1
+
+    @vote = Vote.new(user_id: session[:user_id], work_id: params[:work_id], value: value)
 
     if @vote.save
-      flash[:success] = "Successfully upvoted!"
+      flash[:success] = "Successfully voted!"
       redirect_back(fallback_location: root_path)
     else
       flash[:error] = "A problem occured. Try voting again."
@@ -35,7 +36,6 @@ class VotesController < ApplicationController
     end
 
     if @vote.destroy
-      binding.pry
       flash[:success] = "Successfully removed your vote"
       redirect_back(fallback_location: root_path)
     else
