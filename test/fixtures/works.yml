@@ -25,3 +25,6 @@ homecoming:
   title: Homecoming
   category: movie
 
+startrek:
+  title: Star Trek
+  category: movie

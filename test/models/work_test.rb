@@ -2,23 +2,32 @@ require 'test_helper'
 
 describe Work do
   describe 'validations' do
-    before do
-      category = Category.create(name: 'movie')
-      @work = Work.new(title: 'Star Trek', creator: 'Gene Roddenberry', publication_year: 2009, category_id: category.id)
-    end
-
-    it 'is valid when all fields are present' do
-      result = @work.valid?
-
-      expect(result).must_equal true
-    end
-
-    it 'is invalid without a title' do
-      @work.title = nil
-
-      result = @work.valid?
-
+    it 'requires a title' do
+      work = Work.new
+      result = work.valid?
       expect(result).must_equal false
+      work.errors.messages.must_include :title
+    end
+
+    it 'requires unique titles within categories' do
+      work = Work.new(title: 'Lemonade', category: categories(:album))
+      work.valid?.must_equal false
+      work.errors.messages.must_include :title
+    end
+
+    it 'does not require a unique title within different categories' do
+      work = Work.new(title: 'Lemonade', category: categories(:movie))
+      work.valid?.must_equal true
+    end
+  end
+
+  describe 'relations' do
+    it 'has a list of votes' do
+      album = works(:album)
+      album.must_respond_to :votes
+      album.votes.each do |vote|
+        vote.must_be_kind_of Vote
+      end
     end
   end
 end

@@ -14,6 +14,12 @@ describe Category do
       result.must_equal false
       category.errors.messages.must_include :name
     end
+
+    it 'can successfully create a category' do
+      category = Category.new(name: 'concert')
+      result = category.save
+      result.must_equal true
+    end
   end
 
   describe 'relations' do
