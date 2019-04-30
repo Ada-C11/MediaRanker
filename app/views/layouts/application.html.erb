@@ -9,70 +9,71 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header class="app-header__header">
+<body>
+  <header class="app-header__header">
 
-     <h1>
-      <%= link_to "Media Ranker", root_path %>
-      <small>Ranking the Best of Everything</small>
-    </h1>
+    <h1>
+    <%= link_to "Media Ranker", root_path %>
+    <small>Ranking the Best of Everything</small>
+  </h1>
 
-    <nav class="app-header__nav">
-       <ul class="nav app-header__site-nav-container">
-        <li class="nav-item app-header__nav_item">
-          <%= link_to "View top media", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item app-header__nav_item">
-          <%= link_to "View all media", works_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item app-header__nav_item">
-          <%= link_to "Add a new work", new_work_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item app-header__nav_item">
-          <%= link_to "View all users", users_path, class: "nav-link" %>
-        </li>
-      </ul>
-    
-      <ul class="nav app-header__user-nav-container">
-           
-        <% if session[:user_id] %>
+  <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+      <li class="nav-item app-header__nav_item">
+        <%= link_to "View top media", root_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item app-header__nav_item">
+        <%= link_to "View all media", works_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item app-header__nav_item">
+        <%= link_to "Add a new work", new_work_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item app-header__nav_item">
+        <%= link_to "View all users", users_path, class: "nav-link" %>
+      </li>
+    </ul>
+  
+    <ul class="nav app-header__user-nav-container">
           
-            <% @user = User.find(session[:user_id])%>
-          <li class="nav-item app-header__nav_item">
-            <%= link_to "Logged in as #{@user.username}", user_path(@user.id) %>
-          </li> 
-          <li class="nav-item app-header__nav_item">
-            <%= link_to "Log Out", logout_path, method: :post%>
-          </li> 
-          <% else %>
-          <li class="nav-item app-header__nav_item">
-            <%= link_to "Login", login_path %>
-          </li>  
+          <% if session[:user_id] %>
+          <% @user = User.find(session[:user_id])%>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Logged in as #{@user.username}", user_path(@user.id) %>
+        </li> 
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Log Out", logout_path, method: :post%>
+        </li> 
+        <% else %>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Login", login_path %>
+        </li>  
         <% end %>
 
-      </ul>
+    </ul>
 
-      </nav>
-    </header>
+    </nav>
+  </header>
 
-     <% if flash.count > 0 %>
-        <section class="flash">
-          <div class="alert alert-danger">
-          <% flash.each do |name, message| %>
-            <% if message.class == Array %>
-              <ul>
-              <% message.each do |msg| %>
-                <li><%= name %>: <%= msg %></li>
-              <% end %>
-            <% else %>
-              <%= message %>
+    <% if flash.count > 0 %>
+      <section class="flash">
+        <div class="alert alert-danger">
+        <% flash.each do |name, message| %>
+          <% if message.class == Array %>
+            <ul>
+            <% message.each do |msg| %>
+              <li><%= name %>: <%= msg %></li>
             <% end %>
-              </ul>
+          <% else %>
+            <%= message %>
           <% end %>
-          </div>
-        </section>
-      <% end %>
-      
-    <%= yield %>
-  </body>
+            </ul>
+        <% end %>
+        </div>
+      </section>
+    <% end %>
+
+  <main>  
+  <%= yield %>
+  </main>
+</body>
 </html>

@@ -3,7 +3,7 @@
 <section class="spotlight">
     <h2 class="spotlight__header"> 
         <span class="spotlight__header--prefix">Media Spotlight</span>
-        <%= link_to Work.find_most_voted.title, work_path(Work.find_most_voted.id) %> by <%= Work.find_most_voted.creator %>
+        <%= link_to Work.find_most_voted.title, work_path(Work.find_most_voted.id), class: "spotlight__link-to" %> by <%= Work.find_most_voted.creator %>
     </h2>
     <p  class="spotlight__description">
     <%= Work.find_most_voted.vote_ids.length %> votes - <%= Work.find_most_voted.description %>
@@ -14,7 +14,9 @@
 
 <section class="top-ten__container">
     <section class="top-ten__list-container">
-        <h2>Top Movies</h2>
+        <h2 class="top-ten__header">
+        Top Movies
+        </h2>
             <ul class="list-group top-ten__list">
                 <% @top_10_movies = Work.find_top_ten("movie") %>
                 <% if !@top_10_movies.nil? %>
@@ -32,7 +34,9 @@
     </section>
 
     <section class="top-ten__list-container">
-        <h2>Top Books</h2>
+        <h2 class="top-ten__header">
+        Top Books
+        </h2>
             <ul class="list-group top-ten__list">
             <% @top_10_books = Work.find_top_ten("book") %>
             <% if !@top_10_books.nil? %>
@@ -50,7 +54,9 @@
     </section>
 
     <section class="top-ten__list-container">
-        <h2>Top Albums</h2>
+        <h2 class="top-ten__header">
+        Top Albums
+        </h2>
             <ul class="list-group top-ten__list">
                 <% @top_10_albums = Work.find_top_ten("album") %>
                 <% if !@top_10_albums.nil? %>
