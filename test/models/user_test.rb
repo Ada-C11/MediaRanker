@@ -32,5 +32,18 @@ describe User do
   end
 
   describe "relations" do
+    it "has a list of votes" do
+      user.must_respond_to :votes
+      user.votes.each do |vote|
+        vote.must_be_kind_of Vote
+      end
+    end
+
+    it "has a list of voted on works" do
+      user.must_respond_to :works
+      user.works.each do |work|
+        work.must_be_kind_of Work
+      end
+    end
   end
 end
