@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :works 
   
   post '/vote', to: 'votes#upvote', as: 'upvote'
-  # post '/works/:id/upvote', to: 'votes#upvote', as: 'upvote'
   
   get '/login', to: 'users#login_form', as: 'login'
   post '/login', to: 'users#login'

@@ -1,12 +1,6 @@
 require "test_helper"
 
 describe Vote do
-  # before do
-  #   user = User.new(name: 'jane')
-  #   work = Work.new(title: 'Imagine Dragons', category: "album")
-  #   @vote = Vote.new(user: user, work: work)
-  #   end
-
 
   describe "validations" do 
     it "is valid" do
