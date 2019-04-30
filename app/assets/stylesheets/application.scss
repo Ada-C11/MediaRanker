@@ -59,13 +59,15 @@ nav {
 .nav-link:hover {
   color: #00796B;
 }
-.user {
-  margin-right: 1.5rem;
-}
+
 .btn-primary {
   background-color: #26A69A;
   border-color: #26A69A;
   color: white;
+}
+
+.user {
+  margin-right: 1.5rem;
 }
 
 .btn-primary:hover {
@@ -104,12 +106,11 @@ ul {
 }
 
 .flash {
-  padding-top: 2rem;
+  padding-top: 1rem 1rem;
 }
 
 .alert-warning {
-  padding: 0 1rem;
-  margin: 0 0;
+  padding: 1rem 1rem;
 }
 
 .alert-success {
