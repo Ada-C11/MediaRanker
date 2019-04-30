@@ -25,6 +25,7 @@
                     <th>Published</th>
                     <th>Category</th>
                     <th>Voted On</th>
+                    <th>Vote Type</th>
             </tr>
         </thead>
         <tbody>
@@ -35,6 +36,7 @@
                     <td><%=vote.work.publication_year%></td>
                     <td><%=vote.work.category.capitalize%></td>
                     <td><%=vote.created_at.strftime('%B %d, %Y')%></td>
+                    <td><%=vote.value == -1 ? "downvote" : "upvote"%></td>
                 </tr>
             <%end%>
         </tbody>
