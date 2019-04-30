@@ -64,14 +64,14 @@ harry_four:
   description: A wizard boy is forced to participate in a deadly school competition that he is immensely underqualified for and no one intervenes.
 
 harry_five:
-  category: book
+  category: album
   title: Harry Potter and the Order of the Phoenix
   creator: J.K. Rowling
   publication_year: 2003
   description: Spoiler Alert - his godfather dies. Tear.
 
 harry_six:
-  category: book
+  category: album
   title: Harry Potter and the Half-Blood Prince
   creator: J.K. Rowling
   publication_year: 2005
