@@ -1,6 +1,6 @@
 class Work < ApplicationRecord
   belongs_to :category
-  validates :title, presence: true, uniqueness: {scope: :category}
+  validates :title, presence: true, uniqueness: { scope: :category }
 
   has_many :votes, dependent: :destroy
   has_many :users, through: :votes
