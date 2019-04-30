@@ -9,7 +9,7 @@ $color4: #347A6C;
 
 .recommendation-list {
     display:inline-block;
-    padding: 20px;
+    padding: 30px;
     background: $color1;
     color: $color4;
     h4, a {
@@ -17,6 +17,10 @@ $color4: #347A6C;
     }
     a:hover {
         color:$color3;
+    }
+
+    li {
+        font-size:1.2em
     }
 
 }

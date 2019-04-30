@@ -3,7 +3,7 @@
 
 <% if (session[:user_id].to_s == params[:id]) %>
 <section class="recommendation-list">
-    <h4> Recommendations for  <%= @user.username %>:</h4>
+    <h4> Recommended for <%= @user.username %>:</h4>
     <ol >
         <% @user.get_recommendations[0..4].each do |work_id| %>
             <%work = Work.find(work_id)%>

@@ -31,7 +31,7 @@ module WorksHelper
       voters += "<tr>" +
                 "<td>#{link_to vote.user.username, user_path(vote.user.id)}</td>" +
                 "<td>#{vote.created_at.strftime("%B %d, %Y")}</td>" +
-                "<td>#{vote.value == -1 ? "downvote" : "upvote"}"
+                "<td>#{vote.value == -1 ? "downvote" : "upvote"}</td>"
       "</tr>"
     end
     return voters.html_safe

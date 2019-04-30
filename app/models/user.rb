@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
     all_voted_works = (user_upvotes + other_upvotes + user_downvotes + other_downvotes).uniq
 
-    return (common_upvotes.count + common_downvotes.count) - (user_downvote_other_upvote.count + user_upvote_other_downvote.count) / (all_voted_works.count.to_f)
+    return ((common_upvotes.count + common_downvotes.count) - (user_downvote_other_upvote.count + user_upvote_other_downvote.count)) / (all_voted_works.count.to_f)
   end
 
   # get_similar_users returns a list of all other users stored in db, ranked by similarity.
