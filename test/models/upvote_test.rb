@@ -17,6 +17,9 @@ describe Upvote do
         expect(vote).must_respond_to field
       end
     end
+
+    it "for a given user validates each record has a unique work" do
+    end
   end
   
   describe "relationships" do

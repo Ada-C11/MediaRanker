@@ -19,10 +19,9 @@ class UpvotesController < ApplicationController
       flash[:message] = "You already upvoted this item!"
     else 
       vote = Upvote.new(user_id: current_user_id, work_id: params[:work_id])
-      if vote 
+      if vote.save 
         flash[:status] = :success
         flash[:message] = "Successfully upvoted!"
-        vote.save
       else
         flash[:status] = :error
         flash[:message] = "An error has occurred, unable to save vote"

@@ -67,6 +67,9 @@ describe UpvotesController do
       # it will redirect back to the referrer
       must_redirect_to root_path
     end
+
+    it "will not post an invalid vote to the database" do 
+    end
   end
 
 end
