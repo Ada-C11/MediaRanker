@@ -4,19 +4,19 @@ describe VotesController do
 
   describe "create" do
     it "creates a vote." do
-      skip
+      # skip
 
-      vote = Vote.new(user_id: users(:jane), work_id: works(:therook))
-      expect(vote).must_be :valid?
-      
+      #create vote
+      vote = votes(:vote1)
       start_count = Vote.count
-      
+      # save vote
       vote.save
 
-
+      # vote should be valid
+      expect(vote).must_be :valid?
       post upvote_path, params: vote
 
-      Vote.count.must_equal start_count + 1
+      expect(Vote.count).must_equal start_count + 1
     end
 
     it "doesn't create a new vote when the user isn't logged in." do
