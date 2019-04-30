@@ -22,3 +22,9 @@ thehungergames:
   creator: Suzanne Collins
   description: Not like Battle Royale
 
+gameofthrones:
+  category: book
+  title: Game of Thrones
+  creator: GRRM
+  description: Epic fantasy
+
