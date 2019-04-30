@@ -1,9 +1,33 @@
 <h2 >List of Works</h2>
 
-<ul>
-<% @works.each do |work| %>
-  <li>
-    <%= link_to work.title, work_path(work.id) %>
-  </li>
-<% end %>
-</ul>
+<% ["album","book","movie"].each do |category| %>
+  <section class="media-table">
+      <h4><%= category.pluralize.capitalize %></h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th width=80>Votes</th>
+            <th>Title</th>
+            <th>Created By</th>
+            <th width=100>Published</th>
+            <th width=100>Upvote</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @works_per_category = @works.select {|work| work.category == category} %>
+          <% @works_per_category.each do |work| %>
+            <tr>
+              <td><%= work.vote_ids.length %></td>
+              <td><%= link_to work.title, work_path(work) %></td>
+              <td><%= work.creator %></td>
+              <td><%= work.publication_year %></td>
+              <td><%= link_to "Upvote", work_votes_path(work.id), class: "btn btn-primary", method: :post %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+  <% end %>
+
+<%= link_to "View top media", root_path, class: "btn btn-secondary" %>
+<%= link_to "Add a new work", new_work_path, class: "btn btn-primary" %>
