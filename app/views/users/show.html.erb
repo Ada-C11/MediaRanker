@@ -1,0 +1,38 @@
+<h3>User Summary: <%= @user.email %></h3>
+
+<p>Joined site <%= @user.created_at%></p>
+
+<h4>Votes</h4>
+
+<section class="work">
+  <% votes = Vote.where(user_id: @user.id) %>
+  <% if votes.length > 0 %>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Media Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Category</th>
+        <th scope="col">Voted On</th>
+        <th scope="col">Recommended</th>
+      </tr> 
+    </thead>
+    <tbody>
+    <% votes.each do |work| %>
+      <% work = Work.find_by(id: work.work_id)%>
+      <% if work != nil%>
+      <tr>
+        <th scope="row"><%=work.title%></th>
+        <td><%=work.created_by%>
+        <td><%=work.published%>
+        <td><%=work.media%>
+        <td><%= readable_date(work.created_at)%>
+      </tr>
+      <%end%>
+      <% end %>
+  <%else%>
+  <% end %>
+  </tbody>
+</table>
+</section>

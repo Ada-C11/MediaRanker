@@ -1,0 +1,94 @@
+<h2>List of Works </h2>
+
+<section class="album">
+  <h3>Albums</h3>
+  <% albums = Work.where(media: "album")%>
+  <% albums = albums.sort_by {|work| work.votes.length}.reverse%>
+  <% if albums.length > 0 %>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+      </tr> 
+    </thead>
+    <tbody>
+    <% albums.each do |album| %>
+      <tr>
+        <th scope="row"><%=album.votes.length%></th>
+        <td><%= link_to "#{album.title}", work_path(album.id)%></td>
+        <td><%=album.created_by%></td>
+        <td><%=album.published%></td>
+        <td><%= link_to "Upvote", vote_path(album.id), method: :post %></td>
+      </tr>
+      <% end %>
+  <%else%>
+  <% end %>
+  </tbody>
+</table>
+</section>
+
+<section class="books">
+  <h3>Books</h3>
+  <% books = Work.where(media: "book")%>
+  <% books = books.sort_by { |book| book.votes.length}.reverse%>
+  <% if books.length > 0 %>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+      </tr> 
+    </thead>
+    <tbody>
+    <% books.each do |book| %>
+      <tr>
+        <th scope="row"><%=book.votes.length%></th>
+        <td><%= link_to "#{book.title}", work_path(book.id)%></td>
+        <td><%=book.created_by%></td>
+        <td><%=book.published%></td>
+        <td><%= link_to "Upvote", vote_path(book.id), method: :post %></td>
+      </tr>
+      <% end %>
+  <%else%>
+  <% end %>
+  </tbody>
+</table>
+</section>
+
+<section class="movies">
+  <h3>Movies</h3>
+  <% movies = Work.where(media: "movie")%>
+  <% movies = movies.sort_by { |movie| movie.votes.length}.reverse%>
+  <% if movies.length > 0 %>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% movies.each do |movie| %>
+      <tr>
+        <th scope="row"><%=movie.votes.length%></th>
+        <td><%= link_to "#{movie.title}", work_path(movie.id)%></td>
+        <td><%=movie.created_by%></td>
+        <td><%=movie.published%></td>
+        <td><%= link_to "Upvote", vote_path(movie.id), method: :post %></td>
+      </tr>
+    <%end%>
+  <%else%>
+  <% end %>
+  </tbody>
+</table>
+</section>

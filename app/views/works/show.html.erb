@@ -1,0 +1,39 @@
+<h1><%= @work.title %></h1>
+<h3>Created By: <%=@work.created_by %></h3>
+
+<div>Published: <%=@work.published %></div>
+
+<div>Description: <%=@work.description%></div>
+
+<nav>
+  <%= link_to "Back to Media Ranks", works_path, class: "btn btn-primary"%>
+  <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary"%>
+  <%= link_to "Upvote",vote_path(@work.id), method: :post, class: "btn btn-primary" %> 
+  <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%>
+</nav>
+
+<h4><%=@work.votes.length%> votes for this <%=@work.media%> </h4>
+
+<section class="work">
+  <% votes = Vote.where(work_id: @work.id)%>
+  <% if votes.length > 0 %>
+    <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">User</th>
+        <th scope="col">Date</th>
+      </tr> 
+    </thead>
+    <tbody>
+    <% votes.each do |voter| %>
+      <% user = User.find_by(id: voter.user_id) %>
+      <tr>
+        <th scope="row"><%=user.username%></th>
+        <td><%= readable_date(user.updated_at)%>
+      </tr>
+    <% end %>
+  <%else%>
+  <% end %>
+    </tbody>
+    </table>
+</section>

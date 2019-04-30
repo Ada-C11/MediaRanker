@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('owl.png') %>
+  </head>
+  <% session[:user_id] = nil if User.find_by(id: session[:user_id]).nil?%>
+
+  <header class="header">
+    <h1><%= link_to "Media Ranker", root_path%> <small>Ranking the best of everything</small></h1>
+
+    <nav class="main_nav">
+      <ul class="nav nav_container">
+        <li class="nav-item">
+          <%= link_to "View top Media", root_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "View all Media", works_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Add a new work", new_work_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "View all users", users_path, class:"nav-link"%>
+        </li>
+      </ul>
+      <ul class="nav nav_container">
+        <% if session[:user_id] == nil %>
+          <li class="nav-item">
+            <%= link_to "Log In", github_login_path, class:"btn btn-primary"%>
+          </li>
+        <%else%>
+        <li class="nav-item">
+            <%= link_to "Logged in as #{User.find_by(id: session[:user_id]).email}", user_path(User.find_by(id: session[:user_id]).id), class:"btn btn-primary" %>
+        </li>
+        <%end%>
+        <li class="nav-item">
+          <%= link_to "Log Out", logout_path, method: :delete, class:"btn btn-primary" %>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="flash">
+    <% flash.each do |name, message| %>
+      <div class="<%= name %>"><%= message %></div>
+    <% end %>
+  </section>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
