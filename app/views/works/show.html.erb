@@ -1,43 +1,32 @@
-<ul>
-    <li>
-        <h2><%= @work.title %></h2>
-    </li>
-
-    <li>
-        Create by: <%= @work.creator %>
-    </li>
-    <li>
-        Publish: <%= @work.publication_year%>
-    </li>
-    <li>
-        <%= @work.description %>
-    </li>
-</ul>
-
 <section>
-<h4>
-  Votes
-</h4> 
+    <h2><%= @work.title %></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year %></p>
+    <p><%= @work.description %></p>
+    <section>
+        <%= link_to "Back to media ranks", root_path, class: "btn btn-info" %>
+        <%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-info" %>
+        <%= link_to "Upvote", work_votes_path(@work.id), class: "btn btn-info", method: :post %>
+        <%= link_to "Delete", work_path(@work.id), method: :delete, class: "btn btn-danger" %>
+    </section>
+<section>
 
-
-<ul>
-    <% @work.vote_ids.each do |id|%>
-    <li>
-        <% vote = Vote.find_by(id: id) %>
-        <% user = User.find_by(id: vote.user_id) %>
-        <%= link_to "#{user.username}", user_path(user.id) %>
-        <%= (vote.created_at).to_date.to_formatted_s(:long) %>
-    </li>
+<section class="works-votes__container">
+  <h3 class="works-votes__header"><%= @votes.count %> Votes for this <%= @work.category.capitalize.singularize %></h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @votes.each do |vote| %>
+      <tr>
+        <td><%= link_to vote.user.username, user_path(vote.user) %></td>
+        <td><%= vote.created_at.to_date.to_formatted_s(:long) %></td>
+      </li>
     <% end %>
-</ul>
-
+  </ul>
 </section>
 
-<%= link_to "Back to media ranks", root_path, class: "btn btn-info" %>
-
-<%= link_to "Edit", edit_work_path(@work.id), class: "btn btn-info" %>
-
-<%= link_to "Upvote", work_votes_path(@work.id), class: "btn btn-info", method: :post %>
-
-<%= link_to "Delete", 
-    work_path(@work.id), method: :delete, class: "btn btn-danger" %>

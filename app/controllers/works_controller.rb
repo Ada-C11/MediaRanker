@@ -6,6 +6,7 @@ class WorksController < ApplicationController
   end
 
   def show
+    @votes = @work.votes.order(created_at: :desc)
     if @work.nil?
       flash[:error] = "unknown media"
       redirect_to works_path
