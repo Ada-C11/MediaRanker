@@ -1,5 +1,5 @@
 require "test_helper"
-
+require "pry"
 describe WorksController do
   describe "paths" do
     it "should get homepage from root" do
@@ -41,13 +41,13 @@ describe WorksController do
     it "will save a new book and redirect if given valid inputs" do
 
       # Arrange
-      input_category = "Book"
+      input_category = "book"
       input_title = "Practical Object Oriented Programming in Ruby"
       input_creator = "Sandi Metz"
       input_publication_year = 2012
       input_description = "A look at how to design object-oriented systems"
       test_input = {
-        "book": {
+        work: {
           category: input_category,
           title: input_title,
           creator: input_creator,
@@ -63,6 +63,7 @@ describe WorksController do
 
       # Assert
       new_work = Work.find_by(title: input_title)
+      binding.pry
       expect(new_work).wont_be_nil
       expect(new_work.title).must_equal input_title
       expect(new_book.creator).must_equal input_creator

@@ -12,6 +12,8 @@ describe Work do
 
   describe "topten" do
     it "will return top votes" do
+      results = Work.topten("book")
+      expect(results.length).must_equal 10
     end
   end
 
