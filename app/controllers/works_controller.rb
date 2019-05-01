@@ -50,7 +50,7 @@ class WorksController < ApplicationController
       flash[:success] = "#{@work.title} deleted"
     end
 
-    redirect_to books_path
+    redirect_to works_path
   end
 
   private
