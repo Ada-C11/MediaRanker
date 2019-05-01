@@ -10,7 +10,8 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if !@work
-      head :not_found
+      flash[:error] = "Work not found!"
+      redirect_to works_path
     end
   end
 
@@ -41,7 +42,7 @@ class WorksController < ApplicationController
     successful = @work.save
 
     if successful
-      redirect_to work_path(work.id)
+      redirect_to work_path(@work.id)
     else
       render :new, status: :bad_request
     end

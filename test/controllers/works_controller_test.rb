@@ -1,8 +1,6 @@
 require "test_helper"
 
 describe WorksController do
-  let(:work) { works(:book) }
-
   describe "paths" do
     it "should get homepage from root" do
       get root_path
@@ -16,33 +14,78 @@ describe WorksController do
       must_respond_with :success
     end
   end
-  # describe "show" do
-  #   it "should be OK to show an existing, valid work" do
 
-  #     # Arrange
-  #     # book = Book.create(title: "test book", author_id: Author.create(name: "test").id)
-  #     valid_work_id = works(:oop_part_two).id
+  describe "show" do
+    it "should get show path" do
+      valid_work_id = works(:book1).id
+      get work_path(valid_work_id)
+      must_respond_with :success
+    end
 
-  #     # Act
-  #     get work_path(valid_work_id)
+    it "will redirect with invalid id" do
+      get work_path(-5)
 
-  #     # Assert
-  #     must_respond_with :success
-  #   end
+      must_respond_with :redirect
+    end
+  end
 
-  #   it "should give a flash notice instead of showing a non-existant, invalid work" do
+  describe "new" do
+    it "should get new" do
+      get new_work_path
 
-  #     # Arrange
-  #     work = works(:oop_part_two)
-  #     invalid_work_id = work.id
-  #     work.destroy
+      must_respond_with :success
+    end
+  end
 
-  #     # Act
-  #     get work_path(invalid_work_id)
+  describe "create" do
+    it "will save a new book and redirect if given valid inputs" do
 
-  #     # Assert
-  #     must_respond_with :redirect
-  #     expect(flash[:error]).must_equal "Unknown work"
-  #   end
-  # end
+      # Arrange
+      input_category = "Book"
+      input_title = "Practical Object Oriented Programming in Ruby"
+      input_creator = "Sandi Metz"
+      input_publication_year = 2012
+      input_description = "A look at how to design object-oriented systems"
+      test_input = {
+        "book": {
+          category: input_category,
+          title: input_title,
+          creator: input_creator,
+          publication_year: input_publication_year,
+          description: input_description,
+        },
+      }
+
+      # Act
+      expect {
+        post works_path, params: test_input
+      }.must_change "Work.count", 1
+
+      # Assert
+      new_work = Work.find_by(title: input_title)
+      expect(new_work).wont_be_nil
+      expect(new_work.title).must_equal input_title
+      expect(new_book.creator).must_equal input_creator
+      expect(new_book.description).must_equal input_description
+
+      must_respond_with :redirect
+    end
+  end
+  describe "destroy" do
+    it "can delete a book" do
+      # Arrange - Create a work
+      new_work = Work.create(category: "Book", title: "The Martian", creator: "Creator", publication_year: "Publication Year", description: "Description")
+
+      expect {
+
+        # Act
+        delete work_path(new_work.id)
+
+        # Assert
+      }.must_change "Work.count", -1
+
+      must_respond_with :redirect
+      must_redirect_to works_path
+    end
+  end
 end

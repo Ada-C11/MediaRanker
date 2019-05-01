@@ -34,7 +34,7 @@
           <%= link_to("Login", login_path) if session[:user_id].nil? %> 
            <%= link_to("Current User", current_user_path) if session[:user_id] %>
           <% if session[:user_id] %>
-          <%= link_to("Logout", logout_path, method: :post) if session[:user_id], class:"btn btn-primary"%>
+          <%= link_to("Logout", logout_path, method: :post) if session[:user_id]%>
           <% end %> 
         </li>
         </ul>
