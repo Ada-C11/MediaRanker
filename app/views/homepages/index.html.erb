@@ -1,0 +1,25 @@
+
+
+<% if @spotlight %>
+  <section class="spotlight ">
+    <h2><span class="text-dark">Media Spotlight: </span><%= link_to @spotlight.title, work_path(@spotlight) %><%= " by " + @spotlight.creator %></h2>
+    <p><%= @spotlight.votes.count %> votes - <%= @spotlight.description %></p>
+  </section>
+<% end %>
+
+<section class="top-ten grid">
+  <section class="top-media top-movies"> 
+    <h2>Top Movies</h2>
+      <%= render "top_ten", top: @top_ten[2] %>
+  </section>
+  <section class="top-media top-books">
+    <h2>Top Books</h2>
+      <%= render "top_ten", top: @top_ten[1] %>
+  </section>
+  <section class="top-media top-albums">
+    <h2>Top Albums</h2>
+      <%= render "top_ten", top: @top_ten[0] %>
+  </section>
+</section>
+
+

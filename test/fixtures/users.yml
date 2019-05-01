@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+lilly:
+  username: Lilly Potter
+
+severus:
+  username: Severus Snape
+
+fred:
+  username: fred wesley

@@ -1,0 +1,136 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+
+
+// h1, h2, h3, h4 {
+//   font-family: "Gudea", sans-serif;
+// }
+.btn-primary {
+  background-color: #26A69A;
+  color: white;
+  border-color: #26A69A;
+}
+
+main {
+  padding: 2rem;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.navbar ul:first-child li:first-child a {
+  padding-left: 0;
+}
+.navbar li {
+  display: inline-block;
+  padding-inline-start: 0;
+
+}
+a.nav-item, a.nav-item:hover {
+  color:  rgb(25, 119, 110);
+}
+a, .title-one {
+  text-decoration: none;
+}
+.title-one {
+  color: #FF5722;
+  padding-right: 25px;
+  margin-right: 15px;
+  border-right: white 2px solid;
+  font-size: 1em;
+}
+.title-two {
+  color: white;
+}
+a, h2 {
+  color: #26A69A;
+}
+h4 {
+  color: #26A69A;
+}
+
+.navbar, header {
+  margin-bottom: 0.5rem;
+  padding: 3rem 1rem 0.5rem 1rem;
+  background-color: #B2DFDB;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+  background-color:  rgb(25, 119, 110);
+}
+
+.spotlight {
+  padding: 0 2rem 1rem 2rem;
+  border-bottom: rgb(221, 234, 247) 1px solid;
+}
+.title-one:hover {
+  text-decoration: none;
+  color: #FF5722
+}
+h2 a {
+  text-decoration: underline;
+}
+.top-media h2 {
+  border-bottom: #B2DFDB 2px solid;
+}
+small {
+  font-size: 80%;
+  font-weight: 400;
+  color: slategrey;
+}
+.top-media ul {
+  padding: 0.75rem 1.25rem;
+}
+.top-media p {
+  padding-bottom: 1rem;
+}
+.top-media {
+  padding-top: 3rem;
+}
+
+h3 {
+  padding-bottom: 1.5rem;
+}
+
+table a:hover, h4 a:hover {
+  text-decoration: none;
+  color: rgb(36, 134, 125)
+}
+h2 a:hover{
+  color: rgb(36, 134, 125)
+}
+
+.work-list li {
+  padding-bottom: 1rem;
+}
+.button-row {
+  padding-bottom: 2rem;
+}
+
+.alert {
+  margin-top: 2rem;
+}

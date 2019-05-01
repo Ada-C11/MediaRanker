@@ -1,0 +1,22 @@
+// Place all the styles related to the homepages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top-ten.grid {
+  display: grid;    
+  grid-template: 1fr / 1fr 1fr 1fr;
+}
+.top-albums, .top-movies, .top-books {
+  grid-row: 1;
+  padding-right: 2em;
+}
+.top-movies {
+  grid-column: 1;
+}
+.top-books {
+  grid-column: 2;
+}
+.top-albums {
+  grid-column: 3;
+}
+

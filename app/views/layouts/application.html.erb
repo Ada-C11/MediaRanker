@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <header>
+    <div class="flex">
+      <h1><%= link_to "Media Ranker", root_path, class: "title-one" %><small class="title-two"> Ranking the Best of Everything</small></h1>
+    </div>
+
+
+    <nav class="navbar navbar-light">
+      <ul>
+        <li><%= link_to "View top media", root_path, class: "nav-item nav-link" %></li>
+        <li><%= link_to "View all media", works_path, class: "nav-item nav-link" %></li>
+        <li><%= link_to "Add new work", new_work_path, class: "nav-item nav-link" %></li>
+        <li><%= link_to "View all users", users_path, class: "nav-item nav-link" %></li>
+      </ul>
+
+      <ul>
+      <% if session[:user_id] %>
+        <li class="navbar-button nav-item">
+        <%= link_to "Logged In as #{User.find(session[:user_id]).username}", current_user_path, class: "btn btn-primary" %>
+        </li>
+        <li class="navbar-button nav-item">
+        <%= link_to "Log Out", logout_path, class: "btn btn-primary", method: :post%>
+        </li>
+      <% else %>
+        <li class="navbar-button nav-item">
+        <%= link_to "Log In", login_path, class: "btn btn-primary" %>
+        </li>
+      <% end %>
+      </ul>
+    </nav>
+
+  </header>
+
+  <body>
+
+    <% if flash[:status] %>
+      <section class="alert alert-<%= flash[:status] %>">
+
+          <%= flash[:message] %>
+          <% if @errors %>
+          <ul>
+            <% @errors.messages.each do |col, prob| %>
+              <% prob.each do |problem|%>
+                <li><%= col%>: <%= problem%></li>
+              <% end %>
+            <% end %>
+          </ul>
+          <% end %>
+
+      </section>
+    <% end %>
+
+    <main>
+
+
+      <%= yield %>
+    </main>
+  </body>
+</html>

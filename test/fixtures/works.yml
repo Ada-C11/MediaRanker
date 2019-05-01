@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: book
+  title: Name of the Wind
+  creator: Patrick Rolfus
+  publication_year: 2013
+
+four:
+  category: book
+  title: Harry Potter
+  creator: JKR
+  publication_year: 2013
+
+two:
+  category: movie
+  title: My Movie
+  creator: Movie creator
+  publication_year: 1999
+
+three:
+  category: album
+  title: Green album
+  creator: Weezer
+  publication_year: 1999
