@@ -1,0 +1,157 @@
+//         /*
+//  * This is a manifest file that'll be compiled into application.css, which will include all the files
+//  * listed below.
+//  *
+//  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+//  * vendor/assets/stylesheets directory can be referenced here using a relative path.
+//  *
+//  * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+//  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+//  * files in this directory. Styles in this file should be added after the last require_* statement.
+//  * It is generally better to create a new file per style scope.
+//  *
+//  */
+//         /* Custom bootstrap variables must be set or imported *before* bootstrap. */
+//         @import "bootstrap";
+//         /* Import scss content */
+//         @import "**/*";
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem
+}
+
+.app-header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
+    text-align: center;
+}
+
+.app-header_nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.app-header .app-title {
+    color: orangered;
+}
+
+#sub-heading {
+    color: white;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    color: white;
+}
+
+a {
+    color: #00796b;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline
+}
+
+nav ul {
+    padding-top: 2em;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    background-color: rgb(13, 156, 156);
+    color: white;
+}
+
+nav ul .btn-success a {
+    color: white;
+}
+
+.table-style {
+    width: 100%;
+}
+
+.btn {
+    position: relative;
+    // padding: 0.75rem 1.25rem;
+    // margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    background-color: #2FA599;
+    color: white;
+}
+
+.btn:hover {
+    background-color: rgb(11, 150, 133);
+}
+
+.delete-btn {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+table {
+    width: 100%;
+    height: 100%;
+}
+
+th,
+td {
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+main {
+    display: block;
+}
+
+main section {
+    border-bottom: 1px solid #ddd;
+}
+
+#top-ten-movies {
+    display: grid;
+    list-style: none;
+    float: left;
+}
+
+#top-ten-books {
+    display: grid;
+    float: right;
+    list-style: none;
+}
+
+#top-ten-albums {
+    display: grid;
+    float: right;
+    list-style: none;
+}

@@ -1,0 +1,44 @@
+
+<article class='media-details'>
+  <h3><%= @work.title %></h3>
+
+  <p>
+    Created by: <%= @work.creator %>
+  </p>
+
+  <p>
+    Published: <%= @work.publication_year %>
+  </p>
+
+  <p>
+    <%= @work.description %>
+  </p>
+
+  <section>
+    <%= link_to "Back to Media List", root_path, class:"btn btn-success"%>
+
+    <%= link_to 'Edit', edit_work_path(@work), class:"btn btn-success" %>
+    <%= link_to "Upvote", upvote_path(work_id: @work.id), method: :post, class:"btn btn-success" %>
+    <%= link_to 'Delete', work_path(@work), method: :delete, data: { confirm: "Are you sure?" }, class:"btn delete-btn" %>
+  </section>
+</article>
+<br/>
+<article class='voting-users'>
+  <h3><%= @work.votes.count %> Votes for this <%= @work.category.capitalize %></h3>
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @work.votes.each do |vote| %>
+      <tr>
+        <td><%= link_to vote.user.name, user_path(vote.user) %></td>
+        <td><%= readable_date(vote.created_at) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</article>

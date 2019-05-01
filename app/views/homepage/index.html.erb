@@ -1,0 +1,31 @@
+<main>
+<section>
+  <h3>Media Spotlight:
+
+      <% if @no_data %>
+      <%=@no_data %> </span></h3>
+      <% else %>
+      <%= link_to "#{@spotlight.title}", work_path(@spotlight)%> by <%= @spotlight.creator %>
+ 
+  </h3>
+  <p>
+    <%= @spotlight.votes.count %> votes - <%= @spotlight.description %>
+  </p>
+  <% end %>
+</section>
+
+<section id='top-ten-movies'>
+  <h4>Top Movies</h4>
+  <%= render partial: 'titles_column', locals: { media: @movies } %>
+</section>
+
+<section id='top-ten-books'>
+  <h4>Top Books</h4>
+  <%= render partial: 'titles_column', locals: { media: @books } %>
+</section>
+
+<section id='top-ten-albums'>
+  <h4>Top Albums</h4>
+  <%= render partial: 'titles_column', locals: { media: @albums } %>
+</section>
+</main>

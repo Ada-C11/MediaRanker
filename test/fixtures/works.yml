@@ -1,0 +1,30 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+therook: 
+  category: book
+  title: The Rook
+  creator: Daniel O'Malley
+  description: British secret service with super powers
+
+uprooted:
+  category: book
+  title: Uprootes
+  creator: Nola Novik
+  description: Magic!
+
+thehungergames:
+  category: book
+  title: The Hunger Games
+  creator: Suzanne Collins
+  description: Not like Battle Royale
+
+gameofthrones:
+  category: book
+  title: Game of Thrones
+  creator: GRRM
+  description: Epic fantasy
+
