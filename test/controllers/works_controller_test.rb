@@ -117,6 +117,21 @@ let(:work) { Work.create!(category: "movie", title: "Into the Wild") }
       expect(work.publication_year).must_equal edit_params[:work][:publication_year]
     end
 
+    it "will not update a record with missing title" do 
+      missing_data = {
+        work: {
+          title: "",
+          category: "book",
+          publication_year: 2010,
+          description: "Mass Incarceration in the Age of Colorblindness"
+        }
+      }
+
+        patch work_path(work.id), params: missing_data
+        
+        must_respond_with :bad_request
+    end
+
     it "responds with 404 not found for nonexistant media" do 
       work 
 
