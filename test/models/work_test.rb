@@ -16,8 +16,13 @@ describe Work do
       expect(works.first).must_be_kind_of Work
     end
 
-    it "must return an empty array if no works" do
+    it "must return all of the works if less than 10 for top ten" do
       works = Work.top_ten("book")
+      expect(works.length).must_equal 2
+    end
+
+    it "must return an empty array if no works" do
+      works = Work.top_ten("movie")
       expect(works).must_equal []
     end
   end

@@ -2,13 +2,15 @@ require "test_helper"
 
 describe WorksController do
   it "should get index" do
-    get works_index_url
-    value(response).must_be :success?
+    get works_path
+    must_respond_with :success
   end
 
-  it "should get show" do
-    get works_show_url
-    value(response).must_be :success?
+  describe "show" do
+    it "should successfully show an existing and valid work" do
+      get works_show_url
+      value(response).must_be :success?
+    end
   end
 
   it "should get edit" do
@@ -25,5 +27,4 @@ describe WorksController do
     get works_create_url
     value(response).must_be :success?
   end
-
 end

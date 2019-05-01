@@ -8,3 +8,12 @@ one_<%= n %>:
   publication_year: 1
   description: MyString
 <% end %>
+
+<% 2.times do |n| %>
+two_<%= n %>:
+  category: book
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+<% end %>
