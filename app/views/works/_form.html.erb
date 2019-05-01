@@ -13,34 +13,34 @@
   <%end%>
 <%end%>
 
-<%= form_with model:@work do |f|%>
+<%= form_with model: @work do |f| %>
+  <div class="form-group row">
+    <label>Category:</label>
+    <select class="form-control" name="work[category]">
+      <option>album</option>
+      <option>book</option>
+      <option>movie</option>
+    </select>
+  </div>
 
   <div class="field">
-  <%= f.label(:category)%>
-  <%= f.select(:category, options_for_select([['album', "album"],['book', "book"], ['movie', "movie"]])) %>
-  <div>
-
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
   <div class="field">
-  <%= f.label(:title)%>
-  <%= f.text_field(:title) %>
-  <div>
-
+    <%=f.label :creator, "Created by" %>
+    <%= f.text_field :creator, class: "form-control"  %>
+  </div>
   <div class="field">
-  <%= f.label(:creator)%>
-  <%= f.text_field(:creator) %>
-  <div>
-
+    <%=f.label :pub_yr, "Publication year" %>
+    <%= f.text_field :pub_yr, class: "form-control"  %>
+  </div>
+    <div class="field">
+    <%=f.label :description, "Description" %>
+    <%= f.text_area :description, class: "form-control", rows: "2"  %>
+  </div>
   <div class="field">
-  <%= f.label(:pub_yr)%>
-  <%= f.text_field(:pub_yr) %>
-  <div>
+    <%= f.submit "Create Work", class: "btn btn-primary"%>
+  </div>
 
-  <div class="field">
-  <%= f.label(:description)%>
-  <%= f.text_area(:description) %>
-  <div>
-
-  <div class="action">
-  <%= f.submit "Create Work"%>
-  <div>
-<%end%> 
+<% end %> 

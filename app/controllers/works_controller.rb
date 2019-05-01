@@ -2,7 +2,7 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def index
-    @categories = Work.get_media_catagories
+    @categories = Work.get_media_categories
   end
 
   def new
