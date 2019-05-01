@@ -1,3 +1,11 @@
+<h2><%= @work.title %></h2>
+  <p>Created by: <%= @work.creator %></p>
+  <p>Published: <%= @work.publication_year %></p>
+  <p><%= @work.description %></p>
 
+  <%= link_to "Back to Homepage", root_path %>
+  <%= link_to "Edit", edit_work_path(@work.id) %>
+  <%= link_to "Delete", work_path(@work.id), method: :delete,
+      data: { confirm: 'Are you sure you want to delete?'} %>
 
 
