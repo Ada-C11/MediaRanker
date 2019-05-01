@@ -47,7 +47,7 @@ describe UsersController do
       @user = User.first
       @login_data = {
         user: {
-          username: @user.username,
+          username: @user.name,
         },
       }
     end

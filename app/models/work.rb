@@ -15,6 +15,7 @@ class Work < ApplicationRecord
     media.sort_by { |work| work.votes.count * -1 }
   end
 
+  # return top ten works
   def self.top_media
     top_works = get_media_categories.map do |category|
       category[0..9]
