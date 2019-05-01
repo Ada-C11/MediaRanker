@@ -58,16 +58,16 @@
         <% else %>
         <div class="alert alert-warning">
         <% end %>
-          <% flash.each do |name, message| %>
-            <% if message.class == Array %>
-              <ul>
-              <% message.each do |msg| %>
-                <li> <%= name %>: <%= msg %></li>
-                <% end %>  
-              <% else %>
-                <%= message %>
+        <% flash.each do |name, message| %>
+          <% if message.class == Array %>
+            <% message.each do |msg| %>
+            <ul>
+              <li> <%= name %>: <%= msg %> </li>
               <% end %>
-            </ul>
+            </ul>  
+            <% else %>
+              <span> <%= message %> </span>
+            <% end %>        
           <% end %>
         </div>
       </section>

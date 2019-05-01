@@ -5,14 +5,16 @@ class VotesController < ApplicationController
 
     if !@user
       flash[:warning] = "A problem occurred: You must log in to do that"
-    elsif @user.works.find_by(id: params[:work_id])
-      flash[:warning] = "A problem occurred: Could not upvote"
-      @user.errors.messages.each do |field, messages|
-        flash.now[field] = messages
-      end
     else
-      @user.works << @work
-      flash[:success] = "Successfully upvoted!"
+      vote = Vote.new(user: @user, work: @work)
+      if vote.save
+        flash[:success] = "Successfully upvoted!"
+      else
+        flash[:warning] = "A problem occurred: Could not upvote"
+        vote.errors.messages.each do |field, messages|
+          flash[field] = messages
+        end
+      end
     end
     redirect_back(fallback_location: root_path)
   end
