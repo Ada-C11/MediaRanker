@@ -4,11 +4,11 @@ class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
 
-  def self.topten(works)
-    results = Work.where(work: work.to_s)
+  def self.topten(work)
+    results = Work.where(category: work)
     results = results.sort_by { |result| result.votes.length }.reverse
 
-    results = Work.where(work: work.to_s) if results.empty?
+    results = Work.where(category: work) if results.empty?
 
     if results.length <= 10
       return results
