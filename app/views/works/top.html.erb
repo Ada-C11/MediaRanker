@@ -50,7 +50,7 @@
             <ul class="list-group top-ten__list">
                 <% if @top_movies.class == Array && @top_movies.count > 0 %>
                     <% @top_movies.each do |movie| %>
-                    <li class="list-group-item"> <%= link_to movie.title, work_path(album) %> by <%= movie.creator%> </li>
+                    <li class="list-group-item"> <%= link_to movie.title, work_path(movie) %> by <%= movie.creator%> </li>
                          <p> <%= movie.votes.count %> votes </p>
                     <% end %>
                 <% else %>
