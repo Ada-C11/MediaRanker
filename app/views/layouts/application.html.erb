@@ -32,27 +32,29 @@
   </header>
 
 
-  <div class = "flash-container">
-  <% if flash[:status]%>
-  <% alert_type = flash[:status] == :error ? :danger : flash[:status] %>
-  <section class="flash alert alert-<%= alert_type %>">
-  <span><%= flash[:message] %></span>
-  <% if flash[:notice]== "No vote"%>
-      <ul class = "use-list">
-
-    <li>user: has already voted for this work</li>
-    </ul>
-
-  <%end%>
-  </section>
-  <%end%>
-  </div>  
-  <main>
 
   <body>
+    <% if flash[:status] %>
+      <section class="alert alert-<%= flash[:status] %>">
 
-    <%= yield %>
+        <%= flash[:message] %>
+        <% if @errors %>
+        <ul>
+          <% @errors.messages.each do |col, prob| %>
+          <% prob.each do |problem|%>
+            <li><%= col%>: <%= problem%></li>
+          <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+      </section>
+    <% end %>
+    
+    <main>
+
+      <%= yield %>
+      
+    </main>
   </body>
-  </main>
 </html>
 
