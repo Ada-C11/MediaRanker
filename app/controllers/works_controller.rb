@@ -49,7 +49,7 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = work.find_by(id: params[:id])
+    @work = Work.find_by(id: params[:id])
     if @work
       if @work.destroy
         redirect_to root_path, { :flash => { :success => "Successfully deleted work" } }

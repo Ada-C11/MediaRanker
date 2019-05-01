@@ -1,15 +1,11 @@
 require "test_helper"
 
 describe HomepagesController do
-  it "loads main page" do
-    get root_path
-    must_respond_with :success
-  end
+  describe "index" do
+    it "can get the homepage" do
+      get root_path
 
-  it "loads main page even if there are no works" do
-    Work.delete_all
-    expect(Work.count).must_equal 0
-    get root_path
-    must_respond_with :success
+      must_respond_with :success
+    end
   end
 end

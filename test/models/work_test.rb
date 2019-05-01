@@ -39,50 +39,97 @@ describe Work do
     end
   end
 
-  describe "Custom Methods" do
+  describe "Relationships" do
+    it "can add a vote through votes" do
+      vote = votes.first
+      work.votes << vote
+
+      expect(work.votes).must_include vote
+      expect(vote.work_id).must_equal work.id
+    end
+  end
+  describe "self.get_media_categories" do
+    it "returns an array of length 3" do
+      media = Work.get_media_categories
+
+      expect(media).must_be_instance_of Array
+
+      expect(media.length).must_equal 3
+    end
   end
 
-  describe "top_ten" do
-    it "generates a list of 10 works of the given category" do
-      # Arrange
-      10.times do
-        Work.create(title: "test book", creator: "author", category: "book")
+  describe "self.top_media" do
+    it "gets 10 works for categories with more than 10 works" do
+      11.times do
+        new_work = Work.new
+        new_work.category = "book"
+        new_work.title = "new book"
+        new_work.save
       end
 
-      # Act
-      top_ten_books = Work.top_ten("book")
-
-      # Assert
-      expect(top_ten_books.length).must_equal 10
+      expect(Work.top_media.first.length).must_equal 10
     end
 
-    it "generates a list of all works if there are less than 10 works in the category" do
-      # Act
-      top_ten_books = Work.top_ten("book")
+    it "returns less than 10 works if there are less than 10 works" do
+      categories = Work.top_media
 
-      # Assert
-      expect(top_ten_books).wont_be_empty
+      categories.map! { |category| category.length }
+
+      expect(categories).must_equal [2, 1, 1]
     end
+  end
+  describe "Work.get_media" do
+    it "returns an empty array if there are no works" do
+      Work.all.each { |a_work| a_work.destroy }
 
-    it "returns an empty array when there are no works in the category" do
-      # Arrange
-      Work.destroy_all
-
-      # Act
-      top_ten_books = Work.top_ten("book")
-
-      # Assert
-      expect(top_ten_books.length).must_equal 0
+      expect(Work.get_media("book")).must_equal []
     end
-    it "returns the works in the category with the most votes" do
-      10.times do
-        Work.create(title: "test book", creator: "author", category: "book")
-      end
+    it "returns works from the proper category" do
+      books = Work.get_media("book")
 
-      books = Work.where(category: "book")
-      max_vote_counts = books.map { |book| book.votes.count }.sort.reverse.first(10)
-      top_ten_vote_counts = Work.top_ten("book").map { |book| book.votes.count }
-      expect(max_vote_counts).must_equal top_ten_vote_counts
+      expect(books.first.category).must_equal "book"
+    end
+  end
+  describe "self.spotlight" do
+    it "returns a Work" do
+      spotlight = Work.spotlight
+
+      expect(spotlight).must_be_instance_of Work
+    end
+    it "returns nil if there are no works" do
+      Work.all.each { |a_work| a_work.destroy }
+
+      expect(Work.spotlight).must_equal nil
+    end
+    it "returns the work with the most votes" do
+      spotlight = Work.spotlight
+      max_votes = Work.all.max_by { |a_work| a_work.votes.count }
+      expect(spotlight).must_equal max_votes
+    end
+    it "returns one work even if there is a tie" do
+      most_votes = Work.all.max_by { |work| work.votes.count }
+
+      highest_voted = Work.all.select { |a_work| a_work.votes.length == most_votes.votes.count }
+
+      expect(highest_voted.length).must_equal 2
+      expect(Work.spotlight).must_be_instance_of Work
+    end
+  end
+
+  describe "Work.get_media_categories" do
+    before do
+      @categories = Work.get_media_categories
+    end
+    it "returns an array of arrays" do
+      expect(@categories).must_be_instance_of Array
+      expect(@categories.first).must_be_instance_of Array
+      expect(@categories.last).must_be_instance_of Array
+    end
+    it "has a three categories of correct type" do
+      expect(@categories.length).must_equal 3
+      expect(@categories[0].first.category).must_equal "book"
+      expect(@categories[1].first.category).must_equal "album"
+      expect(@categories[2].first.category).must_equal "movie"
     end
   end
 end

@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  # get 'works/new'
-  # get 'works/create'
-  # get 'works/show'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root "homepages#index"
+  get "/", to: "homepages#index"
+  resources :works, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  resources :works do
+    resources :votes, only: [:create]
+  end
 
-  resources :works
-
+  post "/logout", to: "users#logout", as: "logout"
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"
-  post "/logout", to: "users#logout", as: "logout"
   get "/users/current", to: "users#current", as: "current_user"
-  get "/users", to: "users#index", as: "users"
-  get "/user/:id", to: "users#show", as: "user"
-  post "/works/:id", to: "votes#create", as: "vote"
+
+  resources :users, only: [:index, :show]
 end

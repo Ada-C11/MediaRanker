@@ -9,45 +9,16 @@
 </section>
 
 <section class="top-ten__container">
-    <section class="top-ten__list-container">
-        <h2 class="top-ten__header"> Top 10 Books </h2>
-        <ul class="list-group top-ten__list">
-        <% Work.top_ten("book").each do |book|%>
-            <li class="list-group-item">
-            <%= link_to book.title, work_path(book.id)%> by <%= book.creator %> 
-            </li>
-            <li class="list-group-item">
-            <%= book.votes.count %> Votes
-            </li>
-        <%end%>
-        </ul>
-    </section>
-
-    <section class="top-ten__list-container">
-        <h2 class="top-ten__header">Top 10 Albums </h2>
-        <ul class="list-group top-ten__list"> 
-        <% Work.top_ten("album").each do |album|%>
-            <li class="list-group-item">
-            <%= link_to album.title, work_path(album.id)%> by <%= album.creator %> 
-            </li>
-           <li class="list-group-item">
-            <%= album.votes.count %> Votes
-            </li>
-        <%end%>
-        </ul>
-    </section>
-
-    <section class="top-ten__list-container">
-        <h2 class="top-ten__header">Top 10 Movies </h2>
-        <ul class="list-group top-ten__list">
-        <% Work.top_ten("movie").each do |movie|%>
-            <li class="list-group-item">
-            <%= link_to movie.title, work_path(movie.id)%> by <%= movie.creator %> 
-            </li>
-            <li class="list-group-item">
-            <%= movie.votes.count %> Votes
-            </li>
-        <%end%>
-        </ul> 
-    </section>
+  <section class="top-ten__list-container"> 
+    <h2>Top Movies</h2>
+      <%= render "top_ten", top: @top_ten[2] %>
+  </section>
+  <section class="top-ten__list-container">
+    <h2>Top Books</h2>
+      <%= render "top_ten", top: @top_ten[1] %>
+  </section>
+  <section class="top-ten__list-container"">
+    <h2>Top Albums</h2>
+      <%= render "top_ten", top: @top_ten[0] %>
+  </section>
 </section>

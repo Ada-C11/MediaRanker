@@ -1,28 +1,38 @@
 require "test_helper"
 
 describe Vote do
-  before do
-    @user = User.first
+  describe "Validations" do
+    before do
+      @vote = Vote.new({ user_id: users.first.id, work_id: works.first.id })
+    end
 
-    @work = Work.first
-  end
-
-  describe "validations" do
     it "must be valid" do
-      vote = Vote.create(user_id: @user.id, work_id: @work.id)
+      result = @vote.valid?
 
-      value(vote).must_be :valid?
+      expect(result).must_equal true
     end
 
-    it "is invalid if another vote exists with the same user_id and work_id" do
-      vote = Vote.create(user_id: @user.id, work_id: @work.id)
+    it "is invalid without user_id" do
+      @vote.user_id = nil
 
-      vote2 = Vote.create(user_id: @user.id, work_id: @work.id)
-      expect(vote2).wont_be :valid?
+      result = @vote.valid?
+
+      expect(result).must_equal false
+    end
+
+    it "Wont validate a vote without a work_id" do
+      @vote.work_id = nil
+
+      result = @vote.valid?
+
+      expect(result).must_equal false
     end
   end
 
-  describe "relations" do
+  describe "Relations" do
+    before do
+      @vote = votes.first
+    end
     it "has a work" do
       vote = votes(:one)
       vote.work.must_equal works(:one)

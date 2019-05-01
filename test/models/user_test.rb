@@ -10,23 +10,30 @@ describe User do
       value(@user).must_be :valid?
     end
 
-    it "needs a username" do
-      @user.username = nil
-      expect(@user.valid?).must_equal false
-      expect(@user.errors.messages).must_include :name
-    end
-  end
-  describe "relations" do
-    it "has votes" do
-      user = users(:one)
-      user.votes.must_include votes(:one)
+    it "needs a name" do
+      @user.name = nil
+      result = @user.valid?
+
+      expect(result).must_equal false
     end
 
-    it "can add votes" do
-      user = User.new(name: "bubba")
-      vote = Vote.new(user_id: user.id, work_id: Work.last.id)
-      user.votes << vote
-      user.votes.must_include vote
+    it "won't allow a user with a duplicate name" do
+      @user.save
+      new_user = User.new({ name: "new user" })
+
+      result = new_user.valid?
+
+      expect(result).must_equal false
+    end
+  end
+
+  describe "relations" do
+    it "can add a vote through votes" do
+      vote = votes.first
+      @user.votes << vote
+
+      expect(@user.votes).must_include vote
+      expect(vote.user_id).must_equal @user.id
     end
   end
 end

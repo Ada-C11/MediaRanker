@@ -1,15 +1,9 @@
 require "test_helper"
 
 describe WorksController do
-  let (:work) {
-    Work.create(title: "Test Title",
-                creator: "Test Creator",
-                category: "Book",
-                description: "The story of a developer making sure her code works",
-                pub_yr: 2019)
-  }
+  let (:work) { works(:one) }
 
-  describe "root" do
+  describe "index" do
     it "can get the root path" do
       # Act
       get root_path
@@ -18,41 +12,16 @@ describe WorksController do
       must_respond_with :success
     end
 
-    it "displays the root page even if there are no works" do
-      # Arrange
-      Work.destroy_all
-
-      # Act
-      get root_path
-
-      # Assert
-      must_respond_with :success
-    end
-  end
-
-  describe "index" do
-    it "can get the index path" do
-      # Act
+    it "can get to the index path" do
       get works_path
 
-      # Assert
-      must_respond_with :success
-    end
-
-    it "displays the index even if there are no works" do
-      # Arrange
-      Work.destroy_all
-
-      # Act
-      get works_path
-
-      # Assert
       must_respond_with :success
     end
   end
 
   describe "show" do
     it "can get a valid work" do
+      works = works(:one)
       # Act
       get work_path(work.id)
 
@@ -66,7 +35,6 @@ describe WorksController do
 
       # Assert
       must_respond_with :redirect
-      expect(flash[:error]).must_equal "Could not find work with id: -1"
     end
   end
 
@@ -100,6 +68,8 @@ describe WorksController do
         post works_path, params: work_hash
       }.must_change "Work.count", 1
 
+      check_flash
+
       new_work = Work.find_by(title: work_hash[:work][:title])
 
       expect(new_work.description).must_equal work_hash[:work][:description]
@@ -109,18 +79,22 @@ describe WorksController do
       must_redirect_to work_path(new_work.id)
     end
 
-    it "doesn't create new work with data that is invalid" do
-      work_data = {
+    it "doesn't create new work without required data" do
+      work_info = {
         work: {
           title: "",
         },
       }
 
-      expect(Work.new(work_data[:work])).wont_be :valid?
+      expect(Work.new(work_info[:work])).wont_be :valid?
 
       expect {
-        post works_path, params: work_data
+        post works_path, params: work_info
       }.wont_change "Work.count"
+
+      must_respond_with :bad_request
+
+      check_flash(:warning)
     end
   end
 
@@ -138,16 +112,13 @@ describe WorksController do
       get edit_work_path(-1)
 
       # Assert
-      must_respond_with :redirect
-      expect(flash[:error]).must_equal "Could not find work with id: -1"
+      must_redirect_to works_path
     end
   end
 
   describe "update" do
-    it "can update an existing work" do
-      # Arrange
-      test_work = work
-      work_hash = {
+    let(:work_info) {
+      {
         work: {
           title: "Test Title Two",
           creator: "Test Creator Three",
@@ -156,38 +127,40 @@ describe WorksController do
           pub_yr: 2019,
         },
       }
+    }
 
-      expect {
-        patch work_path(test_work.id), params: work_hash
-      }.wont_change "Work.count"
+    it "updates the data on the model" do
+      work.assign_attributes(work_info[:work])
+      expect(work).must_be :valid?
+      work.reload
 
-      test_work.reload
-
-      expect(test_work.description).must_equal work_hash[:work][:description]
+      patch work_path(work), params: work_info
 
       must_respond_with :redirect
-      must_redirect_to work_path(test_work.id)
+      must_redirect_to work_path(work)
+
+      check_flash
+
+      work.reload
+      expect(work.title).must_equal(work_info[:work][:title])
     end
 
-    it "will redirect to the root page if given an invalid id" do
-      # Act
-      patch work_path(-1)
+    it "responds with not_found if givin an invalid id" do
+      fake_id = -1
 
-      # Assert
-      must_respond_with :redirect
-      expect(flash[:error]).must_equal "Could not find work with id: -1"
+      patch work_path(fake_id), params: work_data
 
-      must_redirect_to root_path
+      must_respond_with :not_found
     end
 
     it "does not update for bad input data" do
-      work_data = {
+      work_info = {
         work: {
           category: "",
         },
       }
 
-      patch work_path(works(:two)), params: work_data
+      patch work_path(works(:two)), params: work_info
       must_respond_with :redirect
     end
   end
