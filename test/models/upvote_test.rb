@@ -19,6 +19,10 @@ describe Upvote do
     end
 
     it "for a given user validates each record has a unique work" do
+      vote = Upvote.first
+
+      repeate_vote = Upvote.new(user_id: vote.user_id, work_id: vote.work_id)
+      expect(repeate_vote.valid?).must_equal false
     end
   end
   

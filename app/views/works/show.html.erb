@@ -18,20 +18,20 @@
   </h3>
   <table class="table">
   <% if !@work.upvotes.empty? %>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
     <% @work.upvotes.each do |vote| %>
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= vote.user.username %> </td>
-          <td><%=parse_date(vote.created_at) %> </td>
-        </tr>
-      <% end %>
-  <% end %>
+      <tr>
+        <td><%= link_to vote.user.username, user_path(vote.user_id) %> </td>
+        <td><%=parse_date(vote.created_at) %> </td>
+      </tr>
+    <% end %>
     </tbody>
+    <% end %>
   </table>
 </section>

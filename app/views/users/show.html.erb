@@ -18,7 +18,7 @@
     <% if !@user.works.empty? %>
       <% @user.works.each do |media| %>
         <tr>
-          <td><%= media.title %></td>
+          <td><%= link_to media.title, work_path(media.id) %></td>
           <td><%= media.creator%></td>
           <td><%= media.publication_year %></td>
           <td><%= media.category%></td>
