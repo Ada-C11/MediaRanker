@@ -1,13 +1,21 @@
 require "test_helper"
 
 describe WorksController do
-  it "should get index" do
-    # Action
-    get works_path
-    # Assert
-    must_respond_with :success
-  end
+  let(:work) { works(:book) }
 
+  describe "paths" do
+    it "should get homepage from root" do
+      get root_path
+
+      must_respond_with :success
+    end
+    it "should get index" do
+      # Action
+      get works_path
+      # Assert
+      must_respond_with :success
+    end
+  end
   # describe "show" do
   #   it "should be OK to show an existing, valid work" do
 

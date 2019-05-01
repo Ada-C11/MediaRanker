@@ -30,11 +30,11 @@
           </li>
         </ul>
         <ul class="nav app-header__user-nav-container">
-        <li class="nav-item app-header__nav_item">
+        <li class="nav-item">
           <%= link_to("Login", login_path) if session[:user_id].nil? %> 
            <%= link_to("Current User", current_user_path) if session[:user_id] %>
           <% if session[:user_id] %>
-          <%= link_to("Logout", logout_path, method: :post) if session[:user_id]%>
+          <%= link_to("Logout", logout_path, method: :post) if session[:user_id], class:"btn btn-primary"%>
           <% end %> 
         </li>
         </ul>

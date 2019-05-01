@@ -1,15 +1,158 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  category: movie
-  title: Mulan
-  creator: Tony Bancroft
-  publication_year: 1998
-  description: A girl saves China
+book1:
+  category: book
+  title: Children of Blood and Bone
+  creator: Tomi Adeyemi  
+  publication_year: 2018
+  description: African Harry Potter 
 
-two:
+book2:
   category: MyString
   title: MyString
   creator: MyString
   publication_year: 1
   description: MyString
+
+book3:
+  category: book
+  title: Children of Blood and Bone
+  creator: Tomi Adeyemi  
+  publication_year: 2018
+  description: African Harry Potter 
+  
+book4:
+  category: book
+  title: Children of Blood and Bone
+  creator: Tomi Adeyemi  
+  publication_year: 2018
+  description: African Harry Potter 
+
+book5:
+  category: book
+  title: Children of Blood and Bone
+  creator: Tomi Adeyemi  
+  publication_year: 2018
+  description: African Harry Potter 
+
+book6:
+  category: book
+  title: Children of Blood and Bone
+  creator: Tomi Adeyemi  
+  publication_year: 2018
+  description: African Harry Potter 
+
+book7:
+  category: book
+  title: Children of Blood and Bone
+  creator: Tomi Adeyemi  
+  publication_year: 2018
+  description: African Harry Potter 
+
+book8:
+  category: book
+  title: Children of Blood and Bone
+  creator: Tomi Adeyemi  
+  publication_year: 2018
+  description: African Harry Potter 
+
+book9:
+  category: book
+  title: Children of Blood and Bone
+  creator: Tomi Adeyemi  
+  publication_year: 2018
+  description: African Harry Potter 
+
+book10:
+  category: book
+  title: Children of Blood and Bone
+  creator: Tomi Adeyemi  
+  publication_year: 2018
+  description: African Harry Potter
+
+book11:
+  category: book
+  title: Children of Blood and Bone
+  creator: Tomi Adeyemi  
+  publication_year: 2018
+  description: African Harry Potter
+
+album1:
+  category: album
+  title: Cuz I Love You
+  creator: Lizzo  
+  publication_year: 2019
+  description: Pop
+
+album2:
+  category: album
+  title: Southerplayalisticadillacfunkymusic
+  creator: Outkast  
+  publication_year: 1996
+  description: HipHop
+
+album3:
+  category: album
+  title: ATLiens
+  creator: Outkast  
+  publication_year: 1996
+  description: HipHop
+
+album4:
+  category: album
+  title: Stankonia
+  creator: Outkast  
+  publication_year: 2000
+  description: HipHop
+
+album5:
+  category: album
+  title: Aquemini
+  creator: Outkast  
+  publication_year: 1998
+  description: HipHop
+
+album6:
+  category: album
+  title: Stankonia
+  creator: Outkast  
+  publication_year: 2000
+  description: HipHop
+
+album7:
+  category: album
+  title: Stankonia
+  creator: Outkast  
+  publication_year: 2000
+  description: HipHop
+
+album8:
+  category: album
+  title: Stankonia
+  creator: Outkast  
+  publication_year: 2000
+  description: HipHop
+
+album9:
+  category: album
+  title: Stankonia
+  creator: Outkast  
+  publication_year: 2000
+  description: HipHop
+
+album10:
+  category: album
+  title: Stankonia
+  creator: Outkast  
+  publication_year: 2000
+  description: HipHop
+
+album11:
+  category: album
+  title: Stankonia
+  creator: Outkast  
+  publication_year: 2000
+  description: HipHop
+
+
+

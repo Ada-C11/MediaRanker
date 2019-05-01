@@ -26,6 +26,27 @@ class WorksController < ApplicationController
     end
   end
 
+  def update
+    if @work.nil?
+      redirect_to works_path
+    else
+      successful = @work.update(category: "Category", title: "Title", creator: "Creator", publication_year: "Publication Year", description: "Description")
+    end
+
+    redirect_to work_path(@work.id) if successful
+  end
+
+  def create
+    @work = Work.new(category: "Category", title: "Title", creator: "Creator", publication_year: "Publication Year", description: "Description")
+    successful = @work.save
+
+    if successful
+      redirect_to work_path(work.id)
+    else
+      render :new, status: :bad_request
+    end
+  end
+
   def destroy
     work = Work.find_by(id: params[:id])
 
