@@ -1,4 +1,4 @@
-<h2>User Summary: <%= @user.username %></h2>
+<h2>User Summary: <%= @user.name %></h2>
 <p>Joined site <%= @user.created_at.strftime("%b %d, %Y") %></p>
 
 <section>
@@ -20,7 +20,7 @@
     <tr>
       <td><%= link_to vote.work.title, work_path(vote.work.id) %></td>
       <td><%= vote.work.creator %></td>
-      <td><%= vote.work.publication_year %></td>
+      <td><%= vote.work.pub_yr %></td>
       <td><%= vote.work.category %></td>
       <td><%= vote.work.created_at.strftime("%b %d, %Y") %></td>
     </tr>
