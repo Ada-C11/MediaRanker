@@ -12,8 +12,11 @@
   <% books.each do |book|%>
   
   <li><%=book.title%> by <%=book.creator%></li>
+  <p><%= book.votes.length%> votes</p>
   <%end%>
   </ul>
+
+  
   </main>
 
 </body>
