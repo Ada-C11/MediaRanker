@@ -3,7 +3,7 @@ class Work < ApplicationRecord
   has_many :users, through: :votes, dependent: :destroy
   validates :title, presence: true
 
-  def self.get_media_catagories
+  def self.get_media_categories
     books = get_media("book")
     albums = get_media("album")
     movies = get_media("movie")
@@ -16,7 +16,7 @@ class Work < ApplicationRecord
   end
 
   def self.top_media
-    top_works = get_media_catagories.map do |category|
+    top_works = get_media_categories.map do |category|
       category[0..9]
     end
     return top_works

@@ -7,8 +7,9 @@ class UsersController < ApplicationController
     user_id = params[:id]
     @user = User.find_by(id: user_id)
 
-    if !@user
+    unless @user
       head :not_found
+      return
     end
   end
 
@@ -28,7 +29,7 @@ class UsersController < ApplicationController
       flash[:success] = "Successfully logged in as new user #{username}"
     end
 
-    redirect_to current_user_path
+    redirect_to root_path
   end
 
   def current
@@ -36,22 +37,13 @@ class UsersController < ApplicationController
 
     unless @current_user
       flash[:error] = "You must be logged in to see this page"
-      redirect_to root_path
+      redirect_to login_path
     end
-  end
-
-  def self.current
-    return @current_user
   end
 
   def logout
     session[:user_id] = nil
+    flash[:message] = "Successfully logged out"
     redirect_to root_path
-  end
-
-  private
-
-  def find_user
-    @user ||= User.find_by(id: params["id"])
   end
 end

@@ -1,6 +1,8 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def index
-    @works = Work.all
+    @categories = Work.get_media_catagories
   end
 
   def new
@@ -60,6 +62,10 @@ class WorksController < ApplicationController
   end
 
   private
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
+  end
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :pub_yr, :description)
