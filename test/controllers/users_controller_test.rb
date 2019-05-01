@@ -47,7 +47,7 @@ describe UsersController do
       @user = User.first
       @login_data = {
         user: {
-          username: @user.name,
+          name: @user.name,
         },
       }
     end
@@ -64,13 +64,13 @@ describe UsersController do
     end
 
     it "will create an account for and login a new user" do
-      @login_data[:user][:username] = "new user"
+      @login_data[:user][:name] = "new user"
 
-      new_user = User.find_by(username: @login_data[:user][:username])
+      new_user = User.find_by(name: @login_data[:user][:name])
       expect(new_user).must_be_nil
 
       post login_path(@login_data)
-      new_user = User.find_by(username: @login_data[:user][:username])
+      new_user = User.find_by(name: @login_data[:user][:name])
 
       expect(new_user).must_be_instance_of User
       expect(session[:user_id]).must_equal new_user.id

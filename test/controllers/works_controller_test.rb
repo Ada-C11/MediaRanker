@@ -148,7 +148,7 @@ describe WorksController do
     it "responds with not_found if givin an invalid id" do
       fake_id = -1
 
-      patch work_path(fake_id), params: work_data
+      patch work_path(fake_id), params: work_info
 
       must_respond_with :not_found
     end
