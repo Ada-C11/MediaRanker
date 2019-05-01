@@ -26,7 +26,9 @@ class UsersController < ApplicationController
         flash[:message] = "Successfully logged in new user as #{@user.username}"
       else
         flash[:status ] = :error
-        flash[:message] = "Could not log you in"
+        @user.errors.messages.each do |k, msg| 
+          msg.each { |message| flash[:message] = "Could not log you in: #{k} #{message}" }
+        end
       end
     end
 

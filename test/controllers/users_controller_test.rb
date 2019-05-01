@@ -13,6 +13,7 @@ describe UsersController do
     it "allows a user to login " do 
       perform_login
 
+      check_flash
       must_redirect_to root_path
     end
 
@@ -29,7 +30,22 @@ describe UsersController do
       expect{
         post login_path, params: login_data
       }.must_change "User.count", +1
+    end
 
+    it "doesn't allow a user without username" do 
+      bad_login_data = {
+        user: {
+          username: ""
+        }
+      }
+
+      expect {
+        post login_path, params: bad_login_data
+      }.wont_change "User.count"
+
+      check_flash(:error)
+      expect(session[:user_id]).must_be_nil
+      must_redirect_to root_path
     end
   end
 
