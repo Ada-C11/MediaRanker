@@ -187,7 +187,7 @@ describe WorksController do
         },
       }
 
-      patch work_path(works(:call)), params: work_data
+      patch work_path(works(:two)), params: work_data
       must_respond_with :redirect
     end
   end

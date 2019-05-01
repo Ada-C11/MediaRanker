@@ -35,13 +35,13 @@ describe Vote do
 
     it "can set the work" do
       vote = Vote.new
-      vote.work = works(:return)
+      vote.work = works(:one)
       vote.work_id.must_equal works(:one).id
     end
 
     it "can set the user" do
       vote = Vote.new
-      vote.user = users(:bender)
+      vote.user = users(:one)
       vote.user_id.must_equal users(:one).id
     end
   end

@@ -1,23 +1,29 @@
 class Work < ApplicationRecord
+  has_many :votes
+  has_many :users, through: :votes, dependent: :destroy
   validates :title, presence: true
-  validates :creator, presence: true
-  validates :category, presence: true, inclusion: { in: %w(album book movie) }
 
-  has_many :votes, dependent: :destroy
+  def self.get_media_catagories
+    books = get_media("book")
+    albums = get_media("album")
+    movies = get_media("movie")
+    return [books, albums, movies]
+  end
 
-  def self.top_ten(category)
-    works_in_category = self.where(category: category).sort_by { |work| work.votes.count }
-    if works_in_category.length > 10
-      return works_in_category.reverse.first(10)
-    else
-      return works_in_category.reverse
+  def self.get_media(media_type)
+    media = Work.where(category: media_type)
+    media.sort_by { |work| work.votes.count * -1 }
+  end
+
+  def self.top_media
+    top_works = get_media_catagories.map do |category|
+      category[0..9]
     end
+    return top_works
   end
 
   def self.spotlight
-    vote_counts = self.all.map { |work| work.votes.count }
-    max_vote_count = vote_counts.max
-    winners = Work.all.select { |work| work.votes.count == max_vote_count }
-    return winners.sample
+    spotlight = Work.all.max_by { |work| work.votes.count }
+    return spotlight
   end
 end

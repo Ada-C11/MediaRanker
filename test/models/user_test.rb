@@ -13,17 +13,17 @@ describe User do
     it "needs a username" do
       @user.username = nil
       expect(@user.valid?).must_equal false
-      expect(@user.errors.messages).must_include :username
+      expect(@user.errors.messages).must_include :name
     end
   end
   describe "relations" do
     it "has votes" do
-      user = users(:bender)
+      user = users(:one)
       user.votes.must_include votes(:one)
     end
 
     it "can add votes" do
-      user = User.new(username: "newuser")
+      user = User.new(name: "bubba")
       vote = Vote.new(user_id: user.id, work_id: Work.last.id)
       user.votes << vote
       user.votes.must_include vote
