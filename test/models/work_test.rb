@@ -81,17 +81,16 @@ describe Work do
     end
 
     it "orders media by highest vote count" do
-      aj.works.push(work, harry)
-      kim.works << work
+      aj.works << harry
+      kim.works << harry
 
       albums = Work.top_ten("album")
 
       expect(albums.length).must_equal 3
-      expect(albums.first.title).must_equal work.title
-      # one vote in a my votes fixture, two in this test
-      expect(albums.first.votes.length).must_equal 3
-      # second most voted for
-      expect(albums[1]).must_equal harry
+      expect(albums.first.title).must_equal harry.title
+      expect(albums.first.votes.length).must_equal 2
+      # voted for in fixtures
+      expect(albums[1]).must_equal work
       expect(albums[1].votes.length).must_equal 1
     end
 
@@ -121,17 +120,16 @@ describe Work do
     end
 
     it "orders media by highest vote count" do
-      aj.works.push(work, harry)
-      kim.works << work
+      aj.works << harry
+      kim.works << harry
 
       albums = Work.top_voted("album")
 
       expect(albums.length).must_equal 3
-      expect(albums.first.title).must_equal work.title
-      # one vote in a my votes fixture, two in this test
-      expect(albums.first.votes.length).must_equal 3
-      # second most voted for
-      expect(albums[1]).must_equal harry
+      expect(albums.first.title).must_equal harry.title
+      expect(albums.first.votes.length).must_equal 2
+      # voted for in fixtures
+      expect(albums[1]).must_equal work
       expect(albums[1].votes.length).must_equal 1
     end
 
