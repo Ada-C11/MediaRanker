@@ -1,0 +1,46 @@
+<h1>List of Works</h1>
+
+<% albums = Work.where(category: "album")%>
+<% books = Work.where(category: "book")%>
+<% movies = Work.where(category: "movie")%>
+
+<h2>Albums</h2>
+
+<ul><% albums.each do |item| %>
+
+    <li> Votes ??
+        Title <%= link_to item.title, work_path(item.id)%>
+        Created by <%= item.creator %>
+        Published <%= item.publication_year %>
+        Upvote button (coming soon, hopefully)
+    </li>
+
+    <% end %>
+</ul>
+
+<h2>Books</h2>
+<ul><% books.each do |item| %>
+
+    <li> Votes ??
+        Title <%= link_to item.title, work_path(item.id)%>
+        Created by <%= item.creator %>
+        Published <%= item.publication_year %>
+        Upvote button (coming soon, hopefully)
+    </li>
+    
+    <% end %>
+</ul>
+
+<h2>Movies</h2>
+<ul><% movies.each do |item| %>
+
+    <li> Votes ??
+        Title <%= link_to item.title, work_path(item.id)%>
+        Created by <%= item.creator %>
+        Published <%= item.publication_year %>
+        Upvote button (coming soon, hopefully)
+    </li>
+    
+    <% end %>
+</ul>
+

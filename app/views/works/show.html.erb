@@ -1,0 +1,17 @@
+<h1> <%= @work.title %> </h1>
+
+<p>Created by: <%= @work.creator%> </p>
+<p>Published: <%= @work.publication_year %></p>
+<p> <%= @work.description %> </p>
+
+<div class = "btn btn-normal">
+<%=link_to "Edit", edit_work_path(@work.id) %>
+<%= link_to "Back to media ranks", root_path %>
+<p>upvote button will go here</p>
+<%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>
+</div>
+
+
+<h2>?? Votes for this <% @work.category %> </h2>
+
+<p>Table of users who voted for this work will go here.</p>

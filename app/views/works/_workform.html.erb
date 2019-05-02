@@ -1,0 +1,22 @@
+<%= form_with model: @work, class: "forms" do |field|%>
+<%= field.label :Category%>
+<%= field.select :category, {
+    album: "album",
+    book: "book",
+    movie: "movie",
+    } %>
+
+    <%= field.label :Title%>
+    <%= field.text_field :title%>
+
+    <%= field.label :Creator%>
+    <%= field.text_field :creator%>
+
+    <%= field.label :Publication_Year%>
+    <%= field.text_field :publication_year%>
+
+    <%= field.label :Description%>
+    <%= field.text_area :description%>
+
+    <%= field.submit action_name, class: "btn btn-primary" %>
+<%end%>

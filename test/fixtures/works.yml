@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+readyplayerone:
+  title: Ready Player One
+  creator: Earnest Kline
+  publication_year: 2011
+  description: Ready Player One is a 2011 science fiction novel, and the debut novel of American author Ernest Cline. The story, set in a dystopia in 2044, follows protagonist Wade Watts on his search for an Easter egg in a worldwide virtual reality game, the discovery of which will lead him to inherit the game creator's fortune.
+  category: book
+
+endersgame:
+  title: Ender's Game
+  creator: Some Christian Guy
+  publication_year: 1111
+  description: Great book, child manipulated into destroying an alien race thinking it's a video game. Kinda tragic. The rest of the series rocks.
+  category: book
+
+
