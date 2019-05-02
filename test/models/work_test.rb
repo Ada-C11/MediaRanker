@@ -28,15 +28,6 @@ describe Work do
       expect(valid).must_equal false
       expect(other_work.errors.messages).must_include :title
     end
-
-    it "can have the same title for different categories" do
-      other_work = Work.new title: work.title, category: "album"
-      other_work.save
-
-      valid = other_work.valid?
-
-      expect(valid).must_equal true
-    end
   end
 
   describe "Relationships" do

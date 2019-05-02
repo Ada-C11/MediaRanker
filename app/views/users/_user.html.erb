@@ -1,5 +1,5 @@
-<h2>User Summary: <%= @current_user.name %></h2>
-<p>Joined site <%= @current_user.created_at.strftime("%b %d, %Y") %></p>
+<h2>User Summary: <%= @user.name %></h2>
+<p>Joined site <%= @user.created_at.strftime("%b %d, %Y") %></p>
 
 <section>
   <h3>Votes</h3>
@@ -16,7 +16,7 @@
 
 
   <tbody>
-  <% @current_user.votes.each do |vote| %>
+  <% @user.votes.each do |vote| %>
     <tr>
       <td><%= link_to vote.work.title, work_path(vote.work.id) %></td>
       <td><%= vote.work.creator %></td>

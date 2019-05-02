@@ -18,3 +18,10 @@ three:
   creator: Solange
   pub_yr: 2016
   description: beautiful rage
+
+four:
+  category: books
+  title: my spiritual journey
+  creator: dalai lama
+  pub_yr: 2010
+  description: nicest man on earth

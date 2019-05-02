@@ -18,6 +18,7 @@ describe User do
     end
 
     it "won't allow a user with a duplicate name" do
+      @user.name = "new user"
       @user.save
       new_user = User.new({ name: "new user" })
 

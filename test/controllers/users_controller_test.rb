@@ -90,7 +90,6 @@ describe UsersController do
       get current_user_path
 
       expect(flash[:status]).must_equal :warning
-      expect(flash[:message]).must_equal "You must be logged in to do this"
       must_redirect_to login_path
     end
   end
