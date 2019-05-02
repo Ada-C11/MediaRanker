@@ -47,4 +47,23 @@ class UsersController < ApplicationController
     flash[:notice] = "Logged out #{user.username}"
     redirect_to root_path
   end
+
+  def upvote
+    @work = Work.find_by(id params[id])
+    @user = User.find_by(id: session[:user_id])
+    if user.nil?
+      flash[:error] = "You must be logged in to vote!"
+      redirect_to login_path
+    end
+
+    user_votes = @user.votes
+    voting = user_votes.where(work_id: @work.id).present?
+
+    if voting
+      flash[:error] = "Can't vot for the same work twice :("
+      redirect_to works_path
+    else
+      @user_votes.create!(work_id: @work.id)
+    end
+  end
 end

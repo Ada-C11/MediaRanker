@@ -16,7 +16,15 @@ class WorksController < ApplicationController
   end
 
   def new
-    @work = Work.new(category: "Category", title: "Title", creator: "Creator", publication_year: "Publication Year", description: "Description")
+    @work = Work.new
+
+    user_id = session[:user_id]
+
+    if user_id.nil?
+      flash[:error] = "Must be logged in to view page."
+    else
+      head :success
+    end
   end
 
   def edit
@@ -31,18 +39,19 @@ class WorksController < ApplicationController
     if @work.nil?
       redirect_to works_path
     else
-      successful = @work.update(category: "Category", title: "Title", creator: "Creator", publication_year: "Publication Year", description: "Description")
+      successful = @work.update(work_params)
     end
 
     redirect_to work_path(@work.id) if successful
   end
 
   def create
-    @work = Work.new(category: "Category", title: "Title", creator: "Creator", publication_year: "Publication Year", description: "Description")
+    @work = Work.new(work_params)
     successful = @work.save
 
     if successful
-      redirect_to work_path(@work.id)
+      flash[:status] = :success
+      redirect_to works_path
     else
       render :new, status: :bad_request
     end
@@ -58,4 +67,10 @@ class WorksController < ApplicationController
       redirect_to works_path
     end
   end
+end
+
+private
+
+def work_params
+  params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
 end

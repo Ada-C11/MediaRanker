@@ -30,7 +30,7 @@ describe WorksController do
   end
 
   describe "new" do
-    it "should get new" do
+    it "new" do
       get new_work_path
 
       must_respond_with :success
@@ -38,38 +38,26 @@ describe WorksController do
   end
 
   describe "create" do
-    it "will save a new book and redirect if given valid inputs" do
+    it "creates a new work" do
 
       # Arrange
-      input_category = "book"
-      input_title = "Practical Object Oriented Programming in Ruby"
-      input_creator = "Sandi Metz"
-      input_publication_year = 2012
-      input_description = "A look at how to design object-oriented systems"
-      test_input = {
+      work_data = {
         work: {
-          category: input_category,
-          title: input_title,
-          creator: input_creator,
-          publication_year: input_publication_year,
-          description: input_description,
+          category: "book",
+          title: "Between the World and Me",
+          creator: "Ta-Nehisi Coates",
+          publication_year: 2015,
+          description: "Letter to the author's teenage son.",
         },
       }
-
       # Act
       expect {
-        post works_path, params: test_input
+        post works_path, params: work_data
       }.must_change "Work.count", 1
 
       # Assert
-      new_work = Work.find_by(title: input_title)
-      binding.pry
-      expect(new_work).wont_be_nil
-      expect(new_work.title).must_equal input_title
-      expect(new_book.creator).must_equal input_creator
-      expect(new_book.description).must_equal input_description
-
       must_respond_with :redirect
+      must_redirect_to works_path
     end
   end
   describe "destroy" do
