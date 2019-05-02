@@ -4,15 +4,14 @@ class Work < ApplicationRecord
   validates :title, presence: true
 
   def self.get_media_categories
-    books = get_media("book")
-    albums = get_media("album")
-    movies = get_media("movie")
+    books = self.get_media("books")
+    albums = self.get_media("albums")
+    movies = self.get_media("movies")
     return [books, albums, movies]
   end
 
   def self.get_media(media_type)
     media = Work.where(category: media_type)
-    media.sort_by { |work| work.votes.count * -1 }
   end
 
   # return top ten works

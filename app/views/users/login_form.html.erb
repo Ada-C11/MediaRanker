@@ -1,6 +1,7 @@
 <h1>User Log In</h1>
 
-<% form_with model: @user, url: login_path do |f| %>
+<%# Refactored to user local user/avoid user and current user conflicts %>
+<% form_with model: locals[:user], url: login_path do |f| %>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, placeholder: "Username", class:"form-control" %>

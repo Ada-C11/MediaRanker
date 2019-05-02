@@ -28,6 +28,9 @@ describe User do
   end
 
   describe "relations" do
+    before do
+      @user = User.first
+    end
     it "can add a vote through votes" do
       vote = votes.first
       @user.votes << vote

@@ -82,12 +82,12 @@ describe Work do
     it "returns an empty array if there are no works" do
       Work.all.each { |a_work| a_work.destroy }
 
-      expect(Work.get_media("book")).must_equal []
+      expect(Work.get_media("books")).must_equal []
     end
     it "returns works from the proper category" do
-      books = Work.get_media("book")
+      books = Work.get_media("books")
 
-      expect(books.first.category).must_equal "book"
+      expect(books.first.category).must_equal "books"
     end
   end
   describe "self.spotlight" do
@@ -120,16 +120,12 @@ describe Work do
     before do
       @categories = Work.get_media_categories
     end
-    it "returns an array of arrays" do
-      expect(@categories).must_be_instance_of Array
-      expect(@categories.first).must_be_instance_of Array
-      expect(@categories.last).must_be_instance_of Array
-    end
+
     it "has a three categories of correct type" do
       expect(@categories.length).must_equal 3
-      expect(@categories[0].first.category).must_equal "book"
-      expect(@categories[1].first.category).must_equal "album"
-      expect(@categories[2].first.category).must_equal "movie"
+      expect(@categories[0].first.category).must_equal "books"
+      expect(@categories[1].first.category).must_equal "albums"
+      expect(@categories[2].first.category).must_equal "movies"
     end
   end
 end

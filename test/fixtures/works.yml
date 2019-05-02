@@ -11,3 +11,10 @@ two:
   creator: Russo bros
   pub_yr: 2018
   description: great
+
+three:
+  category: albums
+  title: A Seat at the Table
+  creator: Solange
+  pub_yr: 2016
+  description: beautiful rage

@@ -26,10 +26,9 @@ class ActiveSupport::TestCase
   def perform_login(user = nil)
     user ||= User.first
 
-    user = User.first
     login_data = {
       user: {
-        username: user.name,
+        name: user.name,
       },
     }
     post login_path, params: login_data
