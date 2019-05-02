@@ -19,12 +19,6 @@ class WorksController < ApplicationController
     @work = Work.new
 
     user_id = session[:user_id]
-
-    if user_id.nil?
-      flash[:error] = "Must be logged in to view page."
-    else
-      head :success
-    end
   end
 
   def edit
