@@ -7,14 +7,14 @@
 one:
   value: 1
   work: :one
-  user: :bubba
+  user: :one
 
 two:
   value: 2
   work: :two
-  user: :gump
+  user: :two
 
 three:
   value: 3
-  user: :gump
+  user: :two
 

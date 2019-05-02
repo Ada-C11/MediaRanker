@@ -141,8 +141,6 @@ describe WorksController do
       must_respond_with :redirect
       must_redirect_to work_path(work)
 
-      check_flash
-
       work.reload
       expect(work.title).must_equal(work_info[:work][:title])
     end

@@ -33,6 +33,7 @@ describe Vote do
     before do
       @vote = votes.first
     end
+
     it "has a work" do
       vote = votes(:one)
       vote.work.must_equal works(:one)
