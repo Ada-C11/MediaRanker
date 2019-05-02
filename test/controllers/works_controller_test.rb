@@ -21,7 +21,7 @@ describe WorksController do
 
   describe "show" do
     it "can get a valid work" do
-      works = works(:one)
+      work = works(:one)
       # Act
       get work_path(work.id)
 
@@ -31,7 +31,8 @@ describe WorksController do
 
     it "will redirect for an invalid work" do
       # Act
-      get work_path(-1)
+      work_id = "fake"
+      get work_path(work_id)
 
       # Assert
       must_respond_with :redirect
@@ -109,10 +110,11 @@ describe WorksController do
 
     it "will respond with redirect when attempting to edit a work that doesn't exist" do
       # Act
-      get edit_work_path(-1)
+      work_id = "fake"
+      get edit_work_path(work_id)
 
       # Assert
-      must_redirect_to works_path
+      must_redirect_to work_path
     end
   end
 
@@ -145,12 +147,12 @@ describe WorksController do
       expect(work.title).must_equal(work_info[:work][:title])
     end
 
-    it "responds with not_found if givin an invalid id" do
-      fake_id = -1
+    it "responds with not_found if given an invalid id" do
+      work_id = "fake"
 
-      patch work_path(fake_id), params: work_info
+      patch work_path(work_id), params: work_info
 
-      must_respond_with :not_found
+      must_respond_with :redirect
     end
 
     it "does not update for bad input data" do

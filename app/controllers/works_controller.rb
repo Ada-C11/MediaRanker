@@ -35,7 +35,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     unless @work
-      redirect_to root_path, :flash => { :error => "Could not find work with id: #{params[:id]}" }
+      redirect_to work_path, :flash => { :error => "Could not find work with id: #{params[:id]}" }
     end
   end
 
