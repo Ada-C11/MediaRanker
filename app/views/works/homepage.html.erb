@@ -1,0 +1,22 @@
+<section>
+<% work = Work.all.shuffle.first %>
+<h2>
+  <span>Media Spotlight</span>
+  <%= link_to work.title, work_path(work.id) %> by <%= work.creator %> 
+</h2>
+<p>? upvotes, ? downvotes - <%= work.description %>.</p>
+</section>
+
+<section>
+  <% @works_by_category.each do |category, works| %>
+    <h2>Top <%= category.capitalize %>s</h2>
+    <ul>
+    <% works.shuffle.first(10).each do |work| %>
+      <li>
+      <h4><%= link_to work.title, work_path(work.id) %><small> by <%= work.creator %></small></h4>
+      <p>? upvotes, ? downvotes</p>
+      </li>
+  <% end %>
+  </ul>
+<% end %>
+</section>

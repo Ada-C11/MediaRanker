@@ -1,0 +1,33 @@
+<h1>Edit Work</h1>
+<%= link_to 'Back to all work', works_path %>
+<p> Please fill out this form to edit a work </p>
+<%= form_with model: @work do |form| %>
+<ul>
+  <div>
+    <%= form.label :category, "Category:" %>
+    <%= form.text_field :category, placeholder: "category" %>
+  </div>
+
+  <div>
+    <%= form.label :title, "title:" %>
+    <%= form.text_field :title, placeholder: "title" %>
+  </div>
+
+  <div>
+    <%= form.label :creator, "creator:" %>
+    <%= form.text_field :creator, placeholder: "creator" %>
+  </div>
+
+  <div>
+    <%= form.label :publication_year, "publication year:" %>
+    <%= form.text_field :publication_year, placeholder: "publication year" %>
+  </div>
+
+  <div>
+    <%= form.label :description, "description:" %>
+    <%= form.text_field :description, placeholder: "description" %>
+  </div>
+
+  <%= form.submit "Save" %>
+  </ul>
+<% end %>

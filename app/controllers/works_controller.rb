@@ -6,7 +6,7 @@ class WorksController < ApplicationController
   # t.string :description
 
   def index
-    @works_by_category = Work.all.group_by{ |work| work.category }
+    @works_by_category = Work.all.group_by { |work| work.category }
   end
 
   def new
@@ -24,7 +24,7 @@ class WorksController < ApplicationController
   end
 
   def edit
-      @work = Work.find(params[:id])
+    @work = Work.find(params[:id])
   end
 
   def update
@@ -37,7 +37,7 @@ class WorksController < ApplicationController
   end
 
   def show
-      @work = Work.find(params[:id])
+    @work = Work.find(params[:id])
   end
 
   def destroy
@@ -58,4 +58,23 @@ class WorksController < ApplicationController
   def upvote
   end
 
+  def homepage
+    @works_by_category = Work.all.group_by { |work| work.category }
+  end
+
+  private
+
+  def work_params
+    work_params = params.require(:work).permit(
+      :category,
+      :title,
+      :creator,
+      :publication_year,
+      :description
+    )
+    work_params[:publication_year] = Date.strptime(
+      work_params[:publication_year], "%Y"
+    )
+    return work_params
+  end
 end

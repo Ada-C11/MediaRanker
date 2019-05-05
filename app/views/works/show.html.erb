@@ -1,0 +1,9 @@
+<h1><%= @work.title %></h1>
+<p>Created by: <%= @work.creator %></p>
+<p>Published: <%= @work.publication_year.strftime('%Y') %></p>
+<p><%= @work.description %></p>
+
+<%= link_to "Edit", edit_work_path %>
+<%= link_to "Delete", work_path(@work.id) , method: :delete %>
+<%= link_to "Back to all Works", works_path %>
+<br />

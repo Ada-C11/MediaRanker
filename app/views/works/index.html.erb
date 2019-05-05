@@ -1,0 +1,22 @@
+<h1>List of Works</h1>
+<% @works_by_category.each do |category, works| %>
+<h2><%= category.capitalize %>s</h2>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+  </tr>
+  <% works.each do |work| %>
+  <tr>
+    <td><%= link_to work.title, work_path(work.id) %></td>
+    <td><%= work.creator %></td>
+    <%= puts work.publication_year %>
+    <td><%= work.publication_year.strftime('%Y') %></td>
+  </tr>
+  <% end %>
+</table>
+<% end %>
+
+<% "View top media" %>
+<%= link_to "Add a new work", new_work_path %>

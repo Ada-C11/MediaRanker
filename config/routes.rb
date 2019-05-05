@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  root "homepage#index" #set up homepage and make it the root
+  root "works#homepage", as: "home"
 
   resources :works #, except: [:destroy]
 
   resources :users
   # Why only index and new?
   # resources :books, only: [:index, :new]
-
 
   # get "/login", to: "users#login_form", as: "login"
   # post "/login", to: "users#login"
