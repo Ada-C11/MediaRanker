@@ -1,3 +1,5 @@
+require "date"
+
 class UsersController < ApplicationController
   # t.string :name
   # t.date :join_date
@@ -6,32 +8,32 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  # end
 
-  def create
-    @user = User.new(user_params)
+  # def create
+  #   @user = User.new(user_params)
 
-    if @user.save
-      redirect_to @user, notice: "User was successfully created."
-    else
-      render :new
-    end
-  end
+  #   if @user.save
+  #     redirect_to @user, notice: "User was successfully created."
+  #   else
+  #     render :new
+  #   end
+  # end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+  # def edit
+  #   @user = User.find(params[:id])
+  # end
 
-  def update
-    @user = User.find(params[:id])
-    if @user.update(user_params)
-      redirect_to @user, notice: "User was successfully updated."
-    else
-      render :new
-    end
-  end
+  # def update
+  #   @user = User.find(params[:id])
+  #   if @user.update(user_params)
+  #     redirect_to @user, notice: "User was successfully updated."
+  #   else
+  #     render :new
+  #   end
+  # end
 
   def show
     @user = User.find(params[:id])
@@ -76,9 +78,13 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(
+    user_params = params.require(:user).permit(
       :name,
       :join_date
     )
+    unless user_params.key?(:join_date)
+      user_params[:join_date] = Date.today
+    end
+    return user_params
   end
 end
