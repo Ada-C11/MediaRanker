@@ -1,0 +1,22 @@
+<body>
+  <main>
+    <section class="spotlight">
+      <h2 class="spotlight__header">
+        <span class="spotlight__header--prefix">Media Spotlight</span>
+  
+      </h2>
+    </section>
+  <h2>Top Books</h2> 
+  <% books= Work.topten("book")%>
+  <ul>
+  <% books.each do |book|%>
+  
+  <li><%=book.title%> by <%=book.creator%></li>
+  <p><%= book.votes.length%> votes</p>
+  <%end%>
+  </ul>
+
+  
+  </main>
+
+</body>
