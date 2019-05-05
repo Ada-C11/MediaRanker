@@ -42,17 +42,17 @@ class UsersController < ApplicationController
   end
 
   def login
-    username = params[:user][:username]
+    name = params[:user][:name]
 
-    user = User.find_by(username: username)
+    user = User.find_by(name: name)
     unless user
-      user = User.create(username: username)
+      user = User.create(user_params)
     end
     session[:user_id] = user.id
 
-    flash[:status] = :sucess
-    flash[:message] = "Sucessfully logged in as user #{user.username}"
-    redirect_to root_path #homepage
+    flash[:status] = :success
+    flash[:message] = "Sucessfully logged in as user #{user.name}"
+    redirect_to home_path #homepage
   end
 
   def current
