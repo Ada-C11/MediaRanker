@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_04_23_061127) do
   create_table "votes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "work_id"
+    t.integer "value"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,5 +40,4 @@ ActiveRecord::Schema.define(version: 2019_04_23_061127) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 end

@@ -55,7 +55,43 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
-  def upvote
+  def vote
+    user = current_user
+
+    unless user
+      flash[:status] = :error
+      flash[:message] = "you must be logged in to vote"
+      redirect_back(fallback_location: home_path)
+      return
+    end
+
+    work_id = params[:id].to_i
+
+    unless params.key? :value
+      flash[:status] = :error
+      flash[:message] = "Please provide a valid vote value, 1 or -1"
+      redirect_back(fallback_location: work_path(work_id))
+      return
+    end
+
+    vote_params = {
+      value: params[:value].to_i,
+      work_id: work_id,
+      user_id: user.id,
+      date: Date.today,
+    }
+
+    previous_vote = Vote.where(work_id: work_id, user_id: user.id)
+
+    if previous_vote.empty?
+      puts "NO previous_vote!!!"
+      Vote.create(vote_params)
+    else
+      puts "previous_vote!?!?", previous_vote.class
+      previous_vote.update(vote_params)
+    end
+
+    redirect_back(fallback_location: work_path(work_id))
   end
 
   def homepage
@@ -63,6 +99,10 @@ class WorksController < ApplicationController
   end
 
   private
+
+  def current_user
+    User.find_by(id: session[:user_id])
+  end
 
   def work_params
     work_params = params.require(:work).permit(

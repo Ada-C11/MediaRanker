@@ -12,7 +12,9 @@
   <body>
     <header>
     <h1><%= link_to 'Media Ranker', '/' %><small>Ranking the Best of Everything</small></h1>
+    <%= link_to 'Log In', login_path %>
     </header>
+    <%= flash[:message] %>
     <%= yield %>
   </body>
 </html>

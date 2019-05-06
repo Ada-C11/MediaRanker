@@ -2,8 +2,23 @@
 <p>Created by: <%= @work.creator %></p>
 <p>Published: <%= @work.publication_year.strftime('%Y') %></p>
 <p><%= @work.description %></p>
-
+<%= link_to "Back to Media Ranks", works_path %>
 <%= link_to "Edit", edit_work_path %>
+<%= link_to "Upvote", vote_path(value: 1), method: :post %>
+<%= link_to "Downvote", vote_path(value: -1), method: :post %>
 <%= link_to "Delete", work_path(@work.id) , method: :delete %>
-<%= link_to "Back to all Works", works_path %>
-<br />
+<h2><%= @work.votes.count %> votes for this <%= @work.category %></h2>
+<table>
+  <tr>
+    <td>User</td>
+    <td>Date</td>
+    <td>Vote Type</td>
+  </tr>
+<% @work.votes.each do |vote| %>
+  <tr>
+    <td><%= link_to vote.user.name, user_path(vote.user.id) %></td>
+    <td><%= vote.date.strftime('%B %e, %Y') %></td>
+    <td><%= vote.type %></td>
+  </tr>
+<% end %>
+</table>
