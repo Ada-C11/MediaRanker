@@ -3,16 +3,22 @@
 <h2><%= category.capitalize %>s</h2>
 <table>
   <tr>
+    <th>Votes</th>
     <th>Title</th>
     <th>Created By</th>
     <th>Published</th>
+    <th>Upvote</th>
+    <th>Downvote</th>
   </tr>
-  <% works.each do |work| %>
+  <% works.sort { |work| work.votes.sum { |vote| vote.value } }.each do |work| %>
   <tr>
+    <td><%= work.votes.count %>
     <td><%= link_to work.title, work_path(work.id) %></td>
     <td><%= work.creator %></td>
     <%= puts work.publication_year %>
     <td><%= work.publication_year.strftime('%Y') %></td>
+    <td><%= link_to 'Upvote', vote_path(id: work.id, value: 1), method: :post %></td>
+    <td><%= link_to 'Downvote', vote_path(id: work.id, value: -1), method: :post %></td>
   </tr>
   <% end %>
 </table>
