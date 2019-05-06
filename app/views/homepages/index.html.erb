@@ -1,0 +1,18 @@
+<section class="media-spotlight">
+    <h2>Media Spotlight: <%= @featured.title %> by <%= @featured.creator %></h2>
+    <p><%= @featured.description %></p>
+</section>
+
+<% ["movie", "book", "album"].each do |type| %>
+    <section class="top-ten-container">
+        <h2>Top <%= type.capitalize%>s</h2>
+        <ul>
+            <% Work.top_ten(type).each do |work| %>
+                <li>
+                    <%= link_to work.title, work_path(work) %> by <%= work.creator %>
+                    <%= work.votes.length%> votes
+                </li>
+            <% end %>
+        </ul>
+    </section>
+<% end %>

@@ -1,0 +1,26 @@
+<h2><%= @work.title %></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year %></p>
+    <p><%= @work.description %></p>
+
+
+<%= link_to "Back to media ranks", root_path %>
+<%= link_to "Edit", edit_work_path(@work) %>
+<%= link_to "Upvote", upvote_path(@work), method: :post %>
+<%= link_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure?" } %>
+
+<%= link_to "Log In", login_path %>
+
+<table>
+    <h2><%= @work.votes.length %> Votes for this <%= @work.category %></h2>
+    <tr>
+        <th>User</th>
+        <th>Date</th>
+    </tr>
+    <% @work.votes.each do |vote| %>
+        <tr>
+            <td><%= vote.user.username %></td>
+            <td><%= vote.created_at %></td>
+        </tr>
+    <% end %>
+</table>
