@@ -6,7 +6,7 @@ class Work < ApplicationRecord
     selected_works = Work.where(category: category)
 
     ordered_works = selected_works.sort_by do |work|
-      work.users.length
+      work.votes.length
     end
 
     ordered_works.reverse!
@@ -20,6 +20,6 @@ class Work < ApplicationRecord
 
   def self.featured
     all_works = Work.all
-    return all_works.max_by { |work| work.users.length }
+    return all_works.max_by { |work| work.votes.length }
   end
 end
