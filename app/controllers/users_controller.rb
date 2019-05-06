@@ -37,4 +37,8 @@ class UsersController < ApplicationController
       return
     end
   end
+
+  def index
+    @users = User.all
+  end
 end
