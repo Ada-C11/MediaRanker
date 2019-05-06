@@ -52,11 +52,12 @@ class WorksController < ApplicationController
     if session[:user_id]
       current_user = User.find(session[:user_id])
 
-      if @work.users.include?(current_user)
+      vote = Vote.find_by(user_id: session[:user_id], work_id: @work.id)
+      if vote
         flash[:status] = :error
         flash[:message] = "Cannot vote more than once"
       else
-        @work.users.push(current_user)
+        Vote.create(user_id: session[:user_id], work_id: @work.id)
         flash[:status] = :success
         flash[:message] = "Successfully upvoted"
       end

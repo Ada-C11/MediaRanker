@@ -214,7 +214,7 @@ describe "WorksController" do
 
       expect {
         post upvote_path(@work)
-      }.must_change "@work.users.count", +1
+      }.must_change "@work.votes.count", +1
 
       check_flash
 
@@ -228,7 +228,7 @@ describe "WorksController" do
 
       expect {
         post upvote_path(@work)
-      }.must_change "@work.users.count", +1
+      }.must_change "@work.votes.count", +1
 
       check_flash
 

@@ -14,13 +14,7 @@ describe Work do
   end
 
   describe "relations" do
-    it "has users" do
-      hp1 = works(:hp1)
-      expect(hp1.users.length).must_equal 2
-
-      user = users(:one)
-      expect(user.works.length).must_equal 1
-    end
+    #code
   end
 
   describe "top_ten" do

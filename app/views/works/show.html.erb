@@ -12,15 +12,15 @@
 <%= link_to "Log In", login_path %>
 
 <table>
-    <h2><%= @work.users.length %> Votes for this <%= @work.category %></h2>
+    <h2><%= @work.votes.length %> Votes for this <%= @work.category %></h2>
     <tr>
         <th>User</th>
         <th>Date</th>
     </tr>
-    <% @work.users.each do |user| %>
+    <% @work.votes.each do |vote| %>
         <tr>
-            <td><%= user.username %></td>
-            <td>date</td>
+            <td><%= vote.user.username %></td>
+            <td>vote.date</td>
         </tr>
     <% end %>
 </table>

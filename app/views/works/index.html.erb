@@ -10,12 +10,12 @@
         </tr>
         <% selected_works = @works.where(category: type)%>
         <% ordered_works = selected_works.sort_by do |work| %>
-            <% work.users.length %>
+            <% work.votes.length %>
         <% end %>
         <% ordered_works.reverse! %>
         <% ordered_works.each do |work| %>
             <tr>
-                <td><%= work.users.length %></td>
+                <td><%= work.votes.length %></td>
                 <td><%= link_to work.title, work_path(work) %></td>
                 <td><%= work.creator %></td>
                 <td><%= work.publication_year %></td>
