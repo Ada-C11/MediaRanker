@@ -1,0 +1,22 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+    </tr>
+    </thead>
+  <% Work.where(category: category).each do |a| %>
+  <tbody>
+    <tr>
+        <td><%= Vote.where(work_id: a.id).count %></td>
+        <td><%= link_to a.title, work_path(a)%></td>
+        <td><%= a.creator %></td>
+        <td><%= a.publication_year%> </td>
+        <td><%= link_to 'Upvote', upvote_work_path(a), method: :post, class:"btn btn-primary"%></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
