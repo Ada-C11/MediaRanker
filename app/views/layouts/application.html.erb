@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <header class="overall-header">
+  <h1>
+  <a href="/">Media Ranker</a>
+  <a class="small">Ranking the Best of Everything</a>
+  </h1>
+  <nav class="app-header">
+  <ul class="links_pages">
+  <li class="nav-item"><a class="nav-link" href="/">View top media</a></li>
+  <li class="nav-item"><a class="nav-link" href="/works">View all media</a></li>
+  <li class="nav-item"><a class="nav-link" href="/works/new">Add a new work</a></li>
+  <li class="nav-item"><a class="nav-link" href="/users">View all users</a></li>
+  </ul>
+  <ul class="button">
+  <% if !session[:user_id]%>
+
+  <li><%=link_to "Log In", login_path, class: "btn btn-primary"%></a></li>
+  <% else %>
+  <li><%=link_to "Logged in as #{User.find(session[:user_id]).name}", user_path(session[:user_id]), method: :get, class: "btn btn-primary"%></li>
+  <li><%=link_to "Log Out", logout_path, method: :post, class: "btn btn-primary"%></li>
+  <%end%>
+  </nav>
+  </header>
+
+
+
+  <body>
+    <% if flash[:status] %>
+      <section class="alert alert-<%= flash[:status] %>">
+
+        <%= flash[:message] %>
+        <% if @errors %>
+        <ul>
+          <% @errors.messages.each do |col, prob| %>
+          <% prob.each do |problem|%>
+            <li><%= col%>: <%= problem%></li>
+          <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+      </section>
+    <% end %>
+    
+    <main>
+
+      <%= yield %>
+      
+    </main>
+  </body>
+</html>
+

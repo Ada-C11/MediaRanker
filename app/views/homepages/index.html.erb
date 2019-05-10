@@ -1,0 +1,24 @@
+
+<section class="spotlight">
+<% media = Work.all.sample%>
+    <h2 class="spotlight__header">
+        <span class="spotlight__header--prefix"> Media Spotlight </span>
+        <a class="spotlight__description"><%= link_to media.title, work_path(media.id)%> by <%= media.creator%></a>
+    </h2>
+    <p class="spotlight__description"><%= media.description%></p>
+</section>
+
+<section class="top-ten__container">
+  <section class="top-ten__list-container"> 
+    <h2>Top Movies</h2>
+      <%= render "top_ten", top: @top_ten[2] %>
+  </section>
+  <section class="top-ten__list-container">
+    <h2>Top Books</h2>
+      <%= render "top_ten", top: @top_ten[1] %>
+  </section>
+  <section class="top-ten__list-container"">
+    <h2>Top Albums</h2>
+      <%= render "top_ten", top: @top_ten[0] %>
+  </section>
+</section>

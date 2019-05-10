@@ -1,0 +1,46 @@
+<% if @work.errors.any? %>
+  <h3>Please try again:</h3>
+  <ul>
+    
+      <% @work.errors.messages.each do |k, v| %>
+        <% v.each do |msg| %>
+        <li>
+          <strong> <%= k %>:</strong> <%= msg %>
+          </li>
+        <% end %>
+      
+    </ul>
+  <%end%>
+<%end%>
+
+<%= form_with model: @work do |f| %>
+  <div class="form-group row">
+    <label>Category:</label>
+    <select class="form-control" name="work[category]">
+      <option>album</option>
+      <option>book</option>
+      <option>movie</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="field">
+    <%=f.label :creator, "Created by" %>
+    <%= f.text_field :creator, class: "form-control"  %>
+  </div>
+  <div class="field">
+    <%=f.label :pub_yr, "Publication year" %>
+    <%= f.text_field :pub_yr, class: "form-control"  %>
+  </div>
+    <div class="field">
+    <%=f.label :description, "Description" %>
+    <%= f.text_area :description, class: "form-control", rows: "2"  %>
+  </div>
+  <div class="field">
+    <%= f.submit "Create Work", class: "btn btn-primary"%>
+  </div>
+
+<% end %> 
