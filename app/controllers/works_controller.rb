@@ -17,7 +17,7 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      redirect_to @work, notice: "Work was successfully created."
+      redirect_to works_path(@work), notice: "Successfully created #{@work.category} #{@work.id}"
     else
       render :new
     end
@@ -30,7 +30,7 @@ class WorksController < ApplicationController
   def update
     @work = Work.find(params[:id])
     if @work.update(work_params)
-      redirect_to @work, notice: "Work was successfully updated."
+      redirect_to works_path(@work), notice: "Successfully updated #{@work.category} #{@work.id}"
     else
       render :new
     end
@@ -84,10 +84,8 @@ class WorksController < ApplicationController
     previous_vote = Vote.where(work_id: work_id, user_id: user.id)
 
     if previous_vote.empty?
-      puts "NO previous_vote!!!"
       Vote.create(vote_params)
     else
-      puts "previous_vote!?!?", previous_vote.class
       previous_vote.update(vote_params)
     end
 

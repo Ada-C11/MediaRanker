@@ -11,12 +11,12 @@
   <% @works_by_category.each do |category, works| %>
     <h2>Top <%= category.capitalize %>s</h2>
     <ul>
-    <% Work.all.sort { |work| work.votes.sum { |vote| vote.value } }.reverse.first(10).each do |work| %>
+    <% works.sort { |work| work.votes.sum { |vote| vote.value } }.reverse.first(10).each do |work| %>
       <li>
       <h4><%= link_to work.title, work_path(work.id) %><small> by <%= work.creator %></small></h4>
       <p><%= work.upvotes.count %> upvotes, <%= work.downvotes.count %> downvotes</p>
       </li>
+    <% end %>
+    </ul>
   <% end %>
-  </ul>
-<% end %>
 </section>
