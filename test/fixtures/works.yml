@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+holes:
+  category: book
+  title: Holes
+  creator: An Author
+  publication_year: 1995
+  description: Kids dig holes
+
+avengers:
+  category: movie
+  title: Avengers Endgame
+  creator: Disney
+  publication_year: 2019
+  description: Some people probably die
