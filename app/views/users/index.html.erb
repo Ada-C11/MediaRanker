@@ -9,7 +9,7 @@
   <tr>
     <td><%= link_to user.name, user_path(user.id) %></td>
     <td><%= user.name.capitalize %></td>
-    <%= puts user.join_date %>
+    <%= user.join_date %>
     <td><%= user.join_date.strftime('%B %e, %Y') %></td>
   </tr>
   <% end %>

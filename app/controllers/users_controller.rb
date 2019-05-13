@@ -74,7 +74,7 @@ class UsersController < ApplicationController
     flash[:status] = :success
     flash[:message] = "Sucessfully logged out"
 
-    redirect_to root_path
+    redirect_to logout_path
   end
 
   def user_params

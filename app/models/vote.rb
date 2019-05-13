@@ -5,7 +5,10 @@ class Vote < ApplicationRecord
   #     t.integer :value
   belongs_to :user
   belongs_to :work
-  #TODO: ensure value is 1 or -1
+
+  validates :user_id, presence: true
+  validates :work_id, presence: true
+  validates :value, presence: true, inclusion: { in: [1, -1], message: "%{value} is not a valid vote" }
 
   def user
     User.find(self.user_id)

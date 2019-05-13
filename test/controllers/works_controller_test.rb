@@ -21,6 +21,16 @@ describe WorksController do
     }
   }
 
+  def login
+    # create a user.
+    user = User.create(
+      name: "chantal",
+    )
+    # set user for session
+    post login_path, params: { user: { name: user.name } }
+    return user
+  end
+
   describe "index" do
     it "can get the index path" do
       get works_path
@@ -79,30 +89,46 @@ describe WorksController do
   end
 
   describe "vote" do
-    it "must be logged in to vote" do
-      #skip
+    it "casts a vote" do
+      user = login
+      # pass a value
+      value = -1
+
+      expect {
+        post vote_path(work.id), params: { value: value.to_s }
+      }.must_change "Vote.count", 1
+      # Ensure a user can vote only once.
+      expect {
+        post vote_path(work.id), params: { value: value.to_s }
+      }.wont_change "Vote.count"
+
+      vote = Vote.last
+      expect(vote.value).must_equal value
+
+      #must_redirect_to
     end
 
-    it "makes it so a user can only vote once" do
-      #skip
+    it "must be logged in to vote" do
+      expect {
+        post vote_path(work.id)
+      }.wont_change "Vote.count"
+      check_flash(:error)
+      #must_redirect_to
     end
   end
 
   describe "homepage" do
     it "displays a homepage" do
-      #skip
+      get home_path(work)
+      must_respond_with :success
     end
   end
 
   describe "current_user" do
     it "is the current user" do
-      #skip
-    end
-  end
-
-  describe "work_params" do
-    it "makes sure all params are covered" do
-      #skip
+      user = login
+      current_user = User.find_by(id: session[:user_id])
+      expect(current_user.id).must_equal user.id
     end
   end
 end
