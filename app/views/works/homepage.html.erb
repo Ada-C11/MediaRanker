@@ -1,0 +1,29 @@
+<section class="spotlight">
+<% work = Work.all.sort { |work| work.votes.sum { |vote| vote.value } }.last %>
+  <h2 class="spotlight__header">
+    <span class="spotlight__header--prefix">Media Spotlight</span>
+    <%= link_to work.title, work_path(work.id), class: "spotlight__link-to" %> by <%= work.creator %>
+  </h2>
+  <p class="spotlight__description">
+    <%= work.upvotes.count %> upvotes, <%= work.downvotes.count %> downvotes - <%= work.description %>.
+  </p>
+</section>
+
+<hr class="root__hr" />
+
+<section class="top-ten__container">
+  <% @works_by_category.each do |category, works| %>
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">Top <%= category.capitalize %>s</h2>
+    
+    <% works.sort { |work| work.votes.sum { |vote| vote.value } }.reverse.first(10).each do |work| %>
+    <ul class="list-group top-ten__list">
+      <li class="list-group-item">
+        <h4><%= link_to work.title, work_path(work.id) %><small> by <%= work.creator %></small></h4>
+        <p><%= work.upvotes.count %> upvotes, <%= work.downvotes.count %> downvotes</p>
+      </li>
+    <% end %>
+    </ul>
+  </section>
+  <% end %>
+</section>
