@@ -1,0 +1,14 @@
+<h2><%= @work.title %>
+
+<p> Created by: <%= @work.creator %> </p>
+
+<p> Published: <%= @work.publication_year %> </p>
+
+<p> <%= @work.description %> </p>
+
+<div>
+  <%= link_to "Back to media ranks", works_path, class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_work_path, class: "btn btn-primary" %>
+  <%= link_to "Upvote",works_path, class: "btn btn-primary", method: :post %>
+  <%= link_to "Delete", works_path, class: "btn btn-danger", method: :delete %>
+</div>

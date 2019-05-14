@@ -1,22 +1,24 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.all
+    @albums = Work.where(category: "album")
+    @books = Work.where(category: "book")
+    @movies = Work.where(category: "movie")
   end
 
   def show
     @work = Work.find_by(id: params[:id])
     if @work.nil?
-      flash[:failure] = "No related media found."
+      flash[:failure] = "No related media found"
       redirect_to root_path
     end
   end
 
   def new
-    @work = Works.new
+    @work = Work.new
   end
 
   def create
-    @work = Works.new(work_params)
+    @work = Work.new(work_params)
 
     is_successful = @work.save
 

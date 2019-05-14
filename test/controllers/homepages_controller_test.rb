@@ -1,6 +1,6 @@
 require "test_helper"
 
-describe HomepageController do
+describe HomepagesController do
   # it "must be a real test" do
   #   flunk "Need real tests"
   # end
