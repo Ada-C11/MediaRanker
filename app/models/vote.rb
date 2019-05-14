@@ -20,4 +20,8 @@ class Vote < ApplicationRecord
       -1 => "downvote",
     }[self.value]
   end
+
+  def work
+    Work.find(self.work_id)
+  end
 end

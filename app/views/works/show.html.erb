@@ -1,19 +1,25 @@
-<h1><%= @work.title %></h1>
+<h2><%= @work.title %></h2>
 <p>Created by: <%= @work.creator %></p>
 <p>Published: <%= @work.publication_year.strftime('%Y') %></p>
 <p><%= @work.description %></p>
-<%= link_to "Back to Media Ranks", works_path %>
-<%= link_to "Edit", edit_work_path %>
-<%= link_to "Upvote", vote_path(value: 1), method: :post %>
-<%= link_to "Downvote", vote_path(value: -1), method: :post %>
-<%= link_to "Delete", work_path(@work.id) , method: :delete %>
-<h2><%= @work.votes.count %> votes for this <%= @work.category %></h2>
-<table>
+<section>
+<%= link_to "Back to Media Ranks", works_path, class: "btn btn-primary" %>
+<%= link_to "Edit", edit_work_path, class: "btn btn-primary" %>
+<%= link_to "Upvote", vote_path(value: 1), method: :post, class: "btn btn-primary" %>
+<%= link_to "Downvote", vote_path(value: -1), method: :post, class: "btn btn-primary" %>
+<%= link_to "Delete", work_path(@work.id) , method: :delete, class: "btn btn-danger" %>
+</section>
+<section class="works-votes__container">
+<h3><%= @work.votes.count %> votes for this <%= @work.category.capitalize %></h3>
+<table class="table">
+  <thead>
   <tr>
     <td>User</td>
     <td>Date</td>
     <td>Vote Type</td>
   </tr>
+  </thead>
+  <tbody>
 <% @work.votes.each do |vote| %>
   <tr>
     <td><%= link_to vote.user.name, user_path(vote.user.id) %></td>
@@ -21,4 +27,6 @@
     <td><%= vote.type %></td>
   </tr>
 <% end %>
+  </tbody>
 </table>
+</section>
