@@ -152,7 +152,7 @@ describe Work do
 
   describe "spotlight" do
     it "must return the top voted work across all categories" do
-      # aj.works << work
+      aj.works << work
       expect(Work.spotlight).must_equal work
       expect(Work.spotlight.category).must_equal "album"
       expect(Work.spotlight.votes.length).must_equal 2
