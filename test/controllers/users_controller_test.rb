@@ -12,28 +12,28 @@ describe UsersController do
     end
   end
 
-  describe "current" do
-    it "returns 200 OK for a logged-in user" do
-      # Arrange
-      perform_login
+  # describe "current" do
+  # it "returns 200 OK for a logged-in user" do
+  #   # Arrange
+  #   perform_login
 
-      # Act
-      get current_user_path
+  #   # Act
+  #   get current_user_path
 
-      # Assert
-      must_respond_with :success
-    end
+  #   # Assert
+  #   must_respond_with :success
+  # end
 
-    it "respond with redirect if user is not logged in" do
-      # Arrange
-      # no user logged in / could log in and then log out post logout_path
-      # Act
-      get current_user_path
+  # it "respond with redirect if user is not logged in" do
+  #   # Arrange
+  #   # no user logged in / could log in and then log out post logout_path
+  #   # Act
+  #   get current_user_path
 
-      # Assert
-      must_respond_with :redirect
-    end
-  end
+  #   # Assert
+  #   must_respond_with :redirect
+  # end
+  # end
 
   describe "logout" do
     it "session id is nil after user logs out" do
