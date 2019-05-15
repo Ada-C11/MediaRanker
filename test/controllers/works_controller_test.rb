@@ -62,7 +62,7 @@ let(:work) { Work.create!(category: "movie", title: "Into the Wild") }
         post works_path, params: media_params
       }.wont_change "Work.count"
 
-      must_respond_with :not_request
+      must_respond_with :bad_request
     end
   end
 
