@@ -2,7 +2,7 @@ class WorksController < ApplicationController
   before_action :find_work, except: [:index, :new, :create]
 
   def index
-    @works = Work.all
+    @works = Work.first
   end
 
   def show
