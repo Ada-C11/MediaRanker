@@ -77,11 +77,13 @@ describe Work do
       # Arrange # this is failing why??
       Vote.delete_all
 
-      vote = Vote.new(user_id: users(:user_one), work_id: works(:work_one))
-      vote2 = Vote.new(user_id: users(:user_two), work_id: works(:work_two))
+      vote = Vote.create(user: users(:user_one), work: works(:work_one))
+      vote2 = Vote.create(user: users(:user_two), work: works(:work_two))
+
+      votes = [vote.work_id, vote2.work_id]
 
       # Act-Assert
-      expect(Work.highest_vote).must_equal works(:work_one) || works(:work_two)
+      expect(votes).must_include Work.highest_vote.id
     end
   end
 
