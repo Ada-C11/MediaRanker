@@ -74,7 +74,7 @@ describe Work do
     end
 
     it "will spotlight one work if there is a tie for most votes" do
-      # Arrange
+      # Arrange # this is failing why??
       Vote.delete_all
 
       vote = Vote.new(user_id: users(:user_one), work_id: works(:work_one))
