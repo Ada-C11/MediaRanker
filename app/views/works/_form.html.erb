@@ -1,0 +1,32 @@
+<%= form_with model: @work, class: 'work-form' do |f| %>
+
+<div>
+  <%= f.label :category %>
+  <%= f.select :category, Work.categories, {}, class: "form-control" %>
+</div>
+
+<div>
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "form-control" %>
+</div>
+
+<div>
+  <%= f.label :creator %>
+  <%= f.text_field :creator, class: "form-control" %>
+</div>
+
+<div>
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year, class: "form-control" %>
+</div>
+
+<div>
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control" %>
+</div>
+
+<div>
+  <%= f.submit button_text, class: "btn btn-success" %>
+</div>
+
+<% end %>

@@ -1,0 +1,27 @@
+<section>
+  <h2>User Summary: <%= @user.username %></h2>
+  <sub>Joined site <%= User.get_date(@user) %></sub>
+</section>
+
+<main>
+  <h3>Votes</h3>
+  <table class="table">
+    <tr>
+      <th>Media Title</th>
+      <th>Created by</th>
+      <th>Published</th>
+      <th>Category</th>
+      <th>Voted On</th>
+    </tr>
+    <% @user.votes.each do |vote| %>
+    <tr>
+      <td><%= vote.title %></td>
+      <td><%= vote.creator %></td>
+      <td><%= vote.publication_year %></td>
+      <td><%= vote.category %></td>
+      <td><%= Vote.get_date(Vote.find_by(user_id: @user.id)) %></td>
+    </tr>
+    <% end %>
+  </table>
+</main>
+

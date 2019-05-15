@@ -1,0 +1,34 @@
+<h2>List of Works</h2>
+
+<% Work.categories.each do |category| %>
+  <h3><%= category.capitalize %>s</h3>
+  <table class="table <%= category %>">
+    <thead>
+      <tr>
+        <th scope="col">Votes</th>
+        <th scope="col">Title</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Published</th>
+        <th scope="col">Upvote</th>
+      </tr>
+    </thead>
+    <% Work.entries(category).each do |work| %>
+    <tbody>
+      <tr>
+        <td><%= Work.get_num_votes(work) %> votes</td>
+        <td><%= link_to work.title, work_path(work) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td>
+          <%= button_to "Upvote", new_vote_path(work), method: :post %>
+        </td>
+      </tr>
+    </tbody>
+    <% end %>
+  </table>
+<% end %>
+
+<section class="footer-media">
+  <a href="root_path" role="button" class="btn btn-secondary">View top media</a>
+  <a href="new" role="button" class="btn btn-primary">Add a new work</a>
+</section>

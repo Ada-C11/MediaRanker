@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: book
+  title: My Side of the Mountain
+  creator: Jean Craighead George
+  publication_year: 1959
+  description: A boy, a bird and a mountain
+
+two:
+  category: movie
+  title: Princess Bride
+  creator: Rob Reiner
+  publication_year: 1987
+  description: A love story

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header>
+    <h1>
+      <%= link_to "Media Ranker", root_path %>
+      <sub>Ranking the Best of Everything</sub>
+    </h1>
+
+    <nav class="navbar navbar-light bg-light">
+      <form class="form-inline">
+          <%= link_to "View top media", root_path, class: "btn btn-link" %>
+          <%= link_to "View all media", works_path, class: "btn btn-link" %>
+          <%= link_to "Add a new work", new_work_path, class: "btn btn-link" %>
+          <%= link_to "View all users", users_path, class: "btn btn-link" %>
+      </form>
+      <div class="login">
+        <% if session[:user_id].nil? %>
+          <%=link_to "Login", login_path, class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "Logged in as #{ User.find(session[:user_id]).username }", current_user_path, class: "btn btn-primary" %>
+          <%= link_to "Log Out", logout_path, method: :post, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </nav>
+  </header>
+
+  <section class="flash">
+    <% if flash[:success] %>
+      <div class="alert alert-success" role="alert">
+        <%= flash[:success] %>
+      </div>
+    <% elsif flash[:error] %>
+      <div class="alert alert-danger" role="alert">
+        <% flash[:error] %>
+      </div>
+    <% end %>
+  </section>
+
+  <section>
+    <%= yield %>
+  </section>
+  </body>
+</html>

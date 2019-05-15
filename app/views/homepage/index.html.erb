@@ -1,0 +1,23 @@
+<section class="spotlight">
+  Media Spotlight:
+  <%= @spotlight.title %> by <%= @spotlight.creator %>
+</section>
+
+<div class="container">
+  <div class="row">
+    <% Work.categories.each do |category| %>
+    <div class="col">
+      <p class="column head">Top <%= category.capitalize %>s</p>
+      <% Work.top_ten(category).each do |work| %>
+      <span class="top ten">
+          <span class="title">
+            <%= link_to work.title, work_path(work), class: "work title" %>
+          </span>
+          by <%= work.creator %><br />
+          <%= Work.get_num_votes(work) %> votes
+      </span>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+</div>
