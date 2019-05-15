@@ -1,6 +1,6 @@
 require "test_helper"
 
-describe User do
+describe Work do
   let(:user) { users(:one) }
   let(:work) { works(:one) }
   describe "Validations" do
@@ -57,7 +57,7 @@ describe User do
         Work.top_ten("book").each do |work|
           book_votes[work.id] = work.votes.count
         end
-        expect(book_votes.to_s).must_equal "{6=>13, 5=>12, 13=>11, 11=>11, 14=>11, 7=>11, 17=>11, 16=>10, 8=>10, 12=>10}"
+        expect(book_votes.sort).must_equal [[5, 12], [6, 13], [7, 11], [8, 10], [11, 11], [12, 10], [13, 11], [14, 11], [16, 10], [17, 11]]
       end
 
       it "will return all of a given category if less than 10" do

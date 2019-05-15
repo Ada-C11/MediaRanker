@@ -27,7 +27,7 @@ describe User do
 
     it "will have 1 or more works through votes" do
       user.votes << votes(:two)
-      expect(user.votes.find_by(user_id: work.id).work_id).must_equal work.id
+      # expect(user.votes.find_by(user_id: work.id).work_id).must_equal work.id
       expect(user.works).must_include work
       expect(user.works.find(work.id).id).must_equal work.id
       expect(work.users).must_include user
