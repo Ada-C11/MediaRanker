@@ -2,8 +2,10 @@ require "test_helper"
 
 describe Work do
   let(:work) { works(:spaghetti) }
+  let(:work2) { works(:anna_karenina) }
   let(:kim) { users(:kim) }
   let(:aj) { users(:aj) }
+  let(:dee) { users(:dee) }
   let(:harry) { works(:harry_six) }
   let(:harry2) { works(:harry_two) }
 
@@ -150,16 +152,18 @@ describe Work do
 
   describe "spotlight" do
     it "must return the top voted work across all categories" do
+      aj.works << work
       expect(Work.spotlight).must_equal work
       expect(Work.spotlight.category).must_equal "album"
-      expect(Work.spotlight.votes.length).must_equal 1
+      expect(Work.spotlight.votes.length).must_equal 2
 
       aj.works << harry2
       kim.works << harry2
+      dee.works << harry2
 
       expect(Work.spotlight).must_equal harry2
       expect(Work.spotlight.category).must_equal "book"
-      expect(Work.spotlight.votes.length).must_equal 2
+      expect(Work.spotlight.votes.length).must_equal 3
     end
   end
 end
