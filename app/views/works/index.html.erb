@@ -1,0 +1,25 @@
+<h1>All Works</h1>
+
+<ul>
+  <%@works.where(category: "book").each do |work|%>
+    <li>
+      <%=link_to work.title, work_path(work[:id])%>
+    </li>
+  <%end%>
+</ul>
+
+<ul>
+  <%@works.where(category: "album").each do |work|%>
+    <li>
+      <%=link_to work.title, work_path(work[:id])%>
+    </li>
+  <%end%>
+</ul>
+
+<ul>
+  <%@works.where(category: "movie").each do |work|%>
+    <li>
+      <%=link_to work.title, work_path(work[:id])%>
+    </li>
+  <%end%>
+</ul>
