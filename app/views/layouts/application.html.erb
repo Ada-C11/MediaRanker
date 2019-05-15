@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('owl.jpg') %>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <a href="/">Media Ranker</a>
+        <small>Ranking the Best of Everything</small>
+      </h1>
+      <nav class="navbar navbar-expand-sm">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to "View top media", root_path, class: "nav-link"  %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "View all media", works_path, class: "nav-link"  %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Add a new work", new_work_path, class: "nav-link"  %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "View all users", users_path, class: "nav-link"  %>
+          </li>
+        </ul>
+        <% if session[:user_id] %>
+          <% current_user = User.find_by_id(session[:user_id])%>
+          <%= link_to "Logged in as #{current_user.username}", user_path(current_user.id), class: "nav-link btn btn-primary ml-auto"  %>
+          <%= link_to "Log Out", logout_path, method: :post, class: "nav-link btn btn-primary ml-auto"  %>
+        <% else %>
+          <%= link_to "Log In", login_path, class: "nav-link btn btn-primary ml-auto"  %>
+        <% end %>
+    </header>
+    <main>
+      <% alert_type = flash[:status] == :error ? :danger : flash[:status] %>
+      <section class="flash alert alert-<%= alert_type %>">
+        <%= flash[:message] %>
+      </section>
+      <%= yield %>
+    </main>
+  </body>
+</html>

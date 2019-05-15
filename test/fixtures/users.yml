@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+kelly:
+  username: Kelly
+
+jazzy:
+  username: Jazzy
