@@ -13,6 +13,7 @@ describe Work do
       expect(valid_work).must_equal true
     end
 
+
     it "requires a title" do
       work.title = nil
 
