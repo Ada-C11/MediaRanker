@@ -1,0 +1,44 @@
+<h2>User Summary:  <%= @user.username %></h2>
+<p>Joined Site <%=@user.created_at.strftime('%B %d, %Y')%></p>
+
+<% if (session[:user_id].to_s == params[:id]) %>
+<section class="recommendation-list">
+    <h4> Recommended for <%= @user.username %>:</h4>
+    <ol >
+        <% @user.get_recommendations[0..4].each do |work_id| %>
+            <%work = Work.find(work_id)%>
+            
+                <li><%=link_to work.title,  work_path(work_id)%>: <%=work.category%>  by <%=work.creator%></li>
+                
+            
+        <%end%>
+    </ol>
+</section>
+<%end%>
+
+<h3>Votes</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                    <th>Media Title</th>
+                    <th>Created By</th>
+                    <th>Published</th>
+                    <th>Category</th>
+                    <th>Voted On</th>
+                    <th>Vote Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @user.votes.each do |vote| %>
+                <tr>
+                    <td><%=link_to vote.work.title, work_path(vote.work.id)%></td>
+                    <td><%=vote.work.creator%></td>
+                    <td><%=vote.work.publication_year%></td>
+                    <td><%=vote.work.category.capitalize%></td>
+                    <td><%=vote.created_at.strftime('%B %d, %Y')%></td>
+                    <td><%=vote.value == -1 ? "downvote" : "upvote"%></td>
+                </tr>
+            <%end%>
+        </tbody>
+    </table>
+

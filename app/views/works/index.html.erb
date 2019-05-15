@@ -1,0 +1,62 @@
+<h2>List of Works</h2>
+
+
+<section class="media-table">
+    <h4> Books </h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="vote-column">Votes</th>
+                <th class="title-column">Title</th>
+                <th class="creator-column">Created By</th>
+                <th class="published-column">Published</th>
+                <th class="upvote-column">Upvote</th>
+                <th class="downvote-column">Downvote</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%=list_works("book")%>
+        </tbody>
+    </table>
+</section>
+
+<section class="media-table">
+    <h4> Albums </h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="vote-column">Votes</th>
+                <th class="title-column">Title</th>
+                <th class="creator-column">Created By</th>
+                <th class="published-column">Published</th>
+                <th class="upvote-column">Upvote</th>
+                <th class="downvote-column">Downvote</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%=list_works("album")%>
+        </tbody>
+    </table>
+</section>
+
+<section class="media-table">
+    <h4> Movies </h4>
+    <table class=table>
+        <thead>
+            <tr>
+                <th class="vote-column">Votes</th>
+                <th class="title-column">Title</th>
+                <th class="creator-column">Created By</th>
+                <th class="published-column">Published</th>
+                <th class="upvote-column">Upvote</th>
+                <th class="downvote-column">Downvote</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%=list_works("movie")%>
+        </tbody>
+    </table>
+</section>
+
+<%=link_to "View top media", root_path, class: "btn btn-secondary"%>
+<%=link_to "Add a new work", new_work_path, class: "btn btn-primary"%>
