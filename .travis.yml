@@ -12,3 +12,8 @@ before_script:
 
 script:
   - bin/rails test
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "YOUR ENCRYPTED API KEY"
