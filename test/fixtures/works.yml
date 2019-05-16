@@ -1,0 +1,107 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+toy_story:
+  category: movie
+  title: Toy Story
+  creator: Pixar
+  publication_year: 1995
+  description: A buddy movie about toys.  T...hanks!
+  votes_count: 10
+
+wrinkle:
+  category: book
+  title: A Wrinkle in Time
+  creator: Madeleine L'Engle
+  publication_year: 1962
+  description: A science fantasy novel!
+
+waking_ned:
+  category: movie
+  title: Waking Ned Devine
+  creator: Kirk Jones
+  publication_year: 1998
+  description: A funny movie.
+  votes_count: 4
+
+the_rising:
+  category: movie
+  title: Tiger & Bunny - The Rising
+  creator: Sunrise
+  publication_year: 2014
+  description: Super shenanigans
+  votes_count: 3
+
+mulan:
+  category: movie
+  title: Mulan
+  creator: Tony Bancroft, Barry Cook
+  publication_year: 1998
+  description: She's the only Disney Princess with a body count
+  votes_count: 10
+
+kiki:
+  category: movie
+  title: Kiki's Delivery Service
+  creator: Hayao Miyazaki
+  publication_year: 1989
+  description: brooms and cats are cool
+
+book_of_life:
+  category: movie
+  title: The Book of Life
+  creator: Jorge Gutierrez
+  publication_year: 2014
+  description: Jukebox musical with puppets
+
+pan:
+  category: movie
+  title: Pan's Labyrinth
+  creator: Guillermo del Toro
+  publication_year: 2006
+  description: NA
+
+twelve_monkeys:
+  category: movie
+  title: Twelve Monkeys
+  creator: Terry Gilliam
+  publication_year: 1995
+  description: Time travel tho
+
+star_trek_2009:
+  category: movie
+  title: Star Trek
+  creator: J.J. Abrams
+  publication_year: 2009
+  description: Made a lot of people mad
+
+the_beginning:
+  category: movie
+  title: Tiger and Bunny - The Beginning
+  creator: Sunrise
+  publication_year: 2012
+  description: How it started
+
+infinity_war:
+  category: movie
+  title: The Avengers - Infinity War
+  creator: Disney
+  publication_year: 2018
+  description: Mr. Stark I don't feel so good
+
+work_1:
+  id: 1
+  category: album
+  title: Blue Breaker
+  creator: Dr. Sarai Langosh
+  publication_year: '1949'
+  description: Et et expedita non aut quo.
+  created_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &1 2019-04-22 22:58:51.143947000 Z
+    zone: &2 !ruby/object:ActiveSupport::TimeZone
+      name: Etc/UTC
+    time: *1
+  updated_at: !ruby/object:ActiveSupport::TimeWithZone
+    utc: &3 2019-04-22 22:58:51.143947000 Z
+    zone: *2
+    time: *3
+  votes_count: 1

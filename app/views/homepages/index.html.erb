@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+  <body>
+
+<main>
+  <% unless @media_spotlight.nil? %>
+    <h2>Media Spotlight: <%= @media_spotlight.title%> by <%= @media_spotlight.creator%> </h2>
+  <% else %>
+    <h2>No Media Spotlight</h2>
+  <% end %>
+  
+  <%# MOVIES %>
+  <h2>Top Movies</h2>
+  <section>
+   <% if @top_movies.count > 0 %>
+      <ul>
+        <% @top_movies.each do |movie| %>
+          <li>
+            <%= link_to "#{movie.title}", work_path(movie.id) %> by <%= movie.creator %>
+          </li>
+        <% end %>
+       </ul>
+       <% else %>
+          No movies available.  Go pick your faves!
+       <% end %>
+  </section>
+
+  <%# BOOKS %>
+  <h2>Top Books</h2>
+  <section>
+    <% if @top_books.count > 0 %>
+      <ul>
+        <% @top_books.each do |book| %>
+          <li>
+            <%= link_to "#{book.title}", work_path(book.id) %> by <%= book.creator %>
+          </li>
+        <% end %>
+       </ul>
+    <% else %>
+      No books avaialble.  Go pick your faves!
+    <% end %>
+  </section>
+
+  <%# ALBUMS %>
+  <h2>Top Albums</h2>
+  <section>
+  <% if @top_albums.count > 0 %>
+      <ul>
+        <% @top_albums.each do |album| %>
+          <li>
+            <%= link_to "#{album.title}", work_path(album.id) %> by <%= album.creator %>
+          </li>
+        <% end %>
+       </ul>
+     <% else %>
+       No albums available.  Go pick your faves!
+     <% end %>
+  </section>
+</main>
+
+</body>
+
+</html>
