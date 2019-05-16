@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+gump:
+  category: "movie"
+  title: "Forrest Gump"
+  creator: "Tom Hanks"
+  pub_year: 1981
+  description: "Why is this movie soooo sad?"
+
+tree:
+  category: "album"
+  title: "A Tree Grows in Brooklyn"
+  creator: "Betty Smith"
+  pub_year: 1956
+  description: "A girl in the 'slums' of Williamsburg"

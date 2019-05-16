@@ -1,0 +1,19 @@
+<%= form_with model: @work do |f| %>
+  <%= f.label :category %>
+  <%= f.select(:category, @categories) %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
+
+  <%= f.label :pub_year, "Publication Year" %>
+  <%= f.text_field :pub_year %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.submit action_name, url: url_name, method: method_name %>
+<% end %>
+

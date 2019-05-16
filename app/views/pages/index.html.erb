@@ -1,0 +1,37 @@
+<body>
+
+  <header>
+    <% highlight = Work.highlight %>
+    <% unless !highlight %>
+      <h2>Media Spotlight: <%= link_to "#{highlight.title}", work_path(highlight.id) %> by <%= highlight.creator %></h2>
+      <p>
+        <%= highlight.vote_count %> votes - <%= highlight.description %>
+      </p>
+    <% end %>
+  </header>
+
+  <main>
+
+    <% @categories.each do |category|%>
+      <% top_list = Work.top_works(category) %>
+      <% unless top_list == [] %>
+        
+        <section>
+          <h3> Top <%= category.capitalize %>s </h3>
+        </section>
+
+        <ul>
+        <% top_list.each do |work| %>
+          <li>
+            <h4><%= link_to "#{work.title}", work_path(work.id) %> by <%= work.creator %></h4>
+            <p><%= work.vote_count %> votes</p>
+          </li>
+        <% end %>
+        </ul>
+        
+      <% end %>
+    <% end %>
+
+  </main>
+
+</body>

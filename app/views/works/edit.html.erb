@@ -1,0 +1,5 @@
+<h3>Edit This <%= @work.category.capitalize %></h3>
+
+<section>
+  <%= render partial: "form", locals: { action_name: "Update Work", url_name: work_path(@work.id), method_name: "patch" } %>
+</section>

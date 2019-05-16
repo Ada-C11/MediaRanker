@@ -1,0 +1,39 @@
+<body>
+
+  <main>
+    <section>
+      <h3><%= @work.title%></h3>
+      <p>Created by <%= @work.creator %></p>
+      <p>Published: <%= @work.pub_year %></p>
+      <p><%= @work.description %></p>
+    </section>
+
+    <section>
+      <%= button_to "Back to Media Ranks", root_path, method: "get" %>
+      <%= button_to "Edit", edit_work_path(@work.id), method: "get" %>
+      <%= button_to "Upvote", vote_work_path(@work.id), method: "post" %>
+      <%= button_to "Delete", work_path(@work.id), method: "delete" %>
+    </section>
+
+    <section>
+      <h3><%= @work.vote_count%> Votes for this <%= @work.category.capitalize %></h3>
+      <% if @work.vote_count > 0 %>
+        <table>
+          <tr>
+            <th>User</th>
+            <th>Date</th>
+          </tr>
+          <% @work.votes.each do |vote| %>
+            <tr>
+              <td><%= link_to "#{vote.voter_name}", user_path(vote.user_id) %></td>
+              <td><%= vote.created_date %>
+            </tr>
+          </table>
+        <% end %>
+      <% end %>
+    </section>
+
+  </main>
+
+</body>
+

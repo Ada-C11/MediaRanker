@@ -1,0 +1,28 @@
+<body>
+  
+  <header>
+    <h2>List of Users</h2>
+  </header>
+
+  <main>
+    <% if @users == [] %>
+      <p>No users in the database.</p>
+    <% else %>
+      <table>
+        <tr>
+          <th>Username</th>
+          <th>Votes</th>
+          <th>Joined</th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to "#{user.username}", user_path(user.id) %></td>
+            <td><%= user.votes.count %></td>
+            <td><%= user.created_date %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+  </main>
+
+</body>
