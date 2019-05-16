@@ -1,0 +1,27 @@
+<section> 
+  <h2> <%= @work.title %> </h2>
+  <ul>
+    <li> Category: <%= @work.category.capitalize %> </li>
+    <li> Creator: <%= @work.creator %> </li>
+    <li> Published: <%= @work.publication_year %> </li>
+    <li> Description: <%= @work.description %> </li>
+  </ul>
+</section>
+
+<section>
+  <ul>
+    <li>
+      <%= button_to "Back to Media Ranks", root_path, class: "btn btn-primary", method: :get %>
+    </li>
+    <li>
+      <%= button_to "Edit", edit_work_path(@work.id), class: "btn btn-primary", method: :get %>
+    </li>
+    <li>
+      <%= button_to "Upvote", work_votes_path(@work.id), method: :post, class: "btn btn-primary" %>
+    </li>
+    <li>
+      <%= button_to "Delete", work_path(@work.id), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"} %>
+    </li>
+  </ul>
+</section>
+

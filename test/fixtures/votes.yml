@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  work: spaghetti
+  user: kim
+
+two:
+  work: war_and_peace
+  user: dee
+
+three:
+  work: anna_karenina
+  user: dan
+
