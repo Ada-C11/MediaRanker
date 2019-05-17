@@ -1,0 +1,25 @@
+<section class="spotlight">
+<h2 class="spotlight__header"><span class="spotlight_header--prefix"> Media Spotlight</span>
+    <% if Work.most_voted %>
+    <%= link_to Work.most_voted.title, work_path(Work.most_voted.id), class: "spotlight-link" %> by <%= Work.most_voted.creator %>
+</h2>
+    <p class="spotlight__description"><%= Work.most_voted.votes.count %> votes - <%= Work.most_voted.description %></p>
+  <% end %>
+</section>
+
+<hr class="root_hr">
+<section class="top-ten_container" >
+    <% @categories.reverse.each do |category| %>
+        <section class="top-ten_list-container" >
+            <h2 class="category top-ten_header">top <%= category.name %></h2>
+            <ul class="list-group top-ten_list" >
+                <% Work.top_ten(category.name).each do |work| %>
+                <li class="list-group-item">
+                    <h4><%= link_to work.title, work_path(work) %> <small class="top-ten_creator"><%= work.creator %></small></h4>
+                    <p><%= "#{work.votes.count} votes" %></p>
+                </li>
+                <% end %>
+            </ul>
+        </section>
+    <% end %>
+</section>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Media Ranker</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="app-header_header">
+      <h1><%= link_to "Media Ranker", root_path %>
+      <small>Ranking the Best of Everything</small></h1>
+      <nav class="app-header_nav">
+        <ul class="nav app-header_site-nav-container">
+          <li class="nav-item app-header_nav_item"><%= link_to "View top media", root_path, :class =>"nav-link"  %></li>
+          <li class="nav-item app-header_nav_item"><%= link_to "View all media", works_path, :class =>"nav-link" %></li>
+          <li class="nav-item app-header_nav_item"><%= link_to "Add a new work", new_work_path, :class =>"nav-link" %></li>
+          <li class="nav-item app-header_nav_item"><%= link_to "View all users", users_path,:class =>"nav-link" %></li>
+        </ul>
+      
+        <ul class="nav app-header_user-nav-container">
+          <% if session[:user_id]%>
+            <li class="nav-item app-header_nav_item"><%= link_to "Logged in as #{User.find(session[:user_id]).username}", user_path(session[:user_id]), :class=>"btn btn-primary" %></li>
+            <li class="nav-item app-header_nav_item"><%= link_to "Log Out", logout_path(session[:user_id]), method: :post, :class=>"btn btn-primary" %></li>
+          <% else %>
+            <li class="nav-item app-header_nav_item"><%= link_to "Log In", login_path, :class=>"btn btn-primary" %></li>
+          <% end %>
+        </ul>
+      </nav>
+
+    </header>
+    <section class="alert_container">
+      <% alert_type = flash[:status] == :error ? :danger : flash[:status] %>
+        <div class="alert alert-<%= alert_type %>">
+          <%= flash[:message] %>
+        </div>
+    </section>
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

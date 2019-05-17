@@ -1,0 +1,30 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+album:
+  title: 25
+  creator: Adele
+  description:  the third studio album 
+  publication_year: 2015
+  category: album
+
+lemonade:
+  title: Lemonade
+  creator: Beyonce
+  description: sixth solo studio album 
+  publication_year: 2016
+  category: album
+
+poodr:
+  title: Practical Object Oriented Design in Ruby
+  creator: Sandi Metz
+  description: programming!
+  publication_year: 2012
+  category: book
+
+homecoming:
+  title: Homecoming
+  category: movie
+
+startrek:
+  title: Star Trek
+  category: movie
