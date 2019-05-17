@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: "this_is_miserable"
+
+two:
+  username: "so_many_tests"
+
