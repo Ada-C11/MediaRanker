@@ -1,0 +1,26 @@
+<%= form_with model:@work, class: "form_class" do |f|%>
+
+  <p class= "form-intro-text"><%= intro_text %></p>
+  <div class="form-group">
+    <%= f.label :title%>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :creator %>
+    <%= f.text_field :creator, class: "form-control"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :category %>
+    <%= f.select :category, ["Movie", "Book", "Album"], class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :publication_year %>
+    <%= f.text_field :publication_year, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
+
+    <%= f.submit "Submit", class: "btn btn-info"%>
+<% end %>

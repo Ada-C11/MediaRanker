@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <nav>
+      <!-- Brand link or heading -->
+      <div>
+        <%= link_to "Media Ranker", root_path, class: "media-ranker" %>
+        <small class="small"> Ranking the Best of Everything </small>
+      </div>
+      <div>
+          <ul>
+            <!-- items on navigation -->
+            <li>
+              <%= link_to "View Top Media", root_path %>
+            </li>
+            <li>
+              <%= link_to "View All Media", list_of_works_path %>
+            </li>
+            <li>
+              <%= link_to "Add A New Network", new_work_path %>
+            </li>
+            <li>
+              <%= link_to "View All Users", users_path %>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <%= link_to("Login", login_path, class: "btn btn-info") if session[:user_id].nil? %>
+              <% if session[:user_id] %>
+                <%= link_to "Logged In As #{(User.find_by(id: session[:user_id])).username}", user_path(User.find_by(id: session[:user_id])), class: "btn btn-info"%>
+                <%= link_to "Logout", logout_path, method: :post, class: "btn btn-info"%>
+              <% end %>
+            </li>
+          </ul>
+
+       </div> 
+    </nav>
+
+    <section class="flash">
+        
+        <% flash.each do |name, message| %>
+            <div class="alert alert-danger">
+
+          <% if message.class == Array %>
+              <ul>
+                <% message.each do |msg| %>
+                  <li><%= name %>: <%= msg %> </li>
+                <% end %>
+          <% else %>
+            <%= message %>
+          <% end %>
+              </ul>
+            </div>
+        <% end %>
+       
+      </section>
+
+    <main>
+    <%= yield %>
+    </main>
+  </body>
+</html>

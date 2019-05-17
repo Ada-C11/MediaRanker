@@ -1,0 +1,21 @@
+<section class="top-media">
+    <h2><%= top_category %></h2>
+    <ul>
+
+        <% @works = @top_works.select{|work| work.category.downcase == media }%>
+            <% if !@works.empty? %>
+                <% 10.times do |index|%>
+                    <% if @works[index] %>
+                        <li>
+                            <div>
+                                <%= link_to @works[index].title, work_path(@works[index].id) %> by <%= @works[index].creator%>
+                            </div>
+                            <%= @works[index].votes.length%> votes
+                        </li>
+                    <% else %>
+                        <% break %>
+                    <% end %>
+                <% end %>
+            <% end %>
+    </ul>
+</section>

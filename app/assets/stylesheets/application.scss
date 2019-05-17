@@ -1,0 +1,133 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+
+// ********** Style Nav
+body a {
+    color: rgb(28, 122, 113);
+    
+}
+
+li {
+    list-style: none;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    height: 15%;
+    background-color: #B2DFDB;
+}
+
+nav > div:first-child {
+    text-align: center;
+    padding: 3rem;
+}
+
+nav > div:last-child {
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: space-between;
+}
+
+nav > div:last-child ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.bnt {
+    align-self: flex-end;
+    display: inline-block;
+    margin: 2rem;
+}
+
+
+nav > div:last-child > ul li {
+    margin-right: 2rem;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.media-ranker {
+    font-size: 2.5rem;
+    border-right: 2px solid white;
+    padding-right: 1.5rem;
+
+}
+
+.small {
+    padding-left: 1.5rem;
+    font-size: 2rem;
+    color: white;
+}
+
+// ********** Style Top Media Page
+
+section {
+    padding: 1rem;
+    margin-left: 3rem;
+}
+
+.spotlight {
+    border-bottom: 1px solid rgb(219, 215, 215);
+}
+
+.top-media-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-left: 0;
+    padding-left: 0;
+    margin-right: 2rem;
+}
+
+.top-media h2 {
+    border-bottom: 1px solid rgb(219, 215, 215);
+}
+
+.top-media ul {
+    padding-left: 0;
+}
+
+.top-media a {
+    font-size: 1.4rem;
+}
+
+.top-media ul li {
+    margin-bottom: 1rem;
+}
+
+// ********** Style Top Media Page
+.list-works {
+    margin-left: 4rem;
+}
+
+// ********** Style Form - Create New Work
+
+
+.form-intro-text {
+    font-size: 2rem;
+}
+
+form {
+    margin-left: 5rem;
+    margin-right: 5rem;
+}

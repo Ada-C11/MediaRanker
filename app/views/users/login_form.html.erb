@@ -1,0 +1,8 @@
+<%= form_with model: @user, url: login_path do |f| %>
+    <p class="form-intro-text"> Log in or create an account here: </p>
+  <div class="form-group">
+    <%= f.label :username %>
+    <%= f.text_field :username, class: "form-control" %>
+  </div>
+    <%= f.submit "Login", class: "btn btn-info" %>
+<% end %>

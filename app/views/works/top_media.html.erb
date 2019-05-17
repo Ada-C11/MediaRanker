@@ -1,0 +1,25 @@
+
+<section class="spotlight">
+    <% spotlight = Work.spotlight%>
+    <% if spotlight %>
+        <h1>Spotlight: <%= link_to spotlight.title, work_path(spotlight.id) %> by <%= spotlight.creator %></h1>
+        <h5><%= spotlight.votes.count %> votes - <%= spotlight.description %></h5>
+    <% end %>
+</section>
+
+<section class="top-media-container">
+    <%= render partial: "top_media", locals: {
+        top_category: "Top Movies",
+        media: "movie",
+    }%>
+
+    <%= render partial: "top_media", locals: {
+        top_category: "Top Books",
+        media: "book",
+    }%>
+
+    <%= render partial: "top_media", locals: {
+        top_category: "Top Albums",
+        media: "album",
+    }%>
+</section>

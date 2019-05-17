@@ -1,0 +1,14 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  joined_date: 2019-04-23
+
+two:
+  username: MyString_2
+  joined_date: 2019-04-23
+
+three:
+  username: MyString_3
+  joined_date: 2019-04-23
+
