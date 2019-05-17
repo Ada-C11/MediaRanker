@@ -1,0 +1,22 @@
+<section>
+  <%= form_with model: @work, class: "form", locals: true do |f|%>
+    <div class="form-group">
+      <%= f.label :category %>
+      <%= f.select :category, ["album", "book", "movie"], {}, class: "form-control" %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+
+      <%= f.label :creator %>
+      <%= f.text_field :creator, class: "form-control" %>
+
+      <%= f.label :publication_year %>
+      <%= f.text_field :publication_year, class: "form-control" %>
+
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control" %>
+    </div>
+
+    <%= f.submit button_title, class: "work-form__submit-btn" %>
+  <% end %>
+</section>

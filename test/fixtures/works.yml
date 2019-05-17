@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+<% 11.times do |n| %>
+one_<%= n %>:
+  category: album
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+<% end %>
+
+<% 2.times do |n| %>
+two_<%= n %>:
+  category: book
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+<% end %>
