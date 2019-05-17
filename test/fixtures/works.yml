@@ -1,0 +1,36 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+kill bill:
+  category: movie
+  title: Kill Bill
+  creator: Tarantino
+  publication_year: 2004
+  description: Action
+
+paralamas:
+  category: album
+  title: Paralamas
+  creator: Paralamas
+  publication_year: 1983
+  description: pop
+
+beloved:
+  category: book
+  title: Beloved
+  creator: Toni Morrison
+  publication_year: 1983
+  description: fiction
+
+xuxa:
+  category: album
+  title: Xuxa
+  creator: Xuxa
+  publication_year: 1988
+  description: children
+
+some movie:
+  category: movie
+  title: Awesome Movie
+  creator: Studio
+  publication_year: 2015
+  description: horror

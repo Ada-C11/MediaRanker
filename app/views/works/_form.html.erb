@@ -1,0 +1,33 @@
+<%= form_with model: @work do |f| %>
+  <div class="form-group">
+    <%= f.label :category, 'Category' %>
+    <%= f.select(:category, ['book', 'movie'], {include_blank: "album"}, { :class => 'form-control' }) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :title, 'Title' %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group"> 
+    <%= f.label :creator, 'Creator' %>
+    <%=  f.text_field :creator, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :publication_year, 'Publication Year' %>
+    <%= f.text_field :publication_year, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description, 'Description' %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit button_text, class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+
+

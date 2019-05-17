@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  work_id: 980190988
+  user_id: 1
+
+two:
+  id: 33
+  work_id: 980190963
+  user_id: 3
+
+three:
+  id: 5
+  work_id: 980190963
+  user_id: 3
