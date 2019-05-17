@@ -1,0 +1,36 @@
+<main>
+  <table class="table">
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created by</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+
+    <% works.order(cached_votes_total: :desc).each do |work| %>
+    <tr>
+      <td>
+        <%= work.cached_votes_total %>
+      </td>
+
+      <td>
+        <%= link_to "#{work.title}", work_path(work.id) %>
+      </td>
+
+      <td>
+        <%= work.creator %>
+      </td>
+
+      <td>
+        <%= work.pub_year %>
+      </td>
+
+      <td> 
+        <%= link_to "Upvote", upvote_path(work.id), method: :post, class: "btn btn-primary" %> 
+      </td>
+    </tr>
+    <% end %>
+
+  </table>
+</main>

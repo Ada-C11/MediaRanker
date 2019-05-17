@@ -1,0 +1,50 @@
+<main>
+  <header>
+    <h3>User Summary: <%= @user.username %> </h3>
+    <p>Joined Site <%= @user.created_at.strftime('%b %d, %Y') %> </p>
+  </header> 
+
+  <h4>Votes</h4>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Media Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
+    </thead>
+  
+      <% if !@user.find_voted_items.empty? %>
+        <% @user.find_voted_items.each do |work| %>
+          <tr>
+            <td>
+              <%= work.title %>
+            </td>
+
+            <td>
+              <%= work.creator %>
+            </td>
+
+            <td>
+              <%= work.pub_year %>
+            </td>
+
+            <td>
+              <%= work.category %>
+            </td>
+            
+            <td>
+              <%= work.created_at.strftime('%b %d, %Y') %>
+            </td>
+          </tr>
+        <% end %>
+      <%end%>
+  </table>
+
+  <%= link_to "See all users", users_path, class: "btn btn-secondary" %>
+  <%= link_to "Back to media list", root_path, class: "btn btn-primary" %>
+
+</main>

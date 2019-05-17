@@ -1,0 +1,197 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+book:
+  title: Lost Roses
+  creator: Martha hall Kelly
+  category: book
+  cached_votes_total: 0
+  description: follows three girls during WWI.
+  pub_year: 1994
+
+book_2:
+  title: Some Title
+  creator: Some Creator
+  category: book
+  cached_votes_total: 0
+  description: Some description
+  pub_year: 1994
+
+book_3:
+  title: Cool Title
+  creator: Cool Creator
+  category: book
+  cached_votes_total: 0
+  description: Some description
+  pub_year: 1994
+
+book_4:
+  title: Hot Title
+  creator: Hot Creator
+  category: book
+  cached_votes_total: 0
+  description: Some description
+  pub_year: 1994
+
+book_5:
+  title: Fine Title
+  creator: Fine Creator
+  category: book
+  cached_votes_total: 0
+  description: Some description
+  pub_year: 1994
+
+book_6:
+  title: Fancy Title
+  creator: Fancy Creator
+  category: book
+  cached_votes_total: 0
+  description: Some description
+  pub_year: 1994
+
+book_7:
+  title: Sad Title
+  creator: Sad Creator
+  category: book
+  cached_votes_total: 0
+  description: Some description
+  pub_year: 1994
+
+book_8:
+  title: Angry Title
+  creator: Angry Creator
+  category: book
+  cached_votes_total: 0
+  description: Some description
+  pub_year: 1994
+
+book_9:
+  title: Hopeful Title
+  creator: Hopeful Creator
+  category: book
+  cached_votes_total: 0
+  description: Some description
+  pub_year: 1994
+
+book_10:
+  title: Wow Title
+  creator: Wow Creator
+  category: book
+  cached_votes_total: 0
+  description: Some description
+  pub_year: 1994
+
+book_11:
+  title: Dude Title
+  creator: Dude Creator
+  category: book
+  cached_votes_total: 0
+  description: Some description
+  pub_year: 1994
+
+
+
+album_1:
+  title: The Emancipation of Mimi
+  creator: Mariah Carey
+  category: album
+  cached_votes_total: 0
+  description: I know every lyric of every song on this album.
+  pub_year: 1995
+
+album_2:
+  title: Great Album
+  creator: Great Artist
+  category: album
+  cached_votes_total: 1
+  description: Lorem Ipsum.
+  pub_year: 1995
+
+album_3:
+  title: Nice Album
+  creator: Nice Artist
+  category: album
+  cached_votes_total: 1
+  description: Lorem Ipsum.
+  pub_year: 1995
+
+album_4:
+  title: Cool Album
+  creator: Cool Artist
+  category: album
+  cached_votes_total: 2
+  description: Lorem Ipsum.
+  pub_year: 1995
+
+album_5:
+  title: Wowza Album
+  creator: Wowza Artist
+  category: album
+  cached_votes_total: 0
+  description: Lorem Ipsum.
+  pub_year: 1995
+
+album_6:
+  title: Yep Album
+  creator: Yep Artist
+  category: album
+  cached_votes_total: 1
+  description: Lorem Ipsum.
+  pub_year: 1995
+
+album_7:
+  title: Okay Album
+  creator: Okay Artist
+  category: album
+  cached_votes_total: 0
+  description: Lorem Ipsum.
+  pub_year: 1995
+
+album_8:
+  title: Maybe Album
+  creator: Maybe Artist
+  category: album
+  cached_votes_total: 0
+  description: Lorem Ipsum.
+  pub_year: 1995
+
+album_9:
+  title: Favorite Album
+  creator: Favorite Artist
+  category: album
+  cached_votes_total: 0
+  description: Lorem Ipsum.
+  pub_year: 1995
+
+album_10:
+  title: Sweet Album
+  creator: Sweet Artist
+  category: album
+  cached_votes_total: 1
+  description: Lorem Ipsum.
+  pub_year: 1995
+
+album_11:
+  title: Finally Album
+  creator: Finally Artist
+  category: album
+  cached_votes_total: 0
+  description: Lorem Ipsum.
+  pub_year: 1995
+
+
+movie:
+  title: Good Movie
+  creator: Good director
+  category: movie
+  cached_votes_total: 0
+  description: this is a great movie.
+  pub_year: 1994
+
+movie_2:
+  title: Awesome Movie
+  creator: Awesome director
+  category: movie
+  cached_votes_total: 0
+  description: this is a awesome movie.
+  pub_year: 1994
+

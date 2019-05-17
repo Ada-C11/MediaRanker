@@ -1,0 +1,59 @@
+<main class="main">
+  <section class="spotlight">
+    <% top_work = Work.top_work %>
+    <h2 class="spotlight_header">
+      <span class="spotlight_title"> Media Spotlight: </span> 
+      <%= link_to top_work.title, work_path(top_work.id), class:"spotlight_link" %> by <%= top_work.creator %>
+    </h2>
+      <p class="spotlight_description"> <%= top_work.cached_votes_total %> votes. <%= top_work.description %> </p>
+  </section>
+
+  <hr class="spotlight-border">
+
+  <section class="top_ten_works_container">
+    <section class="top">
+      <h2 class="top_ten_header">Top Albums</h2>
+        <% albums = Work.top_ten_categories("album")%>
+        <ul class="list-group top_ten_list">
+        <% albums.each do |album|%>
+          <li class="list-group-item">
+            <h4>
+              <%= link_to album.title, work_path(album.id)%>
+              <small class="top_creator">by <%= album.creator%> </small>  
+            </h4>
+            <p> <%= album.cached_votes_total%> votes </p>
+          </li> 
+        <%end%>
+    </section>
+
+    <section class="top">
+      <h2 class="top_ten_header">Top Books</h2>
+        <% books = Work.top_ten_categories("book")%>
+        <ul class="list-group top_ten_list">
+        <% books.each do |book|%>
+          <li class="list-group-item">
+            <h4>
+              <%= link_to book.title, work_path(book.id)%>
+              <small class="top_creator"> by <%= book.creator%> </small>  
+            </h4>
+            <p> <%= book.cached_votes_total%> votes </p>
+          </li> 
+        <%end%>
+    </section>
+
+    <section class="top">
+      <h2 class="top_ten_header">Top Movies</h2>
+        <% movies = Work.top_ten_categories("movie")%>
+        <ul class="list-group top_ten_list">
+        <% movies.each do |movie|%>
+          <li class="list-group-item">
+            <h4>
+              <%= link_to movie.title, work_path(movie.id)%>
+              <small class="top_creator"> by <%= movie.creator%> </small>  
+            </h4>
+            <p> <%= movie.cached_votes_total%> votes </p>
+          </li> 
+        <%end%>
+    </section>
+  </section>
+</main>

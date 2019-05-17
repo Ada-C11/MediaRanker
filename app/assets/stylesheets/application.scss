@@ -1,0 +1,194 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+
+body, h1, h2, h3, h4, h5 {
+    font-family: "Gudea", sans-serif;
+}
+
+main {
+  padding: 2rem;
+}
+
+/* Header */
+
+.media_main_head {
+  max-width: 100%;
+  background-color: #B2DFDB;
+  margin-bottom: 0.5rem;
+  padding: 2rem 1rem 0.5rem 1rem;
+}
+
+.main-title {
+  text-align: center;
+  margin: 25px auto 40px auto;
+}
+
+.media_main_head a.logo {
+  color: #FF5722;
+  padding-right: 25px;
+  margin-right: 15px;
+  border-right: white 2px solid;
+}
+
+.media_main_head h1 small.tagline{
+  color: white;
+  padding-right: 25px;
+  margin-right: 15px;
+}
+
+/* Navigation Menu */
+
+.nav-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.login-button {
+  display: flex;
+}
+
+.nav-item {
+  margin-left: 2rem;
+  margin-top: 1rem;
+  color: #00796B;
+}
+
+/* Works Table */
+
+.table td {
+  vertical-align: middle;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+/* Alerts/Flash Messages */
+
+.alert-container {
+  margin: 2rem 0 1rem 0;
+}
+
+.alert {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+/* Top Ten Works */
+
+.spotlight {
+  padding: 0 2rem 2rem 2rem;
+}
+
+.spotlight-border {
+  margin: 0px auto 3rem auto;
+  color: #EEEEEE;
+}
+.spotlight_link {
+  border-bottom: 2px solid;
+}
+
+.spotlight_title {
+  color: #424242;
+}
+
+.top_ten_works_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+}
+
+.top_ten_header {
+  color: #26A69A;
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.top_creator {
+  color: slategrey;
+}
+
+.list-group-item{
+  border: none;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+/* General Styles */
+
+a:hover {
+  color: #00796B;
+  text-decoration: none;
+}
+
+body, h1, h2, h3, h4, h5 {
+  font-family: "Gudea", sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+a, h2, h3 {
+  color: #26A69A;
+}
+
+p {
+  display: block; 
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+section {
+  display: block;
+}
+.btn:hover {
+  background-color: #00796B;
+}
+
+.btn-primary {
+  background-color: #26A69A;
+  color: white;
+  border-color: #26A69A;
+}
+.user-link {
+  padding-right: 25px;
+}
+
+.work-votes-header {
+  color: black;
+}
