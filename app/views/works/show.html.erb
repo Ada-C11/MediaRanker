@@ -1,0 +1,57 @@
+<h2>
+  <%= @work.title %>
+</h2>
+<section>
+  <p>
+    Created by: <%= @work.creator %>
+  </p>
+  <p>
+    Published: <%= @work.publication_year %>
+  </p>
+  <p>
+    <%= @work.description %>
+  </p>
+</section>
+<section>
+  <ul>
+    <li>
+      <%= link_to "Edit", edit_work_path(@work), class: "btn btn-primary" %>
+    </li>
+    <li>
+      <%= link_to "Delete", work_path(@work), class: "btn btn-primary", method: :delete, data: { confirm: "Are you sure you want to delete this work?" } %>
+    </li>
+    <li>
+      <%= link_to "Upvote", upvote_path(@work), class: "btn btn-primary", method: :post %>
+    </li>
+  </ul>
+</section>
+<section>
+  <p>Votes:</p>
+  <ul>
+    <% @work.users.each do |user| %>
+      <li>
+        <%= user.username %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<h3><%= @work.users.count %> votes for this <%= @work.category %></h3>
+<section class="media-table">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @work.users.each do |user| %>
+        <tr>
+          <td><%= link_to user.username, user_path(user) %></td>
+          <td><%= user.created_at.to_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>

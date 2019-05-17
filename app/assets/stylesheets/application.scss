@@ -1,0 +1,93 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+
+// Font
+body {
+  font-family: 'Gudea', sans-serif;
+}
+
+// Header & Nav Bar
+header {
+  background-color: #B3DEDB;
+  padding: .25em;
+}
+
+h1 {
+  color: #FF5821;
+  text-align: center;
+  padding: 1.5em;
+  font-weight: bold;
+}
+
+h1 small::before {
+  content: "|";
+  font-size: 150%;
+}
+
+h1 small {
+  color: white;
+}
+
+nav ul{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  list-style: none;
+}
+
+// Other headings
+h2 {
+  color: #25A59A;
+}
+
+// Links
+a {
+  color: #25A59A;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #01796B;
+  text-decoration: none;
+}
+
+// Buttons
+.btn a {
+  color: white;
+}
+
+.btn-primary {
+  background-color: #25A59A;
+  border-color: #25A59A;
+}
+
+.btn-primary:hover {
+  background-color: #01796B;
+  border-color: #01796B;
+}
+
+// Spotlight Section
+.spotlight {
+  color: #424242;
+  font-weight: bold;
+}
+
+// Capitalize fist letter of category names
+.cap::first-letter {
+  text-transform: uppercase;
+}

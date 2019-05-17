@@ -1,0 +1,24 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+album:
+  category: "album"
+  title: "Album"
+  creator: "me"
+  publication_year: 2000
+  description: "Awesome album"
+book:
+  category: "book"
+  title: "Book"
+  creator: "me"
+  publication_year: 2001
+  description: "Riveting read"
+movie:
+  category: "movie"
+  title: "Movie"
+  creator: "me"
+  publication_year: 2003
+  description: "Moving movie"

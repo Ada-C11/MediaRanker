@@ -1,0 +1,33 @@
+<% categories = ["album", "book", "movie"] %>
+
+<section>
+  <h2>
+    <span class="spotlight">Media spotlight:</span>
+      <% spotlight = Work.featured %>
+      <%= link_to spotlight.title, work_path(spotlight) %>
+      by <%= spotlight.creator %>
+  </h2>
+  <p> 
+    <%= spotlight.users.count %> votes - <%= spotlight.description %>
+  </p>
+</section>
+
+<section class="row">
+  <% categories.each do |category| %>
+      <article class="col">
+      <h2 class="cap">Top <%= category %>:</h2>
+      <% category = Work.top_ten(category) %>
+      <ul>
+        <% category.each do |c| %>
+          <li>
+            <h4>
+              <%= link_to c.title, work_path(c) %>
+              <small>by <%= c.creator %></small>
+            </h4>
+            <p><%= c.users.count %> votes</p>
+          </li>
+        <% end %>
+      </ul>
+    </article>
+  <% end %>
+</section>
