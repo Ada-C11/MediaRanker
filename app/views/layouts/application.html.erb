@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Temp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+<header>
+<h1>MEDIA RANKER</h1>
+  <nav>
+  <% if flash.count > 0 %>
+  <section class="flash">
+    <div class="alert alert-danger">
+      <% flash.each do |name, message| %>
+        <%= message %>
+      <% end %>
+    </div>
+  </section>
+  <% end %>
+    <ul>
+      <li><%= link_to "View top media", works_path%></li>
+      <li><%= link_to "View all media", works_path %></li>
+      <li><%= link_to "Add a new work", new_work_path%></li>
+      <li><%= link_to "View all users", users_path%></li>
+      <li><%= link_to "login", login_path%></li>
+
+    </ul>
+  </nav>
+</header>
+    <%= yield %>
+  </body>
+</html>

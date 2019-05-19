@@ -1,0 +1,16 @@
+favemov:
+  title: Legally Blonde
+  creator: Reese Witherspoon
+  description: goes to school
+  publication_year: "1998"
+  category: movie
+  cached_votes_total: 0 
+
+redp:
+  title: Red Pie
+  creator: Devon Kub
+  description: goes to school also
+  publication_year: "1990"
+  category: book
+  cached_votes_total: 0 
+
