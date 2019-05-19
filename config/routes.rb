@@ -1,9 +1,9 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   resources :works
-  # get 'application/index'
-  # get 'users/index'
-  # get 'works/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users, only: %i[index show]
+
+  post '/upvote/:id', to: 'users#upvote', as: 'upvote'
+  get '/login', to: 'users#login_form', as: 'login'
+  post '/login', to: 'users#login'
+  post '/logout', to: 'users#logout', as: 'logout'
 end

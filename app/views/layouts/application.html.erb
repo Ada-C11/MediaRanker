@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MediaRanker</title>
+    <title>Temp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+<header>
+<h1>Welcome to Media Ranker</h1>
+  <nav>
+  <% if flash.count > 0 %>
+  <section class="flash">
+    <div class="alert alert-danger">
+      <% flash.each do |name, message| %>
+        <%= message %>
+      <% end %>
+    </div>
+  </section>
+  <% end %>
+    <ul>
+      <li><%= link_to "View Top Media", works_path%></li>
+      <li><%= link_to "View All Media", works_path %></li>
+      <li><%= link_to "Add A New Work", new_work_path%></li>
+      <li><%= link_to "View All Users", works_path%></li>
+      <li><%= link_to "Login", login_path%></li>
+
+    </ul>
+  </nav>
+</header>
     <%= yield %>
   </body>
 </html>
