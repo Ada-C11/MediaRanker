@@ -15,11 +15,11 @@
     <tbody>
     <% @user.votes.each do |vote| %>
       <tr>
-        <td><%= link_to vote.work.title, work_path(vote.work_id) %></td>
-        <td><%= vote.work.creator %></td>
-        <td><%= vote.work.publication_year.strftime('%Y') %></td>
-        <td><%= vote.work.category.capitalize %></td>
-        <td><%= vote.date %></td>
+        <td><%= link_to vote.votable.title, work_path(vote.votable_id) %></td>
+        <td><%= vote.votable.creator %></td>
+        <td><%= vote.votable.publication_year %></td>
+        <td><%= vote.votable.category.capitalize %></td>
+        <td><%= vote.created_at %></td>
       </tr>
     <% end %>
     </tbody>
@@ -27,4 +27,4 @@
 </section>
 
 <%= link_to 'See all Users', users_path, class: "btn btn-secondary" %>
-<%= link_to 'Back to Media List', home_path, class: "btn btn-primary" %>
+<%= link_to 'Back to Media List', works_path, class: "btn btn-primary" %>

@@ -19,7 +19,6 @@ class UsersController < ApplicationController
     user = User.find_by(name: name)
 
     if user
-      # user ||= User.create(user_params)
       session[:user_id] = user.id
 
       flash[:status] = :success
