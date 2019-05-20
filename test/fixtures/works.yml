@@ -1,0 +1,162 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: Movie
+  title: Jungle Book
+  creator: moglue
+  publication_year: 1991
+  description: boy fights tiger
+  id: 1
+
+two:
+  category: book
+  title: POODR
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 2
+
+
+two3:
+  category: book
+  title: POOp
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 3
+
+num3:
+  category: book
+  title: POODR3
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 4 
+
+num4:
+  category: book
+  title: POODR4
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 5 
+
+num5:
+  category: book
+  title: POODR5
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 6 
+
+num6:
+  category: book
+  title: POODR6
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 7 
+
+num7:
+  category: book
+  title: POODR7
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 8 
+
+num8:
+  category: book
+  title: POODR8
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 9 
+
+num9:
+  category: book
+  title: POODR9
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 10 
+
+num10:
+  category: book
+  title: POODR10
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 11 
+
+num11:
+  category: book
+  title: POODR11
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 12 
+
+num12:
+  category: book
+  title: POODR12
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 13 
+
+num13:
+  category: book
+  title: POODR13
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 14 
+
+num14:
+  category: book
+  title: POODR14
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 15 
+
+num15:
+  category: book
+  title: POODR15
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 16 
+
+num16:
+  category: book
+  title: POODR16
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 17 
+
+num17:
+  category: book
+  title: POODR17
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 18 
+
+num18:
+  category: book
+  title: POODR18
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 19 
+
+num19:
+  category: book
+  title: POODR19
+  creator: Metz Sandi
+  publication_year: 2011
+  description: Book on OOP
+  id: 20 

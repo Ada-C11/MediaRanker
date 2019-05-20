@@ -1,0 +1,762 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: 
+  user_id: 1
+  work_id: 1
+
+two: 
+  user_id: 2
+  work_id: 2 
+
+vote41:
+  user_id: 4
+  work_id: 9
+
+  
+vote42:
+  user_id: 4
+  work_id: 13
+
+  
+vote43:
+  user_id: 4
+  work_id: 13
+
+  
+vote44:
+  user_id: 4
+  work_id: 9
+
+  
+vote45:
+  user_id: 4
+  work_id: 6
+
+  
+vote46:
+  user_id: 4
+  work_id: 14
+
+  
+vote47:
+  user_id: 4
+  work_id: 5
+
+  
+vote48:
+  user_id: 4
+  work_id: 15
+
+  
+vote49:
+  user_id: 4
+  work_id: 10
+
+  
+vote410:
+  user_id: 4
+  work_id: 14
+
+  
+vote411:
+  user_id: 4
+  work_id: 17
+
+  
+vote412:
+  user_id: 4
+  work_id: 16
+
+  
+vote413:
+  user_id: 4
+  work_id: 17
+
+  
+vote414:
+  user_id: 4
+  work_id: 6
+
+  
+vote415:
+  user_id: 4
+  work_id: 6
+
+  
+vote416:
+  user_id: 4
+  work_id: 9
+
+  
+vote417:
+  user_id: 4
+  work_id: 11
+
+  
+vote418:
+  user_id: 4
+  work_id: 17
+
+  
+vote419:
+  user_id: 4
+  work_id: 14
+
+  
+vote420:
+  user_id: 4
+  work_id: 9
+
+  
+vote421:
+  user_id: 4
+  work_id: 8
+
+  
+vote422:
+  user_id: 4
+  work_id: 10
+
+  
+vote423:
+  user_id: 4
+  work_id: 18
+
+  
+vote424:
+  user_id: 4
+  work_id: 6
+
+  
+vote425:
+  user_id: 4
+  work_id: 6
+
+  
+vote426:
+  user_id: 4
+  work_id: 7
+
+  
+vote427:
+  user_id: 4
+  work_id: 7
+
+  
+vote428:
+  user_id: 4
+  work_id: 5
+
+  
+vote429:
+  user_id: 4
+  work_id: 17
+
+  
+vote430:
+  user_id: 4
+  work_id: 10
+
+  
+vote431:
+  user_id: 4
+  work_id: 19
+
+  
+vote432:
+  user_id: 4
+  work_id: 8
+
+  
+vote433:
+  user_id: 4
+  work_id: 5
+
+  
+vote434:
+  user_id: 4
+  work_id: 5
+
+  
+vote435:
+  user_id: 4
+  work_id: 5
+
+  
+vote436:
+  user_id: 4
+  work_id: 19
+
+  
+vote437:
+  user_id: 4
+  work_id: 16
+
+  
+vote438:
+  user_id: 4
+  work_id: 6
+
+  
+vote439:
+  user_id: 4
+  work_id: 14
+
+  
+vote440:
+  user_id: 4
+  work_id: 11
+
+  
+vote441:
+  user_id: 4
+  work_id: 7
+
+  
+vote442:
+  user_id: 4
+  work_id: 18
+
+  
+vote443:
+  user_id: 4
+  work_id: 7
+
+  
+vote444:
+  user_id: 4
+  work_id: 17
+
+  
+vote445:
+  user_id: 4
+  work_id: 13
+
+  
+vote446:
+  user_id: 4
+  work_id: 15
+
+  
+vote447:
+  user_id: 4
+  work_id: 12
+
+  
+vote448:
+  user_id: 4
+  work_id: 6
+
+  
+vote449:
+  user_id: 4
+  work_id: 13
+
+  
+vote450:
+  user_id: 4
+  work_id: 6
+
+  
+vote51:
+  user_id: 5
+  work_id: 14
+
+  
+vote52:
+  user_id: 5
+  work_id: 5
+
+  
+vote53:
+  user_id: 5
+  work_id: 7
+
+  
+vote54:
+  user_id: 5
+  work_id: 16
+
+  
+vote55:
+  user_id: 5
+  work_id: 13
+
+  
+vote56:
+  user_id: 5
+  work_id: 18
+
+  
+vote57:
+  user_id: 5
+  work_id: 15
+
+  
+vote58:
+  user_id: 5
+  work_id: 15
+
+  
+vote59:
+  user_id: 5
+  work_id: 14
+
+  
+vote510:
+  user_id: 5
+  work_id: 19
+
+  
+vote511:
+  user_id: 5
+  work_id: 7
+
+  
+vote512:
+  user_id: 5
+  work_id: 12
+
+  
+vote513:
+  user_id: 5
+  work_id: 14
+
+  
+vote514:
+  user_id: 5
+  work_id: 16
+
+  
+vote515:
+  user_id: 5
+  work_id: 15
+
+  
+vote516:
+  user_id: 5
+  work_id: 9
+
+  
+vote517:
+  user_id: 5
+  work_id: 5
+
+  
+vote518:
+  user_id: 5
+  work_id: 12
+
+  
+vote519:
+  user_id: 5
+  work_id: 7
+
+  
+vote520:
+  user_id: 5
+  work_id: 10
+
+  
+vote521:
+  user_id: 5
+  work_id: 16
+
+  
+vote522:
+  user_id: 5
+  work_id: 10
+
+  
+vote523:
+  user_id: 5
+  work_id: 12
+
+  
+vote524:
+  user_id: 5
+  work_id: 5
+
+  
+vote525:
+  user_id: 5
+  work_id: 15
+
+  
+vote526:
+  user_id: 5
+  work_id: 11
+
+  
+vote527:
+  user_id: 5
+  work_id: 11
+
+  
+vote528:
+  user_id: 5
+  work_id: 7
+
+  
+vote529:
+  user_id: 5
+  work_id: 15
+
+  
+vote530:
+  user_id: 5
+  work_id: 10
+
+  
+vote531:
+  user_id: 5
+  work_id: 18
+
+  
+vote532:
+  user_id: 5
+  work_id: 13
+
+  
+vote533:
+  user_id: 5
+  work_id: 12
+
+  
+vote534:
+  user_id: 5
+  work_id: 6
+
+  
+vote535:
+  user_id: 5
+  work_id: 18
+
+  
+vote536:
+  user_id: 5
+  work_id: 17
+
+  
+vote537:
+  user_id: 5
+  work_id: 5
+
+  
+vote538:
+  user_id: 5
+  work_id: 16
+
+  
+vote539:
+  user_id: 5
+  work_id: 8
+
+  
+vote540:
+  user_id: 5
+  work_id: 11
+
+  
+vote541:
+  user_id: 5
+  work_id: 14
+
+  
+vote542:
+  user_id: 5
+  work_id: 13
+
+  
+vote543:
+  user_id: 5
+  work_id: 15
+
+  
+vote544:
+  user_id: 5
+  work_id: 19
+
+  
+vote545:
+  user_id: 5
+  work_id: 11
+
+  
+vote546:
+  user_id: 5
+  work_id: 15
+
+  
+vote547:
+  user_id: 5
+  work_id: 11
+
+  
+vote548:
+  user_id: 5
+  work_id: 8
+
+  
+vote549:
+  user_id: 5
+  work_id: 12
+
+  
+vote550:
+  user_id: 5
+  work_id: 17
+
+  
+vote61:
+  user_id: 6
+  work_id: 13
+
+  
+vote62:
+  user_id: 6
+  work_id: 16
+
+  
+vote63:
+  user_id: 6
+  work_id: 7
+
+  
+vote64:
+  user_id: 6
+  work_id: 16
+
+  
+vote65:
+  user_id: 6
+  work_id: 17
+
+  
+vote66:
+  user_id: 6
+  work_id: 8
+
+  
+vote67:
+  user_id: 6
+  work_id: 5
+
+  
+vote68:
+  user_id: 6
+  work_id: 9
+
+  
+vote69:
+  user_id: 6
+  work_id: 12
+
+  
+vote610:
+  user_id: 6
+  work_id: 13
+
+  
+vote611:
+  user_id: 6
+  work_id: 11
+
+  
+vote612:
+  user_id: 6
+  work_id: 9
+
+  
+vote613:
+  user_id: 6
+  work_id: 17
+
+  
+vote614:
+  user_id: 6
+  work_id: 12
+
+  
+vote615:
+  user_id: 6
+  work_id: 7
+
+  
+vote616:
+  user_id: 6
+  work_id: 7
+
+  
+vote617:
+  user_id: 6
+  work_id: 19
+
+  
+vote618:
+  user_id: 6
+  work_id: 5
+
+  
+vote619:
+  user_id: 6
+  work_id: 8
+
+  
+vote620:
+  user_id: 6
+  work_id: 19
+
+  
+vote621:
+  user_id: 6
+  work_id: 8
+
+  
+vote622:
+  user_id: 6
+  work_id: 19
+
+  
+vote623:
+  user_id: 6
+  work_id: 6
+
+  
+vote624:
+  user_id: 6
+  work_id: 11
+
+  
+vote625:
+  user_id: 6
+  work_id: 18
+
+  
+vote626:
+  user_id: 6
+  work_id: 9
+
+  
+vote627:
+  user_id: 6
+  work_id: 12
+
+  
+vote628:
+  user_id: 6
+  work_id: 14
+
+  
+vote629:
+  user_id: 6
+  work_id: 10
+
+  
+vote630:
+  user_id: 6
+  work_id: 8
+
+  
+vote631:
+  user_id: 6
+  work_id: 10
+
+  
+vote632:
+  user_id: 6
+  work_id: 11
+
+  
+vote633:
+  user_id: 6
+  work_id: 17
+
+  
+vote634:
+  user_id: 6
+  work_id: 14
+
+  
+vote635:
+  user_id: 6
+  work_id: 12
+
+  
+vote636:
+  user_id: 6
+  work_id: 16
+
+  
+vote637:
+  user_id: 6
+  work_id: 6
+
+  
+vote638:
+  user_id: 6
+  work_id: 5
+
+  
+vote639:
+  user_id: 6
+  work_id: 16
+
+  
+vote640:
+  user_id: 6
+  work_id: 13
+
+  
+vote641:
+  user_id: 6
+  work_id: 8
+
+  
+vote642:
+  user_id: 6
+  work_id: 10
+
+  
+vote643:
+  user_id: 6
+  work_id: 6
+
+  
+vote644:
+  user_id: 6
+  work_id: 11
+
+  
+vote645:
+  user_id: 6
+  work_id: 8
+
+  
+vote646:
+  user_id: 6
+  work_id: 6
+
+  
+vote647:
+  user_id: 6
+  work_id: 14
+
+  
+vote648:
+  user_id: 6
+  work_id: 17
+
+  
+vote649:
+  user_id: 6
+  work_id: 13
+
+  
+vote650:
+  user_id: 6
+  work_id: 9
