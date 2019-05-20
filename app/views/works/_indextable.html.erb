@@ -1,0 +1,25 @@
+<h2><%= header_category %></h2>
+
+<table class="table list-all">
+        <thead>
+            <tr>
+                <th scope="col">Votes</th>
+                <th scope="col">Title</th>
+                <th scope="col">Created By</th>
+                <th scope="col">Published</th>
+                <th scope="col">Upvote</th>
+            </tr>
+        </thead>  
+        <tbody>
+            <tr>
+            <% works_by_category = @works.where(category: category)%>
+            <% works_by_category.each do |work| %>
+                <th scope="row"><%=work.votes.count%></th>
+                <td><%= link_to work.title, work_path(work.id) %></td>
+                <td><%=work.creator%></td>
+                <td><%=work.publication_year%></td>
+                <td><%= link_to "Upvote", upvote_path(work.id), method: :post, class:"btn btn-success" %></td>
+            </tr>
+                <% end %>
+        </tbody>
+    </table>      

@@ -1,0 +1,41 @@
+
+
+<%= form_with model: @work, class: form_class do |f| %>
+
+    <div class="form-display">
+    <%= f.label :category %>
+    </div>
+    <div class="form-display">
+    <%= f.select :category,
+        ["album", "book", "movie"]
+    %>
+    </div>
+    <div class="form-display">
+    <%= f.label :title %>
+    </div>
+    <div class="form-display">
+    <%= f.text_field :title %>
+    </div>
+    <div class="form-display">
+    <%= f.label :creator %>
+    </div>
+    <div class="form-display">
+    <%= f.text_field :creator %>
+    </div>
+    <div class="form-display">
+    <%= f.label :publication_year %>
+    </div>
+    <div class="form-display">
+    <%= f.text_field :publication_year %>
+    </div>
+    <div class="form-display">
+    <%= f.label :description %>
+    </div>
+    <div class="form-display">
+    <%= f.text_area :description %>
+    </div>
+    <div>
+    <%= f.submit action_name, class: "work-submit-btn" %>
+    </div>
+
+<% end %>

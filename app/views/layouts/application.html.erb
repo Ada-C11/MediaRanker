@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+      <%= link_to "Media Ranker", homepages_path %>
+      <small>Ranking the Best of Everything</small>
+      </h1>
+      <% if flash.count > 0 %>
+        <section class="flash">
+          <div class="alert">
+          <% flash.each do |name, message| %>
+            <% if message.class == Array %>
+              <ul>
+              <% message.each do |msg| %>
+                <li><%= name %>: <%= msg %> </li>
+              <% end %>
+            <% else %>
+              <%= message %>
+            <% end %>
+            </ul>
+            <% end %>
+            <% end %>
+          
+
+
+          </div>
+        </section>
+
+      <nav>
+
+      <%= link_to "View top media", homepages_path, class:"btn btn-secondary" %>
+      <%= link_to "View all media", works_path, class:"btn btn-secondary" %>
+      <%= link_to "Add a new work",
+            new_work_path, class:"btn btn-secondary"  %>
+      <%= link_to "View all users", users_path, class:"btn btn-secondary" %>
+      <%= link_to("Logged in as #{User.find_by(id: session[:user_id]).username}", user_path(session[:user_id]), class:"btn btn-primary") if session[:user_id]%>
+      <%= link_to("Login", login_path, class:"btn btn-primary") if session[:user_id].nil? %>
+      <%= link_to("Logout", logout_path, method: :post, class:"btn btn-primary") if session[:user_id] %>
+        
+      </nav>
+      </header>
+
+
+    <%= yield %>
+  </body>
+</html>

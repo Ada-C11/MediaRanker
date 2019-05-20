@@ -1,0 +1,23 @@
+<h1>List of Users</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Username</th>
+                <th scope="col">Votes</th>
+                <th scope="col">Joined</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <% @users.each do |user|%>
+                <th scope="row"><%= link_to user.username, user_path(user.id) %></th>
+                <td><%= user.votes.count %></td>
+                <% date = user.created_at %>
+                <td><%= date.strftime("%b %e, %Y") %></td>
+            </tr>    
+                <%end%>
+        </tbody>
+     </table>   
+        
+        

@@ -1,0 +1,92 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+album:
+  category: album
+  title: Test Album
+  creator: Artist1
+  publication_year: 2019
+  description: interesting new album
+
+book:
+  category: book
+  title: Book Test
+  creator: Author1
+  publication_year: 2018
+  description: best book of the year
+
+album2:
+  category: album
+  title: Test Album2
+  creator: Artist1
+  publication_year: 2019
+  description: interesting new album
+
+album3:
+  category: album
+  title: Test Album3
+  creator: Artist2
+  publication_year: 2019
+  description: interesting new album
+
+album4:
+  category: album
+  title: Test Album4
+  creator: Artist2
+  publication_year: 2019
+  description: interesting new album
+
+album5:
+  category: album
+  title: Test Album5
+  creator: Artist2
+  publication_year: 2019
+  description: interesting new album
+
+album6:
+  category: album
+  title: Test Album6
+  creator: Artist2
+  publication_year: 2019
+  description: interesting new album  
+
+album7:
+  category: album
+  title: Test Album7
+  creator: Artist2
+  publication_year: 2019
+  description: interesting new album
+
+album8:
+  category: album
+  title: Test Album8
+  creator: Artist2
+  publication_year: 2019
+  description: interesting new album
+
+album9:
+  category: album
+  title: Test Album9
+  creator: Artist2
+  publication_year: 2019
+  description: interesting new album
+
+album10:
+  category: album
+  title: Test Album10
+  creator: Artist2
+  publication_year: 2019
+  description: interesting new album
+
+album11:
+  category: album
+  title: Test Album11
+  creator: Artist2
+  publication_year: 2019
+  description: interesting new album
+
+book2:
+  category: book
+  title: Book Test2
+  creator: Author1
+  publication_year: 2018
+  description: best book of the year         
