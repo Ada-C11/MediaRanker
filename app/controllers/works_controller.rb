@@ -27,9 +27,22 @@ class WorksController < ApplicationController
   end
 
   def edit
+    @work = Work.find_by(id: params[:id])
+    if @work.nil?
+      redirect_to works_path
+    end
   end
 
   def update
+    work = Work.find_by(id: params[:id])
+
+    updated_successfully = work.update(work_params)
+
+    if updated_successfully
+      redirect_to work_path(work.id)
+    else
+      redirect_to works_path
+    end
   end
 
   def destroy

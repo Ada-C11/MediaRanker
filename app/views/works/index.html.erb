@@ -6,7 +6,7 @@
     <ul>
         <% albums.each do |work|%>
             <li>
-                Title: <%= work.title %>
+            Title: <%= link_to work.title, work_path(work.id) %>   
             </li>
             <li>
                 Media type: <%= work.category %>
@@ -26,7 +26,7 @@
     <ul>
         <% books.each do |work|%>
             <li>
-                Title: <%= work.title %>
+                Title: <%= link_to work.title, work_path(work.id) %>  
             </li>
             <li>
                 Media type: <%= work.category %>
@@ -46,7 +46,7 @@
     <ul>
         <% movies.each do |work|%>
             <li>
-                Title: <%= work.title %>
+                Title: <%= link_to work.title, work_path(work.id) %>  
             </li>
             <li>
                 Media type: <%= work.category %>
