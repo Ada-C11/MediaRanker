@@ -21,13 +21,13 @@ class WorksController < ApplicationController
     is_successful = work.save
 
     if is_successful
-      flash[:success] = "#{work.title} added successfully :)"
+      flash[:success] = "#{work.title} added successfully"
       redirect_to work_path(work.id)
     else
-      @work.errors.messages.each do |field, messages|
+      work.errors.messages.each do |field, messages|
         flash.now[field] = messages
-        render :new, status: :bad_request
       end
+      render :new, status: :bad_request
     end
   end
 
@@ -47,10 +47,11 @@ class WorksController < ApplicationController
       flash[:success] = "#{work.title} updated successfully"
       redirect_to work_path(work.id)
     else
+      @work = work
       @work.errors.messages.each do |field, messages|
         flash.now[field] = messages
-        render :edit, status: :bad_request
       end
+      render :edit, status: :bad_request
     end
   end
 

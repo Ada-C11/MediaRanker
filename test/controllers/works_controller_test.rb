@@ -1,7 +1,5 @@
 require "test_helper"
 
-require "test_helper"
-
 describe WorksController do
   describe "index" do
     it "can get index" do
@@ -150,10 +148,10 @@ describe WorksController do
       work_hash = {
         "work": {
           title: nil,
-          description: "Update description",
-          publication_year: 2020,
-          creator: "Update Creator",
-          category: "movie",
+          description: "Spontaneous wisdom",
+          publication_year: 2012,
+          creator: "Haemin Sunim",
+          category: "book",
         },
       }
 
@@ -165,6 +163,33 @@ describe WorksController do
       # Assert
       must_respond_with :bad_request
       # book_to_update.reload
+      work_to_update.reload
+
+      expect(work_to_update.title).must_equal works(:one).title
+      expect(work_to_update.description).must_equal works(:one).description
+      expect(work_to_update.publication_year).must_equal works(:one).publication_year
+      expect(work_to_update.creator).must_equal works(:one).creator
+      expect(work_to_update.category).must_equal works(:one).category
+    end
+  end
+
+  describe "destroy" do
+    it "returns a 404 if work is not found" do
+      invalid_id = "invalid id"
+
+      # Act-Assert
+      expect { delete work_path(invalid_id) }.wont_change "Work.count"
+
+      must_respond_with :redirect
+      must_redirect_to works_path
+    end
+
+    it "can delete a work" do
+      # Act-Assert
+      expect { delete work_path(works(:one).id) }.must_change "Work.count", -1
+
+      must_respond_with :redirect
+      must_redirect_to works_path
     end
   end
 end
