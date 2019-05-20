@@ -1,0 +1,71 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: "album"
+  title: "Blue Breaker"
+  creator: "Dr. Sarai Langosh"
+  publication_year: 1949
+  description: "Et et expedita non aut quo."
+
+two:
+  category: "book"
+  title: "Joe Treat"
+  creator: "Blaise Lesch"
+  publication_year: 1968
+  description: "Voluptatem adipisci qui velit."
+
+three:
+  category: "album"
+  title: "Kreb-Full-o Been"
+  creator: "Ms. Trevion Buckridge"
+  publication_year: 2016
+  description: "Vero consectetur delectus consequatur id aut accusantium unde excepturi."
+
+four:
+  category: "album"
+  title: "Wake-up Pie"
+  creator: "Timmy Streich I"
+  publication_year: 1919
+  description: "Voluptatem consequatur qui consectetur nisi officiis culpa."
+
+five:
+  category: "album"
+  title: "Major Cup"
+  creator: "Jayde Bartoletti"
+  publication_year: 1944
+  description: "Quis recusandae cum est facere consequatur minima magni et."
+
+six:
+  category: "book"
+  title: "Summer Select"
+  creator: "Ms. Gwendolyn Ortiz"
+  publication_year: 1946
+  description: "Et molestiae eos nam odit aut sed."
+
+seven:
+  category: "album"
+  title: "Holiday Choice"
+  creator: "Alexandria Lehner"
+  publication_year: 1940
+  description: "Excepturi voluptas ut voluptatum."
+
+eight:
+  category: "book"
+  title: "Postmodern Blend"
+  creator: "Meredith Brekke"
+  publication_year: 1970
+  description: "Dolorem fugit accusantium qui."
+
+nine:
+  category: "book"
+  title: "Green Forrester"
+  creator: "Raquel Hirthe"
+  publication_year: 1933
+  description: "Omnis qui quia odio."
+
+ten:
+  category: "album"
+  title: "Winter Mug"
+  creator: "Tia Weissnat II"
+  publication_year: 1990
+  description: "Laboriosam autem iusto quae sed voluptate et."

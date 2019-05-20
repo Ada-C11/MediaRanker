@@ -1,0 +1,31 @@
+<h1>User Summary: <%= @user.username %></h1>
+<p>Joined site <%= @user.created_at.strftime("%B %d,%Y") %></p>
+
+<section class="user-votes__container">
+<h2>Votes</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Media Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Category</th>
+      <th>Voted on</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.votes.each do |vote| %>
+      <tr>
+        <td><%= link_to Work.find(vote.work_id).title, work_path(Work.find(vote.work_id))%></td>
+        <td><%= Work.find(vote.work_id).creator %></td>
+        <td><%= Work.find(vote.work_id).publication_year %></td>
+        <td><%= Work.find(vote.work_id).category.capitalize %></td>
+        <td><%= vote.created_at.strftime("%B %d,%Y")%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to "See all users", users_path, class: "btn btn-secondary" %></p>
+<p><%= link_to "Back to Media list", works_path, class: "btn btn-primary" %></p>
