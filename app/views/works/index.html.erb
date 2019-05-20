@@ -1,25 +1,61 @@
-<h1>All Works</h1>
+<h1>List of Works</h1>
 
-<ul>
-  <%@works.where(category: "book").each do |work|%>
-    <li>
-      <%=link_to work.title, work_path(work[:id])%>
-    </li>
-  <%end%>
-</ul>
+<section class="albums">
+<h2>Albums</h2>
+    <% albums = @works.where(category: "album") %>
+    <ul>
+        <% albums.each do |work|%>
+            <li>
+                Title: <%= work.title %>
+            </li>
+            <li>
+                Media type: <%= work.category %>
+            <li>
+                Creator: <%= work.creator %>
+            </li>
+            <li>
+                Description: <%= work.description %>
+            </li>
+        <% end %>
+    </ul>
+</section>
 
-<ul>
-  <%@works.where(category: "album").each do |work|%>
-    <li>
-      <%=link_to work.title, work_path(work[:id])%>
-    </li>
-  <%end%>
-</ul>
+<section class="books">
+<h2>Books</h2>
+    <% books = @works.where(category: "book") %>
+    <ul>
+        <% books.each do |work|%>
+            <li>
+                Title: <%= work.title %>
+            </li>
+            <li>
+                Media type: <%= work.category %>
+            <li>
+                Creator: <%= work.creator %>
+            </li>
+            <li>
+                Description: <%= work.description %>
+            </li>
+        <% end %>
+    </ul>
+</section>
 
-<ul>
-  <%@works.where(category: "movie").each do |work|%>
-    <li>
-      <%=link_to work.title, work_path(work[:id])%>
-    </li>
-  <%end%>
-</ul>
+<section class="movies">
+<h2>Movies</h2>
+    <% movies = @works.where(category: "movie") %>
+    <ul>
+        <% movies.each do |work|%>
+            <li>
+                Title: <%= work.title %>
+            </li>
+            <li>
+                Media type: <%= work.category %>
+            <li>
+                Creator: <%= work.creator %>
+            </li>
+            <li>
+                Description: <%= work.description %>
+            </li>
+        <% end %>
+    </ul>
+</section>
