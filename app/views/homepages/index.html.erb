@@ -1,0 +1,64 @@
+<main>
+<% if @works.empty? %>
+    <h2> There is no media to rank, please add some! </h2>
+<% else %>
+    <section class="spotlight">
+    <% spotlight_work = Work.highest_vote %>
+    <h2><span class="spotlight_prefix">Media Spotlight</span>
+        <%= link_to spotlight_work.title, work_path(spotlight_work.id) %> by <%= spotlight_work.creator %> 
+    </h2>
+    <p><%= Vote.where(work_id: spotlight_work.id).length %> votes - <%= spotlight_work.description %> </p>
+    </section>
+
+    <section class="top-ten-container">
+    <section class="top-ten">
+        <h2>Top Movies</h2>
+        <ul>
+            <% Work.top_ten("movie").each do |work|%>
+                <li>
+                    <h4>
+                        <%= link_to work.title, work_path(work.id) %>  
+                        <small> by <%= work.creator %> </small>
+                    </h4>
+                    <p><%= Vote.where(work_id: work.id).length %> votes</p>
+                </li>
+            <% end %>
+        </ul>
+    </section>
+
+    <section class="top-ten">
+        <h2>Top Books</h2>
+        <ul>
+            <% Work.top_ten("book").each do |work|%>
+                <li>
+                    <h4>
+                        <%= link_to work.title, work_path(work.id) %>  
+                        <small> by <%= work.creator %> </small>
+                    </h4>
+                    <p><%= Vote.where(work_id: work.id).length %> votes</p>
+                </li>
+            <% end %>
+        </ul>
+    </section>
+
+    <section class="top-ten">
+        <h2>Top Albums</h2>
+        <ul>
+            <% Work.top_ten("album").each do |work|%>
+                <li>
+                    <h4>
+                        <%= link_to work.title, work_path(work.id) %>  
+                        <small> by <%= work.creator %> </small>
+                    </h4>
+                    <p><%= Vote.where(work_id: work.id).length %> votes</p>
+                </li>
+            <% end %>
+        </ul>
+    </section>
+    </section>
+
+    <% end %>
+    </main>
+
+
+

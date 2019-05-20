@@ -1,0 +1,78 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+work_one:
+  category: album
+  creator: Creator 1
+  publication_year: 2001
+  description: Description 1
+  title: Title 1
+
+work_two:
+  category: album
+  creator: Creator 1 
+  publication_year: 2002
+  description: Description 2
+  title: Title 2
+
+work_three:
+  category: album
+  creator: Creator 3
+  publication_year: 2003
+  description: Description 3
+  title: Title 3
+
+work_four:
+  category: album
+  creator: Creator 4
+  publication_year: 2004
+  description: Description 4
+  title: Title 4
+
+work_five:
+  category: album
+  creator: Creator 5
+  publication_year: 2005
+  description: Description 5
+  title: Title 5
+
+work_six:
+  category: album
+  creator: Creator 6
+  publication_year: 2006
+  description: Description 6
+  title: Title 6
+
+work_seven:
+  category: album
+  creator: Creator 7
+  publication_year: 2007
+  description: Description 7
+  title: Title 7
+
+work_eight:
+  category: album
+  creator: Creator 8
+  publication_year: 2008
+  description: Description 8
+  title: Title 8
+
+work_nine:
+  category: album
+  creator: Creator 9 
+  publication_year: 2000
+  description: Description 9
+  title: Title 9
+
+work_ten:
+  category: album
+  creator: Creator 10
+  publication_year: 2010
+  description: Description 10
+  title: Title 10
+
+work_eleven:
+  category: album
+  creator: Creator 11 
+  publication_year: 2011
+  description: Description 11
+  title: Title 11

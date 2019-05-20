@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag asset_path('owl.jpg') %>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <%= link_to "Media Ranker", homepages_path %> 
+        <small> Ranking the Best of Everything</small>
+      </h1>
+
+      <nav>
+        <ul>
+          <li>
+            <%= link_to "View top media",  homepages_path, :class=> "nav-link"%>
+          </li>
+          <li>
+            <%= link_to "View all media", works_path, :class=> "nav-link" %>
+          </li>
+          <li>
+            <%= link_to "Add a new work", new_work_path, :class=> "nav-link" %>
+          </li>
+          <li>
+            <%= link_to "View all users", users_path, :class=> "nav-link" %>
+          </li>
+        </ul>
+
+        <ul>
+        <% current_user = User.find_by(id: session[:user_id])%>
+        <% if current_user.nil? %>
+          <li>
+            <%= link_to "Log in", login_path, :class=> "btn btn-primary"  %>
+          </li>
+          <% else %>
+          <li>
+            <%= link_to "Logged in as #{current_user.username}", user_path(current_user.id), :class=> "btn btn-primary" %>
+          </li>
+          <li>
+            <%= link_to "Log Out", logout_path, method: :post, :class=> "btn btn-primary"  %>
+          </li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+
+    <% if flash.count > 0 %>
+    <section class="flash">
+      <div class="alert alert-danger">
+        <% flash.each do |name, message| %>
+         <div class="<%= name %>"><%= message %></div>
+       <% end %>
+      </div>
+    </section>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
+
+  </body>
+</html>

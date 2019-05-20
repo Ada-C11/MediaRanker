@@ -1,0 +1,30 @@
+<main>
+<h2>List of Users</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Votes</th>
+                <th>Joined</th>
+            </tr>
+        </thead>
+        <% users = User.all %>
+        <tbody>
+            <tr>
+                <% users.each do |user|%>
+                <td>
+                    <%= link_to user.username, user_path(user.id)%>   
+                </td>
+                <td>
+                    <%= Vote.where(user_id: user.id).length %>  
+                </td>
+                <td>
+                    <%= (user.created_at).strftime("%B %d, %Y")%>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <%= link_to "Back to Media List", works_path, :class => "btn btn-secondary" %>
+</main>

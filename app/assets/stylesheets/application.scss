@@ -1,0 +1,115 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+
+@import url('https://fonts.googleapis.com/css?family=Gudea');
+
+// BODY
+
+body {
+    font-family: 'Gudea', sans-serif;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+
+h2 {
+    font-weight: bold;
+    color: #26A69A;
+}
+
+header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+}
+
+header h1 a, header h1 a:hover {
+    color: #FF5722;
+    padding-right: 25px;
+    margin-right: 15px;
+    border-right: white 2px solid;
+    text-decoration: none;
+}
+
+header small {
+    font-size: 80%;
+    font-weight: 400;
+    color: white;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.nav-link, .nav-link:hover {
+    color: #00796B;
+}
+
+.btn-primary {
+    background-color: #26A69A;
+    color: white;
+    border-color: #26A69A;
+    margin: 15px;
+}
+
+.btn-primary:hover {
+    background-color: #00796B;
+    color: white;
+}
+
+// TABLES
+
+.table h2, .table h4, .table th {
+    font-weight: bold;
+}
+
+.table .btn-primary {
+    margin: 0px;
+}
+
+.table td a {
+    color: #26A69A;
+}
+
+.table td a:hover {
+    color: #00796B;
+    text-decoration: none;
+}
