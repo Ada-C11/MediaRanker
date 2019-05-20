@@ -8,6 +8,7 @@ class WorksController < ApplicationController
 
     if @work.nil?
       redirect_to works_path
+      flash[:error] = "Unknown work"
     end
   end
 
@@ -20,9 +21,13 @@ class WorksController < ApplicationController
     is_successful = work.save
 
     if is_successful
+      flash[:success] = "#{work.title} added successfully :)"
       redirect_to work_path(work.id)
     else
-      render :new, status: :bad_request
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+        render :new, status: :bad_request
+      end
     end
   end
 
@@ -39,9 +44,13 @@ class WorksController < ApplicationController
     updated_successfully = work.update(work_params)
 
     if updated_successfully
+      flash[:success] = "#{work.title} updated successfully"
       redirect_to work_path(work.id)
     else
-      render :edit, status: :bad_request
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+        render :edit, status: :bad_request
+      end
     end
   end
 
@@ -49,9 +58,11 @@ class WorksController < ApplicationController
     work_to_destroy = Work.find_by(id: params[:id])
 
     if work_to_destroy.nil?
-      head :not_found
+      flash[:error] = "That work does not exist"
+      redirect_to works_path
     else
       work_to_destroy.destroy
+      flash[:success] = "#{work_to_destroy.title} deleted"
       redirect_to works_path
     end
   end
