@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+<% 11.times do |n| %>
+book_<%= n %>:
+  category: book
+  title: <%= "book_number_#{n}" %>
+  creator: some writer
+  publication_year: 1990
+  description: random
+<% end %>
+
+<% 11.times do |n| %>
+album_<%= n %>:
+  category: album
+  title: <%= "album_number_#{n}" %>
+  creator: some singer
+  publication_year: 1991
+  description: random
+<% end %>
+
+<% 11.times do |n| %>
+movie_<%= n %>:
+  category: movie
+  title: <%= "movie_number_#{n}" %>
+  creator: some director
+  publication_year: 1992
+  description: random
+<% end %>

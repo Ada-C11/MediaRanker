@@ -1,0 +1,128 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+
+@import url('https://fonts.googleapis.com/css?family=Hammersmith+One');
+
+/* Style header */
+
+* {
+  box-sizing: border-box
+}
+
+li {
+  list-style-type: none
+}
+
+body, h1, h2, h3, h4, h5 {
+  font-family: "Gudea", sans-serif
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  line-height: 1.2
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+a, h2, h3 {
+  color: #26A69A;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #00796B;
+}
+
+main {
+  padding: 2rem;
+}
+
+.active {
+  background-color: grey
+}
+
+.btn:hover {
+  background-color: #00796B;
+  color: white;
+}
+
+.app-header {
+  max-width: 100%;
+  background-color: #B2DFDB;
+  margin-bottom: 0.5rem;
+  padding: 2rem 1rem 0.5rem 1rem;
+}
+
+.app-header h1 {
+  text-align: center;
+  margin: 25px auto 40px auto
+}
+
+.app-header h1 a {
+  color: #FF5722;
+  font-weight: bold;
+  text-decoration: none;
+  padding-right: 25px;
+  margin-right: 15px;
+  border-right: white 2px solid;
+}
+
+.app-header h1 a:hover {
+  text-decoration: none;
+  color: #FF5722
+}
+
+.app-header h1 small {
+  color: white;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.btn-primary {
+  background-color: #26A69A;
+  border: none;
+}
+
+.user-login .btn {
+  margin-left: 2rem;
+}
+
+/* Style alert message */
+
+.alert-container {
+  margin: 2rem 0 1rem 0;
+}
+
+.alert-list {
+  padding: 0;
+}
