@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+  title : The Things You Can See Only When You Slow Down
+  description: Wise advice on how to reflect and slow down
+  creator: Haemin Sunim
+  publication_year: 2012
+  category: book
 
 two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 1
-  description: MyString
+  category: movie
+  title: Amelie
+  creator: Jean-Pierre Jeunet
+  publication_year: 2001
+  description: Whimsical charm the way that a chocolate soufflé is filled with air
+
+three:
+  category: book 
+  title: Cien años de soledad
+  creator: Gabriel García Márquez
+  publication_year: 1967
+  description: The multi-generational story of the Buendía family

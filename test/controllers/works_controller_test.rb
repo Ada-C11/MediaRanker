@@ -17,7 +17,7 @@ describe WorksController do
     it "shows a valid work" do
 
       # Act
-      get work_path(works(:one).id)
+      get work_path(works(:two).id)
 
       # Assert
       must_respond_with :success
@@ -26,7 +26,7 @@ describe WorksController do
     it "will redirect for invalid work" do
 
       #Arrange
-      work = works(:one)
+      work = works(:two)
       invalid_work_id = work.id
       work.destroy
 
@@ -55,10 +55,10 @@ describe WorksController do
       # Arrange
       work_hash = {
         work: {
-          title: "Test",
-          description: "New work description",
-          publication_year: 2019,
-          creator: "Test Creator",
+          title: "Love for Imperfect Things",
+          description: "Wise advice",
+          publication_year: 2014,
+          creator: "Haemin Sunim",
           category: "book",
         },
       }
@@ -85,9 +85,9 @@ describe WorksController do
       work_hash = {
         "work": {
           title: nil,
-          description: "New work description",
-          publication_year: 2019,
-          creator: "Test Creator",
+          description: "Wise advice on how to reflect and slow down",
+          publication_year: 2012,
+          creator: "Haemin Sunim",
           category: "book",
         },
       }
@@ -120,11 +120,11 @@ describe WorksController do
 
       work_hash = {
         "work": {
-          title: "Update Title",
-          description: "Update description",
-          publication_year: 2020,
-          creator: "Update Creator",
-          category: "movie",
+          title: "The Things You Can See Only When You Slow Down",
+          description: "Spontaneous wisdom",
+          publication_year: 2012,
+          creator: "Haemin Sunim",
+          category: "book",
         },
       }
 
