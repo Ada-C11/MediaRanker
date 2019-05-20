@@ -16,6 +16,11 @@
           <div class="<%= name %>"><%= message %></div>
         <% end %>
       </section>
+      <nav>
+        <%= link_to "Homepage",  homepages_path%>
+        <%= link_to "All works", works_path %>
+        <%= link_to "Add Work", new_work_path  %>
+      </nav>
     </header>
 
     <main>
