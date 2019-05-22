@@ -1,0 +1,38 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+
+two:
+  category: MyString
+  title: MyString
+  creator: MyString
+  publication_year: 1
+  description: MyString
+
+summer:
+  category: movie
+  title: 500 Days of Summer
+  creator: no idea
+  publication_year: 2011
+  description: movie i watched in high school
+
+call:
+  category: book
+  title: Call Me By Your Name
+  creator: Andre Aciman
+  publication_year: 2015
+  description: book i just read
+
+testing:
+  category: album
+  title: Testing
+  creator: A$AP Rocky
+  publication_year: 2018
+  description: last album i liked
+
+

@@ -1,0 +1,40 @@
+<h1>Top Work</h1>
+
+<h2>Media Spotlight</h2>
+
+<% if @works.length > 0 %>
+<p><b><%= link_to @spotlight.title, work_path(@spotlight) %></b> 
+    by <%= @spotlight.creator %> 
+    <%= @spotlight.votes.count %> Votes
+</p>
+
+<h2>Albums</h2>
+<ul>
+<% @albums.each do |album| %>
+    <li> <%= link_to album.title, work_path(album) %> 
+         by <%= album.creator%>
+    </li>
+    <%= album.votes.count %> Votes
+<% end %>
+</ul>
+
+<h2>Books</h2>
+<ul>
+<% @books.each do |book| %>
+    <li> <%= link_to book.title, work_path(book) %> </li>
+    by <%= book.creator%>
+    <%= book.votes.count %> Votes
+<% end %>
+</ul>
+
+<h2>Movies</h2>
+<ul>
+<% @movies.each do |movie| %>
+    <li> <%= link_to movie.title, work_path(movie) %> </li>
+    by <%= movie.creator%>
+    <%= movie.votes.count %> Votes
+<% end %>
+
+</ul>
+
+<% end %>
