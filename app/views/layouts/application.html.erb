@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <header class="site-header">
+  <h1>
+    <%= link_to "Media Ranker", root_path, alt: "Link to homepage" %>
+    <small> Ranking the best of everything </small>
+  </h1>
+  <nav class="header_nav">
+    <ul class="nav nav-container">
+      <li class="nav_item"> 
+        <%= link_to "View top media", root_path, class: "nav-link"%>
+      </li>
+       <li class="nav_item"> 
+        <%= link_to "View all media", works_path, class: "nav-link" %>
+      </li>
+       <li class="nav_item"> 
+        <%= link_to "Add a new work", new_work_path, class: "nav-link"%>
+      </li>
+       <li class="nav_item"> 
+        <%= link_to "View all Users", users_path, class: "nav-link" %>
+      </li>
+    </ul>
+    <ul class="nav user-nav-container">
+       <li class="user_nav_item"> 
+       <% logged_in = User.find_by(id: session[:user_id]) %>
+       <% if logged_in %>
+        <%= link_to "Logged in as #{logged_in.username}", user_path(session[:user_id]), class: "btn btn-primary", alt: "Link to logged in user show page" %>
+        <%= link_to "Log Out", logout_path, class: "btn btn-primary", alt: "Log Out", method: :post %>
+       <% else %>
+        <%= link_to "Log in", login_path, class: "btn btn-primary", alt: "Log in link" %>
+       <% end%>
+    </ul>
+  </nav>
+  </header>
+  <body>
+    <main>
+    <section class="flash">
+      <% alert_type = (flash[:status] == "error" ? "danger" : flash[:status]) %>
+      <section class="flash alert alert-<%= alert_type %>">
+        <%= flash[:message] %>
+      </section>
+    </section>
+      <%= yield %>
+    </main>
+  </body>
+</html>
+
