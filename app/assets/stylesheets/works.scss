@@ -1,0 +1,49 @@
+// Place all the styles related to the Works controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.works-votes__header {
+    padding-top: 2rem;
+}
+
+.spotlight__header--prefix {
+    color: #424242;
+}
+
+.top-ten__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+}
+
+.list-group-item {
+    border: none;
+}
+
+.top-ten__creator {
+    color: slategray;
+}
+
+.top-ten__list-container h2 {
+    border-bottom: 2px solid #B2DFDB;
+}
+
+a.spotlight__link-to {
+    border-bottom: solid 2px #26A69A;;
+}
+
+a.spotlight__link-to:hover {
+    color: #00796B;
+    border-bottom: 2px solid #00796B;
+    text-decoration: none;
+}
+
+.list-group-item a:hover {
+    text-decoration: none;
+    color: #00796B;
+}
+
+td a:hover {
+    color: #00796B;
+    text-decoration: none
+}

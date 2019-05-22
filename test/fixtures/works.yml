@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+book: 
+  title: It
+  creator: Stephen King
+  category: book
+  publication_year: 1986
+  description: Scary clown book with a giant spider too
+  votes_count: 0
+
+movie: 
+  category: movie
+  title: 12 Monkeys
+  creator: Terry Gilliam
+  publication_year: 1995
+  description: Time travel and also Brad Pitt as a crazy dude
+  votes_count: 10

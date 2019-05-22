@@ -1,0 +1,78 @@
+<h2>List of Works</h2>
+<section class="media_table">
+  <h4>Albums</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created by</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @albums.each do |album| %>
+        <tr>
+          <td><%= album.votes_count %></td>
+          <td><%= link_to album.title, work_path(album) %></td>
+          <td><%= album.creator %></td>
+          <td><%= album.publication_year %></td>
+          <td><%= link_to "Upvote", upvote_path(album), method: :post, class: "btn btn-primary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+<section class="media_table">
+  <h4>Books</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created by</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.votes_count %></td>
+          <td><%= link_to book.title, work_path(book) %></td>
+          <td><%= book.creator %></td>
+          <td><%= book.publication_year %></td>
+          <td><%= link_to "Upvote", upvote_path(book), method: :post, class: "btn btn-primary"  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+<section class="media_table">
+  <h4>Movies</h4>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created by</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= movie.votes_count %></td>
+          <td><%= link_to movie.title, work_path(movie) %></td>
+          <td><%= movie.creator %></td>
+          <td><%= movie.publication_year %></td>
+          <td><%= link_to "Upvote", upvote_path(movie), method: :post, class: "btn btn-primary"  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to "View Top Media", root_path, class: "btn btn-secondary"%>
+  <%= link_to "Add a New Work", new_work_path, class: "btn btn-primary"%>
+</section>

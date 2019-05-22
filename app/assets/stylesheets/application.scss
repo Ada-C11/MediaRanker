@@ -1,0 +1,105 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import "**/*";
+
+body {
+    font-family: 'Gudea', sans-serif;
+}
+
+main {
+    padding: 2rem;
+}
+
+.app-header__header {
+    max-width: 100%;
+    height: 200px;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
+    text-align: center;
+}
+
+.app-header__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.app-header__nav .btn {
+    margin-left: 25px;
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Gudea", sans-serif;
+    font-weight: bold;
+    
+}
+
+h2 {
+    color: #26A69A;
+}
+
+
+a {
+    color: #26A69A;
+}
+
+.nav-link {
+    color: #00796B;
+}
+
+.nav-link:hover {
+    color: #00796B;
+    text-decoration: none;
+}
+
+.app-header__header h1 a {
+    color: tomato;
+    padding-right: 25px;
+    border-right: 2px solid white;
+    margin-bottom: 3rem;
+    display: inline-block;
+}
+
+.app-header__header h1 small {
+    padding-left: 25px;
+    color: white;
+}
+
+nav .app-header__user-nav-container {
+
+}
+
+.btn-primary {
+    background-color: #26A69A;
+    color: white;
+    border-color: #26A69A;
+}
+
+.btn-primary:hover {
+    background-color: #00796B;
+
+}

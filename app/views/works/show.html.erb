@@ -1,0 +1,45 @@
+<section>
+  <h2>
+    <%= @work.title %>
+  </h2>
+  <p>
+    Created by: <%= @work.creator %>
+  </p>
+  <p>
+    Published: <%= @work.publication_year %>
+  </p>
+  <p>
+    <%= @work.description %>
+  </p>
+  <%= link_to "Back to Media Rank", root_path, class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_work_path(@work), class: "btn btn-primary" %>
+  <%= link_to "Upvote", upvote_path(@work), method: :post, class: "btn btn-primary" %>
+  <%= link_to "Delete", work_path(@work), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
+</section>
+<section class="works-votes__header">
+  <h3><%= @votes.count %> Votes for this <%= @work.category.capitalize %></h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>
+          User
+        </th>
+        <th>
+          Date
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @votes.each do |vote| %>
+    <tr>
+    <td>
+      <%= link_to vote.user.username, current_user_path(vote.user) %>
+    </td>
+    <td>
+      <%= vote.created_at.strftime("%B %d, %Y") %>
+    </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
