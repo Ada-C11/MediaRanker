@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+test:
+  creator: test creator
+  title: test work
+  category: album
+  publication_year: 1999
+
+whee:
+  creator: big bird
+  title: whee
+  category: movie
+  publication_year: 2000
+
+love:
+  creator: barney
+  title: I love you
+  category: book
+  publication_year: 1995
+
+blue:
+  category: "album"
+  title: "Blue Breaker"
+  creator: "Dr. Sarai Langosh"
+  publication_year: 1949
+  description: "Et et expedita non aut quo."
+
+joe:
+  category: "book"
+  title: "Joe Treat"
+  creator: "Blaise Lesch"
+  publication_year: 1968
+  description: "Voluptatem adipisci qui velit."
+
+kreb:
+  category: "album"
+  title: "Kreb-Full-o Been"
+  creator: "Ms. Trevion Buckridge"
+  publication_year: 2016
+  description: "Vero consectetur delectus consequatur id aut accusantium unde excepturi."
+
