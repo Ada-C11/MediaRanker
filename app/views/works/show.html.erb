@@ -1,0 +1,16 @@
+<h1><%= @work.title %></h1>
+
+<ul>
+    <li>
+        Created by: <%= @work.creator %>
+    </li>
+    <li>
+        Published: <%= @work.publication_year %>
+    </li>
+</ul>
+
+<%= link_to "Back to all works", works_path %> 
+<%= link_to "Update work", edit_work_path %>
+<%= link_to "Delete work", work_path(@work.id), method: :delete, data: {confirm: "Are you sure you want to delete this work??"}%> 
+
+

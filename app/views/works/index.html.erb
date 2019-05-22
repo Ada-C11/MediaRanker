@@ -1,0 +1,90 @@
+<h1>List of Works</h1>
+
+<section class="albums">
+<h2>Albums</h2>
+    <table class="index-table">
+        <tr>
+            <th>Title</th>
+            <th>Media Typle</th>
+            <th>Creator</th>
+            <th>Description</th>
+            <%# <th>Votes</th> %>
+        </tr>
+    <% albums = @works.where(category: "album") %>
+    <tr>
+        <% albums.each do |work|%>
+            <td>
+            <%= link_to work.title, work_path(work.id) %>   
+            </td>
+            <td>
+                <%= work.category %>
+            <td>
+                <%= work.creator %>
+            </td>
+            <td>
+                <%= work.description %>
+            </td>
+        </tr>
+        <% end %>
+    </table>
+</section>
+
+<section class="books">
+<h2>Books</h2>
+    <table class="index-table">
+        <tr>
+            <th>Title</th>
+            <th>Media Typle</th>
+            <th>Creator</th>
+            <th>Description</th>
+            <%# <th>Votes</th> %>
+        </tr>
+        <% books = @works.where(category: "book") %>
+            <% books.each do |work|%>
+            <tr>
+                <td>
+                    <%= link_to work.title, work_path(work.id) %>  
+                </td>
+                <td>
+                    <%= work.category %>
+                </td>
+                <td>
+                    <%= work.creator %>
+                </td>
+                <td>
+                    <%= work.description %>
+                </td>
+            </tr>
+            <% end %>
+
+    </table>
+</section>
+
+<section class="movies">
+<h2>Movies</h2>
+    <table class="index-table">
+        <tr>
+            <th>Title</th>
+            <th>Media Typle</th>
+            <th>Creator</th>
+            <th>Description</th>
+            <%# <th>Votes</th> %>
+        </tr>
+    <% movies = @works.where(category: "movie") %>
+        <tr>
+            <% movies.each do |work|%>
+                <td>
+                    <%= link_to work.title, work_path(work.id) %>  
+                </td>
+                <td>
+                    <%= work.category %>
+                <td>
+                    <%= work.creator %>
+                </td>
+                <td>
+                    <%= work.description %>
+                </td>
+        </tr>
+            <% end %>
+    </table>
+</section>

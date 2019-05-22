@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+ </head>
+
+  <body>
+    <header>
+      <section class="flash">
+        <% flash.each do |name, message| %>
+          <div class="<%= name %>"><%= message %></div>
+        <% end %>
+      </section>
+      <nav>
+        <%= link_to "Homepage",  homepages_path%>
+        <%= link_to "All works", works_path %>
+        <%= link_to "Add Work", new_work_path  %>
+      </nav>
+    </header>
+
+    <main>
+    <%= yield %>
+    </main>
+
+  </body>
+</html>
