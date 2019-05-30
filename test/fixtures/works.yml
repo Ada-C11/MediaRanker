@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 2019-05-26
-  description: MyString
+  category: albums
+  title: Bleed American
+  creator: Jimmy Eat World
+  publication_year: '2001'
+  description: Fourth studio album by American rock band Jimmy Eat World.
 
 two:
-  category: MyString
-  title: MyString
-  creator: MyString
-  publication_year: 2019-05-26
-  description: MyString
+  category: books
+  title: Sabriel
+  creator: Garth Nix
+  publication_year: '1995'
+  description: Fantasy novel set in the Old Kingdom.
+
+three:
+  category: movies
+  title: The Ballad of Buster Scruggs
+  creator: Coen Brothers
+  publication_year: '2018'
+  description: A Western anthology film.
