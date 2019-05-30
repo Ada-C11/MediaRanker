@@ -10,4 +10,18 @@ class WorksController < ApplicationController
       render :notfound, status: :not_found
     end
   end
+
+  def new
+    @work = Work.new
+  end
+
+  def create
+    @work = Work.new(work_params)
+
+    if @work.save
+      redirect_to work_path
+    else
+      render :new
+    end
+  end
 end
