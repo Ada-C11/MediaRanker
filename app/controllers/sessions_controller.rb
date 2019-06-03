@@ -5,5 +5,16 @@ class SessionsController < ApplicationController
     end
 
     user = User.find_by(name: params[:user][:username])
+
+    session[:user_id] = user.id
+
+    flash[:success] = "Logged in #{user.username}!"
+    redirect_to root_path
+  end
+
+  def destroy
+    session[:user_id] = nil
+    flash[:success] = "Logged out!"
+    redirect_back(fallback_location: root_path)
   end
 end
