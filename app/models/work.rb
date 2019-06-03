@@ -1,18 +1,18 @@
 class Work < ApplicationRecord
   has_many :votes
 
-  validates :title, presence: true
+  validates :title, :category, presence: true
 
   def self.albums
-    Work.select { |work| work.category == "album" }
+    Work.all.select { |work| work.category == "album" }
   end
 
   def self.books
-    Work.select { |work| work.category == "book" }
+    Work.all.select { |work| work.category == "book" }
   end
 
   def self.movies
-    Work.select { |work| work.category == "movie" }
+    Work.all.select { |work| work.category == "movie" }
   end
 
   def self.spotlight
