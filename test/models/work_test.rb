@@ -54,44 +54,29 @@ describe Work do
   end
 
   describe "spotlight" do
-    it "should return a work object" do
-      # Arrange & Act
+    it "can find a work object" do
       work = Work.spotlight
-
-      # Assert
       expect(work).must_be_instance_of Work
     end
 
-    it "should have the most votes of all work objects" do
-      # Arrange
+    it "can find work object with most votes" do
       10.times do
         Work.first.votes << Vote.new
       end
 
-      # Act
-      top_work = Work.spotlight
-      vote_count = top_work.votes.length
+      top_voted = Work.spotlight
+      vote_count = top_voted.votes.length
 
-      # Assert
       expect(vote_count).must_equal Work.all.max_by { |work| work.votes.length }.votes.length
     end
 
-    # TODO: tiebreakers
-    # it 'should return the one thats first alphabetically if theres a tie' do
-    # end
-
-    # TODO: Need to account for this in the view
     it "should return nil if there are no works" do
-      # Arrange
       Work.all.each do |work|
         work.destroy
       end
 
-      # Act
-      top_work = Work.spotlight
-
-      # Assert
-      expect(top_work).must_be_nil
+      top_voted = Work.spotlight
+      expect(top_voted).must_be_nil
     end
   end
 
@@ -116,8 +101,56 @@ describe Work do
 
       albums = Work.albums
 
-      expect(albumss).must_be_instance_of Array
+      expect(albums).must_be_instance_of Array
       expect(albums.length).must_equal 0
+    end
+  end
+
+  describe "books" do
+    it "returns array of only books" do
+      books = Work.books
+      expect(books).must_be_instance_of Array
+
+      books.each do |book|
+        expect(book).must_be_instance_of Work
+        expect(book.category).must_equal "book"
+      end
+    end
+
+    it "returns empty array if no books exist" do
+      Work.all.each do |work|
+        if work.category == "book"
+          work.destroy
+        end
+      end
+
+      books = Work.books
+      expect(books).must_be_instance_of Array
+      expect(books.length).must_equal 0
+    end
+  end
+
+  describe "movies" do
+    it "returns array of only movies" do
+      movies = Work.movies
+      expect(movies).must_be_instance_of Array
+
+      movies.each do |work|
+        expect(movie).must_be_instance_of Work
+        expect(movie.category).must_equal "movie"
+      end
+    end
+
+    it "returns empty array if no books exist" do
+      Work.all.each do |work|
+        if work.category == "movie"
+          work.destroy
+        end
+      end
+
+      movies = Work.movies
+      expect(movies).must_be_instance_of Array
+      expect(movies.length).must_equal 0
     end
   end
 end
