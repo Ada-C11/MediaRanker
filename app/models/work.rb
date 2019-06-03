@@ -14,4 +14,8 @@ class Work < ApplicationRecord
   def self.movies
     Work.select { |work| work.category == "movie" }
   end
+
+  def self.spotlight
+    Work.all.max_by { |work| work.votes.length }
+  end
 end

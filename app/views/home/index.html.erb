@@ -1,1 +1,61 @@
-<h1>MEDIA RANKER</h1>
+<section>
+  <h2>
+    Media Spotlight:
+    <%= link_to Work.spotlight.title, work_path(Work.spotlight.id) %>
+    by <%= Work.spotlight.creator %>
+  </h2>
+  <p>
+    <%= Work.spotlight.votes.length %> votes - <%= Work.spotlight.description[0..20] %>
+  </p>
+</section>
+
+ <section>
+  <h2>Top Movies</h2>
+  <ul>
+    <% Work.movies[0..9].each do |movie| %>
+      <li>
+        <h4>
+          <%= link_to movie.title, work_path(movie.id) %>
+        by <%= movie.creator %>
+        </h4>
+        <p>
+          <%= movie.votes.length %> votes
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+ <section>
+  <h2>Top Books</h2>
+  <ul>
+    <% Work.books[0..9].each do |book| %>
+      <li>
+        <h4>
+          <%= link_to book.title, work_path(book.id) %>
+        by <%= book.creator %>
+        </h4>
+        <p>
+          <%= book.votes.length %> votes
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+ <section>
+  <h2>Top Albums</h2>
+  <ul>
+    <% Work.albums[0..9].each do |album| %>
+      <li>
+        <h4>
+          <%= link_to album.title, work_path(album.id) %>
+        by <%= album.creator %>
+        </h4>
+        <p>
+          <%= album.votes.length %> votes
+        </p>
+      </li>
+    <% end %>
+  </ul>
+</section>
