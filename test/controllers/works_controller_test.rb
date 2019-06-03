@@ -25,4 +25,9 @@ describe WorksController do
     get works_edit_url
     value(response).must_be :success?
   end
+
+  it "can destroy a work" do
+    get works_destroy_url
+    value(response).must_be :success?
+  end
 end

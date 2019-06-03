@@ -25,6 +25,21 @@ class WorksController < ApplicationController
     end
   end
 
+  def edit
+    if @work.edit(work_params)
+      success_redirect("Changes made successfully!", work_path(@work.id))
+    else
+      error_render(@work, :edit)
+    end
+  end
+
+  def destroy
+    unless @work.nil?
+      deleted_work = @work.destroy
+      success_redirect("Deleted!", root_path)
+    end
+  end
+
   private
 
   def work_params
