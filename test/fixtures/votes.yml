@@ -1,7 +1,19 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+vote_one:
+  date: '2019-06-14'
+  user: one
+  work: one
 
-one:
-  date: 2019-05-26
+vote_two:
+  date: '2019-06-14'
+  user: one
+  work: one
 
-two:
-  date: 2019-05-26
+vote_three:
+  date: '2019-06-14'
+  user: two
+  work: two
+
+vote_four:
+  date: '2019-06-14'
+  user: one
+  work: one

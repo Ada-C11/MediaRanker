@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  username: MyString
-  joined: 2019-05-26
+  username: laneia
+  joined: "2019-06-07"
 
 two:
-  username: MyString
-  joined: 2019-05-26
+  username: shamira
+  joined: "2019-05-26"
+
+three:
+  username: kim
+  joined: "2019-04-13"
