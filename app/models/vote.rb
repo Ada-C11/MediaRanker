@@ -1,4 +1,6 @@
 class Vote < ApplicationRecord
   belongs_to :user
-  # , :work
+  belongs_to :work
+
+  validates :user, :work, :date, presence: true
 end
