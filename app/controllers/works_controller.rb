@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, except: [:index, :new, :create]
+
   def index
     @works = Work.all
   end
@@ -45,7 +47,11 @@ class WorksController < ApplicationController
     user = User.find_by(id: session[:user_id])
 
     if user.nil?
-      error_redirect(@work, "A problem occurred: you must log in to vote")
+      flash[:warning] = "A problem occurred: you must log in to vote"
+      work.errors.messages.each do |field, messages|
+        flash[:errors] = messages
+      end
+      redirect_back(fallback_location: root_path)
     elsif user.eligible_to_vote?(@work)
       vote = Vote.new(work: @work, user: user, date: Date.today)
 
@@ -53,10 +59,18 @@ class WorksController < ApplicationController
         flash[:success] = "Successfully upvoted!"
         redirect_back(fallback_location: root_path)
       else
-        error_redirect(@work, "Error: could not process vote")
+        flash[:warning] = "Error: could not process vote"
+        work.errors.messages.each do |field, messages|
+          flash[:errors] = messages
+        end
+        redirect_back(fallback_location: root_path)
       end
     else
-      error_redirect(@work, "A problem occurred: you've already voted on this work")
+      flash[:warning] = "A problem occurred: you've already voted on this work"
+      work.errors.messages.each do |field, messages|
+        flash[:errors] = messages
+      end
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -64,5 +78,13 @@ class WorksController < ApplicationController
 
   def work_params
     params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id].to_i)
+
+    if @work.nil?
+      flash.now[:warning] = "Cannot find the work"
+    end
   end
 end
