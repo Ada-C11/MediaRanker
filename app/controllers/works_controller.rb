@@ -19,24 +19,41 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
+      flash[:success] = "Work added"
       redirect_to work_path(@work.id)
     else
-      render :new
+      flash.now[:error] = "Error:  work not added"
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
     end
   end
 
   def edit
-    if @work.edit(work_params)
-      success_redirect("Changes made successfully!", work_path(@work.id))
+    @work - Work.find_by(id: params[:id].to_i)
+  end
+
+  def update
+    @work - Work.find_by(id: params[:id].to_i)
+    if @work.update(work_params)
+      flash[:success] = "Changes saved"
+      redirect_to work_path(@work.id)
     else
-      error_render(@work, :edit)
+      flash.now[:error] = "Error: changes not saved"
+      @work.errors.messages.each do |field, messages|
+        flash.now[field] = messages
+      end
+      render :edit
     end
   end
 
   def destroy
     unless @work.nil?
+      work = Work.find_by(id: params[:id].to_i)
       deleted_work = @work.destroy
-      success_redirect("Deleted!", root_path)
+      flash[:success] = "#{deleted_work.title} deleted"
+
+      redirect_to root_path
     end
   end
 
