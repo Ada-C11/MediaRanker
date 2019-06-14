@@ -1,4 +1,33 @@
-<p id="notice"><%= notice %></p>
+<h2>User summary: <%= link_to "#{@user.username}", user_path(@user.id) %></h2>
+<p>Joined site <%= @user.joined %></p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<section class="votes-container">
+  <h3>Votes</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Media Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.works.each do |work| %>
+        <tr>
+          <td><%= link_to "#{work.title}", work_path(work.id) %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= work.category.titleize %></td>
+          <td><%= @user.vote_date(work) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <%= link_to "See all users", users_path, class: "btn btn-secondary", role: "button" %>
+  <%= link_to "Back to media list", root_path, class: "btn btn-primary", role: "button" %>
+</section>
