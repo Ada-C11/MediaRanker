@@ -25,7 +25,7 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work - Work.find_by(id: params[:id].to_i)
+    @work = Work.find_by(id: params[:id].to_i)
     if @work.update(work_params)
       flash[:success] = "Changes saved"
       redirect_to work_path(@work.id)

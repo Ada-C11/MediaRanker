@@ -4,10 +4,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @users = User.find_by(id: params[:id].to_i)
+    @user = User.find_by(id: params[:id].to_i)
 
     if @user.nil?
-      render :notfound, status: :not_found
+      flash.now[:error] = "User not found."
+      redirect_to users_path
     end
   end
 
