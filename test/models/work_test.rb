@@ -25,6 +25,22 @@ describe Work do
       expect(votes.length).must_be 1
       expect(votes.first).must_be_instance_of Vote
     end
+
+    it "can have 0 votes" do
+      votes = three.votes
+      expect(three).must_be_instance_of Work
+      expect(votes.length).must_equal 0
+      expect(three.valid?).must_equal true
+    end
+
+    it "has many users through votes" do
+      votes = one.votes
+      expect(hp).must_be_instance_of Work
+      expect(votes.length).must_be :>=, 1
+      votes.each do |vote|
+        expect(vote.user).must_be_instance_of User
+      end
+    end
   end
 
   describe "validations" do
@@ -51,23 +67,37 @@ describe Work do
       valid = work.valid?
       expect(valid).must_equal true
     end
+
+    it "requires a unique title within a category" do
+      invalid_work = Work.new title: two.title, category: "book"
+      valid = invalid_work.valid?
+      expect(valid).must_equal false
+      expect(other_work.errors.messages).must_include :title
+      expect(other_work.errors.messages[:title]).must_equal ["has already been taken"]
+    end
+
+    it "can have the same title as a work in a different category" do
+      valid_work = Work.new title: two.title, category: "movie"
+      valid = valid_work.valid?
+      expect(valid).must_equal true
+    end
   end
 
   describe "spotlight" do
-    it "can find a work object" do
+    it "returns a work object" do
       work = Work.spotlight
       expect(work).must_be_instance_of Work
     end
 
-    it "can find work object with most votes" do
-      10.times do
-        Work.first.votes << Vote.new
-      end
-
+    it "returns work object with most votes" do
       top_voted = Work.spotlight
       vote_count = top_voted.votes.length
-
       expect(vote_count).must_equal Work.all.max_by { |work| work.votes.length }.votes.length
+    end
+
+    it "returns the first work alphabetically in case of tie" do
+      top_work = Work.spotlight
+      expect(top_work).must_equal one
     end
 
     it "should return nil if there are no works" do
@@ -80,77 +110,60 @@ describe Work do
     end
   end
 
-  describe "albums" do
-    it "returns array of only albums" do
-      albums = Work.albums
+  describe "list_of" do
+    it "returns an array of only one type of work" do
+      works = Work.list_of("album")
+      expect(works).must_be_instance_of Array
 
-      expect(albums).must_be_instance_of Array
+      works.each do |work|
+        expect(work).must_be_instance_of Work
+        expect(work.category).must_equal "album"
+      end
 
-      albums.each do |album|
-        expect(album).must_be_instance_of Work
-        expect(album.category).must_equal "album"
+      works = Work.list_of("book")
+      expect(works).must_be_instance_of Array
+
+      works.each do |work|
+        expect(work).must_be_instance_of Work
+        expect(work.category).must_equal "book"
+      end
+
+      works = Work.list_of("movie")
+      expect(works).must_be_instance_of Array
+
+      works.each do |work|
+        expect(work).must_be_instance_of Work
+        expect(work.category).must_equal "movie"
       end
     end
 
-    it "returns empty array if no albums exist" do
+    it "returns an empty array if there are no works" do
       Work.all.each do |work|
         if work.category == "album"
+          work.votes.each do |vote|
+            vote.destroy
+          end
           work.destroy
         end
       end
 
-      albums = Work.albums
+      works = Work.list_of("album")
 
-      expect(albums).must_be_instance_of Array
-      expect(albums.length).must_equal 0
+      expect(works).must_be_instance_of Array
+      expect(works.length).must_equal 0
     end
   end
 
-  describe "books" do
-    it "returns array of only books" do
-      books = Work.books
-      expect(books).must_be_instance_of Array
-
-      books.each do |book|
-        expect(book).must_be_instance_of Work
-        expect(book.category).must_equal "book"
-      end
+  describe "vote_count" do
+    it "returns the total number of votes on a work" do
+      count = one.vote_count
+      expect(count).must_equal 3
     end
 
-    it "returns empty array if no books exist" do
-      Work.all.each do |work|
-        if work.category == "book"
-          work.destroy
-        end
-      end
-
-      books = Work.books
-      expect(books).must_be_instance_of Array
-      expect(books.length).must_equal 0
-    end
-  end
-
-  describe "movies" do
-    it "returns array of only movies" do
-      movies = Work.movies
-      expect(movies).must_be_instance_of Array
-
-      movies.each do |work|
-        expect(movie).must_be_instance_of Work
-        expect(movie.category).must_equal "movie"
-      end
-    end
-
-    it "returns empty array if no books exist" do
-      Work.all.each do |work|
-        if work.category == "movie"
-          work.destroy
-        end
-      end
-
-      movies = Work.movies
-      expect(movies).must_be_instance_of Array
-      expect(movies.length).must_equal 0
+    it "returns 0 when the work has no votes" do
+      no_votes = works(:three)
+      count = no_votes.vote_count
+      expect(count).must_equal 0
     end
   end
 end

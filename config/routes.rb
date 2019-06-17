@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   delete "sessions/destroy", to: "sessions#destroy", as: "logout"
 
   resources :works
-  resources :users, only: [:index, :show, :new, :create]
+  post "works/:id/upvote", to: "works#upvote", as: "upvote"
+
+  resources :users, only: [:index, :show]
 end
