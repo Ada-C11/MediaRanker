@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
   def login
-    if user.nil?
-      user = User.create(name: params[:author][:username], joined: Date.today)
-    end
+    user = User.find_by(username: params[:user][:username])
 
-    user = User.find_by(name: params[:user][:username])
+    if user.nil?
+      user = User.create(username: params[:user][:username], joined: Date.today)
+    end
 
     session[:user_id] = user.id
 
