@@ -11,7 +11,7 @@ vote_two:
 vote_three:
   date: '2019-06-14'
   user: two
-  work: two
+  work: one
 
 vote_four:
   date: '2019-06-15'

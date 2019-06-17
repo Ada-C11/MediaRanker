@@ -9,13 +9,13 @@ CSV.foreach(SEEDS, :headers => true) do |seed|
   work.category = seed["category"]
   work.title = seed["title"]
   work.creator = seed["creator"]
-  work.publication_year = seed["publication_year"]
+  work.publication_year = seed["publication_year"].to_i
   work.description = seed["description"]
 
   success = work.save
   if !success
     seed_fails << work
-    puts seed_fails
+    puts "Failed to save: #{work.inspect}"
   end
 end
 
