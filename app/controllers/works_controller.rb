@@ -25,7 +25,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id].to_i)
     if @work.update(work_params)
       flash[:success] = "Changes saved"
       redirect_to work_path(@work.id)
@@ -51,28 +50,22 @@ class WorksController < ApplicationController
 
     if user.nil?
       flash[:warning] = "A problem occurred: you must log in to vote"
-      work.errors.messages.each do |field, messages|
-        flash[:errors] = messages
-      end
       redirect_back(fallback_location: root_path)
     elsif user.eligible_to_vote?(@work)
       vote = Vote.new(work: @work, user: user, date: Date.today)
 
       if vote.save
         flash[:success] = "Successfully upvoted!"
-        redirect_back(fallback_location: root_path)
+        redirect_to root_path
       else
-        flash[:warning] = "Error: could not process vote"
-        work.errors.messages.each do |field, messages|
-          flash[:errors] = messages
+        flash.now[:warning] = "Error: could not process vote"
+        @work.errors.messages.each do |field, messages|
+          flash.now[field] = messages
         end
         redirect_back(fallback_location: root_path)
       end
     else
       flash[:warning] = "A problem occurred: you've already voted on this work"
-      work.errors.messages.each do |field, messages|
-        flash[:errors] = messages
-      end
       redirect_back(fallback_location: root_path)
     end
   end
