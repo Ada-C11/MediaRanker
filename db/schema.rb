@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_05_27_022048) do
     t.string "category"
     t.string "title"
     t.string "creator"
-    t.date "publication_year"
+    t.integer "publication_year"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
