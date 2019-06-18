@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe User do
-  let(:user) { users(:laneia) }
+  let(:user) { users(:one) }
   let(:work) { works(:one) }
 
   it "must be valid" do

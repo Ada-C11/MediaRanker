@@ -17,25 +17,29 @@ describe Work do
 
   describe "relationships" do
     it "has many votes" do
-      work.votes << Vote.new
+      work = works(:three)
       votes = work.votes
+      votes << Vote.new(user: users(:three), work: work, date: Date.today)
+      votes << Vote.new(user: users(:two), work: work, date: Date.today)
 
       expect(work).must_be_instance_of Work
-      expect(work.votes).must_be_instance_of Array
-      expect(votes.length).must_be 1
+      expect(votes).kind_of? Array
+      expect(votes.length).must_equal 2
       expect(votes.first).must_be_instance_of Vote
     end
 
     it "can have 0 votes" do
-      votes = three.votes
-      expect(three).must_be_instance_of Work
+      work = works(:three)
+      votes = work.votes
+      expect(work).must_be_instance_of Work
       expect(votes.length).must_equal 0
-      expect(three.valid?).must_equal true
+      expect(work.valid?).must_equal true
     end
 
     it "has many users through votes" do
-      votes = one.votes
-      expect(hp).must_be_instance_of Work
+      work = works(:one)
+      votes = work.votes
+      expect(work).must_be_instance_of Work
       expect(votes.length).must_be :>=, 1
       votes.each do |vote|
         expect(vote.user).must_be_instance_of User
@@ -69,15 +73,16 @@ describe Work do
     end
 
     it "requires a unique title within a category" do
-      invalid_work = Work.new title: two.title, category: "book"
+      invalid_work = Work.new title: work.title, category: "book"
       valid = invalid_work.valid?
       expect(valid).must_equal false
-      expect(other_work.errors.messages).must_include :title
-      expect(other_work.errors.messages[:title]).must_equal ["has already been taken"]
+      expect(invalid_work.errors.messages).must_include :title
+      expect(invalid_work.errors.messages[:title]).must_equal ["has already been taken"]
     end
 
     it "can have the same title as a work in a different category" do
-      valid_work = Work.new title: two.title, category: "movie"
+      work = works(:two)
+      valid_work = Work.new title: work.title, category: "movie"
       valid = valid_work.valid?
       expect(valid).must_equal true
     end
@@ -96,8 +101,9 @@ describe Work do
     end
 
     it "returns the first work alphabetically in case of tie" do
+      work = works(:one)
       top_work = Work.spotlight
-      expect(top_work).must_equal one
+      expect(top_work).must_equal work
     end
 
     it "should return nil if there are no works" do
@@ -156,8 +162,9 @@ describe Work do
 
   describe "vote_count" do
     it "returns the total number of votes on a work" do
-      count = one.vote_count
-      expect(count).must_equal 3
+      work = works(:one)
+      count = work.vote_count
+      expect(count).must_equal 2
     end
 
     it "returns 0 when the work has no votes" do

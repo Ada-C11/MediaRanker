@@ -1,18 +1,15 @@
 require "test_helper"
 
 describe SessionsController do
-  it "should get login" do
-    get sessions_login_url
-    value(response).must_be :success?
+  it "can login" do
+    get sessions_login_path
+    value(response).must_be :successful?
   end
 
-  it "should get new" do
-    get sessions_new_url
-    value(response).must_be :success?
-  end
+  it "can logout" do
+    delete logout_path
 
-  it "should get destroy" do
-    get sessions_destroy_url
-    value(response).must_be :success?
+    assert_nil(session[:user_id])
+    assert_equal "Successfully logged out", flash[:success]
   end
 end

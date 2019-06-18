@@ -25,9 +25,9 @@ describe Vote do
     end
 
     it "can set a user" do
-      vote.update(user: dan)
+      vote = Vote.new(user: user, work: work, date: Date.today)
       expect(vote).must_be_instance_of Vote
-      expect(vote.user).must_equal "laneia"
+      expect(vote.user.username).must_equal "laneia"
       expect(vote.valid?).must_equal true
     end
 
@@ -38,9 +38,10 @@ describe Vote do
     end
 
     it "can set a work" do
-      vote.update(work: two)
+      work = works(:two)
+      vote = Vote.new(user: user, work: work, date: Date.today)
       expect(vote).must_be_instance_of Vote
-      expect(vote.work).must_equal "Sabriel"
+      expect(vote.work.title).must_equal "Sabriel"
       expect(vote.valid?).must_equal true
     end
   end
