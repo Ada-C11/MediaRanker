@@ -1,6 +1,7 @@
 require "test_helper"
 
 describe WorksController do
+  let(:user) { users(:one) }
   let(:work) { works(:one) }
 
   it "returns a list all works" do
@@ -112,4 +113,30 @@ describe WorksController do
       delete work_path(-3)
     }.wont_change "Work.count"
   end
+
+  it "wont upvote if not logged in" do
+    user = nil
+
+    post upvote_path(work.id)
+    assert_equal "A problem occurred: you must log in to vote", flash[:warning]
+    must_respond_with :redirect
+  end
+
+  # Can't figure out how to test the parts of upvote that require session
+
+  # it "will upvote valid work if logged in" do
+  #   session[:user_id] = users(:three).id
+  #   post upvote_path(work.id)
+
+  #   assert_equal "Successfully upvoted!", flash[:success]
+  #   must_redirect_to root_path
+  # end
+
+  # it "will raise error if upvoting invalid work" do
+  #   session[:user_id] = users(:three).id
+  #   post upvote_path(-3)
+
+  #   assert_equal "Error: could not process vote", flash[:warning]
+  #   must_redirect_to root_path
+  # end
 end
