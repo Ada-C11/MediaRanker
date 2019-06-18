@@ -2,6 +2,11 @@ require "test_helper"
 
 describe SessionsController do
   it "can login a valid user" do
+    get sessions_login_path
+    must_respond_with :successful?
+  end
+
+  it "can login a valid user" do
     user = users(:one)
     get sessions_login_path
 

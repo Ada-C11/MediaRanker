@@ -1,33 +1,115 @@
 require "test_helper"
 
 describe WorksController do
-  it "can list all works" do
-    get works_index_url
-    value(response).must_be :success?
+  let(:work) { works(:one) }
+
+  it "returns a list all works" do
+    get works_path
+    value(response).must_be :successful?
   end
 
-  it "can show a work" do
-    get works_show_url
-    value(response).must_be :success?
+  it "can show a valid work" do
+    get work_path(work.id)
+    value(response).must_be :successful?
   end
 
-  it "can get new work url" do
-    get works_new_url
-    value(response).must_be :success?
+  it "will flash warning and error for invalid work" do
+    get work_path(-3)
+    assert_equal "Work not found.", flash[:warning]
+    must_redirect_to works_path
   end
 
   it "can create a new work" do
-    get works_create_url
-    value(response).must_be :success?
+    work_params = {
+      "work": {
+        category: "movie",
+        title: "Florida",
+        creator: "Florida Man",
+        pub_year: 1810,
+        description: "What will happen next in the Everglades?",
+      },
+    }
+
+    expect {
+      post works_path, params: work_params
+    }.must_change "Work.count", 1
+
+    new_work = Work.find_by(title: work_params[:work][:title])
+    assert_equal "Work added", flash[:success]
+    must_redirect_to work_path(new_work.id)
+  end
+
+  it "will give an error for invalid info" do
+    work_params = {
+      "work": {
+        category: "movie",
+        title: nil,
+        creator: "Florida Man",
+        pub_year: 1810,
+        description: "What will happen next in the Everglades?",
+      },
+    }
+
+    expect {
+      post works_path, params: work_params
+    }.wont_change "Work.count"
+
+    assert_equal "Error:  work not added", flash[:error]
   end
 
   it "can edit a work" do
-    get works_edit_url
-    value(response).must_be :success?
+    get edit_work_path(work.id)
+    value(response).must_be :successful?
+  end
+
+  it "can update an existing work" do
+    work_params = {
+      work: {
+        category: "album",
+        title: "Bleed American",
+        creator: "Jimmy Eat World",
+        publication_year: 2001,
+        description: "Best album ever.",
+      },
+    }
+
+    expect {
+      patch work_path(work.id), params: work_params
+    }.wont_change "Work.count"
+
+    assert_equal "Changes saved", flash[:success]
+    must_redirect_to work_path
+  end
+
+  it "won't update an existing work with invalid info" do
+    work_params = {
+      work: {
+        category: nil,
+        title: "Bleed American",
+        creator: "Jimmy Eat World",
+        publication_year: 2001,
+        description: "Best album ever.",
+      },
+    }
+
+    expect {
+      patch work_path(work.id), params: work_params
+    }.wont_change "Work.count"
+
+    assert_equal "Error: changes not saved", flash[:error]
   end
 
   it "can destroy a work" do
-    get works_destroy_url
-    value(response).must_be :success?
+    expect {
+      delete work_path(work.id)
+    }.must_change "Work.count", -1
+
+    assert_equal "#{work.title} deleted", flash[:success]
+  end
+
+  it "cant destroy a work that doesn't exist" do
+    expect {
+      delete work_path(-3)
+    }.wont_change "Work.count"
   end
 end
