@@ -125,7 +125,8 @@ describe WorksController do
   # Can't figure out how to test the parts of upvote that require session
 
   # it "will upvote valid work if logged in" do
-  #   session[:user_id] = users(:three).id
+  #   user = users(:three)
+  #   request.session[:user_id] = user.id
   #   post upvote_path(work.id)
 
   #   assert_equal "Successfully upvoted!", flash[:success]
