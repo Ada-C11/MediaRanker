@@ -6,16 +6,12 @@ describe SessionsController do
     must_respond_with :success
   end
 
-  # Also unsure how to get login test to work
+  it "can login a valid user" do
+    post login_path, params: {user: {username: "ari"}}
 
-  # it "can login a valid user" do
-  #   user = User.create(username: "cindy", joined: Date.today)
-  #   post login_path
-
-  #   #assert_equal "#{user.username} successfully logged in", flash[:success]
-  #   flash[:success].should =~ /#{user.username} successfully logged in/i
-  #   must_redirect_to root_path
-  # end
+    expect(flash[:success]).must_include "successfully logged in"
+    must_redirect_to root_path
+  end
 
   it "can logout" do
     delete logout_path

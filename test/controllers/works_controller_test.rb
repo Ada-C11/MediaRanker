@@ -122,22 +122,30 @@ describe WorksController do
     must_respond_with :redirect
   end
 
-  # Can't figure out how to test the parts of upvote that require session
+  it "will upvote valid work if logged in" do
+    post login_path, params: {user: {username: "ari"}}
+    post upvote_path(work.id)
 
-  # it "will upvote valid work if logged in" do
-  #   user = users(:three)
-  #   request.session[:user_id] = user.id
-  #   post upvote_path(work.id)
+    assert_equal "Successfully upvoted!", flash[:success]
+    must_redirect_to root_path
+  end
 
-  #   assert_equal "Successfully upvoted!", flash[:success]
-  #   must_redirect_to root_path
-  # end
+  it "will raise error if upvoting invalid work" do
+    post login_path, params: {user: {username: "ari"}}
+    post upvote_path(-3)
 
-  # it "will raise error if upvoting invalid work" do
-  #   session[:user_id] = users(:three).id
-  #   post upvote_path(-3)
+    assert_equal "Error: could not process vote", flash[:warning]
+    must_redirect_to root_path
+  end
 
-  #   assert_equal "Error: could not process vote", flash[:warning]
-  #   must_redirect_to root_path
-  # end
+  it "prohibits user from voting twice on same work" do
+    post login_path, params: {user: {username: "ari"}}
+    work = works(:one)
+    post upvote_path(work.id)
+    must_respond_with :found
+
+    post upvote_path(work.id)
+    assert_equal "A problem occurred: you've already voted on this work", flash[:warning]
+    must_respond_with :redirect
+  end
 end

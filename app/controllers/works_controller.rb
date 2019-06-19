@@ -66,9 +66,6 @@ class WorksController < ApplicationController
         redirect_to root_path
       else
         flash.now[:warning] = "Error: could not process vote"
-        @work.errors.messages.each do |field, messages|
-          flash.now[field] = messages
-        end
         redirect_back(fallback_location: root_path)
       end
     else
