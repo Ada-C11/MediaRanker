@@ -1,0 +1,113 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: album
+  description: Sweet slow jams
+  publication_year: 1972
+  creator: Bonnie Raitt
+  title: Sweet Forgiveness
+
+two:
+  category: movie
+  description: Incredible
+  publication_year: 2019
+  creator: Beyonce
+  title: Homecoming
+
+three:
+  category: book
+  description: millenial office drama
+  publication_year: 2019
+  creator: Halle Butler
+  title: The New Me
+
+four:
+  category: book
+  description: speculative fiction
+  publication_year: 2018
+  creator: Leni Zumas
+  title: Red Clocks
+
+five:
+  category: album
+  description: Sweet slow jams
+  publication_year: 1972
+  creator: Bonnie Raitt
+  title: Sweet Forgiveness
+
+six:
+  category: movie
+  description: Incredible
+  publication_year: 2019
+  creator: Beyonce
+  title: Homecoming
+
+seven:
+  category: book
+  description: millenial office drama
+  publication_year: 2019
+  creator: Halle Butler
+  title: The New Me
+
+eight:
+  category: book
+  description: speculative fiction
+  publication_year: 2018
+  creator: Leni Zumas
+  title: Red Clocks
+
+nine:
+  category: book
+  description: Sweet slow jams
+  publication_year: 1972
+  creator: Bonnie Raitt
+  title: Sweet Forgiveness
+
+ten:
+  category: book
+  description: Incredible
+  publication_year: 2019
+  creator: Beyonce
+  title: Homecoming
+
+eleven:
+  category: book
+  description: millenial office drama
+  publication_year: 2019
+  creator: Halle Butler
+  title: The New Me
+
+twelve:
+  category: book
+  description: speculative fiction
+  publication_year: 2018
+  creator: Leni Zumas
+  title: Red Clocks
+
+thirteen:
+  category: book
+  description: millenial office drama
+  publication_year: 2019
+  creator: Halle Butler
+  title: The New Me
+
+fourteen:
+  category: book
+  description: speculative fiction
+  publication_year: 2018
+  creator: Leni Zumas
+  title: Red Clocks
+
+fifteen:
+  category: book
+  description: Sweet slow jams
+  publication_year: 1972
+  creator: Bonnie Raitt
+  title: Sweet Forgiveness
+
+sixteen:
+  category: book
+  description: Incredible
+  publication_year: 2019
+  creator: Beyonce
+  title: Homecoming

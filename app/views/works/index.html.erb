@@ -1,0 +1,77 @@
+<h1>Albums</h1>
+<table class="table">
+  <thead>
+    <tr>
+     <th>Votes</th>
+     <th>Title</th>
+     <th>Created By</th>
+     <th>Published</th>
+     <th>Upvote</th>
+    </tr>
+ </thead>
+ <tbody>
+ <% @works.each do |work| %>
+    <% if work.category == "album" %>
+    <tr>
+      <td><%= work.votes.length %></td>
+      <td><%= link_to "#{work.title}", work_path(work.id) %><br></td>
+      <td><%= work.creator %><br></td>
+      <td><%= work.publication_year %><br></td>
+      <td><%= link_to "Upvote", work_votes_path(work.id), method: :post, class: "btn btn-primary"%><br></td>  
+    </tr>
+    <% end %>
+<% end %>
+ </tbody>
+</table>
+
+<h1>Books</h1>
+<table class="table">
+  <thead>
+    <tr>
+     <th>Votes</th>
+     <th>Title</th>
+     <th>Created By</th>
+     <th>Published</th>
+     <th>Upvote</th>
+    </tr>
+ </thead>
+ <tbody>
+ <% @works.each do |work| %>
+     <% if work.category == "book" %>
+    <tr>
+      <td><%= work.votes.length %><br></td>
+      <td><%= link_to "#{work.title}", work_path(work.id) %><br></td>
+      <td><%= work.creator %><br></td>
+      <td><%= work.publication_year %><br></td>
+      <td><%= link_to "Upvote", work_votes_path(work.id), method: :post, class: "btn btn-primary" %><br></td>
+    </tr>
+    <% end %>
+<% end %>
+ </tbody>
+</table>
+
+<h1>Movies</h1>
+<table class="table">
+  <thead>
+    <tr>
+     <th>Votes</th>
+     <th>Title</th>
+     <th>Created By</th>
+     <th>Published</th>
+     <th>Upvote</th>
+    </tr> 
+ </thead>
+ <tbody>
+ <% @works.each do |work| %>
+    <% if work.category == "movie" %>
+    <tr>
+      <td><%= work.votes.length %></td>
+      <td><%= link_to "#{work.title}", work_path(work.id) %><br></td>
+      <td><%= work.creator %><br></td>
+      <td><%= work.publication_year %><br></td>
+      <td><%= link_to "Upvote", work_votes_path(work.id), method: :post, class: "btn btn-primary" %><br></td>
+    </tr>
+    <% end %>
+<% end %>
+ </tbody>
+</table>

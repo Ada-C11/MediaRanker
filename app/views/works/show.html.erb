@@ -1,0 +1,31 @@
+<h2><%= @work.title %></h2>
+<p>Created by: <%= @work.creator %></p>
+<p>Published: <%= @work.publication_year %></p>
+<p><%= @work.description %></p>
+
+<h4><%= @work.votes.length %> votes for this <%= @work.category %></h4>
+<section class="vote-details">
+  <table class="table"> 
+    <thead>
+      <tr>
+        <th scope="col">User</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <% @work.votes.each do |vote| %>
+      <tr>
+        <td><%= link_to (User.find(vote.user_id)).name, users_path(vote.user_id) %></td>
+        <td><%= vote.created_at.to_date.to_formatted_s(:long) %></td>
+      </tr>
+    <% end %>
+  </table>
+</section>
+
+<%= link_to "Back to media ranks", root_path %>
+
+<%= link_to "Edit", edit_work_path(@work.id) %>
+
+<%= link_to "Upvote", work_votes_path(@work.id), method: :post %> 
+
+<%= link_to "Delete", 
+    work_path(@work.id), method: :delete, data: { confirm: "Are you sure that you want to delete this driver?" } %>

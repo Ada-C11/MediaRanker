@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+user1:
+  name: Amy
+
+user2:
+  name: Mollie
+
+user3:
+  name: Tildee
+
+user4:
+  name: Chris
+
+user5:
+  name: Kaida
+
+user6:
+  name: Val
+
+user7:
+  name: Devin
+
+user8:
+  name: Dan
+
+user9:
+  name: Justin
+
+user10:
+  name: Venus
+
+user11:
+  name: Serena
+
+user12:
+  name: Charles
+
+user13:
+  name: Alexandra
+
