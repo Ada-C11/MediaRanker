@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+user_one:
+  username: "obsessed-with-pizza"
+
+user_two:
+  username: "film_buff_95"
+
+user_three:
+  username: "ricecake"
+
+user_four:
+  username: "buffy-and-spike-forever"
+
+user_five:
+  username: "my_pothos_is_better_than_yours"

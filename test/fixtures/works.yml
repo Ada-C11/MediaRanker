@@ -1,0 +1,50 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+book:
+  category: "book"
+  title: "Grokking Algorithms"
+  creator: "Aditya Y. Bhargava"
+  publication_year: 2016
+  description: "an illustrated guide to learning programming algorithms"
+
+movie:
+  category: "movie"
+  title: "The Thing"
+  creator: "John Carpenter"
+  publication_year: 1982
+  description: "a group of American researchers in Antarctica encounter an alien life-form that assimilates then imitates other organisms"
+
+album:
+  category: "album"
+  title: "Deltron 3030"
+  creator: "Deltron 3030"
+  publication_year: 2000
+  description: "rap opera concept album set in the dystopian year 3030"
+
+book2:
+  category: "book"
+  title: "11/22/63"
+  creator: "Stephen King"
+  publication_year: 2011
+  description: "man goes back in time to try to prevent the JFK assassination"
+
+movie2: 
+  category: "movie"
+  title: "Hot Fuzz"
+  creator: "Edgar Wright"
+  publication_year: 2007
+  description: "London constable moves to small English town which is not as it appears"
+
+album2:
+  category: "album"
+  title: "Blonde"
+  creator: "Frank Ocean"
+  publication_year: 2016
+  description: "avant-garde masterpiece"
+
+album3:
+  category: "album"
+  title: "Unusual"
+  creator: "Marian Hill"
+  publication_year: 2018
+  description: "synth jazz-pop"

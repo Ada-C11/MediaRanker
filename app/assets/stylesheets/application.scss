@@ -1,0 +1,196 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+/* Import scss content */
+@import url('https://fonts.googleapis.com/css?family=Gudea:400,700');
+
+html {
+    display: block
+}
+
+body {
+    font-family: "Gudea", sans-serif
+}
+
+a, h2, h3, .spotlight__header-main {
+    color: #26A69A;
+}
+
+a {
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgb(35, 112, 104);
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: bold
+}
+
+ul {
+    list-style-type: none;
+}
+
+.alert-container ul {
+    padding-left: 0%
+}
+.app-header__header {
+    max-width: 100%;
+    background-color: #DEC1C7;
+    margin-bottom: 0.5rem;
+    padding-top: 2rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem
+    
+}
+
+.app-header__header h1 {
+    text-align: center;
+    margin: 25px auto 40px auto;
+}
+
+.app-header__header h1 a {
+    color: #FF5722;
+    padding-right: 25px;
+    margin-right: 15px;
+    border-right: white 2px solid;
+}
+
+.app-header__header h1 small {
+    color: white
+}
+
+.btn-primary {
+    background-color: #BD7584;
+    border-color: #BD7584
+}
+
+.btn-primary:hover {
+    background-color: #A55363;
+    border-color: #A55363
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0; 
+    list-style-type: none;
+}
+
+.app-header__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+
+.app-header__nav_item {
+    margin-top: 1rem
+}
+
+.app-header__site-nav-container .app-header__nav_item {
+    margin-right: 2rem
+}
+
+.app-header__site-nav-container .app-header__nav_item a {
+    color: #00796B;
+    display: block;
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem
+}
+
+.logged-in {
+    padding-right: 2rem
+}
+
+main {
+    padding: 2rem
+}
+
+.spotlight {
+    padding-top: 0px;
+    padding-right: 2rem;
+    padding-bottom: 1.5rem;
+    padding-left: 2rem;
+    border-bottom: lightgray 1px solid;
+}
+
+.spotlight__header-prefix {
+    color: #424242;
+}
+
+.spotlight__header-main a {
+    text-decoration: underline
+}
+
+.top-ten-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2em;
+    padding-top: 3rem
+}
+
+.top-ten h2 {
+   border-bottom: #B2DFDB 2px solid
+}
+
+.top-ten ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+}
+
+.top-ten ul li:first-child {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem
+}
+
+.top-ten ul li {
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: -1px;
+}
+
+.form, form {
+    display: block
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color: white;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+
+
+
+
+
