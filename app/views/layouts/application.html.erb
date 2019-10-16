@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Gudea:400,700" rel="stylesheet">
+    <%= favicon_link_tag asset_path('owl.jpg'), :rel => 'icon', :type => 'image/png' %>
+  </head>
+
+  <body>
+    <header class="header app-header">
+      <h1>
+        <%= link_to "Media Ranker", '/' %>
+        <small>Ranking the Best of Everything</small>
+      </h1>
+      <nav class="nav">
+        <ul class="nav site-nav-container">
+          <li class="nav-item"><%= link_to "View top media", '/', class: "btn btn-link", role: "button"  %></li>
+          <li class="nav-item"><%= link_to "View all media", works_path, class: "btn btn-link", role: "button"  %></li>
+          <li class="nav-item"><%= link_to "Add a new work", new_work_path, class: "btn btn-link", role: "button"  %></li>
+          <li class="nav-item"><%= link_to "View all users", users_path, class: "btn btn-link", role: "button" %></li>
+        </ul>
+
+        <ul class="nav user-nav-container">
+          <% if session[:user_id] %>
+            <li class="nav-item"><%= link_to "Logged in as #{@current_user.username}", user_path(session[:user_id]), class: "btn btn-primary", role: "button" %></li>
+            <li class="nav-item"><%= link_to "Log Out", logout_path, method: :delete, class: "btn btn-primary", role: "button" %></li>
+          <% else %>
+            <li class="nav-item"><%= link_to "Login", login_path, class: "btn btn-primary", role: "button" %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+
+    <% if flash.count > 0 %>
+      <section class="flash">
+        <% type = "warning" if flash[:warning] %>
+        <% type = "success" if flash[:success] %>
+        <div class="alert alert-<%= type %>">
+          <% flash.each do |name, message| %>
+            <% if message.class == Array %>
+              <ul id="error-messages">
+                <% message.each do |msg| %>
+                  <li><%= "#{name}: #{msg}" %></li>
+                <% end %>
+              </ul>
+            <% else %>
+              <%= message %>
+            <% end %>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
+
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

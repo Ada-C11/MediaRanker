@@ -1,0 +1,22 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: album
+  title: Bleed American
+  creator: Jimmy Eat World
+  publication_year: '2001'
+  description: Fourth studio album by American rock band Jimmy Eat World.
+
+two:
+  category: book
+  title: Sabriel
+  creator: Garth Nix
+  publication_year: '1995'
+  description: Fantasy novel set in the Old Kingdom.
+
+three:
+  category: movie
+  title: The Ballad of Buster Scruggs
+  creator: Coen Brothers
+  publication_year: '2018'
+  description: A Western anthology film.

@@ -1,0 +1,19 @@
+vote_one:
+  date: '2019-06-14'
+  user: one
+  work: one
+
+vote_two:
+  date: '2019-06-14'
+  user: one
+  work: two
+
+vote_three:
+  date: '2019-06-14'
+  user: two
+  work: one
+
+vote_four:
+  date: '2019-06-15'
+  user: one
+  work: two
